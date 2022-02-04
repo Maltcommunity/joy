@@ -10,6 +10,17 @@ const PROD_ENV = isEnv('--prod');
 const DEV_ENV = isEnv('--dev');
 
 const env = Object.assign({},  E2E_ENV ? {E2E_ENV: 'e2e'} : {});
+const polyfills = Object.assign({}, PROD_ENV ? { 
+    cssVarsShim: true,
+    dynamicImportShim: true,
+    shadowDomShim: true,
+    safari10: true,
+    scriptDataOpts: true,
+    appendChildSlotFix: false,
+    cloneNodeFix: false,
+    slotChildNodesFix: true,
+    
+} : {});
 
 export const config: Config = {
     namespace: 'joy',
@@ -20,7 +31,7 @@ export const config: Config = {
      * Especially components that actually uses other components
      */
     invisiblePrehydration: false,
-    // globalStyle: 'src/core/style/index.scss',
+    globalStyle: 'src/style/index.scss',
     // bundles: [
     //     {
     //         // Critical bundle
@@ -33,6 +44,7 @@ export const config: Config = {
     //     {components: ['joy-tooltip', 'joy-tooltip-trigger']},
     // ],
     hashFileNames: false,
+    buildEs5: 'prod',
     outputTargets: [
         {
             type: 'dist',
@@ -49,7 +61,7 @@ export const config: Config = {
         },
         {
             type: 'stats',
-            file: 'joy-stats.json',
+            file: './dist/joy-stats.json',
         },
     ],
     env,
@@ -64,4 +76,5 @@ export const config: Config = {
         allowableMismatchedPixels: 200,
     },
     plugins: [sass()],
+    extras: polyfills,
 };
