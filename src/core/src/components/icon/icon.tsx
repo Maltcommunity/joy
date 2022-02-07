@@ -1,5 +1,4 @@
 import {Component, Host, h, Prop, State, Watch} from '@stencil/core';
-import {getSvgPath} from './assets-path';
 import {IconsSizes, IconColors} from '../../types';
 
 @Component({
@@ -62,7 +61,7 @@ export class Icon {
 
     @Watch('name')
     async loadIcon() {
-        this.svgContent = `${getSvgPath()}#${this.name}`;
+        this.svgContent = `#${this.name}`;
 
         const label = this.name;
         if (!this.ariaLabel) {

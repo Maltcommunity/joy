@@ -7,6 +7,7 @@ importers:
 
   src/core:
     specifiers:
+      '@maltjoy/tokens': 0.2.0
       '@stencil/core': 2.12.1
       '@stencil/eslint-plugin': 0.4.0
       '@stencil/sass': 1.4.1
@@ -23,6 +24,7 @@ importers:
       tslib: 1.14.1
       typescript: 4.3.2
     dependencies:
+      '@maltjoy/tokens': link:../tokens
       '@stencil/core': 2.12.1
     devDependencies:
       '@stencil/eslint-plugin': 0.4.0_179f8a08f21fbd0422e75534965a3922

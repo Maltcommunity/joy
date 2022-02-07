@@ -20,6 +20,7 @@
     "generate": "stencil generate"
   },
   "dependencies": {
+    "@maltjoy/tokens": "0.2.0",
     "@stencil/core": "2.12.1"
   },
   "devDependencies": {

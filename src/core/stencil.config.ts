@@ -1,5 +1,6 @@
 import {Config} from '@stencil/core';
 import {sass} from '@stencil/sass';
+import * as path from 'path';
 
 function isEnv(flag: string): boolean {
     return process.argv && process.argv.indexOf(flag) > -1;
@@ -31,6 +32,7 @@ export const config: Config = {
      */
     invisiblePrehydration: false,
     globalStyle: './src/style/index.scss',
+    globalScript: './src/scripts/global-script.ts',
     // bundles: [
     //     {
     //         // Critical bundle

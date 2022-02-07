@@ -6,11 +6,11 @@
 @use './spacing';
 
 :root {
-    @include animations.getAnimationsProperties();
     @include colors.getPaletteProperties();
     @include colors.getContextualPaletteProperties();
     @include elevations.getElevationsProperties();
     @include fonts.getFontsProperties();
     @include shapes.getShapesProperties();
     @include spacing.getSpacingProperties();
+    @include animations.getAnimationsProperties();
 }

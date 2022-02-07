@@ -1,3 +1,7 @@
-@use './tokens';
+@use '~@maltjoy/tokens/src/tokens';
 @use './skeletons';
 @use './utils';
+
+#svg-icons-list{
+  display: none;
+}

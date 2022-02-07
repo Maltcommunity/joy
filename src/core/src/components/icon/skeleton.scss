@@ -1,19 +1,16 @@
-@use '../../../sass/base/0_variables/colors/colors';
-@use '../../../sass/base/0_variables/sizes';
-@use '../../../sass/base/0_variables/icons-styles/icons-sizes' as icons;
 @use 'sass:map';
+@use './config';
 
 joy-icon:not(.hydrated) {
     display: inline-flex;
-    background-color: colors.$grey-3;
+    background-color: var(--joy-gray-2);
     border-radius: 50%;
-    // Default
-    width: map.get(icons.$ICON_SIZES, xsmall);
-    height: map.get(icons.$ICON_SIZES, xsmall);
-    min-height: map.get(icons.$ICON_SIZES, xsmall);
-    min-width: map.get(icons.$ICON_SIZES, xsmall);
+    width: map.get(config.$ICON_SIZES, xsmall);
+    height: map.get(config.$ICON_SIZES, xsmall);
+    min-height: map.get(config.$ICON_SIZES, xsmall);
+    min-width: map.get(config.$ICON_SIZES, xsmall);
 
-    @each $size, $value in icons.$ICON_SIZES {
+    @each $size, $value in config.$ICON_SIZES {
         &[size="#{$size}"] {
             width: $value;
             height: $value;
