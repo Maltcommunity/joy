@@ -4,7 +4,7 @@ import {IconsSizes, IconColors} from '../../types';
 @Component({
     tag: 'joy-icon',
     styleUrl: 'icon.scss',
-    assetsDirs: ['__mocks__', 'assets'],
+    assetsDirs: ['assets'],
 })
 export class Icon {
     /**
@@ -61,7 +61,7 @@ export class Icon {
 
     @Watch('name')
     async loadIcon() {
-        this.svgContent = `#${this.name}`;
+        this.svgContent = `#joy-icon--${this.name}`;
 
         const label = this.name;
         if (!this.ariaLabel) {

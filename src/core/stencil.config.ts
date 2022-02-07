@@ -33,6 +33,7 @@ export const config: Config = {
     invisiblePrehydration: false,
     globalStyle: './src/style/index.scss',
     globalScript: './src/scripts/global-script.ts',
+
     // bundles: [
     //     {
     //         // Critical bundle
@@ -78,6 +79,8 @@ export const config: Config = {
         waitBeforeScreenshot: 20,
         allowableMismatchedPixels: 200,
     },
-    plugins: [sass()],
+    plugins: [sass({
+        includePaths: [path.resolve('node_modules')]
+    })],
     extras: polyfills,
 };

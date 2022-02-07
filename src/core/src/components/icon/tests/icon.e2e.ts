@@ -9,11 +9,23 @@ describe('icon e2e', () => {
         expect(element).toHaveClass('hydrated');
     });
 
+    it('renders the svg sprite in a hidden generated block', async () => {
+        const page = await newE2EPage();
+        await page.setContent('<joy-icon name="add"></joy-icon>');
+        await page.waitForChanges();
+
+        const svg = await page.find('#svg-icons-list')
+        const addIcon = await page.find('#joy-icon--add');
+
+        expect(svg).not.toBeNull();
+        expect(addIcon).not.toBeNull();
+    });
+
     it('renders with specific colors', async () => {
         const page = await newE2EPage();
-
         await page.setContent('<joy-icon name="add" color="grey"></joy-icon>');
         const icon = await page.find('joy-icon');
+
         expect(icon).toHaveClass('joy-i-wc_grey');
 
         icon.setAttribute('color', 'red');

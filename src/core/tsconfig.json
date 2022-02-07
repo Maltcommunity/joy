@@ -1,6 +1,21 @@
 {
     "compilerOptions": {
-      "target": "esnext",
+      "baseUrl": ".",
+      "allowUnreachableCode": false,
+      "declaration": false,
+      "noEmit": false,
+      "lib": [
+        "es6",
+        "esnext",
+        "dom",
+        "dom.iterable",
+        "scripthost"
+      ],
+      "target": "es2017",
+      "noUnusedLocals": false,
+      "noUnusedParameters": true,
+      "jsx": "react",
+      "jsxFactory": "h",
       "module": "esnext",
       "strict": true,
       "importHelpers": true,
@@ -12,19 +27,8 @@
       "skipLibCheck": true,
       "preserveSymlinks": true,
       "allowJs": true,
-      "noEmit": false,
       "allowSyntheticDefaultImports": true,
-      "allowUnreachableCode": false,
-      "declaration": false,
       "experimentalDecorators": true,
-      "lib": [
-        "dom",
-        "es2017"
-      ],
-      "noUnusedLocals": false,
-      "noUnusedParameters": true,
-      "jsx": "react",
-      "jsxFactory": "h"
     },
     "include": [
       "src"
