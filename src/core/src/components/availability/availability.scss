@@ -1,0 +1,112 @@
+@use '../../style/utils';
+
+$CLASS: '.joy-availability';
+
+:host {
+    /**
+     * @prop --availability-background: Background of the availability (when label given)
+     * @prop --availability-dot-color: Default dot color when no availability status is given
+     * @prop --availability-dot-color-not-available: Dot color when status is : not available
+     * @prop --availability-dot-color-not-available-with-date: Dot color when status is : not available until a specific date
+     * @prop --availability-dot-color-available: Dot color when status is : available
+     * @prop --availability-dot-color-available-with-date: Dot color when status is : available until a specific date
+     * @prop --availability-dot-color-available-and-verified: Dot color when status is : available and verified account
+     * @prop --availability-dot-color-available-soon: Dot color when status is : available soon
+     * @prop --availability-dot-size: Dot size in pixel
+     * @prop --availability-text-color: Availability text color (for the label)
+     */
+    --availability-background: var(--joy-teal-thin);
+    --availability-dot-color: var(--joy-teal-dark);
+    --availability-dot-color-not-available: var(--joy-error);
+    --availability-dot-color-not-available-with-date: var(--availability-dot-color-not-available);
+    --availability-dot-color-available: var(--joy-teal-light);
+    --availability-dot-color-available-with-date: var(--availability-dot-color-available);
+    --availability-dot-color-available-and-verified: var(--joy-turquoise-main);
+    --availability-dot-color-available-soon: var(--joy-yellow-main);
+    --availability-dot-size: 15px;
+    --availability-text-color: var(--joy-teal-dark);
+
+    color: var(--availability-text-color);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    white-space: nowrap;
+    text-align: center;
+    border-radius: var(--joy-shape-4);
+    @include utils.getFontProperties(xs);
+
+    @media screen and (max-width: 767px) {
+        white-space: normal;
+    }
+}
+
+:host(#{$CLASS}-has-label) {
+    background-color: var(--availability-background);
+    padding: var(--joy-spacing-1) var(--joy-spacing-2);
+}
+
+#{$CLASS}__subtitle {
+    color: inherit;
+    text-align: left;
+    margin-top: 5px;
+}
+
+#{$CLASS}__dot {
+    display: inline-flex;
+    position: relative;
+    border-radius: var(--joy-shape-5);
+    margin-right: 6px;
+    width: var(--availability-dot-size);
+    height: var(--availability-dot-size);
+    background-color: white;
+    box-sizing: border-box;
+
+    &:before {
+        content: "";
+        box-sizing: border-box;
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        border-radius: var(--joy-shape-5);
+        border-width: 3px;
+        border-style: solid;
+        border-color: var(--availability-dot-color);
+    }
+
+    @mixin dotColor($borderColor: none, $bgColor: transparent) {
+        &:before {
+            border-color: $borderColor;
+            background-color: $bgColor;
+        }
+    }
+
+    &.NOT_AVAILABLE {
+        @include dotColor(var(--availability-dot-color-not-available), var(--availability-dot-color-not-available));
+    }
+
+    &.NOT_AVAILABLE_WITH_DATE {
+        @include dotColor(var(--availability-dot-color-not-available-with-date));
+    }
+
+    &.AVAILABLE {
+        @include dotColor(var(--availability-dot-color-available), var(--availability-dot-color-available));
+    }
+
+    &.AVAILABLE_AND_VERIFIED {
+        @include dotColor(var(--availability-dot-color-available-and-verified), var(--availability-dot-color-available-and-verified));
+    }
+
+    &.AVAILABLE_SOON {
+        @include dotColor(var(--availability-dot-color-available-soon), var(--availability-dot-color-available-soon));
+    }
+
+    &.PARTIAL {
+        @include dotColor(none);
+    }
+
+    &.INVISIBLE {
+        @include dotColor(var(--joy-error));
+    }
+}

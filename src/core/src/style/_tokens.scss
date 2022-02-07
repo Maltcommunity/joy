@@ -1,0 +1,136 @@
+/**
+Core design - all available tokens
+ */
+
+:root {
+    // Palette
+    --joy-red-thin: #FFF4F4;
+    --joy-red-light: #FF7370;
+    --joy-red-main: #FC5757;
+    --joy-red-dark: #D4524F;
+    --joy-red-darker: #A63633;
+
+    --joy-teal-thin: #ECF3F4;
+    --joy-teal-light: #0F6378;
+    --joy-teal-main: #035266;
+    --joy-teal-dark: #014554;
+
+    --joy-turquoise-thin: #EEFCFB;
+    --joy-turquoise-light: #33E5DB;
+    --joy-turquoise-main: #12CFC9;
+    --joy-turquoise-dark: #0AB8AD;
+
+    --joy-yellow-thin: #FFFBED;
+    --joy-yellow-light: #FCCF5E;
+    --joy-yellow-main: #FFC200;
+    --joy-yellow-dark: #F0B021;
+
+    --joy-pink-light: #FFB0F7;
+    --joy-pink-main: #FF91F0;
+    --joy-pink-dark: #EB73DE;
+
+    --joy-blue-light: #264FFA;
+    --joy-blue-main: #0529FC;
+    --joy-blue-dark: #0833BD;
+
+    --joy-gray-1: #FCFCF7;
+    --joy-gray-2: #f7f7f5;
+    --joy-gray-3: #E0DED9;
+    --joy-gray-4: #737370;
+    --joy-gray-5: #4B4B4B;
+    --joy-gray-6: #333330;
+    --joy-gray-7: #181818;
+
+    // States
+    --joy-focus-hover: var(--joy-teal-main);
+    --joy-error: var(--joy-red-main);
+    --joy-error-hover: var(--joy-red-darker);
+    --joy-state-disabled: var(--joy-gray-1);
+
+    // Font families:
+    --joy-font-family: 'Moderat', Arial, Helvetica, sans-serif;
+    --joy-font-family-title: 'Agrandir', Arial, Helvetica, sans-serif; // For our component library, we don't really use this one
+
+    // Font sizes 
+    --joy-font-size-none: 0;
+    --joy-font-size-xxs: 11px;
+    --joy-font-size-xs: 13px;
+    --joy-font-size-s: 15px;
+    --joy-font-size-m: 17px;
+    --joy-font-size-l: 20px;
+    --joy-font-size-xl: 28px;
+    --joy-font-size-xl-mobile: 26px;
+    --joy-font-size-2xl: 36px;
+    --joy-font-size-2xl-mobile: 32px;
+    --joy-font-size-3xl: 46px;
+    --joy-font-size-3xl-mobile: 38px;
+    --joy-font-size-4xl: 52px;
+    --joy-font-size-4xl-mobile: 42px;
+    --joy-font-size-quote: 26px;
+    --joy-font-size-quote-mobile: 22px;
+
+    // Font weights
+    --joy-font-weight-normal: 500;
+    --joy-font-weight-bold: 700;
+
+    // Line heights
+    --joy-line-height-small: 1.05;
+    --joy-line-height-large: 1.25;
+
+    // Elevation 
+    --joy-elevation-0: 0 0 0 0 rgba(var(--joy-gray-7), 0.16);
+    --joy-elevation-1: 0 2px 4px 0 rgba(var(--joy-gray-7), 0.16);
+    --joy-elevation-2: 0 4px 12px 0 rgba(var(--joy-gray-7), 0.16);
+    --joy-elevation-3: 0 6px 24px 0 rgba(var(--joy-gray-7), 0.16);
+    --joy-elevation-4: 0px 8px 32px 0 rgba(var(--joy-gray-7), 0.16);
+    
+    // Shapes
+    --joy-shape-0: 0;
+    --joy-shape-1: 2px;
+    --joy-shape-2: 4px;
+    --joy-shape-3: 8px;
+    --joy-shape-4: 16px;
+    --joy-shape-5: 50%;
+    
+    // Spacing
+    --joy-spacing-1: 4px;
+    --joy-spacing-2: 8px;
+    --joy-spacing-3: 12px;
+    --joy-spacing-4: 16px;
+    --joy-spacing-5: 20px;
+    --joy-spacing-6: 24px;
+    --joy-spacing-7: 28px;
+    --joy-spacing-8: 32px;
+    --joy-spacing-9: 40px;
+    --joy-spacing-10: 48px;
+    --joy-spacing-11: 56px;
+    --joy-spacing-12: 64px;
+    
+    // Transitions 
+    --joy-transition-duration-short: 100ms;
+    --joy-transition-duration-default: 200ms;
+    --joy-transition-duration-long: 400ms;
+    --joy-transition-timing-function: ease-in-out;
+    
+    // Breakpoints
+    //// Tiny
+    --joy-breakpoint-screen-tiny-max: 359px;
+    //// XXS
+    --joy-breakpoint-screen-xxs-min: calc(var(--joy-breakpoint-screen-tiny-max) + 1);
+    --joy-breakpoint-screen-xxs-max: 479px;
+    //// XS
+    --joy-breakpoint-screen-xs-min: calc(var(--joy-breakpoint-screen-xxs-max) + 1);
+    --joy-breakpoint-screen-xs-max: 767px;
+    //// SM
+    --joy-breakpoint-screen-sm-min: calc(var(--joy-breakpoint-screen-xs-max) + 1);
+    --joy-breakpoint-screen-sm-max: 991px;
+    //// MD
+    --joy-breakpoint-screen-md-min: calc(var(--joy-breakpoint-screen-sm-max) + 1);
+    --joy-breakpoint-screen-md-max: 1199px;
+    //// LG
+    --joy-breakpoint-screen-lg-min: calc(var(--joy-breakpoint-screen-md-max) + 1);
+    --joy-breakpoint-screen-lg-max: 1599px;
+    //// XLG
+    --joy-breakpoint-screen-xlg-min: calc(var(--joy-breakpoint-screen-lg-max) + 1);
+    
+}

@@ -24,14 +24,13 @@ const polyfills = Object.assign({}, PROD_ENV ? {
 
 export const config: Config = {
     namespace: 'joy',
-    srcDir: 'src/core',
     /**
      * Avoid "clipping" effect while components are loading
      * Not all components are easy to style before they are actually loading
      * Especially components that actually uses other components
      */
     invisiblePrehydration: false,
-    globalStyle: 'src/style/index.scss',
+    globalStyle: './src/style/index.scss',
     // bundles: [
     //     {
     //         // Critical bundle
@@ -44,7 +43,9 @@ export const config: Config = {
     //     {components: ['joy-tooltip', 'joy-tooltip-trigger']},
     // ],
     hashFileNames: false,
+    enableCache: false,
     buildEs5: 'prod',
+    sourceMap: true,
     outputTargets: [
         {
             type: 'dist',

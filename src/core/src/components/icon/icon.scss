@@ -1,0 +1,111 @@
+@use './config';
+
+$_FILL_OPACITY: 0.05;
+
+$_ICONS-COLORS: (
+    "teal": (
+        color: var(--joy-teal-main),
+        placeholder: var(--joy-teal-thin)
+    ),
+    "grey": (
+        color: var(--joy-gray-4),
+        placeholder: var(--joy-gray-2)
+    ),
+    "red": (
+        color: var(--joy-red-main),
+        placeholder: var(--joy-red-thin)
+    ),
+    "yellow": (
+        color: var(--joy-yellow-dark),
+        placeholder: var(--joy-yellow-thin)
+    ),
+    "turquoise": (
+        color: var(--joy-turquoise-main),
+        placeholder: var(--joy-turquoise-thin)
+    ),
+    "white": (
+        color: white,
+        placeholder: rgba(255, 255, 255, 0.2)
+    )
+);
+
+@keyframes svgFadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+.joy-i-wc {
+    display: inline-flex;
+    fill-opacity: 0;
+    color: var(--joy-teal-main);
+    // Default color;
+    shape-rendering: auto;
+    stroke-width: 1.5px;
+    @include config.iconSize(xsmall);
+    border-radius: 50%;
+
+    &_list {
+        ul {
+            > li {
+                padding-left: 33px;
+            }
+        }
+
+        &-loaded {
+            ul {
+                > li {
+                    padding-left: 0;
+                }
+            }
+        }
+    }
+
+    svg {
+        // Default
+        // Prevent clicking on svg or use elements when adding a listener on <i> icon
+        pointer-events: none;
+    }
+
+
+    &.joy-i-wc_loaded {
+        background-color: transparent;
+        opacity: 1;
+    }
+
+    @each $name, $size in config.$ICON_SIZES {
+        &_#{$name} {
+            @include config.iconSize($name);
+        }
+    }
+
+    @each $colorName, $params in $_ICONS-COLORS {
+        &_#{$colorName} {
+            color: map-get($params, color);
+
+            &:not(.joy-i-wc_loaded) {
+                border-radius: 50%;
+                background-color: map-get($params, placeholder);
+            }
+        }
+    }
+
+    &_clickable {
+        cursor: pointer;
+
+        &:hover {
+            fill-opacity: $_FILL_OPACITY;
+        }
+    }
+
+    &_full {
+        fill-opacity: 1;
+    }
+
+    &_bg {
+        fill-opacity: $_FILL_OPACITY;
+    }
+}

@@ -1,0 +1,18 @@
+{
+  "name": "@maltjoy/tokens",
+  "version": "0.2.0",
+  "description": "Malt design system tokens ecosystem",
+  "files": [
+    "dist",
+    "src/**/*.scss"
+  ],
+  "scripts": {
+    "sass:compile": "sass src/tokens.scss:dist/css/tokens.css",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "kevin@malt.com",
+  "license": "ISC",
+  "devDependencies": {
+    "sass": "^1.49.7"
+  }
+}

@@ -1,0 +1,50 @@
+@mixin getPaletteProperties() {
+    // Palette
+    --joy-red-thin: #FFF4F4;
+    --joy-red-light: #FF7370;
+    --joy-red-main: #FC5757;
+    --joy-red-dark: #D4524F;
+    --joy-red-darker: #A63633;
+
+    --joy-teal-thin: #ECF3F4;
+    --joy-teal-light: #0F6378;
+    --joy-teal-main: #035266;
+    --joy-teal-dark: #014554;
+
+    --joy-turquoise-thin: #EEFCFB;
+    --joy-turquoise-light: #33E5DB;
+    --joy-turquoise-main: #12CFC9;
+    --joy-turquoise-dark: #0AB8AD;
+
+    --joy-yellow-thin: #FFFBED;
+    --joy-yellow-light: #FCCF5E;
+    --joy-yellow-main: #FFC200;
+    --joy-yellow-dark: #F0B021;
+
+    // Brand colors
+    --joy-pink-light: #FFB0F7;
+    --joy-pink-main: #FF91F0;
+    --joy-pink-dark: #EB73DE;
+
+    --joy-blue-light: #264FFA;
+    --joy-blue-main: #0529FC;
+    --joy-blue-dark: #0833BD;
+    //
+
+    // Neutral colors
+    --joy-gray-1: #FCFCF7;
+    --joy-gray-2: #f7f7f5;
+    --joy-gray-3: #E0DED9;
+    --joy-gray-4: #737370;
+    --joy-gray-5: #4B4B4B;
+    --joy-gray-6: #333330;
+    --joy-gray-7: #181818;
+}
+
+@mixin getContextualPaletteProperties() {
+    // States, contextual
+    --joy-focus-hover: var(--joy-teal-main);
+    --joy-error: var(--joy-red-main);
+    --joy-error-hover: var(--joy-red-darker);
+    --joy-state-disabled: var(--joy-gray-1);
+}

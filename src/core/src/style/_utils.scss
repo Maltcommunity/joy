@@ -1,0 +1,171 @@
+/* We don't use 2xl, 3xl, 4xl map keys because in some Intellij configurations, these keys are reformatted */
+@use 'sass:map';
+
+$_FONT-TYPES: (
+    xxs: (
+        fontFamily: var(--joy-font-family),
+        fontSize: var(--joy-font-size-xxs),
+        fontWeight: var(--joy-font-weight-normal),
+        lineHeight: var(--joy-line-height-large)
+    ),
+    xxs-bold: (
+        fontFamily: var(--joy-font-family),
+        fontSize: var(--joy-font-size-xxs),
+        fontWeight: var(--joy-font-weight-bold),
+        lineHeight: var(--joy-line-height-large)
+    ),
+    xs: (
+        fontFamily: var(--joy-font-family),
+        fontSize: var(--joy-font-size-xs),
+        fontWeight: var(--joy-font-weight-normal),
+        lineHeight: var(--joy-line-height-large)
+    ),
+    xs-bold: (
+        fontFamily: var(--joy-font-family),
+        fontSize: var(--joy-font-size-xs),
+        fontWeight: var(--joy-font-weight-bold),
+        lineHeight: var(--joy-line-height-large)
+    ),
+    s: (
+        fontFamily: var(--joy-font-family),
+        fontSize: var(--joy-font-size-s),
+        fontWeight: var(--joy-font-weight-normal),
+        lineHeight: var(--joy-line-height-large)
+    ),
+    s-bold: (
+        fontFamily: var(--joy-font-family),
+        fontSize: var(--joy-font-size-s),
+        fontWeight: var(--joy-font-weight-bold),
+        lineHeight: var(--joy-line-height-large)
+    ),
+    m: (
+        fontFamily: var(--joy-font-family),
+        fontSize: var(--joy-font-size-m),
+        fontWeight: var(--joy-font-weight-normal),
+        lineHeight: var(--joy-line-height-large)
+    ),
+    m-bold: (
+        fontFamily: var(--joy-font-family),
+        fontSize: var(--joy-font-size-m),
+        fontWeight: var(--joy-font-weight-bold),
+        lineHeight: var(--joy-line-height-large)
+    ),
+    l: (
+        fontFamily: var(--joy-font-family),
+        fontSize: var(--joy-font-size-l),
+        fontWeight: var(--joy-font-weight-normal),
+        lineHeight: var(--joy-line-height-large)
+    ),
+    l-bold: (
+        fontFamily: var(--joy-font-family),
+        fontSize: var(--joy-font-size-l),
+        fontWeight: var(--joy-font-weight-bold),
+        lineHeight: var(--joy-line-height-large)
+    ),
+    xl: (
+        fontFamily: var(--joy-font-family-title),
+        fontSize: var(--joy-font-size-xl),
+        fontWeight: var(--joy-font-weight-normal),
+        fontSizeMobile: var(--joy-font-size-xl-mobile),
+        lineHeight: var(--joy-line-height-small)
+    ),
+    xl-title: (
+        fontFamily: var(--joy-font-family),
+        fontSize: var(--joy-font-size-xl),
+        fontWeight: var(--joy-font-weight-normal),
+        fontSizeMobile: var(--joy-font-size-l),
+        lineHeight: var(--joy-line-height-small)
+    ),
+    xl-title-bold: (
+        fontFamily: var(--joy-font-family),
+        fontSize: var(--joy-font-size-xl),
+        fontWeight: var(--joy-font-weight-bold),
+        fontSizeMobile: var(--joy-font-size-xl-mobile),
+        lineHeight: var(--joy-line-height-large)
+    ),
+    xxl: (
+        fontFamily: var(--joy-font-family-title),
+        fontSize: var(--joy-font-size-2xl),
+        fontSizeMobile: var(--joy-font-size-2xl-mobile),
+        fontWeight: var(--joy-font-weight-normal),
+        lineHeight: var(--joy-line-height-small)
+    ),
+    xxxl: (
+        fontFamily: var(--joy-font-family-title),
+        fontSize: var(--joy-font-size-3xl),
+        fontSizeMobile: var(--joy-font-size-3xl-mobile),
+        fontWeight: var(--joy-font-weight-normal),
+        lineHeight: var(--joy-line-height-small)
+    ),
+    xxxxl: (
+        fontFamily: var(--joy-font-family-title),
+        fontSize: var(--joy-font-size-4xl),
+        fontSizeMobile: var(--joy-font-size-4xl-mobile),
+        fontWeight: var(--joy-font-weight-normal),
+        lineHeight: var(--joy-line-height-large)
+    ),
+    quote: (
+        fontFamily: var(--joy-font-family),
+        fontSize: var(--joy-font-size-quote),
+        fontSizeMobile: var(--joy-font-size-quote-mobile),
+        fontWeight: var(--joy-font-weight-bold),
+        lineHeight: var(--joy-line-height-large)
+    )
+);
+
+@mixin getFontProperties($font: m) {
+    $fontProperties : map.get($_FONT-TYPES, $font);
+
+    $fontFamily: map.get($fontProperties, fontFamily);
+    $fontSize: map.get($fontProperties, fontSize);
+    $fontSizeMobile: map.get($fontProperties , fontSizeMobile);
+    $fontWeight: map.get($fontProperties, fontWeight);
+    $fontLineHeight: map.get($fontProperties, lineHeight);
+
+    @if $fontFamily != null {
+        font-family: $fontFamily;
+    }
+    font-weight: $fontWeight;
+    font-size: $fontSize;
+    line-height: $fontLineHeight;
+
+    @if $fontSizeMobile!= null {
+        @media screen and (max-width: 767px) {
+            font-size: $fontSizeMobile;
+        }
+    }
+}
+
+$_AVATAR_COLOR: (
+    'teal': var(--joy-teal-main),
+    'yellow': var(--joy-yellow-main),
+    'turquoise': var(--joy-turquoise-main),
+    'red': var(--joy-red-main),
+    'grey': var(--joy-gray-4),
+    'blue': var(--joy-blue-main),
+    'pink': var(--joy-pink-main)
+);
+
+@mixin avatarColor() {
+    @each $color, $value in $_AVATAR_COLOR {
+        &__#{$color} {
+            background-color: $value;
+        }
+    }
+}
+
+@mixin unselectable {
+    -webkit-touch-callout: none;
+    user-select: none;
+}
+
+@mixin srOnly {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    border: 0;
+}

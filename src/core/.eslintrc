@@ -1,0 +1,25 @@
+{
+    "parserOptions": {
+      "project": "./tsconfig.json",
+      "ecmaVersion": 2018,
+      "sourceType": "module",
+      "requireConfigFile": false
+    },
+    "env": {
+      "es6": true,
+      "browser": true
+    },
+    "extends": [
+      "plugin:@stencil/recommended"
+    ],
+    "rules": {
+      "no-unused-vars": "off",
+      "no-undef": "off",
+      "no-invalid-this": "off",
+      "@stencil/decorators-style": "off",
+      "@stencil/required-jsdoc": "off",
+      "@stencil/strict-boolean-conditions": "off",
+      "@typescript-eslint/no-unused-vars": [2, {"varsIgnorePattern": "^h$"}]
+    },
+    "plugins": ["@typescript-eslint"]
+  }

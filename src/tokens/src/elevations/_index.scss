@@ -1,0 +1,7 @@
+@mixin getElevationsProperties() {
+    --joy-elevation-0: 0 0 0 0 rgba(var(--joy-gray-7), 0.16);
+    --joy-elevation-1: 0 2px 4px 0 rgba(var(--joy-gray-7), 0.16);
+    --joy-elevation-2: 0 4px 12px 0 rgba(var(--joy-gray-7), 0.16);
+    --joy-elevation-3: 0 6px 24px 0 rgba(var(--joy-gray-7), 0.16);
+    --joy-elevation-4: 0px 8px 32px 0 rgba(var(--joy-gray-7), 0.16);
+}

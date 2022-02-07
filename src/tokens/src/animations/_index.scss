@@ -1,0 +1,6 @@
+@mixin getAnimationsProperties() {
+    --joy-transition-duration-short: 100ms;
+    --joy-transition-duration-default: 200ms;
+    --joy-transition-duration-long: 400ms;
+    --joy-transition-timing-function: ease-in-out;
+}

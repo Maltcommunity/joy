@@ -1,0 +1,31 @@
+@mixin getFontsProperties() {
+     // Font families:
+     --joy-font-family: 'Moderat', Arial, Helvetica, sans-serif;
+     --joy-font-family-title: 'Agrandir', Arial, Helvetica, sans-serif; // For our component library, we don't really use this one
+ 
+     // Font sizes 
+     --joy-font-size-none: 0;
+     --joy-font-size-xxs: 11px;
+     --joy-font-size-xs: 13px;
+     --joy-font-size-s: 15px;
+     --joy-font-size-m: 17px;
+     --joy-font-size-l: 20px;
+     --joy-font-size-xl: 28px;
+     --joy-font-size-xl-mobile: 26px;
+     --joy-font-size-2xl: 36px;
+     --joy-font-size-2xl-mobile: 32px;
+     --joy-font-size-3xl: 46px;
+     --joy-font-size-3xl-mobile: 38px;
+     --joy-font-size-4xl: 52px;
+     --joy-font-size-4xl-mobile: 42px;
+     --joy-font-size-quote: 26px;
+     --joy-font-size-quote-mobile: 22px;
+ 
+     // Font weights
+     --joy-font-weight-normal: 500;
+     --joy-font-weight-bold: 700;
+ 
+     // Line heights
+     --joy-line-height-small: 1.05;
+     --joy-line-height-large: 1.25;
+}
