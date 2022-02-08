@@ -1,0 +1,59 @@
+$_CLASS: '.joy-tab-button';
+$_padding: var(--joy-spacing-5);
+
+:host(#{$_CLASS}) {
+    --tab-button-color: var(--joy-gray-5);
+    --tab-button-border-color: var(--joy-gray-3);
+    --tab-button-color-active: var(--joy-teal-main);
+    --tab-button-border-color-active: var(--joy-teal-main);
+    --tab-button-link-color: var(--joy-gray-4);
+
+    display: inline-flex;
+    justify-content: center;
+    color: var(--tab-button-color);
+    font-size: var(--joy-font-size-m);
+    text-align: center;
+    border-bottom: 2px solid var(--tab-button-border-color);
+    flex: 1;
+    cursor: pointer;
+    padding: $_padding;
+    transition: 0.3s ease;
+
+    @media screen and (max-width: 991px) {
+        font-size: var(--joy-font-size-xs);
+    }
+}
+
+:host(#{$_CLASS}__link) {
+    padding: 0;
+}
+
+@mixin activeState() {
+    color: var(--tab-button-color-active);
+    border-color: var(--tab-button-border-color-active);
+    font-weight: var(--joy-font-weight-bold);
+}
+
+:host(:hover), :host(:focus) {
+    @include activeState();
+}
+
+:host(#{$_CLASS}__selected) {
+    @include activeState();
+}
+
+a {
+    display: block;
+    width: 100%;
+    color: var(--tab-button-link-color);
+    padding: $_padding;
+    text-decoration: none;
+
+    &:focus, &:hover {
+        @include activeState();
+    }
+
+    @media screen and (max-width: 991px) {
+        padding: 0;
+    }
+}

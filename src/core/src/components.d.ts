@@ -287,6 +287,8 @@ export namespace Components {
          */
         "totalPages": number;
     }
+    interface JoyPanel {
+    }
     interface JoyProgressBar {
         /**
           * Current step number.
@@ -304,6 +306,26 @@ export namespace Components {
           * Total number of steps.
          */
         "steps": number | undefined;
+    }
+    interface JoySpinner {
+        /**
+          * Spinner colors, 2 possible values
+         */
+        "color"?: string;
+    }
+    interface JoyTab {
+        /**
+          * Selected status of the current tab
+         */
+        "selected": boolean;
+        /**
+          * Set the active component for the tab
+         */
+        "setActive": () => Promise<void>;
+        /**
+          * A tab id or name must be provided for each `joy-tab`. It's used internally to reference the selected tab
+         */
+        "tab": string;
     }
     interface JoyTextarea {
         /**
@@ -488,11 +510,29 @@ declare global {
         prototype: HTMLJoyPaginationElement;
         new (): HTMLJoyPaginationElement;
     };
+    interface HTMLJoyPanelElement extends Components.JoyPanel, HTMLStencilElement {
+    }
+    var HTMLJoyPanelElement: {
+        prototype: HTMLJoyPanelElement;
+        new (): HTMLJoyPanelElement;
+    };
     interface HTMLJoyProgressBarElement extends Components.JoyProgressBar, HTMLStencilElement {
     }
     var HTMLJoyProgressBarElement: {
         prototype: HTMLJoyProgressBarElement;
         new (): HTMLJoyProgressBarElement;
+    };
+    interface HTMLJoySpinnerElement extends Components.JoySpinner, HTMLStencilElement {
+    }
+    var HTMLJoySpinnerElement: {
+        prototype: HTMLJoySpinnerElement;
+        new (): HTMLJoySpinnerElement;
+    };
+    interface HTMLJoyTabElement extends Components.JoyTab, HTMLStencilElement {
+    }
+    var HTMLJoyTabElement: {
+        prototype: HTMLJoyTabElement;
+        new (): HTMLJoyTabElement;
     };
     interface HTMLJoyTextareaElement extends Components.JoyTextarea, HTMLStencilElement {
     }
@@ -514,7 +554,10 @@ declare global {
         "joy-icon-button": HTMLJoyIconButtonElement;
         "joy-link": HTMLJoyLinkElement;
         "joy-pagination": HTMLJoyPaginationElement;
+        "joy-panel": HTMLJoyPanelElement;
         "joy-progress-bar": HTMLJoyProgressBarElement;
+        "joy-spinner": HTMLJoySpinnerElement;
+        "joy-tab": HTMLJoyTabElement;
         "joy-textarea": HTMLJoyTextareaElement;
     }
 }
@@ -801,6 +844,8 @@ declare namespace LocalJSX {
          */
         "totalPages"?: number;
     }
+    interface JoyPanel {
+    }
     interface JoyProgressBar {
         /**
           * Current step number.
@@ -818,6 +863,22 @@ declare namespace LocalJSX {
           * Total number of steps.
          */
         "steps"?: number | undefined;
+    }
+    interface JoySpinner {
+        /**
+          * Spinner colors, 2 possible values
+         */
+        "color"?: string;
+    }
+    interface JoyTab {
+        /**
+          * Selected status of the current tab
+         */
+        "selected"?: boolean;
+        /**
+          * A tab id or name must be provided for each `joy-tab`. It's used internally to reference the selected tab
+         */
+        "tab": string;
     }
     interface JoyTextarea {
         /**
@@ -939,7 +1000,10 @@ declare namespace LocalJSX {
         "joy-icon-button": JoyIconButton;
         "joy-link": JoyLink;
         "joy-pagination": JoyPagination;
+        "joy-panel": JoyPanel;
         "joy-progress-bar": JoyProgressBar;
+        "joy-spinner": JoySpinner;
+        "joy-tab": JoyTab;
         "joy-textarea": JoyTextarea;
     }
 }
@@ -960,7 +1024,10 @@ declare module "@stencil/core" {
             "joy-icon-button": LocalJSX.JoyIconButton & JSXBase.HTMLAttributes<HTMLJoyIconButtonElement>;
             "joy-link": LocalJSX.JoyLink & JSXBase.HTMLAttributes<HTMLJoyLinkElement>;
             "joy-pagination": LocalJSX.JoyPagination & JSXBase.HTMLAttributes<HTMLJoyPaginationElement>;
+            "joy-panel": LocalJSX.JoyPanel & JSXBase.HTMLAttributes<HTMLJoyPanelElement>;
             "joy-progress-bar": LocalJSX.JoyProgressBar & JSXBase.HTMLAttributes<HTMLJoyProgressBarElement>;
+            "joy-spinner": LocalJSX.JoySpinner & JSXBase.HTMLAttributes<HTMLJoySpinnerElement>;
+            "joy-tab": LocalJSX.JoyTab & JSXBase.HTMLAttributes<HTMLJoyTabElement>;
             "joy-textarea": LocalJSX.JoyTextarea & JSXBase.HTMLAttributes<HTMLJoyTextareaElement>;
         }
     }

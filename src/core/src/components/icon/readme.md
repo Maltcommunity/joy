@@ -48,12 +48,26 @@ Please see <a href="/joy-v2/webcomponents.html#joy_icons_list">full icons list h
 ### Used by
 
  - [joy-avatar](../avatar)
+ - [joy-button](../button)
+ - [joy-company-avatar](../company-avatar)
+ - [joy-form-error](../form-error)
+ - [joy-highlight](../highlight)
+ - [joy-icon-button](../icon-button)
+ - [joy-link](../link)
+ - [joy-pagination](../pagination)
  - [joy-textarea](../textarea)
 
 ### Graph
 ```mermaid
 graph TD;
   joy-avatar --> joy-icon
+  joy-button --> joy-icon
+  joy-company-avatar --> joy-icon
+  joy-form-error --> joy-icon
+  joy-highlight --> joy-icon
+  joy-icon-button --> joy-icon
+  joy-link --> joy-icon
+  joy-pagination --> joy-icon
   joy-textarea --> joy-icon
   style joy-icon fill:#f9f,stroke:#333,stroke-width:4px
 ```

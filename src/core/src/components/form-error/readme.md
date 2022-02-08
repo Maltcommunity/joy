@@ -22,12 +22,14 @@ category: Webcomponents
 | `visible`         | `visible`            | Depending on contexts : maybe you'll need to insert it in the DOM but hide it, or injecting it into the DOM on the fly (like Vue v-if cases) | `boolean` | `true`      |
 
 
+## CSS Custom Properties
+
+| Name                 | Description              |
+| -------------------- | ------------------------ |
+| `--form-error-color` | color for the error text |
+
+
 ## Dependencies
-
-### Used by
-
- - [joy-counter](../counter)
- - [joy-radio-group](../radio-group)
 
 ### Depends on
 
@@ -37,8 +39,6 @@ category: Webcomponents
 ```mermaid
 graph TD;
   joy-form-error --> joy-icon
-  joy-counter --> joy-form-error
-  joy-radio-group --> joy-form-error
   style joy-form-error fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
