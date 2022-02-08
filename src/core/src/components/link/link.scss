@@ -1,0 +1,86 @@
+@use '../../style/utils';
+
+$_class-name: '.joy-link';
+
+:host {
+    --link-default-color: var(--joy-teal-light);
+    --link-default-color-hover: var(--joy-teal-main);
+    --link-default-color-visited: var(--joy-teal-dark);
+    --link-border-color-focus: var(--joy-gray-6);
+
+    padding: 0 2px;
+    color: var(--link-default-color);
+    @include utils.getFontProperties(l);
+}
+
+@mixin basePseudoStyle() {
+    &:hover, &:hover span {
+        color: var(--link-default-color-hover);
+        text-decoration: underline;
+    }
+
+    &:focus-visible {
+        border: 2px solid var(--link-border-color-focus);
+        border-radius: 4px;
+        text-decoration: none;
+
+        span {
+            text-decoration: none;
+        }
+    }
+
+    &:active, &:visited, &:visited span {
+        color: var(--link-default-visited);
+    }
+}
+
+#{$_class-name} {
+    font-size: inherit;
+    font-weight: inherit;
+    font-family: inherit;
+    padding: inherit;
+
+    border: 2px solid transparent;
+    background-color: transparent;
+    border-radius: var(--joy-shape-2);
+    display: inline-flex;
+    align-items: center;
+    cursor: pointer;
+    text-decoration: none;
+
+    &:hover {
+        text-decoration: underline;
+    }
+
+    @include basePseudoStyle;
+
+    joy-icon {
+        margin: 0 var(--joy-spacing-2);
+
+        svg {
+            color: inherit;
+        }
+    }
+
+    &_teal {
+        color: var(--link-default-color);
+
+        &:hover {
+            color: var(--link-default-color-hover);
+        }
+
+        &:active, &:visited {
+            color: var(--link-default-color-visited);
+        }
+    }
+
+    &_white {
+        &, &:hover, &:active {
+            color: white !important;
+        }
+
+        &:active {
+            opacity: 0.7;
+        }
+    }
+}
