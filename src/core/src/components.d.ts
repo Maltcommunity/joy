@@ -5,7 +5,7 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { AvatarColors, AvatarSizes, IconColors, IconsSizes } from "./types";
+import { AvatarColors, AvatarSizes, ButtonSizes, ButtonVariants, HighlightLevels, IconColors, IconsSizes } from "./types";
 export namespace Components {
     interface JoyAllCritical {
     }
@@ -84,6 +84,96 @@ export namespace Components {
           * Display text label
          */
         "visibleText": boolean;
+    }
+    interface JoyButton {
+        /**
+          * Allows to display the spinner while asynchronous tasks are pending
+          * @param loading - loading status
+          * @param timeout - if you want to display the loader during a specific timeout
+         */
+        "buttonLoading": (loading: boolean, timeout?: number) => Promise<void>;
+        /**
+          * Disabled attribute for buttons
+         */
+        "disabled": boolean;
+        /**
+          * If the link as a downloadable content
+         */
+        "download": boolean;
+        /**
+          * Set the href of your link
+         */
+        "href"?: string;
+        /**
+          * Set the icon name if you need one
+         */
+        "icon"?: string;
+        /**
+          * Set the button in loading state
+         */
+        "loading": boolean;
+        /**
+          * Native rel attribute for hyperlinks. See https://developer.mozilla.org/fr/docs/Web/HTML/Attributes/rel
+         */
+        "rel"?: string;
+        /**
+          * Button or Link size
+         */
+        "size": ButtonSizes;
+        /**
+          * Native target attribute for hyperlinks.
+         */
+        "target"?: '_blank' | '_self' | '_parent' | '_top';
+        /**
+          * Type attribute for buttons
+         */
+        "type": 'button' | 'submit' | 'reset';
+        /**
+          * Button or Link color theme
+         */
+        "variant": ButtonVariants;
+    }
+    interface JoyCompanyAvatar {
+        /**
+          * Company avatar color
+         */
+        "color": AvatarColors['company'];
+        /**
+          * Company name. Required to give image alt text.
+         */
+        "companyName": string;
+        /**
+          * URL source for img. Optional.
+         */
+        "imgSrc"?: string;
+        /**
+          * Size of the image. Optionnal.
+         */
+        "size"?: AvatarSizes;
+    }
+    interface JoyFormError {
+        /**
+          * The error text. Plain string required as any HTML injected will be escaped
+         */
+        "noHtmlErrorText": string;
+        /**
+          * Depending on contexts : maybe you'll need to insert it in the DOM but hide it, or injecting it into the DOM on the fly (like Vue v-if cases)
+         */
+        "visible": boolean;
+    }
+    interface JoyHighlight {
+        /**
+          * Allows to display the level status icon
+         */
+        "displayIcon": boolean;
+        /**
+          * Override the icon type used for level. Size can't be overridden. Won't show if displayIcon prop isn't set to true
+         */
+        "icon"?: string;
+        /**
+          * Defines the criticalness of the highlight
+         */
+        "level": HighlightLevels;
     }
     interface JoyIcon {
         /**
@@ -272,6 +362,30 @@ declare global {
         prototype: HTMLJoyBadgeLevelElement;
         new (): HTMLJoyBadgeLevelElement;
     };
+    interface HTMLJoyButtonElement extends Components.JoyButton, HTMLStencilElement {
+    }
+    var HTMLJoyButtonElement: {
+        prototype: HTMLJoyButtonElement;
+        new (): HTMLJoyButtonElement;
+    };
+    interface HTMLJoyCompanyAvatarElement extends Components.JoyCompanyAvatar, HTMLStencilElement {
+    }
+    var HTMLJoyCompanyAvatarElement: {
+        prototype: HTMLJoyCompanyAvatarElement;
+        new (): HTMLJoyCompanyAvatarElement;
+    };
+    interface HTMLJoyFormErrorElement extends Components.JoyFormError, HTMLStencilElement {
+    }
+    var HTMLJoyFormErrorElement: {
+        prototype: HTMLJoyFormErrorElement;
+        new (): HTMLJoyFormErrorElement;
+    };
+    interface HTMLJoyHighlightElement extends Components.JoyHighlight, HTMLStencilElement {
+    }
+    var HTMLJoyHighlightElement: {
+        prototype: HTMLJoyHighlightElement;
+        new (): HTMLJoyHighlightElement;
+    };
     interface HTMLJoyIconElement extends Components.JoyIcon, HTMLStencilElement {
     }
     var HTMLJoyIconElement: {
@@ -296,6 +410,10 @@ declare global {
         "joy-avatar": HTMLJoyAvatarElement;
         "joy-avatars-list": HTMLJoyAvatarsListElement;
         "joy-badge-level": HTMLJoyBadgeLevelElement;
+        "joy-button": HTMLJoyButtonElement;
+        "joy-company-avatar": HTMLJoyCompanyAvatarElement;
+        "joy-form-error": HTMLJoyFormErrorElement;
+        "joy-highlight": HTMLJoyHighlightElement;
         "joy-icon": HTMLJoyIconElement;
         "joy-progress-bar": HTMLJoyProgressBarElement;
         "joy-textarea": HTMLJoyTextareaElement;
@@ -379,6 +497,90 @@ declare namespace LocalJSX {
           * Display text label
          */
         "visibleText"?: boolean;
+    }
+    interface JoyButton {
+        /**
+          * Disabled attribute for buttons
+         */
+        "disabled"?: boolean;
+        /**
+          * If the link as a downloadable content
+         */
+        "download"?: boolean;
+        /**
+          * Set the href of your link
+         */
+        "href"?: string;
+        /**
+          * Set the icon name if you need one
+         */
+        "icon"?: string;
+        /**
+          * Set the button in loading state
+         */
+        "loading"?: boolean;
+        /**
+          * Native rel attribute for hyperlinks. See https://developer.mozilla.org/fr/docs/Web/HTML/Attributes/rel
+         */
+        "rel"?: string;
+        /**
+          * Button or Link size
+         */
+        "size"?: ButtonSizes;
+        /**
+          * Native target attribute for hyperlinks.
+         */
+        "target"?: '_blank' | '_self' | '_parent' | '_top';
+        /**
+          * Type attribute for buttons
+         */
+        "type"?: 'button' | 'submit' | 'reset';
+        /**
+          * Button or Link color theme
+         */
+        "variant"?: ButtonVariants;
+    }
+    interface JoyCompanyAvatar {
+        /**
+          * Company avatar color
+         */
+        "color"?: AvatarColors['company'];
+        /**
+          * Company name. Required to give image alt text.
+         */
+        "companyName"?: string;
+        /**
+          * URL source for img. Optional.
+         */
+        "imgSrc"?: string;
+        /**
+          * Size of the image. Optionnal.
+         */
+        "size"?: AvatarSizes;
+    }
+    interface JoyFormError {
+        /**
+          * The error text. Plain string required as any HTML injected will be escaped
+         */
+        "noHtmlErrorText"?: string;
+        /**
+          * Depending on contexts : maybe you'll need to insert it in the DOM but hide it, or injecting it into the DOM on the fly (like Vue v-if cases)
+         */
+        "visible"?: boolean;
+    }
+    interface JoyHighlight {
+        /**
+          * Allows to display the level status icon
+         */
+        "displayIcon"?: boolean;
+        /**
+          * Override the icon type used for level. Size can't be overridden. Won't show if displayIcon prop isn't set to true
+         */
+        "icon"?: string;
+        /**
+          * Defines the criticalness of the highlight
+         */
+        "level"?: HighlightLevels;
     }
     interface JoyIcon {
         /**
@@ -544,6 +746,10 @@ declare namespace LocalJSX {
         "joy-avatar": JoyAvatar;
         "joy-avatars-list": JoyAvatarsList;
         "joy-badge-level": JoyBadgeLevel;
+        "joy-button": JoyButton;
+        "joy-company-avatar": JoyCompanyAvatar;
+        "joy-form-error": JoyFormError;
+        "joy-highlight": JoyHighlight;
         "joy-icon": JoyIcon;
         "joy-progress-bar": JoyProgressBar;
         "joy-textarea": JoyTextarea;
@@ -558,6 +764,10 @@ declare module "@stencil/core" {
             "joy-avatar": LocalJSX.JoyAvatar & JSXBase.HTMLAttributes<HTMLJoyAvatarElement>;
             "joy-avatars-list": LocalJSX.JoyAvatarsList & JSXBase.HTMLAttributes<HTMLJoyAvatarsListElement>;
             "joy-badge-level": LocalJSX.JoyBadgeLevel & JSXBase.HTMLAttributes<HTMLJoyBadgeLevelElement>;
+            "joy-button": LocalJSX.JoyButton & JSXBase.HTMLAttributes<HTMLJoyButtonElement>;
+            "joy-company-avatar": LocalJSX.JoyCompanyAvatar & JSXBase.HTMLAttributes<HTMLJoyCompanyAvatarElement>;
+            "joy-form-error": LocalJSX.JoyFormError & JSXBase.HTMLAttributes<HTMLJoyFormErrorElement>;
+            "joy-highlight": LocalJSX.JoyHighlight & JSXBase.HTMLAttributes<HTMLJoyHighlightElement>;
             "joy-icon": LocalJSX.JoyIcon & JSXBase.HTMLAttributes<HTMLJoyIconElement>;
             "joy-progress-bar": LocalJSX.JoyProgressBar & JSXBase.HTMLAttributes<HTMLJoyProgressBarElement>;
             "joy-textarea": LocalJSX.JoyTextarea & JSXBase.HTMLAttributes<HTMLJoyTextareaElement>;

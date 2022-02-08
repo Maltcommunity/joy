@@ -1,0 +1,80 @@
+:host {
+    /**
+     * @prop --highlight-background-success: background color for SUCCESS state
+     * @prop --highlight-color-success: text color for SUCCESS state
+     * @prop --highlight-background-info: background color for INFO state
+     * @prop --highlight-color-info: text color for INFO state
+     * @prop --highlight-background-warning: background color for WARNING state
+     * @prop --highlight-color-warning: text color for WARNING state
+     * @prop --highlight-background-error: background color for ERROR state
+     * @prop --highlight-color-error: text color for ERROR state
+     */
+    --highlight-background-success: var(--joy-turquoise-thin);
+    --highlight-color-success: var(--joy-turquoise-main);
+
+    --highlight-background-info: var(--joy-teal-thin);
+    --highlight-color-info: var(--joy-teal-main);
+
+    --highlight-background-warning: var(--joy-yellow-thin);
+    --highlight-color-warning: var(--joy-yellow-main);
+
+    --highlight-background-error: var(--joy-red-thin);
+    --highlight-color-error: var(--joy-red-main);
+
+    display: block;
+    width: 100%;
+}
+
+.joy-highlight {
+    display: flex;
+    margin: 0;
+    align-items: flex-start;
+    padding: var(--joy-spacing-5);
+    border-radius: var(--joy-shape-3);
+    text-align: left;
+    background-color: var(--highlight-background-info);
+
+    &_info {
+        > i:first-child svg {
+            color: var(--highlight-color-info);
+        }
+    }
+
+    &_warning {
+        background-color: var(--highlight-background-warning);
+
+        > i:first-child svg {
+            color: var(--highlight-color-warning);
+        }
+    }
+
+    &_error {
+        background-color: var(--highlight-background-error);
+
+        > i:first-child svg {
+            color: var(--highlight-color-error);
+        }
+    }
+
+    &_success {
+        background-color: var(--highlight-background-success);
+
+        > i:first-child svg {
+            color: var(--highlight-color-success);
+        }
+    }
+
+    &_small {
+        display: inline-flex;
+    }
+
+    > joy-icon:first-child {
+        margin-right: 10px;
+        margin-top: 2px;
+
+        svg {
+            width: 16px;
+            height: 16px;
+        }
+    }
+}

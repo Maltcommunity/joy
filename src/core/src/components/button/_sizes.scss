@@ -1,12 +1,18 @@
-@use "../../../sass/base/0_variables/spaces";
-@use "../../../sass/base/0_variables/sizes" as block-sizes;
-@use "../../../sass/base/0_variables/font-sizes" as fs;
+$block-height_big: 67px;
+$block-height_medium: 53px;
+$block-height_small: 42px;
+$block-height_xsmall: 32px;
 
-$_padding-ref: spaces.$space;
+$radius-block_big: $block-height_big / 2;
+$radius-block_medium: $block-height_medium / 2;
+$radius-block_small: $block-height_small / 2;
+
+$_padding-ref: 5px;
 $_padding-xsmall: $_padding-ref*1 $_padding-ref*2;
 $_padding-small: $_padding-ref*2 $_padding-ref*4;
 $_padding-medium: $_padding-ref*3 $_padding-ref*6;
 $_padding-big: $_padding-ref*4 $_padding-ref*8;
+
 $_min-width: 160px;
 $_space-around-cta: 4px;
 // To calculate precise border-radius according to the space we need around the CTA for focus state, we need to add a bit of px
@@ -14,28 +20,28 @@ $_border-radius_to_add_around_cta: #{$_space-around-cta/2};
 
 $BTN_SIZE_CONFIG: (
     xsmall: (
-        height: block-sizes.$block-height_xsmall,
-        fontSize: fs.$fs-xs,
-        radius: block-sizes.$radius-block_small,
+        height: $block-height_xsmall,
+        fontSize: var(--joy-font-size-xs),
+        radius: $radius-block_small,
         padding: $_padding-xsmall
     ),
     small: (
-        height: block-sizes.$block-height_small,
-        fontSize: fs.$fs-s,
-        radius: block-sizes.$radius-block_small,
+        height: $block-height_small,
+        fontSize: var(--joy-font-size-s),
+        radius: $radius-block_small,
         padding: $_padding-small
     ),
     medium: (
-        height: block-sizes.$block-height_medium,
-        fontSize: fs.$fs-m,
-        radius: block-sizes.$radius-block_medium,
+        height: $block-height_medium,
+        fontSize: var(--joy-font-size-m),
+        radius: $radius-block_medium,
         padding: $_padding-medium,
         minWidth: $_min-width
     ),
     large: (
-        height: block-sizes.$block-height_big,
-        fontSize: fs.$fs-l,
-        radius: block-sizes.$radius-block_big,
+        height: $block-height_big,
+        fontSize: var(--joy-font-size-l),
+        radius: $radius-block_big,
         padding: $_padding-big,
         minWidth: $_min-width
     )
