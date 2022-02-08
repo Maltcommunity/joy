@@ -1,0 +1,59 @@
+@use '../../style/utils';
+@use './mixins';
+
+$_CLASS: '.joy-tags-input';
+
+:host {
+    display: block;
+    margin-bottom: var(--joy-spacing-3);
+    @include utils.getFontProperties(s);
+}
+
+#{$_CLASS} {
+    &-wrapper {
+        display: block;
+    }
+
+    &-label {
+        display: block;
+        margin-bottom: var(--joy-spacing-2);
+        font-size: inherit;
+    }
+
+    &-inner {
+        background-color: white;
+        @include mixins.innerStyle();
+
+        &-focused {
+            border: 1px solid var(--joy-focus-hover);
+        }
+
+        &-invalid {
+            border: 1px solid var(--joy-error);
+
+            &:hover {
+                border: 1px solid var(--joy-error-hover);
+            }
+        }
+
+        joy-tags-list {
+            justify-content: stretch;
+            width: 100%;
+        }
+
+        input {
+            border: 0;
+            margin: 0;
+            padding: 0;
+            outline: none;
+            min-height: 35px;
+            min-width: 150px;
+            flex-grow: 1;
+            font-size: inherit;
+        }
+    }
+}
+
+joy-form-error {
+    margin-top: var(--joy-spacing-3);
+}

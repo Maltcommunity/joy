@@ -38,20 +38,6 @@ category: Webcomponents
 | `"default"` | Text content of your highlight |
 
 
-## CSS Custom Properties
-
-| Name                             | Description                        |
-| -------------------------------- | ---------------------------------- |
-| `--highlight-background-error`   | background color for ERROR state   |
-| `--highlight-background-info`    | background color for INFO state    |
-| `--highlight-background-success` | background color for SUCCESS state |
-| `--highlight-background-warning` | background color for WARNING state |
-| `--highlight-color-error`        | text color for ERROR state         |
-| `--highlight-color-info`         | text color for INFO state          |
-| `--highlight-color-success`      | text color for SUCCESS state       |
-| `--highlight-color-warning`      | text color for WARNING state       |
-
-
 ## Dependencies
 
 ### Depends on

@@ -327,6 +327,39 @@ export namespace Components {
          */
         "tab": string;
     }
+    interface JoyTabButton {
+        /**
+          * "data-heap" attribute to set on the link if an {@link href} prop is passed or on the host otherwise..
+         */
+        "heapId"?: string;
+        /**
+          * If your tab is a link, give the URL
+         */
+        "href"?: string;
+        /**
+          * Set the tabulation selected or not
+          * @param status
+         */
+        "selectTabButton": (status: boolean) => Promise<void>;
+        /**
+          * Tab selection state
+         */
+        "selected": boolean;
+        /**
+          * A tab id or name must be provided for each `joy-button-tab`. It's used internally to reference the selected tab
+         */
+        "tab": string;
+    }
+    interface JoyTabs {
+        /**
+          * Use this prop to activate a specific tab by default by giving its name
+         */
+        "selectedTab": string;
+        /**
+          * Use this prop to specify that your joy-tabs is made of links, and tabs are not updated on the fly
+         */
+        "sync": boolean;
+    }
     interface JoyTextarea {
         /**
           * If `true`, the element height will increase based on the value.
@@ -534,6 +567,18 @@ declare global {
         prototype: HTMLJoyTabElement;
         new (): HTMLJoyTabElement;
     };
+    interface HTMLJoyTabButtonElement extends Components.JoyTabButton, HTMLStencilElement {
+    }
+    var HTMLJoyTabButtonElement: {
+        prototype: HTMLJoyTabButtonElement;
+        new (): HTMLJoyTabButtonElement;
+    };
+    interface HTMLJoyTabsElement extends Components.JoyTabs, HTMLStencilElement {
+    }
+    var HTMLJoyTabsElement: {
+        prototype: HTMLJoyTabsElement;
+        new (): HTMLJoyTabsElement;
+    };
     interface HTMLJoyTextareaElement extends Components.JoyTextarea, HTMLStencilElement {
     }
     var HTMLJoyTextareaElement: {
@@ -558,6 +603,8 @@ declare global {
         "joy-progress-bar": HTMLJoyProgressBarElement;
         "joy-spinner": HTMLJoySpinnerElement;
         "joy-tab": HTMLJoyTabElement;
+        "joy-tab-button": HTMLJoyTabButtonElement;
+        "joy-tabs": HTMLJoyTabsElement;
         "joy-textarea": HTMLJoyTextareaElement;
     }
 }
@@ -880,6 +927,42 @@ declare namespace LocalJSX {
          */
         "tab": string;
     }
+    interface JoyTabButton {
+        /**
+          * "data-heap" attribute to set on the link if an {@link href} prop is passed or on the host otherwise..
+         */
+        "heapId"?: string;
+        /**
+          * If your tab is a link, give the URL
+         */
+        "href"?: string;
+        /**
+          * Event used by joy-tabs parent component. Prefer using joyTabSelected event from joy-tabs if you want to listen to any tab change
+         */
+        "onJoyTabButtonClick"?: (event: CustomEvent<Tab>) => void;
+        /**
+          * Tab selection state
+         */
+        "selected"?: boolean;
+        /**
+          * A tab id or name must be provided for each `joy-button-tab`. It's used internally to reference the selected tab
+         */
+        "tab": string;
+    }
+    interface JoyTabs {
+        /**
+          * If you wanna catch the tab selection in the whole component, use this event
+         */
+        "onJoyTabSelected"?: (event: CustomEvent<Tab>) => void;
+        /**
+          * Use this prop to activate a specific tab by default by giving its name
+         */
+        "selectedTab": string;
+        /**
+          * Use this prop to specify that your joy-tabs is made of links, and tabs are not updated on the fly
+         */
+        "sync"?: boolean;
+    }
     interface JoyTextarea {
         /**
           * If `true`, the element height will increase based on the value.
@@ -1004,6 +1087,8 @@ declare namespace LocalJSX {
         "joy-progress-bar": JoyProgressBar;
         "joy-spinner": JoySpinner;
         "joy-tab": JoyTab;
+        "joy-tab-button": JoyTabButton;
+        "joy-tabs": JoyTabs;
         "joy-textarea": JoyTextarea;
     }
 }
@@ -1028,6 +1113,8 @@ declare module "@stencil/core" {
             "joy-progress-bar": LocalJSX.JoyProgressBar & JSXBase.HTMLAttributes<HTMLJoyProgressBarElement>;
             "joy-spinner": LocalJSX.JoySpinner & JSXBase.HTMLAttributes<HTMLJoySpinnerElement>;
             "joy-tab": LocalJSX.JoyTab & JSXBase.HTMLAttributes<HTMLJoyTabElement>;
+            "joy-tab-button": LocalJSX.JoyTabButton & JSXBase.HTMLAttributes<HTMLJoyTabButtonElement>;
+            "joy-tabs": LocalJSX.JoyTabs & JSXBase.HTMLAttributes<HTMLJoyTabsElement>;
             "joy-textarea": LocalJSX.JoyTextarea & JSXBase.HTMLAttributes<HTMLJoyTextareaElement>;
         }
     }

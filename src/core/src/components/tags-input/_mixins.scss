@@ -1,0 +1,9 @@
+@mixin innerStyle() {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
+    border: 1px solid var(--joy-gray-3);
+    min-height: 43px;
+    border-radius: var(--joy-shape-3);
+    padding: var(--joy-spacing-1) var(--joy-spacing-5);
+}
