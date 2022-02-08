@@ -1,0 +1,32 @@
+@use '../../style/utils';
+
+:host {
+    /**
+     * @prop --form-error-color: color for the error text
+     */
+    --form-error-color: var(--joy-red-main);
+
+    color: var(--form-error-color);
+    @include utils.getFontProperties(s);
+}
+
+:host(.joy-form-error) {
+    display: none;
+}
+
+:host(.joy-has-error) {
+    display: flex;
+    margin-bottom: var(--joy-spacing-5);
+    margin-top: 0;
+    align-items: flex-start;
+}
+
+
+.joy-icon-error {
+    margin-right: 10px;
+}
+
+span {
+    color: inherit;
+    font-size: inherit;
+}
