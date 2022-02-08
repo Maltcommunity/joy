@@ -276,7 +276,7 @@ joy-toggle:not(.hydrated) {
     height: 22px;
     background-color: var(--joy-gray-3);
     border-radius: 11px;
-    transition: backgroud-color,box-shadow 150ms ease;
+    transition: background-color,box-shadow 150ms ease;
     color: transparent;
     font-size: 0;
 }

@@ -5,8 +5,10 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { IconColors, IconsSizes } from "./types";
+import { AvatarColors, AvatarSizes, IconColors, IconsSizes } from "./types";
 export namespace Components {
+    interface JoyAllCritical {
+    }
     interface JoyAvailability {
         /**
           * isPartial dot, define fill or stroke dot display
@@ -20,6 +22,68 @@ export namespace Components {
           * Status Availability, define color
          */
         "status": 'AVAILABLE' | 'AVAILABLE_AND_VERIFIED' | 'NOT_AVAILABLE_WITH_DATE' | 'AVAILABLE_SOON' | 'NOT_AVAILABLE' | '';
+    }
+    interface JoyAvatar {
+        /**
+          * Specify a background color. Handy for avatars list. The value is the index of css custom property array made from CSS Custom Properties value (see next table)
+         */
+        "color"?: AvatarColors['freelancer'];
+        /**
+          * The prop is given automatically by avatars-list component when you set compress prop to true. You won't need this prop out of an avatars-list.
+         */
+        "compress": boolean;
+        /**
+          * Freelancer full name. Will be used to display its initials if no photoUrl is given.
+         */
+        "fullName"?: string;
+        /**
+          * Url you need to link your avatar to
+         */
+        "href"?: string;
+        /**
+          * The prop is given automatically by avatars-list component when you set compress prop to true. You won't need this prop out of an avatars-list.
+         */
+        "isFirstFromList": boolean;
+        /**
+          * Specify a photo url to display.
+         */
+        "photoUrl"?: string;
+        /**
+          * Avatar size, 3 possible values (can't be overridden)
+         */
+        "size"?: AvatarSizes;
+        /**
+          * Target attribute if href is used
+         */
+        "target"?: '_blank' | '_self' | '_parent' | '_top' | 'framename';
+        /**
+          * Specify the total amount of persons remaining from a list.
+         */
+        "totalNumber"?: number;
+        /**
+          * Specify the link to redirect to the full list
+         */
+        "totalNumberLink"?: string;
+    }
+    interface JoyAvatarsList {
+        /**
+          * How avatars are spread. With a gap, or overlaped
+         */
+        "compress": boolean;
+    }
+    interface JoyBadgeLevel {
+        /**
+          * SuperMalter level from 1 to 3
+         */
+        "superMalterLevel": number;
+        /**
+          * Badge type: highpotential, maltlinker, new, supermalter or verified
+         */
+        "type": typeof badgeTypes[number];
+        /**
+          * Display text label
+         */
+        "visibleText": boolean;
     }
     interface JoyIcon {
         /**
@@ -55,13 +119,158 @@ export namespace Components {
          */
         "size"?: IconsSizes;
     }
+    interface JoyProgressBar {
+        /**
+          * Current step number.
+         */
+        "currentStep": number | undefined;
+        /**
+          * Activate specific color mode. Documentation purpose.
+         */
+        "mode": 'desktop' | 'mobile';
+        /**
+          * Progress bar percentage, percentage usage will override steps & currentStep definition.
+         */
+        "percentage": number | undefined;
+        /**
+          * Total number of steps.
+         */
+        "steps": number | undefined;
+    }
+    interface JoyTextarea {
+        /**
+          * If `true`, the element height will increase based on the value.
+         */
+        "autoGrow": boolean;
+        /**
+          * Indicates whether and how the text value should be automatically capitalized as it is entered/edited by the user.
+         */
+        "autocapitalize": string;
+        /**
+          * This Boolean attribute lets you specify that a form control should have input focus when the page loads.
+         */
+        "autofocus": boolean;
+        /**
+          * If `true`, the value will be cleared after focus upon edit. Defaults to `true` when `type` is `"password"`, `false` for all other types.
+         */
+        "clearOnEdit": boolean;
+        /**
+          * The visible width of the text control, in average character widths. If it is specified, it must be a positive integer.
+         */
+        "cols"?: number;
+        /**
+          * Set the amount of time, in milliseconds, to wait to trigger the `ionChange` event after each keystroke. This also impacts form bindings such as `ngModel` or `v-model`.
+         */
+        "debounce": number;
+        /**
+          * If `true`, the user cannot interact with the textarea.
+         */
+        "disabled": boolean;
+        /**
+          * A hint to the browser for which enter key to display. Possible values: `"enter"`, `"done"`, `"go"`, `"next"`, `"previous"`, `"search"`, and `"send"`.
+         */
+        "enterkeyhint"?: 'enter' | 'done' | 'go' | 'next' | 'previous' | 'search' | 'send';
+        /**
+          * This is required for a WebKit bug which requires us to blur and focus an input to properly focus the input in an item with delegatesFocus. It will no longer be needed with iOS 14.
+         */
+        "fireFocusEvents": boolean;
+        /**
+          * Returns the textarea nested in the component shadowDOM
+          * @return - Returns the native `<textarea>` element used under the hood.
+         */
+        "getInputElement": () => Promise<HTMLTextAreaElement>;
+        /**
+          * A hint to the browser for which keyboard to display. Possible values: `"none"`, `"text"`, `"tel"`, `"url"`, `"email"`, `"numeric"`, `"decimal"`, and `"search"`.
+         */
+        "inputmode"?: 'none' | 'text' | 'tel' | 'url' | 'email' | 'numeric' | 'decimal' | 'search';
+        /**
+          * If `true`, the textarea will be considered as invalid.
+         */
+        "invalid": boolean;
+        /**
+          * If the value of the type attribute is `text`, `email`, `search`, `password`, `tel`, or `url`, this attribute specifies the maximum number of characters that the user can enter.
+         */
+        "maxlength"?: number;
+        /**
+          * If the value of the type attribute is `text`, `email`, `search`, `password`, `tel`, or `url`, this attribute specifies the minimum number of characters that the user can enter.
+         */
+        "minlength"?: number;
+        /**
+          * Use this prop to give component the translation used to display minimum chars count.
+         */
+        "minlengthLabel"?: string;
+        /**
+          * The name of the control, which is submitted with the form data.
+         */
+        "name": string;
+        /**
+          * Instructional text that shows before the input has a value.
+         */
+        "placeholder"?: string | null;
+        /**
+          * If `true`, the user cannot modify the value.
+         */
+        "readonly": boolean;
+        /**
+          * If `true`, the user must fill in a value before submitting a form.
+         */
+        "required": boolean;
+        /**
+          * The number of visible text lines for the control.
+         */
+        "rows"?: number | undefined;
+        /**
+          * Sets blur on the native `textarea` in `ion-textarea`. Use this method instead of the global `textarea.blur()`.
+         */
+        "setBlur": () => Promise<void>;
+        /**
+          * Sets focus on the native `textarea` in `ion-textarea`. Use this method instead of the global `textarea.focus()`.
+         */
+        "setFocus": () => Promise<void>;
+        /**
+          * If `true`, the element will have its spelling and grammar checked.
+         */
+        "spellcheck": boolean;
+        /**
+          * The value of the textarea.
+         */
+        "value"?: string | null;
+        /**
+          * Indicates how the control wraps text.
+         */
+        "wrap"?: 'hard' | 'soft' | 'off';
+    }
 }
 declare global {
+    interface HTMLJoyAllCriticalElement extends Components.JoyAllCritical, HTMLStencilElement {
+    }
+    var HTMLJoyAllCriticalElement: {
+        prototype: HTMLJoyAllCriticalElement;
+        new (): HTMLJoyAllCriticalElement;
+    };
     interface HTMLJoyAvailabilityElement extends Components.JoyAvailability, HTMLStencilElement {
     }
     var HTMLJoyAvailabilityElement: {
         prototype: HTMLJoyAvailabilityElement;
         new (): HTMLJoyAvailabilityElement;
+    };
+    interface HTMLJoyAvatarElement extends Components.JoyAvatar, HTMLStencilElement {
+    }
+    var HTMLJoyAvatarElement: {
+        prototype: HTMLJoyAvatarElement;
+        new (): HTMLJoyAvatarElement;
+    };
+    interface HTMLJoyAvatarsListElement extends Components.JoyAvatarsList, HTMLStencilElement {
+    }
+    var HTMLJoyAvatarsListElement: {
+        prototype: HTMLJoyAvatarsListElement;
+        new (): HTMLJoyAvatarsListElement;
+    };
+    interface HTMLJoyBadgeLevelElement extends Components.JoyBadgeLevel, HTMLStencilElement {
+    }
+    var HTMLJoyBadgeLevelElement: {
+        prototype: HTMLJoyBadgeLevelElement;
+        new (): HTMLJoyBadgeLevelElement;
     };
     interface HTMLJoyIconElement extends Components.JoyIcon, HTMLStencilElement {
     }
@@ -69,12 +278,32 @@ declare global {
         prototype: HTMLJoyIconElement;
         new (): HTMLJoyIconElement;
     };
+    interface HTMLJoyProgressBarElement extends Components.JoyProgressBar, HTMLStencilElement {
+    }
+    var HTMLJoyProgressBarElement: {
+        prototype: HTMLJoyProgressBarElement;
+        new (): HTMLJoyProgressBarElement;
+    };
+    interface HTMLJoyTextareaElement extends Components.JoyTextarea, HTMLStencilElement {
+    }
+    var HTMLJoyTextareaElement: {
+        prototype: HTMLJoyTextareaElement;
+        new (): HTMLJoyTextareaElement;
+    };
     interface HTMLElementTagNameMap {
+        "joy-all-critical": HTMLJoyAllCriticalElement;
         "joy-availability": HTMLJoyAvailabilityElement;
+        "joy-avatar": HTMLJoyAvatarElement;
+        "joy-avatars-list": HTMLJoyAvatarsListElement;
+        "joy-badge-level": HTMLJoyBadgeLevelElement;
         "joy-icon": HTMLJoyIconElement;
+        "joy-progress-bar": HTMLJoyProgressBarElement;
+        "joy-textarea": HTMLJoyTextareaElement;
     }
 }
 declare namespace LocalJSX {
+    interface JoyAllCritical {
+    }
     interface JoyAvailability {
         /**
           * isPartial dot, define fill or stroke dot display
@@ -88,6 +317,68 @@ declare namespace LocalJSX {
           * Status Availability, define color
          */
         "status"?: 'AVAILABLE' | 'AVAILABLE_AND_VERIFIED' | 'NOT_AVAILABLE_WITH_DATE' | 'AVAILABLE_SOON' | 'NOT_AVAILABLE' | '';
+    }
+    interface JoyAvatar {
+        /**
+          * Specify a background color. Handy for avatars list. The value is the index of css custom property array made from CSS Custom Properties value (see next table)
+         */
+        "color"?: AvatarColors['freelancer'];
+        /**
+          * The prop is given automatically by avatars-list component when you set compress prop to true. You won't need this prop out of an avatars-list.
+         */
+        "compress"?: boolean;
+        /**
+          * Freelancer full name. Will be used to display its initials if no photoUrl is given.
+         */
+        "fullName"?: string;
+        /**
+          * Url you need to link your avatar to
+         */
+        "href"?: string;
+        /**
+          * The prop is given automatically by avatars-list component when you set compress prop to true. You won't need this prop out of an avatars-list.
+         */
+        "isFirstFromList"?: boolean;
+        /**
+          * Specify a photo url to display.
+         */
+        "photoUrl"?: string;
+        /**
+          * Avatar size, 3 possible values (can't be overridden)
+         */
+        "size"?: AvatarSizes;
+        /**
+          * Target attribute if href is used
+         */
+        "target"?: '_blank' | '_self' | '_parent' | '_top' | 'framename';
+        /**
+          * Specify the total amount of persons remaining from a list.
+         */
+        "totalNumber"?: number;
+        /**
+          * Specify the link to redirect to the full list
+         */
+        "totalNumberLink"?: string;
+    }
+    interface JoyAvatarsList {
+        /**
+          * How avatars are spread. With a gap, or overlaped
+         */
+        "compress"?: boolean;
+    }
+    interface JoyBadgeLevel {
+        /**
+          * SuperMalter level from 1 to 3
+         */
+        "superMalterLevel"?: number;
+        /**
+          * Badge type: highpotential, maltlinker, new, supermalter or verified
+         */
+        "type": typeof badgeTypes[number];
+        /**
+          * Display text label
+         */
+        "visibleText"?: boolean;
     }
     interface JoyIcon {
         /**
@@ -123,17 +414,153 @@ declare namespace LocalJSX {
          */
         "size"?: IconsSizes;
     }
+    interface JoyProgressBar {
+        /**
+          * Current step number.
+         */
+        "currentStep"?: number | undefined;
+        /**
+          * Activate specific color mode. Documentation purpose.
+         */
+        "mode"?: 'desktop' | 'mobile';
+        /**
+          * Progress bar percentage, percentage usage will override steps & currentStep definition.
+         */
+        "percentage"?: number | undefined;
+        /**
+          * Total number of steps.
+         */
+        "steps"?: number | undefined;
+    }
+    interface JoyTextarea {
+        /**
+          * If `true`, the element height will increase based on the value.
+         */
+        "autoGrow"?: boolean;
+        /**
+          * Indicates whether and how the text value should be automatically capitalized as it is entered/edited by the user.
+         */
+        "autocapitalize"?: string;
+        /**
+          * This Boolean attribute lets you specify that a form control should have input focus when the page loads.
+         */
+        "autofocus"?: boolean;
+        /**
+          * If `true`, the value will be cleared after focus upon edit. Defaults to `true` when `type` is `"password"`, `false` for all other types.
+         */
+        "clearOnEdit"?: boolean;
+        /**
+          * The visible width of the text control, in average character widths. If it is specified, it must be a positive integer.
+         */
+        "cols"?: number;
+        /**
+          * Set the amount of time, in milliseconds, to wait to trigger the `ionChange` event after each keystroke. This also impacts form bindings such as `ngModel` or `v-model`.
+         */
+        "debounce"?: number;
+        /**
+          * If `true`, the user cannot interact with the textarea.
+         */
+        "disabled"?: boolean;
+        /**
+          * A hint to the browser for which enter key to display. Possible values: `"enter"`, `"done"`, `"go"`, `"next"`, `"previous"`, `"search"`, and `"send"`.
+         */
+        "enterkeyhint"?: 'enter' | 'done' | 'go' | 'next' | 'previous' | 'search' | 'send';
+        /**
+          * This is required for a WebKit bug which requires us to blur and focus an input to properly focus the input in an item with delegatesFocus. It will no longer be needed with iOS 14.
+         */
+        "fireFocusEvents"?: boolean;
+        /**
+          * A hint to the browser for which keyboard to display. Possible values: `"none"`, `"text"`, `"tel"`, `"url"`, `"email"`, `"numeric"`, `"decimal"`, and `"search"`.
+         */
+        "inputmode"?: 'none' | 'text' | 'tel' | 'url' | 'email' | 'numeric' | 'decimal' | 'search';
+        /**
+          * If `true`, the textarea will be considered as invalid.
+         */
+        "invalid"?: boolean;
+        /**
+          * If the value of the type attribute is `text`, `email`, `search`, `password`, `tel`, or `url`, this attribute specifies the maximum number of characters that the user can enter.
+         */
+        "maxlength"?: number;
+        /**
+          * If the value of the type attribute is `text`, `email`, `search`, `password`, `tel`, or `url`, this attribute specifies the minimum number of characters that the user can enter.
+         */
+        "minlength"?: number;
+        /**
+          * Use this prop to give component the translation used to display minimum chars count.
+         */
+        "minlengthLabel"?: string;
+        /**
+          * The name of the control, which is submitted with the form data.
+         */
+        "name"?: string;
+        /**
+          * Emitted when the input loses focus.
+         */
+        "onJoyTextareaBlur"?: (event: CustomEvent<FocusEvent>) => void;
+        /**
+          * Emitted when the input value has changed.
+         */
+        "onJoyTextareaChange"?: (event: CustomEvent<{value: string}>) => void;
+        /**
+          * Emitted when the input has focus.
+         */
+        "onJoyTextareaFocus"?: (event: CustomEvent<FocusEvent>) => void;
+        /**
+          * Emitted when a keyboard input occurred.
+         */
+        "onJoyTextareaInput"?: (event: CustomEvent<KeyboardEvent>) => void;
+        /**
+          * Instructional text that shows before the input has a value.
+         */
+        "placeholder"?: string | null;
+        /**
+          * If `true`, the user cannot modify the value.
+         */
+        "readonly"?: boolean;
+        /**
+          * If `true`, the user must fill in a value before submitting a form.
+         */
+        "required"?: boolean;
+        /**
+          * The number of visible text lines for the control.
+         */
+        "rows"?: number | undefined;
+        /**
+          * If `true`, the element will have its spelling and grammar checked.
+         */
+        "spellcheck"?: boolean;
+        /**
+          * The value of the textarea.
+         */
+        "value"?: string | null;
+        /**
+          * Indicates how the control wraps text.
+         */
+        "wrap"?: 'hard' | 'soft' | 'off';
+    }
     interface IntrinsicElements {
+        "joy-all-critical": JoyAllCritical;
         "joy-availability": JoyAvailability;
+        "joy-avatar": JoyAvatar;
+        "joy-avatars-list": JoyAvatarsList;
+        "joy-badge-level": JoyBadgeLevel;
         "joy-icon": JoyIcon;
+        "joy-progress-bar": JoyProgressBar;
+        "joy-textarea": JoyTextarea;
     }
 }
 export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
+            "joy-all-critical": LocalJSX.JoyAllCritical & JSXBase.HTMLAttributes<HTMLJoyAllCriticalElement>;
             "joy-availability": LocalJSX.JoyAvailability & JSXBase.HTMLAttributes<HTMLJoyAvailabilityElement>;
+            "joy-avatar": LocalJSX.JoyAvatar & JSXBase.HTMLAttributes<HTMLJoyAvatarElement>;
+            "joy-avatars-list": LocalJSX.JoyAvatarsList & JSXBase.HTMLAttributes<HTMLJoyAvatarsListElement>;
+            "joy-badge-level": LocalJSX.JoyBadgeLevel & JSXBase.HTMLAttributes<HTMLJoyBadgeLevelElement>;
             "joy-icon": LocalJSX.JoyIcon & JSXBase.HTMLAttributes<HTMLJoyIconElement>;
+            "joy-progress-bar": LocalJSX.JoyProgressBar & JSXBase.HTMLAttributes<HTMLJoyProgressBarElement>;
+            "joy-textarea": LocalJSX.JoyTextarea & JSXBase.HTMLAttributes<HTMLJoyTextareaElement>;
         }
     }
 }

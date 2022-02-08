@@ -43,6 +43,21 @@ Please see <a href="/joy-v2/webcomponents.html#joy_icons_list">full icons list h
 | `size`        | `size`         | The icon size                        | `"large" \| "medium" \| "small" \| "xlarge" \| "xsmall" \| "xxsmall" \| undefined` | `undefined` |
 
 
+## Dependencies
+
+### Used by
+
+ - [joy-avatar](../avatar)
+ - [joy-textarea](../textarea)
+
+### Graph
+```mermaid
+graph TD;
+  joy-avatar --> joy-icon
+  joy-textarea --> joy-icon
+  style joy-icon fill:#f9f,stroke:#333,stroke-width:4px
+```
+
 ----------------------------------------------
 
 *Built with [StencilJS](https://stenciljs.com/)*

@@ -169,3 +169,12 @@ $_AVATAR_COLOR: (
     clip: rect(0,0,0,0);
     border: 0;
 }
+
+@mixin disabledStateOnly {
+    &.disabled,
+    &:disabled,
+    &[disabled]:hover {
+        cursor: not-allowed;
+        @content;
+    }
+}
