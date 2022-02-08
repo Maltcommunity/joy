@@ -5,7 +5,7 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { AvatarColors, AvatarSizes, ButtonSizes, ButtonVariants, HighlightLevels, IconColors, IconsSizes } from "./types";
+import { AvatarColors, AvatarSizes, ButtonSizes, ButtonVariants, HighlightLevels, HyperLinksTargets, IconButtonColors, IconColors, IconsSizes, LinksColors } from "./types";
 export namespace Components {
     interface JoyAllCritical {
     }
@@ -209,6 +209,84 @@ export namespace Components {
          */
         "size"?: IconsSizes;
     }
+    interface JoyIconButton {
+        /**
+          * The icon color. Default is the blue version. You can only override it with the white version.
+         */
+        "color"?: IconButtonColors;
+        /**
+          * The icon name
+         */
+        "icon"?: string;
+        /**
+          * The button type. As the component wraps an actual HTML button element, it will be applied to it.
+         */
+        "type"?: 'button';
+    }
+    interface JoyLink {
+        /**
+          * If the link as a downloadable content
+         */
+        "download": boolean;
+        /**
+          * Set the href of your link
+         */
+        "href"?: string;
+        /**
+          * Icon name if you want to display one, before the text
+         */
+        "icon"?: string;
+        /**
+          * Native rel attribute for hyperlinks. See https://developer.mozilla.org/fr/docs/Web/HTML/Attributes/rel
+         */
+        "rel"?: string;
+        /**
+          * Native target attribute for hyperlinks.
+         */
+        "target"?: HyperLinksTargets;
+        /**
+          * Color theme. Default is teal, you can set white theme for darker backgrounds.
+         */
+        "theme": LinksColors;
+    }
+    interface JoyPagination {
+        /**
+          * Current page number
+         */
+        "currentPage": number;
+        /**
+          * data-heap attribute for next CTA. We should avoid as much as possible to use this kind of props inside the webcomponents
+         */
+        "heapNext"?: string;
+        /**
+          * data-heap attribute for previous CTA. We should avoid as much as possible to use this kind of props inside the webcomponents
+         */
+        "heapPrev"?: string;
+        /**
+          * Can be used as title and aria-label attributes for the next CTA
+         */
+        "labelNext"?: string;
+        /**
+          * Can be used as aria-label attribute for the full component
+         */
+        "labelPagination"?: string;
+        /**
+          * Can be used as title and aria-label attributes for the previous CTA
+         */
+        "labelPrev"?: string;
+        /**
+          * For synchrone implementations (not SPA, basically), allows to inject the URL for next CTA
+         */
+        "linkNext"?: string;
+        /**
+          * For synchrone implementations (not SPA, basically), allows to inject the URL for previous CTA
+         */
+        "linkPrev"?: string;
+        /**
+          * Total number of pages in order to construct the pagination
+         */
+        "totalPages": number;
+    }
     interface JoyProgressBar {
         /**
           * Current step number.
@@ -392,6 +470,24 @@ declare global {
         prototype: HTMLJoyIconElement;
         new (): HTMLJoyIconElement;
     };
+    interface HTMLJoyIconButtonElement extends Components.JoyIconButton, HTMLStencilElement {
+    }
+    var HTMLJoyIconButtonElement: {
+        prototype: HTMLJoyIconButtonElement;
+        new (): HTMLJoyIconButtonElement;
+    };
+    interface HTMLJoyLinkElement extends Components.JoyLink, HTMLStencilElement {
+    }
+    var HTMLJoyLinkElement: {
+        prototype: HTMLJoyLinkElement;
+        new (): HTMLJoyLinkElement;
+    };
+    interface HTMLJoyPaginationElement extends Components.JoyPagination, HTMLStencilElement {
+    }
+    var HTMLJoyPaginationElement: {
+        prototype: HTMLJoyPaginationElement;
+        new (): HTMLJoyPaginationElement;
+    };
     interface HTMLJoyProgressBarElement extends Components.JoyProgressBar, HTMLStencilElement {
     }
     var HTMLJoyProgressBarElement: {
@@ -415,6 +511,9 @@ declare global {
         "joy-form-error": HTMLJoyFormErrorElement;
         "joy-highlight": HTMLJoyHighlightElement;
         "joy-icon": HTMLJoyIconElement;
+        "joy-icon-button": HTMLJoyIconButtonElement;
+        "joy-link": HTMLJoyLinkElement;
+        "joy-pagination": HTMLJoyPaginationElement;
         "joy-progress-bar": HTMLJoyProgressBarElement;
         "joy-textarea": HTMLJoyTextareaElement;
     }
@@ -616,6 +715,92 @@ declare namespace LocalJSX {
          */
         "size"?: IconsSizes;
     }
+    interface JoyIconButton {
+        /**
+          * The icon color. Default is the blue version. You can only override it with the white version.
+         */
+        "color"?: IconButtonColors;
+        /**
+          * The icon name
+         */
+        "icon"?: string;
+        /**
+          * use @joyIconButtonClick="yourMethod" for Vue apps (onJoyIconButtonClick for other stencil components) to handle snackbar close. Nothing is returned
+         */
+        "onJoyIconButtonClick"?: (event: CustomEvent<void>) => void;
+        /**
+          * The button type. As the component wraps an actual HTML button element, it will be applied to it.
+         */
+        "type"?: 'button';
+    }
+    interface JoyLink {
+        /**
+          * If the link as a downloadable content
+         */
+        "download"?: boolean;
+        /**
+          * Set the href of your link
+         */
+        "href"?: string;
+        /**
+          * Icon name if you want to display one, before the text
+         */
+        "icon"?: string;
+        /**
+          * Native rel attribute for hyperlinks. See https://developer.mozilla.org/fr/docs/Web/HTML/Attributes/rel
+         */
+        "rel"?: string;
+        /**
+          * Native target attribute for hyperlinks.
+         */
+        "target"?: HyperLinksTargets;
+        /**
+          * Color theme. Default is teal, you can set white theme for darker backgrounds.
+         */
+        "theme"?: LinksColors;
+    }
+    interface JoyPagination {
+        /**
+          * Current page number
+         */
+        "currentPage"?: number;
+        /**
+          * data-heap attribute for next CTA. We should avoid as much as possible to use this kind of props inside the webcomponents
+         */
+        "heapNext"?: string;
+        /**
+          * data-heap attribute for previous CTA. We should avoid as much as possible to use this kind of props inside the webcomponents
+         */
+        "heapPrev"?: string;
+        /**
+          * Can be used as title and aria-label attributes for the next CTA
+         */
+        "labelNext"?: string;
+        /**
+          * Can be used as aria-label attribute for the full component
+         */
+        "labelPagination"?: string;
+        /**
+          * Can be used as title and aria-label attributes for the previous CTA
+         */
+        "labelPrev"?: string;
+        /**
+          * For synchrone implementations (not SPA, basically), allows to inject the URL for next CTA
+         */
+        "linkNext"?: string;
+        /**
+          * For synchrone implementations (not SPA, basically), allows to inject the URL for previous CTA
+         */
+        "linkPrev"?: string;
+        /**
+          * use @joyChangePage="yourMethod" for Vue apps, to handle pagination change. Clicked page is returned
+         */
+        "onJoyChangePage"?: (event: CustomEvent<number>) => void;
+        /**
+          * Total number of pages in order to construct the pagination
+         */
+        "totalPages"?: number;
+    }
     interface JoyProgressBar {
         /**
           * Current step number.
@@ -751,6 +936,9 @@ declare namespace LocalJSX {
         "joy-form-error": JoyFormError;
         "joy-highlight": JoyHighlight;
         "joy-icon": JoyIcon;
+        "joy-icon-button": JoyIconButton;
+        "joy-link": JoyLink;
+        "joy-pagination": JoyPagination;
         "joy-progress-bar": JoyProgressBar;
         "joy-textarea": JoyTextarea;
     }
@@ -769,6 +957,9 @@ declare module "@stencil/core" {
             "joy-form-error": LocalJSX.JoyFormError & JSXBase.HTMLAttributes<HTMLJoyFormErrorElement>;
             "joy-highlight": LocalJSX.JoyHighlight & JSXBase.HTMLAttributes<HTMLJoyHighlightElement>;
             "joy-icon": LocalJSX.JoyIcon & JSXBase.HTMLAttributes<HTMLJoyIconElement>;
+            "joy-icon-button": LocalJSX.JoyIconButton & JSXBase.HTMLAttributes<HTMLJoyIconButtonElement>;
+            "joy-link": LocalJSX.JoyLink & JSXBase.HTMLAttributes<HTMLJoyLinkElement>;
+            "joy-pagination": LocalJSX.JoyPagination & JSXBase.HTMLAttributes<HTMLJoyPaginationElement>;
             "joy-progress-bar": LocalJSX.JoyProgressBar & JSXBase.HTMLAttributes<HTMLJoyProgressBarElement>;
             "joy-textarea": LocalJSX.JoyTextarea & JSXBase.HTMLAttributes<HTMLJoyTextareaElement>;
         }
