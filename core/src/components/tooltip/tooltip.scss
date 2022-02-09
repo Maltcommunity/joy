@@ -1,14 +1,7 @@
-@use '../../../sass/base/0_variables/colors/colors';
-@use '../../../sass/base/0_variables/spaces';
-@use '../../../sass/base/0_variables/shapes';
-@use '../../../sass/base/0_variables/layers';
-@use '../../../sass/base/0_variables/font-sizes' as fs;
-@use '../../../sass/base/0_variables/font-families' as ff;
-@use '../../../sass/base/2_mixins/elevations';
-
-$_TOOLTIP_PADDING: 16px;
+@use '../../style/utils';
 
 $_CLASS: '.joy-tooltip';
+$_PADDING: var(--joy-spacing-4);
 
 ::slotted(*) {
     font-size: inherit;
@@ -22,21 +15,26 @@ $_CLASS: '.joy-tooltip';
 }
 
 ::slotted(small) {
-    font-size: fs.$fs-xxs;
+    font-size: var(--joy-font-size-xxs);
+}
+
+:host {
+    --tooltip-bg-color-primary: var(--joy-teal-teal);
+    --tooltip-color-primary: white;
+    --tooltip-bg-color-secondary: var(--joy-gray-2);
+    --tooltip-color-secondary: var(--joy-gray-6);
+
+    @include utils.getFontProperties(xs);
 }
 
 :host(#{$_CLASS}) {
     position: absolute;
-    z-index: layers.$z-tooltip;
-    font-size: fs.$fs-xs;
-    font-family: ff.$font-main;
     font-weight: normal;
     box-sizing: border-box;
     // allows to include padding in the tooltip size definition. If the tooltip is supposed to be 250px, it won't add padding to this value
-
-    border-radius: shapes.$shape-3;
-    padding: $_TOOLTIP_PADDING;
-    @include elevations.boxShadow(shadow-3);
+    border-radius: var(--joy-shape-3);
+    padding: $_PADDING;
+    box-shadow: var(--joy-elevation-3);
 
     &:before {
         content: '';
@@ -51,36 +49,32 @@ $_CLASS: '.joy-tooltip';
 }
 
 :host(#{$_CLASS}__primary) {
-    $_bg: colors.$teal-light;
-
-    color: colors.$white;
-    background-color: $_bg;
+    color: var(--tooltip-color-primary);
+    background-color: var(--tooltip-bg-color-primary);
 
     &:before {
-        border-bottom: 7px solid $_bg;
+        border-bottom: 7px solid var(--tooltip-bg-color-primary);
     }
 }
 
 :host(#{$_CLASS}__secondary) {
-    $_bg: colors.$grey-2;
-
-    color: colors.$grey-6;
-    background-color: $_bg;
+    color: var(--tooltip-color-secondary);
+    background-color: var(--tooltip-bg-color-secondary);
 
     &:before {
-        border-bottom: 7px solid $_bg;
+        border-bottom: 7px solid var(--tooltip-bg-color-secondary);
     }
 }
 
 :host(#{$_CLASS}__left) {
     &:before {
-        left: $_TOOLTIP_PADDING;
+        left: $_PADDING;
     }
 }
 
 :host(#{$_CLASS}__right) {
     &:before {
-        right: $_TOOLTIP_PADDING;
+        right: $_PADDING;
     }
 }
 

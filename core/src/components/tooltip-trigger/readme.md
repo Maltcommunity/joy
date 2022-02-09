@@ -41,6 +41,19 @@ category: Webcomponents
 | `"tooltip-trigger"` | The element you need to interact with, to display the tooltip                                    |
 
 
+## Dependencies
+
+### Depends on
+
+- [joy-tooltip](../tooltip)
+
+### Graph
+```mermaid
+graph TD;
+  joy-tooltip-trigger --> joy-tooltip
+  style joy-tooltip-trigger fill:#f9f,stroke:#333,stroke-width:4px
+```
+
 ----------------------------------------------
 
 *Built with [StencilJS](https://stenciljs.com/)*

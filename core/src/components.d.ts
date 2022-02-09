@@ -501,6 +501,16 @@ export namespace Components {
          */
         "wrap"?: 'hard' | 'soft' | 'off';
     }
+    interface JoyTooltip {
+        /**
+          * Tooltip position. 2 possible values
+         */
+        "position": 'left' | 'right';
+        /**
+          * Color theme. 2 possible values
+         */
+        "variant": TooltipVariants;
+    }
     interface JoyTooltipTrigger {
         /**
           * Use basic selector to inject the tooltip in a specific DOM location. Default is body
@@ -663,6 +673,12 @@ declare global {
         prototype: HTMLJoyTextareaElement;
         new (): HTMLJoyTextareaElement;
     };
+    interface HTMLJoyTooltipElement extends Components.JoyTooltip, HTMLStencilElement {
+    }
+    var HTMLJoyTooltipElement: {
+        prototype: HTMLJoyTooltipElement;
+        new (): HTMLJoyTooltipElement;
+    };
     interface HTMLJoyTooltipTriggerElement extends Components.JoyTooltipTrigger, HTMLStencilElement {
     }
     var HTMLJoyTooltipTriggerElement: {
@@ -693,6 +709,7 @@ declare global {
         "joy-tags-list": HTMLJoyTagsListElement;
         "joy-text": HTMLJoyTextElement;
         "joy-textarea": HTMLJoyTextareaElement;
+        "joy-tooltip": HTMLJoyTooltipElement;
         "joy-tooltip-trigger": HTMLJoyTooltipTriggerElement;
     }
 }
@@ -1207,6 +1224,16 @@ declare namespace LocalJSX {
          */
         "wrap"?: 'hard' | 'soft' | 'off';
     }
+    interface JoyTooltip {
+        /**
+          * Tooltip position. 2 possible values
+         */
+        "position"?: 'left' | 'right';
+        /**
+          * Color theme. 2 possible values
+         */
+        "variant"?: TooltipVariants;
+    }
     interface JoyTooltipTrigger {
         /**
           * Use basic selector to inject the tooltip in a specific DOM location. Default is body
@@ -1253,6 +1280,7 @@ declare namespace LocalJSX {
         "joy-tags-list": JoyTagsList;
         "joy-text": JoyText;
         "joy-textarea": JoyTextarea;
+        "joy-tooltip": JoyTooltip;
         "joy-tooltip-trigger": JoyTooltipTrigger;
     }
 }
@@ -1283,6 +1311,7 @@ declare module "@stencil/core" {
             "joy-tags-list": LocalJSX.JoyTagsList & JSXBase.HTMLAttributes<HTMLJoyTagsListElement>;
             "joy-text": LocalJSX.JoyText & JSXBase.HTMLAttributes<HTMLJoyTextElement>;
             "joy-textarea": LocalJSX.JoyTextarea & JSXBase.HTMLAttributes<HTMLJoyTextareaElement>;
+            "joy-tooltip": LocalJSX.JoyTooltip & JSXBase.HTMLAttributes<HTMLJoyTooltipElement>;
             "joy-tooltip-trigger": LocalJSX.JoyTooltipTrigger & JSXBase.HTMLAttributes<HTMLJoyTooltipTriggerElement>;
         }
     }
