@@ -533,6 +533,32 @@ export namespace Components {
          */
         "variant": TooltipVariants;
     }
+    interface JoyUserCard {
+        /**
+          * Can be the freelancer's full name, or whatever you want. It will be placed at the top right part.
+         */
+        "fullName"?: string;
+        /**
+          * Giving a link will make the whole component wrapped by an hyperlink
+         */
+        "link"?: string;
+        /**
+          * Given the link, it will open the link in a new tab
+         */
+        "newTab"?: boolean;
+        /**
+          * Use this prop if you don't want to use the user-card-avatar slot.
+         */
+        "photoUrl"?: string;
+        /**
+          * Freelancer's public rating.
+         */
+        "ratingValue"?: string;
+        /**
+          * Can be the freelancer's job, a company name or whatever you want. It will be placed at the top right part, below title
+         */
+        "subTitle"?: string;
+    }
 }
 declare global {
     interface HTMLJoyAllCriticalElement extends Components.JoyAllCritical, HTMLStencilElement {
@@ -685,6 +711,12 @@ declare global {
         prototype: HTMLJoyTooltipTriggerElement;
         new (): HTMLJoyTooltipTriggerElement;
     };
+    interface HTMLJoyUserCardElement extends Components.JoyUserCard, HTMLStencilElement {
+    }
+    var HTMLJoyUserCardElement: {
+        prototype: HTMLJoyUserCardElement;
+        new (): HTMLJoyUserCardElement;
+    };
     interface HTMLElementTagNameMap {
         "joy-all-critical": HTMLJoyAllCriticalElement;
         "joy-availability": HTMLJoyAvailabilityElement;
@@ -711,6 +743,7 @@ declare global {
         "joy-textarea": HTMLJoyTextareaElement;
         "joy-tooltip": HTMLJoyTooltipElement;
         "joy-tooltip-trigger": HTMLJoyTooltipTriggerElement;
+        "joy-user-card": HTMLJoyUserCardElement;
     }
 }
 declare namespace LocalJSX {
@@ -1256,6 +1289,32 @@ declare namespace LocalJSX {
          */
         "variant"?: TooltipVariants;
     }
+    interface JoyUserCard {
+        /**
+          * Can be the freelancer's full name, or whatever you want. It will be placed at the top right part.
+         */
+        "fullName"?: string;
+        /**
+          * Giving a link will make the whole component wrapped by an hyperlink
+         */
+        "link"?: string;
+        /**
+          * Given the link, it will open the link in a new tab
+         */
+        "newTab"?: boolean;
+        /**
+          * Use this prop if you don't want to use the user-card-avatar slot.
+         */
+        "photoUrl"?: string;
+        /**
+          * Freelancer's public rating.
+         */
+        "ratingValue"?: string;
+        /**
+          * Can be the freelancer's job, a company name or whatever you want. It will be placed at the top right part, below title
+         */
+        "subTitle"?: string;
+    }
     interface IntrinsicElements {
         "joy-all-critical": JoyAllCritical;
         "joy-availability": JoyAvailability;
@@ -1282,6 +1341,7 @@ declare namespace LocalJSX {
         "joy-textarea": JoyTextarea;
         "joy-tooltip": JoyTooltip;
         "joy-tooltip-trigger": JoyTooltipTrigger;
+        "joy-user-card": JoyUserCard;
     }
 }
 export { LocalJSX as JSX };
@@ -1313,6 +1373,7 @@ declare module "@stencil/core" {
             "joy-textarea": LocalJSX.JoyTextarea & JSXBase.HTMLAttributes<HTMLJoyTextareaElement>;
             "joy-tooltip": LocalJSX.JoyTooltip & JSXBase.HTMLAttributes<HTMLJoyTooltipElement>;
             "joy-tooltip-trigger": LocalJSX.JoyTooltipTrigger & JSXBase.HTMLAttributes<HTMLJoyTooltipTriggerElement>;
+            "joy-user-card": LocalJSX.JoyUserCard & JSXBase.HTMLAttributes<HTMLJoyUserCardElement>;
         }
     }
 }

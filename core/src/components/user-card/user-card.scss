@@ -1,0 +1,98 @@
+$_SELECTOR: '.joy-user-card';
+
+:host {
+    --user-card-links-color: var(--joy-teal-light);
+    --user-card-text-color: var(--joy-gray-6);
+
+    display: inline-flex;
+    font-family: var(--joy-font-family);
+}
+
+@mixin links() {
+    display: block;
+    margin: 0;
+    font-family: inherit;
+    color: var(--user-card-links-color);
+    word-break: break-word; // it prevents keeping emails on one line
+
+    &:hover, &:focus {
+        text-decoration: underline;
+    }
+}
+
+::slotted(a) {
+    @include links();
+}
+
+::slotted(strong) {
+    display: block;
+    font-weight: 700;
+}
+
+::slotted(p) {
+    margin: 0;
+    color: var(--user-card-text-color);
+    display: block;
+    font-size: var(--joy-font-size-m);
+    font-family: inherit;
+}
+
+a#{$_SELECTOR} {
+    #{$_SELECTOR}__title {
+        color: var(--user-card-links-color);
+    }
+
+    &:hover {
+        #{$_SELECTOR}__title {
+            text-decoration: underline;
+        }
+    }
+
+}
+
+$_PIC_SIZE: 60px;
+
+#{$_SELECTOR} {
+    display: flex;
+    align-items: flex-start;
+    text-decoration: none;
+
+    &__picture {
+        margin-right: var(--joy-spacing-3);
+    }
+
+    &__informations {
+        color: var(--user-card-text-color);
+
+        a {
+            @include links();
+        }
+
+        @media screen and (max-width: 479px) {
+            margin-left: var(--joy-spacing-1);
+        }
+
+        p, a {
+            display: block;
+            margin: 0;
+        }
+
+        joy-rating-stars {
+            margin-left: 0;
+            margin-top: 0;
+            margin-bottom: 0;
+        }
+    }
+
+    &__title {
+        font-size: var(--joy-font-size-m);
+        font-weight: bold;
+    }
+
+    &__other {
+        font-size: var(--joy-font-size-m);
+        text-decoration: none;
+        color: var(--user-card-text-color);
+    }
+
+}

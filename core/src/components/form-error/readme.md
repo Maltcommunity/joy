@@ -22,6 +22,13 @@ category: Webcomponents
 | `visible`         | `visible`            | Depending on contexts : maybe you'll need to insert it in the DOM but hide it, or injecting it into the DOM on the fly (like Vue v-if cases) | `boolean` | `true`      |
 
 
+## CSS Custom Properties
+
+| Name                 | Description              |
+| -------------------- | ------------------------ |
+| `--form-error-color` | color for the error text |
+
+
 ## Dependencies
 
 ### Depends on
