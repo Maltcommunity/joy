@@ -1,0 +1,89 @@
+@use '../../../sass/base/0_variables/colors/colors';
+@use '../../../sass/base/0_variables/spaces';
+@use '../../../sass/base/0_variables/shapes';
+@use '../../../sass/base/0_variables/layers';
+@use '../../../sass/base/0_variables/font-sizes' as fs;
+@use '../../../sass/base/0_variables/font-families' as ff;
+@use '../../../sass/base/2_mixins/elevations';
+
+$_TOOLTIP_PADDING: 16px;
+
+$_CLASS: '.joy-tooltip';
+
+::slotted(*) {
+    font-size: inherit;
+    font-family: inherit;
+    color: inherit;
+    margin: 0;
+}
+
+::slotted(strong) {
+    font-weight: bold;
+}
+
+::slotted(small) {
+    font-size: fs.$fs-xxs;
+}
+
+:host(#{$_CLASS}) {
+    position: absolute;
+    z-index: layers.$z-tooltip;
+    font-size: fs.$fs-xs;
+    font-family: ff.$font-main;
+    font-weight: normal;
+    box-sizing: border-box;
+    // allows to include padding in the tooltip size definition. If the tooltip is supposed to be 250px, it won't add padding to this value
+
+    border-radius: shapes.$shape-3;
+    padding: $_TOOLTIP_PADDING;
+    @include elevations.boxShadow(shadow-3);
+
+    &:before {
+        content: '';
+        display: block;
+        position: absolute;
+        top: -7px;
+        width: 0;
+        height: 0;
+        border-left: 7px solid transparent;
+        border-right: 7px solid transparent;
+    }
+}
+
+:host(#{$_CLASS}__primary) {
+    $_bg: colors.$teal-light;
+
+    color: colors.$white;
+    background-color: $_bg;
+
+    &:before {
+        border-bottom: 7px solid $_bg;
+    }
+}
+
+:host(#{$_CLASS}__secondary) {
+    $_bg: colors.$grey-2;
+
+    color: colors.$grey-6;
+    background-color: $_bg;
+
+    &:before {
+        border-bottom: 7px solid $_bg;
+    }
+}
+
+:host(#{$_CLASS}__left) {
+    &:before {
+        left: $_TOOLTIP_PADDING;
+    }
+}
+
+:host(#{$_CLASS}__right) {
+    &:before {
+        right: $_TOOLTIP_PADDING;
+    }
+}
+
+
+
+

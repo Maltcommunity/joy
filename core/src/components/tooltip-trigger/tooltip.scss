@@ -1,0 +1,14 @@
+@use '../../style/utils';
+
+:host {
+    cursor: pointer;
+    display: inline-flex;
+}
+
+::slotted(*) {
+    margin: 0;
+}
+
+::slotted(p) {
+    @include utils.getFontProperties(m);
+}

@@ -5,7 +5,7 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { AvatarColors, AvatarSizes, ButtonSizes, ButtonVariants, HighlightLevels, HyperLinksTargets, IconButtonColors, IconColors, IconsSizes, LinksColors } from "./types";
+import { AvatarColors, AvatarSizes, ButtonSizes, ButtonVariants, HighlightLevels, HyperLinksTargets, IconButtonColors, IconColors, IconsSizes, LinksColors, TagSizes, TagVariants, TooltipVariants } from "./types";
 export namespace Components {
     interface JoyAllCritical {
     }
@@ -360,6 +360,44 @@ export namespace Components {
          */
         "sync": boolean;
     }
+    interface JoyTagsInput {
+        /**
+          * Get the array of values contained in the tag input
+         */
+        "getValues": () => Promise<string[]>;
+        /**
+          * Invalid state
+         */
+        "invalid": boolean;
+        /**
+          * form name for our tags input
+         */
+        "name"?: string;
+        /**
+          * Placeholder used for the input
+         */
+        "placeholder": string;
+        /**
+          * Size for your tags. Check Tag documentation for available values
+         */
+        "size": TagSizes;
+        /**
+          * Validation type : if 'email' is given, it will create a specific check before actually adding the tag. Default to none.
+         */
+        "validation": 'email' | 'none';
+        /**
+          * Saved values for the tags list. Must be an array like string eg. ['first', 'second'].
+         */
+        "values"?: string;
+        /**
+          * Variant/color type for your tags. Check Tag documentation for available values
+         */
+        "variant": TagVariants;
+    }
+    interface JoyTagsList {
+    }
+    interface JoyText {
+    }
     interface JoyTextarea {
         /**
           * If `true`, the element height will increase based on the value.
@@ -462,6 +500,28 @@ export namespace Components {
           * Indicates how the control wraps text.
          */
         "wrap"?: 'hard' | 'soft' | 'off';
+    }
+    interface JoyTooltipTrigger {
+        /**
+          * Use basic selector to inject the tooltip in a specific DOM location. Default is body
+         */
+        "appendTo": 'body' | 'host';
+        /**
+          * Define the event needed to display the tooltip
+         */
+        "event": 'mouseenter' | 'click';
+        /**
+          * Tooltip position. 2 possible values
+         */
+        "position": 'left' | 'right';
+        /**
+          * Allows to override tooltip size. Allows to more easily calculate its position
+         */
+        "tooltipWidth": number;
+        /**
+          * Color theme. 2 possible values
+         */
+        "variant": TooltipVariants;
     }
 }
 declare global {
@@ -579,11 +639,35 @@ declare global {
         prototype: HTMLJoyTabsElement;
         new (): HTMLJoyTabsElement;
     };
+    interface HTMLJoyTagsInputElement extends Components.JoyTagsInput, HTMLStencilElement {
+    }
+    var HTMLJoyTagsInputElement: {
+        prototype: HTMLJoyTagsInputElement;
+        new (): HTMLJoyTagsInputElement;
+    };
+    interface HTMLJoyTagsListElement extends Components.JoyTagsList, HTMLStencilElement {
+    }
+    var HTMLJoyTagsListElement: {
+        prototype: HTMLJoyTagsListElement;
+        new (): HTMLJoyTagsListElement;
+    };
+    interface HTMLJoyTextElement extends Components.JoyText, HTMLStencilElement {
+    }
+    var HTMLJoyTextElement: {
+        prototype: HTMLJoyTextElement;
+        new (): HTMLJoyTextElement;
+    };
     interface HTMLJoyTextareaElement extends Components.JoyTextarea, HTMLStencilElement {
     }
     var HTMLJoyTextareaElement: {
         prototype: HTMLJoyTextareaElement;
         new (): HTMLJoyTextareaElement;
+    };
+    interface HTMLJoyTooltipTriggerElement extends Components.JoyTooltipTrigger, HTMLStencilElement {
+    }
+    var HTMLJoyTooltipTriggerElement: {
+        prototype: HTMLJoyTooltipTriggerElement;
+        new (): HTMLJoyTooltipTriggerElement;
     };
     interface HTMLElementTagNameMap {
         "joy-all-critical": HTMLJoyAllCriticalElement;
@@ -605,7 +689,11 @@ declare global {
         "joy-tab": HTMLJoyTabElement;
         "joy-tab-button": HTMLJoyTabButtonElement;
         "joy-tabs": HTMLJoyTabsElement;
+        "joy-tags-input": HTMLJoyTagsInputElement;
+        "joy-tags-list": HTMLJoyTagsListElement;
+        "joy-text": HTMLJoyTextElement;
         "joy-textarea": HTMLJoyTextareaElement;
+        "joy-tooltip-trigger": HTMLJoyTooltipTriggerElement;
     }
 }
 declare namespace LocalJSX {
@@ -963,6 +1051,56 @@ declare namespace LocalJSX {
          */
         "sync"?: boolean;
     }
+    interface JoyTagsInput {
+        /**
+          * Invalid state
+         */
+        "invalid"?: boolean;
+        /**
+          * form name for our tags input
+         */
+        "name"?: string;
+        /**
+          * When the tags list is on error. According to the returned ErrorType, you can display the right error.
+         */
+        "onJoyTagsError"?: (event: CustomEvent<ErrorType>) => void;
+        /**
+          * On input blur
+         */
+        "onJoyTagsInputBlur"?: (event: CustomEvent<void>) => void;
+        /**
+          * On input focus
+         */
+        "onJoyTagsInputFocus"?: (event: CustomEvent<void>) => void;
+        /**
+          * When the tags list is updated
+         */
+        "onJoyTagsUpdate"?: (event: CustomEvent<string[]>) => void;
+        /**
+          * Placeholder used for the input
+         */
+        "placeholder"?: string;
+        /**
+          * Size for your tags. Check Tag documentation for available values
+         */
+        "size"?: TagSizes;
+        /**
+          * Validation type : if 'email' is given, it will create a specific check before actually adding the tag. Default to none.
+         */
+        "validation"?: 'email' | 'none';
+        /**
+          * Saved values for the tags list. Must be an array like string eg. ['first', 'second'].
+         */
+        "values"?: string;
+        /**
+          * Variant/color type for your tags. Check Tag documentation for available values
+         */
+        "variant"?: TagVariants;
+    }
+    interface JoyTagsList {
+    }
+    interface JoyText {
+    }
     interface JoyTextarea {
         /**
           * If `true`, the element height will increase based on the value.
@@ -1069,6 +1207,28 @@ declare namespace LocalJSX {
          */
         "wrap"?: 'hard' | 'soft' | 'off';
     }
+    interface JoyTooltipTrigger {
+        /**
+          * Use basic selector to inject the tooltip in a specific DOM location. Default is body
+         */
+        "appendTo"?: 'body' | 'host';
+        /**
+          * Define the event needed to display the tooltip
+         */
+        "event"?: 'mouseenter' | 'click';
+        /**
+          * Tooltip position. 2 possible values
+         */
+        "position"?: 'left' | 'right';
+        /**
+          * Allows to override tooltip size. Allows to more easily calculate its position
+         */
+        "tooltipWidth"?: number;
+        /**
+          * Color theme. 2 possible values
+         */
+        "variant"?: TooltipVariants;
+    }
     interface IntrinsicElements {
         "joy-all-critical": JoyAllCritical;
         "joy-availability": JoyAvailability;
@@ -1089,7 +1249,11 @@ declare namespace LocalJSX {
         "joy-tab": JoyTab;
         "joy-tab-button": JoyTabButton;
         "joy-tabs": JoyTabs;
+        "joy-tags-input": JoyTagsInput;
+        "joy-tags-list": JoyTagsList;
+        "joy-text": JoyText;
         "joy-textarea": JoyTextarea;
+        "joy-tooltip-trigger": JoyTooltipTrigger;
     }
 }
 export { LocalJSX as JSX };
@@ -1115,7 +1279,11 @@ declare module "@stencil/core" {
             "joy-tab": LocalJSX.JoyTab & JSXBase.HTMLAttributes<HTMLJoyTabElement>;
             "joy-tab-button": LocalJSX.JoyTabButton & JSXBase.HTMLAttributes<HTMLJoyTabButtonElement>;
             "joy-tabs": LocalJSX.JoyTabs & JSXBase.HTMLAttributes<HTMLJoyTabsElement>;
+            "joy-tags-input": LocalJSX.JoyTagsInput & JSXBase.HTMLAttributes<HTMLJoyTagsInputElement>;
+            "joy-tags-list": LocalJSX.JoyTagsList & JSXBase.HTMLAttributes<HTMLJoyTagsListElement>;
+            "joy-text": LocalJSX.JoyText & JSXBase.HTMLAttributes<HTMLJoyTextElement>;
             "joy-textarea": LocalJSX.JoyTextarea & JSXBase.HTMLAttributes<HTMLJoyTextareaElement>;
+            "joy-tooltip-trigger": LocalJSX.JoyTooltipTrigger & JSXBase.HTMLAttributes<HTMLJoyTooltipTriggerElement>;
         }
     }
 }
