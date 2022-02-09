@@ -5,7 +5,7 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { AvatarColors, AvatarSizes, ButtonSizes, ButtonVariants, HighlightLevels, HyperLinksTargets, IconButtonColors, IconColors, IconsSizes, LinksColors, TagSizes, TagVariants, TooltipVariants } from "./types";
+import { AvatarColors, AvatarSizes, ButtonSizes, ButtonVariants, HighlightLevels, HyperLinksTargets, IconButtonColors, IconColors, IconsSizes, LinksColors, TagSizes, TagVariants, TipsLevel, TooltipVariants } from "./types";
 export namespace Components {
     interface JoyAllCritical {
     }
@@ -501,6 +501,20 @@ export namespace Components {
          */
         "wrap"?: 'hard' | 'soft' | 'off';
     }
+    interface JoyTips {
+        /**
+          * Display a CTA to hide the tips
+         */
+        "closable": boolean;
+        /**
+          * If icon is defined, it will show it with the right color
+         */
+        "icon"?: string;
+        /**
+          * Defines the criticalness of the tips
+         */
+        "level": TipsLevel;
+    }
     interface JoyTooltip {
         /**
           * Tooltip position. 2 possible values
@@ -699,6 +713,12 @@ declare global {
         prototype: HTMLJoyTextareaElement;
         new (): HTMLJoyTextareaElement;
     };
+    interface HTMLJoyTipsElement extends Components.JoyTips, HTMLStencilElement {
+    }
+    var HTMLJoyTipsElement: {
+        prototype: HTMLJoyTipsElement;
+        new (): HTMLJoyTipsElement;
+    };
     interface HTMLJoyTooltipElement extends Components.JoyTooltip, HTMLStencilElement {
     }
     var HTMLJoyTooltipElement: {
@@ -741,6 +761,7 @@ declare global {
         "joy-tags-list": HTMLJoyTagsListElement;
         "joy-text": HTMLJoyTextElement;
         "joy-textarea": HTMLJoyTextareaElement;
+        "joy-tips": HTMLJoyTipsElement;
         "joy-tooltip": HTMLJoyTooltipElement;
         "joy-tooltip-trigger": HTMLJoyTooltipTriggerElement;
         "joy-user-card": HTMLJoyUserCardElement;
@@ -1257,6 +1278,20 @@ declare namespace LocalJSX {
          */
         "wrap"?: 'hard' | 'soft' | 'off';
     }
+    interface JoyTips {
+        /**
+          * Display a CTA to hide the tips
+         */
+        "closable"?: boolean;
+        /**
+          * If icon is defined, it will show it with the right color
+         */
+        "icon"?: string;
+        /**
+          * Defines the criticalness of the tips
+         */
+        "level"?: TipsLevel;
+    }
     interface JoyTooltip {
         /**
           * Tooltip position. 2 possible values
@@ -1339,6 +1374,7 @@ declare namespace LocalJSX {
         "joy-tags-list": JoyTagsList;
         "joy-text": JoyText;
         "joy-textarea": JoyTextarea;
+        "joy-tips": JoyTips;
         "joy-tooltip": JoyTooltip;
         "joy-tooltip-trigger": JoyTooltipTrigger;
         "joy-user-card": JoyUserCard;
@@ -1371,6 +1407,7 @@ declare module "@stencil/core" {
             "joy-tags-list": LocalJSX.JoyTagsList & JSXBase.HTMLAttributes<HTMLJoyTagsListElement>;
             "joy-text": LocalJSX.JoyText & JSXBase.HTMLAttributes<HTMLJoyTextElement>;
             "joy-textarea": LocalJSX.JoyTextarea & JSXBase.HTMLAttributes<HTMLJoyTextareaElement>;
+            "joy-tips": LocalJSX.JoyTips & JSXBase.HTMLAttributes<HTMLJoyTipsElement>;
             "joy-tooltip": LocalJSX.JoyTooltip & JSXBase.HTMLAttributes<HTMLJoyTooltipElement>;
             "joy-tooltip-trigger": LocalJSX.JoyTooltipTrigger & JSXBase.HTMLAttributes<HTMLJoyTooltipTriggerElement>;
             "joy-user-card": LocalJSX.JoyUserCard & JSXBase.HTMLAttributes<HTMLJoyUserCardElement>;
