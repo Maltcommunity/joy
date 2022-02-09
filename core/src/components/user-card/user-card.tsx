@@ -1,4 +1,4 @@
-import {Component, h, Prop} from '@stencil/core';
+import {Component, h, Host, Prop} from '@stencil/core';
 /**
  * @slot user-card-avatar - Inject a joy-avatar component here, with the photo URL or the full name if no photo available.
  * @slot user-card-title - Main title of the user card. Basically the freelancer's full name, but you can actually pass a company name or whatever you want if you need to customize.
@@ -80,7 +80,12 @@ export class UserCard {
                 </a>
             );
         } else {
-            return this.innerLayout();
+            return (
+                <Host>
+                    {this.avatar()}
+                    {this.variousInformations()}
+                </Host>
+            );
         }
     }
 }

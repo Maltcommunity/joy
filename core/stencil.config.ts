@@ -44,7 +44,7 @@ export const config: Config = {
              * So instead of having joy-availability_3.js (bit confusing), we've created a fake component called joy-critical...
              * and TADAAA
              */
-            components: ['joy-all-critical', 'joy-textarea'],
+            components: ['joy-all-critical', 'joy-checkbox', 'joy-textarea'],
         },
     ],
     hashFileNames: false,

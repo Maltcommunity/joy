@@ -7,7 +7,7 @@ import {HyperLinksTargets, TagVariants, TagSizes} from '../../types';
     shadow: true,
 })
 export class JoyTag {
-    @Element() host!: HTMLElement;
+    @Element() host!: HTMLJoyTagElement;
     /** Display an icon CTA on the right, to remove the tag from a list. Only for primary/secondary */
     @Prop() removable = false;
     /** Mock a radio like style. Nothing more. Only for primary/secondary */

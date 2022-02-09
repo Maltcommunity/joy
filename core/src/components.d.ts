@@ -133,6 +133,29 @@ export namespace Components {
          */
         "variant": ButtonVariants;
     }
+    interface JoyCheckbox {
+        /**
+          * Checkbox activated or not
+         */
+        "checked": boolean;
+        /**
+          * Disabled state
+         */
+        "disabled": boolean;
+        /**
+          * It will be applied as the hidden input name attribute (for the actual form)
+         */
+        "name": string;
+        /**
+          * Update checkbox value from outside the component
+          * @param newValue true or false...
+         */
+        "updateValue": (newValue: boolean) => Promise<void>;
+        /**
+          * Input value. TODO : check if we really need it as we use a checkbox system
+         */
+        "value"?: string;
+    }
     interface JoyCompanyAvatar {
         /**
           * Company avatar color
@@ -637,6 +660,12 @@ declare global {
         prototype: HTMLJoyButtonElement;
         new (): HTMLJoyButtonElement;
     };
+    interface HTMLJoyCheckboxElement extends Components.JoyCheckbox, HTMLStencilElement {
+    }
+    var HTMLJoyCheckboxElement: {
+        prototype: HTMLJoyCheckboxElement;
+        new (): HTMLJoyCheckboxElement;
+    };
     interface HTMLJoyCompanyAvatarElement extends Components.JoyCompanyAvatar, HTMLStencilElement {
     }
     var HTMLJoyCompanyAvatarElement: {
@@ -776,6 +805,7 @@ declare global {
         "joy-avatars-list": HTMLJoyAvatarsListElement;
         "joy-badge-level": HTMLJoyBadgeLevelElement;
         "joy-button": HTMLJoyButtonElement;
+        "joy-checkbox": HTMLJoyCheckboxElement;
         "joy-company-avatar": HTMLJoyCompanyAvatarElement;
         "joy-form-error": HTMLJoyFormErrorElement;
         "joy-highlight": HTMLJoyHighlightElement;
@@ -920,6 +950,28 @@ declare namespace LocalJSX {
           * Button or Link color theme
          */
         "variant"?: ButtonVariants;
+    }
+    interface JoyCheckbox {
+        /**
+          * Checkbox activated or not
+         */
+        "checked"?: boolean;
+        /**
+          * Disabled state
+         */
+        "disabled"?: boolean;
+        /**
+          * It will be applied as the hidden input name attribute (for the actual form)
+         */
+        "name"?: string;
+        /**
+          * Clicking on the component will fire this customEvent. use @joyCheckboxChange in Vue apps, and onJoyCheckboxChange for plain JavaScript.
+         */
+        "onJoyCheckboxChange"?: (event: CustomEvent<boolean>) => void;
+        /**
+          * Input value. TODO : check if we really need it as we use a checkbox system
+         */
+        "value"?: string;
     }
     interface JoyCompanyAvatar {
         /**
@@ -1424,6 +1476,7 @@ declare namespace LocalJSX {
         "joy-avatars-list": JoyAvatarsList;
         "joy-badge-level": JoyBadgeLevel;
         "joy-button": JoyButton;
+        "joy-checkbox": JoyCheckbox;
         "joy-company-avatar": JoyCompanyAvatar;
         "joy-form-error": JoyFormError;
         "joy-highlight": JoyHighlight;
@@ -1458,6 +1511,7 @@ declare module "@stencil/core" {
             "joy-avatars-list": LocalJSX.JoyAvatarsList & JSXBase.HTMLAttributes<HTMLJoyAvatarsListElement>;
             "joy-badge-level": LocalJSX.JoyBadgeLevel & JSXBase.HTMLAttributes<HTMLJoyBadgeLevelElement>;
             "joy-button": LocalJSX.JoyButton & JSXBase.HTMLAttributes<HTMLJoyButtonElement>;
+            "joy-checkbox": LocalJSX.JoyCheckbox & JSXBase.HTMLAttributes<HTMLJoyCheckboxElement>;
             "joy-company-avatar": LocalJSX.JoyCompanyAvatar & JSXBase.HTMLAttributes<HTMLJoyCompanyAvatarElement>;
             "joy-form-error": LocalJSX.JoyFormError & JSXBase.HTMLAttributes<HTMLJoyFormErrorElement>;
             "joy-highlight": LocalJSX.JoyHighlight & JSXBase.HTMLAttributes<HTMLJoyHighlightElement>;
