@@ -77,11 +77,14 @@ Type: `Promise<string[]>`
 ### Depends on
 
 - [joy-tags-list](../tags-list)
+- [joy-tag](../tag)
 
 ### Graph
 ```mermaid
 graph TD;
   joy-tags-input --> joy-tags-list
+  joy-tags-input --> joy-tag
+  joy-tag --> joy-icon
   style joy-tags-input fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

@@ -360,6 +360,32 @@ export namespace Components {
          */
         "sync": boolean;
     }
+    interface JoyTag {
+        /**
+          * If the tag is a link, give it an href
+         */
+        "href"?: string;
+        /**
+          * Display an icon CTA on the right, to remove the tag from a list. Only for primary/secondary
+         */
+        "removable": boolean;
+        /**
+          * Mock a radio like style. Nothing more. Only for primary/secondary
+         */
+        "selectable": boolean;
+        /**
+          * Tag size. Default is medium
+         */
+        "size": TagSizes;
+        /**
+          * Native target attribute for hyperlinks.
+         */
+        "target"?: HyperLinksTargets;
+        /**
+          * Tag color theme
+         */
+        "variant": TagVariants;
+    }
     interface JoyTagsInput {
         /**
           * Get the array of values contained in the tag input
@@ -689,6 +715,12 @@ declare global {
         prototype: HTMLJoyTabsElement;
         new (): HTMLJoyTabsElement;
     };
+    interface HTMLJoyTagElement extends Components.JoyTag, HTMLStencilElement {
+    }
+    var HTMLJoyTagElement: {
+        prototype: HTMLJoyTagElement;
+        new (): HTMLJoyTagElement;
+    };
     interface HTMLJoyTagsInputElement extends Components.JoyTagsInput, HTMLStencilElement {
     }
     var HTMLJoyTagsInputElement: {
@@ -757,6 +789,7 @@ declare global {
         "joy-tab": HTMLJoyTabElement;
         "joy-tab-button": HTMLJoyTabButtonElement;
         "joy-tabs": HTMLJoyTabsElement;
+        "joy-tag": HTMLJoyTagElement;
         "joy-tags-input": HTMLJoyTagsInputElement;
         "joy-tags-list": HTMLJoyTagsListElement;
         "joy-text": HTMLJoyTextElement;
@@ -1122,6 +1155,40 @@ declare namespace LocalJSX {
          */
         "sync"?: boolean;
     }
+    interface JoyTag {
+        /**
+          * If the tag is a link, give it an href
+         */
+        "href"?: string;
+        /**
+          * Fired only if we've set the clickable prop
+         */
+        "onJoyTagClick"?: (event: CustomEvent<{name: string; selected: boolean}>) => void;
+        /**
+          * Fired only if we've click on removable tag
+         */
+        "onJoyTagRemove"?: (event: CustomEvent<string>) => void;
+        /**
+          * Display an icon CTA on the right, to remove the tag from a list. Only for primary/secondary
+         */
+        "removable"?: boolean;
+        /**
+          * Mock a radio like style. Nothing more. Only for primary/secondary
+         */
+        "selectable"?: boolean;
+        /**
+          * Tag size. Default is medium
+         */
+        "size"?: TagSizes;
+        /**
+          * Native target attribute for hyperlinks.
+         */
+        "target"?: HyperLinksTargets;
+        /**
+          * Tag color theme
+         */
+        "variant"?: TagVariants;
+    }
     interface JoyTagsInput {
         /**
           * Invalid state
@@ -1370,6 +1437,7 @@ declare namespace LocalJSX {
         "joy-tab": JoyTab;
         "joy-tab-button": JoyTabButton;
         "joy-tabs": JoyTabs;
+        "joy-tag": JoyTag;
         "joy-tags-input": JoyTagsInput;
         "joy-tags-list": JoyTagsList;
         "joy-text": JoyText;
@@ -1403,6 +1471,7 @@ declare module "@stencil/core" {
             "joy-tab": LocalJSX.JoyTab & JSXBase.HTMLAttributes<HTMLJoyTabElement>;
             "joy-tab-button": LocalJSX.JoyTabButton & JSXBase.HTMLAttributes<HTMLJoyTabButtonElement>;
             "joy-tabs": LocalJSX.JoyTabs & JSXBase.HTMLAttributes<HTMLJoyTabsElement>;
+            "joy-tag": LocalJSX.JoyTag & JSXBase.HTMLAttributes<HTMLJoyTagElement>;
             "joy-tags-input": LocalJSX.JoyTagsInput & JSXBase.HTMLAttributes<HTMLJoyTagsInputElement>;
             "joy-tags-list": LocalJSX.JoyTagsList & JSXBase.HTMLAttributes<HTMLJoyTagsListElement>;
             "joy-text": LocalJSX.JoyText & JSXBase.HTMLAttributes<HTMLJoyTextElement>;

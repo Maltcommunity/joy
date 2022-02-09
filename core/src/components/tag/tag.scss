@@ -1,0 +1,114 @@
+@use '../../style/utils';
+@use 'tag-config' as tags;
+
+$_CLASS: '.joy-tag';
+
+@mixin tagColor() {
+    @each $color, $states in tags.$TAG_COLOR_CONFIG {
+        $tagNormal : map-get($states, normal);
+        $tagHover : map-get($states, hover);
+
+        :host(#{$_CLASS}_#{$color}) {
+            color: map-get($tagNormal, color);
+            background-color: map-get($tagNormal, background-color);
+        }
+    }
+}
+
+@mixin tagCta() {
+    @each $color, $states in tags.$TAG_COLOR_CONFIG {
+        $tagHover : map-get($states, hover);
+        $tagActive : map-get($states, active);
+
+        @if $tagHover {
+            :host(#{$_CLASS}_#{$color}.joy-tag__has-link:hover), :host(#{$_CLASS}_#{$color}.joy-tag__selected) {
+                color: map-get($tagHover, color);
+                background-color: map-get($tagHover, background-color);
+            }
+        }
+
+        @if $tagActive {
+            :host(#{$_CLASS}_#{$color}.joy-tag__has-link:active) {
+                color: map-get($tagActive, color);
+                background-color: map-get($tagActive, background-color);
+            }
+        }
+    }
+}
+
+@mixin tagSize() {
+    @each $size, $value in tags.$TAG_SIZE_CONFIG {
+        :host(#{$_CLASS}_#{$size}) {
+            $size: map-get($value, font-size);
+
+            @include utils.getFontProperties($size);
+            padding: map-get($value, padding);
+            height: map-get($value, height);
+        }
+    }
+}
+
+:host {
+    @include tags.tagShape();
+}
+
+:host(.joy-tag_draggable) {
+    cursor: grab;
+}
+
+:host([selectable]) {
+    cursor: pointer;
+}
+
+:host(.joy-tags-list-item) {
+    margin: var(--joy-spacing-2) var(--joy-spacing-4) var(--joy-spacing-2) 0;
+}
+
+/** WRAPPER INSIDE SHADOW DOM **/
+#{$_CLASS}__wrapper {
+    display: flex;
+    color: inherit;
+    align-items: center;
+    text-decoration: none;
+    outline: none;
+
+    &:before {
+        content: "";
+        position: absolute;
+        left: -1px;
+        top: -1px;
+        width: calc(100% + 2px);
+        height: calc(100% + 2px);
+        transition: box-shadow 150ms;
+        border-radius: var(--joy-shape-3);
+    }
+
+    &:focus-visible {
+        &::before {
+            box-shadow: 0 0 0 2px var(--joy-gray-6);
+        }
+    }
+}
+
+
+/** ICON **/
+
+#{$_CLASS}__wrapper joy-icon {
+    color: inherit;
+    z-index: 1;
+}
+
+#{$_CLASS}__removable {
+    &, &:hover, &:active {
+        margin-left: var(--joy-spacing-2);
+        cursor: pointer;
+    }
+}
+
+#{$_CLASS}__drag {
+    margin-right: var(--joy-spacing-2);
+}
+
+@include tagColor();
+@include tagSize();
+@include tagCta();

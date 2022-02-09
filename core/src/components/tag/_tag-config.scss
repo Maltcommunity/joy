@@ -1,0 +1,98 @@
+
+@mixin tagShape() {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-align: left;
+    position: relative;
+    border: 0;
+    text-decoration: none;
+    transition: all 0.15s ease;
+    border-radius: var(--joy-shape-3);
+    white-space: nowrap;
+    box-sizing: border-box;
+}
+
+$TAG_COLOR_CONFIG: (
+    primary: (
+        normal:(
+            color: white,
+            background-color: var(--joy-teal-light)
+        ),
+        hover:(
+            color: white,
+            background-color: var(--joy-teal-main)
+        ),
+        active: (
+            color: white,
+            background-color: var(--joy-teal-dark)
+        )
+    ),
+    secondary: (
+        normal:(
+            color: var(--joy-teal-dark),
+            background-color: var(--joy-teal-thin)
+        ),
+        hover:(
+            color: white,
+            background-color: var(--joy-teal-light)
+        ),
+        active: (
+            color: white,
+            background-color: var(--joy-teal-dark)
+        )
+    ),
+    special: (
+        normal:(
+            color: white,
+            background-color: var(--joy-pink-main)
+        )
+    ),
+    pricing: (
+        normal: (
+            color: var(--joy-red-main),
+            background-color: var(--joy-red-thin)
+        )
+    ),
+    important: (
+        normal:(
+            color: var(--joy-text-color),
+            background-color: var(--joy-yellow-light)
+        )
+    ),
+    pending: (
+        normal:(
+            color: white,
+            background-color: var(--joy-red-light)
+        )
+    ),
+    inactive: (
+        normal:(
+            color: var(--joy-gray-4),
+            background-color:  var(--joy-gray-2)
+        )
+    )
+);
+
+$TAG_SIZE_CONFIG: (
+    xsmall: (
+        font-size: xxs,
+        padding: var(--joy-spacing-1) var(--joy-spacing-3),
+        height: 20px
+    ),
+    small: (
+        font-size: xs,
+        padding: var(--joy-spacing-1) var(--joy-spacing-3),
+        height: 24px
+    ),
+    medium: (
+        font-size: s,
+        padding: var(--joy-spacing-2) var(--joy-spacing-3),
+        height: 32px
+    ),
+    large: (
+        padding: var(--joy-spacing-2) var(--joy-spacing-3),
+        font-size: m,
+        height: 40px
+    )
+);
