@@ -250,7 +250,7 @@ export namespace Components {
         /**
           * If the link as a downloadable content
          */
-        "download": boolean;
+        "download"?: string;
         /**
           * Set the href of your link
          */
@@ -1071,7 +1071,7 @@ declare namespace LocalJSX {
         /**
           * If the link as a downloadable content
          */
-        "download"?: boolean;
+        "download"?: string;
         /**
           * Set the href of your link
          */
