@@ -372,6 +372,12 @@ export namespace Components {
     }
     interface JoyPanel {
     }
+    interface JoyPlaceholderButton {
+        /**
+          * Placeholder button sizes.
+         */
+        "size": 'small' | 'medium' | 'large';
+    }
     interface JoyProgressBar {
         /**
           * Current step number.
@@ -786,6 +792,12 @@ declare global {
         prototype: HTMLJoyPanelElement;
         new (): HTMLJoyPanelElement;
     };
+    interface HTMLJoyPlaceholderButtonElement extends Components.JoyPlaceholderButton, HTMLStencilElement {
+    }
+    var HTMLJoyPlaceholderButtonElement: {
+        prototype: HTMLJoyPlaceholderButtonElement;
+        new (): HTMLJoyPlaceholderButtonElement;
+    };
     interface HTMLJoyProgressBarElement extends Components.JoyProgressBar, HTMLStencilElement {
     }
     var HTMLJoyProgressBarElement: {
@@ -888,6 +900,7 @@ declare global {
         "joy-link": HTMLJoyLinkElement;
         "joy-pagination": HTMLJoyPaginationElement;
         "joy-panel": HTMLJoyPanelElement;
+        "joy-placeholder-button": HTMLJoyPlaceholderButtonElement;
         "joy-progress-bar": HTMLJoyProgressBarElement;
         "joy-spinner": HTMLJoySpinnerElement;
         "joy-tab": HTMLJoyTabElement;
@@ -1287,6 +1300,16 @@ declare namespace LocalJSX {
     }
     interface JoyPanel {
     }
+    interface JoyPlaceholderButton {
+        /**
+          * use @joyPlaceholderButtonClick="yourMethod" for Vue apps
+         */
+        "onJoyPlaceholderButtonClick"?: (event: CustomEvent<void>) => void;
+        /**
+          * Placeholder button sizes.
+         */
+        "size"?: 'small' | 'medium' | 'large';
+    }
     interface JoyProgressBar {
         /**
           * Current step number.
@@ -1637,6 +1660,7 @@ declare namespace LocalJSX {
         "joy-link": JoyLink;
         "joy-pagination": JoyPagination;
         "joy-panel": JoyPanel;
+        "joy-placeholder-button": JoyPlaceholderButton;
         "joy-progress-bar": JoyProgressBar;
         "joy-spinner": JoySpinner;
         "joy-tab": JoyTab;
@@ -1674,6 +1698,7 @@ declare module "@stencil/core" {
             "joy-link": LocalJSX.JoyLink & JSXBase.HTMLAttributes<HTMLJoyLinkElement>;
             "joy-pagination": LocalJSX.JoyPagination & JSXBase.HTMLAttributes<HTMLJoyPaginationElement>;
             "joy-panel": LocalJSX.JoyPanel & JSXBase.HTMLAttributes<HTMLJoyPanelElement>;
+            "joy-placeholder-button": LocalJSX.JoyPlaceholderButton & JSXBase.HTMLAttributes<HTMLJoyPlaceholderButtonElement>;
             "joy-progress-bar": LocalJSX.JoyProgressBar & JSXBase.HTMLAttributes<HTMLJoyProgressBarElement>;
             "joy-spinner": LocalJSX.JoySpinner & JSXBase.HTMLAttributes<HTMLJoySpinnerElement>;
             "joy-tab": LocalJSX.JoyTab & JSXBase.HTMLAttributes<HTMLJoyTabElement>;
