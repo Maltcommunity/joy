@@ -1,0 +1,68 @@
+@use '../../style/utils';
+
+$_CLASS: '.joy-separator';
+
+:host {
+    --separator-color: var(--joy-teal-light);
+    --separator-color-hover: var(--joy-teal-main);
+    --separator-border-color-focus: var(--joy-gray-6);
+    --separator-margin: var(--joy-spacing-3);
+}
+
+@mixin separatorLine() {
+    content: "";
+    position: relative;
+    flex: 1;
+    height: 1px;
+    display: block;
+    background-color: var(--separator-color);
+}
+
+#{$_CLASS} {
+    display: block;
+    width: 100%;
+    color: var(--separator-color);
+    @include utils.getFontProperties(m);
+    margin: var(--joy-spacing-4) 0;
+    text-decoration: none;
+    background-color: initial;
+    border: 0;
+
+    span {
+        display: flex;
+        width: 100%;
+        text-align: center;
+        justify-content: center;
+        align-items: center;
+        text-transform: lowercase;
+        padding: 12px;
+        border: 2px solid transparent;
+
+        &::before, &::after {
+            @include separatorLine;
+        }
+
+        &::before {
+            margin-right: var(--separator-margin);
+        }
+
+        &::after {
+            margin-left: var(--separator-margin);
+        }
+    }
+
+    &__small {
+
+        span {
+            max-width: 320px;
+            text-transform: lowercase;
+            margin: 0 auto;
+
+            &::before, &::after {
+                max-width: 60px;
+            }
+        }
+
+    }
+}
+
