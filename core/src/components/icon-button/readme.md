@@ -42,6 +42,10 @@ category: Webcomponents
 
 ## Dependencies
 
+### Used by
+
+ - [joy-snackbar](../snackbar)
+
 ### Depends on
 
 - [joy-icon](../icon)
@@ -50,6 +54,7 @@ category: Webcomponents
 ```mermaid
 graph TD;
   joy-icon-button --> joy-icon
+  joy-snackbar --> joy-icon-button
   style joy-icon-button fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

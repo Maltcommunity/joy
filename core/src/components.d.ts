@@ -5,7 +5,7 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { AvatarColors, AvatarSizes, ButtonSizes, ButtonVariants, DividerCTASizes, HighlightLevels, HyperLinksTargets, IconButtonColors, IconColors, IconsSizes, LinksColors, RatingStarsSizes, SeparatorSizes, TagSizes, TagVariants, TipsLevel, TooltipVariants } from "./types";
+import { AvatarColors, AvatarSizes, ButtonSizes, ButtonVariants, DividerCTASizes, HighlightLevels, HyperLinksTargets, IconButtonColors, IconColors, IconsSizes, LinksColors, RatingStarsSizes, SeparatorSizes, SnackbarLevels, TagSizes, TagVariants, TipsLevel, TooltipVariants } from "./types";
 export namespace Components {
     interface JoyAllCritical {
     }
@@ -464,6 +464,32 @@ export namespace Components {
          */
         "text": string;
     }
+    interface JoySnackbar {
+        /**
+          * Display an icon to close the notification manually
+         */
+        "closable"?: boolean;
+        /**
+          * HTML with your custom message injected in the component. It won't be escaped so please be careful with XSS !
+         */
+        "dangerousHtmlMessage": string;
+        /**
+          * Time in ms the snackbar is displayed. Give 'forever' to be able to display the snackbar without timeout
+         */
+        "duration"?: number | 'forever';
+        /**
+          * The criticality level of your notification. Range from simple info to error.
+         */
+        "level"?: SnackbarLevels;
+        /**
+          * By default, the snackbar will be displayed in a fixed position at the bottom of the page. You can override this behavior by setting position="relative"
+         */
+        "position"?: 'fixed' | 'relative';
+        /**
+          * If you need to create an action link (like cancel an action from snackbar) simply pas its text. Clicking on it will trigger a custom event
+         */
+        "triggerActionText"?: string;
+    }
     interface JoySpinner {
         /**
           * Spinner colors, 2 possible values
@@ -896,6 +922,12 @@ declare global {
         prototype: HTMLJoySeparatorElement;
         new (): HTMLJoySeparatorElement;
     };
+    interface HTMLJoySnackbarElement extends Components.JoySnackbar, HTMLStencilElement {
+    }
+    var HTMLJoySnackbarElement: {
+        prototype: HTMLJoySnackbarElement;
+        new (): HTMLJoySnackbarElement;
+    };
     interface HTMLJoySpinnerElement extends Components.JoySpinner, HTMLStencilElement {
     }
     var HTMLJoySpinnerElement: {
@@ -998,6 +1030,7 @@ declare global {
         "joy-radio-group": HTMLJoyRadioGroupElement;
         "joy-rating-stars": HTMLJoyRatingStarsElement;
         "joy-separator": HTMLJoySeparatorElement;
+        "joy-snackbar": HTMLJoySnackbarElement;
         "joy-spinner": HTMLJoySpinnerElement;
         "joy-tab": HTMLJoyTabElement;
         "joy-tab-button": HTMLJoyTabButtonElement;
@@ -1500,6 +1533,36 @@ declare namespace LocalJSX {
          */
         "text": string;
     }
+    interface JoySnackbar {
+        /**
+          * Display an icon to close the notification manually
+         */
+        "closable"?: boolean;
+        /**
+          * HTML with your custom message injected in the component. It won't be escaped so please be careful with XSS !
+         */
+        "dangerousHtmlMessage": string;
+        /**
+          * Time in ms the snackbar is displayed. Give 'forever' to be able to display the snackbar without timeout
+         */
+        "duration"?: number | 'forever';
+        /**
+          * The criticality level of your notification. Range from simple info to error.
+         */
+        "level"?: SnackbarLevels;
+        /**
+          * use @joySnackbarTriggerAction="yourMethod" for Vue apps (onJoySnackbarTriggerAction for other stencil components) to handle snackbar custom action. Nothing is returned
+         */
+        "onJoySnackbarTriggerAction"?: (event: CustomEvent<void>) => void;
+        /**
+          * By default, the snackbar will be displayed in a fixed position at the bottom of the page. You can override this behavior by setting position="relative"
+         */
+        "position"?: 'fixed' | 'relative';
+        /**
+          * If you need to create an action link (like cancel an action from snackbar) simply pas its text. Clicking on it will trigger a custom event
+         */
+        "triggerActionText"?: string;
+    }
     interface JoySpinner {
         /**
           * Spinner colors, 2 possible values
@@ -1838,6 +1901,7 @@ declare namespace LocalJSX {
         "joy-radio-group": JoyRadioGroup;
         "joy-rating-stars": JoyRatingStars;
         "joy-separator": JoySeparator;
+        "joy-snackbar": JoySnackbar;
         "joy-spinner": JoySpinner;
         "joy-tab": JoyTab;
         "joy-tab-button": JoyTabButton;
@@ -1880,6 +1944,7 @@ declare module "@stencil/core" {
             "joy-radio-group": LocalJSX.JoyRadioGroup & JSXBase.HTMLAttributes<HTMLJoyRadioGroupElement>;
             "joy-rating-stars": LocalJSX.JoyRatingStars & JSXBase.HTMLAttributes<HTMLJoyRatingStarsElement>;
             "joy-separator": LocalJSX.JoySeparator & JSXBase.HTMLAttributes<HTMLJoySeparatorElement>;
+            "joy-snackbar": LocalJSX.JoySnackbar & JSXBase.HTMLAttributes<HTMLJoySnackbarElement>;
             "joy-spinner": LocalJSX.JoySpinner & JSXBase.HTMLAttributes<HTMLJoySpinnerElement>;
             "joy-tab": LocalJSX.JoyTab & JSXBase.HTMLAttributes<HTMLJoyTabElement>;
             "joy-tab-button": LocalJSX.JoyTabButton & JSXBase.HTMLAttributes<HTMLJoyTabButtonElement>;
