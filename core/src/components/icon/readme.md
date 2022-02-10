@@ -51,6 +51,7 @@ Please see <a href="/joy-v2/webcomponents.html#joy_icons_list">full icons list h
  - [joy-avatar](../avatar)
  - [joy-button](../button)
  - [joy-company-avatar](../company-avatar)
+ - [joy-counter](../counter)
  - [joy-form-error](../form-error)
  - [joy-highlight](../highlight)
  - [joy-icon-button](../icon-button)
@@ -66,6 +67,7 @@ graph TD;
   joy-avatar --> joy-icon
   joy-button --> joy-icon
   joy-company-avatar --> joy-icon
+  joy-counter --> joy-icon
   joy-form-error --> joy-icon
   joy-highlight --> joy-icon
   joy-icon-button --> joy-icon

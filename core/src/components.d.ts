@@ -174,6 +174,52 @@ export namespace Components {
          */
         "size"?: AvatarSizes;
     }
+    interface JoyCounter {
+        /**
+          * aria-label used for input accessibility. Use string only, no HTML. More than welcome !
+         */
+        "ariaLabel": string;
+        /**
+          * Count is the value
+         */
+        "count": number;
+        /**
+          * Invalid state of the component
+         */
+        "invalid": boolean;
+        /**
+          * Message when the component is invalid. Warning : by default, it will pick HTML5 validation message (the language is defined by your OS)
+         */
+        "invalidMessage": string;
+        /**
+          * Used for accessibility aria-label attribute. More than welcome !
+         */
+        "labelDecrement": string;
+        /**
+          * Used for accessibility aria-label attribute. More than welcome !
+         */
+        "labelIncrement": string;
+        /**
+          * Maximum possible value. No default
+         */
+        "max"?: number;
+        /**
+          * Minimum possible value. Default to 0
+         */
+        "min": number;
+        /**
+          * Name for the input
+         */
+        "name": string;
+        /**
+          * Counter requirement
+         */
+        "required": boolean;
+        /**
+          * Granularity of the input. We use the same name than native step attribute. We don't bind this prop to actual input step attribute, because we don't want checkValidity API to return invalid if the actual value is not a multiple of step prop !
+         */
+        "step": number;
+    }
     interface JoyFormError {
         /**
           * The error text. Plain string required as any HTML injected will be escaped
@@ -676,6 +722,12 @@ declare global {
         prototype: HTMLJoyCompanyAvatarElement;
         new (): HTMLJoyCompanyAvatarElement;
     };
+    interface HTMLJoyCounterElement extends Components.JoyCounter, HTMLStencilElement {
+    }
+    var HTMLJoyCounterElement: {
+        prototype: HTMLJoyCounterElement;
+        new (): HTMLJoyCounterElement;
+    };
     interface HTMLJoyFormErrorElement extends Components.JoyFormError, HTMLStencilElement {
     }
     var HTMLJoyFormErrorElement: {
@@ -811,6 +863,7 @@ declare global {
         "joy-button": HTMLJoyButtonElement;
         "joy-checkbox": HTMLJoyCheckboxElement;
         "joy-company-avatar": HTMLJoyCompanyAvatarElement;
+        "joy-counter": HTMLJoyCounterElement;
         "joy-form-error": HTMLJoyFormErrorElement;
         "joy-highlight": HTMLJoyHighlightElement;
         "joy-icon": HTMLJoyIconElement;
@@ -994,6 +1047,68 @@ declare namespace LocalJSX {
           * Size of the image. Optionnal.
          */
         "size"?: AvatarSizes;
+    }
+    interface JoyCounter {
+        /**
+          * aria-label used for input accessibility. Use string only, no HTML. More than welcome !
+         */
+        "ariaLabel"?: string;
+        /**
+          * Count is the value
+         */
+        "count"?: number;
+        /**
+          * Invalid state of the component
+         */
+        "invalid"?: boolean;
+        /**
+          * Message when the component is invalid. Warning : by default, it will pick HTML5 validation message (the language is defined by your OS)
+         */
+        "invalidMessage"?: string;
+        /**
+          * Used for accessibility aria-label attribute. More than welcome !
+         */
+        "labelDecrement"?: string;
+        /**
+          * Used for accessibility aria-label attribute. More than welcome !
+         */
+        "labelIncrement"?: string;
+        /**
+          * Maximum possible value. No default
+         */
+        "max"?: number;
+        /**
+          * Minimum possible value. Default to 0
+         */
+        "min"?: number;
+        /**
+          * Name for the input
+         */
+        "name"?: string;
+        /**
+          * Specific event fired when you decrement the counter value. Prefer using joyCounterUpdate unless you need to handle this specific event type
+         */
+        "onJoyCounterDecrement"?: (event: CustomEvent<number>) => void;
+        /**
+          * Specific event fired when you increment the counter value. Prefer using joyCounterUpdate unless you need to handle this specific event type
+         */
+        "onJoyCounterIncrement"?: (event: CustomEvent<number>) => void;
+        /**
+          * Specific event fired when your counter value is invalid.
+         */
+        "onJoyCounterInvalid"?: (event: CustomEvent<{value: string; message: string}>) => void;
+        /**
+          * Generic event for any counter change, fired by manually typing a value or using increment/decrement CTA
+         */
+        "onJoyCounterUpdate"?: (event: CustomEvent<number>) => void;
+        /**
+          * Counter requirement
+         */
+        "required"?: boolean;
+        /**
+          * Granularity of the input. We use the same name than native step attribute. We don't bind this prop to actual input step attribute, because we don't want checkValidity API to return invalid if the actual value is not a multiple of step prop !
+         */
+        "step"?: number;
     }
     interface JoyFormError {
         /**
@@ -1486,6 +1601,7 @@ declare namespace LocalJSX {
         "joy-button": JoyButton;
         "joy-checkbox": JoyCheckbox;
         "joy-company-avatar": JoyCompanyAvatar;
+        "joy-counter": JoyCounter;
         "joy-form-error": JoyFormError;
         "joy-highlight": JoyHighlight;
         "joy-icon": JoyIcon;
@@ -1521,6 +1637,7 @@ declare module "@stencil/core" {
             "joy-button": LocalJSX.JoyButton & JSXBase.HTMLAttributes<HTMLJoyButtonElement>;
             "joy-checkbox": LocalJSX.JoyCheckbox & JSXBase.HTMLAttributes<HTMLJoyCheckboxElement>;
             "joy-company-avatar": LocalJSX.JoyCompanyAvatar & JSXBase.HTMLAttributes<HTMLJoyCompanyAvatarElement>;
+            "joy-counter": LocalJSX.JoyCounter & JSXBase.HTMLAttributes<HTMLJoyCounterElement>;
             "joy-form-error": LocalJSX.JoyFormError & JSXBase.HTMLAttributes<HTMLJoyFormErrorElement>;
             "joy-highlight": LocalJSX.JoyHighlight & JSXBase.HTMLAttributes<HTMLJoyHighlightElement>;
             "joy-icon": LocalJSX.JoyIcon & JSXBase.HTMLAttributes<HTMLJoyIconElement>;

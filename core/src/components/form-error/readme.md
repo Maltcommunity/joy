@@ -31,6 +31,10 @@ category: Webcomponents
 
 ## Dependencies
 
+### Used by
+
+ - [joy-counter](../counter)
+
 ### Depends on
 
 - [joy-icon](../icon)
@@ -39,6 +43,7 @@ category: Webcomponents
 ```mermaid
 graph TD;
   joy-form-error --> joy-icon
+  joy-counter --> joy-form-error
   style joy-form-error fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

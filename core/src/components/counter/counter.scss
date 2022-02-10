@@ -1,0 +1,142 @@
+@use '../../style/utils';
+
+$_counter-ctl-margin: 10px;
+
+$_component_width: 200px;
+
+:host {
+    /**
+     * @prop --counter-items-height: Set a new value for this property, and it will resize both buttons and input
+     */
+    --counter-items-height: 42px;
+
+    --counter-input-color: var(--joy-teal-light);
+    --counter-input-bg-color: var(--joy-teal-thin);
+    --counter-input-bg-color-focus: white;
+    --counter-input-border-color-focus: var(--joy-teal-main);
+
+    --counter-input-border-color-invalid: var(--joy-red-main);
+    --counter-input-color-invalid: var(--joy-red-main);
+    --counter-input-border-color-invalid-hover: var(--joy-red-dark);
+    --counter-input-color-invalid-hover: var(--joy-red-dark);
+
+    --counter-button-bg-color: var(--joy-teal-thin);
+    --counter-button-bg-color-hover: var(--joy-teal-light);
+    --counter-button-bg-color-active: var(--joy-teal-main);
+    --counter-button-bg-color-disabled: var(--joy-gray-3);
+    --counter-button-color: var(--joy-teal-main);
+
+    --counter-border-color-focus: var(--joy-gray-6);
+}
+
+input {
+    @include utils.quietInput(1px solid transparent);
+    background-color: var(--counter-input-bg-color);
+    color: var(--counter-input-color);
+    width: 80px;
+    outline: none;
+    height: var(--counter-items-height);
+    border-radius: var(--joy-shape-2);
+    text-align: center;
+    -moz-appearance:textfield;
+
+    &::-webkit-inner-spin-button,
+    &::-webkit-outer-spin-button {
+        -webkit-appearance: none;
+    }
+
+    &:focus {
+        border: 1px solid var(--counter-input-border-color-focus);
+        background-color: var(--counter-input-bg-color-focus);
+    }
+
+    &.joy-counter__invalid {
+        &, &:focus-visible {
+            border-color: var(--counter-input-border-color-invalid);
+            color: var(--counter-input-color-invalid);
+        }
+
+        &:hover {
+            border-color: var(--counter-input-border-color-invalid-hover);
+            color: var(--counter-input-color-invalid-hover);
+        }
+    }
+}
+
+:host(.joy-counter) {
+    display: inline-flex;
+    flex-wrap: wrap;
+    max-width: $_component_width;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    @include utils.getFontProperties(m);
+}
+
+button {
+    @include utils.quietBtn();
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    width: var(--counter-items-height);
+    height: var(--counter-items-height);
+    border-radius: var(--joy-shape-5);
+    background-color: var(--counter-button-bg-color);
+    color: var(--counter-button-color);
+    transition: background var(--joy-transition-duration-default) var(--joy-transition-timing-function);
+
+    &:before {
+        content: "";
+        position: absolute;
+        top: -1px;
+        left: -1px;
+        border-radius: 50%;
+        width: calc(100% + 2px);
+        height: calc(100% + 2px);
+        transition: box-shadow var(--joy-transition-duration-default) var(--joy-transition-timing-function);
+    }
+
+    &:hover {
+        background-color: var(--counter-button-bg-color-hover);
+
+        &:not(:disabled) {
+            &.joy-counter__increment joy-icon, &.joy-counter__decrement joy-icon {
+                color: white;
+            }
+        }
+    }
+
+    &:focus-visible {
+        &:before {
+            box-shadow: 0 0 0 2px var(--counter-border-color-focus);
+        }
+    }
+
+    &:active {
+        background-color: var(--counter-button-bg-color-active);
+    }
+
+    &:disabled {
+        background-color: var(--counter-button-bg-color-disabled);
+        cursor: not-allowed;
+
+        joy-icon {
+            color: white;
+        }
+    }
+
+    &.joy-counter__increment {
+        margin-left: $_counter-ctl-margin;
+    }
+
+    &.joy-counter__decrement {
+        margin-right: $_counter-ctl-margin;
+    }
+}
+
+.joy-counter_error {
+    flex-basis: 100%;
+    max-width: 100%;
+    margin-top: 20px;
+}

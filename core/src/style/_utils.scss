@@ -178,3 +178,29 @@ $_AVATAR_COLOR: (
         @content;
     }
 }
+
+@mixin quietInput($border: none) {
+    height: auto;
+    font-size: inherit;
+    font-family: inherit;
+    margin: 0;
+    padding: 0;
+    background: transparent;
+    border: $border;
+    color: inherit;
+    box-shadow: none;
+
+    @content;
+}
+
+@mixin quietBtn {
+    padding: 0;
+    border: none;
+    background: none;
+    box-shadow: none;
+
+    &, &:hover, &:active, &:focus {
+        outline: none;
+        cursor: pointer;
+    }
+}
