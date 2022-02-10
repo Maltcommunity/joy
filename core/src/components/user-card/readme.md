@@ -99,11 +99,13 @@ If you don't want to deal with any slot, please use following example :
 ### Depends on
 
 - [joy-avatar](../avatar)
+- [joy-rating-stars](../rating-stars)
 
 ### Graph
 ```mermaid
 graph TD;
   joy-user-card --> joy-avatar
+  joy-user-card --> joy-rating-stars
   joy-avatar --> joy-icon
   style joy-user-card fill:#f9f,stroke:#333,stroke-width:4px
 ```

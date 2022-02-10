@@ -5,7 +5,7 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { AvatarColors, AvatarSizes, ButtonSizes, ButtonVariants, DividerCTASizes, HighlightLevels, HyperLinksTargets, IconButtonColors, IconColors, IconsSizes, LinksColors, TagSizes, TagVariants, TipsLevel, TooltipVariants } from "./types";
+import { AvatarColors, AvatarSizes, ButtonSizes, ButtonVariants, DividerCTASizes, HighlightLevels, HyperLinksTargets, IconButtonColors, IconColors, IconsSizes, LinksColors, RatingStarsSizes, TagSizes, TagVariants, TipsLevel, TooltipVariants } from "./types";
 export namespace Components {
     interface JoyAllCritical {
     }
@@ -440,6 +440,20 @@ export namespace Components {
          */
         "value"?: any | null;
     }
+    interface JoyRatingStars {
+        /**
+          * The actual rating, between 0 and 5.
+         */
+        "ratingValue": number;
+        /**
+          * Review count. it will be displayed with parenthesis : (5)
+         */
+        "reviewCount": number;
+        /**
+          * Star size. 3 possible values but you can't give a number as value
+         */
+        "size": RatingStarsSizes;
+    }
     interface JoySpinner {
         /**
           * Spinner colors, 2 possible values
@@ -860,6 +874,12 @@ declare global {
         prototype: HTMLJoyRadioGroupElement;
         new (): HTMLJoyRadioGroupElement;
     };
+    interface HTMLJoyRatingStarsElement extends Components.JoyRatingStars, HTMLStencilElement {
+    }
+    var HTMLJoyRatingStarsElement: {
+        prototype: HTMLJoyRatingStarsElement;
+        new (): HTMLJoyRatingStarsElement;
+    };
     interface HTMLJoySpinnerElement extends Components.JoySpinner, HTMLStencilElement {
     }
     var HTMLJoySpinnerElement: {
@@ -960,6 +980,7 @@ declare global {
         "joy-progress-bar": HTMLJoyProgressBarElement;
         "joy-radio": HTMLJoyRadioElement;
         "joy-radio-group": HTMLJoyRadioGroupElement;
+        "joy-rating-stars": HTMLJoyRatingStarsElement;
         "joy-spinner": HTMLJoySpinnerElement;
         "joy-tab": HTMLJoyTabElement;
         "joy-tab-button": HTMLJoyTabButtonElement;
@@ -1438,6 +1459,20 @@ declare namespace LocalJSX {
          */
         "value"?: any | null;
     }
+    interface JoyRatingStars {
+        /**
+          * The actual rating, between 0 and 5.
+         */
+        "ratingValue"?: number;
+        /**
+          * Review count. it will be displayed with parenthesis : (5)
+         */
+        "reviewCount"?: number;
+        /**
+          * Star size. 3 possible values but you can't give a number as value
+         */
+        "size"?: RatingStarsSizes;
+    }
     interface JoySpinner {
         /**
           * Spinner colors, 2 possible values
@@ -1774,6 +1809,7 @@ declare namespace LocalJSX {
         "joy-progress-bar": JoyProgressBar;
         "joy-radio": JoyRadio;
         "joy-radio-group": JoyRadioGroup;
+        "joy-rating-stars": JoyRatingStars;
         "joy-spinner": JoySpinner;
         "joy-tab": JoyTab;
         "joy-tab-button": JoyTabButton;
@@ -1814,6 +1850,7 @@ declare module "@stencil/core" {
             "joy-progress-bar": LocalJSX.JoyProgressBar & JSXBase.HTMLAttributes<HTMLJoyProgressBarElement>;
             "joy-radio": LocalJSX.JoyRadio & JSXBase.HTMLAttributes<HTMLJoyRadioElement>;
             "joy-radio-group": LocalJSX.JoyRadioGroup & JSXBase.HTMLAttributes<HTMLJoyRadioGroupElement>;
+            "joy-rating-stars": LocalJSX.JoyRatingStars & JSXBase.HTMLAttributes<HTMLJoyRatingStarsElement>;
             "joy-spinner": LocalJSX.JoySpinner & JSXBase.HTMLAttributes<HTMLJoySpinnerElement>;
             "joy-tab": LocalJSX.JoyTab & JSXBase.HTMLAttributes<HTMLJoyTabElement>;
             "joy-tab-button": LocalJSX.JoyTabButton & JSXBase.HTMLAttributes<HTMLJoyTabButtonElement>;
