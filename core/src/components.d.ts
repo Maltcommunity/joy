@@ -396,6 +396,28 @@ export namespace Components {
          */
         "steps": number | undefined;
     }
+    interface JoyRadio {
+        /**
+          * If `true`, the user cannot interact with the radio.
+         */
+        "disabled": boolean;
+        /**
+          * The name of the control, which is submitted with the form data.
+         */
+        "name": string;
+        /**
+          * @param value
+         */
+        "setButtonTabindex": (value: number) => Promise<void>;
+        /**
+          * @param ev
+         */
+        "setFocus": (ev: any) => Promise<void>;
+        /**
+          * the value of the radio.
+         */
+        "value"?: any | null;
+    }
     interface JoySpinner {
         /**
           * Spinner colors, 2 possible values
@@ -804,6 +826,12 @@ declare global {
         prototype: HTMLJoyProgressBarElement;
         new (): HTMLJoyProgressBarElement;
     };
+    interface HTMLJoyRadioElement extends Components.JoyRadio, HTMLStencilElement {
+    }
+    var HTMLJoyRadioElement: {
+        prototype: HTMLJoyRadioElement;
+        new (): HTMLJoyRadioElement;
+    };
     interface HTMLJoySpinnerElement extends Components.JoySpinner, HTMLStencilElement {
     }
     var HTMLJoySpinnerElement: {
@@ -902,6 +930,7 @@ declare global {
         "joy-panel": HTMLJoyPanelElement;
         "joy-placeholder-button": HTMLJoyPlaceholderButtonElement;
         "joy-progress-bar": HTMLJoyProgressBarElement;
+        "joy-radio": HTMLJoyRadioElement;
         "joy-spinner": HTMLJoySpinnerElement;
         "joy-tab": HTMLJoyTabElement;
         "joy-tab-button": HTMLJoyTabButtonElement;
@@ -1328,6 +1357,32 @@ declare namespace LocalJSX {
          */
         "steps"?: number | undefined;
     }
+    interface JoyRadio {
+        /**
+          * If `true`, the user cannot interact with the radio.
+         */
+        "disabled"?: boolean;
+        /**
+          * The name of the control, which is submitted with the form data.
+         */
+        "name"?: string;
+        /**
+          * When radio is blurred *
+         */
+        "onJoyRadioBlur"?: (event: CustomEvent<void>) => void;
+        /**
+          * When radio is selected *
+         */
+        "onJoyRadioClick"?: (event: CustomEvent<void>) => void;
+        /**
+          * When radio is focused *
+         */
+        "onJoyRadioFocus"?: (event: CustomEvent<void>) => void;
+        /**
+          * the value of the radio.
+         */
+        "value"?: any | null;
+    }
     interface JoySpinner {
         /**
           * Spinner colors, 2 possible values
@@ -1662,6 +1717,7 @@ declare namespace LocalJSX {
         "joy-panel": JoyPanel;
         "joy-placeholder-button": JoyPlaceholderButton;
         "joy-progress-bar": JoyProgressBar;
+        "joy-radio": JoyRadio;
         "joy-spinner": JoySpinner;
         "joy-tab": JoyTab;
         "joy-tab-button": JoyTabButton;
@@ -1700,6 +1756,7 @@ declare module "@stencil/core" {
             "joy-panel": LocalJSX.JoyPanel & JSXBase.HTMLAttributes<HTMLJoyPanelElement>;
             "joy-placeholder-button": LocalJSX.JoyPlaceholderButton & JSXBase.HTMLAttributes<HTMLJoyPlaceholderButtonElement>;
             "joy-progress-bar": LocalJSX.JoyProgressBar & JSXBase.HTMLAttributes<HTMLJoyProgressBarElement>;
+            "joy-radio": LocalJSX.JoyRadio & JSXBase.HTMLAttributes<HTMLJoyRadioElement>;
             "joy-spinner": LocalJSX.JoySpinner & JSXBase.HTMLAttributes<HTMLJoySpinnerElement>;
             "joy-tab": LocalJSX.JoyTab & JSXBase.HTMLAttributes<HTMLJoyTabElement>;
             "joy-tab-button": LocalJSX.JoyTabButton & JSXBase.HTMLAttributes<HTMLJoyTabButtonElement>;

@@ -1,0 +1,125 @@
+@use '../../style/utils';
+
+$_CLASS: '.joy-radio';
+
+:host {
+    --radio-size: 22px;
+    --radio-border-color: var(--joy-teal-light);
+    --radio-bg-color: var(--joy-teal-light);
+    --radio-bg-color-checked: var(--joy-teal-light);
+    --radio-border-color-checked: var(--joy-teal-light);
+    --radio-bg-color-checked-hover: var(--joy-teal-main);
+    --radio-border-color-checked-hover: var(--joy-teal-main);
+    --radio-bg-color-disabled: var(--joy-gray-3);
+    --radio-border-color-disabled: var(--joy-gray-3);
+    --radio-color: var(--joy-text-color);
+    --radio-border-color-focus: var(--joy-gray-6);
+    --radio-color-disabled: var(--joy-gray-4);
+    --radio-border-color-invalid: var(--joy-red-main);
+    --radio-bg-color-invalid: var(--joy-red-main);
+    --radio-border-color-invalid-hover: var(--joy-red-darker);
+    --radio-bg-color-invalid-hover: var(--joy-red-darker);
+
+    display: block;
+    box-sizing: border-box;
+    position: relative;
+    color: var(--radio-color);
+    margin-bottom: var(--joy-spacing-3);
+    @include utils.unselectable();
+    @include utils.getFontProperties(m);
+}
+
+@mixin radioBeforeDefault {
+    position: relative;
+
+    &::before {
+        content: '';
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        top: 0;
+        flex-shrink: 0;
+        width: var(--radio-size);
+        height: var(--radio-size);
+        margin-right: var(--joy-spacing-1);
+        border-width: 1px solid var(--radio-border-color);
+        border-radius: var(--joy-shape-5);
+        background-color: var(--radio-bg-color);
+        box-shadow: inset 0 0 0 12px white;
+    }
+}
+
+:host(:focus-visible) input[type="radio"] {
+    ~ * {
+        &:after {
+            box-shadow: 0 0 0 1px var(--radio-border-color-focus);
+        }
+    }
+}
+
+#{$_CLASS} {
+    cursor: pointer;
+    display: flex;
+    color: inherit;
+
+    > input[type="radio"] {
+        @include utils.srOnly();
+        top: 15px; // ensure error tooltip are displayed at the right place
+    }
+
+    span {
+        display: flex;
+        @include radioBeforeDefault;
+        text-align: left;
+
+        &::after {
+            content: "";
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            transition: box-shadow 150ms ease;
+        }
+    }
+
+    &.joy-radio-checked {
+        span:before {
+            border-color: var(--radio-border-color-checked);
+            background-color: var(--radio-bg-color-checked);
+            box-shadow: inset 0 0 0 3px white;
+        }
+
+        &:not(.joy-radio-disabled):hover, &:not(.joy-radio-disabled):active {
+            span:before {
+                border-color: var(--radio-border-color-checked-hover);
+                background-color: var(--radio-bg-color-checked-hover);
+            }
+        }
+    }
+
+    &.joy-radio-disabled {
+        color: var(--radio-color-disabled);
+        cursor: not-allowed;
+
+        span:before {
+            background-color: var(--radio-bg-color-disabled);
+            border-color: var(--radio-border-color-disabled);
+        }
+    }
+
+    &.joy-radio-invalid {
+        span:before {
+            background-color: var(--radio-bg-color-invalid);
+            border-color: var(--radio-border-color-invalid);
+        }
+        &:hover {
+            span:before {
+                background-color: var(--radio-bg-color-invalid-hover);
+                border-color: var(--radio-border-color-invalid-hover);
+            }
+        }
+    }
+}
