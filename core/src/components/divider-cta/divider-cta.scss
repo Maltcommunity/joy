@@ -1,0 +1,113 @@
+@use '../../style/utils';
+
+$_CLASS: '.joy-divider-cta';
+
+//$_separator-color: colors.$teal-light;
+//$_focus-border-color: colors.$grey-6;
+//$_hover-color: colors.$teal-main;
+//$_disabled-color: colors.$grey-4;
+
+#{$_CLASS} {
+    --divider-cta-color: var(--joy-teal-light);
+    --divider-cta-border-color: var(--joy-teal-light);
+    --divider-cta-color-hover: var(--joy-teal-main);
+    --divider-cta-color-disabled: var(--joy-gray-4);
+    --divider-cta-bg-color-hover: var(--joy-teal-main);
+    --divider-cta-bg-color-disabled: var(--joy-gray-4);
+    --divider-cta-border-color-focus: var(--joy-gray-6);
+    --divider-cta-margin: var(--joy-spacing-3);
+
+    @mixin separatorLine() {
+        content: "";
+        position: relative;
+        flex: 1;
+        height: 1px;
+        display: block;
+        background-color: var(--divider-cta-border-color);
+    }
+
+    display: block;
+    width: 100%;
+    color: var(--divider-cta-color);
+    @include utils.getFontProperties(m);
+    margin: var(--joy-spacing-4) 0;
+    padding: 0;
+    text-decoration: none;
+    background-color: initial;
+    border: 0;
+
+    &:hover, &:active {
+        color: var(--divider-cta-color-hover);
+
+        span,
+        button {
+            &::before, &::after {
+                background-color: var(--divider-cta-bg-color-hover);
+            }
+        }
+    }
+
+    &:focus-visible {
+        span,
+        button {
+            border: 2px solid var(--divider-cta-border-color-focus);
+            border-radius: 8px;
+        }
+    }
+
+    span,
+    button {
+        display: flex;
+        width: 100%;
+        text-align: center;
+        justify-content: center;
+        align-items: center;
+        text-transform: lowercase;
+        @include utils.quietBtn();
+        padding: 12px;
+        border: 2px solid transparent;
+
+        &::before, &::after {
+            @include separatorLine;
+        }
+
+        &::before {
+            margin-right: var(--divider-cta-margin);
+        }
+
+        &::after {
+            margin-left: var(--divider-cta-margin);
+        }
+    }
+
+    &_disabled {
+        pointer-events: none;
+        color: var(--divider-cta-color-disabled);
+
+        span,
+        button {
+            &::before, &::after {
+                background-color: var(--divider-cta-bg-color-disabled);
+            }
+        }
+    }
+
+    &__small {
+
+        span {
+            max-width: 320px;
+            text-transform: lowercase;
+            margin: 0 auto;
+
+            &::before, &::after {
+                max-width: 60px;
+            }
+        }
+
+    }
+
+    &_cta {
+        cursor: pointer;
+    }
+}
+

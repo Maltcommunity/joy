@@ -5,7 +5,7 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { AvatarColors, AvatarSizes, ButtonSizes, ButtonVariants, HighlightLevels, HyperLinksTargets, IconButtonColors, IconColors, IconsSizes, LinksColors, TagSizes, TagVariants, TipsLevel, TooltipVariants } from "./types";
+import { AvatarColors, AvatarSizes, ButtonSizes, ButtonVariants, DividerCTASizes, HighlightLevels, HyperLinksTargets, IconButtonColors, IconColors, IconsSizes, LinksColors, TagSizes, TagVariants, TipsLevel, TooltipVariants } from "./types";
 export namespace Components {
     interface JoyAllCritical {
     }
@@ -219,6 +219,16 @@ export namespace Components {
           * Granularity of the input. We use the same name than native step attribute. We don't bind this prop to actual input step attribute, because we don't want checkValidity API to return invalid if the actual value is not a multiple of step prop !
          */
         "step": number;
+    }
+    interface JoyDividerCta {
+        /**
+          * Divider size. 2 possible values : 100% width or adjusted size according to text
+         */
+        "size": DividerCTASizes;
+        /**
+          * The CTA text
+         */
+        "text": string;
     }
     interface JoyFormError {
         /**
@@ -728,6 +738,12 @@ declare global {
         prototype: HTMLJoyCounterElement;
         new (): HTMLJoyCounterElement;
     };
+    interface HTMLJoyDividerCtaElement extends Components.JoyDividerCta, HTMLStencilElement {
+    }
+    var HTMLJoyDividerCtaElement: {
+        prototype: HTMLJoyDividerCtaElement;
+        new (): HTMLJoyDividerCtaElement;
+    };
     interface HTMLJoyFormErrorElement extends Components.JoyFormError, HTMLStencilElement {
     }
     var HTMLJoyFormErrorElement: {
@@ -864,6 +880,7 @@ declare global {
         "joy-checkbox": HTMLJoyCheckboxElement;
         "joy-company-avatar": HTMLJoyCompanyAvatarElement;
         "joy-counter": HTMLJoyCounterElement;
+        "joy-divider-cta": HTMLJoyDividerCtaElement;
         "joy-form-error": HTMLJoyFormErrorElement;
         "joy-highlight": HTMLJoyHighlightElement;
         "joy-icon": HTMLJoyIconElement;
@@ -1109,6 +1126,16 @@ declare namespace LocalJSX {
           * Granularity of the input. We use the same name than native step attribute. We don't bind this prop to actual input step attribute, because we don't want checkValidity API to return invalid if the actual value is not a multiple of step prop !
          */
         "step"?: number;
+    }
+    interface JoyDividerCta {
+        /**
+          * Divider size. 2 possible values : 100% width or adjusted size according to text
+         */
+        "size"?: DividerCTASizes;
+        /**
+          * The CTA text
+         */
+        "text"?: string;
     }
     interface JoyFormError {
         /**
@@ -1602,6 +1629,7 @@ declare namespace LocalJSX {
         "joy-checkbox": JoyCheckbox;
         "joy-company-avatar": JoyCompanyAvatar;
         "joy-counter": JoyCounter;
+        "joy-divider-cta": JoyDividerCta;
         "joy-form-error": JoyFormError;
         "joy-highlight": JoyHighlight;
         "joy-icon": JoyIcon;
@@ -1638,6 +1666,7 @@ declare module "@stencil/core" {
             "joy-checkbox": LocalJSX.JoyCheckbox & JSXBase.HTMLAttributes<HTMLJoyCheckboxElement>;
             "joy-company-avatar": LocalJSX.JoyCompanyAvatar & JSXBase.HTMLAttributes<HTMLJoyCompanyAvatarElement>;
             "joy-counter": LocalJSX.JoyCounter & JSXBase.HTMLAttributes<HTMLJoyCounterElement>;
+            "joy-divider-cta": LocalJSX.JoyDividerCta & JSXBase.HTMLAttributes<HTMLJoyDividerCtaElement>;
             "joy-form-error": LocalJSX.JoyFormError & JSXBase.HTMLAttributes<HTMLJoyFormErrorElement>;
             "joy-highlight": LocalJSX.JoyHighlight & JSXBase.HTMLAttributes<HTMLJoyHighlightElement>;
             "joy-icon": LocalJSX.JoyIcon & JSXBase.HTMLAttributes<HTMLJoyIconElement>;
