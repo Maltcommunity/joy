@@ -1,12 +1,17 @@
-import {Component, Host, h, Prop, State, Watch} from '@stencil/core';
+import {Component, Element, Host, h, Prop, State, Watch, Build} from '@stencil/core';
 import {IconsSizes, IconColors} from '../../types';
+import { getSvgContent, ioniconContent } from './requests';
+import { getIconUrl } from './utils';
 
 @Component({
     tag: 'joy-icon',
-    styleUrl: 'icon.scss',
-    assetsDirs: ['assets'],
+    styleUrl: 'style/icon.scss',
+    assetsDirs: ['icons'],
 })
 export class Icon {
+    private io?: IntersectionObserver;
+
+    @Element() el!: HTMLElement;
     /**
      * Defines a non-visible legend
      */
@@ -39,9 +44,15 @@ export class Icon {
      * The icon size
      */
     @Prop() size?: IconsSizes;
+    /**
+     * If enabled, ion-icon will be loaded lazily when it's visible in the viewport.
+     * Default, `false`.
+     */
+    @Prop() lazy = true;
 
     @State() private svgContent?: string;
     @State() private loading = false;
+    @State() private isVisible = false;
 
     get colorClass() {
         return this.color ? {[`joy-i-wc_${this.color}`]: true} : null;
@@ -55,19 +66,52 @@ export class Icon {
         return this.customClass ? {[this.customClass]: true} : null;
     }
 
-    async connectedCallback() {
-        await this.loadIcon();
+    connectedCallback() {
+        // purposely do not return the promise here because loading
+        // the svg file should not hold up loading the app
+        // only load the svg if it's visible
+        this.waitUntilVisible(this.el, '50px', () => {
+            this.isVisible = true;
+            this.loadIcon();
+        });
     }
 
     @Watch('name')
-    async loadIcon() {
-        this.svgContent = `#joy-icon--${this.name}`;
+    loadIcon() {
+        if (Build.isBrowser && this.isVisible) {
+            const url = getIconUrl(this.name);
+            // `http://dev.malt.fr/assets/wc/build/icons/${this.name}.svg`;
 
-        const label = this.name;
-        if (!this.ariaLabel) {
-            if (label) {
-                this.ariaLabel = label.replace(/-/g, ' ');
+            if (url) {
+                if (ioniconContent.has(url)) {
+                    // sync if it's already loaded
+                    this.svgContent = ioniconContent.get(url);
+                } else {
+                    // async if it hasn't been loaded
+                    getSvgContent(url, true).then(() => (this.svgContent = ioniconContent.get(url)));
+                }
             }
+        }
+    }
+
+    private waitUntilVisible(el: HTMLElement, rootMargin: string, cb: () => void) {
+        if (Build.isBrowser && this.lazy && typeof window !== 'undefined' && (window as any).IntersectionObserver) {
+            const io = (this.io = new (window as any).IntersectionObserver(
+                (data: IntersectionObserverEntry[]) => {
+                    if (data[0].isIntersecting) {
+                        io.disconnect();
+                        this.io = undefined;
+                        cb();
+                    }
+                },
+                { rootMargin },
+            ));
+
+            io.observe(el);
+        } else {
+            // browser doesn't support IntersectionObserver
+            // so just fallback to always show it
+            cb();
         }
     }
 
@@ -86,9 +130,11 @@ export class Icon {
                     ...this.elementClass,
                 }}
             >
-                <svg>
-                    <use xlinkHref={this.svgContent}></use>
-                </svg>
+                {Build.isBrowser && this.svgContent ? (
+                    <div class="icon-inner" innerHTML={this.svgContent}></div>
+                ) : (
+                    <div class="icon-inner"></div>
+                )}
             </Host>
         );
     }

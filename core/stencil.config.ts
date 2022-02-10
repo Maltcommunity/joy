@@ -32,7 +32,6 @@ export const config: Config = {
      */
     invisiblePrehydration: false,
     globalStyle: './src/style/index.scss',
-    globalScript: './src/scripts/global-script.ts',
     minifyJs: true,
     minifyCss: true,
     bundles: [

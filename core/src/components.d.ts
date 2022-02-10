@@ -224,6 +224,10 @@ export namespace Components {
          */
         "full": boolean;
         /**
+          * If enabled, ion-icon will be loaded lazily when it's visible in the viewport. Default, `false`.
+         */
+        "lazy": boolean;
+        /**
           * The icon svg filename
          */
         "name": string;
@@ -1040,6 +1044,10 @@ declare namespace LocalJSX {
           * Full colored icon when set to true
          */
         "full"?: boolean;
+        /**
+          * If enabled, ion-icon will be loaded lazily when it's visible in the viewport. Default, `false`.
+         */
+        "lazy"?: boolean;
         /**
           * The icon svg filename
          */

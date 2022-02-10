@@ -1,0 +1,10 @@
+<svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M4.5 18H3.75C2.09315 18 0.75 16.6569 0.75 15V12C0.75 10.3431 2.09315 9 3.75 9H4.5C4.91421 9 5.25 9.33579 5.25 9.75V17.25C5.25 17.6642 4.91421 18 4.5 18Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M20.25 18H19.5C19.0858 18 18.75 17.6642 18.75 17.25V9.75C18.75 9.33579 19.0858 9 19.5 9H20.25C21.9069 9 23.25 10.3431 23.25 12V15C23.25 16.6569 21.9069 18 20.25 18Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke"/>
+<path d="M3.75 9C3.75 4.44365 7.44365 0.75 12 0.75C14.188 0.75 16.2865 1.61919 17.8336 3.16637C19.3808 4.71354 20.25 6.81196 20.25 9" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke"/>
+<path d="M15 21.75H17.25C18.9069 21.75 20.25 20.4069 20.25 18.75V18" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M13.5 23.25H12C11.1716 23.25 10.5 22.5784 10.5 21.75C10.5 20.9216 11.1716 20.25 12 20.25H13.5C14.3284 20.25 15 20.9216 15 21.75C15 22.5784 14.3284 23.25 13.5 23.25Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke"/>
+<path d="M9 15.442C10.7 16.9912 13.3 16.9912 15 15.442" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke"/>
+<path d="M9 9.985V11.297" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke"/>
+<path d="M15 9.985V11.297" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke"/>
+</svg>
