@@ -34,6 +34,7 @@ category: Webcomponents
 ### Used by
 
  - [joy-counter](../counter)
+ - [joy-radio-group](../radio-group)
 
 ### Depends on
 
@@ -44,6 +45,7 @@ category: Webcomponents
 graph TD;
   joy-form-error --> joy-icon
   joy-counter --> joy-form-error
+  joy-radio-group --> joy-form-error
   style joy-form-error fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

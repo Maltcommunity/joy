@@ -418,6 +418,28 @@ export namespace Components {
          */
         "value"?: any | null;
     }
+    interface JoyRadioGroup {
+        /**
+          * Label displayed for the whoe radio group.
+         */
+        "direction": 'vertical' | 'horizontal';
+        /**
+          * Invalid state of the radio group
+         */
+        "invalid": boolean;
+        /**
+          * Invalid message
+         */
+        "invalidText"?: string;
+        /**
+          * The name of the control, which is submitted with the form data.
+         */
+        "name": string;
+        /**
+          * the value of the radio group.
+         */
+        "value"?: any | null;
+    }
     interface JoySpinner {
         /**
           * Spinner colors, 2 possible values
@@ -832,6 +854,12 @@ declare global {
         prototype: HTMLJoyRadioElement;
         new (): HTMLJoyRadioElement;
     };
+    interface HTMLJoyRadioGroupElement extends Components.JoyRadioGroup, HTMLStencilElement {
+    }
+    var HTMLJoyRadioGroupElement: {
+        prototype: HTMLJoyRadioGroupElement;
+        new (): HTMLJoyRadioGroupElement;
+    };
     interface HTMLJoySpinnerElement extends Components.JoySpinner, HTMLStencilElement {
     }
     var HTMLJoySpinnerElement: {
@@ -931,6 +959,7 @@ declare global {
         "joy-placeholder-button": HTMLJoyPlaceholderButtonElement;
         "joy-progress-bar": HTMLJoyProgressBarElement;
         "joy-radio": HTMLJoyRadioElement;
+        "joy-radio-group": HTMLJoyRadioGroupElement;
         "joy-spinner": HTMLJoySpinnerElement;
         "joy-tab": HTMLJoyTabElement;
         "joy-tab-button": HTMLJoyTabButtonElement;
@@ -1383,6 +1412,32 @@ declare namespace LocalJSX {
          */
         "value"?: any | null;
     }
+    interface JoyRadioGroup {
+        /**
+          * Label displayed for the whoe radio group.
+         */
+        "direction"?: 'vertical' | 'horizontal';
+        /**
+          * Invalid state of the radio group
+         */
+        "invalid"?: boolean;
+        /**
+          * Invalid message
+         */
+        "invalidText"?: string;
+        /**
+          * The name of the control, which is submitted with the form data.
+         */
+        "name"?: string;
+        /**
+          * Emitted when the value has changed.
+         */
+        "onJoyRadioGroupChange"?: (event: CustomEvent<any>) => void;
+        /**
+          * the value of the radio group.
+         */
+        "value"?: any | null;
+    }
     interface JoySpinner {
         /**
           * Spinner colors, 2 possible values
@@ -1718,6 +1773,7 @@ declare namespace LocalJSX {
         "joy-placeholder-button": JoyPlaceholderButton;
         "joy-progress-bar": JoyProgressBar;
         "joy-radio": JoyRadio;
+        "joy-radio-group": JoyRadioGroup;
         "joy-spinner": JoySpinner;
         "joy-tab": JoyTab;
         "joy-tab-button": JoyTabButton;
@@ -1757,6 +1813,7 @@ declare module "@stencil/core" {
             "joy-placeholder-button": LocalJSX.JoyPlaceholderButton & JSXBase.HTMLAttributes<HTMLJoyPlaceholderButtonElement>;
             "joy-progress-bar": LocalJSX.JoyProgressBar & JSXBase.HTMLAttributes<HTMLJoyProgressBarElement>;
             "joy-radio": LocalJSX.JoyRadio & JSXBase.HTMLAttributes<HTMLJoyRadioElement>;
+            "joy-radio-group": LocalJSX.JoyRadioGroup & JSXBase.HTMLAttributes<HTMLJoyRadioGroupElement>;
             "joy-spinner": LocalJSX.JoySpinner & JSXBase.HTMLAttributes<HTMLJoySpinnerElement>;
             "joy-tab": LocalJSX.JoyTab & JSXBase.HTMLAttributes<HTMLJoyTabElement>;
             "joy-tab-button": LocalJSX.JoyTabButton & JSXBase.HTMLAttributes<HTMLJoyTabButtonElement>;
