@@ -8,6 +8,7 @@ $_CLASS-PREFIX: '.joy-pagination';
     --pagination-cta-color: var(--joy-gray-4);
     --pagination-bg-color-hover: var(--joy-teal-thin);
     --pagination-color-hover: var(--joy-teal-main);
+    --pagination-bg-color-active: var(--joy-teal-light);
 
     @mixin focusState() {
         &:after {
@@ -126,13 +127,13 @@ $_CLASS-PREFIX: '.joy-pagination';
             @include focusState();
 
             &.current {
-                background-color: var(--pagination-bg-color-hover);
+                background-color: var(--pagination-bg-color-active);
                 color: white;
                 text-decoration: none;
             }
 
             &:active {
-                background-color: var(--pagination-color-hover);
+                background-color: var(--pagination-bg-color-active);
                 color: white;
 
                 svg {
