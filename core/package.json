@@ -1,6 +1,6 @@
 {
   "name": "@maltjoy/core",
-  "version": "0.5.1",
+  "version": "0.5.2",
   "description": "Design system library by @malt",
   "main": "dist/index.cjs.js",
   "module": "dist/index.js",
@@ -14,7 +14,10 @@
     "dist/"
   ],
   "scripts": {
-    "build": "stencil build --docs",
+    "clean": "node scripts/clean.js",
+    "build:stencil": "stencil build --docs",
+    "build:ts": "tsc --project ./src/components-triggers/tsconfig.json",
+    "build": "pnpm build:stencil && pnpm build:ts",
     "start": "stencil build --dev --watch --serve",
     "lint": "eslint",
     "lint:fix": "eslint --ext .js,.ts,.tsx,.vue --fix .",
@@ -35,6 +38,7 @@
     "eslint": "7.22.0",
     "eslint-plugin-jest": "24.3.2",
     "eslint-plugin-react": "7.22.0",
+    "fs-extra": "^10.0.0",
     "jest": "26.6.3",
     "jest-cli": "26.6.3",
     "puppeteer": "^13.1.3",

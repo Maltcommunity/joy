@@ -1,4 +1,4 @@
-import {snackbarService} from './SnackbarService';
+import {snackbarService} from './service';
 jest.useFakeTimers();
 
 function getSnackbar() {

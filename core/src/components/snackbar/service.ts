@@ -20,7 +20,7 @@ function fallbackFunction() {
     return {};
 }
 
-class SnackbarService {
+class Service {
     notificationServiceId;
     notificationIdx: number;
     private id!: string;
@@ -118,6 +118,6 @@ class SnackbarService {
     }
 }
 
-const snackbarService = new SnackbarService();
+const snackbarService = new Service();
 
 export {LEVELS, DEFAULT_SNACKBAR_OPTIONS, snackbarService};

@@ -1,5 +1,5 @@
 import {Component, Prop, h, State, Element, Event, EventEmitter, Host} from '@stencil/core';
-import {LEVELS} from './SnackbarService';
+import {LEVELS} from './service';
 import {IconColors, SnackbarLevels} from '../../types';
 
 @Component({
