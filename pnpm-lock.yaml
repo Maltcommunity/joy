@@ -7,7 +7,7 @@ importers:
 
   core:
     specifiers:
-      '@maltjoy/tokens': 0.2.0
+      '@maltjoy/tokens': 0.3.1
       '@stencil/core': 2.12.1
       '@stencil/eslint-plugin': 0.4.0
       '@stencil/sass': 1.4.1
@@ -24,7 +24,7 @@ importers:
       tslib: 1.14.1
       typescript: 4.3.2
     dependencies:
-      '@maltjoy/tokens': 0.2.0
+      '@maltjoy/tokens': link:../tokens
       '@stencil/core': 2.12.1
     devDependencies:
       '@stencil/eslint-plugin': 0.4.0_179f8a08f21fbd0422e75534965a3922
@@ -617,10 +617,6 @@ packages:
       '@jridgewell/resolve-uri': 3.0.4
       sourcemap-codec: 1.4.8
     dev: true
-
-  /@maltjoy/tokens/0.2.0:
-    resolution: {integrity: sha512-VvWorQatFnv3QN8AdMc+qcPxZxzHfvqXHqFkUu+i5ly1IhLwCfYp/RIoeLZ6pXzRhV/bjgSLMmxH3fwZ1DZQxQ==}
-    dev: false
 
   /@nodelib/fs.scandir/2.1.5:
     resolution: {integrity: sha512-vq24Bq3ym5HEQm2NKCr3yXDwjc7vTsEThRDnkp2DK9p1uqLR+DHurm/NOTo0KG7HYHU7eppKZj3MyqYuMBf62g==}

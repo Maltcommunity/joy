@@ -93,13 +93,13 @@ $_CLASS-PREFIX: '.joy-snackbar';
 
     &__img {
         display: inline-flex;
-        margin-right: var(--joy-spacing-3);
+        margin-right: var(--joy-spacing-4);
         padding-top: 4px;
     }
 
     &__content {
         flex-grow: 1;
-        padding-right: var(--joy-spacing-4);
+        padding-right: var(--joy-spacing-5);
 
         a {
             color: var(--snackbar-color-links);
