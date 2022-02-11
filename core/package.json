@@ -17,7 +17,7 @@
     "clean": "node scripts/clean.js",
     "build:stencil": "stencil build --docs",
     "build:ts": "tsc --project ./src/components-triggers/tsconfig.json",
-    "build": "pnpm build:stencil && pnpm build:ts",
+    "build": "pnpm clean && pnpm build:stencil && pnpm build:ts",
     "start": "stencil build --dev --watch --serve",
     "lint": "eslint",
     "lint:fix": "eslint --ext .js,.ts,.tsx,.vue --fix .",
