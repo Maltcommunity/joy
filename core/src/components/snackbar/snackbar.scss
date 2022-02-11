@@ -15,13 +15,13 @@ $_CLASS-PREFIX: '.joy-snackbar';
     --snackbar-bg-color-success: var(--joy-turquoise-thin);
     --snackbar-color-success: var(--joy-turquoise-main);
 
-    @include utils.getFontProperties(l);
     position: fixed;
     bottom: var(--snackbar-bottom-space);
     z-index: 10000; // need to tokenize this
     width: 100%;
     display: flex;
     justify-content: center;
+    @include utils.getFontProperties(l);
 }
 
 :host(#{$_CLASS-PREFIX}__position___relative) {
