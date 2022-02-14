@@ -17,6 +17,10 @@
 
 $_CLASS: '.joy-textarea';
 
+:host {
+    display: block;
+}
+
 #{$_CLASS} {
     position: relative;
     padding: 0;
@@ -77,6 +81,12 @@ $_CLASS: '.joy-textarea';
                 }
             }
         }
+    }
+}
+
+#{$_CLASS}_autogrow {
+    textarea {
+        resize: none;
     }
 }
 

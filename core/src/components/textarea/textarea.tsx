@@ -350,6 +350,7 @@ export class JoyTextarea implements ComponentInterface {
                         'joy-textarea': true,
                         'joy-textarea_invalid': this.invalid,
                         'joy-textarea_disabled': this.disabled,
+                        'joy-textarea_autogrow': this.autoGrow,
                     }}
                 >
                     <div ref={(el) => (this.textareaWrapper = el)}>

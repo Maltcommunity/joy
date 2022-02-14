@@ -35,16 +35,30 @@ export const config: Config = {
     minifyJs: true,
     minifyCss: true,
     bundles: [
-        {
             /**
              * Critical bundle. joy-all-critical is a simple hack because we can't give a custom name to this bundle made of multiple components.
              * By default, the name of the generated output is : first-in_alphabetical-order_{number_of_chunks}
              * example : joy-all-critical_3.js
-             * So instead of having joy-availability_3.js (bit confusing), we've created a fake component called joy-critical...
-             * and TADAAA
+             * So instead of having joy-availability_3.js (bit confusing), we've created a fake component called joy-all-critical...
+             * and TADA
              */
-            components: ['joy-all-critical', 'joy-checkbox', 'joy-textarea'],
+        {
+            // Critical bundle
+            components: [
+                'joy-all-critical',
+                'joy-checkbox',
+                'joy-counter',
+                'joy-radio',
+                'joy-radio-group',
+                'joy-textarea',
+                'joy-toggle',
+            ],
         },
+        {components: ['joy-avatar', 'joy-avatars-list', 'joy-user-card']},
+        {components: ['joy-tabs', 'joy-tab', 'joy-tab-button']},
+        {components: ['joy-tag', 'joy-tags-list']},
+        {components: ['joy-link', 'joy-text']},
+        {components: ['joy-tooltip', 'joy-tooltip-trigger']},
     ],
     hashFileNames: false,
     enableCache: false,
