@@ -86,20 +86,12 @@ $_CLASS: '.joy-toggle';
 
         &:focus-visible {
             + *:before {
-                box-shadow: 0 0 0 2px var(--toggle-border-color-focus);
-                border: 2px solid white;
-                width: var(--toggle-width);
-                height: var(--toggle-height);
-                margin-right: 3px;
-            }
-            + *:after {
-                top: 3px;
-                left: 4px;
+                background-color: var(--toggle-bg-color-hover);
             }
         }
         &:checked:focus-visible {
-            + *:after {
-                transform: translateX(18px);
+            + *:before {
+                background-color: var(--toggle-bg-color-active-checked);
             }
         }
     }
