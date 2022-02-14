@@ -724,6 +724,29 @@ export namespace Components {
          */
         "level": TipsLevel;
     }
+    interface JoyToggle {
+        /**
+          * Toggle activated or not
+         */
+        "checked": boolean;
+        /**
+          * Disabled state
+         */
+        "disabled": boolean;
+        /**
+          * It will be applied as the hidden input name attribute (for the actual form)
+         */
+        "name": string;
+        /**
+          * Update toggle value from outside the component
+          * @param newValue true or false...
+         */
+        "updateValue": (newValue: boolean) => Promise<void>;
+        /**
+          * Input value. TODO : check if we really need it as we use a checkbox system
+         */
+        "value"?: string;
+    }
     interface JoyTooltip {
         /**
           * Tooltip position. 2 possible values
@@ -988,6 +1011,12 @@ declare global {
         prototype: HTMLJoyTipsElement;
         new (): HTMLJoyTipsElement;
     };
+    interface HTMLJoyToggleElement extends Components.JoyToggle, HTMLStencilElement {
+    }
+    var HTMLJoyToggleElement: {
+        prototype: HTMLJoyToggleElement;
+        new (): HTMLJoyToggleElement;
+    };
     interface HTMLJoyTooltipElement extends Components.JoyTooltip, HTMLStencilElement {
     }
     var HTMLJoyTooltipElement: {
@@ -1041,6 +1070,7 @@ declare global {
         "joy-text": HTMLJoyTextElement;
         "joy-textarea": HTMLJoyTextareaElement;
         "joy-tips": HTMLJoyTipsElement;
+        "joy-toggle": HTMLJoyToggleElement;
         "joy-tooltip": HTMLJoyTooltipElement;
         "joy-tooltip-trigger": HTMLJoyTooltipTriggerElement;
         "joy-user-card": HTMLJoyUserCardElement;
@@ -1819,6 +1849,28 @@ declare namespace LocalJSX {
          */
         "level"?: TipsLevel;
     }
+    interface JoyToggle {
+        /**
+          * Toggle activated or not
+         */
+        "checked"?: boolean;
+        /**
+          * Disabled state
+         */
+        "disabled"?: boolean;
+        /**
+          * It will be applied as the hidden input name attribute (for the actual form)
+         */
+        "name"?: string;
+        /**
+          * Clicking on the component will fire this customEvent. use @joyToggleChange in Vue apps, and onJoyToggleChange for plain JavaScript.
+         */
+        "onJoyToggleChange"?: (event: CustomEvent<boolean>) => void;
+        /**
+          * Input value. TODO : check if we really need it as we use a checkbox system
+         */
+        "value"?: string;
+    }
     interface JoyTooltip {
         /**
           * Tooltip position. 2 possible values
@@ -1912,6 +1964,7 @@ declare namespace LocalJSX {
         "joy-text": JoyText;
         "joy-textarea": JoyTextarea;
         "joy-tips": JoyTips;
+        "joy-toggle": JoyToggle;
         "joy-tooltip": JoyTooltip;
         "joy-tooltip-trigger": JoyTooltipTrigger;
         "joy-user-card": JoyUserCard;
@@ -1955,6 +2008,7 @@ declare module "@stencil/core" {
             "joy-text": LocalJSX.JoyText & JSXBase.HTMLAttributes<HTMLJoyTextElement>;
             "joy-textarea": LocalJSX.JoyTextarea & JSXBase.HTMLAttributes<HTMLJoyTextareaElement>;
             "joy-tips": LocalJSX.JoyTips & JSXBase.HTMLAttributes<HTMLJoyTipsElement>;
+            "joy-toggle": LocalJSX.JoyToggle & JSXBase.HTMLAttributes<HTMLJoyToggleElement>;
             "joy-tooltip": LocalJSX.JoyTooltip & JSXBase.HTMLAttributes<HTMLJoyTooltipElement>;
             "joy-tooltip-trigger": LocalJSX.JoyTooltipTrigger & JSXBase.HTMLAttributes<HTMLJoyTooltipTriggerElement>;
             "joy-user-card": LocalJSX.JoyUserCard & JSXBase.HTMLAttributes<HTMLJoyUserCardElement>;
