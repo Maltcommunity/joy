@@ -3,10 +3,10 @@
 $_CLASS: '.joy-separator';
 
 :host {
-    --separator-color: var(--joy-teal-light);
-    --separator-color-hover: var(--joy-teal-main);
-    --separator-border-color-focus: var(--joy-gray-6);
-    --separator-margin: var(--joy-spacing-3);
+    --separator-color: var(--joy-color-secondary-50);
+    --separator-color-hover: var(--joy-color-secondary-50);
+    --separator-border-color-focus: var(--joy-color-neutral-6);
+    --separator-margin: var(--joy-core-spacing-3);
 }
 
 @mixin separatorLine() {
@@ -23,7 +23,7 @@ $_CLASS: '.joy-separator';
     width: 100%;
     color: var(--separator-color);
     @include utils.getFontProperties(m);
-    margin: var(--joy-spacing-4) 0;
+    margin: var(--joy-core-spacing-4) 0;
     text-decoration: none;
     background-color: initial;
     border: 0;
@@ -35,7 +35,7 @@ $_CLASS: '.joy-separator';
         justify-content: center;
         align-items: center;
         text-transform: lowercase;
-        padding: 12px;
+        padding: var(--joy-core-spacing-3);
         border: 2px solid transparent;
 
         &::before, &::after {

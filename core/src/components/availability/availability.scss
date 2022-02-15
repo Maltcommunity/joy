@@ -15,16 +15,16 @@ $CLASS: '.joy-availability';
      * @prop --availability-dot-size: Dot size in pixel
      * @prop --availability-text-color: Availability text color (for the label)
      */
-    --availability-background: var(--joy-teal-thin);
-    --availability-dot-color: var(--joy-teal-dark);
-    --availability-dot-color-not-available: var(--joy-error);
+    --availability-background: var(--joy-color-secondary-10);
+    --availability-dot-color: var(--joy-color-secondary-90);
+    --availability-dot-color-not-available: var(--joy-color-state-error);
     --availability-dot-color-not-available-with-date: var(--availability-dot-color-not-available);
-    --availability-dot-color-available: var(--joy-teal-light);
+    --availability-dot-color-available: var(--joy-color-secondary-50);
     --availability-dot-color-available-with-date: var(--availability-dot-color-available);
-    --availability-dot-color-available-and-verified: var(--joy-turquoise-main);
-    --availability-dot-color-available-soon: var(--joy-yellow-main);
+    --availability-dot-color-available-and-verified: var(--joy-color-tertiary-50);
+    --availability-dot-color-available-soon: var(--joy-color-quaternary-50);
     --availability-dot-size: 15px;
-    --availability-text-color: var(--joy-teal-dark);
+    --availability-text-color: var(--joy-color-secondary-90);
 
     color: var(--availability-text-color);
     display: inline-flex;
@@ -32,7 +32,7 @@ $CLASS: '.joy-availability';
     justify-content: center;
     white-space: nowrap;
     text-align: center;
-    border-radius: var(--joy-shape-4);
+    border-radius: var(--joy-core-radius-4);
     @include utils.getFontProperties(xs);
 
     @media screen and (max-width: 767px) {
@@ -42,7 +42,7 @@ $CLASS: '.joy-availability';
 
 :host(#{$CLASS}-has-label) {
     background-color: var(--availability-background);
-    padding: var(--joy-spacing-1) var(--joy-spacing-2);
+    padding: var(--joy-core-spacing-1) var(--joy-core-spacing-2);
 }
 
 #{$CLASS}__subtitle {
@@ -54,7 +54,7 @@ $CLASS: '.joy-availability';
 #{$CLASS}__dot {
     display: inline-flex;
     position: relative;
-    border-radius: var(--joy-shape-5);
+    border-radius: var(--joy-core-radius-5);
     margin-right: 6px;
     width: var(--availability-dot-size);
     height: var(--availability-dot-size);
@@ -69,7 +69,7 @@ $CLASS: '.joy-availability';
         top: 0;
         width: 100%;
         height: 100%;
-        border-radius: var(--joy-shape-5);
+        border-radius: var(--joy-core-radius-5);
         border-width: 3px;
         border-style: solid;
         border-color: var(--availability-dot-color);
@@ -107,6 +107,6 @@ $CLASS: '.joy-availability';
     }
 
     &.INVISIBLE {
-        @include dotColor(var(--joy-error));
+        @include dotColor(var(--joy-color-state-error));
     }
 }

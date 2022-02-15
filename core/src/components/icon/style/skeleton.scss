@@ -3,7 +3,7 @@
 
 joy-icon:not(.hydrated) {
     display: inline-flex;
-    background-color: var(--joy-gray-2);
+    background-color: var(--joy-color-neutral-2);
     border-radius: 50%;
     width: map.get(config.$ICON_SIZES, xsmall);
     height: map.get(config.$ICON_SIZES, xsmall);

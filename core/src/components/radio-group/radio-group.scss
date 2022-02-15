@@ -10,7 +10,7 @@ $_CLASS: '.joy-radio-group';
     joy-form-error {
         width: 100%;
         flex-shrink: 0;
-        margin-top: var(--joy-spacing-3);
+        margin-top: var(--joy-core-spacing-3);
     }
 }
 
@@ -37,7 +37,7 @@ $_CLASS: '.joy-radio-group';
 }
 
 ::slotted(joy-radio) {
-    margin: var(--joy-spacing-4) var(--joy-spacing-4) 0 0;
+    margin: var(--joy-core-spacing-4) var(--joy-core-spacing-4) 0 0;
 }
 
 ::slotted([slot="radio-group-legend"]) { // Not the best way to select it, but it allows to use any html tag

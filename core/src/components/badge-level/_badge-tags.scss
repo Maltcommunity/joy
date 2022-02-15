@@ -1,15 +1,15 @@
 $BADGE_TAG_TYPE_CONFIG: (
     'red': (
-        background-color: var(--joy-red-thin),
-        color: var(--joy-red-light)
+        background-color: var(--joy-color-primary-10),
+        color: var(--joy-color-primary-30)
     ),
     'turquoise': (
-        background-color: var(--joy-turquoise-light),
+        background-color: var(--joy-color-tertiary-30),
         color: white
     ),
     'blue': (
-        background-color: var(--joy-turquoise-thin),
-        color: var(--joy-blue-light)
+        background-color: var(--joy-color-tertiary-10),
+        color: var(--joy-color-brand-secondary-30)
     )
 );
 

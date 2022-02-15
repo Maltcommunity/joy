@@ -5,7 +5,7 @@ $_CLASS: '.joy-tags-input';
 
 :host {
     display: block;
-    margin-bottom: var(--joy-spacing-3);
+    margin-bottom: var(--joy-core-spacing-3);
     @include utils.getFontProperties(s);
 }
 
@@ -16,7 +16,7 @@ $_CLASS: '.joy-tags-input';
 
     &-label {
         display: block;
-        margin-bottom: var(--joy-spacing-2);
+        margin-bottom: var(--joy-core-spacing-2);
         font-size: inherit;
     }
 
@@ -25,14 +25,14 @@ $_CLASS: '.joy-tags-input';
         @include mixins.innerStyle();
 
         &-focused {
-            border: 1px solid var(--joy-focus-hover);
+            border: 1px solid var(--joy-color-state-error-hover);
         }
 
         &-invalid {
-            border: 1px solid var(--joy-error);
+            border: 1px solid var(--joy-color-state-error);
 
             &:hover {
-                border: 1px solid var(--joy-error-hover);
+                border: 1px solid var(--joy-color-state-error-hover);
             }
         }
 
@@ -55,5 +55,5 @@ $_CLASS: '.joy-tags-input';
 }
 
 joy-form-error {
-    margin-top: var(--joy-spacing-3);
+    margin-top: var(--joy-core-spacing-3);
 }

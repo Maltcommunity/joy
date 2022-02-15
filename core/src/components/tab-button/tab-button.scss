@@ -1,12 +1,12 @@
 $_CLASS: '.joy-tab-button';
-$_padding: var(--joy-spacing-5);
+$_padding: var(--joy-core-spacing-5);
 
 :host(#{$_CLASS}) {
-    --tab-button-color: var(--joy-gray-5);
-    --tab-button-border-color: var(--joy-gray-3);
-    --tab-button-color-active: var(--joy-teal-main);
-    --tab-button-border-color-active: var(--joy-teal-main);
-    --tab-button-link-color: var(--joy-gray-4);
+    --tab-button-color: var(--joy-color-neutral-5);
+    --tab-button-border-color: var(--joy-color-neutral-3);
+    --tab-button-color-active: var(--joy-color-secondary-50);
+    --tab-button-border-color-active: var(--joy-color-secondary-50);
+    --tab-button-link-color: var(--joy-color-neutral-4);
 
     display: inline-flex;
     justify-content: center;

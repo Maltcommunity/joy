@@ -3,12 +3,12 @@
 $_CLASS-PREFIX: '.joy-pagination';
 
 #{$_CLASS-PREFIX} {
-    --pagination-focus-color: var(--joy-gray-6);
-    --pagination-separator-text-color: var(--joy-gray-6);
-    --pagination-cta-color: var(--joy-gray-4);
-    --pagination-bg-color-hover: var(--joy-teal-thin);
-    --pagination-color-hover: var(--joy-teal-main);
-    --pagination-bg-color-active: var(--joy-teal-light);
+    --pagination-focus-color: var(--joy-color-neutral-6);
+    --pagination-separator-text-color: var(--joy-color-neutral-6);
+    --pagination-cta-color: var(--joy-color-neutral-4);
+    --pagination-bg-color-hover: var(--joy-color-secondary-10);
+    --pagination-color-hover: var(--joy-color-secondary-50);
+    --pagination-bg-color-active: var(--joy-color-secondary-50);
 
     @mixin focusState() {
         &:after {

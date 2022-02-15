@@ -12,10 +12,10 @@
 AVATAR
  */
 joy-avatar:not(.hydrated) {
-    background-color: var(--joy-teal-thin);
+    background-color: var(--joy-color-secondary-10);
     height: 60px;
     width: 60px;
-    border-radius: var(--joy-shape-5);
+    border-radius: var(--joy-core-radius-5);
     color: transparent; // Prevent slots to be displayed while stencil loads component entry
 
     &[size="small"] {
@@ -40,7 +40,7 @@ joy-avatars-list:not(.hydrated) {
         position: relative;
         z-index: 1;
         border: 2px solid white;
-        border-radius: var(--joy-shape-5);
+        border-radius: var(--joy-core-radius-5);
         display: block;
 
         &:not(:first-child) {
@@ -56,10 +56,10 @@ joy-badge-level:not(.hydrated) {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background-color: var(--joy-teal-thin);
+    background-color: var(--joy-color-secondary-10);
     height: 16px;
     width: 100px;
-    border-radius: var(--joy-shape-1);
+    border-radius: var(--joy-core-radius-1);
     color: transparent; // Prevent slots to be displayed while stencil loads component entry
 }
 
@@ -70,10 +70,10 @@ joy-availability:not(.hydrated){
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background-color: var(--joy-teal-thin);
+    background-color: var(--joy-color-secondary-10);
     height: 26px;
     width: 100px;
-    border-radius: var(--joy-shape-4);
+    border-radius: var(--joy-core-radius-4);
     color: transparent;
 }
 
@@ -90,7 +90,7 @@ joy-button:not(.hydrated) {
     height: 42px;
     width: 120px;
     border-radius: 22px;
-    background-color: var(--joy-gray-3);
+    background-color: var(--joy-color-neutral-3);
     color: transparent;
     font-size: 0;
 }
@@ -104,18 +104,18 @@ joy-counter:not(.hydrated){
     align-items: center;
     justify-content: center;
     position: relative;
-    background-color: var(--joy-teal-thin);
+    background-color: var(--joy-color-secondary-10);
     height: $_size;
     width: 80px;
-    border-radius: var(--joy-shape-2);
+    border-radius: var(--joy-core-radius-2);
     margin: 0 40px;
 
     &:before, &:after {
         content: "";
-        border-radius: var(--joy-shape-5);
+        border-radius: var(--joy-core-radius-5);
         height: $_size;
         width: $_size;
-        background-color: var(--joy-teal-thin);
+        background-color: var(--joy-color-secondary-10);
         display: inline-flex;
         position: absolute;
     }
@@ -134,7 +134,7 @@ DIVIDER CTA
 joy-divider-cta:not(.hydrated) {
     display: flex;
     height: 3px;
-    background-color: var(--joy-teal-thin);
+    background-color: var(--joy-color-secondary-10);
     justify-content: center;
     margin: 45px 0;
 
@@ -172,7 +172,7 @@ joy-pagination:not(.hydrated) {
     display: flex;
     position: relative;
     align-items: center;
-    background-color: var(--joy-teal-thin);
+    background-color: var(--joy-color-secondary-10);
     border-radius: calc(#{$_size}/2);
     height: $_size;
     width: 260px;
@@ -186,7 +186,7 @@ joy-pagination:not(.hydrated) {
         border-radius: 50%;
         height: $_size;
         width: $_size;
-        background-color: var(--joy-teal-thin);
+        background-color: var(--joy-color-secondary-10);
     }
 
     &:before {
@@ -217,7 +217,7 @@ joy-rating-stars:not(.hydrated) {
         content: "";
         height: 14px;
         border-radius: 6px;
-        background-color: var(--joy-teal-thin);
+        background-color: var(--joy-color-secondary-10);
     }
 
     &:before {
@@ -248,7 +248,7 @@ joy-tab-button:not(.hydrated) {
     position: relative;
     justify-content: stretch;
     text-align: center;
-    border-bottom: 2px solid var(--joy-gray-3);
+    border-bottom: 2px solid var(--joy-color-neutral-3);
     flex: 1 1 0;
     padding: 20px;
     color: transparent;
@@ -260,7 +260,7 @@ joy-tab-button:not(.hydrated) {
         margin: auto;
         width: 100%;
         height: 10px;
-        background-color: var(--joy-gray-3);
+        background-color: var(--joy-color-neutral-3);
         border-radius: 5px;
     }
 }
@@ -274,7 +274,7 @@ joy-toggle:not(.hydrated) {
     display: block;
     width: 42px;
     height: 22px;
-    background-color: var(--joy-gray-3);
+    background-color: var(--joy-color-neutral-3);
     border-radius: 11px;
     transition: background-color,box-shadow 150ms ease;
     color: transparent;

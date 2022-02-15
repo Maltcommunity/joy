@@ -1,8 +1,8 @@
 @use '../../style/utils';
 
-$_padding-smaller: var(--joy-spacing-4) var(--joy-spacing-1);
-$_padding-section: var(--joy-spacing-0);
-$_padding-mobile: var(--joy-spacing-4);
+$_padding-smaller: var(--joy-core-spacing-4) var(--joy-core-spacing-1);
+$_padding-section: var(--joy-color-spacing-0);
+$_padding-mobile: var(--joy-core-spacing-4);
 $_bg: white;
 
 ::slotted(p) {
@@ -12,9 +12,9 @@ $_bg: white;
 }
 
 .joy-panel {
-    padding: var(--joy-spacing-9);
+    padding: var(--joy-color-spacing-9);
     background-color: $_bg;
-    border-radius: var(--joy-shape-3);
+    border-radius: var(--joy-core-radius-3);
     position: relative;
 
     &_smaller {
@@ -30,10 +30,10 @@ $_bg: white;
         align-items: baseline;
         justify-content: space-between;
         flex-wrap: wrap;
-        margin-bottom: var(--joy-spacing-5);
+        margin-bottom: var(--joy-core-spacing-5);
 
         @media screen and (max-width: 767px) {
-            margin-bottom: var(--joy-spacing-4);
+            margin-bottom: var(--joy-core-spacing-4);
         }
     }
 
@@ -56,12 +56,12 @@ $_bg: white;
     }
 
     &__footer {
-        margin-top: var(--joy-spacing-9);
+        margin-top: var(--joy-color-spacing-9);
     }
 
     // sections
     &__section {
-        margin-top: var(--joy-spacing-9);
+        margin-top: var(--joy-color-spacing-9);
 
         &:first-child {
             margin-top: 0;
@@ -73,14 +73,14 @@ $_bg: white;
 
         + .joy-panel__section,
         {
-            margin-top: var(--joy-spacing-9);
+            margin-top: var(--joy-color-spacing-9);
         }
     }
 
     &__inline-sections {
         display: flex;
         flex-wrap: wrap;
-        margin-top: var(--joy-spacing-9);
+        margin-top: var(--joy-color-spacing-9);
 
         &:first-child {
             margin-top: 0;

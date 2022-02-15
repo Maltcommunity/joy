@@ -1,27 +1,27 @@
 @use '../../style/utils';
 
 :host {
-    --tips-text-color: var(--joy-gray-6);
+    --tips-text-color: var(--joy-color-neutral-6);
 
-    --tips-bg-default: var(--joy-teal-thin);
-    --tips-color-default: var(--joy-teal-main);
-    --tips-border-default: var(--joy-teal-main);
+    --tips-bg-default: var(--joy-color-secondary-10);
+    --tips-color-default: var(--joy-color-secondary-50);
+    --tips-border-default: var(--joy-color-secondary-50);
 
-    --tips-bg-warning: var(--joy-yellow-thin);
-    --tips-color-warning: var(--joy-yellow-main);
-    --tips-border-warning: var(--joy-yellow-main);
+    --tips-bg-warning: var(--joy-color-quaternary-10);
+    --tips-color-warning: var(--joy-color-quaternary-50);
+    --tips-border-warning: var(--joy-color-quaternary-50);
 
-    --tips-bg-error: var(--joy-red-thin);
-    --tips-color-error: var(--joy-red-main);
-    --tips-border-error: var(--joy-red-main);
+    --tips-bg-error: var(--joy-color-primary-10);
+    --tips-color-error: var(--joy-color-primary-50);
+    --tips-border-error: var(--joy-color-primary-50);
 
-    --tips-bg-success: var(--joy-turquoise-thin);
-    --tips-color-success: var(--joy-turquoise-main);
-    --tips-border-success: var(--joy-turquoise-main);
+    --tips-bg-success: var(--joy-color-tertiary-10);
+    --tips-color-success: var(--joy-color-tertiary-50);
+    --tips-border-success: var(--joy-color-tertiary-50);
 
     --tips-bg-banner: white;
-    --tips-color-banner: var(--joy-turquoise-main);
-    --tips-border-banner: var(--joy-red-light);
+    --tips-color-banner: var(--joy-color-tertiary-50);
+    --tips-border-banner: var(--joy-color-primary-30);
 
     color: var(--tips-text-color);
 }
@@ -32,18 +32,18 @@
     display: flex;
     align-items: flex-start;
     margin: 0 0 20px;
-    padding: var(--joy-spacing-4) var(--joy-spacing-6);
+    padding: var(--joy-core-spacing-4) var(--joy-core-spacing-6);
     overflow: hidden;
-    border-radius: var(--joy-shape-3);
+    border-radius: var(--joy-core-radius-3);
     text-align: left;
     background-color: var(--tips-bg-default);
 
     &__icon {
-        margin-right: var(--joy-spacing-4);
+        margin-right: var(--joy-core-spacing-4);
     }
 
     &__content {
-        padding-right: var(--joy-spacing-3);
+        padding-right: var(--joy-core-spacing-3);
         flex: 1;
         font-size: var(--joy-font-size-s);
     }
@@ -67,7 +67,7 @@
     }
 
     &__logo {
-        margin-bottom: var(--joy-spacing-4);
+        margin-bottom: var(--joy-core-spacing-4);
 
         img {
             max-width: 300px;
@@ -92,7 +92,7 @@
 
         + * {
             display: block;
-            margin-top: var(--joy-spacing-2);
+            margin-top: var(--joy-core-spacing-2);
         }
     }
 
@@ -125,7 +125,7 @@
             + .joy-tips__close,
             + button,
             + .joy-tips__button {
-                margin-top: var(--joy-spacing-4);
+                margin-top: var(--joy-core-spacing-4);
             }
         }
     }

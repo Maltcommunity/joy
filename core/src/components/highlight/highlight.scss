@@ -9,17 +9,17 @@
      * @prop --highlight-background-error: background color for ERROR state
      * @prop --highlight-color-error: text color for ERROR state
      */
-    --highlight-background-success: var(--joy-turquoise-thin);
-    --highlight-color-success: var(--joy-turquoise-main);
+    --highlight-background-success: var(--joy-color-tertiary-10);
+    --highlight-color-success: var(--joy-color-tertiary-50);
 
-    --highlight-background-info: var(--joy-teal-thin);
-    --highlight-color-info: var(--joy-teal-main);
+    --highlight-background-info: var(--joy-color-secondary-10);
+    --highlight-color-info: var(--joy-color-secondary-50);
 
-    --highlight-background-warning: var(--joy-yellow-thin);
-    --highlight-color-warning: var(--joy-yellow-main);
+    --highlight-background-warning: var(--joy-color-quaternary-10);
+    --highlight-color-warning: var(--joy-color-quaternary-50);
 
-    --highlight-background-error: var(--joy-red-thin);
-    --highlight-color-error: var(--joy-red-main);
+    --highlight-background-error: var(--joy-color-primary-10);
+    --highlight-color-error: var(--joy-color-primary-50);
 
     display: block;
     width: 100%;
@@ -29,8 +29,8 @@
     display: flex;
     margin: 0;
     align-items: flex-start;
-    padding: var(--joy-spacing-5);
-    border-radius: var(--joy-shape-3);
+    padding: var(--joy-core-spacing-5);
+    border-radius: var(--joy-core-radius-3);
     text-align: left;
     background-color: var(--highlight-background-info);
 

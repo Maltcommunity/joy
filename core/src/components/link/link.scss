@@ -3,10 +3,10 @@
 $_class-name: '.joy-link';
 
 :host {
-    --link-default-color: var(--joy-teal-light);
-    --link-default-color-hover: var(--joy-teal-main);
-    --link-default-color-visited: var(--joy-teal-dark);
-    --link-border-color-focus: var(--joy-gray-6);
+    --link-default-color: var(--joy-color-secondary-50);
+    --link-default-color-hover: var(--joy-color-secondary-50);
+    --link-default-color-visited: var(--joy-color-secondary-90);
+    --link-border-color-focus: var(--joy-color-neutral-6);
 
     padding: 0 2px;
     color: var(--link-default-color);
@@ -42,7 +42,7 @@ $_class-name: '.joy-link';
 
     border: 2px solid transparent;
     background-color: transparent;
-    border-radius: var(--joy-shape-2);
+    border-radius: var(--joy-core-radius-2);
     display: inline-flex;
     align-items: center;
     cursor: pointer;
@@ -55,7 +55,7 @@ $_class-name: '.joy-link';
     @include basePseudoStyle;
 
     joy-icon {
-        margin: 0 var(--joy-spacing-2);
+        margin: 0 var(--joy-core-spacing-2);
 
         svg {
             color: inherit;

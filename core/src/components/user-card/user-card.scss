@@ -1,8 +1,8 @@
 $_SELECTOR: '.joy-user-card';
 
 :host {
-    --user-card-links-color: var(--joy-teal-light);
-    --user-card-text-color: var(--joy-gray-6);
+    --user-card-links-color: var(--joy-color-secondary-50);
+    --user-card-text-color: var(--joy-color-neutral-6);
 
     display: inline-flex;
     font-family: var(--joy-font-family);
@@ -58,7 +58,7 @@ $_PIC_SIZE: 60px;
     text-decoration: none;
 
     &__picture {
-        margin-right: var(--joy-spacing-3);
+        margin-right: var(--joy-core-spacing-3);
     }
 
     &__informations {
@@ -69,7 +69,7 @@ $_PIC_SIZE: 60px;
         }
 
         @media screen and (max-width: 479px) {
-            margin-left: var(--joy-spacing-1);
+            margin-left: var(--joy-core-spacing-1);
         }
 
         p, a {

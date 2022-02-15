@@ -9,43 +9,43 @@ Generic buttons style
  */
 
 :host {
-    --button-bg-color-main: var(--joy-red-main);
-    --button-bg-color-main-hover: var(--joy-red-dark);
-    --button-bg-color-main-active: var(--joy-red-darker);
+    --button-bg-color-main: var(--joy-color-primary-50);
+    --button-bg-color-main-hover: var(--joy-color-primary-70);
+    --button-bg-color-main-active: var(--joy-color-primary-90);
 
-    --button-bg-color-primary: var(--joy-teal-light);
-    --button-bg-color-primary-hover: var(--joy-teal-main);
-    --button-bg-color-primary-active: var(--joy-teal-dark);
+    --button-bg-color-primary: var(--joy-color-secondary-50);
+    --button-bg-color-primary-hover: var(--joy-color-secondary-50);
+    --button-bg-color-primary-active: var(--joy-color-secondary-90);
 
-    --button-color-secondary: var(--joy-teal-light);
-    --button-color-secondary-active: var(--joy-teal-dark);
-    --button-color-secondary-disabled: var(--joy-gray-4);
-    --button-border-color-secondary-disabled: var(--joy-gray-3);
-    --button-bg-color-secondary-hover: var(--joy-teal-thin);
+    --button-color-secondary: var(--joy-color-secondary-50);
+    --button-color-secondary-active: var(--joy-color-secondary-90);
+    --button-color-secondary-disabled: var(--joy-color-neutral-4);
+    --button-border-color-secondary-disabled: var(--joy-color-neutral-3);
+    --button-bg-color-secondary-hover: var(--joy-color-secondary-10);
 
-    --button-color-ghost: var(--joy-teal-light);
-    --button-color-ghost-hover: var(--joy-teal-main);
-    --button-bg-color-ghost-hover: var(--joy-gray-1);
-    --button-color-ghost-active: var(--joy-teal-main);
-    --button-bg-color-ghost-active: var(--joy-teal-thin);
+    --button-color-ghost: var(--joy-color-secondary-50);
+    --button-color-ghost-hover: var(--joy-color-secondary-50);
+    --button-bg-color-ghost-hover: var(--joy-color-neutral-1);
+    --button-color-ghost-active: var(--joy-color-secondary-50);
+    --button-bg-color-ghost-active: var(--joy-color-secondary-10);
 
-    --button-color-white: var(--joy-teal-light);
-    --button-color-white-hover: var(--joy-teal-main);
-    --button-color-white-active: var(--joy-teal-dark);
-    --button-bg-color-white-hover: var(--joy-gray-1);
-    --button-bg-color-white-active: var(--joy-gray-2);
-    --button-icon-color-white-hover: var(--joy-teal-dark);
+    --button-color-white: var(--joy-color-secondary-50);
+    --button-color-white-hover: var(--joy-color-secondary-50);
+    --button-color-white-active: var(--joy-color-secondary-90);
+    --button-bg-color-white-hover: var(--joy-color-neutral-1);
+    --button-bg-color-white-active: var(--joy-color-neutral-2);
+    --button-icon-color-white-hover: var(--joy-color-secondary-90);
 
-    --button-bg-color-admin: var(--joy-yellow-main);
+    --button-bg-color-admin: var(--joy-color-quaternary-50);
 
-    --button-focus-border-color: var(--joy-gray-6);
+    --button-focus-border-color: var(--joy-color-neutral-6);
 
     --button-font-family: var(--joy-font-family);
 
-    --button-bg-color-disabled: var(--joy-gray-3);
-    --button-color-disabled: var(--joy-gray-4);
-    --button-border-color-disabled: var(--joy-gray-3);
-    --button-icon-color-disabled: var(--joy-gray-4);
+    --button-bg-color-disabled: var(--joy-color-neutral-3);
+    --button-color-disabled: var(--joy-color-neutral-4);
+    --button-border-color-disabled: var(--joy-color-neutral-3);
+    --button-icon-color-disabled: var(--joy-color-neutral-4);
 
     display: inline-flex;
 }
@@ -69,7 +69,7 @@ Generic buttons style
     width: 100%;
 
     joy-icon {
-        margin-right: var(--joy-spacing-2);
+        margin-right: var(--joy-core-spacing-2);
         color: inherit;
     }
 

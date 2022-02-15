@@ -2,7 +2,7 @@
 
 joy-tag:not(.hydrated) {
     color: transparent;
-    background-color: var(--joy-gray-3);
+    background-color: var(--joy-color-neutral-3);
     @include tags.tagShape();
 
     $default: map-get(tags.$TAG_SIZE_CONFIG, 'medium');

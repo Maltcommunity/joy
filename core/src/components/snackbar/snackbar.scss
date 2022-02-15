@@ -3,17 +3,17 @@
 $_CLASS-PREFIX: '.joy-snackbar';
 
 :host {
-    --snackbar-bottom-space: var(--joy-spacing-11);
-    --snackbar-color-links: var(--joy-teal-main);
+    --snackbar-bottom-space: var(--joy-core-spacing-11);
+    --snackbar-color-links: var(--joy-color-secondary-50);
 
-    --snackbar-bg-color-info: var(--joy-teal-thin);
-    --snackbar-color-info: var(--joy-teal-main);
-    --snackbar-bg-color-warning: var(--joy-yellow-thin);
-    --snackbar-color-warning: var(--joy-yellow-main);
-    --snackbar-bg-color-error: var(--joy-red-thin);
-    --snackbar-color-error: var(--joy-red-main);
-    --snackbar-bg-color-success: var(--joy-turquoise-thin);
-    --snackbar-color-success: var(--joy-turquoise-main);
+    --snackbar-bg-color-info: var(--joy-color-secondary-10);
+    --snackbar-color-info: var(--joy-color-secondary-50);
+    --snackbar-bg-color-warning: var(--joy-color-quaternary-10);
+    --snackbar-color-warning: var(--joy-color-quaternary-50);
+    --snackbar-bg-color-error: var(--joy-color-primary-10);
+    --snackbar-color-error: var(--joy-color-primary-50);
+    --snackbar-bg-color-success: var(--joy-color-tertiary-10);
+    --snackbar-color-success: var(--joy-color-tertiary-50);
 
     position: fixed;
     bottom: var(--snackbar-bottom-space);
@@ -49,14 +49,14 @@ $_CLASS-PREFIX: '.joy-snackbar';
     justify-content: center;
     padding: 20px 25px 20px 40px;
     overflow: hidden;
-    border-radius: var(--joy-shape-3);
+    border-radius: var(--joy-core-radius-3);
     text-align: left;
     background-color: var(--snackbar-bg-color-info);
     color: inherit;
     animation: showAnimation var(--joy-transition-duration-long);
     max-width: 85%;
     margin: auto;
-    box-shadow: var(--joy-elevation-3);
+    box-shadow: var(--joy-core-elevation-3);
 
     @media screen and (max-width: 767px) {
         padding: 15px 20px;
@@ -82,7 +82,7 @@ $_CLASS-PREFIX: '.joy-snackbar';
         @include utils.getFontProperties(l-bold);
 
         & + * {
-            margin-bottom: var(--joy-spacing-4);
+            margin-bottom: var(--joy-core-spacing-4);
         }
     }
 
@@ -93,13 +93,13 @@ $_CLASS-PREFIX: '.joy-snackbar';
 
     &__img {
         display: inline-flex;
-        margin-right: var(--joy-spacing-4);
+        margin-right: var(--joy-core-spacing-4);
         padding-top: 4px;
     }
 
     &__content {
         flex-grow: 1;
-        padding-right: var(--joy-spacing-5);
+        padding-right: var(--joy-core-spacing-5);
 
         a {
             color: var(--snackbar-color-links);

@@ -3,9 +3,9 @@
 $_SELECTOR: '.joy-company-avatar';
 
 :host {
-    --avatar-color: var(--joy-gray-2);
-    --avatar-border-color: var(--joy-gray-3);
-    --avatar-bg: var(--joy-teal-main);
+    --avatar-color: var(--joy-color-neutral-2);
+    --avatar-border-color: var(--joy-color-neutral-3);
+    --avatar-bg: var(--joy-color-secondary-50);
     --avatar-small-size: 20px;
     --avatar-medium-size: 30px;
     --avatar-large-size: 46px;
@@ -61,7 +61,7 @@ $_SELECTOR: '.joy-company-avatar';
         height: var(--avatar-medium-size);
         min-width: var(--avatar-medium-size);
         min-height: var(--avatar-medium-size);
-        border-radius: var(--joy-shape-2);
+        border-radius: var(--joy-core-radius-2);
         font-size: var(--joy-font-size-s);
     }
 
@@ -70,7 +70,7 @@ $_SELECTOR: '.joy-company-avatar';
         height: var(--avatar-small-size);
         min-width: var(--avatar-small-size);
         min-height: var(--avatar-small-size);
-        border-radius: var(--joy-shape-1);
+        border-radius: var(--joy-core-radius-1);
         font-size: var(--joy-font-size-xxs);
     }
 

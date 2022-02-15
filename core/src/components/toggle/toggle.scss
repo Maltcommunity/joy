@@ -15,19 +15,19 @@ $_CLASS: '.joy-toggle';
     --toggle-bubble-size: calc(var(--toggle-height) - var(--toggle-bubble-space));
     --toggle-bubble-translation-value: calc(var(--toggle-width) - var(--toggle-bubble-size) - var(--toggle-bubble-space));
 
-    --toggle-bg-color-hover-checked: var(--joy-teal-main);
-    --toggle-bg-color-hover: var(--joy-gray-4);
-    --toggle-bg-color-active-checked: var(--joy-teal-dark);
-    --toggle-bg-color-disabled: var(--joy-gray-1);
-    --toggle-bubble-bg-color-disabled: var(--joy-gray-3);
-    --toggle-bg-color-inactive: var(--joy-gray-3);
+    --toggle-bg-color-hover-checked: var(--joy-color-secondary-50);
+    --toggle-bg-color-hover: var(--joy-color-neutral-4);
+    --toggle-bg-color-active-checked: var(--joy-color-secondary-90);
+    --toggle-bg-color-disabled: var(--joy-color-neutral-1);
+    --toggle-bubble-bg-color-disabled: var(--joy-color-neutral-3);
+    --toggle-bg-color-inactive: var(--joy-color-neutral-3);
     --toggle-bubble-bg-color-inactive: white;
-    --toggle-bg-color-active: var(--joy-teal-light);
+    --toggle-bg-color-active: var(--joy-color-secondary-50);
     --toggle-bubble-bg-color-active: white;
-    --toggle-border-color-focus: var(--joy-gray-6);
+    --toggle-border-color-focus: var(--joy-color-neutral-6);
 
     @include utils.getFontProperties(m);
-    color: var(--joy-text-color);
+    color: var(--joy-color-text-body);
     display: inline-flex;
 }
 
@@ -40,7 +40,7 @@ $_CLASS: '.joy-toggle';
         top: 2px;
         width: var(--toggle-width);
         height: var(--toggle-height);
-        margin-right: var(--joy-spacing-1);
+        margin-right: var(--joy-core-spacing-1);
         background-color: var(--toggle-bg-color-inactive);
         border-radius: var(--toggle-radius);
         transition: backgroud-color,box-shadow 150ms ease;

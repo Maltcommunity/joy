@@ -137,13 +137,13 @@ $_FONT-TYPES: (
 }
 
 $_AVATAR_COLOR: (
-    'teal': var(--joy-teal-main),
-    'yellow': var(--joy-yellow-main),
-    'turquoise': var(--joy-turquoise-main),
-    'red': var(--joy-red-main),
-    'grey': var(--joy-gray-4),
-    'blue': var(--joy-blue-main),
-    'pink': var(--joy-pink-main)
+    'teal': var(--joy-color-secondary-50),
+    'yellow': var(--joy-color-quaternary-50),
+    'turquoise': var(--joy-color-tertiary-50),
+    'red': var(--joy-color-primary-50),
+    'grey': var(--joy-color-neutral-4),
+    'blue': var(--joy-color-brand-secondary-50),
+    'pink': var(--joy-color-brand-primary-50)
 );
 
 @mixin avatarColor() {

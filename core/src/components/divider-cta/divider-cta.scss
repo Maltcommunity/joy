@@ -8,14 +8,14 @@ $_CLASS: '.joy-divider-cta';
 //$_disabled-color: colors.$grey-4;
 
 #{$_CLASS} {
-    --divider-cta-color: var(--joy-teal-light);
-    --divider-cta-border-color: var(--joy-teal-light);
-    --divider-cta-color-hover: var(--joy-teal-main);
-    --divider-cta-color-disabled: var(--joy-gray-4);
-    --divider-cta-bg-color-hover: var(--joy-teal-main);
-    --divider-cta-bg-color-disabled: var(--joy-gray-4);
-    --divider-cta-border-color-focus: var(--joy-gray-6);
-    --divider-cta-margin: var(--joy-spacing-3);
+    --divider-cta-color: var(--joy-color-secondary-50);
+    --divider-cta-border-color: var(--joy-color-secondary-50);
+    --divider-cta-color-hover: var(--joy-color-secondary-50);
+    --divider-cta-color-disabled: var(--joy-color-neutral-4);
+    --divider-cta-bg-color-hover: var(--joy-color-secondary-50);
+    --divider-cta-bg-color-disabled: var(--joy-color-neutral-4);
+    --divider-cta-border-color-focus: var(--joy-color-neutral-6);
+    --divider-cta-margin: var(--joy-core-spacing-3);
 
     @mixin separatorLine() {
         content: "";
@@ -30,7 +30,7 @@ $_CLASS: '.joy-divider-cta';
     width: 100%;
     color: var(--divider-cta-color);
     @include utils.getFontProperties(m);
-    margin: var(--joy-spacing-4) 0;
+    margin: var(--joy-core-spacing-4) 0;
     padding: 0;
     text-decoration: none;
     background-color: initial;

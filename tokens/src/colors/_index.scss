@@ -151,8 +151,8 @@ $joy-color-overlay: rgba(51, 51, 48, 0.4);
     --joy-color-state-hover: #{$joy-color-state-hover};
 
     /** ERRORS **/
-    --joy-color-error: #{$joy-color-state-hover};
-    --joy-color-error-hover: #{$joy-color-state-hover-error};
+    --joy-color-state-error: #{$joy-color-state-error};
+    --joy-color-state-error-hover: #{$joy-color-state-hover-error};
 
     /** DISABLED **/
     --joy-color-state-disabled-border: #{$joy-color-state-disabled-border};

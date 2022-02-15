@@ -1,9 +1,9 @@
 $_CLASS: '.joy-placeholder-button';
 
 :host {
-    --placeholder-button-border-color: var(--joy-teal-light);
-    --placeholder-button-bg-color: var(--joy-teal-thin);
-    --placeholder-button-border-color-focus: var(--joy-gray-6);
+    --placeholder-button-border-color: var(--joy-color-secondary-50);
+    --placeholder-button-bg-color: var(--joy-color-secondary-10);
+    --placeholder-button-border-color-focus: var(--joy-color-neutral-6);
     --placeholder-button-size-large: 100px;
     --placeholder-button-size-medium: 60px;
     --placeholder-button-size-small: 30px;

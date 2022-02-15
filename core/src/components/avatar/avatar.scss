@@ -20,8 +20,8 @@ $_CLASS: '.joy-avatar';
     --avatar-small-size: 30px;
     --avatar-small-font-size: var(--joy-font-size-xs);
 
-    --avatar-placeholder-background: var(--joy-gray-3);
-    --avatar-additional-avatar-background: var(--joy-teal-main);
+    --avatar-placeholder-background: var(--joy-color-neutral-3);
+    --avatar-additional-avatar-background: var(--joy-color-secondary-50);
 
     display: inline-flex;
     font-family: var(--joy-font-family);
@@ -33,11 +33,11 @@ a {
 }
 
 #{$_CLASS} {
-    border-radius: var(--joy-shape-5);
+    border-radius: var(--joy-core-radius-5);
     box-sizing: border-box;
     overflow: hidden;
     position: relative;
-    background-color: var(--joy-teal-thin);
+    background-color: var(--joy-color-secondary-10);
     // addition style for avatar-initials context
     display: flex;
     color: white;

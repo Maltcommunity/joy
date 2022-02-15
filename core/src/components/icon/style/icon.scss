@@ -4,24 +4,24 @@ $_FILL_OPACITY: 0.05;
 
 $_ICONS-COLORS: (
     "teal": (
-        color: var(--joy-teal-main),
-        placeholder: var(--joy-teal-thin)
+        color: var(--joy-color-secondary-50),
+        placeholder: var(--joy-color-secondary-10)
     ),
     "grey": (
-        color: var(--joy-gray-4),
-        placeholder: var(--joy-gray-2)
+        color: var(--joy-color-neutral-4),
+        placeholder: var(--joy-color-neutral-2)
     ),
     "red": (
-        color: var(--joy-red-main),
-        placeholder: var(--joy-red-thin)
+        color: var(--joy-color-primary-50),
+        placeholder: var(--joy-color-primary-10)
     ),
     "yellow": (
-        color: var(--joy-yellow-dark),
-        placeholder: var(--joy-yellow-thin)
+        color: var(--joy-color-quaternary-70),
+        placeholder: var(--joy-color-quaternary-10)
     ),
     "turquoise": (
-        color: var(--joy-turquoise-main),
-        placeholder: var(--joy-turquoise-thin)
+        color: var(--joy-color-tertiary-50),
+        placeholder: var(--joy-color-tertiary-10)
     ),
     "white": (
         color: white,
@@ -41,7 +41,7 @@ $_ICONS-COLORS: (
 .joy-i-wc {
     display: inline-flex;
     fill-opacity: 0;
-    color: var(--joy-teal-main);
+    color: var(--joy-color-secondary-50);
     // Default color;
     shape-rendering: auto;
     stroke-width: 1.5px;

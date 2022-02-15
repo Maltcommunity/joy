@@ -61,7 +61,7 @@ $_CLASS: '.joy-tag';
 }
 
 :host(.joy-tags-list-item) {
-    margin: var(--joy-spacing-2) var(--joy-spacing-4) var(--joy-spacing-2) 0;
+    margin: var(--joy-core-spacing-2) var(--joy-core-spacing-4) var(--joy-core-spacing-2) 0;
 }
 
 /** WRAPPER INSIDE SHADOW DOM **/
@@ -80,12 +80,12 @@ $_CLASS: '.joy-tag';
         width: calc(100% + 2px);
         height: calc(100% + 2px);
         transition: box-shadow 150ms;
-        border-radius: var(--joy-shape-3);
+        border-radius: var(--joy-core-radius-3);
     }
 
     &:focus-visible {
         &::before {
-            box-shadow: 0 0 0 2px var(--joy-gray-6);
+            box-shadow: 0 0 0 2px var(--joy-color-neutral-6);
         }
     }
 }
@@ -100,13 +100,13 @@ $_CLASS: '.joy-tag';
 
 #{$_CLASS}__removable {
     &, &:hover, &:active {
-        margin-left: var(--joy-spacing-2);
+        margin-left: var(--joy-core-spacing-2);
         cursor: pointer;
     }
 }
 
 #{$_CLASS}__drag {
-    margin-right: var(--joy-spacing-2);
+    margin-right: var(--joy-core-spacing-2);
 }
 
 @include tagColor();

@@ -1,7 +1,7 @@
 @use '../../style/utils';
 
 $_CLASS: '.joy-tooltip';
-$_PADDING: var(--joy-spacing-4);
+$_PADDING: var(--joy-core-spacing-4);
 
 ::slotted(*) {
     font-size: inherit;
@@ -21,8 +21,8 @@ $_PADDING: var(--joy-spacing-4);
 :host {
     --tooltip-bg-color-primary: var(--joy-teal-teal);
     --tooltip-color-primary: white;
-    --tooltip-bg-color-secondary: var(--joy-gray-2);
-    --tooltip-color-secondary: var(--joy-gray-6);
+    --tooltip-bg-color-secondary: var(--joy-color-neutral-2);
+    --tooltip-color-secondary: var(--joy-color-neutral-6);
 
     @include utils.getFontProperties(xs);
 }
@@ -32,9 +32,9 @@ $_PADDING: var(--joy-spacing-4);
     font-weight: normal;
     box-sizing: border-box;
     // allows to include padding in the tooltip size definition. If the tooltip is supposed to be 250px, it won't add padding to this value
-    border-radius: var(--joy-shape-3);
+    border-radius: var(--joy-core-radius-3);
     padding: $_PADDING;
-    box-shadow: var(--joy-elevation-3);
+    box-shadow: var(--joy-core-elevation-3);
 
     &:before {
         content: '';
