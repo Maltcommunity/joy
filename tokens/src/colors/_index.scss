@@ -50,3 +50,7 @@
 
     --joy-text-color: var(--joy-gray-6);
 }
+
+@mixin getOverlayProperties() {
+    --joy-overlay: rgba(51, 51, 48, 0.4);
+}

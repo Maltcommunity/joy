@@ -8,6 +8,7 @@
 :root {
     @include colors.getPaletteProperties();
     @include colors.getContextualPaletteProperties();
+    @include colors.getOverlayProperties();
     @include elevations.getElevationsProperties();
     @include fonts.getFontsProperties();
     @include shapes.getShapesProperties();
