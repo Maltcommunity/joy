@@ -1,7 +1,7 @@
 const fs = require('fs-extra');
 const path = require('path');
 
-const cleanDirs = ['dist'];
+const cleanDirs = ['dist', 'www'];
 
 cleanDirs.forEach(dir => {
     const cleanDir = path.join(__dirname, '../', dir);
