@@ -1,8 +1,30 @@
-<p>
+<p align="center">
     <a href="https://joy.malt.com">
-        <img src="//dam.malt.com/rebranding2020/malt-logo/malt-red" width="125" height="36" alt="Malt">
+        <img src="https://dam.malt.com/rebranding2020/malt-logo/malt-red" width="125" height="36" alt="Malt">
     </a>
 </p>
+
+<h1 align="center">
+  Joy Design System
+</h1>
+
+<p align="center">
+  <a href="https://gitlab.com/maltcommunity/apps/design-system/-/tree/main/LICENSE">
+    <img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="Malt Design System is released under the MIT license." />
+  </a>
+  <a href="https://www.jsdelivr.com/package/npm/@maltjoy/core">
+    <img src="https://data.jsdelivr.com/v1/package/npm/@maltjoy/core/badge" alt="Graphite Design System is available on jsDelivr." />
+  </a>
+</p>
+
+
+<div>
+    This repository contains Malt Design system and its packages :
+    <ul>
+        <li>Tokens for colors, spacing, elevations...</li>    
+        <li>Web-components library</li>    
+    </ul>
+</div>
 
 ## Available packages
 | Project    | Package                                                            | Version                                                                                                              | Downloads                                                                                                                                                       |                  Links                  |
