@@ -1,15 +1,29 @@
+$joy-core-spacing-0: 2px;
+$joy-core-spacing-1: 4px;
+$joy-core-spacing-2: 8px;
+$joy-core-spacing-3: 12px;
+$joy-core-spacing-4: 16px;
+$joy-core-spacing-5: 20px;
+$joy-core-spacing-6: 24px;
+$joy-core-spacing-7: 28px;
+$joy-core-spacing-8: 32px;
+$joy-core-spacing-9: 40px;
+$joy-core-spacing-10: 48px;
+$joy-core-spacing-11: 56px;
+$joy-core-spacing-12: 64px;
+
 @mixin getSpacingProperties() {
-    --joy-spacing-0: 2px;
-    --joy-spacing-1: 4px;
-    --joy-spacing-2: 8px;
-    --joy-spacing-3: 12px;
-    --joy-spacing-4: 16px;
-    --joy-spacing-5: 20px;
-    --joy-spacing-6: 24px;
-    --joy-spacing-7: 28px;
-    --joy-spacing-8: 32px;
-    --joy-spacing-9: 40px;
-    --joy-spacing-10: 48px;
-    --joy-spacing-11: 56px;
-    --joy-spacing-12: 64px;
+    --joy-core-spacing-0: #{$joy-core-spacing-0};
+    --joy-core-spacing-1: #{$joy-core-spacing-1};
+    --joy-core-spacing-2: #{$joy-core-spacing-2};
+    --joy-core-spacing-3: #{$joy-core-spacing-3};
+    --joy-core-spacing-4: #{$joy-core-spacing-4};
+    --joy-core-spacing-5: #{$joy-core-spacing-5};
+    --joy-core-spacing-6: #{$joy-core-spacing-6};
+    --joy-core-spacing-7: #{$joy-core-spacing-7};
+    --joy-core-spacing-8: #{$joy-core-spacing-8};
+    --joy-core-spacing-9: #{$joy-core-spacing-9};
+    --joy-core-spacing-10: #{$joy-core-spacing-10};
+    --joy-core-spacing-11: #{$joy-core-spacing-11};
+    --joy-core-spacing-12: #{$joy-core-spacing-12};
 }

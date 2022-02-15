@@ -1,9 +1,15 @@
-@mixin getElevationsProperties() {
-    $_shadow-color: rgba(24,24,24, 0.16);
+$shadow-color: rgba(24,24,24, 0.16);
 
-    --joy-elevation-0: 0 0 0 0 #{$_shadow-color};
-    --joy-elevation-1: 0 2px 4px 0 #{$_shadow-color};
-    --joy-elevation-2: 0 4px 12px 0 #{$_shadow-color};
-    --joy-elevation-3: 0 6px 24px 0 #{$_shadow-color};
-    --joy-elevation-4: 0px 8px 32px 0 #{$_shadow-color};
+$joy-core-elevation-0: 0 0 0 0 #{$shadow-color};
+$joy-core-elevation-1: 0 2px 4px 0 #{$shadow-color};
+$joy-core-elevation-2: 0 4px 12px 0 #{$shadow-color};
+$joy-core-elevation-3: 0 6px 24px 0 #{$shadow-color};
+$joy-core-elevation-4: 0px 8px 32px 0 #{$shadow-color};
+
+@mixin getElevationsProperties() {
+    --joy-core-elevation-0: #{$joy-core-elevation-0};
+    --joy-core-elevation-1: #{$joy-core-elevation-1};
+    --joy-core-elevation-2: #{$joy-core-elevation-2};
+    --joy-core-elevation-3: #{$joy-core-elevation-3};
+    --joy-core-elevation-4: #{$joy-core-elevation-4};
 }

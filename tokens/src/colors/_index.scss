@@ -1,103 +1,174 @@
 /**
  * Declaring hexa with sass variables, and assign them to custom properties next, allows us to directly @use sass variables
  * in order to easily use sass internal functions like color adjust, transparentize and so on
- * Synthax like so : color: transparentize(var(--joy-red-thin, 0.2) is not allowed at the moment.
+ * Synthax like so : color: transparentize(var(--joy-color-primary-10, 0.2) is not allowed at the moment.
  */
 
-$joy-red-thin: #FFF4F4;
-$joy-red-light: #FF7370;
-$joy-red-main: #FC5757;
-$joy-red-dark: #D4524F;
-$joy-red-darker: #A63633;
+$joy-color-primary-10: #FFF4F4;
+$joy-color-primary-30: #FF7370;
+$joy-color-primary-50: #FC5757;
+$joy-color-primary-70: #D4524F;
+$joy-color-primary-90: #A63633;
 
-$joy-teal-thin: #ECF3F4;
-$joy-teal-light: #0F6378;
-$joy-teal-main: #035266;
-$joy-teal-dark: #014554;
+$joy-color-secondary-10: #ECF3F4;
+$joy-color-secondary-30: #0F6378;
+$joy-color-secondary-50: #035266;
+$joy-color-secondary-90: #014554;
 
-$joy-turquoise-thin: #EEFCFB;
-$joy-turquoise-light: #33E5DB;
-$joy-turquoise-main: #12CFC9;
-$joy-turquoise-dark: #0AB8AD;
+$joy-color-tertiary-10: #EEFCFB;
+$joy-color-tertiary-30: #33E5DB;
+$joy-color-tertiary-50: #12CFC9;
+$joy-color-tertiary-70: #0AB8AD;
 
-$joy-yellow-thin: #FFFBED;
-$joy-yellow-light: #FCCF5E;
-$joy-yellow-main: #FFC200;
-$joy-yellow-dark: #F0B021;
+$joy-color-quaternary-10: #FFFBED;
+$joy-color-quaternary-30: #FCCF5E;
+$joy-color-quaternary-50: #FFC200;
+$joy-color-quaternary-70: #F0B021;
 
-$joy-pink-light: #FFB0F7;
-$joy-pink-main: #FF91F0;
-$joy-pink-dark: #EB73DE;
+/** BRAND COLORS **/
+$joy-color-brand-primary-30: #FFB0F7;
+$joy-color-brand-primary-50: #FF91F0;
+$joy-color-brand-primary-70: #EB73DE;
 
-$joy-blue-light: #264FFA;
-$joy-blue-main: #0529FC;
-$joy-blue-dark: #0833BD;
+$joy-color-brand-secondary-30: #264FFA;
+$joy-color-brand-secondary-50: #0529FC;
+$joy-color-brand-secondary-70: #0833BD;
 
-$joy-neutral-1: #FCFCF7;
-$joy-neutral-2: #f7f7f5;
-$joy-neutral-3: #E0DED9;
-$joy-neutral-4: #737370;
-$joy-neutral-5: #4B4B4B;
-$joy-neutral-6: #333330;
-$joy-neutral-7: #181818;
+/** NEUTRAL COLORS **/
+$joy-color-neutral-1: #FCFCF7;
+$joy-color-neutral-2: #f7f7f5;
+$joy-color-neutral-3: #E0DED9;
+$joy-color-neutral-4: #737370;
+$joy-color-neutral-5: #4B4B4B;
+$joy-color-neutral-6: #333330;
+$joy-color-neutral-7: #181818;
 
-$joy-text-body: $joy-neutral-5;
-$joy-text-title: $joy-neutral-6;
-$joy-overlay: rgba(51, 51, 48, 0.4);
+/** FUNCTIONAL **/
+$joy-color-success-10: #F2F8E9;
+$joy-color-success-50: #81B928;
+$joy-color-success-90: #659B1C;
+
+$joy-color-information-10: #EAF5FF;
+$joy-color-information-50: #2FA0FC;
+$joy-color-information-90: #175DB5;
+
+$joy-color-warning-10: #FEF6E7;
+$joy-color-warning-50: #F2A10C;
+$joy-color-warning-90: #AE6606;
+
+$joy-color-error-10: #FCEAEA;
+$joy-color-error-50: #E02D2D;
+$joy-color-error-90: #A1162E;
+/** ****** **/
+
+/** TEXT **/
+$joy-color-text-disabled: #{$joy-color-neutral-3};
+$joy-color-text-warning: #{$joy-color-warning-50};
+$joy-color-text-information: #{$joy-color-information-50};
+$joy-color-text-error: #{$joy-color-error-50};
+$joy-color-text-success: #{$joy-color-success-50};
+$joy-color-text-body: $joy-color-neutral-5;
+$joy-color-text-title: $joy-color-neutral-6;
+/** ********* **/
+
+/** STATES **/
+$joy-color-state-disabled-border: #{$joy-color-neutral-3};
+$joy-color-state-disabled-background: #{$joy-color-neutral-3};
+$joy-color-state-focus: #{$joy-color-secondary-30};
+$joy-color-state-hover: #{$joy-color-secondary-50};
+$joy-color-state-error: #{$joy-color-error-50};
+$joy-color-state-hover-error: #{$joy-color-error-90};
+/** ****** **/
+
+$joy-color-overlay: rgba(51, 51, 48, 0.4);
 
 @mixin getPaletteProperties() {
     // Palette
-    --joy-red-thin: #{$joy-red-thin};
-    --joy-red-light: #{$joy-red-light};
-    --joy-red-main: #{$joy-red-main};
-    --joy-red-dark: #{$joy-red-dark};
-    --joy-red-darker: #{$joy-red-dark};
+    --joy-color-primary-10: #{$joy-color-primary-10};
+    --joy-color-primary-30: #{$joy-color-primary-30};
+    --joy-color-primary-50: #{$joy-color-primary-50};
+    --joy-color-primary-70: #{$joy-color-primary-70};
+    --joy-color-primary-90: #{$joy-color-primary-90};
 
-    --joy-teal-thin: #{$joy-teal-thin};
-    --joy-teal-light: #{$joy-teal-light};
-    --joy-teal-main: #{$joy-teal-main};
-    --joy-teal-dark: #{$joy-teal-dark};
+    --joy-color-secondary-10: #{$joy-color-secondary-10};
+    --joy-color-secondary-30: #{$joy-color-secondary-30};
+    --joy-color-secondary-50: #{$joy-color-secondary-50};
+    --joy-color-secondary-90: #{$joy-color-secondary-90};
 
-    --joy-turquoise-thin: #{$joy-turquoise-thin};
-    --joy-turquoise-light: #{$joy-turquoise-light};
-    --joy-turquoise-main: #{$joy-turquoise-main};
-    --joy-turquoise-dark: #{$joy-turquoise-dark};
+    --joy-color-tertiary-10: #{$joy-color-tertiary-10};
+    --joy-color-tertiary-30: #{$joy-color-tertiary-30};
+    --joy-color-tertiary-50: #{$joy-color-tertiary-50};
+    --joy-color-tertiary-70: #{$joy-color-tertiary-70};
 
-    --joy-yellow-thin: #{$joy-yellow-thin};
-    --joy-yellow-light: #{$joy-yellow-light};
-    --joy-yellow-main: #{$joy-yellow-main};
-    --joy-yellow-dark: #{$joy-yellow-dark};
+    --joy-color-quaternary-10: #{$joy-color-quaternary-10};
+    --joy-color-quaternary-30: #{$joy-color-quaternary-30};
+    --joy-color-quaternary-50: #{$joy-color-quaternary-50};
+    --joy-color-quaternary-70: #{$joy-color-quaternary-70};
 
     // Brand colors
-    --joy-pink-light: #{$joy-pink-light};
-    --joy-pink-main: #{$joy-pink-main};
-    --joy-pink-dark: #{$joy-pink-dark};
+    --joy-color-brand-primary-30: #{$joy-color-brand-primary-30};
+    --joy-color-brand-primary-50: #{$joy-color-brand-primary-50};
+    --joy-color-brand-primary-70: #{$joy-color-brand-primary-70};
 
-    --joy-blue-light: #{$joy-blue-light};
-    --joy-blue-main: #{$joy-blue-main};
-    --joy-blue-dark: #{$joy-blue-dark};
+    --joy-color-brand-secondary-30: #{$joy-color-brand-secondary-30};
+    --joy-color-brand-secondary-50: #{$joy-color-brand-secondary-50};
+    --joy-color-brand-secondary-70: #{$joy-color-brand-secondary-70};
     //
 
-    // Neutral colors
-    --joy-gray-1: #{$joy-neutral-1};
-    --joy-gray-2: #{$joy-neutral-2};
-    --joy-gray-3: #{$joy-neutral-3};
-    --joy-gray-4: #{$joy-neutral-4};
-    --joy-gray-5: #{$joy-neutral-5};
-    --joy-gray-6: #{$joy-neutral-6};
-    --joy-gray-7: #{$joy-neutral-7};
+    --joy-color-neutral-1: #{$joy-color-neutral-1};
+    --joy-color-neutral-2: #{$joy-color-neutral-2};
+    --joy-color-neutral-3: #{$joy-color-neutral-3};
+    --joy-color-neutral-4: #{$joy-color-neutral-4};
+    --joy-color-neutral-5: #{$joy-color-neutral-5};
+    --joy-color-neutral-6: #{$joy-color-neutral-6};
+    --joy-color-neutral-7: #{$joy-color-neutral-7};
+}
+
+@mixin getFunctionalPaletteProperties() {
+    /** SUCCESS **/
+    --joy-color-success-10: #{$joy-color-success-10};
+    --joy-color-success-50: #{$joy-color-success-50};
+    --joy-color-success-90: #{$joy-color-success-90};
+
+    /** INFO **/
+    --joy-color-information-10: #{$joy-color-information-10};
+    --joy-color-information-50: #{$joy-color-information-50};
+    --joy-color-information-90: #{$joy-color-information-90};
+
+    /** WARNING **/
+    --joy-color-warning-10: #{$joy-color-warning-10};
+    --joy-color-warning-50: #{$joy-color-warning-50};
+    --joy-color-warning-90: #{$joy-color-warning-90};
+
+    /** ERROR **/
+    --joy-color-error-10: #{$joy-color-error-10};
+    --joy-color-error-50: #{$joy-color-error-50};
+    --joy-color-error-90: #{$joy-color-error-90};
 }
 
 @mixin getContextualPaletteProperties() {
-    // States, contextual
-    --joy-focus-hover: #{$joy-teal-main};
-    --joy-error: #{$joy-red-main};
-    --joy-error-hover: #{$joy-red-darker};
-    --joy-state-disabled: #{$joy-neutral-1};
-    --joy-text-body: #{$joy-text-body};
-    --joy-text-title: #{$joy-text-title};
+    --joy-color-state-focus: #{$joy-color-state-focus};
+    --joy-color-state-hover: #{$joy-color-state-hover};
+
+    /** ERRORS **/
+    --joy-color-error: #{$joy-color-state-hover};
+    --joy-color-error-hover: #{$joy-color-state-hover-error};
+
+    /** DISABLED **/
+    --joy-color-state-disabled-border: #{$joy-color-state-disabled-border};
+    --joy-color-state-disabled-background: #{$joy-color-state-disabled-background}
+}
+
+@mixin getTextPaletteProperties() {
+    --joy-color-text-body: #{$joy-color-text-body};
+    --joy-color-text-title: #{$joy-color-text-title};
+    --joy-color-text-disabled: #{$joy-color-text-disabled};
+    --joy-color-text-warning: #{$joy-color-text-warning};
+    --joy-color-text-error: #{$joy-color-text-error};
+    --joy-color-text-success: #{$joy-color-text-success};
+    --joy-color-text-information: #{$joy-color-text-information};
 }
 
 @mixin getOverlayProperties() {
-    --joy-overlay: #{$joy-overlay};
+    --joy-color-overlay: #{$joy-color-overlay};
 }

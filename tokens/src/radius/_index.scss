@@ -1,0 +1,15 @@
+$joy-core-radius-0: 0;
+$joy-core-radius-1: 2px;
+$joy-core-radius-2: 4px;
+$joy-core-radius-3: 8px;
+$joy-core-radius-4: 16px;
+$joy-core-radius-5: 50%;
+
+@mixin getRadiusProperties() {
+    --joy-core-radius-0: #{$joy-core-radius-0};
+    --joy-core-radius-1: #{$joy-core-radius-1};
+    --joy-core-radius-2: #{$joy-core-radius-2};
+    --joy-core-radius-3: #{$joy-core-radius-3};
+    --joy-core-radius-4: #{$joy-core-radius-4};
+    --joy-core-radius-5: #{$joy-core-radius-5};
+}

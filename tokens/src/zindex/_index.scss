@@ -1,0 +1,15 @@
+$joy-core-z-index-0: 0;
+$joy-core-z-index-1: 1;
+$joy-core-z-index-2: 10;
+$joy-core-z-index-3: 25;
+$joy-core-z-index-4: 1000;
+$joy-core-z-index-5: 10000;
+
+@mixin getZindexProperties() {
+  --joy-core-z-index-0: #{$joy-core-z-index-0};
+  --joy-core-z-index-1: #{$joy-core-z-index-1};
+  --joy-core-z-index-2: #{$joy-core-z-index-2};
+  --joy-core-z-index-3: #{$joy-core-z-index-3};
+  --joy-core-z-index-4: #{$joy-core-z-index-4};
+  --joy-core-z-index-5: #{$joy-core-z-index-5};
+}

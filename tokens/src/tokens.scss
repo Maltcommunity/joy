@@ -2,16 +2,20 @@
 @use './colors';
 @use './elevations';
 @use './fonts';
-@use './shapes';
+@use './radius';
 @use './spacing';
+@use './zindex';
 
 :root {
     @include colors.getPaletteProperties();
     @include colors.getContextualPaletteProperties();
+    @include colors.getTextPaletteProperties();
+    @include colors.getFunctionalPaletteProperties();
     @include colors.getOverlayProperties();
     @include elevations.getElevationsProperties();
     @include fonts.getFontsProperties();
-    @include shapes.getShapesProperties();
+    @include radius.getRadiusProperties();
     @include spacing.getSpacingProperties();
     @include animations.getAnimationsProperties();
+    @include zindex.getZindexProperties();
 }
