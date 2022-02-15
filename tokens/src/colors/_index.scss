@@ -41,8 +41,9 @@ $joy-neutral-5: #4B4B4B;
 $joy-neutral-6: #333330;
 $joy-neutral-7: #181818;
 
+$joy-text-body: $joy-neutral-5;
+$joy-text-title: $joy-neutral-6;
 $joy-overlay: rgba(51, 51, 48, 0.4);
-
 
 @mixin getPaletteProperties() {
     // Palette
@@ -93,7 +94,8 @@ $joy-overlay: rgba(51, 51, 48, 0.4);
     --joy-error: #{$joy-red-main};
     --joy-error-hover: #{$joy-red-darker};
     --joy-state-disabled: #{$joy-neutral-1};
-    --joy-text-color: #{$joy-neutral-5};
+    --joy-text-body: #{$joy-text-body};
+    --joy-text-title: #{$joy-text-title};
 }
 
 @mixin getOverlayProperties() {
