@@ -1,6 +1,6 @@
 {
   "name": "@maltjoy/core",
-  "version": "0.6.4",
+  "version": "0.7.0",
   "description": "Design system library by @malt",
   "main": "dist/index.cjs.js",
   "module": "dist/index.js",
@@ -26,7 +26,7 @@
     "generate": "stencil generate"
   },
   "dependencies": {
-    "@maltjoy/tokens": "1.0.0",
+    "@maltjoy/tokens": "1.0.1",
     "@stencil/core": "2.12.1"
   },
   "devDependencies": {
