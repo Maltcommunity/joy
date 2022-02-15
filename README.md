@@ -13,7 +13,7 @@
     <img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="Malt Design System is released under the MIT license." />
   </a>
   <a href="https://www.jsdelivr.com/package/npm/@maltjoy/core">
-    <img src="https://data.jsdelivr.com/v1/package/npm/@maltjoy/core/badge" alt="Graphite Design System is available on jsDelivr." />
+    <img src="https://data.jsdelivr.com/v1/package/npm/@maltjoy/core/badge" alt="Malt Design System is available on jsDelivr." />
   </a>
 </p>
 
@@ -27,7 +27,7 @@
 </div>
 
 ## Available packages
-| Project    | Package                                                            | Version                                                                                                              | Downloads                                                                                                                                                       |                  Links                  |
-|------------|--------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------|:---------------------------------------:|
-| **Tokens** | [`@maltjoy/tokens`](https://www.npmjs.com/package/@maltjoy/tokens) | [![version](https://img.shields.io/npm/v/@maltjoy/tokens/latest.svg)](https://www.npmjs.com/package/@maltjoy/tokens) | <a href="https://www.npmjs.com/package/@maltjoy/tokens" target="_blank"><img src="https://img.shields.io/npm/dm/@maltjoy/tokens.svg" alt="NPM Downloads" /></a> |     [`README.md`](tokens/README.md)     |
-| **Core**   | [`@maltjoy/core`](https://www.npmjs.com/package/@maltjoy/core)     | [![version](https://img.shields.io/npm/v/@maltjoy/core/latest.svg)](https://www.npmjs.com/package/@maltjoy/core)     | <a href="https://www.npmjs.com/package/@maltjoy/core" target="_blank"><img src="https://img.shields.io/npm/dm/@maltjoy/core.svg" alt="NPM Downloads" /></a>     |      [`README.md`](core/README.md)      |
+| Project    | Package                                                            | Version                                                                                                              | Downloads                                                                                                                                                       |              Links              |
+|------------|--------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------|:-------------------------------:|
+| **Tokens** | [`@maltjoy/tokens`](https://www.npmjs.com/package/@maltjoy/tokens) | [![version](https://img.shields.io/npm/v/@maltjoy/tokens/latest.svg)](https://www.npmjs.com/package/@maltjoy/tokens) | <a href="https://www.npmjs.com/package/@maltjoy/tokens" target="_blank"><img src="https://img.shields.io/npm/dm/@maltjoy/tokens.svg" alt="NPM Downloads" /></a> |                                 |
+| **Core**   | [`@maltjoy/core`](https://www.npmjs.com/package/@maltjoy/core)     | [![version](https://img.shields.io/npm/v/@maltjoy/core/latest.svg)](https://www.npmjs.com/package/@maltjoy/core)     | <a href="https://www.npmjs.com/package/@maltjoy/core" target="_blank"><img src="https://img.shields.io/npm/dm/@maltjoy/core.svg" alt="NPM Downloads" /></a>     | [`README.md`](./core/README.md) |
