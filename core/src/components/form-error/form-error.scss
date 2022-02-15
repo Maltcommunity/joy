@@ -4,7 +4,7 @@
     /**
      * @prop --form-error-color: color for the error text
      */
-    --form-error-color: var(--joy-color-error);
+    --form-error-color: var(--joy-color-text-error);
 
     color: var(--form-error-color);
     @include utils.getFontProperties(s);

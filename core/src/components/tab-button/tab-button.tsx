@@ -1,5 +1,8 @@
 import {Component, Element, Event, EventEmitter, h, Host, Method, Prop} from '@stencil/core';
 
+/**
+ * @internal
+ */
 @Component({
     tag: 'joy-tab-button',
     styleUrl: 'tab-button.scss',

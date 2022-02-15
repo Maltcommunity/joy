@@ -17,7 +17,7 @@ $TAG_COLOR_CONFIG: (
     primary: (
         normal:(
             color: white,
-            background-color: var(--joy-color-secondary-50)
+            background-color: var(--joy-color-secondary-30)
         ),
         hover:(
             color: white,
@@ -35,11 +35,11 @@ $TAG_COLOR_CONFIG: (
         ),
         hover:(
             color: white,
-            background-color: var(--joy-color-secondary-50)
+            background-color: var(--joy-color-secondary-30)
         ),
         active: (
             color: white,
-            background-color: var(--joy-color-secondary-90)
+            background-color: var(--joy-color-secondary-50)
         )
     ),
     special: (

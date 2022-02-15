@@ -12,7 +12,7 @@ $_bg: white;
 }
 
 .joy-panel {
-    padding: var(--joy-color-spacing-9);
+    padding: var(--joy-core-spacing-9);
     background-color: $_bg;
     border-radius: var(--joy-core-radius-3);
     position: relative;
@@ -22,7 +22,7 @@ $_bg: white;
     }
 
     @media screen and (max-width: 767px) {
-        padding: var(--joy-spacing-8);
+        padding: var(--joy-core-spacing-8);
     }
 
     &__header {
