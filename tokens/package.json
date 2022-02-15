@@ -1,6 +1,6 @@
 {
   "name": "@maltjoy/tokens",
-  "version": "0.6.0",
+  "version": "1.0.0",
   "description": "Malt design system tokens ecosystem",
   "files": [
     "dist",
