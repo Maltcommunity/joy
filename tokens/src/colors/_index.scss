@@ -1,56 +1,101 @@
+/**
+ * Declaring hexa with sass variables, and assign them to custom properties next, allows us to directly @use sass variables
+ * in order to easily use sass internal functions like color adjust, transparentize and so on
+ * Synthax like so : color: transparentize(var(--joy-red-thin, 0.2) is not allowed at the moment.
+ */
+
+$joy-red-thin: #FFF4F4;
+$joy-red-light: #FF7370;
+$joy-red-main: #FC5757;
+$joy-red-dark: #D4524F;
+$joy-red-darker: #A63633;
+
+$joy-teal-thin: #ECF3F4;
+$joy-teal-light: #0F6378;
+$joy-teal-main: #035266;
+$joy-teal-dark: #014554;
+
+$joy-turquoise-thin: #EEFCFB;
+$joy-turquoise-light: #33E5DB;
+$joy-turquoise-main: #12CFC9;
+$joy-turquoise-dark: #0AB8AD;
+
+$joy-yellow-thin: #FFFBED;
+$joy-yellow-light: #FCCF5E;
+$joy-yellow-main: #FFC200;
+$joy-yellow-dark: #F0B021;
+
+$joy-pink-light: #FFB0F7;
+$joy-pink-main: #FF91F0;
+$joy-pink-dark: #EB73DE;
+
+$joy-blue-light: #264FFA;
+$joy-blue-main: #0529FC;
+$joy-blue-dark: #0833BD;
+
+$joy-neutral-1: #FCFCF7;
+$joy-neutral-2: #f7f7f5;
+$joy-neutral-3: #E0DED9;
+$joy-neutral-4: #737370;
+$joy-neutral-5: #4B4B4B;
+$joy-neutral-6: #333330;
+$joy-neutral-7: #181818;
+
+$joy-overlay: rgba(51, 51, 48, 0.4);
+
+
 @mixin getPaletteProperties() {
     // Palette
-    --joy-red-thin: #FFF4F4;
-    --joy-red-light: #FF7370;
-    --joy-red-main: #FC5757;
-    --joy-red-dark: #D4524F;
-    --joy-red-darker: #A63633;
+    --joy-red-thin: #{$joy-red-thin};
+    --joy-red-light: #{$joy-red-light};
+    --joy-red-main: #{$joy-red-main};
+    --joy-red-dark: #{$joy-red-dark};
+    --joy-red-darker: #{$joy-red-dark};
 
-    --joy-teal-thin: #ECF3F4;
-    --joy-teal-light: #0F6378;
-    --joy-teal-main: #035266;
-    --joy-teal-dark: #014554;
+    --joy-teal-thin: #{$joy-teal-thin};
+    --joy-teal-light: #{$joy-teal-light};
+    --joy-teal-main: #{$joy-teal-main};
+    --joy-teal-dark: #{$joy-teal-dark};
 
-    --joy-turquoise-thin: #EEFCFB;
-    --joy-turquoise-light: #33E5DB;
-    --joy-turquoise-main: #12CFC9;
-    --joy-turquoise-dark: #0AB8AD;
+    --joy-turquoise-thin: #{$joy-turquoise-thin};
+    --joy-turquoise-light: #{$joy-turquoise-light};
+    --joy-turquoise-main: #{$joy-turquoise-main};
+    --joy-turquoise-dark: #{$joy-turquoise-dark};
 
-    --joy-yellow-thin: #FFFBED;
-    --joy-yellow-light: #FCCF5E;
-    --joy-yellow-main: #FFC200;
-    --joy-yellow-dark: #F0B021;
+    --joy-yellow-thin: #{$joy-yellow-thin};
+    --joy-yellow-light: #{$joy-yellow-light};
+    --joy-yellow-main: #{$joy-yellow-main};
+    --joy-yellow-dark: #{$joy-yellow-dark};
 
     // Brand colors
-    --joy-pink-light: #FFB0F7;
-    --joy-pink-main: #FF91F0;
-    --joy-pink-dark: #EB73DE;
+    --joy-pink-light: #{$joy-pink-light};
+    --joy-pink-main: #{$joy-pink-main};
+    --joy-pink-dark: #{$joy-pink-dark};
 
-    --joy-blue-light: #264FFA;
-    --joy-blue-main: #0529FC;
-    --joy-blue-dark: #0833BD;
+    --joy-blue-light: #{$joy-blue-light};
+    --joy-blue-main: #{$joy-blue-main};
+    --joy-blue-dark: #{$joy-blue-dark};
     //
 
     // Neutral colors
-    --joy-gray-1: #FCFCF7;
-    --joy-gray-2: #f7f7f5;
-    --joy-gray-3: #E0DED9;
-    --joy-gray-4: #737370;
-    --joy-gray-5: #4B4B4B;
-    --joy-gray-6: #333330;
-    --joy-gray-7: #181818;
+    --joy-gray-1: #{$joy-neutral-1};
+    --joy-gray-2: #{$joy-neutral-2};
+    --joy-gray-3: #{$joy-neutral-3};
+    --joy-gray-4: #{$joy-neutral-4};
+    --joy-gray-5: #{$joy-neutral-5};
+    --joy-gray-6: #{$joy-neutral-6};
+    --joy-gray-7: #{$joy-neutral-7};
 }
 
 @mixin getContextualPaletteProperties() {
     // States, contextual
-    --joy-focus-hover: var(--joy-teal-main);
-    --joy-error: var(--joy-red-main);
-    --joy-error-hover: var(--joy-red-darker);
-    --joy-state-disabled: var(--joy-gray-1);
-
-    --joy-text-color: var(--joy-gray-5);
+    --joy-focus-hover: #{$joy-teal-main};
+    --joy-error: #{$joy-red-main};
+    --joy-error-hover: #{$joy-red-darker};
+    --joy-state-disabled: #{$joy-neutral-1};
+    --joy-text-color: #{$joy-neutral-5};
 }
 
 @mixin getOverlayProperties() {
-    --joy-overlay: rgba(51, 51, 48, 0.4);
+    --joy-overlay: #{$joy-overlay};
 }

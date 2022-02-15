@@ -1,6 +1,6 @@
 {
   "name": "@maltjoy/tokens",
-  "version": "0.4.1",
+  "version": "0.5.0",
   "description": "Malt design system tokens ecosystem",
   "files": [
     "dist",
@@ -11,7 +11,7 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "kevin@malt.com",
-  "license": "ISC",
+  "license": "MIT",
   "devDependencies": {
     "sass": "^1.49.7"
   }
