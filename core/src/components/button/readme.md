@@ -126,6 +126,10 @@ Type: `Promise<void>`
 
 ## Dependencies
 
+### Used by
+
+ - [joy-bottom-sheet](../bottom-sheet)
+
 ### Depends on
 
 - [joy-icon](../icon)
@@ -136,6 +140,7 @@ Type: `Promise<void>`
 graph TD;
   joy-button --> joy-icon
   joy-button --> joy-spinner
+  joy-bottom-sheet --> joy-button
   style joy-button fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

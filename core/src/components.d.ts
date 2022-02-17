@@ -85,6 +85,24 @@ export namespace Components {
          */
         "visibleText": boolean;
     }
+    interface JoyBottomSheet {
+        /**
+          * Call this method to close the bottom sheet. Example: el.close()
+         */
+        "close": () => Promise<void>;
+        /**
+          * close-label used for close button. Default: 'Close'
+         */
+        "closeLabel": string;
+        /**
+          * close-variant used for close button. Default: 'primary' See: joy-button documentation
+         */
+        "closeVariant": ButtonVariants;
+        /**
+          * Call this method to open the bottom sheet. Example: el.open()
+         */
+        "open": () => Promise<void>;
+    }
     interface JoyButton {
         /**
           * Allows to display the spinner while asynchronous tasks are pending
@@ -837,6 +855,12 @@ declare global {
         prototype: HTMLJoyBadgeLevelElement;
         new (): HTMLJoyBadgeLevelElement;
     };
+    interface HTMLJoyBottomSheetElement extends Components.JoyBottomSheet, HTMLStencilElement {
+    }
+    var HTMLJoyBottomSheetElement: {
+        prototype: HTMLJoyBottomSheetElement;
+        new (): HTMLJoyBottomSheetElement;
+    };
     interface HTMLJoyButtonElement extends Components.JoyButton, HTMLStencilElement {
     }
     var HTMLJoyButtonElement: {
@@ -1041,6 +1065,7 @@ declare global {
         "joy-avatar": HTMLJoyAvatarElement;
         "joy-avatars-list": HTMLJoyAvatarsListElement;
         "joy-badge-level": HTMLJoyBadgeLevelElement;
+        "joy-bottom-sheet": HTMLJoyBottomSheetElement;
         "joy-button": HTMLJoyButtonElement;
         "joy-checkbox": HTMLJoyCheckboxElement;
         "joy-company-avatar": HTMLJoyCompanyAvatarElement;
@@ -1154,6 +1179,16 @@ declare namespace LocalJSX {
           * Display text label
          */
         "visibleText"?: boolean;
+    }
+    interface JoyBottomSheet {
+        /**
+          * close-label used for close button. Default: 'Close'
+         */
+        "closeLabel"?: string;
+        /**
+          * close-variant used for close button. Default: 'primary' See: joy-button documentation
+         */
+        "closeVariant"?: ButtonVariants;
     }
     interface JoyButton {
         /**
@@ -1935,6 +1970,7 @@ declare namespace LocalJSX {
         "joy-avatar": JoyAvatar;
         "joy-avatars-list": JoyAvatarsList;
         "joy-badge-level": JoyBadgeLevel;
+        "joy-bottom-sheet": JoyBottomSheet;
         "joy-button": JoyButton;
         "joy-checkbox": JoyCheckbox;
         "joy-company-avatar": JoyCompanyAvatar;
@@ -1979,6 +2015,7 @@ declare module "@stencil/core" {
             "joy-avatar": LocalJSX.JoyAvatar & JSXBase.HTMLAttributes<HTMLJoyAvatarElement>;
             "joy-avatars-list": LocalJSX.JoyAvatarsList & JSXBase.HTMLAttributes<HTMLJoyAvatarsListElement>;
             "joy-badge-level": LocalJSX.JoyBadgeLevel & JSXBase.HTMLAttributes<HTMLJoyBadgeLevelElement>;
+            "joy-bottom-sheet": LocalJSX.JoyBottomSheet & JSXBase.HTMLAttributes<HTMLJoyBottomSheetElement>;
             "joy-button": LocalJSX.JoyButton & JSXBase.HTMLAttributes<HTMLJoyButtonElement>;
             "joy-checkbox": LocalJSX.JoyCheckbox & JSXBase.HTMLAttributes<HTMLJoyCheckboxElement>;
             "joy-company-avatar": LocalJSX.JoyCompanyAvatar & JSXBase.HTMLAttributes<HTMLJoyCompanyAvatarElement>;
