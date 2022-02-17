@@ -1,6 +1,6 @@
 import {Component, Element, Host, h, Prop, State, Watch, Build} from '@stencil/core';
 import {IconsSizes, IconColors} from '../../types';
-import { getSvgContent, ioniconContent } from './requests';
+import { getSvgContent, joyIconContent } from './requests';
 import { getIconUrl } from './utils';
 
 @Component({
@@ -83,12 +83,12 @@ export class Icon {
             // `http://dev.malt.fr/assets/wc/build/icons/${this.name}.svg`;
 
             if (url) {
-                if (ioniconContent.has(url)) {
+                if (joyIconContent.has(url)) {
                     // sync if it's already loaded
-                    this.svgContent = ioniconContent.get(url);
+                    this.svgContent = joyIconContent.get(url);
                 } else {
                     // async if it hasn't been loaded
-                    getSvgContent(url, true).then(() => (this.svgContent = ioniconContent.get(url)));
+                    getSvgContent(url, true).then(() => (this.svgContent = joyIconContent.get(url)));
                 }
             }
         }

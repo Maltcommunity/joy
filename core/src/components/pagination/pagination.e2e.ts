@@ -14,8 +14,8 @@ describe('pagination e2e', () => {
 
         await page.setContent('<joy-pagination total-pages="10"></joy-pagination>');
         const component: E2EElement = await page.find('joy-pagination');
-        const prevLink = await component.find('joy-pagination .joy-pagination__previous a');
-        const nextLink = await component.find('joy-pagination .joy-pagination__next a');
+        const prevLink = await component.find('joy-pagination >>> .joy-pagination__previous a');
+        const nextLink = await component.find('joy-pagination >>> .joy-pagination__next a');
 
         expect(prevLink).toBe(null);
         expect(nextLink).toBe(null);
@@ -25,9 +25,8 @@ describe('pagination e2e', () => {
         const page: E2EPage = await newE2EPage();
 
         await page.setContent('<joy-pagination total-pages="10" link-prev="https://toto.com" link-next="https://toto.com"></joy-pagination>');
-        const component: E2EElement = await page.find('joy-pagination');
-        const prevLink = await component.find('joy-pagination .joy-pagination__previous a');
-        const nextLink = await component.find('joy-pagination .joy-pagination__next a');
+        const prevLink = await page.find('joy-pagination >>> .joy-pagination__previous a');
+        const nextLink = await page.find('joy-pagination >>> .joy-pagination__next a');
 
         expect(prevLink).not.toBeNull();
         expect(nextLink).not.toBeNull();
@@ -37,9 +36,8 @@ describe('pagination e2e', () => {
         const page: E2EPage = await newE2EPage();
 
         await page.setContent('<joy-pagination total-pages="10" label-prev="Previous page" label-next="Next page"></joy-pagination>');
-        const component: E2EElement = await page.find('joy-pagination');
-        const prevLink = await component.find('joy-pagination .joy-pagination__previous joy-icon');
-        const nextLink = await component.find('joy-pagination .joy-pagination__next joy-icon');
+        const prevLink = await page.find('joy-pagination >>> .joy-pagination__previous joy-icon');
+        const nextLink = await page.find('joy-pagination >>> .joy-pagination__next joy-icon');
 
         expect(prevLink).not.toBeNull();
         expect(nextLink).not.toBeNull();
@@ -59,20 +57,20 @@ describe('pagination e2e', () => {
         const pageChange = await page.spyOnEvent('joyChangePage');
 
         // Click on fourth page
-        const pageFour = await page.find('[data-page="4"]');
+        const pageFour = await page.find('joy-pagination >>> [data-page="4"]');
         await pageFour.click();
         await page.waitForChanges();
         expect(pageChange).toHaveReceivedEventDetail(4);
 
         // Click on previous page
-        const previousPage = await page.find('.joy-pagination__previous joy-icon');
+        const previousPage = await page.find('joy-pagination >>> .joy-pagination__previous');
         await previousPage.click();
         await page.waitForChanges();
 
         expect(pageChange).toHaveReceivedEventDetail(3);
 
         // Click on 3 next pages
-        const nextPage = await page.find('.joy-pagination__next joy-icon');
+        const nextPage = await page.find('joy-pagination >>> .joy-pagination__next');
         await nextPage.click();
         await nextPage.click();
         await nextPage.click();
@@ -89,7 +87,7 @@ describe('pagination e2e', () => {
         const pageChange = await page.spyOnEvent('joyChangePage');
 
         // Click on previous page
-        const previousPage = await page.find('.joy-pagination__previous joy-icon');
+        const previousPage = await page.find('joy-pagination >>> .joy-pagination__previous joy-icon');
         await previousPage.click();
         await page.waitForChanges();
 
@@ -104,7 +102,7 @@ describe('pagination e2e', () => {
         const pageChange = await page.spyOnEvent('joyChangePage');
 
         // Click on previous page
-        const nextPage = await page.find('.joy-pagination__next joy-icon');
+        const nextPage = await page.find('joy-pagination >>> .joy-pagination__next joy-icon');
         await nextPage.click();
         await page.waitForChanges();
 
@@ -115,8 +113,8 @@ describe('pagination e2e', () => {
         const page: E2EPage = await newE2EPage();
 
         await page.setContent('<joy-pagination total-pages="3"></joy-pagination>');
-        const separatorFirstPage: E2EElement = await page.find('joy-pagination .joy-pagination__separator-after');
-        const separatorLastPage: E2EElement = await page.find('joy-pagination .joy-pagination__separator-before');
+        const separatorFirstPage: E2EElement = await page.find('joy-pagination >>> .joy-pagination__separator-after');
+        const separatorLastPage: E2EElement = await page.find('joy-pagination >>> .joy-pagination__separator-before');
         expect(separatorFirstPage).toBe(null);
         expect(separatorLastPage).toBe(null);
     });
@@ -125,15 +123,15 @@ describe('pagination e2e', () => {
         const page: E2EPage = await newE2EPage();
 
         await page.setContent('<joy-pagination total-pages="12"></joy-pagination>');
-        const separatorFirstPage: E2EElement = await page.find('joy-pagination .joy-pagination__separator-after');
-        const separatorLastPage: E2EElement = await page.find('joy-pagination .joy-pagination__separator-before');
+        const separatorFirstPage: E2EElement = await page.find('joy-pagination >>> .joy-pagination__separator-after');
+        const separatorLastPage: E2EElement = await page.find('joy-pagination >>> .joy-pagination__separator-before');
         expect(separatorFirstPage).toBe(null);
         expect(separatorLastPage).not.toBe(null);
 
         // Quick check to be sure pages 1,2,3,4,5 and 12 only are rendered
-        const secondPage: E2EElement = await page.find('joy-pagination [data-page="2"]');
-        const fifthPage: E2EElement = await page.find('joy-pagination [data-page="5"]');
-        const sixthPage: E2EElement = await page.find('joy-pagination [data-page="6"]');
+        const secondPage: E2EElement = await page.find('joy-pagination >>> [data-page="2"]');
+        const fifthPage: E2EElement = await page.find('joy-pagination >>> [data-page="5"]');
+        const sixthPage: E2EElement = await page.find('joy-pagination >>> [data-page="6"]');
 
         expect(secondPage).not.toBe(null);
         expect(fifthPage).not.toBe(null);
@@ -144,16 +142,16 @@ describe('pagination e2e', () => {
         const page: E2EPage = await newE2EPage();
 
         await page.setContent('<joy-pagination total-pages="12" current-page="5"></joy-pagination>');
-        const separatorFirstPage: E2EElement = await page.find('joy-pagination .joy-pagination__separator-after');
-        const separatorLastPage: E2EElement = await page.find('joy-pagination .joy-pagination__separator-before');
+        const separatorFirstPage: E2EElement = await page.find('joy-pagination >>> .joy-pagination__separator-after');
+        const separatorLastPage: E2EElement = await page.find('joy-pagination >>> .joy-pagination__separator-before');
         expect(separatorFirstPage).not.toBe(null);
         expect(separatorLastPage).not.toBe(null);
 
         // Quick check to be sure pages 1,3,4,5,6,12 only are rendered
-        const secondPage: E2EElement = await page.find('joy-pagination [data-page="2"]');
-        const thirdPage: E2EElement = await page.find('joy-pagination [data-page="3"]');
-        const sixthPage: E2EElement = await page.find('joy-pagination [data-page="6"]');
-        const seventhPage: E2EElement = await page.find('joy-pagination [data-page="7"]');
+        const secondPage: E2EElement = await page.find('joy-pagination >>> [data-page="2"]');
+        const thirdPage: E2EElement = await page.find('joy-pagination >>> [data-page="3"]');
+        const sixthPage: E2EElement = await page.find('joy-pagination >>> [data-page="6"]');
+        const seventhPage: E2EElement = await page.find('joy-pagination >>> [data-page="7"]');
 
         expect(secondPage).toBe(null);
         expect(thirdPage).not.toBe(null);
@@ -165,15 +163,15 @@ describe('pagination e2e', () => {
         const page: E2EPage = await newE2EPage();
 
         await page.setContent('<joy-pagination total-pages="12" current-page="12"></joy-pagination>');
-        const separatorFirstPage: E2EElement = await page.find('joy-pagination .joy-pagination__separator-after');
-        const separatorLastPage: E2EElement = await page.find('joy-pagination .joy-pagination__separator-before');
+        const separatorFirstPage: E2EElement = await page.find('joy-pagination >>> .joy-pagination__separator-after');
+        const separatorLastPage: E2EElement = await page.find('joy-pagination >>> .joy-pagination__separator-before');
         expect(separatorFirstPage).not.toBe(null);
         expect(separatorLastPage).toBe(null);
 
         // Quick check to be sure pages 1, 8, 9, 10, 11, 12 only are rendered
-        const seventhPage: E2EElement = await page.find('joy-pagination [data-page="7"]');
-        const eighthPage: E2EElement = await page.find('joy-pagination [data-page="8"]');
-        const lastPage: E2EElement = await page.find('joy-pagination [data-page="12"]');
+        const seventhPage: E2EElement = await page.find('joy-pagination >>> [data-page="7"]');
+        const eighthPage: E2EElement = await page.find('joy-pagination >>> [data-page="8"]');
+        const lastPage: E2EElement = await page.find('joy-pagination >>> [data-page="12"]');
 
         expect(seventhPage).toBe(null);
         expect(eighthPage).not.toBe(null);

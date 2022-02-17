@@ -6,10 +6,10 @@ category: Webcomponents
 ---
 
 ```ui_example
-<joy-pagination total-pages="10" current-page="4"></joy-pagination
+<joy-pagination total-pages="10" current-page="4"></joy-pagination>
 ```
 
-## Recommended for complex HTML (tracking, signup...)
+## Recommended for complex HTML (tracking, signup...) and non SPA context
 Use slots in order to prevent too many custom attributes. Keep the same HTML structure as below, and customize with any data-attribute you need
 
 ```ui_example
@@ -22,13 +22,12 @@ Use slots in order to prevent too many custom attributes. Keep the same HTML str
         <li><button type="button">1</button><li>
         <li><button type="button">2</button><li>
         <li><button type="button">3</button><li>
-    
     </ul>
     
     <a href="#" slot="pagination-next">
         <joy-icon name="chevron-right"></joy-icon>
     </a>
-</joy-pagination
+</joy-pagination>
 ```
 
 <!-- Auto Generated Below -->

@@ -1,6 +1,15 @@
 @use '../../style/utils';
+@use './mixins';
 
 $_CLASS-PREFIX: '.joy-pagination';
+
+@mixin ulReset() {
+    list-style-type:  none;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    padding: 0;
+}
 
 #{$_CLASS-PREFIX} {
     --pagination-focus-color: var(--joy-color-neutral-6);
@@ -10,26 +19,6 @@ $_CLASS-PREFIX: '.joy-pagination';
     --pagination-color-hover: var(--joy-color-secondary-50);
     --pagination-bg-color-active: var(--joy-color-secondary-30);
 
-    @mixin focusState() {
-        &:after {
-            content: "";
-            position: absolute;
-            left: -1px;
-            top: -1px;
-            width: calc(100% + 2px);
-            height: calc(100% + 2px);
-            transition: box-shadow var(--joy-transition-duration-default);
-            border-radius: 50%;
-        }
-
-
-        &:focus-visible {
-            &:after {
-                box-shadow: 0 0 0 2px var(--pagination-focus-color);
-            }
-        }
-    }
-
     display: flex;
     flex-wrap: wrap;
     align-items: center;
@@ -38,109 +27,58 @@ $_CLASS-PREFIX: '.joy-pagination';
     list-style-type: none;
 
     ul {
-        list-style-type:  none;
-        display: flex;
-        flex-wrap: wrap;
-        align-items: center;
-        padding: 0;
+        @include ulReset();
+    }
+}
+
+::slotted(ul) {
+    @include ulReset();
+}
+
+li {
+    margin: 0 3px;
+
+    @include mixins.buttonsStyle();
+
+    &#{$_CLASS-PREFIX}__hidden {
+        opacity: 0.2;
+        pointer-events: none;
+
+        button, a {
+            cursor: not-allowed;
+        }
     }
 
-    li {
-        margin: 0 3px;
+    &#{$_CLASS-PREFIX}__arrow {
+        @include mixins.arrowsStyle();
+    }
 
-        &#{$_CLASS-PREFIX}__hidden {
-            opacity: 0.2;
-            pointer-events: none;
-
-            button, a {
-                cursor: not-allowed;
+    #{$_CLASS-PREFIX}__separator {
+        @mixin separator() {
+            &::before {
+                content: "...";
+                position: absolute;
+                color: var(--pagination-separator-text-color);
+                @content;
             }
         }
 
-        &#{$_CLASS-PREFIX}__arrow {
-            display: inline-flex;
-            align-items: center;
+        &-after {
+            margin-right: 30px;
 
-            a, button {
-                display: inline-flex;
-                align-items: center;
+            @include separator() {
+                left: calc(100% + 10px);
             }
 
         }
 
-        #{$_CLASS-PREFIX}__separator {
-            @mixin separator() {
-                &::before {
-                    content: "...";
-                    position: absolute;
-                    color: var(--pagination-separator-text-color);
-                    @content;
-                }
+        &-before {
+            margin-left: 30px;
+
+            @include separator() {
+                right: calc(100% + 10px);
             }
-
-            &-after {
-                margin-right: 30px;
-
-                @include separator() {
-                    left: calc(100% + 10px);
-                }
-
-            }
-
-            &-before {
-                margin-left: 30px;
-
-                @include separator() {
-                    right: calc(100% + 10px);
-                }
-            }
-        }
-
-        a, button, joy-icon {
-            $_SIZE: 36px;
-
-            position: relative;
-            cursor: pointer;
-            color: var(--pagination-cta-color);
-            background: none;
-            border: 0 none;
-            text-decoration: none;
-            @include utils.getFontProperties(l-bold);
-            transition: all 150ms ease;
-
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: $_SIZE;
-            height: $_SIZE;
-            border-radius: 50%;
-
-            &:hover {
-                background-color: var(--pagination-bg-color-hover);
-                color: var(--pagination-color-hover);
-
-                svg {
-                    color: var(--pagination-color-hover);
-                }
-            }
-
-            @include focusState();
-
-            &.current {
-                background-color: var(--pagination-bg-color-active);
-                color: white;
-                text-decoration: none;
-            }
-
-            &:active {
-                background-color: var(--pagination-bg-color-active);
-                color: white;
-
-                svg {
-                    color: white;
-                }
-            }
-
         }
     }
+
 }

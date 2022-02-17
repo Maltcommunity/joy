@@ -1,6 +1,6 @@
 import { validateContent } from './validate';
 
-export const ioniconContent = new Map<string, string>();
+export const joyIconContent = new Map<string, string>();
 const requests = new Map<string, Promise<any>>();
 
 export const getSvgContent = (url: string, sanitize: boolean) => {
@@ -16,17 +16,17 @@ export const getSvgContent = (url: string, sanitize: boolean) => {
                         if (svgContent && sanitize !== false) {
                             svgContent = validateContent(svgContent);
                         }
-                        ioniconContent.set(url, svgContent || '');
+                        joyIconContent.set(url, svgContent || '');
                     });
                 }
-                ioniconContent.set(url, '');
+                joyIconContent.set(url, '');
             });
 
             // cache for the same requests
             requests.set(url, req);
         } else {
             // set to empty for ssr scenarios and resolve promise
-            ioniconContent.set(url, '');
+            joyIconContent.set(url, '');
             return Promise.resolve();
         }
     }

@@ -366,7 +366,7 @@ export namespace Components {
         /**
           * Can be used as title and aria-label attributes for the next CTA
          */
-        "labelNext"?: string;
+        "labelNext"?: string | undefined;
         /**
           * Can be used as aria-label attribute for the full component
          */
@@ -374,7 +374,7 @@ export namespace Components {
         /**
           * Can be used as title and aria-label attributes for the previous CTA
          */
-        "labelPrev"?: string;
+        "labelPrev"?: string | undefined;
         /**
           * For synchrone implementations (not SPA, basically), allows to inject the URL for next CTA
          */
@@ -1466,7 +1466,7 @@ declare namespace LocalJSX {
         /**
           * Can be used as title and aria-label attributes for the next CTA
          */
-        "labelNext"?: string;
+        "labelNext"?: string | undefined;
         /**
           * Can be used as aria-label attribute for the full component
          */
@@ -1474,7 +1474,7 @@ declare namespace LocalJSX {
         /**
           * Can be used as title and aria-label attributes for the previous CTA
          */
-        "labelPrev"?: string;
+        "labelPrev"?: string | undefined;
         /**
           * For synchrone implementations (not SPA, basically), allows to inject the URL for next CTA
          */

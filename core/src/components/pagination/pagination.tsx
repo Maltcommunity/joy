@@ -9,22 +9,22 @@ import {Component, Prop, h, Event, EventEmitter, Watch, State} from '@stencil/co
 @Component({
     tag: 'joy-pagination',
     styleUrl: 'pagination.scss',
-    shadow: false,
+    shadow: true,
 })
 export class Pagination {
     @State() pages: number[] = [];
 
     /** Current page number */
-    @Prop({mutable: true}) currentPage: number = 1;
+    @Prop({mutable: true}) currentPage = 1;
 
     /** Total number of pages in order to construct the pagination */
-    @Prop() totalPages: number = 1;
+    @Prop() totalPages = 1;
 
     /** Can be used as aria-label attribute for the full component */
     @Prop() labelPagination?: string;
 
     /** Can be used as title and aria-label attributes for the previous CTA */
-    @Prop() labelPrev?: string = '';
+    @Prop() labelPrev? = '';
 
     /** For synchrone implementations (not SPA, basically), allows to inject the URL for previous CTA */
     @Prop() linkPrev?: string;
@@ -32,13 +32,13 @@ export class Pagination {
     @Prop() heapPrev?: string;
 
     /** Can be used as title and aria-label attributes for the next CTA */
-    @Prop() labelNext?: string = '';
+    @Prop() labelNext? = '';
     /** For synchrone implementations (not SPA, basically), allows to inject the URL for next CTA */
     @Prop() linkNext?: string;
     /** data-heap attribute for next CTA. We should avoid as much as possible to use this kind of props inside the webcomponents */
     @Prop() heapNext?: string;
 
-    private maxPagesToDisplay: number = 6; // first page, last page, and 4 others
+    private maxPagesToDisplay = 6; // first page, last page, and 4 others
 
     /** use @joyChangePage="yourMethod" for Vue apps, to handle pagination change. Clicked page is returned */
     @Event({
@@ -125,6 +125,7 @@ export class Pagination {
     get prevIcon(): HTMLJoyIconElement {
         return (
             <joy-icon
+                class="joy-pagination__icon"
                 aria-label={this.labelPrev}
                 title={this.labelPrev}
                 data-page={this.currentPage - 1}
@@ -138,6 +139,7 @@ export class Pagination {
     get nextIcon(): HTMLJoyIconElement {
         return (
             <joy-icon
+                class="joy-pagination__icon"
                 aria-label={this.labelNext}
                 title={this.labelNext}
                 data-page={this.currentPage + 1}
@@ -172,11 +174,11 @@ export class Pagination {
                         {...this.prevCustomAttributes}
                     >
                         <slot name="pagination-prev">
-                            {this.linkPrev && (
+                            {this.linkPrev &&
                                 <a href={this.linkPrev} rel="prev">
                                     {this.prevIcon}
                                 </a>
-                            )}
+                            }
                             {!this.linkPrev && this.prevIcon}
                         </slot>
                     </li>
