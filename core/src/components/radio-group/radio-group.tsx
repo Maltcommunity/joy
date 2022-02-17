@@ -83,7 +83,8 @@ export class RadioGroup implements ComponentInterface {
         ev.preventDefault();
 
         const selectedRadio = ev.target && (ev.target as HTMLElement).closest('joy-radio');
-        if (selectedRadio) {
+
+        if (selectedRadio && !selectedRadio.hasAttribute('disabled')) {
             const currentValue = this.value;
 
             const newValue = selectedRadio.value;

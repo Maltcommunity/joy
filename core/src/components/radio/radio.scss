@@ -92,7 +92,8 @@ $_CLASS: '.joy-radio';
             box-shadow: inset 0 0 0 3px white;
         }
 
-        &:not(.joy-radio-disabled):hover, &:not(.joy-radio-disabled):active {
+        &:not(.joy-radio-disabled):hover,
+        &:not(.joy-radio-disabled):active {
             span:before {
                 border-color: var(--radio-border-color-checked-hover);
                 background-color: var(--radio-bg-color-checked-hover);
@@ -115,10 +116,13 @@ $_CLASS: '.joy-radio';
             background-color: var(--radio-bg-color-invalid);
             border-color: var(--radio-border-color-invalid);
         }
-        &:hover {
-            span:before {
-                background-color: var(--radio-bg-color-invalid-hover);
-                border-color: var(--radio-border-color-invalid-hover);
+
+        &.joy-radio-checked {
+            &:hover {
+                span:before {
+                    background-color: var(--radio-bg-color-invalid-hover);
+                    border-color: var(--radio-border-color-invalid-hover);
+                }
             }
         }
     }

@@ -99,7 +99,12 @@ export class Radio {
         }
     }
 
-    private onClick = () => {
+    private onClick = (ev: Event) => {
+        if (this.disabled) {
+           ev.preventDefault();
+           return;
+        }
+
         this.joyRadioClick.emit();
     }
 

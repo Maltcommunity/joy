@@ -112,4 +112,26 @@ describe('radio group - e2e', () => {
 
         await defaultState();
     });
+
+    it('should not change value when I click on a disabled radio', async () => {
+        const page = await newE2EPage();
+        let secondRadio;
+
+        await page.setContent(`
+            <joy-radio-group name="radio-group" value="first">
+                <joy-radio class="first" value="first">First value</joy-radio>
+                <joy-radio class="second" disabled value="second">Second value, disabled</joy-radio>
+            </joy-radio-group>
+        `);
+
+        const radioChange = await page.spyOnEvent('joyRadioGroupChange');
+        secondRadio = await page.find('joy-radio-group .second');
+
+        // Click on second radio
+        await secondRadio.click();
+        await page.waitForChanges();
+
+        expect(secondRadio).toEqualAttribute('aria-checked', 'false');
+        expect(radioChange).not.toHaveReceivedEvent();
+    });
 });
