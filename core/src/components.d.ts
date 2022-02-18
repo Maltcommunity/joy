@@ -174,6 +174,29 @@ export namespace Components {
          */
         "value"?: string;
     }
+    interface JoyCheckboxWrapper {
+        /**
+          * Checkbox activated or not
+         */
+        "checked": boolean;
+        /**
+          * Disabled state
+         */
+        "disabled": boolean;
+        /**
+          * It will be applied as the hidden input name attribute (for the actual form)
+         */
+        "name": string;
+        /**
+          * Update checkbox value from outside the component
+          * @param newValue true or false...
+         */
+        "updateValue": (newValue: boolean) => Promise<void>;
+        /**
+          * Input value. TODO : check if we really need it as we use a checkbox system
+         */
+        "value"?: string;
+    }
     interface JoyCompanyAvatar {
         /**
           * Company avatar color
@@ -873,6 +896,12 @@ declare global {
         prototype: HTMLJoyCheckboxElement;
         new (): HTMLJoyCheckboxElement;
     };
+    interface HTMLJoyCheckboxWrapperElement extends Components.JoyCheckboxWrapper, HTMLStencilElement {
+    }
+    var HTMLJoyCheckboxWrapperElement: {
+        prototype: HTMLJoyCheckboxWrapperElement;
+        new (): HTMLJoyCheckboxWrapperElement;
+    };
     interface HTMLJoyCompanyAvatarElement extends Components.JoyCompanyAvatar, HTMLStencilElement {
     }
     var HTMLJoyCompanyAvatarElement: {
@@ -1068,6 +1097,7 @@ declare global {
         "joy-bottom-sheet": HTMLJoyBottomSheetElement;
         "joy-button": HTMLJoyButtonElement;
         "joy-checkbox": HTMLJoyCheckboxElement;
+        "joy-checkbox-wrapper": HTMLJoyCheckboxWrapperElement;
         "joy-company-avatar": HTMLJoyCompanyAvatarElement;
         "joy-counter": HTMLJoyCounterElement;
         "joy-divider-cta": HTMLJoyDividerCtaElement;
@@ -1233,6 +1263,28 @@ declare namespace LocalJSX {
         "variant"?: ButtonVariants;
     }
     interface JoyCheckbox {
+        /**
+          * Checkbox activated or not
+         */
+        "checked"?: boolean;
+        /**
+          * Disabled state
+         */
+        "disabled"?: boolean;
+        /**
+          * It will be applied as the hidden input name attribute (for the actual form)
+         */
+        "name"?: string;
+        /**
+          * Clicking on the component will fire this customEvent. use @joyCheckboxChange in Vue apps, and onJoyCheckboxChange for plain JavaScript.
+         */
+        "onJoyCheckboxChange"?: (event: CustomEvent<boolean>) => void;
+        /**
+          * Input value. TODO : check if we really need it as we use a checkbox system
+         */
+        "value"?: string;
+    }
+    interface JoyCheckboxWrapper {
         /**
           * Checkbox activated or not
          */
@@ -1973,6 +2025,7 @@ declare namespace LocalJSX {
         "joy-bottom-sheet": JoyBottomSheet;
         "joy-button": JoyButton;
         "joy-checkbox": JoyCheckbox;
+        "joy-checkbox-wrapper": JoyCheckboxWrapper;
         "joy-company-avatar": JoyCompanyAvatar;
         "joy-counter": JoyCounter;
         "joy-divider-cta": JoyDividerCta;
@@ -2018,6 +2071,7 @@ declare module "@stencil/core" {
             "joy-bottom-sheet": LocalJSX.JoyBottomSheet & JSXBase.HTMLAttributes<HTMLJoyBottomSheetElement>;
             "joy-button": LocalJSX.JoyButton & JSXBase.HTMLAttributes<HTMLJoyButtonElement>;
             "joy-checkbox": LocalJSX.JoyCheckbox & JSXBase.HTMLAttributes<HTMLJoyCheckboxElement>;
+            "joy-checkbox-wrapper": LocalJSX.JoyCheckboxWrapper & JSXBase.HTMLAttributes<HTMLJoyCheckboxWrapperElement>;
             "joy-company-avatar": LocalJSX.JoyCompanyAvatar & JSXBase.HTMLAttributes<HTMLJoyCompanyAvatarElement>;
             "joy-counter": LocalJSX.JoyCounter & JSXBase.HTMLAttributes<HTMLJoyCounterElement>;
             "joy-divider-cta": LocalJSX.JoyDividerCta & JSXBase.HTMLAttributes<HTMLJoyDividerCtaElement>;

@@ -8,10 +8,10 @@ export function renderInputOutsideShadowRoot(
     required = false,
 ): HTMLInputElement {
     /**
-     * Creates an hidden input outside our component shadowDOM, in the lightDOM
+     * Creates an hidden input outside our component shadowDOM, in the lightDOM, only if we didn't already injected one
      * It can be handled normally by forms
      */
-    let input: HTMLInputElement | null = container.querySelector('input.input-hidden');
+    let input: HTMLInputElement | null = container.querySelector('input');
 
     if (!input) {
         input = container.ownerDocument.createElement('input');
