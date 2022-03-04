@@ -43,3 +43,16 @@ export function onClickOutside(el: Node, fn: () => void): void {
 
     document.addEventListener('click', onClickOutsideListener);
 }
+
+
+/**
+ *
+ * @param {HTMLElement} target - the element you want to dispatch the event to
+ * @param {String} eventType - whatever native type you want : change, input, blur, focus...
+ * @param {any} eventDetail - as we use a custom event, you can give it the data you need
+ * @return {void}
+ */
+export function dispatchEvent<T>(target: HTMLElement, eventType: string, eventDetail?: T): void {
+    const event = new CustomEvent(eventType, {detail: eventDetail, bubbles: true, composed: true});
+    target.dispatchEvent(event);
+}

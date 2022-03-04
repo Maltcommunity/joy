@@ -1,0 +1,141 @@
+@use '../../../style/utils';
+
+$CLASS: '.joy-checkbox';
+$checkbox-svg: '%3Csvg%20width%3D%2211%22%20height%3D%229%22%20viewBox%3D%220%200%2011%209%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20fill-rule%3D%22evenodd%22%20clip-rule%3D%22evenodd%22%20d%3D%22M10.0831%200.000388909L3.66655%206.41696L0.91653%203.66694L0%204.5839L2.75002%207.33349L3.66655%208.25002L4.58308%207.33349L10.9997%200.916919L10.0831%200.000388909Z%22%20fill%3D%22%23FFFFFF%22%2F%3E%3C%2Fsvg%3E';
+
+@mixin defaultRules() {
+    --checkbox-size: 22px;
+    --checkbox-margin: 0 var(--joy-core-spacing-2) 0 0;
+    --checkbox-label-margin: var(--joy-core-spacing-4);
+    display: flex;
+}
+
+@mixin rootCheckboxRules() {
+    --checkbox-bg-hover: var(--joy-color-secondary-50);
+    --checkbox-bg-checked-hover: var(--joy-color-secondary-50);
+    --checkbox-bg-checked-active: var(--joy-color-secondary-90);
+    --checkbox-bg-checked: var(--joy-color-secondary-30);
+    --checkbox-color: var(--joy-color-neutral-6);
+    --checkbox-color-checked: var(--joy-color-secondary-50);
+    --checkbox-bg-disabled: var(--joy-color-neutral-3);
+    --checkbox-color-disabled: var(--joy-color-neutral-4);
+    --checkbox-border-disabled: var(--joy-color-neutral-3);
+    --checkbox-border-active: var(--joy-color-neutral-6);
+    --checkbox-color-slot-link: var(--joy-color-secondary-50);
+    --checkbox-radius: var(--joy-core-radius-1);
+    --checkbox-active-size: 26px;
+    @include defaultRules();
+}
+
+@mixin labelStyle() {
+    display: flex;
+    position: relative;
+    cursor: pointer;
+    width: 100%;
+    @include utils.getFontProperties(s);
+    @include utils.unselectable();
+    line-height: var(--checkbox-size);
+    margin-bottom: var(--checkbox-label-margin);
+}
+
+@mixin checkboxStyle {
+    #{$CLASS}__input {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-shrink: 0;
+        cursor: pointer;
+        margin: 0 var(--joy-core-spacing-2) 0 0;
+        padding: 0;
+        appearance: none;
+        box-sizing: border-box;
+        width: var(--checkbox-size);
+        height: var(--checkbox-size);
+        background-color: white;
+        border: 1px solid var(--joy-color-secondary-50);
+        border-radius: var(--checkbox-radius);
+        transition: background-color var(--joy-transition-duration-default) var(--joy-transition-timing-function);
+    }
+}
+
+@mixin checkboxCheckedStyle {
+    #{$CLASS}__input:checked {
+        color: var(--checkbox-color-checked);
+        background-image: url("data:image/svg+xml; utf8, #{$checkbox-svg}");
+        background-color: var(--checkbox-bg-checked);
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: 75%;
+    }
+}
+
+@mixin checkboxDisabledStyle() {
+    #{$CLASS}__input:disabled {
+        cursor: not-allowed;
+        border-color: var(--joy-color-neutral-3);
+
+        ~ #{$CLASS}__content-wrapper {
+            color: var(--joy-color-neutral-4);
+        }
+
+        &:checked {
+            background-color: var(--joy-color-neutral-3);
+        }
+    }
+}
+
+@mixin checkboxFocusStyle() {
+    #{$CLASS}__input:focus {
+        outline: none;
+
+        ~ * {
+            &:before {
+                position: absolute;
+                box-sizing: content-box;
+                top: -3px;
+                left: -33px;
+                content: "";
+                display: flex;
+                width: var(--checkbox-active-size);
+                height: var(--checkbox-active-size);
+                border-radius: var(--joy-core-radius-2);
+                border: 1px solid var(--checkbox-border-active);
+            }
+        }
+    }
+}
+
+@mixin checkboxCheckedHoverStyle {
+    &:hover #{$CLASS}__input:checked {
+        color: var(--checkbox-color-checked);
+        background-color: var(--checkbox-bg-checked-hover);
+    }
+}
+
+@mixin checkboxCheckedActiveStyle {
+    &:active #{$CLASS}__input:checked {
+        background-color: var(--checkbox-bg-checked-active);
+    }
+}
+
+@mixin checkboxContentStyle() {
+    #{$CLASS}__content-wrapper {
+        display: flex;
+        align-items: flex-start;
+        text-align: left;
+        position: relative;
+        flex: 1;
+        color: var(--checkbox-color);
+    }
+}
+
+@mixin linksStyle() {
+    --link-default-color: var(--joy-color-secondary-30);
+    --link-default-color-hover: var(--joy-color-secondary-50);
+    --link-default-color-visited: var(--joy-color-secondary-90);
+    --link-border-color-focus: var(--joy-color-neutral-6);
+
+    padding: 0 2px;
+    color: var(--link-default-color);
+    @include utils.getFontProperties(l);
+}

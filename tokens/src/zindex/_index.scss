@@ -1,15 +1,16 @@
-$joy-core-z-index-0: 0;
-$joy-core-z-index-1: 1;
-$joy-core-z-index-2: 10;
-$joy-core-z-index-3: 25;
-$joy-core-z-index-4: 1000;
-$joy-core-z-index-5: 10000;
+$joy-core-z-index-fixed-content: 20;
+$joy-core-z-index-dropdown: 23;
+$joy-core-z-index-dialog: 1050;
+$joy-core-z-index-picker: 1051;
+$joy-core-z-index-tooltip: 1052;
+$joy-core-z-index-snackbar: 1053;
+
 
 @mixin getZindexProperties() {
-  --joy-core-z-index-0: #{$joy-core-z-index-0};
-  --joy-core-z-index-1: #{$joy-core-z-index-1};
-  --joy-core-z-index-2: #{$joy-core-z-index-2};
-  --joy-core-z-index-3: #{$joy-core-z-index-3};
-  --joy-core-z-index-4: #{$joy-core-z-index-4};
-  --joy-core-z-index-5: #{$joy-core-z-index-5};
+  --joy-core-z-index-fixed-content: #{$joy-core-z-index-fixed-content};
+  --joy-core-z-index-dropdown: #{$joy-core-z-index-dropdown};
+  --joy-core-z-index-tooltip: #{$joy-core-z-index-tooltip};
+  --joy-core-z-index-dialog: #{$joy-core-z-index-dialog};
+  --joy-core-z-index-picker: #{$joy-core-z-index-picker};
+  --joy-core-z-index-snackbar: #{$joy-core-z-index-snackbar};
 }

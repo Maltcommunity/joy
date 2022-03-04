@@ -1,0 +1,7 @@
+@use 'src/components/checkbox/style/shared' as *;
+
+joy-checkbox {
+    a, p a {
+        @include linksStyle();
+    }
+}

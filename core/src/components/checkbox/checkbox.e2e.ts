@@ -52,66 +52,67 @@ describe('checkbox e2e', () => {
         const page = await newE2EPage();
         await page.setContent('<joy-checkbox>I am a checkbox</joy-checkbox>');
         const checkboxChange = await page.spyOnEvent('joyCheckboxChange');
-        const checkbox = await page.find('joy-checkbox >>> .joy-checkbox');
-        const actualInput = await page.find('joy-checkbox .input-hidden');
+        const el = await page.find('joy-checkbox');
 
         // ON
-        await checkbox.click();
+        await el.click();
         await page.waitForChanges();
+        const wrapper = await page.find('joy-checkbox >>> .joy-checkbox');
+        const checkbox = await page.find('joy-checkbox >>> input');
+
         expect(checkboxChange).toHaveReceivedEvent();
-        expect(checkbox).toHaveClass('joy-checkbox__checked');
-        expect(actualInput).toEqualAttribute('value', 'true');
+        expect(wrapper).toHaveClass('joy-checkbox__checked');
+        expect(checkbox).toEqualAttribute('aria-checked', true);
 
         // OFF
-        await checkbox.click();
+        await el.click();
         await page.waitForChanges();
         expect(checkboxChange).toHaveReceivedEvent();
-        expect(checkbox).not.toHaveClass('joy-checkbox__checked');
-        expect(actualInput).toEqualAttribute('value', 'false');
+        expect(wrapper).not.toHaveClass('joy-checkbox__checked');
+        expect(checkbox).toEqualAttribute('aria-checked', false);
     });
 
-    it('should update input value when we change checked prop outside from the component (unchecked by default)', async () => {
-        const page = await newE2EPage();
-        await page.setContent('<joy-checkbox>I am a checkbox</joy-checkbox>');
-        const actualInput = await page.find('joy-checkbox .input-hidden');
-        const el = await page.find('joy-checkbox');
-
-        expect(actualInput).toEqualAttribute('value', 'false');
-
-        await el.callMethod('updateValue', true);
-        await page.waitForChanges();
-
-        expect(actualInput).toEqualAttribute('value', 'true');
-    });
-
-    it('should update input value when we change checked prop outside from the component (checked by default)', async () => {
-        const page = await newE2EPage();
-        await page.setContent('<joy-checkbox checked>I am a checkbox</joy-checkbox>');
-        const actualInput = await page.find('joy-checkbox .input-hidden');
-        const el = await page.find('joy-checkbox');
-
-        expect(actualInput).toEqualAttribute('value', 'true');
-
-        await el.callMethod('updateValue', false);
-        await page.waitForChanges();
-
-        expect(actualInput).toEqualAttribute('value', 'false');
-    });
-
-    it('should update value by simply clicking on component', async () => {
-        /**
-         * Just a basic check to verify if a simple clic triggers the right update
-         */
+    it('should update input checked when we change checked prop outside from the component (unchecked by default)', async () => {
         const page = await newE2EPage();
         await page.setContent('<joy-checkbox>I am a checkbox</joy-checkbox>');
         const el = await page.find('joy-checkbox');
-        const actualInput = await page.find('joy-checkbox .input-hidden');
-        const fakeInput = await page.find('joy-checkbox >>> .joy-checkbox__input');
+
+        await el.setAttribute('checked', '');
+        await page.waitForChanges();
+        const label = await page.find('joy-checkbox >>> .joy-checkbox__checked');
+
+        expect(el).toHaveAttribute('checked');
+        expect(label).not.toBeNull();
+    });
+
+    it('should update hidden input with the value or not, according to checked state', async () => {
+        const page = await newE2EPage();
+        await page.setContent('<joy-checkbox value="first">I am a checkbox</joy-checkbox>');
+        const el = await page.find('joy-checkbox');
+        const hiddenInput = await page.find('joy-checkbox input');
 
         await el.click();
         await page.waitForChanges();
+        expect(hiddenInput).toEqualAttribute('value', 'first');
 
-        expect(actualInput).toEqualAttribute('value', 'true');
-        expect(fakeInput).toEqualAttribute('aria-checked', true);
+        await el.click();
+        await page.waitForChanges();
+        expect(hiddenInput).toEqualAttribute('value', '');
+    });
+
+    it('should not prevent default behavior, when we click on a link included in the label', async () => {
+        const page = await newE2EPage();
+        await page.setContent('<joy-checkbox value="first"><span>I am a checkbox</span><a href="#">with a link</a></joy-checkbox>');
+        const el = await page.find('joy-checkbox');
+        const link = await page.find('a');
+        const span = await page.find('span'); // this span does not include the link
+
+        await link.click();
+        await page.waitForChanges();
+        expect(el).not.toHaveAttribute('checked');
+
+        await span.click();
+        await page.waitForChanges();
+        expect(el).toHaveAttribute('checked');
     });
 });

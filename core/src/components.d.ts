@@ -165,14 +165,14 @@ export namespace Components {
          */
         "name": string;
         /**
-          * Update checkbox value from outside the component
-          * @param newValue true or false...
+          * Update checkbox state from outside the component
+          * @param newValue
          */
         "updateValue": (newValue: boolean) => Promise<void>;
         /**
-          * Input value. TODO : check if we really need it as we use a checkbox system
+          * Input value. Input value != checked state ! If you need to get the state checked/not checked, simply use checked prop
          */
-        "value"?: string;
+        "value": string;
     }
     interface JoyCompanyAvatar {
         /**
@@ -1250,7 +1250,7 @@ declare namespace LocalJSX {
          */
         "onJoyCheckboxChange"?: (event: CustomEvent<boolean>) => void;
         /**
-          * Input value. TODO : check if we really need it as we use a checkbox system
+          * Input value. Input value != checked state ! If you need to get the state checked/not checked, simply use checked prop
          */
         "value"?: string;
     }

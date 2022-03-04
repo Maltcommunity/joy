@@ -1,0 +1,22 @@
+/**
+ * This file uses the same mixins than our custom element implementation.
+ * If you can't use the webcomponent for any reason, simply use this plain CSS fallback.
+ */
+
+@use 'src/components/checkbox/style/shared' as *;
+
+#{$CLASS} {
+    @include rootCheckboxRules();
+    @include labelStyle();
+    @include checkboxContentStyle();
+
+    /**
+     * Checkbox states
+     */
+    @include checkboxStyle();
+    @include checkboxCheckedStyle();
+    @include checkboxCheckedHoverStyle();
+    @include checkboxCheckedActiveStyle();
+    @include checkboxDisabledStyle();
+    @include checkboxFocusStyle();
+}

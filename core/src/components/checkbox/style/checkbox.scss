@@ -1,0 +1,35 @@
+@use '../../../style/utils';
+@use 'src/components/checkbox/style/shared' as *;
+
+:host {
+    @include rootCheckboxRules();
+}
+
+#{$CLASS} {
+    @include labelStyle();
+    @include checkboxStyle();
+    @include checkboxFocusStyle();
+    @include checkboxCheckedStyle();
+    @include checkboxCheckedHoverStyle();
+    @include checkboxCheckedActiveStyle();
+    @include checkboxDisabledStyle();
+    @include checkboxContentStyle();
+}
+
+/**
+If this rule is too generic, apply it for p and a tags only
+ */
+::slotted(*) {
+    display: block;
+    width: 100%;
+    margin-top: 0;
+    margin-bottom: var(--joy-core-spacing-1);
+}
+
+::slotted(a) {
+    @include linksStyle();
+}
+
+::slotted(small) {
+    @include utils.getFontProperties(xs);
+}
