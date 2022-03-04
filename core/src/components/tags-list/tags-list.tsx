@@ -9,13 +9,12 @@ export class JoyTagsList {
     @Element() el!: HTMLJoyTagsListElement;
 
     componentDidLoad() {
-       this.specificTagListClass();
+        this.specificTagListClass();
     }
 
     private specificTagListClass() {
         const className = 'joy-tags-list-item';
-        Array.from(this.el.querySelectorAll('joy-tag'))
-            .forEach((tag) => !tag.classList.contains(className) && tag.classList.add(className));
+        Array.from(this.el.querySelectorAll('joy-tag')).forEach((tag) => !tag.classList.contains(className) && tag.classList.add(className));
     }
 
     private handleSlotChange = () => {

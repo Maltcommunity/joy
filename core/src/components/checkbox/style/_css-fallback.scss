@@ -3,7 +3,7 @@
  * If you can't use the webcomponent for any reason, simply use this plain CSS fallback.
  */
 
-@use 'src/components/checkbox/style/shared' as *;
+@use './shared' as *;
 
 #{$CLASS} {
     @include rootCheckboxRules();

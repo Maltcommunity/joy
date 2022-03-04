@@ -25,11 +25,12 @@ export class Tooltip {
 
     render() {
         return (
-            <Host class={{
-                'joy-tooltip': true,
-                ...this.variantClass,
-                ...this.positionClass,
-            }}
+            <Host
+                class={{
+                    'joy-tooltip': true,
+                    ...this.variantClass,
+                    ...this.positionClass,
+                }}
             >
                 <slot name="tooltip-content" />
             </Host>

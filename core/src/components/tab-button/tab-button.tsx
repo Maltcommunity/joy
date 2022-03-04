@@ -1,8 +1,5 @@
 import {Component, Element, Event, EventEmitter, h, Host, Method, Prop} from '@stencil/core';
 
-/**
- * @internal
- */
 @Component({
     tag: 'joy-tab-button',
     styleUrl: 'tab-button.scss',
@@ -86,15 +83,13 @@ export class JoyTabButton {
     }
 
     private onClick = async (ev: Event) => {
-        if (this.tab !== undefined) {
+        if (this.tab !== undefined && !this.href) {
+            ev.preventDefault();
             this.joyTabButtonClick.emit({
                 selectedTab: this.tab,
                 href: this.href || '',
             });
             await this.selectTabButton(true);
-        }
-        if (!this.href) {
-            ev.preventDefault();
         }
     };
 }

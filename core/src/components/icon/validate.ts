@@ -1,6 +1,6 @@
-import { isStr } from './utils';
+import {isStr} from './utils';
 
-export const validateContent = (svgContent: string) => {
+export const validateContent = (svgContent: string): string => {
     const div = document.createElement('div');
     div.innerHTML = svgContent;
 
@@ -20,14 +20,14 @@ export const validateContent = (svgContent: string) => {
         // root element must be an svg
         // lets double check we've got valid elements
         // do not allow scripts
-        if (isValid(svgElm as any)) {
+        if (isValid(svgElm)) {
             return div.innerHTML;
         }
     }
     return '';
 };
 
-export const isValid = (elm: HTMLElement) => {
+export const isValid = (elm: Element): boolean => {
     if (elm.nodeType === 1) {
         if (elm.nodeName.toLowerCase() === 'script') {
             return false;
@@ -41,7 +41,7 @@ export const isValid = (elm: HTMLElement) => {
         }
 
         for (let i = 0; i < elm.childNodes.length; i++) {
-            if (!isValid(elm.childNodes[i] as any)) {
+            if (!isValid(elm.childNodes[i] as Element)) {
                 return false;
             }
         }

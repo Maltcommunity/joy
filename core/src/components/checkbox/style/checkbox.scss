@@ -1,5 +1,5 @@
 @use '../../../style/utils';
-@use 'src/components/checkbox/style/shared' as *;
+@use './shared' as *;
 
 :host {
     @include rootCheckboxRules();

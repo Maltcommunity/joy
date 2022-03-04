@@ -26,7 +26,6 @@ function clickOutside(event: Event, rootNode: Node): boolean {
     return !(parent === rootNode);
 }
 
-
 /**
  *
  * @param {HTMLElement} el -
@@ -43,7 +42,6 @@ export function onClickOutside(el: Node, fn: () => void): void {
 
     document.addEventListener('click', onClickOutsideListener);
 }
-
 
 /**
  *

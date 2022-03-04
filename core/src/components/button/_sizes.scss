@@ -1,17 +1,15 @@
-$block-height_big: 67px;
-$block-height_medium: 53px;
-$block-height_small: 42px;
+$block-height_big: 64px;
+$block-height_medium: 48px;
+$block-height_small: 40px;
 $block-height_xsmall: 32px;
 
 $radius-block_big: $block-height_big / 2;
 $radius-block_medium: $block-height_medium / 2;
 $radius-block_small: $block-height_small / 2;
 
-$_padding-ref: 5px;
-$_padding-xsmall: $_padding-ref*1 $_padding-ref*2;
-$_padding-small: $_padding-ref*2 $_padding-ref*4;
-$_padding-medium: $_padding-ref*3 $_padding-ref*6;
-$_padding-big: $_padding-ref*4 $_padding-ref*8;
+$_padding-small: var(--joy-core-spacing-2) var(--joy-core-spacing-4);
+$_padding-medium: var(--joy-core-spacing-3) var(--joy-core-spacing-6);
+$_padding-big: var(--joy-core-spacing-4) var(--joy-core-spacing-8);
 
 $_min-width: 160px;
 $_space-around-cta: 4px;
@@ -23,26 +21,26 @@ $BTN_SIZE_CONFIG: (
         height: $block-height_xsmall,
         fontSize: var(--joy-font-size-xs),
         radius: $radius-block_small,
-        padding: $_padding-xsmall
+        padding: var(--joy-core-spacing-2) var(--joy-core-spacing-8)
     ),
     small: (
         height: $block-height_small,
         fontSize: var(--joy-font-size-s),
         radius: $radius-block_small,
-        padding: $_padding-small
+        padding: var(--joy-core-spacing-3) var(--joy-core-spacing-9)
     ),
     medium: (
         height: $block-height_medium,
         fontSize: var(--joy-font-size-m),
         radius: $radius-block_medium,
-        padding: $_padding-medium,
+        padding: var(--joy-core-spacing-3) var(--joy-core-spacing-9),
         minWidth: $_min-width
     ),
     large: (
         height: $block-height_big,
         fontSize: var(--joy-font-size-l),
         radius: $radius-block_big,
-        padding: $_padding-big,
+        padding: var(--joy-core-spacing-4) var(--joy-core-spacing-9),
         minWidth: $_min-width
     )
 );

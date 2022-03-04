@@ -2,11 +2,6 @@
 
 $_CLASS: '.joy-divider-cta';
 
-//$_separator-color: colors.$teal-light;
-//$_focus-border-color: colors.$grey-6;
-//$_hover-color: colors.$teal-main;
-//$_disabled-color: colors.$grey-4;
-
 #{$_CLASS} {
     --divider-cta-color: var(--joy-color-secondary-50);
     --divider-cta-border-color: var(--joy-color-secondary-50);

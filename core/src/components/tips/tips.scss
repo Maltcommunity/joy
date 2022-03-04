@@ -3,21 +3,21 @@
 :host {
     --tips-text-color: var(--joy-color-neutral-6);
 
-    --tips-bg-default: var(--joy-color-secondary-10);
-    --tips-color-default: var(--joy-color-secondary-50);
-    --tips-border-default: var(--joy-color-secondary-50);
+    --tips-bg-default: var(--joy-color-information-10);
+    --tips-color-default: var(--joy-color-information-50);
+    --tips-border-default: var(--joy-color-information-50);
 
-    --tips-bg-warning: var(--joy-color-quaternary-10);
-    --tips-color-warning: var(--joy-color-quaternary-50);
-    --tips-border-warning: var(--joy-color-quaternary-50);
+    --tips-bg-warning: var(--joy-color-warning-10);
+    --tips-color-warning: var(--joy-color-warning-50);
+    --tips-border-warning: var(--joy-color-warning-50);
 
-    --tips-bg-error: var(--joy-color-primary-10);
-    --tips-color-error: var(--joy-color-primary-50);
-    --tips-border-error: var(--joy-color-primary-50);
+    --tips-bg-error: var(--joy-color-error-10);
+    --tips-color-error: var(--joy-color-error-50);
+    --tips-border-error: var(--joy-color-error-50);
 
-    --tips-bg-success: var(--joy-color-tertiary-10);
-    --tips-color-success: var(--joy-color-tertiary-50);
-    --tips-border-success: var(--joy-color-tertiary-50);
+    --tips-bg-success: var(--joy-color-success-10);
+    --tips-color-success: var(--joy-color-success-50);
+    --tips-border-success: var(--joy-color-success-50);
 
     --tips-bg-banner: white;
     --tips-color-banner: var(--joy-color-tertiary-50);
@@ -171,7 +171,7 @@
             background-color: var(--tips-color-success);
         }
 
-        .joy-tips__icon {
+        .joy-tips__icon joy-icon {
             color: var(--tips-color-success);
         }
     }

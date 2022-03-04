@@ -48,7 +48,14 @@ export class CompanyAvatar {
     }
 
     render() {
-        return <div class={this.computedClasses}>{this.imgSrc ? <img src={this.imgSrc} alt={this.companyName}/> :
-            <joy-icon name="company-placeholder" size={this.iconSize}></joy-icon>}</div>;
+        return (
+            <div class={this.computedClasses}>
+                {this.imgSrc ? (
+                    <img src={this.imgSrc} alt={this.companyName} />
+                ) : (
+                    <joy-icon name="company-placeholder" size={this.iconSize}></joy-icon>
+                )}
+            </div>
+        );
     }
 }

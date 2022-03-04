@@ -11,7 +11,9 @@ import {Component, h} from '@stencil/core';
 export class Text {
     render() {
         return (
-            <div><slot/></div>
+            <div>
+                <slot />
+            </div>
         );
     }
 }

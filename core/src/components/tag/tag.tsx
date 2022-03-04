@@ -23,11 +23,11 @@ export class JoyTag {
     /**
      * Fired only if we've set the clickable prop
      */
-    @Event() joyTagClick!: EventEmitter<{name: string; selected: boolean}>
+    @Event() joyTagClick!: EventEmitter<{name: string; selected: boolean}>;
     /**
      * Fired only if we've click on removable tag
      */
-    @Event() joyTagRemove!: EventEmitter<string>
+    @Event() joyTagRemove!: EventEmitter<string>;
 
     /** State linked to selectable prop. Can't work without it */
     @State() selected = false;
@@ -44,7 +44,7 @@ export class JoyTag {
                 selected: this.selected,
             });
         }
-    }
+    };
 
     get iconSize() {
         switch (this.size) {
@@ -63,8 +63,7 @@ export class JoyTag {
 
     private onRemove = () => {
         this.joyTagRemove.emit(this.host.textContent || '');
-    }
-
+    };
 
     render() {
         const draggable = this.host.hasAttribute('draggable');
@@ -100,9 +99,12 @@ export class JoyTag {
 
         return (
             <Host class={{...hostClasses}} onClick={this.onClick}>
-                <TagSelector {...props} class={{
-                    ...wrapperClasses,
-                }}>
+                <TagSelector
+                    {...props}
+                    class={{
+                        ...wrapperClasses,
+                    }}
+                >
                     {draggable && <joy-icon class="joy-tag__drag" name="drag" size={this.iconSize}></joy-icon>}
                     <slot />
                     {this.removable && <joy-icon onClick={this.onRemove} class="joy-tag__removable" name="cross" size={this.iconSize}></joy-icon>}

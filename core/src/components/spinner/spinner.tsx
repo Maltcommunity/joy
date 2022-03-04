@@ -15,12 +15,12 @@ export class JoySpinner {
 
     render() {
         return (
-            <Host class={{
-                'joy-spinner': true,
-                ...this.spinnerColor,
-            }}>
-
-            </Host>
+            <Host
+                class={{
+                    'joy-spinner': true,
+                    ...this.spinnerColor,
+                }}
+            ></Host>
         );
     }
 }

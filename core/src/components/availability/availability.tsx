@@ -26,10 +26,12 @@ export class Availability {
     render() {
         if (this.label) {
             return (
-                <Host class={{
-                    'joy-availability': true,
-                    'joy-availability-has-label': !!this.label,
-                }}>
+                <Host
+                    class={{
+                        'joy-availability': true,
+                        'joy-availability-has-label': !!this.label,
+                    }}
+                >
                     <span class={this.dotClass} />
                     {this.label}
                 </Host>

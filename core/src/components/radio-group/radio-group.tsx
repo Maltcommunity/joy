@@ -26,7 +26,7 @@ export class RadioGroup implements ComponentInterface {
     /**
      * Invalid message
      */
-    @Prop() invalidText ?: string;
+    @Prop() invalidText?: string;
     /**
      * Label displayed for the whoe radio group.
      */
@@ -57,7 +57,7 @@ export class RadioGroup implements ComponentInterface {
 
         // Get the first radio that is not disabled and the checked one
         const first = radios.find((radio) => !radio.disabled);
-        const checked = radios.find((radio) => (radio.value === value && !radio.disabled));
+        const checked = radios.find((radio) => radio.value === value && !radio.disabled);
 
         if (!first && !checked) {
             return;
@@ -69,11 +69,9 @@ export class RadioGroup implements ComponentInterface {
 
         for (const radio of radios) {
             const tabindex = radio === focusable ? 0 : -1;
-            radio.setButtonTabindex(tabindex).then(() => {
-
-            });
+            radio.setButtonTabindex(tabindex).then(() => {});
         }
-    }
+    };
 
     private getRadios(): HTMLJoyRadioElement[] {
         return Array.from(this.el.querySelectorAll('joy-radio'));
@@ -83,8 +81,7 @@ export class RadioGroup implements ComponentInterface {
         ev.preventDefault();
 
         const selectedRadio = ev.target && (ev.target as HTMLElement).closest('joy-radio');
-
-        if (selectedRadio && !selectedRadio.hasAttribute('disabled')) {
+        if (selectedRadio) {
             const currentValue = this.value;
 
             const newValue = selectedRadio.value;
@@ -92,7 +89,7 @@ export class RadioGroup implements ComponentInterface {
                 this.value = newValue;
             }
         }
-    }
+    };
 
     @Listen('keydown', {target: 'document'})
     onKeydown(ev: any) {
@@ -114,17 +111,13 @@ export class RadioGroup implements ComponentInterface {
             // If hitting arrow down or arrow right, move to the next radio
             // If we're on the last radio, move to the first radio
             if (['ArrowDown', 'ArrowRight'].includes(ev.code)) {
-                next = (index === radios.length - 1)
-                    ? radios[0]
-                    : radios[index + 1];
+                next = index === radios.length - 1 ? radios[0] : radios[index + 1];
             }
 
             // If hitting arrow up or arrow left, move to the previous radio
             // If we're on the first radio, move to the last radio
             if (['ArrowUp', 'ArrowLeft'].includes(ev.code)) {
-                next = (index === 0)
-                    ? radios[radios.length - 1]
-                    : radios[index - 1];
+                next = index === 0 ? radios[radios.length - 1] : radios[index - 1];
             }
 
             if (next && radios.includes(next)) {
@@ -142,16 +135,17 @@ export class RadioGroup implements ComponentInterface {
         const directionClass = `joy-radio-group-${this.direction}`;
 
         return (
-            <Host
-                class="joy-radio-group"
-                onClick={this.onClick}
-            >
+            <Host class="joy-radio-group" onClick={this.onClick}>
                 <fieldset class="joy-radio-group-fieldset" role="radiogroup">
-                    <legend class="joy-radio-group-legend"><slot name="radio-group-legend" /></legend>
-                    <div class={{
-                        'joy-radio-group-container': true,
-                        [directionClass]: true,
-                    }}>
+                    <legend class="joy-radio-group-legend">
+                        <slot name="radio-group-legend" />
+                    </legend>
+                    <div
+                        class={{
+                            'joy-radio-group-container': true,
+                            [directionClass]: true,
+                        }}
+                    >
                         <slot />
                     </div>
                     {this.invalid && this.invalidText && <joy-form-error no-html-error-text={this.invalidText}></joy-form-error>}

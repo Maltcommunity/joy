@@ -14,7 +14,7 @@ category: Webcomponents
 ## With default values
 
 ```ui_example
-<joy-tags-input validation="email" placeholder="Write and press enter to add" values="['test@valid-email.com']">
+<joy-tags-input id="toto" validation="email" placeholder="Write and press enter to add" values="['test@valid-email.com']">
     <span slot="tags-input-label">Please enter emails lists</span>
 </joy-tags-input>
 ```
@@ -51,12 +51,12 @@ category: Webcomponents
 
 ## Events
 
-| Event               | Description                                                                                           | Type                                  |
-| ------------------- | ----------------------------------------------------------------------------------------------------- | ------------------------------------- |
-| `joyTagsError`      | When the tags list is on error. According to the returned ErrorType, you can display the right error. | `CustomEvent<"duplicate" \| "email">` |
-| `joyTagsInputBlur`  | On input blur                                                                                         | `CustomEvent<void>`                   |
-| `joyTagsInputFocus` | On input focus                                                                                        | `CustomEvent<void>`                   |
-| `joyTagsUpdate`     | When the tags list is updated                                                                         | `CustomEvent<string[]>`               |
+| Event               | Description                                                                                           | Type                                                                 |
+| ------------------- | ----------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------- |
+| `joyTagsError`      | When the tags list is on error. According to the returned ErrorType, you can display the right error. | `CustomEvent<ErrorType.DUPLICATED_ENTRY \| ErrorType.INVALID_EMAIL>` |
+| `joyTagsInputBlur`  | On input blur                                                                                         | `CustomEvent<void>`                                                  |
+| `joyTagsInputFocus` | On input focus                                                                                        | `CustomEvent<void>`                                                  |
+| `joyTagsUpdate`     | When the tags list is updated                                                                         | `CustomEvent<string[]>`                                              |
 
 
 ## Methods

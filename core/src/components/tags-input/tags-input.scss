@@ -7,6 +7,14 @@ $_CLASS: '.joy-tags-input';
     display: block;
     margin-bottom: var(--joy-core-spacing-3);
     @include utils.getFontProperties(s);
+    /** As Stencil loads component from deeper child to its first level parent, we don't want to display tags-input children until it's 100% rendered **/
+    * {
+        visibility: hidden;
+    }
+}
+
+:host(.hydrated) {
+    * {visibility: visible}
 }
 
 #{$_CLASS} {
@@ -25,14 +33,14 @@ $_CLASS: '.joy-tags-input';
         @include mixins.innerStyle();
 
         &-focused {
-            border: 1px solid var(--joy-color-state-error-hover);
+            border: 1px solid var(--joy-color-secondary-30);
         }
 
         &-invalid {
-            border: 1px solid var(--joy-color-state-error);
+            border: 1px solid var(--joy-color-error-50);
 
             &:hover {
-                border: 1px solid var(--joy-color-state-error-hover);
+                border: 1px solid var(--joy-color-error-90);
             }
         }
 

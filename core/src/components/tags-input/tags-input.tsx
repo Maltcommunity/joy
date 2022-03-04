@@ -2,7 +2,10 @@ import {Component, Event, Method, Prop, h, State, Watch, EventEmitter} from '@st
 import {TagVariants, TagSizes} from '../../types';
 import {checkEmailsValidity} from './../../utils';
 
-type ErrorType = 'duplicate' | 'email';
+enum ErrorType {
+    DUPLICATED_ENTRY = 'DUPLICATED_ENTRY',
+    INVALID_EMAIL = 'INVALID_EMAIL',
+}
 
 @Component({
     tag: 'joy-tags-input',
@@ -62,8 +65,12 @@ export class JoyTagsInput {
         this.formatValues();
     }
 
+    private validateEmails() {
+        return this.validation === 'email';
+    }
+
     private checkValidity() {
-        if (this.validation === 'email') {
+        if (this.validateEmails()) {
             this.invalid = !checkEmailsValidity(this.tagsList);
         }
     }
@@ -73,12 +80,16 @@ export class JoyTagsInput {
             e.preventDefault();
 
             if (!this.tagsList.includes(this.input.value)) {
+                if (!checkEmailsValidity(this.input.value) && this.validateEmails()) {
+                    this.joyTagsError.emit(ErrorType.INVALID_EMAIL);
+                }
+
                 this.invalid = false;
                 this.tagsList = [...this.tagsList, this.input.value];
                 this.input.value = '';
                 this.joyTagsUpdate.emit(this.tagsList);
             } else {
-                this.joyTagsError.emit('duplicate');
+                this.joyTagsError.emit(ErrorType.DUPLICATED_ENTRY);
                 this.invalid = true;
             }
 

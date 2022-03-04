@@ -30,7 +30,7 @@ describe('avatars-list e2e', () => {
 
         await page.setContent(`
             <joy-avatars-list>
-                 <joy-avatar full-name="Toto Tata"></joy-avatar>
+                <joy-avatar full-name="Toto Tata"></joy-avatar>
                 <joy-avatar full-name="Gary Cooper"></joy-avatar>
                 <joy-avatar full-name="Tati Teto"></joy-avatar>
                 <joy-avatar total-number="14"></joy-avatar>

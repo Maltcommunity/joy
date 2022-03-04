@@ -1,0 +1,28 @@
+:host {
+    --select-option-color-bg: white;
+    --select-option-color: inherit;
+    --select-option-fontsize: var(--joy-font-size-s);
+    --select-option-padding: var(--joy-core-spacing-2) var(--joy-core-spacing-4);
+
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    font-size: var(--select-option-fontsize);
+    width: 100%;
+    min-height: var(--joy-core-spacing-10);
+    padding: var(--select-option-padding);
+    margin: 0;
+    background: var(--select-option-color-bg);
+    color: var(--select-option-color);
+}
+
+:host(.joy-select-option_selected),
+:host(:hover) {
+    --select-option-color: var(--joy-color-secondary-50);
+    --select-option-color-bg: var(--joy-color-secondary-10);
+}
+
+:host(.joy-select-option_disabled) {
+    --select-option-color: var(--joy-color-neutral-5);
+    --select-option-color-bg: var(--joy-color-neutral-2);
+}

@@ -67,7 +67,7 @@ describe('Tags Input - e2e', () => {
         `);
 
         const invalid = await page.find('joy-tags-input >>> .joy-tags-input-inner-invalid');
-       expect(invalid).not.toBeNull();
+        expect(invalid).not.toBeNull();
     });
 
     it('should transfer component props to joy-tag', async () => {

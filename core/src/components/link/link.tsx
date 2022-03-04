@@ -9,7 +9,7 @@ import {HyperLinksTargets, IconColors, LinksColors} from '../../types';
 export class Link {
     /** Set the href of your link */
     @Prop() href?: string;
-    /** If the link as a downloadable content */
+    /** Filename of the downloadable content */
     @Prop() download?: string;
     /** Native rel attribute for hyperlinks. See https://developer.mozilla.org/fr/docs/Web/HTML/Attributes/rel */
     @Prop() rel?: string;

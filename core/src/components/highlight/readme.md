@@ -6,17 +6,16 @@ category: Webcomponents
 ---
 
 ```ui_example
-<joy-highlight level="warning">I am a simple warning content</joy-highlight>
-<joy-highlight level="error">I am a simple error content.</joy-highlight>
-<joy-highlight level="success">I am a simple success content.</joy-highlight>
-<joy-highlight level="info">I am a simple info content.</joy-highlight>
+<joy-highlight level="warning" display-icon>I am a simple warning content</joy-highlight>
+<joy-highlight level="error" display-icon>I am a simple error content.</joy-highlight>
+<joy-highlight level="success" display-icon>I am a simple success content.</joy-highlight>
+<joy-highlight level="info" display-icon>I am a simple info content.</joy-highlight>
 ```
 
-## Activate icon
+## Customize icon
 
 ```ui_example
-<joy-highlight level="success" display-icon>I am a simple highlight content with a default icon.</joy-highlight>
-<joy-highlight level="success" display-icon icon="mood-good">I am a simple highlight content with a custom icon.</joy-highlight>
+<joy-highlight level="success" display-icon icon="mood-good">You can use "icon" property to choose the icon you want.</joy-highlight>
 ```
 
 <!-- Auto Generated Below -->

@@ -174,11 +174,11 @@ export class Pagination {
                         {...this.prevCustomAttributes}
                     >
                         <slot name="pagination-prev">
-                            {this.linkPrev &&
+                            {this.linkPrev && (
                                 <a href={this.linkPrev} rel="prev">
                                     {this.prevIcon}
                                 </a>
-                            }
+                            )}
                             {!this.linkPrev && this.prevIcon}
                         </slot>
                     </li>

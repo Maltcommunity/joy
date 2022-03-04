@@ -1,9 +1,9 @@
-import { validateContent } from './validate';
+import {validateContent} from './validate';
 
 export const joyIconContent = new Map<string, string>();
-const requests = new Map<string, Promise<any>>();
+const requests = new Map<string, Promise<string | void>>();
 
-export const getSvgContent = (url: string, sanitize: boolean) => {
+export const getSvgContent = (url: string, sanitize: boolean): Promise<string | void> => {
     // see if we already have a request for this url
     let req = requests.get(url);
 

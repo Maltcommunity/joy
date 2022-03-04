@@ -1,0 +1,96 @@
+@use '~@maltjoy/tokens/src/colors';
+@use '~@maltjoy/tokens/src/zindex';
+@use '~@maltjoy/tokens/src/spacing';
+
+$_CLASS: '.joy-select';
+$SELECT_HEIGHT: 53px;
+$SELECT_MARGIN-BOTTOM: 25px;
+
+:host {
+    --select-height: #{$SELECT_HEIGHT};
+    --select-color: var(--joy-color-neutral-5);
+    --select-color-background: white;
+    --select-border-color: var(--joy-color-neutral-4);
+    --select-border-radius: calc(var(--select-height) / 2);
+    --select-margin-bottom: #{$SELECT_MARGIN-BOTTOM};
+    --select-font-size: var(--joy-font-size-m);
+
+    --select-dropdown-border: 1px solid var(--joy-color-secondary-50);
+    --select-dropdown-border-radius: var(--select-border-radius);
+    --select-dropdown-max-width: 200px;
+    --select-dropdown-max-height: 200px;
+    --select-dropdown-zindex: 23;
+
+    position: relative;
+    display: flex;
+    width: 100%;
+    margin-bottom: var(--select-margin-bottom);
+
+    joy-icon {
+        position: absolute;
+        right: var(--select-margin-bottom);
+    }
+}
+
+:host(:last-child) {
+    --select-margin-bottom: 0;
+}
+
+:host(#{$_CLASS}_invalid) {
+    --select-color: var(--joy-color-error-50);
+    --select-border-color: var(--joy-color-error-50);
+}
+
+:host(#{$_CLASS}_open) {
+    joy-icon {
+        transform: rotate(180deg);
+    }
+}
+
+#{$_CLASS} {
+
+    &__input {
+        position: relative;
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+        width: 100%;
+        height: var(--select-height);
+        border: 1px solid var(--select-border-color);
+        border-radius: var(--select-border-radius);
+        color: var(--select-color);
+        font-size: var(--select-font-size);
+        background: var(--select-color-background);
+        padding: 0 var(--joy-core-spacing-10) 0 var(--joy-core-spacing-4);
+    }
+
+    &__options {
+        position: absolute;
+        overflow: hidden;
+        top: calc(100% + var(--joy-core-spacing-2));
+        left: 0;
+        width: 100%;
+        max-width: var(--select-dropdown-max-width);
+        max-height: var(--select-dropdown-max-height);
+        z-index: var(--select-dropdown-zindex);
+        border: var(--select-dropdown-border);
+        border-radius: var(--select-dropdown-border-radius);
+        background: var(--select-color-background);
+    }
+
+    .select-hidden { // Make the select still clickable, it completely override the default button to trigger the dropdown
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        opacity: 0;
+        left: 0;
+        top: 0;
+        pointer-events: none;
+    }
+}
+
+#{$_CLASS}_native {
+    .select-hidden {
+        pointer-events: auto;
+    }
+}

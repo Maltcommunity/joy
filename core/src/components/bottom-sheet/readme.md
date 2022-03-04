@@ -5,8 +5,9 @@ name: joy_bottom-sheet
 category: Webcomponents
 ---
 
-See Zeroheight usage :
-https://joy.malt.com/6bf479565/p/90c963--bottom-sheet
+<joy-link target="_blank" href="https://joy.malt.com/6bf479565/p/90c963--bottom-sheet">
+    <joy-icon name="web-design"></joy-icon>&nbsp;See Zeroheight usage
+</joy-link>
 
 <joy-tag variant='special'>EXPERIMENTAL</joy-tag>
 

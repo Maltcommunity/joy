@@ -64,10 +64,14 @@ $_ICONS-COLORS: (
         }
     }
 
-    svg, .icon-inner {
+    svg, .joy-icon-inner {
         // Default
         // Prevent clicking on svg or use elements when adding a listener on <i> icon
         pointer-events: none;
+    }
+
+    .joy-icon-inner {
+        line-height: 1;
     }
 
 

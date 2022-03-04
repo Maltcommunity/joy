@@ -1,4 +1,4 @@
-@use 'src/components/checkbox/style/shared' as *;
+@use './shared' as *;
 
 joy-checkbox:not(.hydrated) {
     @include defaultRules();

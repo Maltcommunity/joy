@@ -4,7 +4,7 @@
     /**
      * @prop --form-error-color: color for the error text
      */
-    --form-error-color: var(--joy-color-text-error);
+    --form-error-color: var(--joy-color-error-50);
 
     color: var(--form-error-color);
     @include utils.getFontProperties(s);
@@ -24,6 +24,10 @@
 
 .joy-icon-error {
     margin-right: 10px;
+
+    svg {
+        color: var(--form-error-color);
+    }
 }
 
 span {

@@ -58,6 +58,7 @@ Please see <a href="/joy-v2/webcomponents.html#joy_icons_list">full icons list h
  - [joy-link](../link)
  - [joy-pagination](../pagination)
  - [joy-placeholder-button](../placeholder-button)
+ - [joy-select](../select)
  - [joy-snackbar](../snackbar)
  - [joy-tag](../tag)
  - [joy-textarea](../textarea)
@@ -76,6 +77,7 @@ graph TD;
   joy-link --> joy-icon
   joy-pagination --> joy-icon
   joy-placeholder-button --> joy-icon
+  joy-select --> joy-icon
   joy-snackbar --> joy-icon
   joy-tag --> joy-icon
   joy-textarea --> joy-icon

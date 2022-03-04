@@ -15,10 +15,10 @@ $_CLASS: '.joy-radio';
     --radio-color: var(--joy-color-text-body);
     --radio-border-color-focus: var(--joy-color-neutral-6);
     --radio-color-disabled: var(--joy-color-neutral-4);
-    --radio-border-color-invalid: var(--joy-color-primary-50);
-    --radio-bg-color-invalid: var(--joy-color-primary-50);
-    --radio-border-color-invalid-hover: var(--joy-color-primary-90);
-    --radio-bg-color-invalid-hover: var(--joy-color-primary-90);
+    --radio-border-color-invalid: var(--joy-color-error-50);
+    --radio-bg-color-invalid: var(--joy-color-error-50);
+    --radio-border-color-invalid-hover: var(--joy-color-error-90);
+    --radio-bg-color-invalid-hover: var(--joy-color-error-90);
 
     display: block;
     box-sizing: border-box;
@@ -112,16 +112,21 @@ $_CLASS: '.joy-radio';
     }
 
     &.joy-radio-invalid {
+        &:hover {
+            span:before {
+                border-color: var(--radio-border-color-invalid-hover);
+            }
+        }
+
         span:before {
             background-color: var(--radio-bg-color-invalid);
-            border-color: var(--radio-border-color-invalid);
+            border: 1px solid var(--radio-border-color-invalid);
         }
 
         &.joy-radio-checked {
             &:hover {
                 span:before {
                     background-color: var(--radio-bg-color-invalid-hover);
-                    border-color: var(--radio-border-color-invalid-hover);
                 }
             }
         }

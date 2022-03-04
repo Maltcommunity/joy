@@ -1,0 +1,13 @@
+@use 'select';
+
+joy-select:not(.hydrated){
+    display: block;
+    height: select.$SELECT_HEIGHT;
+    border-radius: select.$SELECT_HEIGHT;
+    background: var(--joy-color-neutral-3);
+    margin-bottom: select.$SELECT_MARGIN-BOTTOM;
+
+    joy-select-option {
+        display: none;
+    }
+}

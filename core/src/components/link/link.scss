@@ -13,6 +13,10 @@ $_class-name: '.joy-link';
     @include utils.getFontProperties(l);
 }
 
+::slotted(joy-icon) {
+    margin-right: var(--joy-core-spacing-2);
+}
+
 @mixin basePseudoStyle() {
     &:hover, &:hover span {
         color: var(--link-default-color-hover);

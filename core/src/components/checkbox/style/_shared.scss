@@ -137,5 +137,5 @@ $checkbox-svg: '%3Csvg%20width%3D%2211%22%20height%3D%229%22%20viewBox%3D%220%20
 
     padding: 0 2px;
     color: var(--link-default-color);
-    @include utils.getFontProperties(l);
+    @include utils.getFontProperties(s);
 }

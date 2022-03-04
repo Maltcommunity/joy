@@ -2,7 +2,7 @@
  * @return {Boolean}
  * @param {String[] | string} value
  */
-export function checkEmailsValidity(value: string [] | string): boolean {
+export function checkEmailsValidity(value: string[] | string): boolean {
     if (!Array.isArray(value) && typeof value !== 'string') {
         console.warn('Values needs to be an array of emails, or email.');
         return false;
@@ -16,9 +16,9 @@ export function checkEmailsValidity(value: string [] | string): boolean {
         return singleEmailValidation(value);
     } else {
         const invalidEmail = value.find((email) => {
-           if (!singleEmailValidation(email)) {
-               return email;
-           }
+            if (!singleEmailValidation(email)) {
+                return email;
+            }
         });
 
         // It means that we've found no invalid email

@@ -13,7 +13,7 @@ import {TooltipVariants} from '../../types';
 })
 export class TooltipTrigger {
     @Element() host!: HTMLJoyTooltipTriggerElement;
-    private tooltipElement: HTMLElement | null = null;
+    private tooltipElement: HTMLJoyTooltipElement | null = null;
     private tooltipArrowWith = 20;
     private tooltipArrowHeight = 10;
     private placementLimit = 25;
@@ -43,7 +43,7 @@ export class TooltipTrigger {
     private setTooltipLeft(tooltip: HTMLJoyTooltipElement) {
         const clientRect = this.host.getBoundingClientRect();
         let targetToLeft = clientRect.left - this.tooltipArrowWith;
-        targetToLeft < this.placementLimit ? targetToLeft = this.placementLimit : targetToLeft;
+        targetToLeft < this.placementLimit ? (targetToLeft = this.placementLimit) : targetToLeft;
 
         if (clientRect.left <= this.placementLimit) {
             tooltip.style.left = `${this.placementLimit}px`;
@@ -123,20 +123,20 @@ export class TooltipTrigger {
         e.stopPropagation();
 
         this.createTooltip();
-    }
+    };
 
     private onMouseLeave = () => {
         if (this.event === 'mouseenter') {
             this.destroyTooltip();
         }
-    }
+    };
 
     private onClick = () => {
         if (this.event !== 'click') {
             return;
         }
         this.createTooltip();
-    }
+    };
 
     private onClickOutsideListener() {
         if (this.event === 'click') {
@@ -168,11 +168,7 @@ export class TooltipTrigger {
 
     render() {
         return (
-            <Host
-                onClick={this.onClick}
-                onMouseEnter={this.onMouseEnter}
-                onMouseLeave={this.onMouseLeave}
-            >
+            <Host onClick={this.onClick} onMouseEnter={this.onMouseEnter} onMouseLeave={this.onMouseLeave}>
                 <slot name="tooltip-trigger" />
                 <div hidden class="joy-tooltip__content">
                     <slot name="tooltip-content" />

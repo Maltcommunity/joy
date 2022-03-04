@@ -31,6 +31,7 @@ $_PADDING: var(--joy-core-spacing-4);
     position: absolute;
     font-weight: normal;
     box-sizing: border-box;
+    z-index: 22; // default, to override if needed
     // allows to include padding in the tooltip size definition. If the tooltip is supposed to be 250px, it won't add padding to this value
     border-radius: var(--joy-core-radius-3);
     padding: $_PADDING;
@@ -77,7 +78,3 @@ $_PADDING: var(--joy-core-spacing-4);
         right: $_PADDING;
     }
 }
-
-
-
-

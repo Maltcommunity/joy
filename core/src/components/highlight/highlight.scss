@@ -9,17 +9,17 @@
      * @prop --highlight-background-error: background color for ERROR state
      * @prop --highlight-color-error: text color for ERROR state
      */
-    --highlight-background-success: var(--joy-color-tertiary-10);
-    --highlight-color-success: var(--joy-color-tertiary-50);
+    --highlight-background-success: var(--joy-color-success-10);
+    --highlight-color-success: var(--joy-color-success-50);
 
-    --highlight-background-info: var(--joy-color-secondary-10);
-    --highlight-color-info: var(--joy-color-secondary-50);
+    --highlight-background-info: var(--joy-color-information-10);
+    --highlight-color-info: var(--joy-color-information-50);
 
-    --highlight-background-warning: var(--joy-color-quaternary-10);
-    --highlight-color-warning: var(--joy-color-quaternary-50);
+    --highlight-background-warning: var(--joy-color-warning-10);
+    --highlight-color-warning: var(--joy-color-warning-50);
 
-    --highlight-background-error: var(--joy-color-primary-10);
-    --highlight-color-error: var(--joy-color-primary-50);
+    --highlight-background-error: var(--joy-color-error-10);
+    --highlight-color-error: var(--joy-color-error-50);
 
     display: block;
     width: 100%;
@@ -35,7 +35,7 @@
     background-color: var(--highlight-background-info);
 
     &_info {
-        > i:first-child svg {
+        > joy-icon:first-child svg {
             color: var(--highlight-color-info);
         }
     }
@@ -43,7 +43,7 @@
     &_warning {
         background-color: var(--highlight-background-warning);
 
-        > i:first-child svg {
+        > joy-icon:first-child svg {
             color: var(--highlight-color-warning);
         }
     }
@@ -51,7 +51,7 @@
     &_error {
         background-color: var(--highlight-background-error);
 
-        > i:first-child svg {
+        > joy-icon:first-child svg {
             color: var(--highlight-color-error);
         }
     }
@@ -59,7 +59,7 @@
     &_success {
         background-color: var(--highlight-background-success);
 
-        > i:first-child svg {
+        > joy-icon:first-child svg {
             color: var(--highlight-color-success);
         }
     }

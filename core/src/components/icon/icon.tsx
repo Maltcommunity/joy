@@ -1,7 +1,7 @@
 import {Component, Element, Host, h, Prop, State, Watch, Build} from '@stencil/core';
 import {IconsSizes, IconColors} from '../../types';
-import { getSvgContent, joyIconContent } from './requests';
-import { getIconUrl } from './utils';
+import {getSvgContent, joyIconContent} from './requests';
+import {getIconUrl} from './utils';
 
 @Component({
     tag: 'joy-icon',
@@ -11,11 +11,11 @@ import { getIconUrl } from './utils';
 export class Icon {
     private io?: IntersectionObserver;
 
-    @Element() el!: HTMLElement;
+    @Element() el!: HTMLJoyIconElement;
     /**
      * Defines a non-visible legend
      */
-    @Prop({mutable: true, reflect: true}) ariaLabel?: string;
+    @Prop({reflect: true}) ariaLabel?: string;
     /**
      * Two-tone icon when set to true
      */
@@ -80,7 +80,6 @@ export class Icon {
     loadIcon() {
         if (Build.isBrowser && this.isVisible) {
             const url = getIconUrl(this.name);
-            // `http://dev.malt.fr/assets/wc/build/icons/${this.name}.svg`;
 
             if (url) {
                 if (joyIconContent.has(url)) {
@@ -94,7 +93,7 @@ export class Icon {
         }
     }
 
-    private waitUntilVisible(el: HTMLElement, rootMargin: string, cb: () => void) {
+    private waitUntilVisible(el: HTMLJoyIconElement, rootMargin: string, cb: () => void) {
         if (Build.isBrowser && this.lazy && typeof window !== 'undefined' && (window as any).IntersectionObserver) {
             const io = (this.io = new (window as any).IntersectionObserver(
                 (data: IntersectionObserverEntry[]) => {
@@ -104,7 +103,7 @@ export class Icon {
                         cb();
                     }
                 },
-                { rootMargin },
+                {rootMargin},
             ));
 
             io.observe(el);
@@ -131,9 +130,9 @@ export class Icon {
                 }}
             >
                 {Build.isBrowser && this.svgContent ? (
-                    <div class="icon-inner" innerHTML={this.svgContent}></div>
+                    <div class="joy-icon-inner" innerHTML={this.svgContent}></div>
                 ) : (
-                    <div class="icon-inner"></div>
+                    <div class="joy-icon-inner"></div>
                 )}
             </Host>
         );

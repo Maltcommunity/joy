@@ -326,7 +326,7 @@ export namespace Components {
     }
     interface JoyLink {
         /**
-          * If the link as a downloadable content
+          * Filename of the downloadable content
          */
         "download"?: string;
         /**
@@ -471,6 +471,18 @@ export namespace Components {
           * Star size. 3 possible values but you can't give a number as value
          */
         "size": RatingStarsSizes;
+    }
+    interface JoySelect {
+        "disabled": boolean;
+        "invalid": boolean;
+        "name": string;
+        "required": boolean;
+        "value": string;
+    }
+    interface JoySelectOption {
+        "disabled": boolean;
+        "selected": boolean;
+        "value": string;
     }
     interface JoySeparator {
         /**
@@ -963,6 +975,18 @@ declare global {
         prototype: HTMLJoyRatingStarsElement;
         new (): HTMLJoyRatingStarsElement;
     };
+    interface HTMLJoySelectElement extends Components.JoySelect, HTMLStencilElement {
+    }
+    var HTMLJoySelectElement: {
+        prototype: HTMLJoySelectElement;
+        new (): HTMLJoySelectElement;
+    };
+    interface HTMLJoySelectOptionElement extends Components.JoySelectOption, HTMLStencilElement {
+    }
+    var HTMLJoySelectOptionElement: {
+        prototype: HTMLJoySelectOptionElement;
+        new (): HTMLJoySelectOptionElement;
+    };
     interface HTMLJoySeparatorElement extends Components.JoySeparator, HTMLStencilElement {
     }
     var HTMLJoySeparatorElement: {
@@ -1083,6 +1107,8 @@ declare global {
         "joy-radio": HTMLJoyRadioElement;
         "joy-radio-group": HTMLJoyRadioGroupElement;
         "joy-rating-stars": HTMLJoyRatingStarsElement;
+        "joy-select": HTMLJoySelectElement;
+        "joy-select-option": HTMLJoySelectOptionElement;
         "joy-separator": HTMLJoySeparatorElement;
         "joy-snackbar": HTMLJoySnackbarElement;
         "joy-spinner": HTMLJoySpinnerElement;
@@ -1426,7 +1452,7 @@ declare namespace LocalJSX {
     }
     interface JoyLink {
         /**
-          * If the link as a downloadable content
+          * Filename of the downloadable content
          */
         "download"?: string;
         /**
@@ -1587,6 +1613,18 @@ declare namespace LocalJSX {
           * Star size. 3 possible values but you can't give a number as value
          */
         "size"?: RatingStarsSizes;
+    }
+    interface JoySelect {
+        "disabled"?: boolean;
+        "invalid"?: boolean;
+        "name"?: string;
+        "required"?: boolean;
+        "value"?: string;
+    }
+    interface JoySelectOption {
+        "disabled"?: boolean;
+        "selected"?: boolean;
+        "value": string;
     }
     interface JoySeparator {
         /**
@@ -1988,6 +2026,8 @@ declare namespace LocalJSX {
         "joy-radio": JoyRadio;
         "joy-radio-group": JoyRadioGroup;
         "joy-rating-stars": JoyRatingStars;
+        "joy-select": JoySelect;
+        "joy-select-option": JoySelectOption;
         "joy-separator": JoySeparator;
         "joy-snackbar": JoySnackbar;
         "joy-spinner": JoySpinner;
@@ -2033,6 +2073,8 @@ declare module "@stencil/core" {
             "joy-radio": LocalJSX.JoyRadio & JSXBase.HTMLAttributes<HTMLJoyRadioElement>;
             "joy-radio-group": LocalJSX.JoyRadioGroup & JSXBase.HTMLAttributes<HTMLJoyRadioGroupElement>;
             "joy-rating-stars": LocalJSX.JoyRatingStars & JSXBase.HTMLAttributes<HTMLJoyRatingStarsElement>;
+            "joy-select": LocalJSX.JoySelect & JSXBase.HTMLAttributes<HTMLJoySelectElement>;
+            "joy-select-option": LocalJSX.JoySelectOption & JSXBase.HTMLAttributes<HTMLJoySelectOptionElement>;
             "joy-separator": LocalJSX.JoySeparator & JSXBase.HTMLAttributes<HTMLJoySeparatorElement>;
             "joy-snackbar": LocalJSX.JoySnackbar & JSXBase.HTMLAttributes<HTMLJoySnackbarElement>;
             "joy-spinner": LocalJSX.JoySpinner & JSXBase.HTMLAttributes<HTMLJoySpinnerElement>;

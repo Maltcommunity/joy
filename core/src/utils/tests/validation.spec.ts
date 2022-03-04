@@ -16,4 +16,3 @@ describe('emailsValidation utils', () => {
         expect(checkEmailsValidity(value)).toBe(false);
     });
 });
-

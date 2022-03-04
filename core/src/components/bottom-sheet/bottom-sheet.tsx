@@ -56,18 +56,18 @@ export class BottomSheet {
         return shadowRoot?.querySelector('.joy-bottom-sheet-container') as HTMLElement;
     }
 
-    private onClick = () => {
+    private onClickClose = () => {
         this.isMoving = false;
         this.close();
     };
 
-    private onStartMoving = (e: MouseEvent) => {
+    private onStartMoving = (e: MouseEvent | TouchEvent) => {
         this.isMoving = true;
         this.getJoyBottomSheetContainer()?.classList.add(this.CSS_CLASS_MOVING);
-        this.initialPosY = e.clientY;
+        this.initialPosY = this.getClientYFromEvent(e);
     };
 
-    private onStopMoving = (e: MouseEvent) => {
+    private onStopMoving = (e: MouseEvent | TouchEvent) => {
         if (this.isMoving) {
             const translationY = this.calcTranslationY(e);
             if (translationY > 0) {
@@ -77,7 +77,7 @@ export class BottomSheet {
         }
     };
 
-    private onMoving = (e: MouseEvent) => {
+    private onMoving = (e: MouseEvent | TouchEvent) => {
         if (this.isMoving) {
             const translationY = this.calcTranslationY(e);
 
@@ -89,8 +89,23 @@ export class BottomSheet {
         }
     };
 
-    private calcTranslationY(e: MouseEvent) {
-        return e.clientY - this.initialPosY;
+    private onOuterClick = (e: MouseEvent) => {
+        if ((e.target as HTMLElement).classList.contains('opened')) {
+            this.close();
+        }
+    };
+
+    private calcTranslationY(e: MouseEvent | TouchEvent) {
+        return this.getClientYFromEvent(e) - this.initialPosY;
+    }
+
+    private getClientYFromEvent(e: MouseEvent | TouchEvent) {
+        const touchEvents = ['touchend', 'touchmove', 'touchstart'];
+        if (touchEvents.includes(e.type)) {
+            return (e as TouchEvent).changedTouches[0].clientY;
+        } else {
+            return (e as MouseEvent).clientY;
+        }
     }
 
     private moveContainer(translationY: number) {
@@ -121,7 +136,7 @@ export class BottomSheet {
     render() {
         return (
             <div>
-                <div class="joy-bottom-sheet">
+                <div class="joy-bottom-sheet" onClick={this.onOuterClick}>
                     <div class="joy-bottom-sheet-container">
                         <div
                             class="joy-bottom-sheet_header"
@@ -129,6 +144,9 @@ export class BottomSheet {
                             onMouseUp={this.onStopMoving}
                             onMouseMove={this.onMoving}
                             onMouseLeave={this.onStopMoving}
+                            onTouchStart={this.onStartMoving}
+                            onTouchEnd={this.onStopMoving}
+                            onTouchMove={this.onMoving}
                         >
                             <div class="joy-bottom-sheet_header-close"></div>
                         </div>
@@ -136,7 +154,7 @@ export class BottomSheet {
                             <slot name="bottom-sheet-content" />
                         </div>
                         <div class="joy-bottom-sheet_footer" data-testid="bottom-sheet-footer">
-                            <joy-button class="joy-bottom-sheet_footer-close" variant={this.closeVariant} onClick={this.onClick}>
+                            <joy-button class="joy-bottom-sheet_footer-close" variant={this.closeVariant} onClick={this.onClickClose}>
                                 {this.closeLabel}
                             </joy-button>
                         </div>

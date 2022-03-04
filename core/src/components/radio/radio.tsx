@@ -12,7 +12,7 @@ export class Radio {
     private inputId = `joy-radio-${radioButtonIds++}`;
     private radioGroup: any | null = null;
 
-    @Element() el!: HTMLElement;
+    @Element() el!: HTMLJoyRadioElement;
 
     /**
      * If `true`, the radio is selected.
@@ -76,7 +76,7 @@ export class Radio {
         if (this.value === undefined) {
             this.value = this.inputId;
         }
-        const radioGroup = this.radioGroup = this.el.closest('joy-radio-group');
+        const radioGroup = (this.radioGroup = this.el.closest('joy-radio-group'));
         if (radioGroup) {
             this.updateState();
             // Emit event
@@ -97,24 +97,19 @@ export class Radio {
             this.checked = this.radioGroup.value === this.value;
             this.invalid = this.radioGroup.hasAttribute('invalid');
         }
-    }
+    };
 
-    private onClick = (ev: Event) => {
-        if (this.disabled) {
-           ev.preventDefault();
-           return;
-        }
-
+    private onClick = () => {
         this.joyRadioClick.emit();
-    }
+    };
 
     private handleFocus = () => {
         this.joyRadioFocus.emit();
-    }
+    };
 
     private handleBlur = () => {
         this.joyRadioBlur.emit();
-    }
+    };
 
     render() {
         const {buttonTabindex, checked, disabled, inputId, invalid} = this;
@@ -129,21 +124,16 @@ export class Radio {
                 onFocus={this.handleFocus}
                 onBlur={this.handleBlur}
             >
-                <label class={{
-                    'joy-radio': true,
-                    'joy-radio-checked': checked,
-                    'joy-radio-disabled': disabled,
-                    'joy-radio-invalid': invalid,
-                }}
-                       htmlFor={this.inputId}>
-                    <input
-                        type="radio"
-                        value={this.value}
-                        checked={checked}
-                        disabled={disabled}
-                        tabindex="-1"
-                        id={inputId}
-                    />
+                <label
+                    class={{
+                        'joy-radio': true,
+                        'joy-radio-checked': checked,
+                        'joy-radio-disabled': disabled,
+                        'joy-radio-invalid': invalid,
+                    }}
+                    htmlFor={this.inputId}
+                >
+                    <input type="radio" value={this.value} checked={checked} disabled={disabled} tabindex="-1" id={inputId} />
                     <span>
                         <slot />
                     </span>

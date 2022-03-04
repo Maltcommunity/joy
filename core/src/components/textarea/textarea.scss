@@ -18,6 +18,8 @@
 $_CLASS: '.joy-textarea';
 
 :host {
+    --textarea-invalid-color: var(--joy-color-error-50);
+    --textarea-invalid-color-hover: var(--joy-color-error-90);
     display: block;
 }
 
@@ -92,26 +94,26 @@ $_CLASS: '.joy-textarea';
 
 #{$_CLASS}_invalid {
     textarea {
-        border-color: var(--joy-color-state-error);
+        border-color: var(--textarea-invalid-color);
     }
 
     #{$_CLASS}_label {
-        color: var(--joy-color-state-error);
+        color: var(--textarea-invalid-color);
     }
 
     &:hover {
         textarea {
-            border-color: var(--joy-color-state-error-hover);
+            border-color: var(--textarea-invalid-color-hover);
         }
 
         #{$_CLASS}_label {
-            color: var(--joy-color-state-error-hover);
+            color: var(--textarea-invalid-color-hover);
         }
     }
 }
 
 #{$_CLASS}-count-invalid {
-    color: var(--joy-color-state-error);
+    color: var(--textarea-invalid-color);
 }
 
 #{$_CLASS}_disabled {

@@ -57,7 +57,9 @@ Generic buttons style
     align-items: center;
     flex-wrap: nowrap;
     white-space: nowrap;
+    box-sizing: border-box;
     font-family: var(--button-font-family);
+    line-height: 1;
     z-index: 1;
     border: none;
     transition: background-color var(--joy-transition-duration-long), border var(--joy-transition-duration-long);

@@ -54,7 +54,9 @@ export class Panel {
         return (
             <div class={'joy-highlight joy-highlight_' + this.level}>
                 {this.displayIcon && <joy-icon name={this.getRelevantIcon} color={this.getColorAccordingToLevel}></joy-icon>}
-                <slot />
+                <div>
+                    <slot />
+                </div>
             </div>
         );
     }
