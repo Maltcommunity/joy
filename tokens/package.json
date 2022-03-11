@@ -1,12 +1,13 @@
 {
   "name": "@maltjoy/tokens",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "Malt design system tokens ecosystem",
   "files": [
     "dist",
     "src/**/*.scss"
   ],
   "scripts": {
+    "build": "pnpm sass:compile",
     "sass:compile": "sass src/tokens.scss:dist/css/tokens.css",
     "test": "echo \"Error: no test specified\" && exit 1"
   },

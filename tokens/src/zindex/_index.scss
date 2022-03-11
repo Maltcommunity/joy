@@ -1,5 +1,6 @@
 $joy-core-z-index-fixed-content: 20;
 $joy-core-z-index-dropdown: 23;
+$joy-core-z-index-backdrop: 1049;
 $joy-core-z-index-dialog: 1050;
 $joy-core-z-index-picker: 1051;
 $joy-core-z-index-tooltip: 1052;
@@ -10,6 +11,7 @@ $joy-core-z-index-snackbar: 1053;
   --joy-core-z-index-fixed-content: #{$joy-core-z-index-fixed-content};
   --joy-core-z-index-dropdown: #{$joy-core-z-index-dropdown};
   --joy-core-z-index-tooltip: #{$joy-core-z-index-tooltip};
+  --joy-core-z-index-backdrop: #{$joy-core-z-index-backdrop};
   --joy-core-z-index-dialog: #{$joy-core-z-index-dialog};
   --joy-core-z-index-picker: #{$joy-core-z-index-picker};
   --joy-core-z-index-snackbar: #{$joy-core-z-index-snackbar};
