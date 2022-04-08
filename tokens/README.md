@@ -17,15 +17,15 @@ You can find all of it on our [Zeroheight documentation](https://joy.malt.com/6b
 
 First, run this command :
 
-`npm i @maltjoy/tokens@latest`
+`npm install @maltjoy/tokens@latest`
 
 Replace @latest by the version you prefer.
 
 ### SCSS 
 
 If you use SCSS preprocessor, you have two choices :
-- import the pre-bundle css version 
-- import the source tokens by picking what you need
+- include the full pre-bundle css version 
+- import the source design tokens by picking what you need
 
 #### Already bundled CSS
 
@@ -37,7 +37,6 @@ If you use SCSS preprocessor, you have two choices :
 #### Cherry-pick
 
 ```scss
-// With or without the .css extension
 @use '@maltjoy/tokens/src/colors';
 @use '@maltjoy/tokens/src/elevations';
 
