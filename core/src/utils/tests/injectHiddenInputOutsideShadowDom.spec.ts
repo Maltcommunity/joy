@@ -1,13 +1,12 @@
-import {domSandbox} from '@malt/testing-utils';
 import {renderInputOutsideShadowRoot} from '../dom';
 
 describe('Utils - DOM - generatedInputNameAndId', () => {
     it('should create a basic hidden input', () => {
-        const sandbox = domSandbox.mount(template());
-        const container = sandbox.querySelector('[data-container]')!;
+        document.body.innerHTML = template();
+        const container = document.querySelector('[data-container]') as HTMLElement;
 
         renderInputOutsideShadowRoot(container, 'my-input-name', 'my-value', false);
-        const hiddenInput = container.querySelector('input.input-hidden') as HTMLInputElement;
+        const hiddenInput = container!.querySelector('input.input-hidden') as HTMLInputElement;
 
         expect(hiddenInput).not.toBeNull();
         expect(hiddenInput['value']).toBe('my-value');
@@ -16,8 +15,8 @@ describe('Utils - DOM - generatedInputNameAndId', () => {
     });
 
     it('should bind the props to hidden input, especially useful for debugging', () => {
-        const sandbox = domSandbox.mount(template());
-        const container = sandbox.querySelector('[data-container]')!;
+        document.body.innerHTML = template();
+        const container = document.querySelector('[data-container]') as HTMLElement;
 
         renderInputOutsideShadowRoot(container, 'my-input-name', 'true', true);
         const hiddenInput = container.querySelector('input.input-hidden') as HTMLInputElement;
@@ -27,8 +26,8 @@ describe('Utils - DOM - generatedInputNameAndId', () => {
     });
 
     it('should not add a second input hidden as it already exists, only updates specific attributes', () => {
-        const sandbox = domSandbox.mount(template());
-        const container = sandbox.querySelector('[data-container]')!;
+        document.body.innerHTML = template();
+        const container = document.querySelector('[data-container]') as HTMLElement;
 
         renderInputOutsideShadowRoot(container, 'my-input-name', 'my-value', true);
         const hiddenInputs = container.querySelectorAll('input.input-hidden');

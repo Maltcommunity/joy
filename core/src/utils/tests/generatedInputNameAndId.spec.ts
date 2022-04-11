@@ -1,14 +1,12 @@
-import {domSandbox} from '@malt/testing-utils';
 import {generatedInputNameAndId} from '../dom';
 
 describe('Utils - DOM - generatedInputNameAndId', () => {
     it('should create a string for name or input ID with a first component tag', () => {
-        const sandbox = domSandbox.mount(template());
-
-        const first = generatedInputNameAndId(sandbox.querySelector('[data-toggle-test="1"]')!);
-        const second = generatedInputNameAndId(sandbox.querySelector('[data-toggle-test="2"]')!);
-        const third = generatedInputNameAndId(sandbox.querySelector('[data-toggle-test="3"]')!);
-        const fourth = generatedInputNameAndId(sandbox.querySelector('[data-toggle-test="4"]')!);
+        document.body.innerHTML = template();
+        const first = generatedInputNameAndId(document.querySelector('[data-toggle-test="1"]')!);
+        const second = generatedInputNameAndId(document.querySelector('[data-toggle-test="2"]')!);
+        const third = generatedInputNameAndId(document.querySelector('[data-toggle-test="3"]')!);
+        const fourth = generatedInputNameAndId(document.querySelector('[data-toggle-test="4"]')!);
 
         expect(first).toBe('joy-toggle-1');
         expect(second).toBe('joy-toggle-2');
