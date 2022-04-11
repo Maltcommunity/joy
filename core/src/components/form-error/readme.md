@@ -1,7 +1,7 @@
 ---
 hologram: true
 title: Form Error
-name: joy_form_error
+name: joy-form-error
 category: Webcomponents
 ---
 
@@ -35,6 +35,7 @@ category: Webcomponents
 
  - [joy-counter](../counter)
  - [joy-radio-group](../radio-group)
+ - [joy-select](../select)
 
 ### Depends on
 
@@ -46,6 +47,7 @@ graph TD;
   joy-form-error --> joy-icon
   joy-counter --> joy-form-error
   joy-radio-group --> joy-form-error
+  joy-select --> joy-form-error
   style joy-form-error fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

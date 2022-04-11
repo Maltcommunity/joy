@@ -1,7 +1,7 @@
 ---
 hologram: true
 title: Tag
-name: joy_tag
+name: joy-tag
 category: Webcomponents
 ---
 

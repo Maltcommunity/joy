@@ -1,7 +1,7 @@
 ---
 hologram: true
 title: Separator
-name: joy_separator
+name: joy-separator
 category: Webcomponents
 ---
 

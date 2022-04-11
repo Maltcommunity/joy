@@ -1,7 +1,7 @@
 ---
 hologram: true
 title: Rating Stars
-name: joy_rating_stars
+name: joy-rating-stars
 category: Webcomponents
 ---
 

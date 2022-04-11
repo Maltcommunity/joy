@@ -5,10 +5,8 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { AvatarColors, AvatarSizes, ButtonSizes, ButtonVariants, DividerCTASizes, HighlightLevels, HyperLinksTargets, IconButtonColors, IconColors, IconsSizes, LinksColors, RatingStarsSizes, SeparatorSizes, SnackbarLevels, TagSizes, TagVariants, TipsLevel, TooltipVariants } from "./types";
+import { AvatarColors, AvatarSizes, BackDropOrigin, ButtonSizes, ButtonVariants, DialogSizes, Direction, DividerCTASizes, HighlightLevels, HyperLinksTargets, IconButtonColors, IconColors, IconsSizes, IndicatorsVariants, InputSizes, LabelSizes, LinksColors, RatingStarsSizes, SeparatorSizes, SnackbarLevels, Tab, TagSizes, TagVariants, TipsLevel, TooltipVariants } from "./types";
 export namespace Components {
-    interface JoyAllCritical {
-    }
     interface JoyAvailability {
         /**
           * isPartial dot, define fill or stroke dot display
@@ -70,6 +68,12 @@ export namespace Components {
           * How avatars are spread. With a gap, or overlaped
          */
         "compress": boolean;
+    }
+    interface JoyBackdrop {
+        /**
+          * The backdrop can be created from many components *
+         */
+        "origin": BackDropOrigin;
     }
     interface JoyBadgeLevel {
         /**
@@ -198,10 +202,6 @@ export namespace Components {
          */
         "ariaLabel": string;
         /**
-          * Count is the value
-         */
-        "count": number;
-        /**
           * Invalid state of the component
          */
         "invalid": boolean;
@@ -237,6 +237,66 @@ export namespace Components {
           * Granularity of the input. We use the same name than native step attribute. We don't bind this prop to actual input step attribute, because we don't want checkValidity API to return invalid if the actual value is not a multiple of step prop !
          */
         "step": number;
+        "value": number;
+    }
+    interface JoyDialog {
+        /**
+          * Set the height of the banner. Default to 250 *
+         */
+        "bannerHeight"?: number | undefined;
+        /**
+          * Set the position of the banner image. Work exactly like css background-position property *
+         */
+        "bannerPosition": string;
+        /**
+          * Set the URL of the image you can inject as pre-header banner *
+         */
+        "bannerSrc"?: string;
+        /**
+          * Set the alt text of the banner *
+         */
+        "bannerSrcAlt"?: string;
+        /**
+          * If you want to change the CTA sizes, please choose between small, medium, large *
+         */
+        "buttonSize": ButtonSizes;
+        /**
+          * Secondary CTA text. If none given, it won't show the CTA *
+         */
+        "cancelText"?: string;
+        /**
+          * Hide the dialog from outside
+          * @return
+         */
+        "closeDialog": () => Promise<void>;
+        /**
+          * Main CTA text. If none given, it won't show the CTA *
+         */
+        "confirmText"?: string;
+        "demo": boolean;
+        /**
+          * Dialog open state *
+         */
+        "open": boolean;
+        /**
+          * If you want to trigger specific ction after the dialog opening.
+          * @param callback
+         */
+        "openDialog": (callback?: (() => any) | undefined) => Promise<void>;
+        /**
+          * Dialog sizes *
+         */
+        "size": DialogSizes;
+    }
+    interface JoyDialogTrigger {
+        /**
+          * The ID of the dialog you want to show. Required *
+         */
+        "dialog": string;
+        /**
+          * For dialogs containing joy-indicators with multiple steps, you can specify a step number *
+         */
+        "step"?: number;
     }
     interface JoyDividerCta {
         /**
@@ -323,6 +383,97 @@ export namespace Components {
           * The button type. As the component wraps an actual HTML button element, it will be applied to it.
          */
         "type"?: 'button';
+    }
+    interface JoyIndicator {
+        /**
+          * @param select - Select or not, the indicator.
+          * @return
+         */
+        "selectIndicator": (select?: boolean) => Promise<void>;
+        "selected": boolean;
+        /**
+          * @return - Force focus from outside
+         */
+        "setFocus": () => Promise<void>;
+        "variant": IndicatorsVariants;
+    }
+    interface JoyIndicators {
+        /**
+          * Selected state *
+         */
+        "selected": number;
+        /**
+          * Variant colors. 2 possibles values *
+         */
+        "variant": IndicatorsVariants;
+    }
+    interface JoyInput {
+        /**
+          * The input's autocomplete policy.
+         */
+        "autocomplete": string;
+        /**
+          * Makes the field disabled or not
+         */
+        "disabled": boolean;
+        /**
+          * Add an icon on the left side before the value
+         */
+        "icon"?: string;
+        /**
+          * Makes the field readonly or not
+         */
+        "invalid": boolean;
+        /**
+          * If the type is "number" then you can use max property.
+         */
+        "max"?: number;
+        /**
+          * If the type is "number" then you can use min property.
+         */
+        "min"?: number;
+        /**
+          * Input types. List is not exhaustive, this component does not deal with checkboxes, radios, files, dates.
+         */
+        "name": string;
+        /**
+          * The input's placeholder text.
+         */
+        "placeholder": string;
+        /**
+          * Makes the field readonly or not
+         */
+        "readonly": boolean;
+        /**
+          * Makes the field required
+         */
+        "required": boolean;
+        /**
+          * At the moment, for E2E purpose
+         */
+        "setFocus": () => Promise<void>;
+        /**
+          * The input's size.
+         */
+        "size": InputSizes;
+        /**
+          * Input types. List is not exhaustive, this component does not deal with checkboxes, radios, files, dates.
+         */
+        "type": 'hidden' | 'text' | 'number' | 'search' | 'email' | 'password' | 'tel';
+        /**
+          * If the field is of type number, you can specify a unit like %, days, hours, whatever you want
+         */
+        "unit"?: string;
+        /**
+          * Field value
+         */
+        "value": string;
+    }
+    interface JoyLabel {
+        /**
+          * Label size *
+         */
+        "size": LabelSizes;
     }
     interface JoyLink {
         /**
@@ -416,6 +567,10 @@ export namespace Components {
     }
     interface JoyRadio {
         /**
+          * If `true`, the radio is selected.
+         */
+        "checked": boolean;
+        /**
           * If `true`, the user cannot interact with the radio.
          */
         "disabled": boolean;
@@ -473,15 +628,51 @@ export namespace Components {
         "size": RatingStarsSizes;
     }
     interface JoySelect {
+        /**
+          * By default, the dropdown is closed if you focusout the select. For debugging purpose or specific behavior, you can toggle off this option. *
+         */
+        "closeOnBlur": boolean;
+        /**
+          * Disabled state. *
+         */
         "disabled": boolean;
+        /**
+          * Pick an icon displayed before the label. *
+         */
+        "icon"?: string;
+        /**
+          * Invalid state. *
+         */
         "invalid": boolean;
+        /**
+          * Invalid state message. *
+         */
+        "invalidMessage": string;
+        /**
+          * Select name attribute to be found by parent form. *
+         */
         "name": string;
+        /**
+          * Mandatory or not. *
+         */
         "required": boolean;
+        /**
+          * Select actual value. *
+         */
         "value": string;
     }
     interface JoySelectOption {
+        /**
+          * Disabled state. *
+         */
         "disabled": boolean;
+        /**
+          * If the option is selected or not *
+         */
         "selected": boolean;
+        /**
+          * Value bubbled up to the select component *
+         */
         "value": string;
     }
     interface JoySeparator {
@@ -525,6 +716,52 @@ export namespace Components {
           * Spinner colors, 2 possible values
          */
         "color"?: string;
+    }
+    interface JoyStep {
+        /**
+          * If the step is completed. *
+         */
+        "completed": boolean;
+        /**
+          * Used to change style for mobile. *
+         */
+        "direction": Direction;
+        /**
+          * If the step is ongoing. *
+         */
+        "ongoing": boolean;
+        "setAsLast": () => Promise<void>;
+        /**
+          * Marks the step as completed
+         */
+        "setCompleted": () => Promise<void>;
+        /**
+          * Marks the direction as vertical or horizontal
+          * @param direction - horizontal or vertical
+         */
+        "setDirection": (direction: Direction) => Promise<void>;
+        /**
+          * Marks the step as ongoing
+         */
+        "setOnGoing": () => Promise<void>;
+        /**
+          * Default or small. *
+         */
+        "size": 'small' | 'default';
+    }
+    interface JoyStepper {
+        /**
+          * Used to change style for mobile. *
+         */
+        "direction": Direction;
+        /**
+          * Defines the CSS flex horizontal justify distribution *
+         */
+        "justify": boolean;
+        /**
+          * Set the step number of the stepper. Will auto-complete each step that is < step. Starts from 0. *
+         */
+        "step": number;
     }
     interface JoyTab {
         /**
@@ -837,12 +1074,6 @@ export namespace Components {
     }
 }
 declare global {
-    interface HTMLJoyAllCriticalElement extends Components.JoyAllCritical, HTMLStencilElement {
-    }
-    var HTMLJoyAllCriticalElement: {
-        prototype: HTMLJoyAllCriticalElement;
-        new (): HTMLJoyAllCriticalElement;
-    };
     interface HTMLJoyAvailabilityElement extends Components.JoyAvailability, HTMLStencilElement {
     }
     var HTMLJoyAvailabilityElement: {
@@ -860,6 +1091,12 @@ declare global {
     var HTMLJoyAvatarsListElement: {
         prototype: HTMLJoyAvatarsListElement;
         new (): HTMLJoyAvatarsListElement;
+    };
+    interface HTMLJoyBackdropElement extends Components.JoyBackdrop, HTMLStencilElement {
+    }
+    var HTMLJoyBackdropElement: {
+        prototype: HTMLJoyBackdropElement;
+        new (): HTMLJoyBackdropElement;
     };
     interface HTMLJoyBadgeLevelElement extends Components.JoyBadgeLevel, HTMLStencilElement {
     }
@@ -897,6 +1134,18 @@ declare global {
         prototype: HTMLJoyCounterElement;
         new (): HTMLJoyCounterElement;
     };
+    interface HTMLJoyDialogElement extends Components.JoyDialog, HTMLStencilElement {
+    }
+    var HTMLJoyDialogElement: {
+        prototype: HTMLJoyDialogElement;
+        new (): HTMLJoyDialogElement;
+    };
+    interface HTMLJoyDialogTriggerElement extends Components.JoyDialogTrigger, HTMLStencilElement {
+    }
+    var HTMLJoyDialogTriggerElement: {
+        prototype: HTMLJoyDialogTriggerElement;
+        new (): HTMLJoyDialogTriggerElement;
+    };
     interface HTMLJoyDividerCtaElement extends Components.JoyDividerCta, HTMLStencilElement {
     }
     var HTMLJoyDividerCtaElement: {
@@ -926,6 +1175,30 @@ declare global {
     var HTMLJoyIconButtonElement: {
         prototype: HTMLJoyIconButtonElement;
         new (): HTMLJoyIconButtonElement;
+    };
+    interface HTMLJoyIndicatorElement extends Components.JoyIndicator, HTMLStencilElement {
+    }
+    var HTMLJoyIndicatorElement: {
+        prototype: HTMLJoyIndicatorElement;
+        new (): HTMLJoyIndicatorElement;
+    };
+    interface HTMLJoyIndicatorsElement extends Components.JoyIndicators, HTMLStencilElement {
+    }
+    var HTMLJoyIndicatorsElement: {
+        prototype: HTMLJoyIndicatorsElement;
+        new (): HTMLJoyIndicatorsElement;
+    };
+    interface HTMLJoyInputElement extends Components.JoyInput, HTMLStencilElement {
+    }
+    var HTMLJoyInputElement: {
+        prototype: HTMLJoyInputElement;
+        new (): HTMLJoyInputElement;
+    };
+    interface HTMLJoyLabelElement extends Components.JoyLabel, HTMLStencilElement {
+    }
+    var HTMLJoyLabelElement: {
+        prototype: HTMLJoyLabelElement;
+        new (): HTMLJoyLabelElement;
     };
     interface HTMLJoyLinkElement extends Components.JoyLink, HTMLStencilElement {
     }
@@ -1004,6 +1277,18 @@ declare global {
     var HTMLJoySpinnerElement: {
         prototype: HTMLJoySpinnerElement;
         new (): HTMLJoySpinnerElement;
+    };
+    interface HTMLJoyStepElement extends Components.JoyStep, HTMLStencilElement {
+    }
+    var HTMLJoyStepElement: {
+        prototype: HTMLJoyStepElement;
+        new (): HTMLJoyStepElement;
+    };
+    interface HTMLJoyStepperElement extends Components.JoyStepper, HTMLStencilElement {
+    }
+    var HTMLJoyStepperElement: {
+        prototype: HTMLJoyStepperElement;
+        new (): HTMLJoyStepperElement;
     };
     interface HTMLJoyTabElement extends Components.JoyTab, HTMLStencilElement {
     }
@@ -1084,21 +1369,27 @@ declare global {
         new (): HTMLJoyUserCardElement;
     };
     interface HTMLElementTagNameMap {
-        "joy-all-critical": HTMLJoyAllCriticalElement;
         "joy-availability": HTMLJoyAvailabilityElement;
         "joy-avatar": HTMLJoyAvatarElement;
         "joy-avatars-list": HTMLJoyAvatarsListElement;
+        "joy-backdrop": HTMLJoyBackdropElement;
         "joy-badge-level": HTMLJoyBadgeLevelElement;
         "joy-bottom-sheet": HTMLJoyBottomSheetElement;
         "joy-button": HTMLJoyButtonElement;
         "joy-checkbox": HTMLJoyCheckboxElement;
         "joy-company-avatar": HTMLJoyCompanyAvatarElement;
         "joy-counter": HTMLJoyCounterElement;
+        "joy-dialog": HTMLJoyDialogElement;
+        "joy-dialog-trigger": HTMLJoyDialogTriggerElement;
         "joy-divider-cta": HTMLJoyDividerCtaElement;
         "joy-form-error": HTMLJoyFormErrorElement;
         "joy-highlight": HTMLJoyHighlightElement;
         "joy-icon": HTMLJoyIconElement;
         "joy-icon-button": HTMLJoyIconButtonElement;
+        "joy-indicator": HTMLJoyIndicatorElement;
+        "joy-indicators": HTMLJoyIndicatorsElement;
+        "joy-input": HTMLJoyInputElement;
+        "joy-label": HTMLJoyLabelElement;
         "joy-link": HTMLJoyLinkElement;
         "joy-pagination": HTMLJoyPaginationElement;
         "joy-panel": HTMLJoyPanelElement;
@@ -1112,6 +1403,8 @@ declare global {
         "joy-separator": HTMLJoySeparatorElement;
         "joy-snackbar": HTMLJoySnackbarElement;
         "joy-spinner": HTMLJoySpinnerElement;
+        "joy-step": HTMLJoyStepElement;
+        "joy-stepper": HTMLJoyStepperElement;
         "joy-tab": HTMLJoyTabElement;
         "joy-tab-button": HTMLJoyTabButtonElement;
         "joy-tabs": HTMLJoyTabsElement;
@@ -1128,8 +1421,6 @@ declare global {
     }
 }
 declare namespace LocalJSX {
-    interface JoyAllCritical {
-    }
     interface JoyAvailability {
         /**
           * isPartial dot, define fill or stroke dot display
@@ -1191,6 +1482,13 @@ declare namespace LocalJSX {
           * How avatars are spread. With a gap, or overlaped
          */
         "compress"?: boolean;
+    }
+    interface JoyBackdrop {
+        "onBackdropClick"?: (event: CustomEvent<BackDropOrigin>) => void;
+        /**
+          * The backdrop can be created from many components *
+         */
+        "origin": BackDropOrigin;
     }
     interface JoyBadgeLevel {
         /**
@@ -1272,9 +1570,9 @@ declare namespace LocalJSX {
          */
         "name"?: string;
         /**
-          * Clicking on the component will fire this customEvent. use @joyCheckboxChange in Vue apps, and onJoyCheckboxChange for plain JavaScript.
+          * Clicking on the component will fire this customEvent
          */
-        "onJoyCheckboxChange"?: (event: CustomEvent<boolean>) => void;
+        "onValueChange"?: (event: CustomEvent<boolean>) => void;
         /**
           * Input value. Input value != checked state ! If you need to get the state checked/not checked, simply use checked prop
          */
@@ -1304,10 +1602,6 @@ declare namespace LocalJSX {
          */
         "ariaLabel"?: string;
         /**
-          * Count is the value
-         */
-        "count"?: number;
-        /**
           * Invalid state of the component
          */
         "invalid"?: boolean;
@@ -1336,11 +1630,11 @@ declare namespace LocalJSX {
          */
         "name"?: string;
         /**
-          * Specific event fired when you decrement the counter value. Prefer using joyCounterUpdate unless you need to handle this specific event type
+          * Specific event fired when you decrement the counter value. Prefer using valueChange unless you need to handle this specific event type
          */
         "onJoyCounterDecrement"?: (event: CustomEvent<number>) => void;
         /**
-          * Specific event fired when you increment the counter value. Prefer using joyCounterUpdate unless you need to handle this specific event type
+          * Specific event fired when you increment the counter value. Prefer using valueChange unless you need to handle this specific event type
          */
         "onJoyCounterIncrement"?: (event: CustomEvent<number>) => void;
         /**
@@ -1350,13 +1644,71 @@ declare namespace LocalJSX {
         /**
           * Generic event for any counter change, fired by manually typing a value or using increment/decrement CTA
          */
-        "onJoyCounterUpdate"?: (event: CustomEvent<number>) => void;
+        "onValueChange"?: (event: CustomEvent<number>) => void;
         /**
           * Counter requirement
          */
         "required"?: boolean;
         /**
           * Granularity of the input. We use the same name than native step attribute. We don't bind this prop to actual input step attribute, because we don't want checkValidity API to return invalid if the actual value is not a multiple of step prop !
+         */
+        "step"?: number;
+        "value"?: number;
+    }
+    interface JoyDialog {
+        /**
+          * Set the height of the banner. Default to 250 *
+         */
+        "bannerHeight"?: number | undefined;
+        /**
+          * Set the position of the banner image. Work exactly like css background-position property *
+         */
+        "bannerPosition"?: string;
+        /**
+          * Set the URL of the image you can inject as pre-header banner *
+         */
+        "bannerSrc"?: string;
+        /**
+          * Set the alt text of the banner *
+         */
+        "bannerSrcAlt"?: string;
+        /**
+          * If you want to change the CTA sizes, please choose between small, medium, large *
+         */
+        "buttonSize"?: ButtonSizes;
+        /**
+          * Secondary CTA text. If none given, it won't show the CTA *
+         */
+        "cancelText"?: string;
+        /**
+          * Main CTA text. If none given, it won't show the CTA *
+         */
+        "confirmText"?: string;
+        "demo"?: boolean;
+        /**
+          * Custom event fired when clicking on cancel button or cross icon
+         */
+        "onJoyCancelDialog"?: (event: CustomEvent<void>) => void;
+        /**
+          * Custom event fired when clicking on confirm button
+         */
+        "onJoyConfirmDialog"?: (event: CustomEvent<void>) => void;
+        /**
+          * Dialog open state *
+         */
+        "open"?: boolean;
+        /**
+          * Dialog sizes *
+         */
+        "size"?: DialogSizes;
+    }
+    interface JoyDialogTrigger {
+        /**
+          * The ID of the dialog you want to show. Required *
+         */
+        "dialog": string;
+        /**
+          * For dialogs containing joy-indicators with multiple steps, you can specify a step number *
          */
         "step"?: number;
     }
@@ -1449,6 +1801,90 @@ declare namespace LocalJSX {
           * The button type. As the component wraps an actual HTML button element, it will be applied to it.
          */
         "type"?: 'button';
+    }
+    interface JoyIndicator {
+        "onJoySelectIndicator"?: (event: CustomEvent<{index: number}>) => void;
+        "selected"?: boolean;
+        "variant"?: IndicatorsVariants;
+    }
+    interface JoyIndicators {
+        "onJoyIndicatorsChange"?: (event: CustomEvent<number>) => void;
+        /**
+          * Selected state *
+         */
+        "selected"?: number;
+        /**
+          * Variant colors. 2 possibles values *
+         */
+        "variant"?: IndicatorsVariants;
+    }
+    interface JoyInput {
+        /**
+          * The input's autocomplete policy.
+         */
+        "autocomplete"?: string;
+        /**
+          * Makes the field disabled or not
+         */
+        "disabled"?: boolean;
+        /**
+          * Add an icon on the left side before the value
+         */
+        "icon"?: string;
+        /**
+          * Makes the field readonly or not
+         */
+        "invalid"?: boolean;
+        /**
+          * If the type is "number" then you can use max property.
+         */
+        "max"?: number;
+        /**
+          * If the type is "number" then you can use min property.
+         */
+        "min"?: number;
+        /**
+          * Input types. List is not exhaustive, this component does not deal with checkboxes, radios, files, dates.
+         */
+        "name"?: string;
+        /**
+          * Custom event that returns the component instance and its actual value. Binded to input native event *
+         */
+        "onValueChange"?: (event: CustomEvent<{element: HTMLJoyInputElement; value?: string}>) => void;
+        /**
+          * The input's placeholder text.
+         */
+        "placeholder"?: string;
+        /**
+          * Makes the field readonly or not
+         */
+        "readonly"?: boolean;
+        /**
+          * Makes the field required
+         */
+        "required"?: boolean;
+        /**
+          * The input's size.
+         */
+        "size"?: InputSizes;
+        /**
+          * Input types. List is not exhaustive, this component does not deal with checkboxes, radios, files, dates.
+         */
+        "type"?: 'hidden' | 'text' | 'number' | 'search' | 'email' | 'password' | 'tel';
+        /**
+          * If the field is of type number, you can specify a unit like %, days, hours, whatever you want
+         */
+        "unit"?: string;
+        /**
+          * Field value
+         */
+        "value"?: string;
+    }
+    interface JoyLabel {
+        /**
+          * Label size *
+         */
+        "size"?: LabelSizes;
     }
     interface JoyLink {
         /**
@@ -1550,6 +1986,10 @@ declare namespace LocalJSX {
     }
     interface JoyRadio {
         /**
+          * If `true`, the radio is selected.
+         */
+        "checked"?: boolean;
+        /**
           * If `true`, the user cannot interact with the radio.
          */
         "disabled"?: boolean;
@@ -1594,7 +2034,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when the value has changed.
          */
-        "onJoyRadioGroupChange"?: (event: CustomEvent<any>) => void;
+        "onValueChange"?: (event: CustomEvent<any>) => void;
         /**
           * the value of the radio group.
          */
@@ -1615,15 +2055,52 @@ declare namespace LocalJSX {
         "size"?: RatingStarsSizes;
     }
     interface JoySelect {
+        /**
+          * By default, the dropdown is closed if you focusout the select. For debugging purpose or specific behavior, you can toggle off this option. *
+         */
+        "closeOnBlur"?: boolean;
+        /**
+          * Disabled state. *
+         */
         "disabled"?: boolean;
+        /**
+          * Pick an icon displayed before the label. *
+         */
+        "icon"?: string;
+        /**
+          * Invalid state. *
+         */
         "invalid"?: boolean;
+        /**
+          * Invalid state message. *
+         */
+        "invalidMessage"?: string;
+        /**
+          * Select name attribute to be found by parent form. *
+         */
         "name"?: string;
+        "onValueChange"?: (event: CustomEvent<{value: string}>) => void;
+        /**
+          * Mandatory or not. *
+         */
         "required"?: boolean;
+        /**
+          * Select actual value. *
+         */
         "value"?: string;
     }
     interface JoySelectOption {
+        /**
+          * Disabled state. *
+         */
         "disabled"?: boolean;
+        /**
+          * If the option is selected or not *
+         */
         "selected"?: boolean;
+        /**
+          * Value bubbled up to the select component *
+         */
         "value": string;
     }
     interface JoySeparator {
@@ -1671,6 +2148,38 @@ declare namespace LocalJSX {
           * Spinner colors, 2 possible values
          */
         "color"?: string;
+    }
+    interface JoyStep {
+        /**
+          * If the step is completed. *
+         */
+        "completed"?: boolean;
+        /**
+          * Used to change style for mobile. *
+         */
+        "direction"?: Direction;
+        /**
+          * If the step is ongoing. *
+         */
+        "ongoing"?: boolean;
+        /**
+          * Default or small. *
+         */
+        "size"?: 'small' | 'default';
+    }
+    interface JoyStepper {
+        /**
+          * Used to change style for mobile. *
+         */
+        "direction"?: Direction;
+        /**
+          * Defines the CSS flex horizontal justify distribution *
+         */
+        "justify"?: boolean;
+        /**
+          * Set the step number of the stepper. Will auto-complete each step that is < step. Starts from 0. *
+         */
+        "step"?: number;
     }
     interface JoyTab {
         /**
@@ -1880,6 +2389,10 @@ declare namespace LocalJSX {
          */
         "onJoyTextareaInput"?: (event: CustomEvent<KeyboardEvent>) => void;
         /**
+          * Emitted when the value has changed. Generic event used by all other form fields
+         */
+        "onValueChange"?: (event: CustomEvent<void>) => void;
+        /**
           * Instructional text that shows before the input has a value.
          */
         "placeholder"?: string | null;
@@ -1936,9 +2449,9 @@ declare namespace LocalJSX {
          */
         "name"?: string;
         /**
-          * Clicking on the component will fire this customEvent. use @joyToggleChange in Vue apps, and onJoyToggleChange for plain JavaScript.
+          * Clicking on the component will fire this customEvent.
          */
-        "onJoyToggleChange"?: (event: CustomEvent<boolean>) => void;
+        "onValueChange"?: (event: CustomEvent<boolean>) => void;
         /**
           * Input value. TODO : check if we really need it as we use a checkbox system
          */
@@ -2003,21 +2516,27 @@ declare namespace LocalJSX {
         "subTitle"?: string;
     }
     interface IntrinsicElements {
-        "joy-all-critical": JoyAllCritical;
         "joy-availability": JoyAvailability;
         "joy-avatar": JoyAvatar;
         "joy-avatars-list": JoyAvatarsList;
+        "joy-backdrop": JoyBackdrop;
         "joy-badge-level": JoyBadgeLevel;
         "joy-bottom-sheet": JoyBottomSheet;
         "joy-button": JoyButton;
         "joy-checkbox": JoyCheckbox;
         "joy-company-avatar": JoyCompanyAvatar;
         "joy-counter": JoyCounter;
+        "joy-dialog": JoyDialog;
+        "joy-dialog-trigger": JoyDialogTrigger;
         "joy-divider-cta": JoyDividerCta;
         "joy-form-error": JoyFormError;
         "joy-highlight": JoyHighlight;
         "joy-icon": JoyIcon;
         "joy-icon-button": JoyIconButton;
+        "joy-indicator": JoyIndicator;
+        "joy-indicators": JoyIndicators;
+        "joy-input": JoyInput;
+        "joy-label": JoyLabel;
         "joy-link": JoyLink;
         "joy-pagination": JoyPagination;
         "joy-panel": JoyPanel;
@@ -2031,6 +2550,8 @@ declare namespace LocalJSX {
         "joy-separator": JoySeparator;
         "joy-snackbar": JoySnackbar;
         "joy-spinner": JoySpinner;
+        "joy-step": JoyStep;
+        "joy-stepper": JoyStepper;
         "joy-tab": JoyTab;
         "joy-tab-button": JoyTabButton;
         "joy-tabs": JoyTabs;
@@ -2050,21 +2571,27 @@ export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
-            "joy-all-critical": LocalJSX.JoyAllCritical & JSXBase.HTMLAttributes<HTMLJoyAllCriticalElement>;
             "joy-availability": LocalJSX.JoyAvailability & JSXBase.HTMLAttributes<HTMLJoyAvailabilityElement>;
             "joy-avatar": LocalJSX.JoyAvatar & JSXBase.HTMLAttributes<HTMLJoyAvatarElement>;
             "joy-avatars-list": LocalJSX.JoyAvatarsList & JSXBase.HTMLAttributes<HTMLJoyAvatarsListElement>;
+            "joy-backdrop": LocalJSX.JoyBackdrop & JSXBase.HTMLAttributes<HTMLJoyBackdropElement>;
             "joy-badge-level": LocalJSX.JoyBadgeLevel & JSXBase.HTMLAttributes<HTMLJoyBadgeLevelElement>;
             "joy-bottom-sheet": LocalJSX.JoyBottomSheet & JSXBase.HTMLAttributes<HTMLJoyBottomSheetElement>;
             "joy-button": LocalJSX.JoyButton & JSXBase.HTMLAttributes<HTMLJoyButtonElement>;
             "joy-checkbox": LocalJSX.JoyCheckbox & JSXBase.HTMLAttributes<HTMLJoyCheckboxElement>;
             "joy-company-avatar": LocalJSX.JoyCompanyAvatar & JSXBase.HTMLAttributes<HTMLJoyCompanyAvatarElement>;
             "joy-counter": LocalJSX.JoyCounter & JSXBase.HTMLAttributes<HTMLJoyCounterElement>;
+            "joy-dialog": LocalJSX.JoyDialog & JSXBase.HTMLAttributes<HTMLJoyDialogElement>;
+            "joy-dialog-trigger": LocalJSX.JoyDialogTrigger & JSXBase.HTMLAttributes<HTMLJoyDialogTriggerElement>;
             "joy-divider-cta": LocalJSX.JoyDividerCta & JSXBase.HTMLAttributes<HTMLJoyDividerCtaElement>;
             "joy-form-error": LocalJSX.JoyFormError & JSXBase.HTMLAttributes<HTMLJoyFormErrorElement>;
             "joy-highlight": LocalJSX.JoyHighlight & JSXBase.HTMLAttributes<HTMLJoyHighlightElement>;
             "joy-icon": LocalJSX.JoyIcon & JSXBase.HTMLAttributes<HTMLJoyIconElement>;
             "joy-icon-button": LocalJSX.JoyIconButton & JSXBase.HTMLAttributes<HTMLJoyIconButtonElement>;
+            "joy-indicator": LocalJSX.JoyIndicator & JSXBase.HTMLAttributes<HTMLJoyIndicatorElement>;
+            "joy-indicators": LocalJSX.JoyIndicators & JSXBase.HTMLAttributes<HTMLJoyIndicatorsElement>;
+            "joy-input": LocalJSX.JoyInput & JSXBase.HTMLAttributes<HTMLJoyInputElement>;
+            "joy-label": LocalJSX.JoyLabel & JSXBase.HTMLAttributes<HTMLJoyLabelElement>;
             "joy-link": LocalJSX.JoyLink & JSXBase.HTMLAttributes<HTMLJoyLinkElement>;
             "joy-pagination": LocalJSX.JoyPagination & JSXBase.HTMLAttributes<HTMLJoyPaginationElement>;
             "joy-panel": LocalJSX.JoyPanel & JSXBase.HTMLAttributes<HTMLJoyPanelElement>;
@@ -2078,6 +2605,8 @@ declare module "@stencil/core" {
             "joy-separator": LocalJSX.JoySeparator & JSXBase.HTMLAttributes<HTMLJoySeparatorElement>;
             "joy-snackbar": LocalJSX.JoySnackbar & JSXBase.HTMLAttributes<HTMLJoySnackbarElement>;
             "joy-spinner": LocalJSX.JoySpinner & JSXBase.HTMLAttributes<HTMLJoySpinnerElement>;
+            "joy-step": LocalJSX.JoyStep & JSXBase.HTMLAttributes<HTMLJoyStepElement>;
+            "joy-stepper": LocalJSX.JoyStepper & JSXBase.HTMLAttributes<HTMLJoyStepperElement>;
             "joy-tab": LocalJSX.JoyTab & JSXBase.HTMLAttributes<HTMLJoyTabElement>;
             "joy-tab-button": LocalJSX.JoyTabButton & JSXBase.HTMLAttributes<HTMLJoyTabButtonElement>;
             "joy-tabs": LocalJSX.JoyTabs & JSXBase.HTMLAttributes<HTMLJoyTabsElement>;

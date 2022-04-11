@@ -7,6 +7,7 @@ import {getIconUrl} from './utils';
     tag: 'joy-icon',
     styleUrl: 'style/icon.scss',
     assetsDirs: ['icons'],
+    shadow: true,
 })
 export class Icon {
     private io?: IntersectionObserver;
@@ -55,11 +56,11 @@ export class Icon {
     @State() private isVisible = false;
 
     get colorClass() {
-        return this.color ? {[`joy-i-wc_${this.color}`]: true} : null;
+        return this.color ? {[`joy-icon--${this.color}`]: true} : null;
     }
 
     get sizeClass() {
-        return this.size ? {[`joy-i-wc_${this.size}`]: true} : null;
+        return this.size ? {[`joy-icon--${this.size}`]: true} : null;
     }
 
     get elementClass() {
@@ -119,21 +120,17 @@ export class Icon {
             <Host
                 role="img"
                 class={{
-                    'joy-i-wc': true,
-                    'joy-i-wc_loaded': !this.loading,
+                    'joy-icon': true,
+                    'joy-icon--loaded': !this.loading,
                     ...this.colorClass,
                     ...this.sizeClass,
-                    'joy-i-wc_bg': this.bicolor,
-                    'joy-i-wc_full': this.full,
-                    'joy-i-wc_clickable': this.clickable,
+                    'joy-icon--bicolor': this.bicolor,
+                    'joy-icon--full': this.full,
+                    'joy-icon--clickable': this.clickable,
                     ...this.elementClass,
                 }}
             >
-                {Build.isBrowser && this.svgContent ? (
-                    <div class="joy-icon-inner" innerHTML={this.svgContent}></div>
-                ) : (
-                    <div class="joy-icon-inner"></div>
-                )}
+                {Build.isBrowser && this.svgContent ? <div class="joy-icon-inner" innerHTML={this.svgContent} /> : <div class="joy-icon-inner" />}
             </Host>
         );
     }

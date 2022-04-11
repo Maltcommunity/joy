@@ -1,7 +1,7 @@
 ---
 hologram: true
 title: Pagination
-name: joy_pagination
+name: joy-pagination
 category: Webcomponents
 ---
 

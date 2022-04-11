@@ -12,7 +12,7 @@ describe('rating-stars e2e', () => {
 
         await page.setContent('<joy-rating-stars></joy-rating-stars>');
         const element: E2EElement = await page.find('joy-rating-stars');
-        expect(element).toHaveClass('hydrated');
+        expect(element).toHaveAttribute('hydrated');
     });
 
     it('renders specific note style according to given rate', async () => {

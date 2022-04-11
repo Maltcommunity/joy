@@ -1,7 +1,7 @@
 ---
 hologram: true
 title: Tab
-name: joy_tab_button
+name: joy-tab-button
 category: Webcomponents
 ---
 
@@ -20,9 +20,9 @@ category: Webcomponents
 
 ## Events
 
-| Event               | Description                                                                                                                      | Type               |
-| ------------------- | -------------------------------------------------------------------------------------------------------------------------------- | ------------------ |
-| `joyTabButtonClick` | Event used by joy-tabs parent component. Prefer using joyTabSelected event from joy-tabs if you want to listen to any tab change | `CustomEvent<Tab>` |
+| Event               | Description                                                                                                                      | Type                                                  |
+| ------------------- | -------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------- |
+| `joyTabButtonClick` | Event used by joy-tabs parent component. Prefer using joyTabSelected event from joy-tabs if you want to listen to any tab change | `CustomEvent<{ selectedTab: string; href: string; }>` |
 
 
 ## Methods

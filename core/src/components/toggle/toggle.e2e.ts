@@ -6,7 +6,7 @@ describe('toggle e2e', () => {
 
         await page.setContent('<joy-toggle></joy-toggle>');
         const element = await page.find('joy-toggle');
-        expect(element).toHaveClass('hydrated');
+        expect(element).toHaveAttribute('hydrated');
     });
 
     it('renders with a toggle label', async () => {
@@ -29,7 +29,7 @@ describe('toggle e2e', () => {
         const page = await newE2EPage();
 
         await page.setContent('<joy-toggle disabled>I am disabled</joy-toggle>');
-        const toggleChange = await page.spyOnEvent('joyToggleChange');
+        const toggleChange = await page.spyOnEvent('valueChange');
         const fakeInput = await page.find('joy-toggle >>> .joy-toggle__input');
         const toggle = await page.find('joy-toggle >>> .joy-toggle');
 
@@ -51,7 +51,7 @@ describe('toggle e2e', () => {
     it('should toggle ON and OFF and set the right input value', async () => {
         const page = await newE2EPage();
         await page.setContent('<joy-toggle>I am a toggle</joy-toggle>');
-        const toggleChange = await page.spyOnEvent('joyToggleChange');
+        const toggleChange = await page.spyOnEvent('valueChange');
         const toggle = await page.find('joy-toggle >>> .joy-toggle');
         const actualInput = await page.find('joy-toggle .input-hidden');
 

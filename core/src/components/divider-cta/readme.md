@@ -1,7 +1,7 @@
 ---
 hologram: true
 title: Divider CTA
-name: joy_divider_cta
+name: joy-divider-cta
 category: Webcomponents
 ---
 

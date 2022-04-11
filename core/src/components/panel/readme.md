@@ -1,7 +1,7 @@
 ---
 hologram: true
 title: Panel
-name: joy_panel
+name: joy-panel
 category: Webcomponents
 ---
 

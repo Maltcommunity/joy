@@ -6,7 +6,7 @@ describe('checkbox e2e', () => {
 
         await page.setContent('<joy-checkbox></joy-checkbox>');
         const element = await page.find('joy-checkbox');
-        expect(element).toHaveClass('hydrated');
+        expect(element).toHaveAttribute('hydrated');
     });
 
     it('renders with a checkbox label', async () => {
@@ -29,7 +29,7 @@ describe('checkbox e2e', () => {
         const page = await newE2EPage();
 
         await page.setContent('<joy-checkbox disabled>I am disabled</joy-checkbox>');
-        const checkboxChange = await page.spyOnEvent('joyCheckboxChange');
+        const checkboxChange = await page.spyOnEvent('valueChange');
         const fakeInput = await page.find('joy-checkbox >>> .joy-checkbox__input');
         const checkbox = await page.find('joy-checkbox >>> .joy-checkbox');
 
@@ -51,7 +51,7 @@ describe('checkbox e2e', () => {
     it('should checkbox ON and OFF and set the right input value', async () => {
         const page = await newE2EPage();
         await page.setContent('<joy-checkbox>I am a checkbox</joy-checkbox>');
-        const checkboxChange = await page.spyOnEvent('joyCheckboxChange');
+        const checkboxChange = await page.spyOnEvent('valueChange');
         const el = await page.find('joy-checkbox');
 
         // ON

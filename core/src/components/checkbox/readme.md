@@ -1,7 +1,7 @@
 ---
 hologram: true
 title: Checkbox
-name: joy_checkbox
+name: joy-checkbox
 category: Webcomponents
 ---
 
@@ -74,9 +74,9 @@ If using the webcomponent is too complex for your case, use this plain CSS imple
 
 ## Events
 
-| Event               | Description                                                                                                                             | Type                   |
-| ------------------- | --------------------------------------------------------------------------------------------------------------------------------------- | ---------------------- |
-| `joyCheckboxChange` | Clicking on the component will fire this customEvent. use @joyCheckboxChange in Vue apps, and onJoyCheckboxChange for plain JavaScript. | `CustomEvent<boolean>` |
+| Event         | Description                                          | Type                   |
+| ------------- | ---------------------------------------------------- | ---------------------- |
+| `valueChange` | Clicking on the component will fire this customEvent | `CustomEvent<boolean>` |
 
 
 ## Methods

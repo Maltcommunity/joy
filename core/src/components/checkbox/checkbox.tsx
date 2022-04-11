@@ -26,8 +26,8 @@ export class Checkbox {
     /** Checkbox activated or not */
     @Prop({mutable: true, reflect: true}) checked = false;
 
-    /** Clicking on the component will fire this customEvent. use @joyCheckboxChange in Vue apps, and onJoyCheckboxChange for plain JavaScript. */
-    @Event({bubbles: true, composed: true}) joyCheckboxChange!: EventEmitter<boolean>;
+    /** Clicking on the component will fire this customEvent */
+    @Event({bubbles: true, composed: true}) valueChange!: EventEmitter<boolean>;
 
     @Watch('checked')
     watchChecked() {
@@ -69,7 +69,7 @@ export class Checkbox {
         if (!this.disabled && targetIsNotALink) {
             this.setFocus();
             this.checked = !this.checked;
-            this.joyCheckboxChange.emit(this.checked);
+            this.valueChange.emit(this.checked);
         }
     };
 

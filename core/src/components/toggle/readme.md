@@ -1,7 +1,7 @@
 ---
 hologram: true
 title: Toggle
-name: joy_toggle
+name: joy-toggle
 category: Webcomponents
 ---
 
@@ -44,9 +44,9 @@ category: Webcomponents
 
 ## Events
 
-| Event             | Description                                                                                                                         | Type                   |
-| ----------------- | ----------------------------------------------------------------------------------------------------------------------------------- | ---------------------- |
-| `joyToggleChange` | Clicking on the component will fire this customEvent. use @joyToggleChange in Vue apps, and onJoyToggleChange for plain JavaScript. | `CustomEvent<boolean>` |
+| Event         | Description                                           | Type                   |
+| ------------- | ----------------------------------------------------- | ---------------------- |
+| `valueChange` | Clicking on the component will fire this customEvent. | `CustomEvent<boolean>` |
 
 
 ## Methods

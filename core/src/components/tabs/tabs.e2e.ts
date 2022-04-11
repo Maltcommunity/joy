@@ -14,9 +14,9 @@ describe('e2e - tabs', () => {
         const tab: E2EElement = await page.find('joy-tab');
         const tabButton: E2EElement = await page.find('joy-tab-button');
 
-        expect(tabs).toHaveClass('hydrated');
-        expect(tab).toHaveClass('hydrated');
-        expect(tabButton).toHaveClass('hydrated');
+        expect(tabs).toHaveAttribute('hydrated');
+        expect(tab).toHaveAttribute('hydrated');
+        expect(tabButton).toHaveAttribute('hydrated');
     });
 
     it('renders tabs with the second one selected by default', async () => {
@@ -82,5 +82,47 @@ describe('e2e - tabs', () => {
 
         expect(secondTabButton.classList.contains('joy-tab-button__selected')).toBe(true);
         expect(secondTab.classList.contains('joy-tab__selected')).toBe(true);
+    });
+
+    // SKIPPED UNTIL UI REFACTO IS DONE ! //
+    it('should change tab when I use keyboard', async () => {
+        const page: E2EPage = await newE2EPage();
+        await page.addStyleTag({
+            content: 'joy-tab-button {transition: 0.01ms !important}',
+        });
+
+        await page.setContent(`
+            <joy-tabs selected-tab="0">
+                <joy-tab-button slot="tab-button" tab="0">Tab 0</joy-tab-button>
+                <joy-tab-button slot="tab-button" tab="1">Tab 1</joy-tab-button>
+                <joy-tab-button slot="tab-button" tab="2">Tab 2</joy-tab-button>
+                
+                <joy-tab slot="tab-content" tab="0">Content tab 0</joy-tab>
+                <joy-tab slot="tab-content" tab="1">Content tab 1</joy-tab>
+                <joy-tab slot="tab-content" tab="2">Content tab 2</joy-tab>
+            </joy-tabs>
+        `);
+
+        const firstTabButton = await page.find('joy-tabs joy-tab-button[tab="0"]');
+
+        /** Focus on second tab */
+        await firstTabButton.focus();
+        await page.keyboard.down('ArrowRight');
+        await page.waitForChanges();
+
+        const result = await page.compareScreenshot('Right arrow to change Tab selection');
+        expect(result).toMatchScreenshot();
+
+        /** Then select second tab **/
+        await page.keyboard.down('Enter');
+        await page.waitForChanges();
+        const result2 = await page.compareScreenshot('Press Enter and activate Tab');
+        expect(result2).toMatchScreenshot();
+
+        /** Focus on last tab */
+        await page.keyboard.down('Tab');
+        await page.waitForChanges();
+        const result3 = await page.compareScreenshot('Focus on last tab with Tab keyboard event');
+        expect(result3).toMatchScreenshot();
     });
 });

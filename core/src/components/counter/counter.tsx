@@ -1,4 +1,4 @@
-import {Component, EventEmitter, h, Host, Prop, State, Event, Element} from '@stencil/core';
+import {Component, EventEmitter, h, Host, Prop, Event, Element} from '@stencil/core';
 
 @Component({
     tag: 'joy-counter',
@@ -9,18 +9,15 @@ export class CounterComponent {
     private incrementEl!: HTMLJoyIconElement;
     private decrementEl!: HTMLJoyIconElement;
     private input!: HTMLInputElement;
+    private html5ValidationMessage?: string;
 
     @Element() el!: HTMLJoyCounterElement;
 
-    @State() value = 0;
+    @Prop({mutable: true}) value = 0;
     /**
      * Counter requirement
      */
     @Prop() required = false;
-    /**
-     * Count is the value
-     */
-    @Prop() count = 0;
     /**
      * Minimum possible value. Default to 0
      */
@@ -46,7 +43,7 @@ export class CounterComponent {
     /**
      * Message when the component is invalid. Warning : by default, it will pick HTML5 validation message (the language is defined by your OS)
      */
-    @Prop({mutable: true}) invalidMessage = '';
+    @Prop() invalidMessage = '';
     /**
      * Used for accessibility aria-label attribute. More than welcome !
      */
@@ -63,13 +60,13 @@ export class CounterComponent {
     /**
      * Generic event for any counter change, fired by manually typing a value or using increment/decrement CTA
      */
-    @Event() joyCounterUpdate!: EventEmitter<number>;
+    @Event() valueChange!: EventEmitter<number>;
     /**
-     * Specific event fired when you increment the counter value. Prefer using joyCounterUpdate unless you need to handle this specific event type
+     * Specific event fired when you increment the counter value. Prefer using valueChange unless you need to handle this specific event type
      */
     @Event() joyCounterIncrement!: EventEmitter<number>;
     /**
-     * Specific event fired when you decrement the counter value. Prefer using joyCounterUpdate unless you need to handle this specific event type
+     * Specific event fired when you decrement the counter value. Prefer using valueChange unless you need to handle this specific event type
      */
     @Event() joyCounterDecrement!: EventEmitter<number>;
     /**
@@ -88,8 +85,9 @@ export class CounterComponent {
             this.value = updatedCount;
         }
 
-        this.joyCounterUpdate.emit(this.value);
+        this.valueChange.emit(this.value);
         this.joyCounterIncrement.emit(this.value);
+        this.validateInput();
     };
 
     private decrement = () => {
@@ -100,28 +98,42 @@ export class CounterComponent {
             this.value = 0;
         }
 
-        this.joyCounterUpdate.emit(this.value);
+        this.valueChange.emit(this.value);
         this.joyCounterDecrement.emit(this.value);
+        this.validateInput();
     };
 
     private validateInput() {
         this.invalid = !this.inputIsValid();
+
         if (this.invalid) {
-            const message = this.invalidMessage || this.input.validationMessage;
-            this.invalidMessage = message;
+            this.html5ValidationMessage = this.input.validationMessage;
+
             this.joyCounterInvalid.emit({
                 value: this.input.value,
-                message,
+                message: this.html5ValidationMessage,
             });
         }
     }
 
     private inputIsValid() {
-        return this.input.checkValidity();
+        return this.inputMaxValueIsValid() && this.inputMinValueIsValid();
+    }
+
+    private inputMaxValueIsValid() {
+        return !this.max || this.value <= this.max;
+    }
+
+    private inputMinValueIsValid() {
+        return this.min <= this.value;
     }
 
     private get maxAttribute() {
         return this.max ? {['max']: this.max} : null;
+    }
+
+    private get componentErrorMessage() {
+        return this.invalidMessage || this.html5ValidationMessage;
     }
 
     private onInput = (ev: Event) => {
@@ -133,7 +145,7 @@ export class CounterComponent {
 
         this.invalid = false;
         this.value = +input.value || 0;
-        this.joyCounterUpdate.emit(this.value);
+        this.valueChange.emit(this.value);
     };
 
     private onBlur = () => {
@@ -150,7 +162,7 @@ export class CounterComponent {
                     aria-label={this.labelDecrement}
                     disabled={this.value <= this.min}
                 >
-                    <joy-icon name="minus" color="teal" ref={(el) => (this.decrementEl = el as HTMLJoyIconElement)}></joy-icon>
+                    <joy-icon name="minus" color="teal" ref={(el) => (this.decrementEl = el as HTMLJoyIconElement)} />
                 </button>
 
                 <input
@@ -177,11 +189,11 @@ export class CounterComponent {
                     aria-label={this.labelIncrement}
                     disabled={this.max ? this.value >= this.max : false}
                 >
-                    <joy-icon name="add" ref={(el) => (this.incrementEl = el as HTMLJoyIconElement)} color="teal"></joy-icon>
+                    <joy-icon name="add" ref={(el) => (this.incrementEl = el as HTMLJoyIconElement)} color="teal" />
                 </button>
 
                 <div class="joy-counter_error">
-                    {this.invalid && this.invalidMessage && <joy-form-error no-html-error-text={this.invalidMessage}></joy-form-error>}
+                    {this.invalid && this.componentErrorMessage && <joy-form-error no-html-error-text={this.componentErrorMessage} />}
                 </div>
             </Host>
         );

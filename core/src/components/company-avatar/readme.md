@@ -1,7 +1,7 @@
 ---
 hologram: true
 title: Company Avatar
-name: joy_company_avatar
+name: joy-company-avatar
 category: Webcomponents
 ---
 

@@ -1,7 +1,7 @@
 ---
 hologram: true
 title: Counter
-name: joy_counter
+name: joy-counter
 category: Webcomponents
 ---
 
@@ -24,7 +24,6 @@ category: Webcomponents
 | Property         | Attribute         | Description                                                                                                                                                                                                                                       | Type                  | Default                             |
 | ---------------- | ----------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------- | ----------------------------------- |
 | `ariaLabel`      | `aria-label`      | aria-label used for input accessibility. Use string only, no HTML. More than welcome !                                                                                                                                                            | `string`              | `''`                                |
-| `count`          | `count`           | Count is the value                                                                                                                                                                                                                                | `number`              | `0`                                 |
 | `invalid`        | `invalid`         | Invalid state of the component                                                                                                                                                                                                                    | `boolean`             | `false`                             |
 | `invalidMessage` | `invalid-message` | Message when the component is invalid. Warning : by default, it will pick HTML5 validation message (the language is defined by your OS)                                                                                                           | `string`              | `''`                                |
 | `labelDecrement` | `label-decrement` | Used for accessibility aria-label attribute. More than welcome !                                                                                                                                                                                  | `string`              | ``Decrement value by ${this.step}`` |
@@ -34,16 +33,17 @@ category: Webcomponents
 | `name`           | `input-name`      | Name for the input                                                                                                                                                                                                                                | `string`              | `''`                                |
 | `required`       | `required`        | Counter requirement                                                                                                                                                                                                                               | `boolean`             | `false`                             |
 | `step`           | `step`            | Granularity of the input. We use the same name than native step attribute. We don't bind this prop to actual input step attribute, because we don't want checkValidity API to return invalid if the actual value is not a multiple of step prop ! | `number`              | `1`                                 |
+| `value`          | `value`           |                                                                                                                                                                                                                                                   | `number`              | `0`                                 |
 
 
 ## Events
 
-| Event                 | Description                                                                                                                                 | Type                                               |
-| --------------------- | ------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------- |
-| `joyCounterDecrement` | Specific event fired when you decrement the counter value. Prefer using joyCounterUpdate unless you need to handle this specific event type | `CustomEvent<number>`                              |
-| `joyCounterIncrement` | Specific event fired when you increment the counter value. Prefer using joyCounterUpdate unless you need to handle this specific event type | `CustomEvent<number>`                              |
-| `joyCounterInvalid`   | Specific event fired when your counter value is invalid.                                                                                    | `CustomEvent<{ value: string; message: string; }>` |
-| `joyCounterUpdate`    | Generic event for any counter change, fired by manually typing a value or using increment/decrement CTA                                     | `CustomEvent<number>`                              |
+| Event                 | Description                                                                                                                            | Type                                               |
+| --------------------- | -------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------- |
+| `joyCounterDecrement` | Specific event fired when you decrement the counter value. Prefer using valueChange unless you need to handle this specific event type | `CustomEvent<number>`                              |
+| `joyCounterIncrement` | Specific event fired when you increment the counter value. Prefer using valueChange unless you need to handle this specific event type | `CustomEvent<number>`                              |
+| `joyCounterInvalid`   | Specific event fired when your counter value is invalid.                                                                               | `CustomEvent<{ value: string; message: string; }>` |
+| `valueChange`         | Generic event for any counter change, fired by manually typing a value or using increment/decrement CTA                                | `CustomEvent<number>`                              |
 
 
 ## CSS Custom Properties

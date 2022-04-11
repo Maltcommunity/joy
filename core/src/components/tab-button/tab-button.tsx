@@ -1,4 +1,5 @@
 import {Component, Element, Event, EventEmitter, h, Host, Method, Prop} from '@stencil/core';
+import {Tab} from '../../types';
 
 @Component({
     tag: 'joy-tab-button',
@@ -9,7 +10,7 @@ export class JoyTabButton {
     @Element() host!: HTMLJoyTabButtonElement;
 
     /** Tab selection state */
-    @Prop({mutable: true}) selected = false;
+    @Prop({mutable: true, reflect: true}) selected = false;
     /**
      * A tab id or name must be provided for each `joy-button-tab`. It's used internally to reference
      * the selected tab
@@ -28,12 +29,6 @@ export class JoyTabButton {
     /** Event used by joy-tabs parent component. Prefer using joyTabSelected event from joy-tabs if you want to listen to any tab change */
     @Event() joyTabButtonClick!: EventEmitter<Tab>;
 
-    async componentDidRender() {
-        if (this.selected) {
-            await this.selectTabButton(true);
-        }
-    }
-
     /**
      * Set the tabulation selected or not
      * @param {Boolean} status
@@ -41,6 +36,12 @@ export class JoyTabButton {
     @Method()
     async selectTabButton(status: boolean): Promise<void> {
         this.selected = status;
+    }
+
+    async componentDidRender() {
+        if (this.selected) {
+            await this.selectTabButton(true);
+        }
     }
 
     render() {
@@ -62,7 +63,13 @@ export class JoyTabButton {
                 data-heap={!href ? this.heapId : undefined}
             >
                 {href ? (
-                    <a href={href} data-heap={this.heapId}>
+                    <a
+                        href={href}
+                        class={{
+                            'joy-tab-button__link-selected': selected,
+                        }}
+                        data-heap={this.heapId}
+                    >
                         <slot />
                     </a>
                 ) : (

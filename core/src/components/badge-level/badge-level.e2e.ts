@@ -6,7 +6,7 @@ describe('badge-level e2e', () => {
 
         await page.setContent('<joy-badge-level></joy-badge-level>');
         const element: E2EElement = await page.find('joy-badge-level');
-        expect(element).toHaveClass('hydrated');
+        expect(element).toHaveAttribute('hydrated');
     });
 
     it('renders highpotential badge', async () => {

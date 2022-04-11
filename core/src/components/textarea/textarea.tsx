@@ -147,6 +147,10 @@ export class JoyTextarea implements ComponentInterface {
     }
 
     /**
+     * Emitted when the value has changed. Generic event used by all other form fields
+     */
+    @Event() valueChange!: EventEmitter<void>;
+    /**
      * Emitted when the input value has changed.
      */
     @Event() joyTextareaChange!: EventEmitter<{value: string}>;
@@ -264,6 +268,7 @@ export class JoyTextarea implements ComponentInterface {
             this.value = this.textarea.value;
         }
         this.joyTextareaInput.emit(ev as KeyboardEvent);
+        this.valueChange.emit();
     };
 
     private onFocus = (ev: FocusEvent) => {

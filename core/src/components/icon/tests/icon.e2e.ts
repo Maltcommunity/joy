@@ -6,73 +6,68 @@ describe('icon e2e', () => {
 
         await page.setContent('<joy-icon name="add"></joy-icon>');
         const element = await page.find('joy-icon');
-        expect(element).toHaveClass('hydrated');
+        expect(element).toHaveAttribute('hydrated');
     });
 
     it('renders with specific colors', async () => {
         const page = await newE2EPage();
-        await page.setContent('<joy-icon name="add" color="grey"></joy-icon>');
-        const icon = await page.find('joy-icon');
+        await page.setContent(`
+            <joy-icon name="bell" color="grey"></joy-icon>
+            <joy-icon name="bell" color="red"></joy-icon>
+            <joy-icon name="bell" color="yellow"></joy-icon>
+            <joy-icon name="bell" color="green"></joy-icon>
+            <joy-icon name="bell" color="white"></joy-icon>
+            <joy-icon name="bell" color="turquoise"></joy-icon>
+        `);
 
-        expect(icon).toHaveClass('joy-i-wc_grey');
-
-        icon.setAttribute('color', 'red');
-        await page.waitForChanges();
-        expect(icon).toHaveClass('joy-i-wc_red');
-
-        icon.setAttribute('color', 'yellow');
-        await page.waitForChanges();
-        expect(icon).toHaveClass('joy-i-wc_yellow');
-
-        icon.setAttribute('color', 'green');
-        await page.waitForChanges();
-        expect(icon).toHaveClass('joy-i-wc_green');
-
-        icon.setAttribute('color', 'white');
-        await page.waitForChanges();
-        expect(icon).toHaveClass('joy-i-wc_white');
+        const result = await page.compareScreenshot('Icons colors');
+        expect(result).toMatchScreenshot();
     });
 
-    it('renders with specific size', async () => {
+    it('renders with specific sizes', async () => {
         const page = await newE2EPage();
+        await page.setContent(`
+            <joy-icon name="bell" size="xsmall"></joy-icon>
+            <joy-icon name="bell" size="small"></joy-icon>
+            <joy-icon name="bell" size="medium"></joy-icon>
+            <joy-icon name="bell" size="large"></joy-icon>
+            <joy-icon name="bell" size="xlarge"></joy-icon>
+        `);
 
-        await page.setContent('<joy-icon name="add" size="xsmall"></joy-icon>');
-        const icon = await page.find('joy-icon');
-        expect(icon).toHaveClass('joy-i-wc_xsmall');
-
-        icon.setAttribute('size', 'small');
-        await page.waitForChanges();
-        expect(icon).toHaveClass('joy-i-wc_small');
-
-        icon.setAttribute('size', 'medium');
-        await page.waitForChanges();
-        expect(icon).toHaveClass('joy-i-wc_medium');
-
-        icon.setAttribute('size', 'large');
-        await page.waitForChanges();
-        expect(icon).toHaveClass('joy-i-wc_large');
-
-        icon.setAttribute('size', 'xlarge');
-        await page.waitForChanges();
-        expect(icon).toHaveClass('joy-i-wc_xlarge');
+        const result = await page.compareScreenshot('Icons colors');
+        expect(result).toMatchScreenshot();
     });
 
     it('renders with two colors', async () => {
         const page = await newE2EPage();
 
-        await page.setContent('<joy-icon name="add" bicolor="true"></joy-icon>');
-        const icon = await page.find('joy-icon');
+        await page.setContent(`
+            <joy-icon name="bell" color="grey" bicolor></joy-icon>
+            <joy-icon name="bell" color="red" bicolor></joy-icon>
+            <joy-icon name="bell" color="yellow" bicolor></joy-icon>
+            <joy-icon name="bell" color="green" bicolor></joy-icon>
+            <joy-icon name="bell" color="white" bicolor></joy-icon>
+            <joy-icon name="bell" color="turquoise" bicolor></joy-icon>
+        `);
 
-        expect(icon).toHaveClass('joy-i-wc_bg');
+        const result = await page.compareScreenshot('Icons bicolor mode');
+        expect(result).toMatchScreenshot();
     });
 
     it('renders with full colored background', async () => {
         const page = await newE2EPage();
 
-        await page.setContent('<joy-icon name="add" full="true"></joy-icon>');
-        const icon = await page.find('joy-icon');
+        await page.setContent(`
+            <joy-icon name="bell" color="grey" full></joy-icon>
+            <joy-icon name="bell" color="red" full></joy-icon>
+            <joy-icon name="bell" color="yellow" full></joy-icon>
+            <joy-icon name="bell" color="green" full></joy-icon>
+            <joy-icon name="bell" color="white" full></joy-icon>
+            <joy-icon name="bell" color="turquoise" full></joy-icon>
+        `);
 
-        expect(icon).toHaveClass('joy-i-wc_full');
+        const result = await page.compareScreenshot('Icons full mode');
+        expect(result).toMatchScreenshot();
     });
 
     it('renders with clickable effect', async () => {
@@ -81,6 +76,6 @@ describe('icon e2e', () => {
         await page.setContent('<joy-icon name="add" clickable="true"></joy-icon>');
         const icon = await page.find('joy-icon');
 
-        expect(icon).toHaveClass('joy-i-wc_clickable');
+        expect(icon).toHaveClass('joy-icon--clickable');
     });
 });

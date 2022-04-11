@@ -5,7 +5,7 @@ describe('counter e2e', () => {
         const page: E2EPage = await newE2EPage();
         await page.setContent('<joy-counter></joy-counter>');
         const element: E2EElement = await page.find('joy-counter');
-        expect(element).toHaveClass('hydrated');
+        expect(element).toHaveAttribute('hydrated');
     });
 
     it('renders with a default min value to 0, and no max', async () => {

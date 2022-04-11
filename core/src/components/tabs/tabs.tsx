@@ -1,4 +1,5 @@
-import {Component, Prop, h, Element, Host, EventEmitter, Event, Watch} from '@stencil/core';
+import {Component, Prop, h, Element, Host, EventEmitter, Event, Watch, Listen} from '@stencil/core';
+import {Tab} from '../../types';
 
 /**
  * @slot tab-button - Use it for each joy-tab-button you need
@@ -6,10 +7,11 @@ import {Component, Prop, h, Element, Host, EventEmitter, Event, Watch} from '@st
  */
 @Component({
     tag: 'joy-tabs',
-    styleUrl: 'tabs.scss',
+    styleUrl: 'style/tabs.scss',
     shadow: true,
 })
 export class JoyTabs {
+    private nextTabButton!: HTMLJoyTabButtonElement | null;
     @Element() host!: HTMLJoyTabsElement;
 
     /** Use this prop to activate a specific tab by default by giving its name */
@@ -26,6 +28,60 @@ export class JoyTabs {
         if (this.selectedTab) {
             this.updateTabContent();
             this.updateTabButtons(this.selectedTab);
+        }
+    }
+
+    private getTabs() {
+        return Array.from(this.host.querySelectorAll('joy-tab-button'));
+    }
+
+    @Listen('keydown', {target: 'body'})
+    keyboardNavigation(ev: any) {
+        if (ev.target && !this.host.contains(ev.target)) {
+            return;
+        }
+
+        if (ev.target && this.getTabs().includes(ev.target as HTMLJoyTabButtonElement)) {
+            const currentSelectionIndex = this.getTabs().findIndex((tab) => tab === ev.target);
+
+            // If hitting tab key, move to the next tab
+            // Unless this is the last tab of the list
+            if (['Tab'].includes(ev.code)) {
+                if (currentSelectionIndex !== this.getTabs().length - 1) {
+                    this.nextTabButton = this.getTabs()[currentSelectionIndex + 1];
+                } else {
+                    this.nextTabButton = null;
+                }
+            }
+
+            // If hitting tab key AND shift, move to the prev tab
+            if (['Tab'].includes(ev.code) && ev.shiftKey) {
+                if (currentSelectionIndex !== 0) {
+                    this.nextTabButton = this.getTabs()[currentSelectionIndex - 1];
+                } else {
+                    this.nextTabButton = null;
+                }
+            }
+
+            if (ev.code === 'Enter' || ev.code === 'NumpadEnter') {
+                if (this.nextTabButton) {
+                    if (this.nextTabButton.href) {
+                        const link = this.nextTabButton.shadowRoot?.querySelector('a');
+                        link?.click();
+                    } else {
+                        this.nextTabButton.click();
+                    }
+                } else {
+                    this.getTabs()[0].click();
+                }
+            }
+
+            if (this.nextTabButton && this.getTabs().includes(this.nextTabButton)) {
+                ev.preventDefault();
+                ev.stopPropagation();
+
+                this.nextTabButton.focus();
+            }
         }
     }
 
@@ -56,14 +112,8 @@ export class JoyTabs {
      * @private
      */
     private programmaticallySelectTab(selectedTab: string) {
-        /**
-         * We use async IIFE in order to prevent await calls in updateTabButtons
-         */
-        (async () => {
-            await customElements.whenDefined('joy-tab-button');
-            const tab = this.host.querySelector(`joy-tab-button[tab="${selectedTab}"]`) as HTMLJoyTabButtonElement;
-            await tab.selectTabButton(true);
-        })();
+        const tab = this.host.querySelector(`joy-tab-button[tab="${selectedTab}"]`) as HTMLJoyTabButtonElement;
+        tab.selectTabButton(true).then();
     }
 
     private updateTabButtons(selectedTab: string, ev: CustomEvent<Tab> | null = null) {
@@ -71,8 +121,8 @@ export class JoyTabs {
         const tabBnToUnselect = tabsButtons.filter((btn) => btn.getAttribute('tab') !== selectedTab);
 
         if (tabBnToUnselect.length) {
-            tabBnToUnselect.forEach(async (btn) => {
-                await btn.selectTabButton(false);
+            tabBnToUnselect.map(async (btn) => {
+                btn.removeAttribute('selected');
             });
         }
         /**

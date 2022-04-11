@@ -8,7 +8,7 @@ describe('Tags Input - e2e', () => {
         `);
 
         const tagsInput = await page.find('joy-tags-input');
-        expect(tagsInput).toHaveClass('hydrated');
+        expect(tagsInput).toHaveAttribute('hydrated');
         expect(tagsInput).not.toBeNull();
     });
 

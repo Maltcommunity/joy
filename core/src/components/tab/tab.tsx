@@ -38,7 +38,6 @@ export class JoyTab {
                 aria-hidden={!selected ? 'true' : null}
                 aria-labelledby={`joy-tab-${tab}`}
                 id={`joy-tab-${tab}`}
-                tabindex="0"
                 class={{
                     'joy-tab': true,
                     'joy-tab__selected': selected,

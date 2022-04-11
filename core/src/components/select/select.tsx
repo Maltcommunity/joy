@@ -1,5 +1,5 @@
-import {Component, Element, h, Host, Listen, Prop, State} from '@stencil/core';
-import {renderSelectOutsideShadowRoot} from '../../utils';
+import {Component, Element, Event, EventEmitter, h, Host, Listen, Prop, State, Watch} from '@stencil/core';
+import {renderInputOutsideShadowRoot, dispatchEvent, createBackDrop, preventBodyScroll, destroyBackdrop} from '../../utils';
 
 @Component({
     tag: 'joy-select',
@@ -7,111 +7,167 @@ import {renderSelectOutsideShadowRoot} from '../../utils';
     shadow: true,
 })
 export class Select {
-    private nextOption!: HTMLJoySelectOptionElement;
+    private nextOption!: HTMLJoySelectOptionElement | null;
+    private innerOptions!: HTMLElement;
     private fallbackPlaceholder = '-';
+    private get optionsElements(): Array<HTMLJoySelectOptionElement> {
+        return Array.from(this.el.querySelectorAll('joy-select-option'));
+    }
 
     @Element() el!: HTMLJoySelectElement;
 
+    /** Pick an icon displayed before the label. **/
+    @Prop() icon?: string;
+    /** Disabled state. **/
     @Prop() disabled = false;
-    @Prop() invalid = false;
+    /** Invalid state. **/
+    @Prop({mutable: true}) invalid = false;
+    /** Invalid state message. **/
+    @Prop() invalidMessage = 'Field is required';
+    /** Select name attribute to be found by parent form. **/
     @Prop() name = 'select';
+    /** Select actual value. **/
     @Prop({mutable: true, reflect: true}) value = '';
+    /** Mandatory or not. **/
     @Prop() required = false;
+    /** By default, the dropdown is closed if you focusout the select. For debugging purpose or specific behavior, you can toggle off this option. **/
+    @Prop() closeOnBlur = true;
 
     @State() open = false;
     @State() selectedLabel!: string;
-    private options: Array<HTMLJoySelectOptionElement> = [];
 
-    @Listen('change')
-    handleChange(event: Event & {target: HTMLElement}) {
-        const target = event.target;
-        if (target?.tagName === 'SELECT') {
-            this.onChangeNativeSelect(event);
+    @Event() valueChange!: EventEmitter<{value: string}>;
+
+    @Watch('value')
+    watchValue(newValue: string) {
+        this.createPlaceholder();
+        const selected = this.optionsElements.find((option) => option.value === newValue);
+
+        if (selected) {
+            this.selectOption(selected);
         }
     }
 
-    @Listen('mousedown', {})
+    @Listen('backdropClick', {target: 'document'})
+    backdropClick(event: CustomEvent) {
+        if (event.detail !== 'select') {
+            return;
+        }
+
+        this.open = false;
+        destroyBackdrop();
+    }
+
+    @Listen('click', {target: 'document'})
     handleClick(event: MouseEvent & {target: HTMLElement | HTMLJoySelectOptionElement}) {
         const target = event.target;
+
+        if (this.disabled || !this.el.contains(event.target)) {
+            return;
+        }
+
         if (target?.tagName === 'JOY-SELECT') {
-            if (!this.isMobileDevice()) {
-                this.open = !this.open;
-            }
+            this.open = !this.open;
+            this.createMobileOptionsView();
         }
 
         if (target.tagName === 'JOY-SELECT-OPTION') {
             const typedTarget = target as HTMLJoySelectOptionElement;
-            this.value = typedTarget.value;
-            this.selectOption(typedTarget);
-            this.setSelectText();
-            this.open = false;
+            if (!typedTarget.disabled) {
+                this.value = typedTarget.value;
+                this.selectOption(typedTarget);
+                this.open = false;
+                this.invalid = false;
+                this.emitValueChangeEvent();
+                this.destroyMobileOptionsView();
+            }
         }
     }
 
+    /**
+     * *******************************
+     * KEYBOARD EVENTS HANDLERS
+     * *******************************
+     */
+
     @Listen('keydown', {target: 'document'})
     onKeydown(ev: KeyboardEvent & {target: Element}) {
-        if (ev.target && !this.el.contains(ev.target)) {
+        if ((ev.target && !this.el.contains(ev.target)) || ev.target.tagName === 'JOY-FORM-ERROR') {
             return;
         }
 
-        const optionsAllowed = this.options.filter((option: HTMLJoySelectOptionElement) => !option.disabled);
+        const optionsAllowed = this.optionsElements.filter((option: HTMLJoySelectOptionElement) => !option.disabled);
         // Only move the option if the current focus is in the option group
         const indexSelected = optionsAllowed.findIndex((option) => option.selected) || 0;
 
-        // If hitting arrow down or arrow right, move to the next option
-        // If we're on the last option, move to the first option
-        if (['ArrowDown', 'ArrowRight'].includes(ev.code)) {
-            this.nextOption = indexSelected === optionsAllowed.length - 1 ? optionsAllowed[0] : optionsAllowed[indexSelected + 1];
-        }
-
-        // If hitting arrow up or arrow left, move to the previous option
-        // If we're on the first option, move to the last option
-        if (['ArrowUp', 'ArrowLeft'].includes(ev.code)) {
-            ev.preventDefault();
-            ev.stopPropagation();
-            this.nextOption = indexSelected <= 0 ? optionsAllowed[optionsAllowed.length - 1] : optionsAllowed[indexSelected - 1];
-        }
+        this.navigateInOptions(ev, optionsAllowed, indexSelected);
+        this.toggleOptionsDropdown(ev);
 
         if (ev.code === 'Enter' && this.open && this.value) {
             this.open = false;
+            this.emitValueChangeEvent();
         }
 
-        if (ev.code === 'Space' && !this.open) {
-            this.open = true;
+        if (ev.code === 'Tab') {
+            this.nextOption = null;
         }
+
         if (this.nextOption && optionsAllowed.includes(this.nextOption)) {
             ev.preventDefault();
             ev.stopPropagation();
             this.selectOption(this.nextOption);
             this.value = this.nextOption.value;
-            this.setSelectText();
         }
     }
 
-    private selectOption(option: HTMLJoySelectOptionElement) {
-        this.options.map((option) => option.removeAttribute('selected'));
-        option.setAttribute('selected', 'true');
+    private navigateInOptions(ev: KeyboardEvent, optionsAllowed: HTMLJoySelectOptionElement[], indexSelected: number) {
+        if (['ArrowDown'].includes(ev.code)) {
+            if (indexSelected !== optionsAllowed.length - 1) {
+                this.nextOption = optionsAllowed[indexSelected + 1];
+                this.triggerOptionsWrapperScroll(this.nextOption);
+            }
+        }
+
+        if (['ArrowUp'].includes(ev.code)) {
+            if (indexSelected !== 0) {
+                this.nextOption = optionsAllowed[indexSelected - 1];
+                this.triggerOptionsWrapperScroll(this.nextOption, false);
+            }
+        }
     }
 
-    private getJoyOptionsElements(): Array<HTMLJoySelectOptionElement> {
-        return Array.from(this.el.querySelectorAll('joy-select-option'));
+    private toggleOptionsDropdown(ev: KeyboardEvent) {
+        if (ev.code === 'Space') {
+            ev.preventDefault();
+            this.open = !this.open;
+        }
     }
+    /**
+     * *******************************
+     * END OF KEYBOARD EVENTS HANDLERS
+     * *******************************
+     */
 
-    private generatePlaceholder(): void {
+    /**
+     * ***************************************
+     * PLACEHOLDER AND VALUE DISPLAY UTILITIES
+     * ***************************************
+     */
+    private createPlaceholder(): void {
         if (!this.value) {
-            const defaultPlaceholder = this.options.filter((option) => option.disabled);
+            const defaultPlaceholder = this.optionsElements.find((option) => option.disabled);
 
-            if (!defaultPlaceholder[0]) {
+            if (!defaultPlaceholder) {
                 this.selectedLabel = this.fallbackPlaceholder;
                 return;
             }
 
-            this.selectedLabel = defaultPlaceholder[0].textContent || this.fallbackPlaceholder;
+            this.selectedLabel = defaultPlaceholder.textContent || this.fallbackPlaceholder;
         }
     }
 
     private setSelectText(): void {
-        const selectedOption = this.options.find((option) => option.value === this.value);
+        const selectedOption = this.optionsElements.find((option) => option.value === this.value);
 
         if (!selectedOption) {
             return;
@@ -119,76 +175,112 @@ export class Select {
 
         this.selectedLabel = selectedOption.textContent || this.fallbackPlaceholder;
     }
+    /**
+     * ***************************************
+     * END OF PLACEHOLDER AND VALUE DISPLAY UTILITIES
+     * ***************************************
+     */
 
-    private onBlur = () => {
-        this.open = false;
-    };
-
-    private onChangeNativeSelect = (ev: Event) => {
-        if (!ev || !ev.target) {
-            return;
-        }
-
-        this.value = (ev.target as HTMLSelectElement).value;
-        this.setSelectText();
-    };
-
-    private isMobileDevice(): boolean {
+    /**
+     * ******************************
+     * MOBILE DEVICE UTILITIES
+     * ******************************
+     */
+    private get isMobileDevice(): boolean {
         return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
     }
 
-    private syncOptionsToSelectValue() {
-        const optionToBeSelected = this.options.find((option) => option.value === this.value);
-        if (optionToBeSelected) {
-            this.selectOption(optionToBeSelected);
+    private createMobileOptionsView() {
+        if (!this.isMobileDevice) {
+            return;
+        }
+
+        createBackDrop('select').then(() => preventBodyScroll(true));
+    }
+
+    private destroyMobileOptionsView() {
+        if (!this.isMobileDevice) {
+            return;
+        }
+
+        destroyBackdrop();
+        preventBodyScroll(false);
+    }
+    /**
+     * ******************************
+     * END OF MOBILE DEVICE UTILITIES
+     * ******************************
+     */
+
+    private emitValueChangeEvent() {
+        this.valueChange.emit({value: this.value});
+        /** As we don't have a native select, we trigger a fake change event, mocking the native one **/
+        dispatchEvent(this.el, 'change', {value: this.value});
+    }
+
+    private triggerOptionsWrapperScroll(option: HTMLJoySelectOptionElement, increase = true) {
+        const scrollable = this.innerOptions.scrollHeight > this.innerOptions.clientHeight;
+        if (scrollable) {
+            const height = option.offsetHeight;
+            increase ? (this.innerOptions.scrollTop += height) : (this.innerOptions.scrollTop -= height);
         }
     }
 
-    private refreshSelectValue() {
-        const optionSelected = this.options.filter((option) => !option.disabled).find((option) => option.selected);
-        if (optionSelected) {
-            this.value = optionSelected && optionSelected.value;
-        }
+    private selectOption(option: HTMLJoySelectOptionElement) {
+        this.optionsElements.map((option) => option.removeAttribute('selected'));
+        option.setAttribute('selected', 'true');
+        this.setSelectText();
     }
+
+    private onBlur = () => {
+        if (this.closeOnBlur) {
+            this.open = false;
+        }
+    };
 
     connectedCallback() {
-        // Get all options inside of the option group and then
-        // filter out disabled options since we need to skip those
-        this.options = this.getJoyOptionsElements();
-
-        if (this.value) {
-            this.syncOptionsToSelectValue();
-        } else {
-            this.refreshSelectValue();
-        }
-        this.generatePlaceholder();
+        this.createPlaceholder();
         this.setSelectText();
     }
 
     render() {
-        renderSelectOutsideShadowRoot(this.el, this.name, `${this.value}`, this.disabled, this.required, this.options);
+        renderInputOutsideShadowRoot(this.el, this.name, `${this.value}`, this.disabled, this.required);
 
         return (
             <Host
                 class={{
                     'joy-select': true,
-                    'joy-select_invalid': this.invalid,
-                    'joy-select_open': this.open,
-                    'joy-select_native': this.isMobileDevice(),
+                    'joy-select--disabled': this.disabled,
+                    'joy-select--invalid': this.invalid,
+                    'joy-select--open': this.open,
                 }}
-                tabindex="0"
+                tabindex={!this.disabled && 0}
                 aria-disabled={this.disabled}
                 aria-invalid={this.invalid}
                 onBlur={this.onBlur}
             >
-                <div class="joy-select__input">
-                    <span>{this.selectedLabel}</span>
-                    <joy-icon name="chevron-down" color="grey"></joy-icon>
+                <div class="joy-select--wrapper">
+                    <div
+                        class={{
+                            'joy-select__input': true,
+                            'joy-select__input--open': this.open,
+                            'joy-select__input--filled': !!this.value,
+                            'joy-select__input--disabled': this.disabled,
+                            'joy-select__input--with-icon': !!this.icon,
+                            'joy-select__input-mobile': this.isMobileDevice,
+                        }}
+                    >
+                        {this.icon && <joy-icon name={this.icon} class="joy-select__decorative-icon" />}
+                        <span class="joy-select__input-placeholder">{this.selectedLabel}</span>
+                        <joy-icon class="joy-select__chevron" name="chevron-down" />
+                        <div class="joy-select__options">
+                            <div class="joy-select__options-inner" ref={(el) => (this.innerOptions = el as HTMLElement)}>
+                                <slot />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="joy-select--form-error">{this.invalid && <joy-form-error no-html-error-text={this.invalidMessage} />}</div>
                 </div>
-                <div class="joy-select__options" hidden={!this.open} tabindex="1">
-                    <slot />
-                </div>
-                <slot name="native-select" />
             </Host>
         );
     }

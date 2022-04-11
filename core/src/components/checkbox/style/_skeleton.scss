@@ -1,6 +1,6 @@
 @use './shared' as *;
 
-joy-checkbox:not(.hydrated) {
+joy-checkbox:not([hydrated]) {
     @include defaultRules();
     width: 100px;
     max-width: calc(100% - var(--checkbox-size) + var(--checkbox-label-margin));

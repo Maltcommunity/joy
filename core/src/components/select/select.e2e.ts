@@ -2,7 +2,7 @@ import {newE2EPage} from '@stencil/core/testing';
 
 const CLASS_OPTION_SELECTED = 'joy-select-option_selected';
 
-describe('Select - e2e', () => {
+describe.skip('Select - e2e', () => {
     it('renders a native select', async () => {
         const page = await newE2EPage();
 

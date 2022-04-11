@@ -1,11 +1,15 @@
 ---
 hologram: true
 title: Tips
-name: joy_tips
+name: joy-tips
 category: Webcomponents
 ---
 
-<joy-tag variant="important">WIP</joy-tag>
+```ui_example
+<joy-tips level="success">
+    <joy-text slot="tips-content">I am a paragraph with some very important content, but no title</joy-text>
+</joy-text>
+```
 
 ```ui_example
 <joy-tips level="success" icon="mood-good">
@@ -44,11 +48,11 @@ category: Webcomponents
 
 ## Properties
 
-| Property   | Attribute  | Description                                              | Type                                          | Default     |
-| ---------- | ---------- | -------------------------------------------------------- | --------------------------------------------- | ----------- |
-| `closable` | `closable` | Display a CTA to hide the tips                           | `boolean`                                     | `false`     |
-| `icon`     | `icon`     | If icon is defined, it will show it with the right color | `string \| undefined`                         | `undefined` |
-| `level`    | `level`    | Defines the criticalness of the tips                     | `"error" \| "info" \| "success" \| "warning"` | `'info'`    |
+| Property   | Attribute  | Description                                              | Type                                                       | Default     |
+| ---------- | ---------- | -------------------------------------------------------- | ---------------------------------------------------------- | ----------- |
+| `closable` | `closable` | Display a CTA to hide the tips                           | `boolean`                                                  | `false`     |
+| `icon`     | `icon`     | If icon is defined, it will show it with the right color | `string \| undefined`                                      | `undefined` |
+| `level`    | `level`    | Defines the criticalness of the tips                     | `"error" \| "info" \| "neutral" \| "success" \| "warning"` | `'info'`    |
 
 
 ## Dependencies

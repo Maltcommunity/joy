@@ -21,8 +21,8 @@ export class Toggle {
     /** Toggle activated or not */
     @Prop({mutable: true, reflect: true}) checked = false;
 
-    /** Clicking on the component will fire this customEvent. use @joyToggleChange in Vue apps, and onJoyToggleChange for plain JavaScript. */
-    @Event() joyToggleChange!: EventEmitter<boolean>;
+    /** Clicking on the component will fire this customEvent. */
+    @Event() valueChange!: EventEmitter<boolean>;
 
     /**
      * Update toggle value from outside the component
@@ -42,7 +42,7 @@ export class Toggle {
         if (!this.disabled) {
             this.checked = !this.checked;
             this.value = `${this.checked}`;
-            this.joyToggleChange.emit(this.checked);
+            this.valueChange.emit(this.checked);
         }
     };
 
@@ -73,7 +73,7 @@ export class Toggle {
                         aria-checked={`${this.checked}`}
                     />
                     <p class="joy-toggle__content">
-                        <slot></slot>
+                        <slot />
                     </p>
                 </label>
             </Host>

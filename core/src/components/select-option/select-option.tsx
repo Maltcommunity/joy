@@ -7,16 +7,19 @@ import {Component, Element, h, Host, Prop} from '@stencil/core';
 })
 export class SelectOption {
     @Element() el!: HTMLJoySelectOptionElement;
+    /** Disabled state. **/
     @Prop({reflect: true}) disabled: boolean = false;
+    /** If the option is selected or not **/
     @Prop() selected = false;
+    /** Value bubbled up to the select component **/
     @Prop() value!: string;
 
     render() {
-        const {selected} = this;
+        const {disabled, selected} = this;
         const classes = {
             'joy-select-option': true,
-            'joy-select-option_selected': this.selected,
-            'joy-select-option_disabled': this.disabled,
+            'joy-select-option_selected': selected,
+            'joy-select-option_disabled': disabled,
         };
 
         return (

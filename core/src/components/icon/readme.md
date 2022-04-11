@@ -1,7 +1,7 @@
 ---
 hologram: true
 title: Icons
-name: joy_icon
+name: joy-icon
 category: Webcomponents
 ---
 
@@ -13,7 +13,7 @@ Please see <a href="/joy-v2/webcomponents.html#joy_icons_list">full icons list h
 <joy-icon name="bell" color="grey"></joy-icon>
 <joy-icon name="bell" color="red"></joy-icon>
 <joy-icon name="bell" color="yellow"></joy-icon>
-<joy-icon name="bell" color="green"></joy-icon>
+<joy-icon name="bell" color="turquoise"></joy-icon>
 <joy-icon name="bell" color="white"></joy-icon>
 <joy-icon name="bell" size="xxsmall"></joy-icon>
 <joy-icon name="bell" size="xsmall"></joy-icon>
@@ -52,9 +52,11 @@ Please see <a href="/joy-v2/webcomponents.html#joy_icons_list">full icons list h
  - [joy-button](../button)
  - [joy-company-avatar](../company-avatar)
  - [joy-counter](../counter)
+ - [joy-dialog](../dialog)
  - [joy-form-error](../form-error)
  - [joy-highlight](../highlight)
  - [joy-icon-button](../icon-button)
+ - [joy-input](../input)
  - [joy-link](../link)
  - [joy-pagination](../pagination)
  - [joy-placeholder-button](../placeholder-button)
@@ -71,9 +73,11 @@ graph TD;
   joy-button --> joy-icon
   joy-company-avatar --> joy-icon
   joy-counter --> joy-icon
+  joy-dialog --> joy-icon
   joy-form-error --> joy-icon
   joy-highlight --> joy-icon
   joy-icon-button --> joy-icon
+  joy-input --> joy-icon
   joy-link --> joy-icon
   joy-pagination --> joy-icon
   joy-placeholder-button --> joy-icon

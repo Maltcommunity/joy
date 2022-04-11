@@ -18,6 +18,8 @@ export class Panel {
 
     private get getColorAccordingToLevel() {
         switch (this.level) {
+            case 'neutral':
+                return 'grey';
             case 'info':
                 return 'teal';
             case 'success':
@@ -33,6 +35,8 @@ export class Panel {
 
     private get getIconAccordingToLevel() {
         switch (this.level) {
+            case 'neutral':
+                return 'info-circle';
             case 'info':
                 return 'info-circle';
             case 'success':

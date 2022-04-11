@@ -57,7 +57,7 @@ export class Snackbar {
     }
 
     get closeSnackbarCta(): HTMLJoyIconElement {
-        return <joy-icon-button onJoyIconButtonClick={this.destroySnackbar} icon="cross" data-close-notification></joy-icon-button>;
+        return <joy-icon-button onJoyIconButtonClick={this.destroySnackbar} icon="cross" data-close-notification />;
     }
 
     get icon(): HTMLJoyIconElement {
@@ -110,7 +110,7 @@ export class Snackbar {
                 >
                     <div class="joy-snackbar__img">{this.icon}</div>
                     <div class="joy-snackbar__content">
-                        <span innerHTML={this.dangerousHtmlMessage}></span>
+                        <span innerHTML={this.dangerousHtmlMessage} />
                         {this.triggerActionText && (
                             <strong class="joy-snackbar__trigger___action" onClick={this.triggerAction}>
                                 {this.triggerActionText}

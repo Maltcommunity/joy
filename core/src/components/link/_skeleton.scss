@@ -1,4 +1,4 @@
-joy-link:not(.hydrated) {
+joy-link:not([hydrated]) {
     color: transparent;
     background-color: var(--joy-color-secondary-10);
     width: 110px;

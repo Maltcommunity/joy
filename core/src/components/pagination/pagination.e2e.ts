@@ -6,7 +6,7 @@ describe('pagination e2e', () => {
 
         await page.setContent('<joy-pagination></joy-pagination>');
         const element: E2EElement = await page.find('joy-pagination');
-        expect(element).toHaveClass('hydrated');
+        expect(element).toHaveAttribute('hydrated');
     });
 
     it('renders component with default next and prev buttons without link', async () => {

@@ -204,3 +204,16 @@ $_AVATAR_COLOR: (
         cursor: pointer;
     }
 }
+
+@mixin scrollbar {
+    ::-webkit-scrollbar {
+        -webkit-appearance: none;
+        width: 7px;
+    }
+    ::-webkit-scrollbar-thumb {
+        border-radius: var(--joy-core-radius-2);
+        background-color: rgba(0, 0, 0, .3);
+        -webkit-box-shadow: 0 0 1px rgba(255, 255, 255, .5);
+        @content;
+    }
+}

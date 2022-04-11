@@ -6,7 +6,7 @@ describe('user-card e2e', () => {
 
         await page.setContent('<joy-user-card></joy-user-card>');
         const element: E2EElement = await page.find('joy-user-card');
-        expect(element).toHaveClass('hydrated');
+        expect(element).toHaveAttribute('hydrated');
     });
 
     it('renders a basic user card with fullname, subtitle and avatar, given props only', async () => {

@@ -1,7 +1,7 @@
 ---
 hologram: true
 title: Tooltip
-name: joy_tooltip
+name: joy-tooltip
 category: Webcomponents
 ---
 

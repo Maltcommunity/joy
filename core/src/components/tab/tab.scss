@@ -6,5 +6,5 @@ $_CLASS: '.joy-tab';
 
 #{$_CLASS}__selected {
     display: block;
-    margin-top: 40px;
+    margin-top: var(--joy-core-spacing-9);
 }

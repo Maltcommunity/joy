@@ -5,7 +5,7 @@ function getSnackbar() {
     return document.body.querySelector('joy-snackbar') as HTMLElement;
 }
 
-function cancellationCallback(){}
+function cancellationCallback() {}
 function timeoutCallback() {}
 
 describe('Notification - NotificationService', () => {

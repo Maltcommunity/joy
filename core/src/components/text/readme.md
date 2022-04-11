@@ -1,7 +1,7 @@
 ---
 hologram: true
 title: Text
-name: joy_text
+name: joy-text
 category: Webcomponents
 ---
 

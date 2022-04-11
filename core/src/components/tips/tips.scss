@@ -89,10 +89,8 @@
     &__heading {
         @include utils.getFontProperties(m-bold);
 
-
-        + * {
-            display: block;
-            margin-top: var(--joy-core-spacing-2);
+        &-filled {
+            margin-bottom: var(--joy-core-spacing-2);
         }
     }
 

@@ -1,3 +1,5 @@
+import {BackDropOrigin} from '../types';
+
 export {generatedInputNameAndId, renderInputOutsideShadowRoot} from './dom';
 
 /**
@@ -53,4 +55,41 @@ export function onClickOutside(el: Node, fn: () => void): void {
 export function dispatchEvent<T>(target: HTMLElement, eventType: string, eventDetail?: T): void {
     const event = new CustomEvent(eventType, {detail: eventDetail, bubbles: true, composed: true});
     target.dispatchEvent(event);
+}
+
+/**
+ * @param {Boolean} prevent - If you want to prevent scrolling or enable it again. Used by dialog component
+ * @return {void}
+ */
+export function preventBodyScroll(prevent: boolean): void {
+    if (prevent) {
+        document.body.style.overflow = 'hidden';
+    } else {
+        document.body.style.removeProperty('overflow');
+    }
+}
+
+/**
+ * @param {String} origin - which component has triggered the backdrop
+ * @return {Promise<void>}
+ */
+export function createBackDrop(origin: BackDropOrigin): Promise<void | CustomElementConstructor> {
+    if (!document.querySelector('joy-backdrop')) {
+        const backdrop = document.createElement('joy-backdrop');
+        backdrop.origin = origin;
+        document.body.appendChild(backdrop);
+    }
+
+    return window.customElements.whenDefined('joy-backdrop');
+}
+
+/**
+ * @return {void}
+ */
+export function destroyBackdrop(): void {
+    const backdrop = document.querySelector('joy-backdrop');
+    if (backdrop) {
+        backdrop.remove();
+        preventBodyScroll(false);
+    }
 }

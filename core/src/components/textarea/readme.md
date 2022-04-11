@@ -1,7 +1,7 @@
 ---
 hologram: true
 title: Textarea
-name: joy_textarea
+name: joy-textarea
 category: Webcomponents
 ---
 
@@ -68,12 +68,13 @@ category: Webcomponents
 
 ## Events
 
-| Event               | Description                               | Type                              |
-| ------------------- | ----------------------------------------- | --------------------------------- |
-| `joyTextareaBlur`   | Emitted when the input loses focus.       | `CustomEvent<FocusEvent>`         |
-| `joyTextareaChange` | Emitted when the input value has changed. | `CustomEvent<{ value: string; }>` |
-| `joyTextareaFocus`  | Emitted when the input has focus.         | `CustomEvent<FocusEvent>`         |
-| `joyTextareaInput`  | Emitted when a keyboard input occurred.   | `CustomEvent<KeyboardEvent>`      |
+| Event               | Description                                                                     | Type                              |
+| ------------------- | ------------------------------------------------------------------------------- | --------------------------------- |
+| `joyTextareaBlur`   | Emitted when the input loses focus.                                             | `CustomEvent<FocusEvent>`         |
+| `joyTextareaChange` | Emitted when the input value has changed.                                       | `CustomEvent<{ value: string; }>` |
+| `joyTextareaFocus`  | Emitted when the input has focus.                                               | `CustomEvent<FocusEvent>`         |
+| `joyTextareaInput`  | Emitted when a keyboard input occurred.                                         | `CustomEvent<KeyboardEvent>`      |
+| `valueChange`       | Emitted when the value has changed. Generic event used by all other form fields | `CustomEvent<void>`               |
 
 
 ## Methods

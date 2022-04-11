@@ -7,11 +7,11 @@
 
 ## Properties
 
-| Property             | Attribute  | Description | Type      | Default     |
-| -------------------- | ---------- | ----------- | --------- | ----------- |
-| `disabled`           | `disabled` |             | `boolean` | `false`     |
-| `selected`           | `selected` |             | `boolean` | `false`     |
-| `value` _(required)_ | `value`    |             | `string`  | `undefined` |
+| Property             | Attribute  | Description                                | Type      | Default     |
+| -------------------- | ---------- | ------------------------------------------ | --------- | ----------- |
+| `disabled`           | `disabled` | Disabled state. *                          | `boolean` | `false`     |
+| `selected`           | `selected` | If the option is selected or not *         | `boolean` | `false`     |
+| `value` _(required)_ | `value`    | Value bubbled up to the select component * | `string`  | `undefined` |
 
 
 ----------------------------------------------

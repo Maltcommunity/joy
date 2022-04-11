@@ -1,16 +1,18 @@
 import {getAssetPath} from '@stencil/core';
 
-let CACHED_MAP: Map<string, string>;
+type JoyIcons = Map<string, string>;
+let CACHED_MAP: JoyIcons;
+
+/** The type declaration with Window is not correct here. Comes from ionicon definition **/
+/** TODO: improve this **/
 
 export const getIconMap = (): Map<string, string> => {
     if (typeof window === 'undefined') {
         return new Map();
     } else {
         if (!CACHED_MAP) {
-            const win = window;
-            //@ts-ignore
+            const win = window as any;
             win.JoyIcons = win.JoyIcons || {};
-            //@ts-ignore
             CACHED_MAP = win.JoyIcons.map = win.JoyIcons.map || new Map();
         }
         return CACHED_MAP;

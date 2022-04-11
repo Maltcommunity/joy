@@ -1,7 +1,7 @@
 ---
 hologram: true
 title: Placeholder Button
-name: joy_placeholder_button
+name: joy-placeholder-button
 category: Webcomponents
 ---
 

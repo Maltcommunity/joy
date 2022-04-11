@@ -5,7 +5,7 @@ describe('availability e2e', () => {
         const page = await newE2EPage();
         await page.setContent('<joy-availability></joy-availability>');
         const element: E2EElement = await page.find('joy-availability');
-        expect(element).toHaveClass('hydrated');
+        expect(element).toHaveAttribute('hydrated');
     });
 
     it('renders with label', async () => {

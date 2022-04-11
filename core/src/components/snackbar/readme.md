@@ -1,7 +1,7 @@
 ---
 hologram: true
 title: Snackbar
-name: joy_snackbar
+name: joy-snackbar
 category: Webcomponents
 ---
 
@@ -47,14 +47,14 @@ category: Webcomponents
 
 ## Properties
 
-| Property                            | Attribute                | Description                                                                                                                                             | Type                                                       | Default     |
-| ----------------------------------- | ------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------- | ----------- |
-| `closable`                          | `closable`               | Display an icon to close the notification manually                                                                                                      | `boolean \| undefined`                                     | `true`      |
-| `dangerousHtmlMessage` _(required)_ | `dangerous-html-message` | HTML with your custom message injected in the component. It won't be escaped so please be careful with XSS !                                            | `string`                                                   | `undefined` |
-| `duration`                          | `duration`               | Time in ms the snackbar is displayed. Give 'forever' to be able to display the snackbar without timeout                                                 | `"forever" \| number \| undefined`                         | `5000`      |
-| `level`                             | `level`                  | The criticality level of your notification. Range from simple info to error.                                                                            | `"error" \| "info" \| "success" \| "warning" \| undefined` | `'success'` |
-| `position`                          | `position`               | By default, the snackbar will be displayed in a fixed position at the bottom of the page. You can override this behavior by setting position="relative" | `"fixed" \| "relative" \| undefined`                       | `'fixed'`   |
-| `triggerActionText`                 | `trigger-action-text`    | If you need to create an action link (like cancel an action from snackbar) simply pas its text. Clicking on it will trigger a custom event              | `string \| undefined`                                      | `undefined` |
+| Property                            | Attribute                | Description                                                                                                                                             | Type                                                                    | Default     |
+| ----------------------------------- | ------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------- | ----------- |
+| `closable`                          | `closable`               | Display an icon to close the notification manually                                                                                                      | `boolean \| undefined`                                                  | `true`      |
+| `dangerousHtmlMessage` _(required)_ | `dangerous-html-message` | HTML with your custom message injected in the component. It won't be escaped so please be careful with XSS !                                            | `string`                                                                | `undefined` |
+| `duration`                          | `duration`               | Time in ms the snackbar is displayed. Give 'forever' to be able to display the snackbar without timeout                                                 | `"forever" \| number \| undefined`                                      | `5000`      |
+| `level`                             | `level`                  | The criticality level of your notification. Range from simple info to error.                                                                            | `"error" \| "info" \| "neutral" \| "success" \| "warning" \| undefined` | `'success'` |
+| `position`                          | `position`               | By default, the snackbar will be displayed in a fixed position at the bottom of the page. You can override this behavior by setting position="relative" | `"fixed" \| "relative" \| undefined`                                    | `'fixed'`   |
+| `triggerActionText`                 | `trigger-action-text`    | If you need to create an action link (like cancel an action from snackbar) simply pas its text. Clicking on it will trigger a custom event              | `string \| undefined`                                                   | `undefined` |
 
 
 ## Events

@@ -1,0 +1,14 @@
+@use './shared' as *;
+@use './../../indicator/style/shared';
+
+joy-indicators:not([hydrated]) {
+    @include hostStyle();
+    background-color: var(--joy-color-secondary-10);
+    height: shared.$indicator-height;
+    border-radius: shared.$indicator-radius;
+    width: 200px;
+
+    joy-indicator {
+        visibility: hidden;
+    }
+}

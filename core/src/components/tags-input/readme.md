@@ -1,7 +1,7 @@
 ---
 hologram: true
 title: Tags Input
-name: joy_tags_input
+name: joy-tags-input
 category: Webcomponents
 ---
 

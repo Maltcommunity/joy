@@ -1,7 +1,7 @@
 ---
 hologram: true
 title: Link
-name: joy_link
+name: joy-link
 category: Webcomponents
 ---
 

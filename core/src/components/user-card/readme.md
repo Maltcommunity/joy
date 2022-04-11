@@ -1,7 +1,7 @@
 ---
 hologram: true
 title: User Card
-name: joy_user_card
+name: joy-user-card
 category: Webcomponents
 ---
 

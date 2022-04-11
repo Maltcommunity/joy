@@ -5,8 +5,8 @@ interface PushParams {
     duration: number;
     closable?: boolean;
     triggerActionText?: string;
-    cancellationCallback?: () => any;
-    timeoutCallback?: () => any;
+    cancellationCallback?: () => void;
+    timeoutCallback?: () => void;
 }
 
 const DEFAULT_SNACKBAR_OPTIONS: PushParams = {
@@ -25,7 +25,7 @@ class Service {
     notificationIdx: number;
     private id!: string;
     cancellationCallback!: () => void;
-    timeoutCallback!: <T>() => T;
+    timeoutCallback!: () => void;
     private timeout!: ReturnType<typeof setTimeout>;
 
     constructor() {

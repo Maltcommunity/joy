@@ -1,7 +1,7 @@
 ---
 hologram: true
 title: Progress Bar
-name: joy_progress-bar
+name: joy-progress-bar
 category: Webcomponents
 ---
 

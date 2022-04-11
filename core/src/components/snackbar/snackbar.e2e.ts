@@ -6,7 +6,7 @@ describe('snackbar e2e', () => {
 
         await page.setContent('<joy-snackbar></joy-snackbar>');
         const element: E2EElement = await page.find('joy-snackbar');
-        expect(element).toHaveClass('hydrated');
+        expect(element).toHaveAttribute('hydrated');
     });
 
     it('renders a snackbar with a specific message', async () => {
@@ -28,7 +28,7 @@ describe('snackbar e2e', () => {
             const icon = await page.find('joy-snackbar >>> joy-icon');
 
             expect(element).not.toBe(null);
-            expect(icon.classList.contains('joy-i-wc_turquoise')).toBe(true);
+            expect(icon.classList.contains('joy-icon--turquoise')).toBe(true);
         });
 
         it('renders a success Snackbar', async () => {
@@ -39,7 +39,7 @@ describe('snackbar e2e', () => {
             const icon = await page.find('joy-snackbar >>> joy-icon');
 
             expect(element).not.toBe(null);
-            expect(icon.classList.contains('joy-i-wc_turquoise')).toBe(true);
+            expect(icon.classList.contains('joy-icon--turquoise')).toBe(true);
         });
 
         it('renders an Info Snackbar', async () => {
@@ -61,7 +61,7 @@ describe('snackbar e2e', () => {
             const icon = await page.find('joy-snackbar >>> joy-icon');
 
             expect(element).not.toBe(null);
-            expect(icon.classList.contains('joy-i-wc_yellow')).toBe(true);
+            expect(icon.classList.contains('joy-icon--yellow')).toBe(true);
         });
 
         it('renders an error Snackbar', async () => {
@@ -72,7 +72,7 @@ describe('snackbar e2e', () => {
             const icon = await page.find('joy-snackbar >>> joy-icon');
 
             expect(element).not.toBe(null);
-            expect(icon.classList.contains('joy-i-wc_red')).toBe(true);
+            expect(icon.classList.contains('joy-icon--red')).toBe(true);
         });
     });
 

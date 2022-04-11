@@ -5,7 +5,7 @@ describe('company-avatar e2e', () => {
         const page: E2EPage = await newE2EPage();
         await page.setContent('<joy-company-avatar></joy-company-avatar>');
         const element: E2EElement = await page.find('joy-company-avatar');
-        expect(element).toHaveClass('hydrated');
+        expect(element).toHaveAttribute('hydrated');
     });
 
     it('renders company-avatar with an actual photo', async () => {

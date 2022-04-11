@@ -1,7 +1,7 @@
 ---
 hologram: true
 title: Bottom Sheet
-name: joy_bottom-sheet
+name: joy-bottom-sheet
 category: Webcomponents
 ---
 

@@ -1,7 +1,7 @@
 ---
 hologram: true
 title: Radio group
-name: joy_radio_group
+name: joy-radio-group
 category: Webcomponents
 ---
 
@@ -70,9 +70,9 @@ category: Webcomponents
 
 ## Events
 
-| Event                 | Description                         | Type               |
-| --------------------- | ----------------------------------- | ------------------ |
-| `joyRadioGroupChange` | Emitted when the value has changed. | `CustomEvent<any>` |
+| Event         | Description                         | Type               |
+| ------------- | ----------------------------------- | ------------------ |
+| `valueChange` | Emitted when the value has changed. | `CustomEvent<any>` |
 
 
 ## Slots

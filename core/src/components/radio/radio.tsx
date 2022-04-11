@@ -17,7 +17,7 @@ export class Radio {
     /**
      * If `true`, the radio is selected.
      */
-    @State() checked = false;
+    @Prop({reflect: true, mutable: true}) checked = false;
     /**
      * If `true`, the radio is invalid.
      */
@@ -80,14 +80,14 @@ export class Radio {
         if (radioGroup) {
             this.updateState();
             // Emit event
-            radioGroup.addEventListener('joyRadioGroupChange', this.updateState);
+            radioGroup.addEventListener('valueChange', this.updateState);
         }
     }
 
     disconnectedCallback() {
         const radioGroup = this.radioGroup;
         if (radioGroup) {
-            radioGroup.removeEventListener('joyRadioGroupChange', this.updateState);
+            radioGroup.removeEventListener('valueChange', this.updateState);
             this.radioGroup = null;
         }
     }

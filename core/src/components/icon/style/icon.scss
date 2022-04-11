@@ -1,6 +1,8 @@
 @use './config';
 
-$_FILL_OPACITY: 0.05;
+$_CLASS: '.joy-icon';
+
+$FILL_OPACITY: 0.05;
 
 $_ICONS-COLORS: (
     "teal": (
@@ -19,7 +21,7 @@ $_ICONS-COLORS: (
         color: var(--joy-color-quaternary-70),
         placeholder: var(--joy-color-quaternary-10)
     ),
-    "green": (
+    "turquoise": (
         color: var(--joy-color-tertiary-50),
         placeholder: var(--joy-color-tertiary-10)
     ),
@@ -38,7 +40,7 @@ $_ICONS-COLORS: (
     }
 }
 
-.joy-i-wc {
+:host {
     display: inline-flex;
     fill-opacity: 0;
     color: var(--joy-color-secondary-50);
@@ -47,69 +49,44 @@ $_ICONS-COLORS: (
     stroke-width: 1.5px;
     @include config.iconSize(xsmall);
     border-radius: 50%;
+}
 
-    &_list {
-        ul {
-            > li {
-                padding-left: 33px;
-            }
-        }
+:host(#{$_CLASS}--clickable) {
+    cursor: pointer;
 
-        &-loaded {
-            ul {
-                > li {
-                    padding-left: 0;
-                }
-            }
-        }
+    &:hover {
+        fill-opacity: $FILL_OPACITY;
     }
+}
 
-    svg, .joy-icon-inner {
-        // Default
-        // Prevent clicking on svg or use elements when adding a listener on <i> icon
-        pointer-events: none;
+@each $name, $size in config.$ICON_SIZES {
+    :host(#{$_CLASS}--#{$name}) {
+        @include config.iconSize($name);
     }
+}
 
-    .joy-icon-inner {
-        line-height: 1;
+@each $colorName, $params in $_ICONS-COLORS {
+    :host(#{$_CLASS}--#{$colorName}) {
+        color: map-get($params, color);
     }
+}
+
+:host(#{$_CLASS}--full) {
+    fill-opacity: 1;
+}
+
+:host(#{$_CLASS}--bicolor) {
+    fill-opacity: $FILL_OPACITY;
+}
+
+svg, .joy-icon-inner {
+    // Default
+    // Prevent clicking on svg or use elements when adding a listener
+    pointer-events: none;
+}
 
 
-    &.joy-i-wc_loaded {
-        background-color: transparent;
-        opacity: 1;
-    }
-
-    @each $name, $size in config.$ICON_SIZES {
-        &_#{$name} {
-            @include config.iconSize($name);
-        }
-    }
-
-    @each $colorName, $params in $_ICONS-COLORS {
-        &_#{$colorName} {
-            color: map-get($params, color);
-
-            &:not(.joy-i-wc_loaded) {
-                border-radius: 50%;
-                background-color: map-get($params, placeholder);
-            }
-        }
-    }
-
-    &_clickable {
-        cursor: pointer;
-
-        &:hover {
-            fill-opacity: $_FILL_OPACITY;
-        }
-    }
-
-    &_full {
-        fill-opacity: 1;
-    }
-
-    &_bg {
-        fill-opacity: $_FILL_OPACITY;
-    }
+.joy-icon-inner {
+    line-height: 1;
+    font-size: initial;
 }

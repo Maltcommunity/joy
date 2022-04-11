@@ -1,0 +1,12 @@
+joy-stepper {
+    &.joy-stepper--justify {
+        joy-step:first-of-type {
+            align-items: flex-start;
+            flex: 1 0;
+        }
+        joy-step:last-of-type {
+            align-items: flex-end;
+            flex: 1 0;
+        }
+    }
+}

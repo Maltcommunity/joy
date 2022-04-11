@@ -1,7 +1,7 @@
 ---
 hologram: true
 title: Avatars List
-name: joy_avatars_list
+name: joy-avatars-list
 category: Webcomponents
 ---
 

@@ -1,6 +1,8 @@
+$CLASS: '.joy-select-option';
+
 :host {
     --select-option-color-bg: white;
-    --select-option-color: inherit;
+    --select-option-color: var(--joy-color-neutral-6);
     --select-option-fontsize: var(--joy-font-size-s);
     --select-option-padding: var(--joy-core-spacing-2) var(--joy-core-spacing-4);
 
@@ -14,15 +16,17 @@
     margin: 0;
     background: var(--select-option-color-bg);
     color: var(--select-option-color);
+    transition: all var(--joy-transition-duration-short) var(--joy-transition-timing-function);
 }
 
-:host(.joy-select-option_selected),
+:host(#{$CLASS}_selected),
 :host(:hover) {
     --select-option-color: var(--joy-color-secondary-50);
     --select-option-color-bg: var(--joy-color-secondary-10);
 }
 
-:host(.joy-select-option_disabled) {
-    --select-option-color: var(--joy-color-neutral-5);
-    --select-option-color-bg: var(--joy-color-neutral-2);
+:host(#{$CLASS}_disabled) {
+    cursor: default;
+    --select-option-color: var(--joy-color-neutral-4);
+    --select-option-color-bg: var(--joy-color-neutral-1);
 }

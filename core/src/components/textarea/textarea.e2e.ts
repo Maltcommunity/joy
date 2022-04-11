@@ -8,7 +8,7 @@ describe('Textarea - e2e', () => {
         `);
 
         const textarea = await page.find('joy-textarea');
-        expect(textarea).toHaveClass('hydrated');
+        expect(textarea).toHaveAttribute('hydrated');
         const actualTextarea = await page.find('joy-textarea >>> textarea');
         // at least we can write someting !
         expect(actualTextarea).not.toBeNull();

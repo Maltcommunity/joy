@@ -1,7 +1,7 @@
 ---
 hologram: true
 title: Icon Button
-name: joy_icon_button
+name: joy-icon-button
 category: Webcomponents
 ---
 

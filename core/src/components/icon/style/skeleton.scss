@@ -1,7 +1,7 @@
 @use 'sass:map';
 @use './config';
 
-joy-icon:not(.hydrated) {
+joy-icon:not([hydrated]) {
     display: inline-flex;
     background-color: var(--joy-color-neutral-2);
     border-radius: 50%;

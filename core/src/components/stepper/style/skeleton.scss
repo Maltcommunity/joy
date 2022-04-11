@@ -1,0 +1,5 @@
+@use './shared' as *;
+
+joy-stepper:not([hydrated]) {
+    @include defaultStyle();
+}

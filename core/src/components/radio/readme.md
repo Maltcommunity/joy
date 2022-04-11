@@ -1,9 +1,18 @@
 ---
 hologram: true
 title: Radio
-name: joy_radio
+name: joy-radio
 category: Webcomponents
 ---
+
+
+<joy-highlight level="warning" display-icon>
+    <joy-text>
+        Please refer to <a href="#joy_radio_group">this docs, for radio group examples.</a><br/>
+        <strong>joy-radio</strong> is not meant to be used alone, please use it with a joy-radio-group wrapper
+    </joy-text>
+</joy-highlight>
+
 
 ```ui_example
 <joy-radio-group name="my-radio" value="first">
@@ -14,12 +23,6 @@ category: Webcomponents
 </joy-radio-group>
 ```
 
-<joy-highlight level="warning" display-icon>
-    <joy-text>
-        Please refer to <a href="#joy_radio_group">this docs, for radio group examples.</a>
-    </joy-text>
-</joy-highlight>
-
 <!-- Auto Generated Below -->
 
 
@@ -27,6 +30,7 @@ category: Webcomponents
 
 | Property   | Attribute  | Description                                                     | Type      | Default        |
 | ---------- | ---------- | --------------------------------------------------------------- | --------- | -------------- |
+| `checked`  | `checked`  | If `true`, the radio is selected.                               | `boolean` | `false`        |
 | `disabled` | `disabled` | If `true`, the user cannot interact with the radio.             | `boolean` | `false`        |
 | `name`     | `name`     | The name of the control, which is submitted with the form data. | `string`  | `this.inputId` |
 | `value`    | `value`    | the value of the radio.                                         | `any`     | `undefined`    |

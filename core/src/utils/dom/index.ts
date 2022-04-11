@@ -1,3 +1,2 @@
-export {generatedInputNameAndId} from './generatedInputNameAndId';
+export {generatedInputNameAndId, generatedIndex} from './generatedInputNameAndId';
 export {renderInputOutsideShadowRoot} from './injectHiddenInputOutsideShadowRoot';
-export {renderSelectOutsideShadowRoot} from './injectSelectOutsideShadowRoot';

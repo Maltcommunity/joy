@@ -1,7 +1,7 @@
 ---
 hologram: true
 title: Badge Level
-name: joy_badge_level
+name: joy-badge-level
 category: Webcomponents
 ---
 

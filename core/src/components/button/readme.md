@@ -1,7 +1,7 @@
 ---
 hologram: true
 title: Button
-name: joy_button
+name: joy-button
 category: Webcomponents
 ---
 
@@ -129,6 +129,7 @@ Type: `Promise<void>`
 ### Used by
 
  - [joy-bottom-sheet](../bottom-sheet)
+ - [joy-dialog](../dialog)
 
 ### Depends on
 
@@ -141,6 +142,7 @@ graph TD;
   joy-button --> joy-icon
   joy-button --> joy-spinner
   joy-bottom-sheet --> joy-button
+  joy-dialog --> joy-button
   style joy-button fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

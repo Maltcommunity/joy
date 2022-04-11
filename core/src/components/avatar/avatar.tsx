@@ -69,16 +69,6 @@ export class JoyAvatar {
         return arrayName.join('').toUpperCase();
     }
 
-    get imgSize() {
-        if (this.size === 'medium') {
-            return 60;
-        } else if (this.size === 'small') {
-            return 30;
-        }
-
-        return 100;
-    }
-
     get iconSize(): Sizes {
         if (this.size === 'large') {
             return 'medium';
@@ -165,7 +155,7 @@ export class JoyAvatar {
     get avatarPicture() {
         return (
             <picture class={this.avatarClasses}>
-                <img src={this.photoUrl} title={this.fullName} alt="" loading="lazy" width={this.imgSize} height={this.imgSize} />
+                <img src={this.photoUrl} title={this.fullName} alt="" loading="lazy" />
             </picture>
         );
     }

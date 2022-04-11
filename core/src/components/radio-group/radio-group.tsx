@@ -35,18 +35,18 @@ export class RadioGroup implements ComponentInterface {
     /**
      * the value of the radio group.
      */
-    @Prop({mutable: true}) value?: any | null;
+    @Prop({mutable: true, reflect: true}) value?: any | null;
 
     @Watch('value')
     valueChanged(value: any | undefined) {
         this.setRadioTabindex(value);
-        this.joyRadioGroupChange.emit({value});
+        this.valueChange.emit({value});
     }
 
     /**
      * Emitted when the value has changed.
      */
-    @Event() joyRadioGroupChange!: EventEmitter<any>;
+    @Event() valueChange!: EventEmitter<any>;
 
     componentDidLoad() {
         this.setRadioTabindex(this.value);
@@ -93,8 +93,6 @@ export class RadioGroup implements ComponentInterface {
 
     @Listen('keydown', {target: 'document'})
     onKeydown(ev: any) {
-        const inSelectPopover = !!this.el.closest('ion-select-popover');
-
         if (ev.target && !this.el.contains(ev.target)) {
             return;
         }
@@ -122,10 +120,7 @@ export class RadioGroup implements ComponentInterface {
 
             if (next && radios.includes(next)) {
                 next.setFocus(ev);
-
-                if (!inSelectPopover) {
-                    this.value = next.value;
-                }
+                this.value = next.value;
             }
         }
     }
@@ -148,7 +143,7 @@ export class RadioGroup implements ComponentInterface {
                     >
                         <slot />
                     </div>
-                    {this.invalid && this.invalidText && <joy-form-error no-html-error-text={this.invalidText}></joy-form-error>}
+                    {this.invalid && this.invalidText && <joy-form-error no-html-error-text={this.invalidText} />}
                 </fieldset>
             </Host>
         );

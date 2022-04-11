@@ -1,7 +1,7 @@
 ---
 hologram: true
 title: Highlight
-name: joy_highlight
+name: joy-highlight
 category: Webcomponents
 ---
 
@@ -10,6 +10,7 @@ category: Webcomponents
 <joy-highlight level="error" display-icon>I am a simple error content.</joy-highlight>
 <joy-highlight level="success" display-icon>I am a simple success content.</joy-highlight>
 <joy-highlight level="info" display-icon>I am a simple info content.</joy-highlight>
+<joy-highlight level="neutral" display-icon>I am a simple neutral content.</joy-highlight>
 ```
 
 ## Customize icon
@@ -23,11 +24,11 @@ category: Webcomponents
 
 ## Properties
 
-| Property      | Attribute      | Description                                                                                                       | Type                                          | Default     |
-| ------------- | -------------- | ----------------------------------------------------------------------------------------------------------------- | --------------------------------------------- | ----------- |
-| `displayIcon` | `display-icon` | Allows to display the level status icon                                                                           | `boolean`                                     | `false`     |
-| `icon`        | `icon`         | Override the icon type used for level. Size can't be overridden. Won't show if displayIcon prop isn't set to true | `string \| undefined`                         | `undefined` |
-| `level`       | `level`        | Defines the criticalness of the highlight                                                                         | `"error" \| "info" \| "success" \| "warning"` | `'info'`    |
+| Property      | Attribute      | Description                                                                                                       | Type                                                       | Default     |
+| ------------- | -------------- | ----------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------- | ----------- |
+| `displayIcon` | `display-icon` | Allows to display the level status icon                                                                           | `boolean`                                                  | `false`     |
+| `icon`        | `icon`         | Override the icon type used for level. Size can't be overridden. Won't show if displayIcon prop isn't set to true | `string \| undefined`                                      | `undefined` |
+| `level`       | `level`        | Defines the criticalness of the highlight                                                                         | `"error" \| "info" \| "neutral" \| "success" \| "warning"` | `'info'`    |
 
 
 ## Slots
