@@ -8,7 +8,6 @@ function isEnv(flag: string): boolean {
 
 const E2E_ENV = isEnv('--e2e');
 const PROD_ENV = isEnv('--prod');
-const DEV_ENV = isEnv('--dev');
 
 const env = Object.assign({},  E2E_ENV ? {E2E_ENV: 'e2e'} : {});
 const polyfills = Object.assign({}, PROD_ENV ? { 
