@@ -25,7 +25,7 @@ importers:
       tslib: 1.14.1
       typescript: 4.3.2
     dependencies:
-      '@maltjoy/tokens': link:../tokens
+      '@maltjoy/tokens': 1.1.3
       '@stencil/core': 2.15.0
     devDependencies:
       '@stencil/eslint-plugin': 0.4.0_179f8a08f21fbd0422e75534965a3922
@@ -46,9 +46,9 @@ importers:
 
   tokens:
     specifiers:
-      sass: ^1.49.7
+      sass: 1.50.0
     devDependencies:
-      sass: 1.49.7
+      sass: 1.50.0
 
 packages:
 
@@ -619,6 +619,10 @@ packages:
       '@jridgewell/resolve-uri': 3.0.4
       sourcemap-codec: 1.4.8
     dev: true
+
+  /@maltjoy/tokens/1.1.3:
+    resolution: {integrity: sha512-zUi+b7RAHfUEdONheSzmnXE73Jhzou95oczFCckBhOdpIcezF4xOawsg7NlHAbWz3fkNlCzLwKTccC9WzbRMpA==}
+    dev: false
 
   /@nodelib/fs.scandir/2.1.5:
     resolution: {integrity: sha512-vq24Bq3ym5HEQm2NKCr3yXDwjc7vTsEThRDnkp2DK9p1uqLR+DHurm/NOTo0KG7HYHU7eppKZj3MyqYuMBf62g==}
@@ -5006,8 +5010,8 @@ packages:
       walker: 1.0.8
     dev: true
 
-  /sass/1.49.7:
-    resolution: {integrity: sha512-13dml55EMIR2rS4d/RDHHP0sXMY3+30e1TKsyXaSz3iLWVoDWEoboY8WzJd5JMnxrRHffKO3wq2mpJ0jxRJiEQ==}
+  /sass/1.50.0:
+    resolution: {integrity: sha512-cLsD6MEZ5URXHStxApajEh7gW189kkjn4Rc8DQweMyF+o5HF5nfEz8QYLMlPsTOD88DknatTmBWkOcw5/LnJLQ==}
     engines: {node: '>=12.0.0'}
     hasBin: true
     dependencies:

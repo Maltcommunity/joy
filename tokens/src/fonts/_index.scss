@@ -27,21 +27,21 @@ $joy-line-height-large: 1.25;
  
      // Font sizes 
      --joy-font-size-none: 0;
-     --joy-font-size-xxs: var($joy-font-size-xxs);
-     --joy-font-size-xs: var($joy-font-size-xs);
-     --joy-font-size-s: var($joy-font-size-s);
-     --joy-font-size-m: var($joy-font-size-m);
-     --joy-font-size-l: var($joy-font-size-l);
-     --joy-font-size-xl: var($joy-font-size-xl);
-     --joy-font-size-xl-mobile: var($joy-font-size-xl-mobile);
-     --joy-font-size-2xl: var($joy-font-size-2xl);
-     --joy-font-size-2xl-mobile: var($joy-font-size-2xl-mobile);
-     --joy-font-size-3xl: var($joy-font-size-3xl);
-     --joy-font-size-3xl-mobile: var($joy-font-size-3xl-mobile);
-     --joy-font-size-4xl: var($joy-font-size-4xl);
-     --joy-font-size-4xl-mobile: var($joy-font-size-4xl-mobile);
-     --joy-font-size-quote: var($joy-font-size-quote);
-     --joy-font-size-quote-mobile: var($joy-font-size-quote-mobile);
+     --joy-font-size-xxs: #{$joy-font-size-xxs};
+     --joy-font-size-xs: #{$joy-font-size-xs};
+     --joy-font-size-s: #{$joy-font-size-s};
+     --joy-font-size-m: #{$joy-font-size-m};
+     --joy-font-size-l: #{$joy-font-size-l};
+     --joy-font-size-xl: #{$joy-font-size-xl};
+     --joy-font-size-xl-mobile: #{$joy-font-size-xl-mobile};
+     --joy-font-size-2xl: #{$joy-font-size-2xl};
+     --joy-font-size-2xl-mobile: #{$joy-font-size-2xl-mobile};
+     --joy-font-size-3xl: #{$joy-font-size-3xl};
+     --joy-font-size-3xl-mobile: #{$joy-font-size-3xl-mobile};
+     --joy-font-size-4xl: #{$joy-font-size-4xl};
+     --joy-font-size-4xl-mobile: #{$joy-font-size-4xl-mobile};
+     --joy-font-size-quote: #{$joy-font-size-quote};
+     --joy-font-size-quote-mobile: #{$joy-font-size-quote-mobile};
  
      // Font weights
      --joy-font-weight-normal: var($joy-font-weight-normal);

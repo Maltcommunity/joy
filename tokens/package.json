@@ -1,6 +1,6 @@
 {
   "name": "@maltjoy/tokens",
-  "version": "1.1.3",
+  "version": "1.1.4",
   "description": "Malt design system tokens ecosystem",
   "files": [
     "dist",
@@ -8,12 +8,13 @@
   ],
   "scripts": {
     "build": "pnpm sass:compile",
-    "sass:compile": "sass src/tokens.scss:dist/css/tokens.css",
+    "sass:dev": "sass src/tokens.scss:dist/css/tokens.css",
+    "sass:compile": "sass src/tokens.scss:dist/css/tokens.min.css --style=compressed",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "kevin@malt.com",
   "license": "MIT",
   "devDependencies": {
-    "sass": "^1.49.7"
+    "sass": "1.50.0"
   }
 }
