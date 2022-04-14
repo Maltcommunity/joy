@@ -1,0 +1,9 @@
+@use './shared' as *;
+
+:host {
+    @include hostStyle();
+}
+
+::slotted(joy-indicator) {
+    margin-right: var(--joy-core-spacing-2);
+}

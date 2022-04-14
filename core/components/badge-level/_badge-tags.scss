@@ -1,0 +1,26 @@
+$BADGE_TAG_TYPE_CONFIG: (
+    'red': (
+        background-color: var(--joy-color-primary-10),
+        color: var(--joy-color-primary-30)
+    ),
+    'turquoise': (
+        background-color: var(--joy-color-tertiary-30),
+        color: white
+    ),
+    'blue': (
+        background-color: var(--joy-color-tertiary-10),
+        color: var(--joy-color-brand-secondary-30)
+    )
+);
+
+@mixin badgeConfigReader($configs, $key) {
+    $config: map-get($configs, $key);
+
+    @each $prop, $value in $config {
+        #{$prop}: $value;
+    }
+}
+
+@mixin badgeTagType($type: default) {
+    @include badgeConfigReader($BADGE_TAG_TYPE_CONFIG, $type);
+}

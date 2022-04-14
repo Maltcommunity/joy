@@ -1,0 +1,22 @@
+:host {
+    --label-color: var(--joy-color-text-title);
+    font-weight: bold;
+    line-height: var(--joy-line-height-large);
+
+    display: block;
+    width: 100%;
+    color: var(--label-color);
+    margin-bottom: var(--joy-core-spacing-2);
+}
+
+:host(.joy-label--medium) {
+    --label-font-size: var(--joy-font-size-m);
+
+    font-size: var(--label-font-size);
+}
+
+:host(.joy-label--large) {
+    --label-font-size: var(--joy-font-size-l);
+
+    font-size: var(--label-font-size);
+}

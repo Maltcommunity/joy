@@ -1,0 +1,24 @@
+@use '../../style/utils';
+
+*, ::slotted(p) {
+    @include utils.getFontProperties(m);
+    margin: 0;
+    padding: 0;
+}
+
+::slotted(joy-link) {
+    padding: 0;
+    @include utils.getFontProperties(m-bold);
+}
+
+::slotted(strong) {
+    font-weight: var(--joy-font-weight-bold);
+}
+
+::slotted(small) {
+    font-size: var(--joy-font-size-s);
+}
+
+:host {
+    display: block;
+}

@@ -1,0 +1,21 @@
+@use './inputs-mixin' as input;
+
+#{input.$CLASS} {
+    @include input.rootProperties();
+    @include input.commonStyle();
+    @include input.focusState();
+    @include input.wrapperStyle();
+    @include input.unitContent();
+}
+
+@each $size, $props in input.$sizes {
+    #{input.$CLASS}--#{$size} {
+        --input-height: #{map-get($props, "height")};
+        --input-padding: #{map-get($props, "padding")};
+        --input-font-size: #{map-get($props, "font-size")};
+        --input-unit-height: #{map-get($props, "unitHeight")};
+    }
+}
+
+@include input.disabledState();
+@include input.invalidState();

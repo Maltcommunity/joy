@@ -1,0 +1,12 @@
+@use './mixins';
+
+joy-tags-input:not([hydrated]) {
+    @include mixins.innerStyle();
+    background-color: var(--joy-color-neutral-2);
+    height: 50px;
+    width: 100%;
+
+    * {
+        visibility: hidden;
+    }
+}

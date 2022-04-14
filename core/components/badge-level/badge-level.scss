@@ -1,0 +1,65 @@
+@use '../../style/utils';
+
+@use 'badge-tags' as tags;
+@use 'badge-icons' as icons;
+
+$_CLASS: '.joy-badge-level';
+
+:host {
+    /**
+     * @prop --badge-padding : Default padding for the badge
+     * @prop ----badge-height : Default height for the badge
+     */
+    --badge-padding: 3px 4px 4px;
+    --badge-height: 20px;
+
+    display: flex;
+    align-items: center;
+    width: 1px;
+    @include utils.getFontProperties(xs);
+}
+
+:host(#{$_CLASS}) {
+    width: auto;
+}
+
+svg {
+    display: inline-block;
+    flex-shrink: 0;
+    width: 12px;
+    height: 20px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center center;
+
+    & + svg {
+        margin-left: 6px;
+    }
+
+    @each $name, $value in icons.$BADGE_ICONS {
+        &#{$_CLASS}__#{$name} {
+            @include icons.setIconSize($value)
+        }
+    }
+}
+
+#{$_CLASS} {
+    &__tag {
+        display: inline-block;
+        vertical-align: middle;
+        border-radius: 2px;
+        height: var(--badge-height);
+        padding: var(--badge-padding);
+        white-space: nowrap;
+
+        @each $type, $config in tags.$BADGE_TAG_TYPE_CONFIG {
+            &.#{$type} {
+                @include tags.badgeTagType($type);
+            }
+        }
+
+        * + & {
+            margin-left: 6px;
+        }
+    }
+}

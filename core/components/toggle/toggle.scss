@@ -1,0 +1,145 @@
+@use '../../style/utils';
+
+$_CLASS: '.joy-toggle';
+
+:host {
+    /**
+     * @prop --toggle-width: Use this prop to override the toggle symbol width. It'll resize homothetically
+     * @prop --toggle-height: Use this prop to override the toggle symbol height. It'll resize homothetically
+     */
+    --toggle-width: 42px;
+    --toggle-height: 22px;
+    --toggle-width-focus: calc(var(--toggle-width) + 2px);
+    --toggle-radius: calc(var(--toggle-height) / 2);
+    --toggle-bubble-space: 4px;
+    --toggle-bubble-size: calc(var(--toggle-height) - var(--toggle-bubble-space));
+    --toggle-bubble-translation-value: calc(var(--toggle-width) - var(--toggle-bubble-size) - var(--toggle-bubble-space));
+
+    --toggle-bg-color-hover-checked: var(--joy-color-secondary-50);
+    --toggle-bg-color-hover: var(--joy-color-neutral-4);
+    --toggle-bg-color-active-checked: var(--joy-color-secondary-90);
+    --toggle-bg-color-disabled: var(--joy-color-neutral-1);
+    --toggle-bubble-bg-color-disabled: var(--joy-color-neutral-3);
+    --toggle-bg-color-inactive: var(--joy-color-neutral-3);
+    --toggle-bubble-bg-color-inactive: white;
+    --toggle-bg-color-active: var(--joy-color-secondary-30);
+    --toggle-bubble-bg-color-active: white;
+    --toggle-border-color-focus: var(--joy-color-neutral-6);
+
+    @include utils.getFontProperties(m);
+    color: var(--joy-color-text-body);
+    display: inline-flex;
+}
+
+@mixin toggleSlot {
+    &::before {
+        content: '';
+        position: relative;
+        display: block;
+        flex-shrink: 0;
+        top: 2px;
+        width: var(--toggle-width);
+        height: var(--toggle-height);
+        margin-right: var(--joy-core-spacing-1);
+        background-color: var(--toggle-bg-color-inactive);
+        border-radius: var(--toggle-radius);
+        transition: backgroud-color,box-shadow 150ms ease;
+    }
+}
+
+@mixin toggleBubble {
+    &::after {
+        content: '';
+        position: absolute;
+        top: var(--toggle-bubble-space);
+        left: 2px;
+        width: var(--toggle-bubble-size);
+        height: var(--toggle-bubble-size);
+        border-radius: 50%;
+        background-color: var(--toggle-bubble-bg-color-inactive);
+        transition: all var(--joy-transition-duration-default) var(--joy-transition-timing-function);
+    }
+}
+
+@mixin toggleOn {
+    &::before {
+        background-color: var(--toggle-bg-color-active);
+    }
+
+    &::after {
+        transform: translateX(var(--toggle-bubble-translation-value));
+    }
+}
+
+#{$_CLASS} {
+    position: relative;
+    cursor: pointer;
+    display: block;
+    @include utils.unselectable();
+
+    &_disabled {
+        cursor: not-allowed;
+    }
+
+    &__input {
+        @include utils.srOnly();
+
+        &:focus-visible {
+            + *:before {
+                background-color: var(--toggle-bg-color-hover);
+            }
+        }
+        &:checked:focus-visible {
+            + *:before {
+                background-color: var(--toggle-bg-color-active-checked);
+            }
+        }
+    }
+
+    &__input + * {
+        display: inline-flex;
+        align-items: flex-start;
+        margin: 0;
+        @include toggleSlot;
+        @include toggleBubble;
+    }
+
+    &__input:checked + * {
+        @include toggleOn;
+    }
+
+    &__input:disabled + * {
+        cursor: not-allowed;
+
+        &::before {
+            background-color: var(--toggle-bg-color-disabled);
+            border: 1px solid var(--toggle-bubble-bg-color-disabled);
+        }
+        &::after {
+            background-color: var(--toggle-bubble-bg-color-disabled);
+        }
+    }
+
+    &:hover {
+        #{$_CLASS}__input:not(:disabled) {
+            &:checked + * {
+                &::before {
+                    background-color: var(--toggle-bg-color-hover-checked);
+                }
+            }
+            + *:before {
+                background-color: var(--toggle-bg-color-hover);
+            }
+        }
+    }
+
+    &:active {
+        #{$_CLASS}__input:not(:disabled) {
+            &:checked + * {
+                &::before {
+                    background-color: var(--toggle-bg-color-active-checked);
+                }
+            }
+        }
+    }
+}

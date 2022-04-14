@@ -1,0 +1,24 @@
+@use 'tag-config' as tags;
+
+joy-tag:not([hydrated]) {
+    color: transparent;
+    background-color: var(--joy-color-neutral-3);
+    @include tags.tagShape();
+
+    $default: map-get(tags.$TAG_SIZE_CONFIG, 'medium');
+    height: map-get($default, 'height');
+    padding: map-get($default, 'padding');
+    width: auto;
+}
+
+@mixin tagSize() {
+    @each $size, $value in tags.$TAG_SIZE_CONFIG {
+        joy-tag[size="#{$size}"]:not([hydrated]) {
+            font-size: map-get($value, font-size);
+            padding: map-get($value, padding);
+            height: map-get($value, height);
+        }
+    }
+}
+
+@include tagSize();

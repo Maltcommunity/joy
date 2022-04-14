@@ -1,0 +1,13 @@
+@use './shared' as *;
+
+$CLASS: '.joy-stepper';
+
+:host {
+    @include defaultStyle();
+
+    --stepper-bg-color: var(--joy-color-secondary-50);
+}
+
+:host(#{$CLASS}--direction-vertical) {
+    flex-direction: column;
+}

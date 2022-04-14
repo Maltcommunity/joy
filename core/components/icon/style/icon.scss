@@ -1,0 +1,92 @@
+@use './config';
+
+$_CLASS: '.joy-icon';
+
+$FILL_OPACITY: 0.05;
+
+$_ICONS-COLORS: (
+    "teal": (
+        color: var(--joy-color-secondary-50),
+        placeholder: var(--joy-color-secondary-10)
+    ),
+    "grey": (
+        color: var(--joy-color-neutral-4),
+        placeholder: var(--joy-color-neutral-2)
+    ),
+    "red": (
+        color: var(--joy-color-primary-50),
+        placeholder: var(--joy-color-primary-10)
+    ),
+    "yellow": (
+        color: var(--joy-color-quaternary-70),
+        placeholder: var(--joy-color-quaternary-10)
+    ),
+    "turquoise": (
+        color: var(--joy-color-tertiary-50),
+        placeholder: var(--joy-color-tertiary-10)
+    ),
+    "white": (
+        color: white,
+        placeholder: rgba(255, 255, 255, 0.2)
+    )
+);
+
+@keyframes svgFadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+:host {
+    display: inline-flex;
+    fill-opacity: 0;
+    color: var(--joy-color-secondary-50);
+    // Default color;
+    shape-rendering: auto;
+    stroke-width: 1.5px;
+    @include config.iconSize(xsmall);
+    border-radius: 50%;
+}
+
+:host(#{$_CLASS}--clickable) {
+    cursor: pointer;
+
+    &:hover {
+        fill-opacity: $FILL_OPACITY;
+    }
+}
+
+@each $name, $size in config.$ICON_SIZES {
+    :host(#{$_CLASS}--#{$name}) {
+        @include config.iconSize($name);
+    }
+}
+
+@each $colorName, $params in $_ICONS-COLORS {
+    :host(#{$_CLASS}--#{$colorName}) {
+        color: map-get($params, color);
+    }
+}
+
+:host(#{$_CLASS}--full) {
+    fill-opacity: 1;
+}
+
+:host(#{$_CLASS}--bicolor) {
+    fill-opacity: $FILL_OPACITY;
+}
+
+svg, .joy-icon-inner {
+    // Default
+    // Prevent clicking on svg or use elements when adding a listener
+    pointer-events: none;
+}
+
+
+.joy-icon-inner {
+    line-height: 1;
+    font-size: initial;
+}

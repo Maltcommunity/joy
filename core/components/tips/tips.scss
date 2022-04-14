@@ -1,0 +1,207 @@
+@use '../../style/utils';
+
+:host {
+    --tips-text-color: var(--joy-color-neutral-6);
+
+    --tips-bg-default: var(--joy-color-information-10);
+    --tips-color-default: var(--joy-color-information-50);
+    --tips-border-default: var(--joy-color-information-50);
+
+    --tips-bg-warning: var(--joy-color-warning-10);
+    --tips-color-warning: var(--joy-color-warning-50);
+    --tips-border-warning: var(--joy-color-warning-50);
+
+    --tips-bg-error: var(--joy-color-error-10);
+    --tips-color-error: var(--joy-color-error-50);
+    --tips-border-error: var(--joy-color-error-50);
+
+    --tips-bg-success: var(--joy-color-success-10);
+    --tips-color-success: var(--joy-color-success-50);
+    --tips-border-success: var(--joy-color-success-50);
+
+    --tips-bg-banner: white;
+    --tips-color-banner: var(--joy-color-tertiary-50);
+    --tips-border-banner: var(--joy-color-primary-30);
+
+    color: var(--tips-text-color);
+}
+
+.joy-tips
+{
+    position: relative;
+    display: flex;
+    align-items: flex-start;
+    margin: 0 0 20px;
+    padding: var(--joy-core-spacing-4) var(--joy-core-spacing-6);
+    overflow: hidden;
+    border-radius: var(--joy-core-radius-3);
+    text-align: left;
+    background-color: var(--tips-bg-default);
+
+    &__icon {
+        margin-right: var(--joy-core-spacing-4);
+    }
+
+    &__content {
+        padding-right: var(--joy-core-spacing-3);
+        flex: 1;
+        font-size: var(--joy-font-size-s);
+    }
+
+    &_block {
+        display: block;
+        > *:not(:last-child){
+            margin-bottom: 20px;
+        }
+    }
+
+    &:before {
+        position: absolute;
+        display: block;
+        content: '';
+        top: 0;
+        left: 0;
+        width: 7px;
+        height: 100%;
+        background-color: var(--tips-border-default);
+    }
+
+    &__logo {
+        margin-bottom: var(--joy-core-spacing-4);
+
+        img {
+            max-width: 300px;
+            max-height: 20px;
+        }
+    }
+
+    &__img {
+        margin: auto;
+        display: block;
+        max-width: 100%;
+        object-fit: contain;
+    }
+
+    p {
+        max-width: 600px;
+    }
+
+    &__heading {
+        @include utils.getFontProperties(m-bold);
+
+        &-filled {
+            margin-bottom: var(--joy-core-spacing-2);
+        }
+    }
+
+    > .joy-tips__button {
+        align-self: center;
+    }
+
+    &__close {
+        display: flex;
+
+        .joy-tips__icon {
+            display: none;
+        }
+    }
+
+    &_centered {
+        align-items: center;
+    }
+
+    &_small {
+        flex-direction: column;
+        justify-content: flex-start;
+        max-width: 300px;
+
+        > .joy-tips__button {
+            align-self: inherit;
+        }
+
+        .joy-tips__content {
+            + .joy-tips__close,
+            + button,
+            + .joy-tips__button {
+                margin-top: var(--joy-core-spacing-4);
+            }
+        }
+    }
+
+    &_info {
+        &::before {
+            background-color: var(--tips-border-default);
+        }
+
+        .joy-tips__icon joy-icon {
+            color: var(--tips-color-default);
+        }
+    }
+
+    &_warning {
+        background-color: var(--tips-bg-warning);
+
+        &::before {
+            background-color: var(--tips-color-warning);
+        }
+
+        .joy-tips__icon joy-icon {
+            color: var(--tips-color-warning);
+        }
+    }
+
+    &_error {
+        background-color: var(--tips-bg-error);
+
+        &::before {
+            background-color: var(--tips-color-error);
+        }
+
+        .joy-tips__icon joy-icon {
+            color: var(--tips-color-error);
+        }
+    }
+
+    &_success {
+        background-color: var(--tips-bg-success);
+
+        &::before {
+            background-color: var(--tips-color-success);
+        }
+
+        .joy-tips__icon joy-icon {
+            color: var(--tips-color-success);
+        }
+    }
+
+    &_banner {
+        background-color: var(--tips-bg-banner);
+
+        &:before {
+            background: var(--tips-border-banner);
+        }
+    }
+
+    @media screen and (max-width: 479px) {
+        flex-wrap: wrap;
+        flex-direction: column;
+
+        &__icon {
+            display: none;
+        }
+
+        &__content {
+            margin-bottom: 20px;
+        }
+
+        &__close {
+            .m-tip__icon {
+                display: inline-block;
+            }
+
+            span {
+                display: none;
+            }
+        }
+    }
+}

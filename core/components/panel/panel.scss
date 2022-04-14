@@ -1,0 +1,94 @@
+@use '../../style/utils';
+
+$_padding-smaller: var(--joy-core-spacing-4) var(--joy-core-spacing-1);
+$_padding-section: var(--joy-color-spacing-0);
+$_padding-mobile: var(--joy-core-spacing-4);
+$_bg: white;
+
+::slotted(p) {
+    margin: 0;
+    display: block;
+    @include utils.getFontProperties(m);
+}
+
+.joy-panel {
+    padding: var(--joy-core-spacing-9);
+    background-color: $_bg;
+    border-radius: var(--joy-core-radius-3);
+    position: relative;
+
+    &_smaller {
+        padding: $_padding-smaller;
+    }
+
+    @media screen and (max-width: 767px) {
+        padding: var(--joy-core-spacing-8);
+    }
+
+    &__header {
+        display: flex;
+        align-items: baseline;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        margin-bottom: var(--joy-core-spacing-5);
+
+        @media screen and (max-width: 767px) {
+            margin-bottom: var(--joy-core-spacing-4);
+        }
+    }
+
+    &__body {
+        position: relative;
+    }
+
+    &__title {
+        margin: 0;
+        padding: 0;
+        flex: 1;
+        @include utils.getFontProperties(xl-title-bold);
+    }
+
+    &__subtitle {
+        @include utils.getFontProperties(s);
+        flex-basis: 100%;
+        margin: 5px 0 0;
+        padding: 0;
+    }
+
+    &__footer {
+        margin-top: var(--joy-color-spacing-9);
+    }
+
+    // sections
+    &__section {
+        margin-top: var(--joy-color-spacing-9);
+
+        &:first-child {
+            margin-top: 0;
+        }
+
+        .joy-panel__title {
+            @include utils.getFontProperties(l-bold);
+        }
+
+        + .joy-panel__section,
+        {
+            margin-top: var(--joy-color-spacing-9);
+        }
+    }
+
+    &__inline-sections {
+        display: flex;
+        flex-wrap: wrap;
+        margin-top: var(--joy-color-spacing-9);
+
+        &:first-child {
+            margin-top: 0;
+        }
+
+        .joy-panel__section {
+            flex: 1;
+            margin-top: 0;
+        }
+    }
+}

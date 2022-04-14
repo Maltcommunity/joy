@@ -1,0 +1,111 @@
+$_CLASS: '.joy-tab-button';
+$_padding: var(--joy-core-spacing-5);
+
+* {
+    outline: none;
+}
+
+:host(#{$_CLASS}) {
+    --tab-button-color: var(--joy-color-neutral-5);
+    --tab-button-border-color: var(--joy-color-neutral-3);
+
+    --tab-button-color-hover: var(--joy-color-secondary-30);
+    --tab-button-bg-color-hover: var(--joy-color-secondary-10);
+    --tab-button-border-color-hover: var(--joy-color-secondary-30);
+
+    --tab-button-color-active: var(--joy-color-secondary-50);
+    --tab-button-border-color-active: var(--joy-color-secondary-50);
+    --tab-button-bg-color-active: var(--joy-color-secondary-10);
+
+    --tab-button-link-color: var(--joy-color-neutral-4);
+
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    color: var(--tab-button-color);
+    font-size: var(--joy-font-size-m);
+    text-align: center;
+    border: 1px solid var(--tab-button-border-color);
+    flex: 1;
+    cursor: pointer;
+    padding: $_padding;
+    transition: 0.3s ease;
+    outline: none;
+    font-family: var(--joy-font-family);
+    background-color: white;
+    box-sizing: border-box;
+
+    @media screen and (max-width: 991px) {
+        font-size: var(--joy-font-size-xs);
+    }
+}
+
+:host(#{$_CLASS}__link) {
+    padding: 0;
+}
+
+@mixin hoverState() {
+    color: var(--tab-button-color-hover);
+    background-color: var(--tab-button-bg-color-hover);
+    border: 1px solid var(--tab-button-border-color-hover);
+}
+
+@mixin activeState() {
+    color: var(--tab-button-color-active);
+    border: 1px solid var(--tab-button-border-color-active);
+    font-weight: var(--joy-font-weight-bold);
+    background-color: var(--tab-button-bg-color-active);
+}
+
+:host(:hover) {
+    @include hoverState();
+}
+
+:host(:focus-visible) {
+    position: relative;
+
+    &:before {
+        $focus-space: 10px;
+        box-sizing: border-box;
+        content: "";
+        position: absolute;
+        top: -#{$focus-space/2};
+        left: -#{$focus-space/2};
+        width: calc(100% + #{$focus-space});
+        height: calc(100% + #{$focus-space});
+        border: 2px solid var(--joy-color-neutral-7);
+    }
+}
+
+:host(#{$_CLASS}__selected) {
+    @include activeState();
+}
+
+button {
+    border: 0;
+    background: none;
+    display: block;
+    width: 100%;
+    height: 100%;
+    font-size: inherit;
+    color: inherit;
+    font-weight: inherit;
+    font-family: inherit;
+}
+
+a {
+    display: block;
+    width: 100%;
+    color: var(--tab-button-link-color);
+    padding: $_padding;
+    text-decoration: none;
+
+    &:focus, &:hover, &#{$_CLASS}__link-selected {
+        @include activeState();
+    }
+
+    @media screen and (max-width: 991px) {
+        padding: 0;
+    }
+}

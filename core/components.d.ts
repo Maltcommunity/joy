@@ -5,537 +5,537 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { AvatarColors, AvatarSizes, BackDropOrigin, ButtonSizes, ButtonVariants, DialogSizes, Direction, DividerCTASizes, HighlightLevels, HyperLinksTargets, IconButtonColors, IconColors, IconsSizes, IndicatorsVariants, InputSizes, LabelSizes, LinksColors, RatingStarsSizes, SeparatorSizes, SnackbarLevels, Tab, TagSizes, TagVariants, TipsLevel, TooltipVariants } from "./src/types";
+import { AvatarColors, AvatarSizes, BackDropOrigin, ButtonSizes, ButtonVariants, DialogSizes, Direction, DividerCTASizes, HighlightLevels, HyperLinksTargets, IconButtonColors, IconColors, IconsSizes, IndicatorsVariants, InputSizes, LabelSizes, LinksColors, RatingStarsSizes, SeparatorSizes, SnackbarLevels, Tab, TagSizes, TagVariants, TipsLevel, TooltipVariants } from "./types";
 export namespace Components {
     interface JoyAvailability {
         /**
-         * isPartial dot, define fill or stroke dot display
+          * isPartial dot, define fill or stroke dot display
          */
         "isPartial": boolean;
         /**
-         * Text Availability content, if null, only dot will be display
+          * Text Availability content, if null, only dot will be display
          */
         "label": string | null;
         /**
-         * Status Availability, define color
+          * Status Availability, define color
          */
         "status": 'AVAILABLE' | 'AVAILABLE_AND_VERIFIED' | 'NOT_AVAILABLE_WITH_DATE' | 'AVAILABLE_SOON' | 'NOT_AVAILABLE' | '';
     }
     interface JoyAvatar {
         /**
-         * Specify a background color. Handy for avatars list. The value is the index of css custom property array made from CSS Custom Properties value (see next table)
+          * Specify a background color. Handy for avatars list. The value is the index of css custom property array made from CSS Custom Properties value (see next table)
          */
         "color"?: AvatarColors['freelancer'];
         /**
-         * The prop is given automatically by avatars-list component when you set compress prop to true. You won't need this prop out of an avatars-list.
+          * The prop is given automatically by avatars-list component when you set compress prop to true. You won't need this prop out of an avatars-list.
          */
         "compress": boolean;
         /**
-         * Freelancer full name. Will be used to display its initials if no photoUrl is given.
+          * Freelancer full name. Will be used to display its initials if no photoUrl is given.
          */
         "fullName"?: string;
         /**
-         * Url you need to link your avatar to
+          * Url you need to link your avatar to
          */
         "href"?: string;
         /**
-         * The prop is given automatically by avatars-list component when you set compress prop to true. You won't need this prop out of an avatars-list.
+          * The prop is given automatically by avatars-list component when you set compress prop to true. You won't need this prop out of an avatars-list.
          */
         "isFirstFromList": boolean;
         /**
-         * Specify a photo url to display.
+          * Specify a photo url to display.
          */
         "photoUrl"?: string;
         /**
-         * Avatar size, 3 possible values (can't be overridden)
+          * Avatar size, 3 possible values (can't be overridden)
          */
         "size"?: AvatarSizes;
         /**
-         * Target attribute if href is used
+          * Target attribute if href is used
          */
         "target"?: '_blank' | '_self' | '_parent' | '_top' | 'framename';
         /**
-         * Specify the total amount of persons remaining from a list.
+          * Specify the total amount of persons remaining from a list.
          */
         "totalNumber"?: number;
         /**
-         * Specify the link to redirect to the full list
+          * Specify the link to redirect to the full list
          */
         "totalNumberLink"?: string;
     }
     interface JoyAvatarsList {
         /**
-         * How avatars are spread. With a gap, or overlaped
+          * How avatars are spread. With a gap, or overlaped
          */
         "compress": boolean;
     }
     interface JoyBackdrop {
         /**
-         * The backdrop can be created from many components *
+          * The backdrop can be created from many components *
          */
         "origin": BackDropOrigin;
     }
     interface JoyBadgeLevel {
         /**
-         * SuperMalter level from 1 to 3
+          * SuperMalter level from 1 to 3
          */
         "superMalterLevel": number;
         /**
-         * Badge type: highpotential, maltlinker, new, supermalter or verified
+          * Badge type: highpotential, maltlinker, new, supermalter or verified
          */
         "type": typeof badgeTypes[number];
         /**
-         * Display text label
+          * Display text label
          */
         "visibleText": boolean;
     }
     interface JoyBottomSheet {
         /**
-         * Call this method to close the bottom sheet. Example: el.close()
+          * Call this method to close the bottom sheet. Example: el.close()
          */
         "close": () => Promise<void>;
         /**
-         * close-label used for close button. Default: 'Close'
+          * close-label used for close button. Default: 'Close'
          */
         "closeLabel": string;
         /**
-         * close-variant used for close button. Default: 'primary' See: joy-button documentation
+          * close-variant used for close button. Default: 'primary' See: joy-button documentation
          */
         "closeVariant": ButtonVariants;
         /**
-         * Call this method to open the bottom sheet. Example: el.open()
+          * Call this method to open the bottom sheet. Example: el.open()
          */
         "open": () => Promise<void>;
     }
     interface JoyButton {
         /**
-         * Allows to display the spinner while asynchronous tasks are pending
-         * @param loading - loading status
-         * @param timeout - if you want to display the loader during a specific timeout
+          * Allows to display the spinner while asynchronous tasks are pending
+          * @param loading - loading status
+          * @param timeout - if you want to display the loader during a specific timeout
          */
         "buttonLoading": (loading: boolean, timeout?: number) => Promise<void>;
         /**
-         * Disabled attribute for buttons
+          * Disabled attribute for buttons
          */
         "disabled": boolean;
         /**
-         * If the link as a downloadable content
+          * If the link as a downloadable content
          */
         "download": boolean;
         /**
-         * Set the href of your link
+          * Set the href of your link
          */
         "href"?: string;
         /**
-         * Set the icon name if you need one
+          * Set the icon name if you need one
          */
         "icon"?: string;
         /**
-         * Set the button in loading state
+          * Set the button in loading state
          */
         "loading": boolean;
         /**
-         * Native rel attribute for hyperlinks. See https://developer.mozilla.org/fr/docs/Web/HTML/Attributes/rel
+          * Native rel attribute for hyperlinks. See https://developer.mozilla.org/fr/docs/Web/HTML/Attributes/rel
          */
         "rel"?: string;
         /**
-         * Button or Link size
+          * Button or Link size
          */
         "size": ButtonSizes;
         /**
-         * Native target attribute for hyperlinks.
+          * Native target attribute for hyperlinks.
          */
         "target"?: '_blank' | '_self' | '_parent' | '_top';
         /**
-         * Type attribute for buttons
+          * Type attribute for buttons
          */
         "type": 'button' | 'submit' | 'reset';
         /**
-         * Button or Link color theme
+          * Button or Link color theme
          */
         "variant": ButtonVariants;
     }
     interface JoyCheckbox {
         /**
-         * Checkbox activated or not
+          * Checkbox activated or not
          */
         "checked": boolean;
         /**
-         * Disabled state
+          * Disabled state
          */
         "disabled": boolean;
         /**
-         * It will be applied as the hidden input name attribute (for the actual form)
+          * It will be applied as the hidden input name attribute (for the actual form)
          */
         "name": string;
         /**
-         * Update checkbox state from outside the component
-         * @param newValue
+          * Update checkbox state from outside the component
+          * @param newValue
          */
         "updateValue": (newValue: boolean) => Promise<void>;
         /**
-         * Input value. Input value != checked state ! If you need to get the state checked/not checked, simply use checked prop
+          * Input value. Input value != checked state ! If you need to get the state checked/not checked, simply use checked prop
          */
         "value": string;
     }
     interface JoyCompanyAvatar {
         /**
-         * Company avatar color
+          * Company avatar color
          */
         "color": AvatarColors['company'];
         /**
-         * Company name. Required to give image alt text.
+          * Company name. Required to give image alt text.
          */
         "companyName": string;
         /**
-         * URL source for img. Optional.
+          * URL source for img. Optional.
          */
         "imgSrc"?: string;
         /**
-         * Size of the image. Optionnal.
+          * Size of the image. Optionnal.
          */
         "size"?: AvatarSizes;
     }
     interface JoyCounter {
         /**
-         * aria-label used for input accessibility. Use string only, no HTML. More than welcome !
+          * aria-label used for input accessibility. Use string only, no HTML. More than welcome !
          */
         "ariaLabel": string;
         /**
-         * Invalid state of the component
+          * Invalid state of the component
          */
         "invalid": boolean;
         /**
-         * Message when the component is invalid. Warning : by default, it will pick HTML5 validation message (the language is defined by your OS)
+          * Message when the component is invalid. Warning : by default, it will pick HTML5 validation message (the language is defined by your OS)
          */
         "invalidMessage": string;
         /**
-         * Used for accessibility aria-label attribute. More than welcome !
+          * Used for accessibility aria-label attribute. More than welcome !
          */
         "labelDecrement": string;
         /**
-         * Used for accessibility aria-label attribute. More than welcome !
+          * Used for accessibility aria-label attribute. More than welcome !
          */
         "labelIncrement": string;
         /**
-         * Maximum possible value. No default
+          * Maximum possible value. No default
          */
         "max"?: number;
         /**
-         * Minimum possible value. Default to 0
+          * Minimum possible value. Default to 0
          */
         "min": number;
         /**
-         * Name for the input
+          * Name for the input
          */
         "name": string;
         /**
-         * Counter requirement
+          * Counter requirement
          */
         "required": boolean;
         /**
-         * Granularity of the input. We use the same name than native step attribute. We don't bind this prop to actual input step attribute, because we don't want checkValidity API to return invalid if the actual value is not a multiple of step prop !
+          * Granularity of the input. We use the same name than native step attribute. We don't bind this prop to actual input step attribute, because we don't want checkValidity API to return invalid if the actual value is not a multiple of step prop !
          */
         "step": number;
         "value": number;
     }
     interface JoyDialog {
         /**
-         * Set the height of the banner. Default to 250 *
+          * Set the height of the banner. Default to 250 *
          */
         "bannerHeight"?: number | undefined;
         /**
-         * Set the position of the banner image. Work exactly like css background-position property *
+          * Set the position of the banner image. Work exactly like css background-position property *
          */
         "bannerPosition": string;
         /**
-         * Set the URL of the image you can inject as pre-header banner *
+          * Set the URL of the image you can inject as pre-header banner *
          */
         "bannerSrc"?: string;
         /**
-         * Set the alt text of the banner *
+          * Set the alt text of the banner *
          */
         "bannerSrcAlt"?: string;
         /**
-         * If you want to change the CTA sizes, please choose between small, medium, large *
+          * If you want to change the CTA sizes, please choose between small, medium, large *
          */
         "buttonSize": ButtonSizes;
         /**
-         * Secondary CTA text. If none given, it won't show the CTA *
+          * Secondary CTA text. If none given, it won't show the CTA *
          */
         "cancelText"?: string;
         /**
-         * Hide the dialog from outside
-         * @return
+          * Hide the dialog from outside
+          * @return
          */
         "closeDialog": () => Promise<void>;
         /**
-         * Main CTA text. If none given, it won't show the CTA *
+          * Main CTA text. If none given, it won't show the CTA *
          */
         "confirmText"?: string;
         "demo": boolean;
         /**
-         * Dialog open state *
+          * Dialog open state *
          */
         "open": boolean;
         /**
-         * If you want to trigger specific ction after the dialog opening.
-         * @param callback
+          * If you want to trigger specific ction after the dialog opening.
+          * @param callback
          */
         "openDialog": (callback?: (() => any) | undefined) => Promise<void>;
         /**
-         * Dialog sizes *
+          * Dialog sizes *
          */
         "size": DialogSizes;
     }
     interface JoyDialogTrigger {
         /**
-         * The ID of the dialog you want to show. Required *
+          * The ID of the dialog you want to show. Required *
          */
         "dialog": string;
         /**
-         * For dialogs containing joy-indicators with multiple steps, you can specify a step number *
+          * For dialogs containing joy-indicators with multiple steps, you can specify a step number *
          */
         "step"?: number;
     }
     interface JoyDividerCta {
         /**
-         * Divider size. 2 possible values : 100% width or adjusted size according to text
+          * Divider size. 2 possible values : 100% width or adjusted size according to text
          */
         "size": DividerCTASizes;
         /**
-         * The CTA text
+          * The CTA text
          */
         "text": string;
     }
     interface JoyFormError {
         /**
-         * The error text. Plain string required as any HTML injected will be escaped
+          * The error text. Plain string required as any HTML injected will be escaped
          */
         "noHtmlErrorText": string;
         /**
-         * Depending on contexts : maybe you'll need to insert it in the DOM but hide it, or injecting it into the DOM on the fly (like Vue v-if cases)
+          * Depending on contexts : maybe you'll need to insert it in the DOM but hide it, or injecting it into the DOM on the fly (like Vue v-if cases)
          */
         "visible": boolean;
     }
     interface JoyHighlight {
         /**
-         * Allows to display the level status icon
+          * Allows to display the level status icon
          */
         "displayIcon": boolean;
         /**
-         * Override the icon type used for level. Size can't be overridden. Won't show if displayIcon prop isn't set to true
+          * Override the icon type used for level. Size can't be overridden. Won't show if displayIcon prop isn't set to true
          */
         "icon"?: string;
         /**
-         * Defines the criticalness of the highlight
+          * Defines the criticalness of the highlight
          */
         "level": HighlightLevels;
     }
     interface JoyIcon {
         /**
-         * Defines a non-visible legend
+          * Defines a non-visible legend
          */
         "ariaLabel"?: string;
         /**
-         * Two-tone icon when set to true
+          * Two-tone icon when set to true
          */
         "bicolor": boolean;
         /**
-         * Color change on hover
+          * Color change on hover
          */
         "clickable": boolean;
         /**
-         * The icon color
+          * The icon color
          */
         "color"?: IconColors;
         /**
-         * The icon custom class(es), if needed
+          * The icon custom class(es), if needed
          */
         "customClass"?: string;
         /**
-         * Full colored icon when set to true
+          * Full colored icon when set to true
          */
         "full": boolean;
         /**
-         * If enabled, ion-icon will be loaded lazily when it's visible in the viewport. Default, `false`.
+          * If enabled, ion-icon will be loaded lazily when it's visible in the viewport. Default, `false`.
          */
         "lazy": boolean;
         /**
-         * The icon svg filename
+          * The icon svg filename
          */
         "name": string;
         /**
-         * The icon size
+          * The icon size
          */
         "size"?: IconsSizes;
     }
     interface JoyIconButton {
         /**
-         * The icon color. Default is the blue version. You can only override it with the white version.
+          * The icon color. Default is the blue version. You can only override it with the white version.
          */
         "color"?: IconButtonColors;
         /**
-         * The icon name
+          * The icon name
          */
         "icon"?: string;
         /**
-         * The button type. As the component wraps an actual HTML button element, it will be applied to it.
+          * The button type. As the component wraps an actual HTML button element, it will be applied to it.
          */
         "type"?: 'button';
     }
     interface JoyIndicator {
         /**
-         * @param select - Select or not, the indicator.
-         * @return
+          * @param select - Select or not, the indicator.
+          * @return
          */
         "selectIndicator": (select?: boolean) => Promise<void>;
         "selected": boolean;
         /**
-         * @return - Force focus from outside
+          * @return - Force focus from outside
          */
         "setFocus": () => Promise<void>;
         "variant": IndicatorsVariants;
     }
     interface JoyIndicators {
         /**
-         * Selected state *
+          * Selected state *
          */
         "selected": number;
         /**
-         * Variant colors. 2 possibles values *
+          * Variant colors. 2 possibles values *
          */
         "variant": IndicatorsVariants;
     }
     interface JoyInput {
         /**
-         * The input's autocomplete policy.
+          * The input's autocomplete policy.
          */
         "autocomplete": string;
         /**
-         * Makes the field disabled or not
+          * Makes the field disabled or not
          */
         "disabled": boolean;
         /**
-         * Add an icon on the left side before the value
+          * Add an icon on the left side before the value
          */
         "icon"?: string;
         /**
-         * Makes the field readonly or not
+          * Makes the field readonly or not
          */
         "invalid": boolean;
         /**
-         * If the type is "number" then you can use max property.
+          * If the type is "number" then you can use max property.
          */
         "max"?: number;
         /**
-         * If the type is "number" then you can use min property.
+          * If the type is "number" then you can use min property.
          */
         "min"?: number;
         /**
-         * Input types. List is not exhaustive, this component does not deal with checkboxes, radios, files, dates.
+          * Input types. List is not exhaustive, this component does not deal with checkboxes, radios, files, dates.
          */
         "name": string;
         /**
-         * The input's placeholder text.
+          * The input's placeholder text.
          */
         "placeholder": string;
         /**
-         * Makes the field readonly or not
+          * Makes the field readonly or not
          */
         "readonly": boolean;
         /**
-         * Makes the field required
+          * Makes the field required
          */
         "required": boolean;
         /**
-         * At the moment, for E2E purpose
+          * At the moment, for E2E purpose
          */
         "setFocus": () => Promise<void>;
         /**
-         * The input's size.
+          * The input's size.
          */
         "size": InputSizes;
         /**
-         * Input types. List is not exhaustive, this component does not deal with checkboxes, radios, files, dates.
+          * Input types. List is not exhaustive, this component does not deal with checkboxes, radios, files, dates.
          */
         "type": 'hidden' | 'text' | 'number' | 'search' | 'email' | 'password' | 'tel';
         /**
-         * If the field is of type number, you can specify a unit like %, days, hours, whatever you want
+          * If the field is of type number, you can specify a unit like %, days, hours, whatever you want
          */
         "unit"?: string;
         /**
-         * Field value
+          * Field value
          */
         "value": string;
     }
     interface JoyLabel {
         /**
-         * Label size *
+          * Label size *
          */
         "size": LabelSizes;
     }
     interface JoyLink {
         /**
-         * Filename of the downloadable content
+          * Filename of the downloadable content
          */
         "download"?: string;
         /**
-         * Set the href of your link
+          * Set the href of your link
          */
         "href"?: string;
         /**
-         * Icon name if you want to display one, before the text
+          * Icon name if you want to display one, before the text
          */
         "icon"?: string;
         /**
-         * Native rel attribute for hyperlinks. See https://developer.mozilla.org/fr/docs/Web/HTML/Attributes/rel
+          * Native rel attribute for hyperlinks. See https://developer.mozilla.org/fr/docs/Web/HTML/Attributes/rel
          */
         "rel"?: string;
         /**
-         * Native target attribute for hyperlinks.
+          * Native target attribute for hyperlinks.
          */
         "target"?: HyperLinksTargets;
         /**
-         * Color theme. Default is teal, you can set white theme for darker backgrounds.
+          * Color theme. Default is teal, you can set white theme for darker backgrounds.
          */
         "theme": LinksColors;
     }
     interface JoyPagination {
         /**
-         * Current page number
+          * Current page number
          */
         "currentPage": number;
         /**
-         * data-heap attribute for next CTA. We should avoid as much as possible to use this kind of props inside the webcomponents
+          * data-heap attribute for next CTA. We should avoid as much as possible to use this kind of props inside the webcomponents
          */
         "heapNext"?: string;
         /**
-         * data-heap attribute for previous CTA. We should avoid as much as possible to use this kind of props inside the webcomponents
+          * data-heap attribute for previous CTA. We should avoid as much as possible to use this kind of props inside the webcomponents
          */
         "heapPrev"?: string;
         /**
-         * Can be used as title and aria-label attributes for the next CTA
+          * Can be used as title and aria-label attributes for the next CTA
          */
         "labelNext"?: string | undefined;
         /**
-         * Can be used as aria-label attribute for the full component
+          * Can be used as aria-label attribute for the full component
          */
         "labelPagination"?: string;
         /**
-         * Can be used as title and aria-label attributes for the previous CTA
+          * Can be used as title and aria-label attributes for the previous CTA
          */
         "labelPrev"?: string | undefined;
         /**
-         * For synchrone implementations (not SPA, basically), allows to inject the URL for next CTA
+          * For synchrone implementations (not SPA, basically), allows to inject the URL for next CTA
          */
         "linkNext"?: string;
         /**
-         * For synchrone implementations (not SPA, basically), allows to inject the URL for previous CTA
+          * For synchrone implementations (not SPA, basically), allows to inject the URL for previous CTA
          */
         "linkPrev"?: string;
         /**
-         * Total number of pages in order to construct the pagination
+          * Total number of pages in order to construct the pagination
          */
         "totalPages": number;
     }
@@ -543,330 +543,330 @@ export namespace Components {
     }
     interface JoyPlaceholderButton {
         /**
-         * Placeholder button sizes.
+          * Placeholder button sizes.
          */
         "size": 'small' | 'medium' | 'large';
     }
     interface JoyProgressBar {
         /**
-         * Current step number.
+          * Current step number.
          */
         "currentStep": number | undefined;
         /**
-         * Activate specific color mode. Documentation purpose.
+          * Activate specific color mode. Documentation purpose.
          */
         "mode": 'desktop' | 'mobile';
         /**
-         * Progress bar percentage, percentage usage will override steps & currentStep definition.
+          * Progress bar percentage, percentage usage will override steps & currentStep definition.
          */
         "percentage": number | undefined;
         /**
-         * Total number of steps.
+          * Total number of steps.
          */
         "steps": number | undefined;
     }
     interface JoyRadio {
         /**
-         * If `true`, the radio is selected.
+          * If `true`, the radio is selected.
          */
         "checked": boolean;
         /**
-         * If `true`, the user cannot interact with the radio.
+          * If `true`, the user cannot interact with the radio.
          */
         "disabled": boolean;
         /**
-         * The name of the control, which is submitted with the form data.
+          * The name of the control, which is submitted with the form data.
          */
         "name": string;
         /**
-         * @param value
+          * @param value
          */
         "setButtonTabindex": (value: number) => Promise<void>;
         /**
-         * @param ev
+          * @param ev
          */
         "setFocus": (ev: any) => Promise<void>;
         /**
-         * the value of the radio.
+          * the value of the radio.
          */
         "value"?: any | null;
     }
     interface JoyRadioGroup {
         /**
-         * Label displayed for the whoe radio group.
+          * Label displayed for the whoe radio group.
          */
         "direction": 'vertical' | 'horizontal';
         /**
-         * Invalid state of the radio group
+          * Invalid state of the radio group
          */
         "invalid": boolean;
         /**
-         * Invalid message
+          * Invalid message
          */
         "invalidText"?: string;
         /**
-         * The name of the control, which is submitted with the form data.
+          * The name of the control, which is submitted with the form data.
          */
         "name": string;
         /**
-         * the value of the radio group.
+          * the value of the radio group.
          */
         "value"?: any | null;
     }
     interface JoyRatingStars {
         /**
-         * The actual rating, between 0 and 5.
+          * The actual rating, between 0 and 5.
          */
         "ratingValue": number;
         /**
-         * Review count. it will be displayed with parenthesis : (5)
+          * Review count. it will be displayed with parenthesis : (5)
          */
         "reviewCount": number;
         /**
-         * Star size. 3 possible values but you can't give a number as value
+          * Star size. 3 possible values but you can't give a number as value
          */
         "size": RatingStarsSizes;
     }
     interface JoySelect {
         /**
-         * By default, the dropdown is closed if you focusout the select. For debugging purpose or specific behavior, you can toggle off this option. *
+          * By default, the dropdown is closed if you focusout the select. For debugging purpose or specific behavior, you can toggle off this option. *
          */
         "closeOnBlur": boolean;
         /**
-         * Disabled state. *
+          * Disabled state. *
          */
         "disabled": boolean;
         /**
-         * Pick an icon displayed before the label. *
+          * Pick an icon displayed before the label. *
          */
         "icon"?: string;
         /**
-         * Invalid state. *
+          * Invalid state. *
          */
         "invalid": boolean;
         /**
-         * Invalid state message. *
+          * Invalid state message. *
          */
         "invalidMessage": string;
         /**
-         * Select name attribute to be found by parent form. *
+          * Select name attribute to be found by parent form. *
          */
         "name": string;
         /**
-         * Mandatory or not. *
+          * Mandatory or not. *
          */
         "required": boolean;
         /**
-         * Select actual value. *
+          * Select actual value. *
          */
         "value": string;
     }
     interface JoySelectOption {
         /**
-         * Disabled state. *
+          * Disabled state. *
          */
         "disabled": boolean;
         /**
-         * If the option is selected or not *
+          * If the option is selected or not *
          */
         "selected": boolean;
         /**
-         * Value bubbled up to the select component *
+          * Value bubbled up to the select component *
          */
         "value": string;
     }
     interface JoySeparator {
         /**
-         * Separator size. 2 possible values : 100% width or adjusted size according to text
+          * Separator size. 2 possible values : 100% width or adjusted size according to text
          */
         "size": SeparatorSizes;
         /**
-         * The separator text
+          * The separator text
          */
         "text": string;
     }
     interface JoySnackbar {
         /**
-         * Display an icon to close the notification manually
+          * Display an icon to close the notification manually
          */
         "closable"?: boolean;
         /**
-         * HTML with your custom message injected in the component. It won't be escaped so please be careful with XSS !
+          * HTML with your custom message injected in the component. It won't be escaped so please be careful with XSS !
          */
         "dangerousHtmlMessage": string;
         /**
-         * Time in ms the snackbar is displayed. Give 'forever' to be able to display the snackbar without timeout
+          * Time in ms the snackbar is displayed. Give 'forever' to be able to display the snackbar without timeout
          */
         "duration"?: number | 'forever';
         /**
-         * The criticality level of your notification. Range from simple info to error.
+          * The criticality level of your notification. Range from simple info to error.
          */
-        "level"?: SnackbarLevels;
+        "level": SnackbarLevels;
         /**
-         * By default, the snackbar will be displayed in a fixed position at the bottom of the page. You can override this behavior by setting position="relative"
+          * By default, the snackbar will be displayed in a fixed position at the bottom of the page. You can override this behavior by setting position="relative"
          */
         "position"?: 'fixed' | 'relative';
         /**
-         * If you need to create an action link (like cancel an action from snackbar) simply pas its text. Clicking on it will trigger a custom event
+          * If you need to create an action link (like cancel an action from snackbar) simply pas its text. Clicking on it will trigger a custom event
          */
         "triggerActionText"?: string;
     }
     interface JoySpinner {
         /**
-         * Spinner colors, 2 possible values
+          * Spinner colors, 2 possible values
          */
         "color"?: string;
     }
     interface JoyStep {
         /**
-         * If the step is completed. *
+          * If the step is completed. *
          */
         "completed": boolean;
         /**
-         * Used to change style for mobile. *
+          * Used to change style for mobile. *
          */
         "direction": Direction;
         /**
-         * If the step is ongoing. *
+          * If the step is ongoing. *
          */
         "ongoing": boolean;
         "setAsLast": () => Promise<void>;
         /**
-         * Marks the step as completed
+          * Marks the step as completed
          */
         "setCompleted": () => Promise<void>;
         /**
-         * Marks the direction as vertical or horizontal
-         * @param direction - horizontal or vertical
+          * Marks the direction as vertical or horizontal
+          * @param direction - horizontal or vertical
          */
         "setDirection": (direction: Direction) => Promise<void>;
         /**
-         * Marks the step as ongoing
+          * Marks the step as ongoing
          */
         "setOnGoing": () => Promise<void>;
         /**
-         * Default or small. *
+          * Default or small. *
          */
         "size": 'small' | 'default';
     }
     interface JoyStepper {
         /**
-         * Used to change style for mobile. *
+          * Used to change style for mobile. *
          */
         "direction": Direction;
         /**
-         * Defines the CSS flex horizontal justify distribution *
+          * Defines the CSS flex horizontal justify distribution *
          */
         "justify": boolean;
         /**
-         * Set the step number of the stepper. Will auto-complete each step that is < step. Starts from 0. *
+          * Set the step number of the stepper. Will auto-complete each step that is < step. Starts from 0. *
          */
         "step": number;
     }
     interface JoyTab {
         /**
-         * Selected status of the current tab
+          * Selected status of the current tab
          */
         "selected": boolean;
         /**
-         * Set the active component for the tab
+          * Set the active component for the tab
          */
         "setActive": () => Promise<void>;
         /**
-         * A tab id or name must be provided for each `joy-tab`. It's used internally to reference the selected tab
+          * A tab id or name must be provided for each `joy-tab`. It's used internally to reference the selected tab
          */
         "tab": string;
     }
     interface JoyTabButton {
         /**
-         * "data-heap" attribute to set on the link if an {@link href} prop is passed or on the host otherwise..
+          * "data-heap" attribute to set on the link if an {@link href} prop is passed or on the host otherwise..
          */
         "heapId"?: string;
         /**
-         * If your tab is a link, give the URL
+          * If your tab is a link, give the URL
          */
         "href"?: string;
         /**
-         * Set the tabulation selected or not
-         * @param status
+          * Set the tabulation selected or not
+          * @param status
          */
         "selectTabButton": (status: boolean) => Promise<void>;
         /**
-         * Tab selection state
+          * Tab selection state
          */
         "selected": boolean;
         /**
-         * A tab id or name must be provided for each `joy-button-tab`. It's used internally to reference the selected tab
+          * A tab id or name must be provided for each `joy-button-tab`. It's used internally to reference the selected tab
          */
         "tab": string;
     }
     interface JoyTabs {
         /**
-         * Use this prop to activate a specific tab by default by giving its name
+          * Use this prop to activate a specific tab by default by giving its name
          */
         "selectedTab": string;
         /**
-         * Use this prop to specify that your joy-tabs is made of links, and tabs are not updated on the fly
+          * Use this prop to specify that your joy-tabs is made of links, and tabs are not updated on the fly
          */
         "sync": boolean;
     }
     interface JoyTag {
         /**
-         * If the tag is a link, give it an href
+          * If the tag is a link, give it an href
          */
         "href"?: string;
         /**
-         * Display an icon CTA on the right, to remove the tag from a list. Only for primary/secondary
+          * Display an icon CTA on the right, to remove the tag from a list. Only for primary/secondary
          */
         "removable": boolean;
         /**
-         * Mock a radio like style. Nothing more. Only for primary/secondary
+          * Mock a radio like style. Nothing more. Only for primary/secondary
          */
         "selectable": boolean;
         /**
-         * Tag size. Default is medium
+          * Tag size. Default is medium
          */
         "size": TagSizes;
         /**
-         * Native target attribute for hyperlinks.
+          * Native target attribute for hyperlinks.
          */
         "target"?: HyperLinksTargets;
         /**
-         * Tag color theme
+          * Tag color theme
          */
         "variant": TagVariants;
     }
     interface JoyTagsInput {
         /**
-         * Get the array of values contained in the tag input
+          * Get the array of values contained in the tag input
          */
         "getValues": () => Promise<string[]>;
         /**
-         * Invalid state
+          * Invalid state
          */
         "invalid": boolean;
         /**
-         * form name for our tags input
+          * form name for our tags input
          */
         "name"?: string;
         /**
-         * Placeholder used for the input
+          * Placeholder used for the input
          */
         "placeholder": string;
         /**
-         * Size for your tags. Check Tag documentation for available values
+          * Size for your tags. Check Tag documentation for available values
          */
         "size": TagSizes;
         /**
-         * Validation type : if 'email' is given, it will create a specific check before actually adding the tag. Default to none.
+          * Validation type : if 'email' is given, it will create a specific check before actually adding the tag. Default to none.
          */
         "validation": 'email' | 'none';
         /**
-         * Saved values for the tags list. Must be an array like string eg. ['first', 'second'].
+          * Saved values for the tags list. Must be an array like string eg. ['first', 'second'].
          */
         "values"?: string;
         /**
-         * Variant/color type for your tags. Check Tag documentation for available values
+          * Variant/color type for your tags. Check Tag documentation for available values
          */
         "variant": TagVariants;
     }
@@ -876,199 +876,199 @@ export namespace Components {
     }
     interface JoyTextarea {
         /**
-         * If `true`, the element height will increase based on the value.
+          * If `true`, the element height will increase based on the value.
          */
         "autoGrow": boolean;
         /**
-         * Indicates whether and how the text value should be automatically capitalized as it is entered/edited by the user.
+          * Indicates whether and how the text value should be automatically capitalized as it is entered/edited by the user.
          */
         "autocapitalize": string;
         /**
-         * This Boolean attribute lets you specify that a form control should have input focus when the page loads.
+          * This Boolean attribute lets you specify that a form control should have input focus when the page loads.
          */
         "autofocus": boolean;
         /**
-         * If `true`, the value will be cleared after focus upon edit. Defaults to `true` when `type` is `"password"`, `false` for all other types.
+          * If `true`, the value will be cleared after focus upon edit. Defaults to `true` when `type` is `"password"`, `false` for all other types.
          */
         "clearOnEdit": boolean;
         /**
-         * The visible width of the text control, in average character widths. If it is specified, it must be a positive integer.
+          * The visible width of the text control, in average character widths. If it is specified, it must be a positive integer.
          */
         "cols"?: number;
         /**
-         * Set the amount of time, in milliseconds, to wait to trigger the `ionChange` event after each keystroke. This also impacts form bindings such as `ngModel` or `v-model`.
+          * Set the amount of time, in milliseconds, to wait to trigger the `ionChange` event after each keystroke. This also impacts form bindings such as `ngModel` or `v-model`.
          */
         "debounce": number;
         /**
-         * If `true`, the user cannot interact with the textarea.
+          * If `true`, the user cannot interact with the textarea.
          */
         "disabled": boolean;
         /**
-         * A hint to the browser for which enter key to display. Possible values: `"enter"`, `"done"`, `"go"`, `"next"`, `"previous"`, `"search"`, and `"send"`.
+          * A hint to the browser for which enter key to display. Possible values: `"enter"`, `"done"`, `"go"`, `"next"`, `"previous"`, `"search"`, and `"send"`.
          */
         "enterkeyhint"?: 'enter' | 'done' | 'go' | 'next' | 'previous' | 'search' | 'send';
         /**
-         * This is required for a WebKit bug which requires us to blur and focus an input to properly focus the input in an item with delegatesFocus. It will no longer be needed with iOS 14.
+          * This is required for a WebKit bug which requires us to blur and focus an input to properly focus the input in an item with delegatesFocus. It will no longer be needed with iOS 14.
          */
         "fireFocusEvents": boolean;
         /**
-         * Returns the textarea nested in the component shadowDOM
-         * @return - Returns the native `<textarea>` element used under the hood.
+          * Returns the textarea nested in the component shadowDOM
+          * @return - Returns the native `<textarea>` element used under the hood.
          */
         "getInputElement": () => Promise<HTMLTextAreaElement>;
         /**
-         * A hint to the browser for which keyboard to display. Possible values: `"none"`, `"text"`, `"tel"`, `"url"`, `"email"`, `"numeric"`, `"decimal"`, and `"search"`.
+          * A hint to the browser for which keyboard to display. Possible values: `"none"`, `"text"`, `"tel"`, `"url"`, `"email"`, `"numeric"`, `"decimal"`, and `"search"`.
          */
         "inputmode"?: 'none' | 'text' | 'tel' | 'url' | 'email' | 'numeric' | 'decimal' | 'search';
         /**
-         * If `true`, the textarea will be considered as invalid.
+          * If `true`, the textarea will be considered as invalid.
          */
         "invalid": boolean;
         /**
-         * If the value of the type attribute is `text`, `email`, `search`, `password`, `tel`, or `url`, this attribute specifies the maximum number of characters that the user can enter.
+          * If the value of the type attribute is `text`, `email`, `search`, `password`, `tel`, or `url`, this attribute specifies the maximum number of characters that the user can enter.
          */
         "maxlength"?: number;
         /**
-         * If the value of the type attribute is `text`, `email`, `search`, `password`, `tel`, or `url`, this attribute specifies the minimum number of characters that the user can enter.
+          * If the value of the type attribute is `text`, `email`, `search`, `password`, `tel`, or `url`, this attribute specifies the minimum number of characters that the user can enter.
          */
         "minlength"?: number;
         /**
-         * Use this prop to give component the translation used to display minimum chars count.
+          * Use this prop to give component the translation used to display minimum chars count.
          */
         "minlengthLabel"?: string;
         /**
-         * The name of the control, which is submitted with the form data.
+          * The name of the control, which is submitted with the form data.
          */
         "name": string;
         /**
-         * Instructional text that shows before the input has a value.
+          * Instructional text that shows before the input has a value.
          */
         "placeholder"?: string | null;
         /**
-         * If `true`, the user cannot modify the value.
+          * If `true`, the user cannot modify the value.
          */
         "readonly": boolean;
         /**
-         * If `true`, the user must fill in a value before submitting a form.
+          * If `true`, the user must fill in a value before submitting a form.
          */
         "required": boolean;
         /**
-         * The number of visible text lines for the control.
+          * The number of visible text lines for the control.
          */
         "rows"?: number | undefined;
         /**
-         * Sets blur on the native `textarea` in `ion-textarea`. Use this method instead of the global `textarea.blur()`.
+          * Sets blur on the native `textarea` in `ion-textarea`. Use this method instead of the global `textarea.blur()`.
          */
         "setBlur": () => Promise<void>;
         /**
-         * Sets focus on the native `textarea` in `ion-textarea`. Use this method instead of the global `textarea.focus()`.
+          * Sets focus on the native `textarea` in `ion-textarea`. Use this method instead of the global `textarea.focus()`.
          */
         "setFocus": () => Promise<void>;
         /**
-         * If `true`, the element will have its spelling and grammar checked.
+          * If `true`, the element will have its spelling and grammar checked.
          */
         "spellcheck": boolean;
         /**
-         * The value of the textarea.
+          * The value of the textarea.
          */
         "value"?: string | null;
         /**
-         * Indicates how the control wraps text.
+          * Indicates how the control wraps text.
          */
         "wrap"?: 'hard' | 'soft' | 'off';
     }
     interface JoyTips {
         /**
-         * Display a CTA to hide the tips
+          * Display a CTA to hide the tips
          */
         "closable": boolean;
         /**
-         * If icon is defined, it will show it with the right color
+          * If icon is defined, it will show it with the right color
          */
         "icon"?: string;
         /**
-         * Defines the criticalness of the tips
+          * Defines the criticalness of the tips
          */
         "level": TipsLevel;
     }
     interface JoyToggle {
         /**
-         * Toggle activated or not
+          * Toggle activated or not
          */
         "checked": boolean;
         /**
-         * Disabled state
+          * Disabled state
          */
         "disabled": boolean;
         /**
-         * It will be applied as the hidden input name attribute (for the actual form)
+          * It will be applied as the hidden input name attribute (for the actual form)
          */
         "name": string;
         /**
-         * Update toggle value from outside the component
-         * @param newValue true or false...
+          * Update toggle value from outside the component
+          * @param newValue true or false...
          */
         "updateValue": (newValue: boolean) => Promise<void>;
         /**
-         * Input value. TODO : check if we really need it as we use a checkbox system
+          * Input value. TODO : check if we really need it as we use a checkbox system
          */
         "value"?: string;
     }
     interface JoyTooltip {
         /**
-         * Tooltip position. 2 possible values
+          * Tooltip position. 2 possible values
          */
         "position": 'left' | 'right';
         /**
-         * Color theme. 2 possible values
+          * Color theme. 2 possible values
          */
         "variant": TooltipVariants;
     }
     interface JoyTooltipTrigger {
         /**
-         * Use basic selector to inject the tooltip in a specific DOM location. Default is body
+          * Use basic selector to inject the tooltip in a specific DOM location. Default is body
          */
         "appendTo": 'body' | 'host';
         /**
-         * Define the event needed to display the tooltip
+          * Define the event needed to display the tooltip
          */
         "event": 'mouseenter' | 'click';
         /**
-         * Tooltip position. 2 possible values
+          * Tooltip position. 2 possible values
          */
         "position": 'left' | 'right';
         /**
-         * Allows to override tooltip size. Allows to more easily calculate its position
+          * Allows to override tooltip size. Allows to more easily calculate its position
          */
         "tooltipWidth": number;
         /**
-         * Color theme. 2 possible values
+          * Color theme. 2 possible values
          */
         "variant": TooltipVariants;
     }
     interface JoyUserCard {
         /**
-         * Can be the freelancer's full name, or whatever you want. It will be placed at the top right part.
+          * Can be the freelancer's full name, or whatever you want. It will be placed at the top right part.
          */
         "fullName"?: string;
         /**
-         * Giving a link will make the whole component wrapped by an hyperlink
+          * Giving a link will make the whole component wrapped by an hyperlink
          */
         "link"?: string;
         /**
-         * Given the link, it will open the link in a new tab
+          * Given the link, it will open the link in a new tab
          */
         "newTab"?: boolean;
         /**
-         * Use this prop if you don't want to use the user-card-avatar slot.
+          * Use this prop if you don't want to use the user-card-avatar slot.
          */
         "photoUrl"?: string;
         /**
-         * Freelancer's public rating.
+          * Freelancer's public rating.
          */
         "ratingValue"?: string;
         /**
-         * Can be the freelancer's job, a company name or whatever you want. It will be placed at the top right part, below title
+          * Can be the freelancer's job, a company name or whatever you want. It will be placed at the top right part, below title
          */
         "subTitle"?: string;
     }
@@ -1423,382 +1423,382 @@ declare global {
 declare namespace LocalJSX {
     interface JoyAvailability {
         /**
-         * isPartial dot, define fill or stroke dot display
+          * isPartial dot, define fill or stroke dot display
          */
         "isPartial"?: boolean;
         /**
-         * Text Availability content, if null, only dot will be display
+          * Text Availability content, if null, only dot will be display
          */
         "label"?: string | null;
         /**
-         * Status Availability, define color
+          * Status Availability, define color
          */
         "status"?: 'AVAILABLE' | 'AVAILABLE_AND_VERIFIED' | 'NOT_AVAILABLE_WITH_DATE' | 'AVAILABLE_SOON' | 'NOT_AVAILABLE' | '';
     }
     interface JoyAvatar {
         /**
-         * Specify a background color. Handy for avatars list. The value is the index of css custom property array made from CSS Custom Properties value (see next table)
+          * Specify a background color. Handy for avatars list. The value is the index of css custom property array made from CSS Custom Properties value (see next table)
          */
         "color"?: AvatarColors['freelancer'];
         /**
-         * The prop is given automatically by avatars-list component when you set compress prop to true. You won't need this prop out of an avatars-list.
+          * The prop is given automatically by avatars-list component when you set compress prop to true. You won't need this prop out of an avatars-list.
          */
         "compress"?: boolean;
         /**
-         * Freelancer full name. Will be used to display its initials if no photoUrl is given.
+          * Freelancer full name. Will be used to display its initials if no photoUrl is given.
          */
         "fullName"?: string;
         /**
-         * Url you need to link your avatar to
+          * Url you need to link your avatar to
          */
         "href"?: string;
         /**
-         * The prop is given automatically by avatars-list component when you set compress prop to true. You won't need this prop out of an avatars-list.
+          * The prop is given automatically by avatars-list component when you set compress prop to true. You won't need this prop out of an avatars-list.
          */
         "isFirstFromList"?: boolean;
         /**
-         * Specify a photo url to display.
+          * Specify a photo url to display.
          */
         "photoUrl"?: string;
         /**
-         * Avatar size, 3 possible values (can't be overridden)
+          * Avatar size, 3 possible values (can't be overridden)
          */
         "size"?: AvatarSizes;
         /**
-         * Target attribute if href is used
+          * Target attribute if href is used
          */
         "target"?: '_blank' | '_self' | '_parent' | '_top' | 'framename';
         /**
-         * Specify the total amount of persons remaining from a list.
+          * Specify the total amount of persons remaining from a list.
          */
         "totalNumber"?: number;
         /**
-         * Specify the link to redirect to the full list
+          * Specify the link to redirect to the full list
          */
         "totalNumberLink"?: string;
     }
     interface JoyAvatarsList {
         /**
-         * How avatars are spread. With a gap, or overlaped
+          * How avatars are spread. With a gap, or overlaped
          */
         "compress"?: boolean;
     }
     interface JoyBackdrop {
         "onBackdropClick"?: (event: CustomEvent<BackDropOrigin>) => void;
         /**
-         * The backdrop can be created from many components *
+          * The backdrop can be created from many components *
          */
         "origin": BackDropOrigin;
     }
     interface JoyBadgeLevel {
         /**
-         * SuperMalter level from 1 to 3
+          * SuperMalter level from 1 to 3
          */
         "superMalterLevel"?: number;
         /**
-         * Badge type: highpotential, maltlinker, new, supermalter or verified
+          * Badge type: highpotential, maltlinker, new, supermalter or verified
          */
         "type": typeof badgeTypes[number];
         /**
-         * Display text label
+          * Display text label
          */
         "visibleText"?: boolean;
     }
     interface JoyBottomSheet {
         /**
-         * close-label used for close button. Default: 'Close'
+          * close-label used for close button. Default: 'Close'
          */
         "closeLabel"?: string;
         /**
-         * close-variant used for close button. Default: 'primary' See: joy-button documentation
+          * close-variant used for close button. Default: 'primary' See: joy-button documentation
          */
         "closeVariant"?: ButtonVariants;
     }
     interface JoyButton {
         /**
-         * Disabled attribute for buttons
+          * Disabled attribute for buttons
          */
         "disabled"?: boolean;
         /**
-         * If the link as a downloadable content
+          * If the link as a downloadable content
          */
         "download"?: boolean;
         /**
-         * Set the href of your link
+          * Set the href of your link
          */
         "href"?: string;
         /**
-         * Set the icon name if you need one
+          * Set the icon name if you need one
          */
         "icon"?: string;
         /**
-         * Set the button in loading state
+          * Set the button in loading state
          */
         "loading"?: boolean;
         /**
-         * Native rel attribute for hyperlinks. See https://developer.mozilla.org/fr/docs/Web/HTML/Attributes/rel
+          * Native rel attribute for hyperlinks. See https://developer.mozilla.org/fr/docs/Web/HTML/Attributes/rel
          */
         "rel"?: string;
         /**
-         * Button or Link size
+          * Button or Link size
          */
         "size"?: ButtonSizes;
         /**
-         * Native target attribute for hyperlinks.
+          * Native target attribute for hyperlinks.
          */
         "target"?: '_blank' | '_self' | '_parent' | '_top';
         /**
-         * Type attribute for buttons
+          * Type attribute for buttons
          */
         "type"?: 'button' | 'submit' | 'reset';
         /**
-         * Button or Link color theme
+          * Button or Link color theme
          */
         "variant"?: ButtonVariants;
     }
     interface JoyCheckbox {
         /**
-         * Checkbox activated or not
+          * Checkbox activated or not
          */
         "checked"?: boolean;
         /**
-         * Disabled state
+          * Disabled state
          */
         "disabled"?: boolean;
         /**
-         * It will be applied as the hidden input name attribute (for the actual form)
+          * It will be applied as the hidden input name attribute (for the actual form)
          */
         "name"?: string;
         /**
-         * Clicking on the component will fire this customEvent
+          * Clicking on the component will fire this customEvent
          */
         "onValueChange"?: (event: CustomEvent<boolean>) => void;
         /**
-         * Input value. Input value != checked state ! If you need to get the state checked/not checked, simply use checked prop
+          * Input value. Input value != checked state ! If you need to get the state checked/not checked, simply use checked prop
          */
         "value"?: string;
     }
     interface JoyCompanyAvatar {
         /**
-         * Company avatar color
+          * Company avatar color
          */
         "color"?: AvatarColors['company'];
         /**
-         * Company name. Required to give image alt text.
+          * Company name. Required to give image alt text.
          */
         "companyName"?: string;
         /**
-         * URL source for img. Optional.
+          * URL source for img. Optional.
          */
         "imgSrc"?: string;
         /**
-         * Size of the image. Optionnal.
+          * Size of the image. Optionnal.
          */
         "size"?: AvatarSizes;
     }
     interface JoyCounter {
         /**
-         * aria-label used for input accessibility. Use string only, no HTML. More than welcome !
+          * aria-label used for input accessibility. Use string only, no HTML. More than welcome !
          */
         "ariaLabel"?: string;
         /**
-         * Invalid state of the component
+          * Invalid state of the component
          */
         "invalid"?: boolean;
         /**
-         * Message when the component is invalid. Warning : by default, it will pick HTML5 validation message (the language is defined by your OS)
+          * Message when the component is invalid. Warning : by default, it will pick HTML5 validation message (the language is defined by your OS)
          */
         "invalidMessage"?: string;
         /**
-         * Used for accessibility aria-label attribute. More than welcome !
+          * Used for accessibility aria-label attribute. More than welcome !
          */
         "labelDecrement"?: string;
         /**
-         * Used for accessibility aria-label attribute. More than welcome !
+          * Used for accessibility aria-label attribute. More than welcome !
          */
         "labelIncrement"?: string;
         /**
-         * Maximum possible value. No default
+          * Maximum possible value. No default
          */
         "max"?: number;
         /**
-         * Minimum possible value. Default to 0
+          * Minimum possible value. Default to 0
          */
         "min"?: number;
         /**
-         * Name for the input
+          * Name for the input
          */
         "name"?: string;
         /**
-         * Specific event fired when you decrement the counter value. Prefer using valueChange unless you need to handle this specific event type
+          * Specific event fired when you decrement the counter value. Prefer using valueChange unless you need to handle this specific event type
          */
         "onJoyCounterDecrement"?: (event: CustomEvent<number>) => void;
         /**
-         * Specific event fired when you increment the counter value. Prefer using valueChange unless you need to handle this specific event type
+          * Specific event fired when you increment the counter value. Prefer using valueChange unless you need to handle this specific event type
          */
         "onJoyCounterIncrement"?: (event: CustomEvent<number>) => void;
         /**
-         * Specific event fired when your counter value is invalid.
+          * Specific event fired when your counter value is invalid.
          */
         "onJoyCounterInvalid"?: (event: CustomEvent<{value: string; message: string}>) => void;
         /**
-         * Generic event for any counter change, fired by manually typing a value or using increment/decrement CTA
+          * Generic event for any counter change, fired by manually typing a value or using increment/decrement CTA
          */
         "onValueChange"?: (event: CustomEvent<number>) => void;
         /**
-         * Counter requirement
+          * Counter requirement
          */
         "required"?: boolean;
         /**
-         * Granularity of the input. We use the same name than native step attribute. We don't bind this prop to actual input step attribute, because we don't want checkValidity API to return invalid if the actual value is not a multiple of step prop !
+          * Granularity of the input. We use the same name than native step attribute. We don't bind this prop to actual input step attribute, because we don't want checkValidity API to return invalid if the actual value is not a multiple of step prop !
          */
         "step"?: number;
         "value"?: number;
     }
     interface JoyDialog {
         /**
-         * Set the height of the banner. Default to 250 *
+          * Set the height of the banner. Default to 250 *
          */
         "bannerHeight"?: number | undefined;
         /**
-         * Set the position of the banner image. Work exactly like css background-position property *
+          * Set the position of the banner image. Work exactly like css background-position property *
          */
         "bannerPosition"?: string;
         /**
-         * Set the URL of the image you can inject as pre-header banner *
+          * Set the URL of the image you can inject as pre-header banner *
          */
         "bannerSrc"?: string;
         /**
-         * Set the alt text of the banner *
+          * Set the alt text of the banner *
          */
         "bannerSrcAlt"?: string;
         /**
-         * If you want to change the CTA sizes, please choose between small, medium, large *
+          * If you want to change the CTA sizes, please choose between small, medium, large *
          */
         "buttonSize"?: ButtonSizes;
         /**
-         * Secondary CTA text. If none given, it won't show the CTA *
+          * Secondary CTA text. If none given, it won't show the CTA *
          */
         "cancelText"?: string;
         /**
-         * Main CTA text. If none given, it won't show the CTA *
+          * Main CTA text. If none given, it won't show the CTA *
          */
         "confirmText"?: string;
         "demo"?: boolean;
         /**
-         * Custom event fired when clicking on cancel button or cross icon
+          * Custom event fired when clicking on cancel button or cross icon
          */
         "onJoyCancelDialog"?: (event: CustomEvent<void>) => void;
         /**
-         * Custom event fired when clicking on confirm button
+          * Custom event fired when clicking on confirm button
          */
         "onJoyConfirmDialog"?: (event: CustomEvent<void>) => void;
         /**
-         * Dialog open state *
+          * Dialog open state *
          */
         "open"?: boolean;
         /**
-         * Dialog sizes *
+          * Dialog sizes *
          */
         "size"?: DialogSizes;
     }
     interface JoyDialogTrigger {
         /**
-         * The ID of the dialog you want to show. Required *
+          * The ID of the dialog you want to show. Required *
          */
         "dialog": string;
         /**
-         * For dialogs containing joy-indicators with multiple steps, you can specify a step number *
+          * For dialogs containing joy-indicators with multiple steps, you can specify a step number *
          */
         "step"?: number;
     }
     interface JoyDividerCta {
         /**
-         * Divider size. 2 possible values : 100% width or adjusted size according to text
+          * Divider size. 2 possible values : 100% width or adjusted size according to text
          */
         "size"?: DividerCTASizes;
         /**
-         * The CTA text
+          * The CTA text
          */
         "text"?: string;
     }
     interface JoyFormError {
         /**
-         * The error text. Plain string required as any HTML injected will be escaped
+          * The error text. Plain string required as any HTML injected will be escaped
          */
         "noHtmlErrorText"?: string;
         /**
-         * Depending on contexts : maybe you'll need to insert it in the DOM but hide it, or injecting it into the DOM on the fly (like Vue v-if cases)
+          * Depending on contexts : maybe you'll need to insert it in the DOM but hide it, or injecting it into the DOM on the fly (like Vue v-if cases)
          */
         "visible"?: boolean;
     }
     interface JoyHighlight {
         /**
-         * Allows to display the level status icon
+          * Allows to display the level status icon
          */
         "displayIcon"?: boolean;
         /**
-         * Override the icon type used for level. Size can't be overridden. Won't show if displayIcon prop isn't set to true
+          * Override the icon type used for level. Size can't be overridden. Won't show if displayIcon prop isn't set to true
          */
         "icon"?: string;
         /**
-         * Defines the criticalness of the highlight
+          * Defines the criticalness of the highlight
          */
         "level"?: HighlightLevels;
     }
     interface JoyIcon {
         /**
-         * Defines a non-visible legend
+          * Defines a non-visible legend
          */
         "ariaLabel"?: string;
         /**
-         * Two-tone icon when set to true
+          * Two-tone icon when set to true
          */
         "bicolor"?: boolean;
         /**
-         * Color change on hover
+          * Color change on hover
          */
         "clickable"?: boolean;
         /**
-         * The icon color
+          * The icon color
          */
         "color"?: IconColors;
         /**
-         * The icon custom class(es), if needed
+          * The icon custom class(es), if needed
          */
         "customClass"?: string;
         /**
-         * Full colored icon when set to true
+          * Full colored icon when set to true
          */
         "full"?: boolean;
         /**
-         * If enabled, ion-icon will be loaded lazily when it's visible in the viewport. Default, `false`.
+          * If enabled, ion-icon will be loaded lazily when it's visible in the viewport. Default, `false`.
          */
         "lazy"?: boolean;
         /**
-         * The icon svg filename
+          * The icon svg filename
          */
         "name"?: string;
         /**
-         * The icon size
+          * The icon size
          */
         "size"?: IconsSizes;
     }
     interface JoyIconButton {
         /**
-         * The icon color. Default is the blue version. You can only override it with the white version.
+          * The icon color. Default is the blue version. You can only override it with the white version.
          */
         "color"?: IconButtonColors;
         /**
-         * The icon name
+          * The icon name
          */
         "icon"?: string;
         /**
-         * use @joyIconButtonClick="yourMethod" for Vue apps (onJoyIconButtonClick for other stencil components) to handle snackbar close. Nothing is returned
+          * use @joyIconButtonClick="yourMethod" for Vue apps (onJoyIconButtonClick for other stencil components) to handle snackbar close. Nothing is returned
          */
         "onJoyIconButtonClick"?: (event: CustomEvent<void>) => void;
         /**
-         * The button type. As the component wraps an actual HTML button element, it will be applied to it.
+          * The button type. As the component wraps an actual HTML button element, it will be applied to it.
          */
         "type"?: 'button';
     }
@@ -1810,147 +1810,147 @@ declare namespace LocalJSX {
     interface JoyIndicators {
         "onJoyIndicatorsChange"?: (event: CustomEvent<number>) => void;
         /**
-         * Selected state *
+          * Selected state *
          */
         "selected"?: number;
         /**
-         * Variant colors. 2 possibles values *
+          * Variant colors. 2 possibles values *
          */
         "variant"?: IndicatorsVariants;
     }
     interface JoyInput {
         /**
-         * The input's autocomplete policy.
+          * The input's autocomplete policy.
          */
         "autocomplete"?: string;
         /**
-         * Makes the field disabled or not
+          * Makes the field disabled or not
          */
         "disabled"?: boolean;
         /**
-         * Add an icon on the left side before the value
+          * Add an icon on the left side before the value
          */
         "icon"?: string;
         /**
-         * Makes the field readonly or not
+          * Makes the field readonly or not
          */
         "invalid"?: boolean;
         /**
-         * If the type is "number" then you can use max property.
+          * If the type is "number" then you can use max property.
          */
         "max"?: number;
         /**
-         * If the type is "number" then you can use min property.
+          * If the type is "number" then you can use min property.
          */
         "min"?: number;
         /**
-         * Input types. List is not exhaustive, this component does not deal with checkboxes, radios, files, dates.
+          * Input types. List is not exhaustive, this component does not deal with checkboxes, radios, files, dates.
          */
         "name"?: string;
         /**
-         * Custom event that returns the component instance and its actual value. Binded to input native event *
+          * Custom event that returns the component instance and its actual value. Binded to input native event *
          */
         "onValueChange"?: (event: CustomEvent<{element: HTMLJoyInputElement; value?: string}>) => void;
         /**
-         * The input's placeholder text.
+          * The input's placeholder text.
          */
         "placeholder"?: string;
         /**
-         * Makes the field readonly or not
+          * Makes the field readonly or not
          */
         "readonly"?: boolean;
         /**
-         * Makes the field required
+          * Makes the field required
          */
         "required"?: boolean;
         /**
-         * The input's size.
+          * The input's size.
          */
         "size"?: InputSizes;
         /**
-         * Input types. List is not exhaustive, this component does not deal with checkboxes, radios, files, dates.
+          * Input types. List is not exhaustive, this component does not deal with checkboxes, radios, files, dates.
          */
         "type"?: 'hidden' | 'text' | 'number' | 'search' | 'email' | 'password' | 'tel';
         /**
-         * If the field is of type number, you can specify a unit like %, days, hours, whatever you want
+          * If the field is of type number, you can specify a unit like %, days, hours, whatever you want
          */
         "unit"?: string;
         /**
-         * Field value
+          * Field value
          */
         "value"?: string;
     }
     interface JoyLabel {
         /**
-         * Label size *
+          * Label size *
          */
         "size"?: LabelSizes;
     }
     interface JoyLink {
         /**
-         * Filename of the downloadable content
+          * Filename of the downloadable content
          */
         "download"?: string;
         /**
-         * Set the href of your link
+          * Set the href of your link
          */
         "href"?: string;
         /**
-         * Icon name if you want to display one, before the text
+          * Icon name if you want to display one, before the text
          */
         "icon"?: string;
         /**
-         * Native rel attribute for hyperlinks. See https://developer.mozilla.org/fr/docs/Web/HTML/Attributes/rel
+          * Native rel attribute for hyperlinks. See https://developer.mozilla.org/fr/docs/Web/HTML/Attributes/rel
          */
         "rel"?: string;
         /**
-         * Native target attribute for hyperlinks.
+          * Native target attribute for hyperlinks.
          */
         "target"?: HyperLinksTargets;
         /**
-         * Color theme. Default is teal, you can set white theme for darker backgrounds.
+          * Color theme. Default is teal, you can set white theme for darker backgrounds.
          */
         "theme"?: LinksColors;
     }
     interface JoyPagination {
         /**
-         * Current page number
+          * Current page number
          */
         "currentPage"?: number;
         /**
-         * data-heap attribute for next CTA. We should avoid as much as possible to use this kind of props inside the webcomponents
+          * data-heap attribute for next CTA. We should avoid as much as possible to use this kind of props inside the webcomponents
          */
         "heapNext"?: string;
         /**
-         * data-heap attribute for previous CTA. We should avoid as much as possible to use this kind of props inside the webcomponents
+          * data-heap attribute for previous CTA. We should avoid as much as possible to use this kind of props inside the webcomponents
          */
         "heapPrev"?: string;
         /**
-         * Can be used as title and aria-label attributes for the next CTA
+          * Can be used as title and aria-label attributes for the next CTA
          */
         "labelNext"?: string | undefined;
         /**
-         * Can be used as aria-label attribute for the full component
+          * Can be used as aria-label attribute for the full component
          */
         "labelPagination"?: string;
         /**
-         * Can be used as title and aria-label attributes for the previous CTA
+          * Can be used as title and aria-label attributes for the previous CTA
          */
         "labelPrev"?: string | undefined;
         /**
-         * For synchrone implementations (not SPA, basically), allows to inject the URL for next CTA
+          * For synchrone implementations (not SPA, basically), allows to inject the URL for next CTA
          */
         "linkNext"?: string;
         /**
-         * For synchrone implementations (not SPA, basically), allows to inject the URL for previous CTA
+          * For synchrone implementations (not SPA, basically), allows to inject the URL for previous CTA
          */
         "linkPrev"?: string;
         /**
-         * use @joyChangePage="yourMethod" for Vue apps, to handle pagination change. Clicked page is returned
+          * use @joyChangePage="yourMethod" for Vue apps, to handle pagination change. Clicked page is returned
          */
         "onJoyChangePage"?: (event: CustomEvent<number>) => void;
         /**
-         * Total number of pages in order to construct the pagination
+          * Total number of pages in order to construct the pagination
          */
         "totalPages"?: number;
     }
@@ -1958,352 +1958,352 @@ declare namespace LocalJSX {
     }
     interface JoyPlaceholderButton {
         /**
-         * use @joyPlaceholderButtonClick="yourMethod" for Vue apps
+          * use @joyPlaceholderButtonClick="yourMethod" for Vue apps
          */
         "onJoyPlaceholderButtonClick"?: (event: CustomEvent<void>) => void;
         /**
-         * Placeholder button sizes.
+          * Placeholder button sizes.
          */
         "size"?: 'small' | 'medium' | 'large';
     }
     interface JoyProgressBar {
         /**
-         * Current step number.
+          * Current step number.
          */
         "currentStep"?: number | undefined;
         /**
-         * Activate specific color mode. Documentation purpose.
+          * Activate specific color mode. Documentation purpose.
          */
         "mode"?: 'desktop' | 'mobile';
         /**
-         * Progress bar percentage, percentage usage will override steps & currentStep definition.
+          * Progress bar percentage, percentage usage will override steps & currentStep definition.
          */
         "percentage"?: number | undefined;
         /**
-         * Total number of steps.
+          * Total number of steps.
          */
         "steps"?: number | undefined;
     }
     interface JoyRadio {
         /**
-         * If `true`, the radio is selected.
+          * If `true`, the radio is selected.
          */
         "checked"?: boolean;
         /**
-         * If `true`, the user cannot interact with the radio.
+          * If `true`, the user cannot interact with the radio.
          */
         "disabled"?: boolean;
         /**
-         * The name of the control, which is submitted with the form data.
+          * The name of the control, which is submitted with the form data.
          */
         "name"?: string;
         /**
-         * When radio is blurred *
+          * When radio is blurred *
          */
         "onJoyRadioBlur"?: (event: CustomEvent<void>) => void;
         /**
-         * When radio is selected *
+          * When radio is selected *
          */
         "onJoyRadioClick"?: (event: CustomEvent<void>) => void;
         /**
-         * When radio is focused *
+          * When radio is focused *
          */
         "onJoyRadioFocus"?: (event: CustomEvent<void>) => void;
         /**
-         * the value of the radio.
+          * the value of the radio.
          */
         "value"?: any | null;
     }
     interface JoyRadioGroup {
         /**
-         * Label displayed for the whoe radio group.
+          * Label displayed for the whoe radio group.
          */
         "direction"?: 'vertical' | 'horizontal';
         /**
-         * Invalid state of the radio group
+          * Invalid state of the radio group
          */
         "invalid"?: boolean;
         /**
-         * Invalid message
+          * Invalid message
          */
         "invalidText"?: string;
         /**
-         * The name of the control, which is submitted with the form data.
+          * The name of the control, which is submitted with the form data.
          */
         "name"?: string;
         /**
-         * Emitted when the value has changed.
+          * Emitted when the value has changed.
          */
         "onValueChange"?: (event: CustomEvent<any>) => void;
         /**
-         * the value of the radio group.
+          * the value of the radio group.
          */
         "value"?: any | null;
     }
     interface JoyRatingStars {
         /**
-         * The actual rating, between 0 and 5.
+          * The actual rating, between 0 and 5.
          */
         "ratingValue"?: number;
         /**
-         * Review count. it will be displayed with parenthesis : (5)
+          * Review count. it will be displayed with parenthesis : (5)
          */
         "reviewCount"?: number;
         /**
-         * Star size. 3 possible values but you can't give a number as value
+          * Star size. 3 possible values but you can't give a number as value
          */
         "size"?: RatingStarsSizes;
     }
     interface JoySelect {
         /**
-         * By default, the dropdown is closed if you focusout the select. For debugging purpose or specific behavior, you can toggle off this option. *
+          * By default, the dropdown is closed if you focusout the select. For debugging purpose or specific behavior, you can toggle off this option. *
          */
         "closeOnBlur"?: boolean;
         /**
-         * Disabled state. *
+          * Disabled state. *
          */
         "disabled"?: boolean;
         /**
-         * Pick an icon displayed before the label. *
+          * Pick an icon displayed before the label. *
          */
         "icon"?: string;
         /**
-         * Invalid state. *
+          * Invalid state. *
          */
         "invalid"?: boolean;
         /**
-         * Invalid state message. *
+          * Invalid state message. *
          */
         "invalidMessage"?: string;
         /**
-         * Select name attribute to be found by parent form. *
+          * Select name attribute to be found by parent form. *
          */
         "name"?: string;
         "onValueChange"?: (event: CustomEvent<{value: string}>) => void;
         /**
-         * Mandatory or not. *
+          * Mandatory or not. *
          */
         "required"?: boolean;
         /**
-         * Select actual value. *
+          * Select actual value. *
          */
         "value"?: string;
     }
     interface JoySelectOption {
         /**
-         * Disabled state. *
+          * Disabled state. *
          */
         "disabled"?: boolean;
         /**
-         * If the option is selected or not *
+          * If the option is selected or not *
          */
         "selected"?: boolean;
         /**
-         * Value bubbled up to the select component *
+          * Value bubbled up to the select component *
          */
         "value": string;
     }
     interface JoySeparator {
         /**
-         * Separator size. 2 possible values : 100% width or adjusted size according to text
+          * Separator size. 2 possible values : 100% width or adjusted size according to text
          */
         "size"?: SeparatorSizes;
         /**
-         * The separator text
+          * The separator text
          */
         "text": string;
     }
     interface JoySnackbar {
         /**
-         * Display an icon to close the notification manually
+          * Display an icon to close the notification manually
          */
         "closable"?: boolean;
         /**
-         * HTML with your custom message injected in the component. It won't be escaped so please be careful with XSS !
+          * HTML with your custom message injected in the component. It won't be escaped so please be careful with XSS !
          */
         "dangerousHtmlMessage": string;
         /**
-         * Time in ms the snackbar is displayed. Give 'forever' to be able to display the snackbar without timeout
+          * Time in ms the snackbar is displayed. Give 'forever' to be able to display the snackbar without timeout
          */
         "duration"?: number | 'forever';
         /**
-         * The criticality level of your notification. Range from simple info to error.
+          * The criticality level of your notification. Range from simple info to error.
          */
         "level"?: SnackbarLevels;
         /**
-         * use @joySnackbarTriggerAction="yourMethod" for Vue apps (onJoySnackbarTriggerAction for other stencil components) to handle snackbar custom action. Nothing is returned
+          * use @joySnackbarTriggerAction="yourMethod" for Vue apps (onJoySnackbarTriggerAction for other stencil components) to handle snackbar custom action. Nothing is returned
          */
         "onJoySnackbarTriggerAction"?: (event: CustomEvent<void>) => void;
         /**
-         * By default, the snackbar will be displayed in a fixed position at the bottom of the page. You can override this behavior by setting position="relative"
+          * By default, the snackbar will be displayed in a fixed position at the bottom of the page. You can override this behavior by setting position="relative"
          */
         "position"?: 'fixed' | 'relative';
         /**
-         * If you need to create an action link (like cancel an action from snackbar) simply pas its text. Clicking on it will trigger a custom event
+          * If you need to create an action link (like cancel an action from snackbar) simply pas its text. Clicking on it will trigger a custom event
          */
         "triggerActionText"?: string;
     }
     interface JoySpinner {
         /**
-         * Spinner colors, 2 possible values
+          * Spinner colors, 2 possible values
          */
         "color"?: string;
     }
     interface JoyStep {
         /**
-         * If the step is completed. *
+          * If the step is completed. *
          */
         "completed"?: boolean;
         /**
-         * Used to change style for mobile. *
+          * Used to change style for mobile. *
          */
         "direction"?: Direction;
         /**
-         * If the step is ongoing. *
+          * If the step is ongoing. *
          */
         "ongoing"?: boolean;
         /**
-         * Default or small. *
+          * Default or small. *
          */
         "size"?: 'small' | 'default';
     }
     interface JoyStepper {
         /**
-         * Used to change style for mobile. *
+          * Used to change style for mobile. *
          */
         "direction"?: Direction;
         /**
-         * Defines the CSS flex horizontal justify distribution *
+          * Defines the CSS flex horizontal justify distribution *
          */
         "justify"?: boolean;
         /**
-         * Set the step number of the stepper. Will auto-complete each step that is < step. Starts from 0. *
+          * Set the step number of the stepper. Will auto-complete each step that is < step. Starts from 0. *
          */
         "step"?: number;
     }
     interface JoyTab {
         /**
-         * Selected status of the current tab
+          * Selected status of the current tab
          */
         "selected"?: boolean;
         /**
-         * A tab id or name must be provided for each `joy-tab`. It's used internally to reference the selected tab
+          * A tab id or name must be provided for each `joy-tab`. It's used internally to reference the selected tab
          */
         "tab": string;
     }
     interface JoyTabButton {
         /**
-         * "data-heap" attribute to set on the link if an {@link href} prop is passed or on the host otherwise..
+          * "data-heap" attribute to set on the link if an {@link href} prop is passed or on the host otherwise..
          */
         "heapId"?: string;
         /**
-         * If your tab is a link, give the URL
+          * If your tab is a link, give the URL
          */
         "href"?: string;
         /**
-         * Event used by joy-tabs parent component. Prefer using joyTabSelected event from joy-tabs if you want to listen to any tab change
+          * Event used by joy-tabs parent component. Prefer using joyTabSelected event from joy-tabs if you want to listen to any tab change
          */
         "onJoyTabButtonClick"?: (event: CustomEvent<Tab>) => void;
         /**
-         * Tab selection state
+          * Tab selection state
          */
         "selected"?: boolean;
         /**
-         * A tab id or name must be provided for each `joy-button-tab`. It's used internally to reference the selected tab
+          * A tab id or name must be provided for each `joy-button-tab`. It's used internally to reference the selected tab
          */
         "tab": string;
     }
     interface JoyTabs {
         /**
-         * If you wanna catch the tab selection in the whole component, use this event
+          * If you wanna catch the tab selection in the whole component, use this event
          */
         "onJoyTabSelected"?: (event: CustomEvent<Tab>) => void;
         /**
-         * Use this prop to activate a specific tab by default by giving its name
+          * Use this prop to activate a specific tab by default by giving its name
          */
         "selectedTab": string;
         /**
-         * Use this prop to specify that your joy-tabs is made of links, and tabs are not updated on the fly
+          * Use this prop to specify that your joy-tabs is made of links, and tabs are not updated on the fly
          */
         "sync"?: boolean;
     }
     interface JoyTag {
         /**
-         * If the tag is a link, give it an href
+          * If the tag is a link, give it an href
          */
         "href"?: string;
         /**
-         * Fired only if we've set the clickable prop
+          * Fired only if we've set the clickable prop
          */
         "onJoyTagClick"?: (event: CustomEvent<{name: string; selected: boolean}>) => void;
         /**
-         * Fired only if we've click on removable tag
+          * Fired only if we've click on removable tag
          */
         "onJoyTagRemove"?: (event: CustomEvent<string>) => void;
         /**
-         * Display an icon CTA on the right, to remove the tag from a list. Only for primary/secondary
+          * Display an icon CTA on the right, to remove the tag from a list. Only for primary/secondary
          */
         "removable"?: boolean;
         /**
-         * Mock a radio like style. Nothing more. Only for primary/secondary
+          * Mock a radio like style. Nothing more. Only for primary/secondary
          */
         "selectable"?: boolean;
         /**
-         * Tag size. Default is medium
+          * Tag size. Default is medium
          */
         "size"?: TagSizes;
         /**
-         * Native target attribute for hyperlinks.
+          * Native target attribute for hyperlinks.
          */
         "target"?: HyperLinksTargets;
         /**
-         * Tag color theme
+          * Tag color theme
          */
         "variant"?: TagVariants;
     }
     interface JoyTagsInput {
         /**
-         * Invalid state
+          * Invalid state
          */
         "invalid"?: boolean;
         /**
-         * form name for our tags input
+          * form name for our tags input
          */
         "name"?: string;
         /**
-         * When the tags list is on error. According to the returned ErrorType, you can display the right error.
+          * When the tags list is on error. According to the returned ErrorType, you can display the right error.
          */
         "onJoyTagsError"?: (event: CustomEvent<ErrorType>) => void;
         /**
-         * On input blur
+          * On input blur
          */
         "onJoyTagsInputBlur"?: (event: CustomEvent<void>) => void;
         /**
-         * On input focus
+          * On input focus
          */
         "onJoyTagsInputFocus"?: (event: CustomEvent<void>) => void;
         /**
-         * When the tags list is updated
+          * When the tags list is updated
          */
         "onJoyTagsUpdate"?: (event: CustomEvent<string[]>) => void;
         /**
-         * Placeholder used for the input
+          * Placeholder used for the input
          */
         "placeholder"?: string;
         /**
-         * Size for your tags. Check Tag documentation for available values
+          * Size for your tags. Check Tag documentation for available values
          */
         "size"?: TagSizes;
         /**
-         * Validation type : if 'email' is given, it will create a specific check before actually adding the tag. Default to none.
+          * Validation type : if 'email' is given, it will create a specific check before actually adding the tag. Default to none.
          */
         "validation"?: 'email' | 'none';
         /**
-         * Saved values for the tags list. Must be an array like string eg. ['first', 'second'].
+          * Saved values for the tags list. Must be an array like string eg. ['first', 'second'].
          */
         "values"?: string;
         /**
-         * Variant/color type for your tags. Check Tag documentation for available values
+          * Variant/color type for your tags. Check Tag documentation for available values
          */
         "variant"?: TagVariants;
     }
@@ -2313,205 +2313,205 @@ declare namespace LocalJSX {
     }
     interface JoyTextarea {
         /**
-         * If `true`, the element height will increase based on the value.
+          * If `true`, the element height will increase based on the value.
          */
         "autoGrow"?: boolean;
         /**
-         * Indicates whether and how the text value should be automatically capitalized as it is entered/edited by the user.
+          * Indicates whether and how the text value should be automatically capitalized as it is entered/edited by the user.
          */
         "autocapitalize"?: string;
         /**
-         * This Boolean attribute lets you specify that a form control should have input focus when the page loads.
+          * This Boolean attribute lets you specify that a form control should have input focus when the page loads.
          */
         "autofocus"?: boolean;
         /**
-         * If `true`, the value will be cleared after focus upon edit. Defaults to `true` when `type` is `"password"`, `false` for all other types.
+          * If `true`, the value will be cleared after focus upon edit. Defaults to `true` when `type` is `"password"`, `false` for all other types.
          */
         "clearOnEdit"?: boolean;
         /**
-         * The visible width of the text control, in average character widths. If it is specified, it must be a positive integer.
+          * The visible width of the text control, in average character widths. If it is specified, it must be a positive integer.
          */
         "cols"?: number;
         /**
-         * Set the amount of time, in milliseconds, to wait to trigger the `ionChange` event after each keystroke. This also impacts form bindings such as `ngModel` or `v-model`.
+          * Set the amount of time, in milliseconds, to wait to trigger the `ionChange` event after each keystroke. This also impacts form bindings such as `ngModel` or `v-model`.
          */
         "debounce"?: number;
         /**
-         * If `true`, the user cannot interact with the textarea.
+          * If `true`, the user cannot interact with the textarea.
          */
         "disabled"?: boolean;
         /**
-         * A hint to the browser for which enter key to display. Possible values: `"enter"`, `"done"`, `"go"`, `"next"`, `"previous"`, `"search"`, and `"send"`.
+          * A hint to the browser for which enter key to display. Possible values: `"enter"`, `"done"`, `"go"`, `"next"`, `"previous"`, `"search"`, and `"send"`.
          */
         "enterkeyhint"?: 'enter' | 'done' | 'go' | 'next' | 'previous' | 'search' | 'send';
         /**
-         * This is required for a WebKit bug which requires us to blur and focus an input to properly focus the input in an item with delegatesFocus. It will no longer be needed with iOS 14.
+          * This is required for a WebKit bug which requires us to blur and focus an input to properly focus the input in an item with delegatesFocus. It will no longer be needed with iOS 14.
          */
         "fireFocusEvents"?: boolean;
         /**
-         * A hint to the browser for which keyboard to display. Possible values: `"none"`, `"text"`, `"tel"`, `"url"`, `"email"`, `"numeric"`, `"decimal"`, and `"search"`.
+          * A hint to the browser for which keyboard to display. Possible values: `"none"`, `"text"`, `"tel"`, `"url"`, `"email"`, `"numeric"`, `"decimal"`, and `"search"`.
          */
         "inputmode"?: 'none' | 'text' | 'tel' | 'url' | 'email' | 'numeric' | 'decimal' | 'search';
         /**
-         * If `true`, the textarea will be considered as invalid.
+          * If `true`, the textarea will be considered as invalid.
          */
         "invalid"?: boolean;
         /**
-         * If the value of the type attribute is `text`, `email`, `search`, `password`, `tel`, or `url`, this attribute specifies the maximum number of characters that the user can enter.
+          * If the value of the type attribute is `text`, `email`, `search`, `password`, `tel`, or `url`, this attribute specifies the maximum number of characters that the user can enter.
          */
         "maxlength"?: number;
         /**
-         * If the value of the type attribute is `text`, `email`, `search`, `password`, `tel`, or `url`, this attribute specifies the minimum number of characters that the user can enter.
+          * If the value of the type attribute is `text`, `email`, `search`, `password`, `tel`, or `url`, this attribute specifies the minimum number of characters that the user can enter.
          */
         "minlength"?: number;
         /**
-         * Use this prop to give component the translation used to display minimum chars count.
+          * Use this prop to give component the translation used to display minimum chars count.
          */
         "minlengthLabel"?: string;
         /**
-         * The name of the control, which is submitted with the form data.
+          * The name of the control, which is submitted with the form data.
          */
         "name"?: string;
         /**
-         * Emitted when the input loses focus.
+          * Emitted when the input loses focus.
          */
         "onJoyTextareaBlur"?: (event: CustomEvent<FocusEvent>) => void;
         /**
-         * Emitted when the input value has changed.
+          * Emitted when the input value has changed.
          */
         "onJoyTextareaChange"?: (event: CustomEvent<{value: string}>) => void;
         /**
-         * Emitted when the input has focus.
+          * Emitted when the input has focus.
          */
         "onJoyTextareaFocus"?: (event: CustomEvent<FocusEvent>) => void;
         /**
-         * Emitted when a keyboard input occurred.
+          * Emitted when a keyboard input occurred.
          */
         "onJoyTextareaInput"?: (event: CustomEvent<KeyboardEvent>) => void;
         /**
-         * Emitted when the value has changed. Generic event used by all other form fields
+          * Emitted when the value has changed. Generic event used by all other form fields
          */
         "onValueChange"?: (event: CustomEvent<void>) => void;
         /**
-         * Instructional text that shows before the input has a value.
+          * Instructional text that shows before the input has a value.
          */
         "placeholder"?: string | null;
         /**
-         * If `true`, the user cannot modify the value.
+          * If `true`, the user cannot modify the value.
          */
         "readonly"?: boolean;
         /**
-         * If `true`, the user must fill in a value before submitting a form.
+          * If `true`, the user must fill in a value before submitting a form.
          */
         "required"?: boolean;
         /**
-         * The number of visible text lines for the control.
+          * The number of visible text lines for the control.
          */
         "rows"?: number | undefined;
         /**
-         * If `true`, the element will have its spelling and grammar checked.
+          * If `true`, the element will have its spelling and grammar checked.
          */
         "spellcheck"?: boolean;
         /**
-         * The value of the textarea.
+          * The value of the textarea.
          */
         "value"?: string | null;
         /**
-         * Indicates how the control wraps text.
+          * Indicates how the control wraps text.
          */
         "wrap"?: 'hard' | 'soft' | 'off';
     }
     interface JoyTips {
         /**
-         * Display a CTA to hide the tips
+          * Display a CTA to hide the tips
          */
         "closable"?: boolean;
         /**
-         * If icon is defined, it will show it with the right color
+          * If icon is defined, it will show it with the right color
          */
         "icon"?: string;
         /**
-         * Defines the criticalness of the tips
+          * Defines the criticalness of the tips
          */
         "level"?: TipsLevel;
     }
     interface JoyToggle {
         /**
-         * Toggle activated or not
+          * Toggle activated or not
          */
         "checked"?: boolean;
         /**
-         * Disabled state
+          * Disabled state
          */
         "disabled"?: boolean;
         /**
-         * It will be applied as the hidden input name attribute (for the actual form)
+          * It will be applied as the hidden input name attribute (for the actual form)
          */
         "name"?: string;
         /**
-         * Clicking on the component will fire this customEvent.
+          * Clicking on the component will fire this customEvent.
          */
         "onValueChange"?: (event: CustomEvent<boolean>) => void;
         /**
-         * Input value. TODO : check if we really need it as we use a checkbox system
+          * Input value. TODO : check if we really need it as we use a checkbox system
          */
         "value"?: string;
     }
     interface JoyTooltip {
         /**
-         * Tooltip position. 2 possible values
+          * Tooltip position. 2 possible values
          */
         "position"?: 'left' | 'right';
         /**
-         * Color theme. 2 possible values
+          * Color theme. 2 possible values
          */
         "variant"?: TooltipVariants;
     }
     interface JoyTooltipTrigger {
         /**
-         * Use basic selector to inject the tooltip in a specific DOM location. Default is body
+          * Use basic selector to inject the tooltip in a specific DOM location. Default is body
          */
         "appendTo"?: 'body' | 'host';
         /**
-         * Define the event needed to display the tooltip
+          * Define the event needed to display the tooltip
          */
         "event"?: 'mouseenter' | 'click';
         /**
-         * Tooltip position. 2 possible values
+          * Tooltip position. 2 possible values
          */
         "position"?: 'left' | 'right';
         /**
-         * Allows to override tooltip size. Allows to more easily calculate its position
+          * Allows to override tooltip size. Allows to more easily calculate its position
          */
         "tooltipWidth"?: number;
         /**
-         * Color theme. 2 possible values
+          * Color theme. 2 possible values
          */
         "variant"?: TooltipVariants;
     }
     interface JoyUserCard {
         /**
-         * Can be the freelancer's full name, or whatever you want. It will be placed at the top right part.
+          * Can be the freelancer's full name, or whatever you want. It will be placed at the top right part.
          */
         "fullName"?: string;
         /**
-         * Giving a link will make the whole component wrapped by an hyperlink
+          * Giving a link will make the whole component wrapped by an hyperlink
          */
         "link"?: string;
         /**
-         * Given the link, it will open the link in a new tab
+          * Given the link, it will open the link in a new tab
          */
         "newTab"?: boolean;
         /**
-         * Use this prop if you don't want to use the user-card-avatar slot.
+          * Use this prop if you don't want to use the user-card-avatar slot.
          */
         "photoUrl"?: string;
         /**
-         * Freelancer's public rating.
+          * Freelancer's public rating.
          */
         "ratingValue"?: string;
         /**
-         * Can be the freelancer's job, a company name or whatever you want. It will be placed at the top right part, below title
+          * Can be the freelancer's job, a company name or whatever you want. It will be placed at the top right part, below title
          */
         "subTitle"?: string;
     }

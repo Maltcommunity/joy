@@ -1,0 +1,145 @@
+@use '../../style/utils';
+
+@mixin commonTextareaStyle() {
+    position: relative;
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+    color: var(--joy-color-neutral-6);
+    max-width: 100%;
+    border-radius: var(--joy-core-radius-3);
+    border: 1px solid var(--joy-color-neutral-3);
+    padding: var(--joy-core-spacing-4);
+    transition: none;
+    @include utils.getFontProperties(m);
+    overflow-y: hidden;
+}
+
+$_CLASS: '.joy-textarea';
+
+:host {
+    --textarea-invalid-color: var(--joy-color-error-50);
+    --textarea-invalid-color-hover: var(--joy-color-error-90);
+    display: block;
+}
+
+#{$_CLASS} {
+    position: relative;
+    padding: 0;
+    border-radius: var(--joy-core-radius-3);
+
+    textarea {
+        @include commonTextareaStyle;
+        outline: none;
+        height: 100%;
+        z-index: 1;
+        margin: 0;
+
+        &:hover, &:focus {
+            border-color: var(--joy-color-state-hover);
+            outline: none;
+        }
+    }
+
+    &:focus-within &_label {
+        color: var(--joy-color-secondary-50);
+        outline: none;
+    }
+
+    &_label {
+        position: absolute;
+        left: 10px;
+        color: var(--joy-color-neutral-4);
+        top: -13px;
+        background-color: white;
+        z-index: 2;
+        padding: 0 5px;
+        transition: top 150ms ease;
+        user-select: none;
+    }
+
+    &_helpers {
+        display: flex;
+        justify-content: space-between;
+        margin-top: var(--joy-core-spacing-3);
+        margin-bottom: var(--joy-core-spacing-6);
+
+        p {
+            @include utils.getFontProperties(s);
+            margin: 0;
+            padding: 0;
+
+            &#{$_CLASS}-min {
+                color: var(--joy-color-neutral-5);
+                display: flex;
+                align-items: flex-end;
+
+                joy-icon {
+                    margin-right: var(--joy-core-spacing-2);
+                }
+
+                &-invalid {
+                    color: var(--joy-color-neutral-4);
+                }
+            }
+        }
+    }
+}
+
+#{$_CLASS}_autogrow {
+    textarea {
+        resize: none;
+    }
+}
+
+#{$_CLASS}_invalid {
+    textarea {
+        border-color: var(--textarea-invalid-color);
+    }
+
+    #{$_CLASS}_label {
+        color: var(--textarea-invalid-color);
+    }
+
+    &:hover {
+        textarea {
+            border-color: var(--textarea-invalid-color-hover);
+        }
+
+        #{$_CLASS}_label {
+            color: var(--textarea-invalid-color-hover);
+        }
+    }
+}
+
+#{$_CLASS}-count-invalid {
+    color: var(--textarea-invalid-color);
+}
+
+#{$_CLASS}_disabled {
+    cursor: not-allowed;
+
+    textarea, textarea:hover {
+        cursor: not-allowed;
+        border-color: var(--joy-color-state-disabled-border);
+        background-color: var(--joy-color-neutral-1);
+
+        &::placeholder {
+            color: var(--joy-color-text-disabled);
+        }
+    }
+
+    #{$_CLASS}_label, #{$_CLASS}_helpers p {
+        color: var(--joy-color-text-disabled);
+    }
+
+    &:hover {
+        textarea {
+            border-color: var(--joy-color-neutral-3);
+        }
+
+        #{$_CLASS}_label, #{$_CLASS}_helpers p {
+            color: var(--joy-color-text-disabled);
+        }
+    }
+}

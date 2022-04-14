@@ -1,0 +1,18 @@
+$BADGE_ICONS: (
+    'maltlinker': (
+        width: 16px
+    ),
+    'supermalter': (
+        width: 12px
+    ),
+    'highpotential': (
+        width: 12px
+    )
+);
+
+@mixin setIconSize($iconProps) {
+    $_width: map-get($iconProps, width);
+    @if ($_width) {
+        width: $_width;
+    }
+}

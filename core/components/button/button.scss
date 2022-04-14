@@ -1,0 +1,223 @@
+@use "sizes";
+@use '../../style/utils';
+
+$_CLASS: '.joy-button';
+$_space-around-cta: 4px;
+
+/**
+Generic buttons style
+ */
+
+:host {
+    --button-bg-color-main: var(--joy-color-primary-50);
+    --button-bg-color-main-hover: var(--joy-color-primary-70);
+    --button-bg-color-main-active: var(--joy-color-primary-90);
+
+    --button-bg-color-primary: var(--joy-color-secondary-30);
+    --button-bg-color-primary-hover: var(--joy-color-secondary-50);
+    --button-bg-color-primary-active: var(--joy-color-secondary-90);
+
+    --button-color-secondary: var(--joy-color-secondary-50);
+    --button-color-secondary-active: var(--joy-color-secondary-90);
+    --button-color-secondary-disabled: var(--joy-color-neutral-4);
+    --button-border-color-secondary-disabled: var(--joy-color-neutral-3);
+    --button-bg-color-secondary-hover: var(--joy-color-secondary-10);
+
+    --button-color-ghost: var(--joy-color-secondary-50);
+    --button-color-ghost-hover: var(--joy-color-secondary-50);
+    --button-bg-color-ghost-hover: var(--joy-color-neutral-1);
+    --button-color-ghost-active: var(--joy-color-secondary-50);
+    --button-bg-color-ghost-active: var(--joy-color-secondary-10);
+
+    --button-color-white: var(--joy-color-secondary-50);
+    --button-color-white-hover: var(--joy-color-secondary-50);
+    --button-color-white-active: var(--joy-color-secondary-90);
+    --button-bg-color-white-hover: var(--joy-color-neutral-1);
+    --button-bg-color-white-active: var(--joy-color-neutral-2);
+    --button-icon-color-white-hover: var(--joy-color-secondary-90);
+
+    --button-bg-color-admin: var(--joy-color-quaternary-50);
+
+    --button-focus-border-color: var(--joy-color-neutral-6);
+
+    --button-font-family: var(--joy-font-family);
+
+    --button-bg-color-disabled: var(--joy-color-neutral-3);
+    --button-color-disabled: var(--joy-color-neutral-4);
+    --button-border-color-disabled: var(--joy-color-neutral-3);
+    --button-icon-color-disabled: var(--joy-color-neutral-4);
+
+    display: inline-flex;
+}
+
+#{$_CLASS} {
+    display: inline-flex;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: nowrap;
+    white-space: nowrap;
+    box-sizing: border-box;
+    font-family: var(--button-font-family);
+    line-height: 1;
+    z-index: 1;
+    border: none;
+    transition: background-color var(--joy-transition-duration-long), border var(--joy-transition-duration-long);
+    text-decoration: none;
+    text-align: center;
+    cursor: pointer;
+    outline: none;
+    opacity: 1;
+    width: 100%;
+
+    joy-icon {
+        margin-right: var(--joy-core-spacing-2);
+        color: inherit;
+    }
+
+    &:after {
+        content: "";
+        position: absolute;
+        left: -$_space-around-cta;
+        top: -$_space-around-cta;
+        width: calc(100% + #{$_space-around-cta * 2});
+        height: calc(100% + #{$_space-around-cta * 2});
+        transition: box-shadow var(--joy-transition-duration-default);
+    }
+
+    &:focus-visible {
+        &:after {
+            box-shadow: 0 0 0 2px var(--button-focus-border-color);
+        }
+    }
+
+    * {
+        // ensure the click is always captured by the button and not its content (for example an SVG icon)
+        pointer-events: none;
+    }
+
+    @include utils.disabledStateOnly {
+        background-color: var(--button-bg-color-disabled);
+        color: var(--button-color-disabled);
+        border-color: var(--button-border-color-disabled);
+        cursor: not-allowed;
+
+        joy-icon {
+            color: var(--button-icon-color-disabled);
+        }
+    }
+
+    &#{$_CLASS}_loading {
+        cursor: not-allowed;
+        color: transparent;
+        font-size: 0;
+
+        joy-icon svg {
+            color: transparent;
+        }
+    }
+}
+
+/**
+Variants
+ */
+
+#{$_CLASS}_main {
+    background-color: var(--button-bg-color-main);
+    color: white;
+
+    &:hover {
+        background-color: var(--button-bg-color-main-hover);
+    }
+
+    &:active {
+        background-color: var(--button-bg-color-main-active);
+    }
+}
+
+#{$_CLASS}_primary {
+    background-color: var(--button-bg-color-primary);
+    color: white;
+
+    &:hover {
+        background-color: var(--button-bg-color-primary-hover);
+    }
+
+    &:active {
+        background-color: var(--button-bg-color-primary-active);
+    }
+}
+
+#{$_CLASS}_secondary {
+    background-color: transparent;
+    color: var(--button-color-secondary);
+    border: 2px solid var(--button-color-secondary);
+
+    &:hover, &:active {
+        background-color: var(--button-bg-color-secondary-hover);
+    }
+
+    &:active {
+        color: var(--button-bg-color-secondary-active);
+        border-color: var(--button-bg-color-secondary-active);
+    }
+
+    @include utils.disabledStateOnly() {
+        color: var(--button-color-secondary-disabled);
+        border-color: var(--button-border-color-secondary-disabled);
+        background-color: white;
+    }
+}
+
+#{$_CLASS}_white {
+    color: var(--button-color-white);
+    background-color: white;
+
+    &:hover {
+        color: var(--button-color-white-hover);
+        background-color: var(--button-bg-color-white-hover);
+    }
+
+    &:active {
+        color: var(--button-color-white-active);
+        background-color: var(--button-bg-color-white-active);
+    }
+
+    &:not(:disabled):hover {
+        joy-icon {
+            color: var(--button-icon-color-white-hover);
+        }
+    }
+}
+
+#{$_CLASS}_ghost {
+    color: var(--button-color-ghost);
+    background-color: transparent;
+
+    &:hover {
+        color: var(--button-color-ghost-hover);
+        background-color: var(--button-bg-color-ghost-hover);
+    }
+
+    &:active {
+        color: var(--button-color-ghost-active);
+        background-color: var(--button-bg-color-ghost-active);
+    }
+
+    &:not(:disabled):hover {
+        joy-icon {
+            color: var(--button-color-ghost-hover);
+        }
+    }
+
+    &:disabled, &:disabled:hover {
+        background-color: transparent;
+    }
+}
+
+#{$_CLASS}_admin {
+    color: white;
+    background-color: var(--button-bg-color-admin);
+}
+
+@include sizes.setSizes($_CLASS);

@@ -1,0 +1,78 @@
+$block-height_big: 64px;
+$block-height_medium: 48px;
+$block-height_small: 40px;
+$block-height_xsmall: 32px;
+
+$radius-block_big: $block-height_big / 2;
+$radius-block_medium: $block-height_medium / 2;
+$radius-block_small: $block-height_small / 2;
+
+$_padding-small: var(--joy-core-spacing-2) var(--joy-core-spacing-4);
+$_padding-medium: var(--joy-core-spacing-3) var(--joy-core-spacing-6);
+$_padding-big: var(--joy-core-spacing-4) var(--joy-core-spacing-8);
+
+$_min-width: 160px;
+$_space-around-cta: 4px;
+// To calculate precise border-radius according to the space we need around the CTA for focus state, we need to add a bit of px
+$_border-radius_to_add_around_cta: #{$_space-around-cta/2};
+
+$BTN_SIZE_CONFIG: (
+    xsmall: (
+        height: $block-height_xsmall,
+        fontSize: var(--joy-font-size-xs),
+        radius: $radius-block_small,
+        padding: var(--joy-core-spacing-2) var(--joy-core-spacing-8)
+    ),
+    small: (
+        height: $block-height_small,
+        fontSize: var(--joy-font-size-s),
+        radius: $radius-block_small,
+        padding: var(--joy-core-spacing-3) var(--joy-core-spacing-9)
+    ),
+    medium: (
+        height: $block-height_medium,
+        fontSize: var(--joy-font-size-m),
+        radius: $radius-block_medium,
+        padding: var(--joy-core-spacing-3) var(--joy-core-spacing-9),
+        minWidth: $_min-width
+    ),
+    large: (
+        height: $block-height_big,
+        fontSize: var(--joy-font-size-l),
+        radius: $radius-block_big,
+        padding: var(--joy-core-spacing-4) var(--joy-core-spacing-9),
+        minWidth: $_min-width
+    )
+);
+
+@mixin btnSize($sizeConfig: map-get($BTN_SIZE_CONFIG, medium), $applyMinWidth: true) {
+    $minHeight: map-get($sizeConfig, height);
+    $fontSize: map-get($sizeConfig, fontSize);
+    $radius: map-get($sizeConfig, radius);
+    $padding: map-get($sizeConfig, padding);
+    $minWidth: map-get($sizeConfig, minWidth);
+
+    min-height: $minHeight;
+    padding: $padding;
+    font-size: $fontSize;
+    border-radius: $radius;
+
+    @if $minWidth != null and $applyMinWidth == true {
+        min-width: $minWidth;
+    }
+
+    &:after {
+        border-radius: calc(#{$radius} + #{$_border-radius_to_add_around_cta});
+    }
+}
+
+/**
+Sizes
+ */
+@mixin setSizes($class) {
+    @each $size, $config in $BTN_SIZE_CONFIG {
+        #{$class}_#{$size} {
+            @include btnSize($config);
+        }
+    }
+}

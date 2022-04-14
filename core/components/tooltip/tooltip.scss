@@ -1,0 +1,79 @@
+@use '../../style/utils';
+
+$_CLASS: '.joy-tooltip';
+$_PADDING: var(--joy-core-spacing-4);
+
+::slotted(*) {
+    font-size: inherit;
+    font-family: inherit;
+    color: inherit;
+    margin: 0;
+}
+
+::slotted(strong) {
+    font-weight: bold;
+}
+
+::slotted(small) {
+    font-size: var(--joy-font-size-xxs);
+}
+
+:host {
+    --tooltip-bg-color-primary: var(--joy-color-secondary-30);
+    --tooltip-color-primary: white;
+    --tooltip-bg-color-secondary: var(--joy-color-neutral-2);
+    --tooltip-color-secondary: var(--joy-color-neutral-6);
+
+    @include utils.getFontProperties(xs);
+}
+
+:host(#{$_CLASS}) {
+    position: absolute;
+    font-weight: normal;
+    box-sizing: border-box;
+    z-index: var(--joy-core-z-index-tooltip);
+    border-radius: var(--joy-core-radius-3);
+    padding: $_PADDING;
+    box-shadow: var(--joy-core-elevation-3);
+
+    &:before {
+        content: '';
+        display: block;
+        position: absolute;
+        top: -7px;
+        width: 0;
+        height: 0;
+        border-left: 7px solid transparent;
+        border-right: 7px solid transparent;
+    }
+}
+
+:host(#{$_CLASS}__primary) {
+    color: var(--tooltip-color-primary);
+    background-color: var(--tooltip-bg-color-primary);
+
+    &:before {
+        border-bottom: 7px solid var(--tooltip-bg-color-primary);
+    }
+}
+
+:host(#{$_CLASS}__secondary) {
+    color: var(--tooltip-color-secondary);
+    background-color: var(--tooltip-bg-color-secondary);
+
+    &:before {
+        border-bottom: 7px solid var(--tooltip-bg-color-secondary);
+    }
+}
+
+:host(#{$_CLASS}__left) {
+    &:before {
+        left: $_PADDING;
+    }
+}
+
+:host(#{$_CLASS}__right) {
+    &:before {
+        right: $_PADDING;
+    }
+}
