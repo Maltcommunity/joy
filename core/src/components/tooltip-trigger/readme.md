@@ -26,11 +26,11 @@ category: Webcomponents
 
 | Property       | Attribute       | Description                                                                          | Type                       | Default        |
 | -------------- | --------------- | ------------------------------------------------------------------------------------ | -------------------------- | -------------- |
-| `appendTo`     | `append-to`     | Use basic selector to inject the tooltip in a specific DOM location. Default is body | `"body" \| "host"`         | `'body'`       |
-| `event`        | `event`         | Define the event needed to display the tooltip                                       | `"click" \| "mouseenter"`  | `'mouseenter'` |
-| `position`     | `position`      | Tooltip position. 2 possible values                                                  | `"left" \| "right"`        | `'left'`       |
+| `appendTo`     | `append-to`     | Use basic selector to inject the tooltip in a specific DOM location. Default is body | `"body" / "host"`         | `'body'`       |
+| `event`        | `event`         | Define the event needed to display the tooltip                                       | `"click" / "mouseenter"`  | `'mouseenter'` |
+| `position`     | `position`      | Tooltip position. 2 possible values                                                  | `"left" / "right"`        | `'left'`       |
 | `tooltipWidth` | `tooltip-width` | Allows to override tooltip size. Allows to more easily calculate its position        | `number`                   | `250`          |
-| `variant`      | `variant`       | Color theme. 2 possible values                                                       | `"primary" \| "secondary"` | `'primary'`    |
+| `variant`      | `variant`       | Color theme. 2 possible values                                                       | `"primary" / "secondary"` | `'primary'`    |
 
 
 ## Slots

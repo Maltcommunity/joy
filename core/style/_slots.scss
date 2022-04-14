@@ -1,8 +1,0 @@
-/**pagination
- * Global stylesheet to properly style slotted contents. Due to ::slotted css property limitation, let's simply inject the style globally
- */
-
-@use '../components/checkbox/style/slots' as checkboxSlots;
-@use '../components/pagination/slots' as paginationSlots;
-@use '../components/stepper/style/slots' as stepperSlots;
-@use '../components/tabs/style/slots' as tabsSlots;

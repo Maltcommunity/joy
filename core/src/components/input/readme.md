@@ -90,17 +90,17 @@ For any reason, if you can't use webcomponent version, use this plain HTML/CSS (
 | -------------- | -------------- | -------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------ | ----------- |
 | `autocomplete` | `autocomplete` | The input's autocomplete policy.                                                                         | `string`                                                                       | `'off'`     |
 | `disabled`     | `disabled`     | Makes the field disabled or not                                                                          | `boolean`                                                                      | `false`     |
-| `icon`         | `icon`         | Add an icon on the left side before the value                                                            | `string \| undefined`                                                          | `undefined` |
+| `icon`         | `icon`         | Add an icon on the left side before the value                                                            | `string / undefined`                                                          | `undefined` |
 | `invalid`      | `invalid`      | Makes the field readonly or not                                                                          | `boolean`                                                                      | `false`     |
-| `max`          | `max`          | If the type is "number" then you can use max property.                                                   | `number \| undefined`                                                          | `undefined` |
-| `min`          | `min`          | If the type is "number" then you can use min property.                                                   | `number \| undefined`                                                          | `undefined` |
+| `max`          | `max`          | If the type is "number" then you can use max property.                                                   | `number / undefined`                                                          | `undefined` |
+| `min`          | `min`          | If the type is "number" then you can use min property.                                                   | `number / undefined`                                                          | `undefined` |
 | `name`         | `name`         | Input types. List is not exhaustive, this component does not deal with checkboxes, radios, files, dates. | `string`                                                                       | `''`        |
 | `placeholder`  | `placeholder`  | The input's placeholder text.                                                                            | `string`                                                                       | `''`        |
 | `readonly`     | `readonly`     | Makes the field readonly or not                                                                          | `boolean`                                                                      | `false`     |
 | `required`     | `required`     | Makes the field required                                                                                 | `boolean`                                                                      | `false`     |
-| `size`         | `size`         | The input's size.                                                                                        | `"large" \| "medium" \| "small"`                                               | `'medium'`  |
-| `type`         | `type`         | Input types. List is not exhaustive, this component does not deal with checkboxes, radios, files, dates. | `"email" \| "hidden" \| "number" \| "password" \| "search" \| "tel" \| "text"` | `'text'`    |
-| `unit`         | `unit`         | If the field is of type number, you can specify a unit like %, days, hours, whatever you want            | `string \| undefined`                                                          | `undefined` |
+| `size`         | `size`         | The input's size.                                                                                        | `"large" / "medium" / "small"`                                               | `'medium'`  |
+| `type`         | `type`         | Input types. List is not exhaustive, this component does not deal with checkboxes, radios, files, dates. | `"email" / "hidden" / "number" / "password" / "search" / "tel" / "text"` | `'text'`    |
+| `unit`         | `unit`         | If the field is of type number, you can specify a unit like %, days, hours, whatever you want            | `string / undefined`                                                          | `undefined` |
 | `value`        | `value`        | Field value                                                                                              | `string`                                                                       | `''`        |
 
 
@@ -108,7 +108,7 @@ For any reason, if you can't use webcomponent version, use this plain HTML/CSS (
 
 | Event         | Description                                                                                           | Type                                                                          |
 | ------------- | ----------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------- |
-| `valueChange` | Custom event that returns the component instance and its actual value. Binded to input native event * | `CustomEvent<{ element: HTMLJoyInputElement; value?: string \| undefined; }>` |
+| `valueChange` | Custom event that returns the component instance and its actual value. Binded to input native event * | `CustomEvent<{ element: HTMLJoyInputElement; value?: string / undefined; }>` |
 
 
 ## Methods

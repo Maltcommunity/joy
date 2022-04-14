@@ -25,10 +25,8 @@ describe('snackbar e2e', () => {
             await page.setContent('<joy-snackbar></joy-snackbar>');
 
             const element = await page.find('joy-snackbar >>> .joy-snackbar_success');
-            const icon = await page.find('joy-snackbar >>> joy-icon');
 
             expect(element).not.toBe(null);
-            expect(icon.classList.contains('joy-icon--turquoise')).toBe(true);
         });
 
         it('renders a success Snackbar', async () => {
@@ -36,10 +34,8 @@ describe('snackbar e2e', () => {
             await page.setContent('<joy-snackbar level="success"></joy-snackbar>');
 
             const element = await page.find('joy-snackbar >>> .joy-snackbar_success');
-            const icon = await page.find('joy-snackbar >>> joy-icon');
 
             expect(element).not.toBe(null);
-            expect(icon.classList.contains('joy-icon--turquoise')).toBe(true);
         });
 
         it('renders an Info Snackbar', async () => {
@@ -58,10 +54,8 @@ describe('snackbar e2e', () => {
             await page.setContent('<joy-snackbar level="warning"></joy-snackbar>');
 
             const element = await page.find('joy-snackbar >>> .joy-snackbar_warning');
-            const icon = await page.find('joy-snackbar >>> joy-icon');
 
             expect(element).not.toBe(null);
-            expect(icon.classList.contains('joy-icon--yellow')).toBe(true);
         });
 
         it('renders an error Snackbar', async () => {
@@ -69,10 +63,8 @@ describe('snackbar e2e', () => {
             await page.setContent('<joy-snackbar level="error"></joy-snackbar>');
 
             const element = await page.find('joy-snackbar >>> .joy-snackbar_error');
-            const icon = await page.find('joy-snackbar >>> joy-icon');
 
             expect(element).not.toBe(null);
-            expect(icon.classList.contains('joy-icon--red')).toBe(true);
         });
     });
 

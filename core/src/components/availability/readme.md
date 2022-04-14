@@ -32,8 +32,8 @@ category: Webcomponents
 | Property    | Attribute    | Description                                                  | Type                                                                                                                | Default |
 | ----------- | ------------ | ------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------- | ------- |
 | `isPartial` | `is-partial` | isPartial dot, define fill or stroke dot display             | `boolean`                                                                                                           | `false` |
-| `label`     | `label`      | Text Availability content, if null, only dot will be display | `null \| string`                                                                                                    | `null`  |
-| `status`    | `status`     | Status Availability, define color                            | `"" \| "AVAILABLE" \| "AVAILABLE_AND_VERIFIED" \| "AVAILABLE_SOON" \| "NOT_AVAILABLE" \| "NOT_AVAILABLE_WITH_DATE"` | `''`    |
+| `label`     | `label`      | Text Availability content, if null, only dot will be display | `null / string`                                                                                                    | `null`  |
+| `status`    | `status`     | Status Availability, define color                            | `"" / "AVAILABLE" / "AVAILABLE_AND_VERIFIED" / "AVAILABLE_SOON" / "NOT_AVAILABLE" / "NOT_AVAILABLE_WITH_DATE"` | `''`    |
 
 
 ## CSS Custom Properties

@@ -41,7 +41,7 @@ category: Webcomponents
 | Property   | Attribute  | Description                          | Type                   | Default     |
 | ---------- | ---------- | ------------------------------------ | ---------------------- | ----------- |
 | `selected` | `selected` | Selected state *                     | `number`               | `1`         |
-| `variant`  | `variant`  | Variant colors. 2 possibles values * | `"default" \| "light"` | `'default'` |
+| `variant`  | `variant`  | Variant colors. 2 possibles values * | `"default" / "light"` | `'default'` |
 
 
 ## Events

@@ -701,7 +701,7 @@ export namespace Components {
         /**
           * The criticality level of your notification. Range from simple info to error.
          */
-        "level"?: SnackbarLevels;
+        "level": SnackbarLevels;
         /**
           * By default, the snackbar will be displayed in a fixed position at the bottom of the page. You can override this behavior by setting position="relative"
          */

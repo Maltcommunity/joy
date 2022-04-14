@@ -6,14 +6,10 @@ $_CLASS-PREFIX: '.joy-snackbar';
     --snackbar-bottom-space: var(--joy-core-spacing-11);
     --snackbar-color-links: var(--joy-color-secondary-50);
 
-    --snackbar-bg-color-info: var(--joy-color-secondary-10);
-    --snackbar-color-info: var(--joy-color-secondary-50);
-    --snackbar-bg-color-warning: var(--joy-color-quaternary-10);
-    --snackbar-color-warning: var(--joy-color-quaternary-50);
-    --snackbar-bg-color-error: var(--joy-color-primary-10);
-    --snackbar-color-error: var(--joy-color-primary-50);
-    --snackbar-bg-color-success: var(--joy-color-tertiary-10);
-    --snackbar-color-success: var(--joy-color-tertiary-50);
+    --snackbar-bg-color: default;
+    --snackbar-content-color: default;
+
+    --snackbar-transition-timing: var(--joy-transition-duration-long);
 
     position: fixed;
     bottom: var(--snackbar-bottom-space);
@@ -51,9 +47,9 @@ $_CLASS-PREFIX: '.joy-snackbar';
     overflow: hidden;
     border-radius: var(--joy-core-radius-3);
     text-align: left;
-    background-color: var(--snackbar-bg-color-info);
+    background-color: var(--snackbar-bg-color);
     color: inherit;
-    animation: showAnimation var(--joy-transition-duration-long);
+    animation: showAnimation var(--snackbar-transition-timing);
     max-width: 85%;
     margin: auto;
     box-shadow: var(--joy-core-elevation-3);
@@ -71,11 +67,7 @@ $_CLASS-PREFIX: '.joy-snackbar';
         left: 0;
         width: 7px;
         height: 100%;
-        background-color: var(--snackbar-color-info);
-    }
-
-    svg {
-        color: var(--snackbar-color-info);
+        background-color: var(--snackbar-content-color);
     }
 
     &__heading {
@@ -95,6 +87,10 @@ $_CLASS-PREFIX: '.joy-snackbar';
         display: inline-flex;
         margin-right: var(--joy-core-spacing-4);
         padding-top: 4px;
+
+        joy-icon {
+            color: var(--snackbar-content-color);
+        }
     }
 
     &__content {
@@ -108,10 +104,6 @@ $_CLASS-PREFIX: '.joy-snackbar';
 
     &__close {
         display: flex;
-
-        svg {
-            display: inline-block;
-        }
 
         &#{$_CLASS-PREFIX}__close-fixed {
             position: absolute;
@@ -127,57 +119,23 @@ $_CLASS-PREFIX: '.joy-snackbar';
     }
 
     &_info {
-        background-color: var(--snackbar-bg-color-info);
-        &::before {
-            background-color: var(--snackbar-color-info);
-        }
-
-        svg {
-            color: var(--snackbar-color-info);
-        }
+        --snackbar-bg-color: var(--joy-color-information-10);
+        --snackbar-content-color: var(--joy-color-information-50);
     }
 
     &_warning {
-        background-color: var(--snackbar-bg-color-warning);
-
-        &::before {
-            background-color: var(--snackbar-color-warning);
-        }
-
-        #{$_CLASS-PREFIX}__img {
-            svg {
-                color:  var(--snackbar-color-warning);
-            }
-        }
-
+        --snackbar-bg-color: var(--joy-color-warning-10);
+        --snackbar-content-color: var(--joy-color-warning-50);
     }
 
     &_error {
-        background-color: var(--snackbar-bg-color-error);
-
-        &::before {
-            background-color: var(--snackbar-color-error);
-        }
-
-        #{$_CLASS-PREFIX}__img {
-            svg {
-                color: var(--snackbar-color-error);
-            }
-        }
+        --snackbar-bg-color: var(--joy-color-error-10);
+        --snackbar-content-color: var(--joy-color-error-50);
     }
 
     &_success {
-        background-color: var(--snackbar-bg-color-success);
-
-        &::before {
-            background-color: var(--snackbar-color-success);
-        }
-
-        #{$_CLASS-PREFIX}__img {
-            svg {
-                color: var(--snackbar-color-success);
-            }
-        }
+        --snackbar-bg-color: var(--joy-color-success-10);
+        --snackbar-content-color: var(--joy-color-success-50);
     }
 
     @media screen and (max-width: 991px) {

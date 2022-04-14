@@ -1,28 +1,11 @@
 :host {
     /**
-     * @prop --highlight-background-success: background color for SUCCESS state
-     * @prop --highlight-color-success: text color for SUCCESS state
-     * @prop --highlight-background-info: background color for INFO state
-     * @prop --highlight-color-info: text color for INFO state
-     * @prop --highlight-background-warning: background color for WARNING state
-     * @prop --highlight-color-warning: text color for WARNING state
-     * @prop --highlight-background-error: background color for ERROR state
-     * @prop --highlight-color-error: text color for ERROR state
+     * @prop --highlight-background-color: background color of the highlight
+     * @prop --highlight-content-color: content color of the highlight. Applied to the left icon and left-border
      */
-    --highlight-background-success: var(--joy-color-success-10);
-    --highlight-color-success: var(--joy-color-success-50);
 
-    --highlight-background-info: var(--joy-color-information-10);
-    --highlight-color-info: var(--joy-color-information-50);
-
-    --highlight-background-warning: var(--joy-color-warning-10);
-    --highlight-color-warning: var(--joy-color-warning-50);
-
-    --highlight-background-error: var(--joy-color-error-10);
-    --highlight-color-error: var(--joy-color-error-50);
-
-    --highlight-background-neutral: var(--joy-color-neutral-2);
-    --highlight-color-neutral: var(--joy-color-neutral-6);
+    --highlight-background-color: var(--joy-color-neutral-6);
+    --highlight-content-color: var(--joy-color-neutral-6);
 
     display: block;
     width: 100%;
@@ -35,44 +18,35 @@
     padding: var(--joy-core-spacing-5);
     border-radius: var(--joy-core-radius-3);
     text-align: left;
-    background-color: var(--highlight-background-info);
+    background-color: var(--highlight-background-color);
+
+    joy-icon:first-child {
+        color: var(--highlight-content-color);
+    }
 
     &_neutral {
-        background-color: var(--highlight-background-neutral);
-
-        > joy-icon:first-child {
-            color: var(--highlight-color-neutral);
-        }
+        --highlight-background-color: var(--joy-color-neutral-2);
+        --highlight-content-color: var(--joy-color-neutral-6);
     }
 
     &_info {
-        > joy-icon:first-child {
-            color: var(--highlight-color-info);
-        }
+        --highlight-background-color: var(--joy-color-information-10);
+        --highlight-content-color: var(--joy-color-information-50);
     }
 
     &_warning {
-        background-color: var(--highlight-background-warning);
-
-        > joy-icon:first-child {
-            color: var(--highlight-color-warning);
-        }
+        --highlight-background-color: var(--joy-color-warning-10);
+        --highlight-content-color: var(--joy-color-warning-50);
     }
 
     &_error {
-        background-color: var(--highlight-background-error);
-
-        > joy-icon:first-child {
-            color: var(--highlight-color-error);
-        }
+        --highlight-background-color: var(--joy-color-error-10);
+        --highlight-content-color: var(--joy-color-error-50);
     }
 
     &_success {
-        background-color: var(--highlight-background-success);
-
-        > joy-icon:first-child {
-            color: var(--highlight-color-success);
-        }
+        --highlight-background-color: var(--joy-color-success-10);
+        --highlight-content-color: var(--joy-color-success-50);
     }
 
     &_small {
@@ -82,10 +56,5 @@
     > joy-icon:first-child {
         margin-right: 10px;
         margin-top: 2px;
-
-        svg {
-            width: 16px;
-            height: 16px;
-        }
     }
 }

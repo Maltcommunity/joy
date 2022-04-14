@@ -101,14 +101,14 @@ async function yourFunction() {
 | ---------- | ---------- | ------------------------------------------------------------------------------------------------------ | --------------------------------------------------------------------- | ----------- |
 | `disabled` | `disabled` | Disabled attribute for buttons                                                                         | `boolean`                                                             | `false`     |
 | `download` | `download` | If the link as a downloadable content                                                                  | `boolean`                                                             | `false`     |
-| `href`     | `href`     | Set the href of your link                                                                              | `string \| undefined`                                                 | `undefined` |
-| `icon`     | `icon`     | Set the icon name if you need one                                                                      | `string \| undefined`                                                 | `undefined` |
+| `href`     | `href`     | Set the href of your link                                                                              | `string / undefined`                                                 | `undefined` |
+| `icon`     | `icon`     | Set the icon name if you need one                                                                      | `string / undefined`                                                 | `undefined` |
 | `loading`  | `loading`  | Set the button in loading state                                                                        | `boolean`                                                             | `false`     |
-| `rel`      | `rel`      | Native rel attribute for hyperlinks. See https://developer.mozilla.org/fr/docs/Web/HTML/Attributes/rel | `string \| undefined`                                                 | `undefined` |
-| `size`     | `size`     | Button or Link size                                                                                    | `"large" \| "medium" \| "small" \| "xsmall"`                          | `'medium'`  |
-| `target`   | `target`   | Native target attribute for hyperlinks.                                                                | `"_blank" \| "_parent" \| "_self" \| "_top" \| undefined`             | `undefined` |
-| `type`     | `type`     | Type attribute for buttons                                                                             | `"button" \| "reset" \| "submit"`                                     | `'button'`  |
-| `variant`  | `variant`  | Button or Link color theme                                                                             | `"admin" \| "ghost" \| "main" \| "primary" \| "secondary" \| "white"` | `'primary'` |
+| `rel`      | `rel`      | Native rel attribute for hyperlinks. See https://developer.mozilla.org/fr/docs/Web/HTML/Attributes/rel | `string / undefined`                                                 | `undefined` |
+| `size`     | `size`     | Button or Link size                                                                                    | `"large" / "medium" / "small" / "xsmall"`                          | `'medium'`  |
+| `target`   | `target`   | Native target attribute for hyperlinks.                                                                | `"_blank" / "_parent" / "_self" / "_top" / undefined`             | `undefined` |
+| `type`     | `type`     | Type attribute for buttons                                                                             | `"button" / "reset" / "submit"`                                     | `'button'`  |
+| `variant`  | `variant`  | Button or Link color theme                                                                             | `"admin" / "ghost" / "main" / "primary" / "secondary" / "white"` | `'primary'` |
 
 
 ## Methods

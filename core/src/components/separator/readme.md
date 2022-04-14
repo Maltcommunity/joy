@@ -21,7 +21,7 @@ category: Webcomponents
 
 | Property            | Attribute | Description                                                                       | Type                   | Default     |
 | ------------------- | --------- | --------------------------------------------------------------------------------- | ---------------------- | ----------- |
-| `size`              | `size`    | Separator size. 2 possible values : 100% width or adjusted size according to text | `"default" \| "small"` | `'default'` |
+| `size`              | `size`    | Separator size. 2 possible values : 100% width or adjusted size according to text | `"default" / "small"` | `'default'` |
 | `text` _(required)_ | `text`    | The separator text                                                                | `string`               | `undefined` |
 
 

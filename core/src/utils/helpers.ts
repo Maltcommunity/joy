@@ -1,5 +1,4 @@
-import {BackDropOrigin} from '../types';
-
+import {BackDropOrigin, Level} from '../types';
 export {generatedInputNameAndId, renderInputOutsideShadowRoot} from './dom';
 
 /**
@@ -92,4 +91,29 @@ export function destroyBackdrop(): void {
         backdrop.remove();
         preventBodyScroll(false);
     }
+}
+
+export enum Levels {
+    DEFAULT = 'default',
+    INFORMATION = 'information',
+    WARNING = 'warning',
+    SUCCESS = 'success',
+    ERROR = 'error',
+}
+
+export function iconLevel(level: Level): string {
+    let icon;
+
+    switch (level) {
+        case Levels.ERROR:
+            icon = 'warning-triangle';
+            break;
+        case Levels.SUCCESS:
+            icon = 'check';
+            break;
+        default:
+            icon = 'info-circle';
+    }
+
+    return icon;
 }

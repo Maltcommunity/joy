@@ -1,6 +1,6 @@
 import {Component, Prop, h, State, Element, Event, EventEmitter, Host} from '@stencil/core';
-import {LEVELS} from './service';
-import {IconColors, SnackbarLevels} from '../../types';
+import {iconLevel} from '../../utils';
+import {SnackbarLevels} from '../../types';
 
 @Component({
     tag: 'joy-snackbar',
@@ -12,7 +12,7 @@ export class Snackbar {
     /**
      * The criticality level of your notification. Range from simple info to error.
      */
-    @Prop() level?: SnackbarLevels = 'success';
+    @Prop() level: SnackbarLevels = 'success';
     /**
      * HTML with your custom message injected in the component. It won't be escaped so please be careful with XSS !
      */
@@ -61,27 +61,7 @@ export class Snackbar {
     }
 
     get icon(): HTMLJoyIconElement {
-        let iconName: string = '';
-        let iconColor: IconColors = 'teal';
-
-        switch (this.level) {
-            case LEVELS[3]:
-                iconName = 'cross';
-                iconColor = 'red';
-                break;
-            case LEVELS[0]:
-                iconName = 'check';
-                iconColor = 'turquoise';
-                break;
-            case LEVELS[2]:
-                iconName = 'info-circle';
-                iconColor = 'yellow';
-                break;
-            default:
-                iconName = 'info-circle'; // default value
-        }
-
-        return <joy-icon name={iconName} color={iconColor}></joy-icon>;
+        return <joy-icon name={iconLevel(this.level)} />;
     }
 
     componentDidRender() {

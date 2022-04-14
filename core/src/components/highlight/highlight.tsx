@@ -1,5 +1,6 @@
 import {Component, h, Prop} from '@stencil/core';
 import {HighlightLevels} from '../../types';
+import {iconLevel} from '../../utils';
 
 /** @slot default - Text content of your highlight */
 
@@ -16,48 +17,14 @@ export class Panel {
     /** Defines the criticalness of the highlight */
     @Prop() level: HighlightLevels = 'info';
 
-    private get getColorAccordingToLevel() {
-        switch (this.level) {
-            case 'neutral':
-                return 'grey';
-            case 'info':
-                return 'teal';
-            case 'success':
-                return 'turquoise';
-            case 'warning':
-                return 'yellow';
-            case 'error':
-                return 'red';
-            default:
-                return 'teal';
-        }
-    }
-
-    private get getIconAccordingToLevel() {
-        switch (this.level) {
-            case 'neutral':
-                return 'info-circle';
-            case 'info':
-                return 'info-circle';
-            case 'success':
-                return 'check';
-            case 'warning':
-                return 'info-circle';
-            case 'error':
-                return 'warning-triangle';
-            default:
-                return 'info-circle';
-        }
-    }
-
     private get getRelevantIcon() {
-        return this.icon ? this.icon : this.getIconAccordingToLevel;
+        return this.icon ? this.icon : iconLevel(this.level);
     }
 
     render() {
         return (
             <div class={'joy-highlight joy-highlight_' + this.level}>
-                {this.displayIcon && <joy-icon name={this.getRelevantIcon} color={this.getColorAccordingToLevel}></joy-icon>}
+                {this.displayIcon && <joy-icon name={this.getRelevantIcon}></joy-icon>}
                 <div>
                     <slot />
                 </div>

@@ -1,39 +1,6 @@
 import {newE2EPage} from '@stencil/core/testing';
 
-const CLASS_OPTION_SELECTED = 'joy-select-option_selected';
-
-describe.skip('Select - e2e', () => {
-    it('renders a native select', async () => {
-        const page = await newE2EPage();
-
-        await page.setContent(`
-            <joy-select name="select-name">
-                <joy-select-option class="placeholder" disabled selected>I'm a slotted placeholder</joy-select-option>
-                <joy-select-option class="first" value="first">First Text</joy-select-option>
-                <joy-select-option class="second" value="second">Second Text</joy-select-option>
-            </joy-select>
-        `);
-
-        const nativeSelect = await page.find('select');
-        const nativeSelectOption = await page.findAll('option');
-        expect(nativeSelect).toBeTruthy();
-        expect(nativeSelectOption).toBeTruthy();
-        expect(nativeSelectOption).toHaveLength(3);
-        expect(nativeSelectOption[0]).toHaveAttribute('disabled');
-        expect(nativeSelectOption[0]).toEqualAttribute('value', '');
-        expect(nativeSelectOption[0]).toEqualText("I'm a slotted placeholder");
-
-        expect(nativeSelectOption[1]).toEqualText('First Text');
-        expect(nativeSelectOption[1]).toEqualAttribute('value', 'first');
-        expect(nativeSelectOption[1]).not.toHaveAttribute('selected');
-        expect(nativeSelectOption[1]).not.toHaveAttribute('disabled');
-
-        expect(nativeSelectOption[2]).toEqualText('Second Text');
-        expect(nativeSelectOption[2]).toEqualAttribute('value', 'second');
-        expect(nativeSelectOption[2]).not.toHaveAttribute('selected');
-        expect(nativeSelectOption[2]).not.toHaveAttribute('disabled');
-    });
-
+describe('Select - e2e', () => {
     it('renders a select with default placeholder', async () => {
         const page = await newE2EPage();
 
@@ -44,8 +11,8 @@ describe.skip('Select - e2e', () => {
             </joy-select>
         `);
 
-        const input = await page.find('joy-select >>> .joy-select__input');
-        expect(input).toEqualText('-');
+        const result = await page.compareScreenshot('Default select without placeholder');
+        expect(result).toMatchScreenshot();
     });
 
     it('renders a select with placeholder using <joy-select-option disabled selected/>', async () => {
@@ -59,8 +26,8 @@ describe.skip('Select - e2e', () => {
             </joy-select>
         `);
 
-        const input = await page.find('joy-select >>> .joy-select__input');
-        expect(input).toEqualText("I'm a slotted placeholder");
+        const result = await page.compareScreenshot('Select with given placeholder');
+        expect(result).toMatchScreenshot();
     });
 
     it('renders a select with defined "value" prop', async () => {
@@ -74,25 +41,8 @@ describe.skip('Select - e2e', () => {
             </joy-select>
         `);
 
-        const input = await page.find('joy-select >>> .joy-select__input');
-
-        expect(input).toEqualText('Second Text');
-    });
-
-    it('renders a select with a joy-select-option selected', async () => {
-        const page = await newE2EPage();
-
-        await page.setContent(`
-            <joy-select name="select-name">
-                <joy-select-option disabled>I'm a slotted placeholder</joy-select-option>
-                <joy-select-option value="first" selected>First Text</joy-select-option>
-                <joy-select-option value="second">Second Text</joy-select-option>
-            </joy-select>
-        `);
-
-        const input = await page.find('joy-select >>> .joy-select__input');
-
-        expect(input).toEqualText('First Text');
+        const result = await page.compareScreenshot('Select with given value');
+        expect(result).toMatchScreenshot();
     });
 
     it('show a dropdown options list when click on joy-select element', async () => {
@@ -106,136 +56,62 @@ describe.skip('Select - e2e', () => {
             </joy-select>
         `);
 
-        const input = await page.find('joy-select >>> .joy-select__input');
-        const selectOptionsList = await page.find('joy-select >>> .joy-select__options');
-        expect(await selectOptionsList.isVisible()).toBe(false);
-        input.click();
+        const select = await page.find('joy-select');
+        await select.click();
         await page.waitForChanges();
-        expect(await selectOptionsList.isVisible()).toBe(true);
+
+        const result = await page.compareScreenshot('Show the options dropdown');
+        expect(result).toMatchScreenshot();
     });
 
-    it('when focused, On press Keydown or KeyRight, change text and value properly', async () => {
+    it('when focused, On press ArrowDown change text and value properly', async () => {
         const page = await newE2EPage();
 
         await page.setContent(`
             <joy-select name="select-name">
                 <joy-select-option disabled selected>I'm a slotted placeholder</joy-select-option>
-                <joy-select-option value="first">First Text</joy-select-option>
-                <joy-select-option value="second">Second Text</joy-select-option>
+                <joy-select-option value="first">First Text selectable with keyboard</joy-select-option>
+                <joy-select-option value="second">Second Text selectable with keyboard</joy-select-option>
             </joy-select>
         `);
 
         const select = await page.find('joy-select');
-        const input = await page.find('joy-select >>> .joy-select__input');
 
-        expect(input).toEqualText("I'm a slotted placeholder");
-        expect(select).toEqualAttribute('value', '');
-
-        select.press('ArrowDown');
-        await page.waitForChanges();
-        expect(input).toEqualText('First Text');
-        expect(select).toEqualAttribute('value', 'first');
-
-        select.press('ArrowRight');
+        await select.focus();
+        await page.keyboard.down('ArrowDown');
         await page.waitForChanges();
 
-        expect(input).toEqualText('Second Text');
-        expect(select).toEqualAttribute('value', 'second');
+        const result = await page.compareScreenshot('Select the first option');
+        expect(result).toMatchScreenshot();
 
-        select.press('ArrowDown');
+        await select.focus();
+        await page.keyboard.down('ArrowDown');
         await page.waitForChanges();
 
-        expect(input).toEqualText('First Text');
-        expect(select).toEqualAttribute('value', 'first');
+        const result2 = await page.compareScreenshot('Select the second option');
+        expect(result2).toMatchScreenshot();
     });
 
-    it('when focused, On press KeyUp or KeyLeft, change text and value properly', async () => {
-        const page = await newE2EPage();
-
-        await page.setContent(`
-            <joy-select name="select-name">
-                <joy-select-option disabled selected>I'm a slotted placeholder</joy-select-option>
-                <joy-select-option value="first">First Text</joy-select-option>
-                <joy-select-option value="second">Second Text</joy-select-option>
-            </joy-select>
-        `);
-
-        const select = await page.find('joy-select');
-        const input = await page.find('joy-select >>> .joy-select__input');
-
-        expect(input).toEqualText("I'm a slotted placeholder");
-        expect(select).toEqualAttribute('value', '');
-
-        select.press('ArrowUp');
-        await page.waitForChanges();
-        expect(input).toEqualText('Second Text');
-        expect(select).toEqualAttribute('value', 'second');
-
-        select.press('ArrowLeft');
-        await page.waitForChanges();
-
-        expect(input).toEqualText('First Text');
-        expect(select).toEqualAttribute('value', 'first');
-
-        select.press('ArrowUp');
-        await page.waitForChanges();
-
-        expect(input).toEqualText('Second Text');
-        expect(select).toEqualAttribute('value', 'second');
-    });
-
-    describe('when dropdown is shown', () => {
+    describe.skip('when dropdown is shown', () => {
+        // TODO FIX THIS SCENARIO
         it('On press Keydown or KeyRight, change text and value properly', async () => {
             const page = await newE2EPage();
 
             await page.setContent(`
-            <joy-select name="select-name">
-                <joy-select-option class="placeholder" disabled selected>I'm a slotted placeholder</joy-select-option>
-                <joy-select-option class="first" value="first">First Text</joy-select-option>
-                <joy-select-option class="second" value="second">Second Text</joy-select-option>
-            </joy-select>
-        `);
+                <joy-select name="select-name" value="second">
+                    <joy-select-option class="placeholder" disabled selected>I'm a slotted placeholder</joy-select-option>
+                    <joy-select-option class="first" value="first">First Text</joy-select-option>
+                    <joy-select-option class="second" value="second">Second Text should be highlighted</joy-select-option>
+                </joy-select>
+            `);
+
             const select = await page.find('joy-select');
-            const input = await page.find('joy-select >>> .joy-select__input');
-            const firstOption = await page.find('.placeholder');
-            const secondOption = await page.find('.first');
-            const thirdOption = await page.find('.second');
+            const dropdown = await page.find('joy-select >>> .joy-select__options');
+            await select.click();
+            await dropdown.isVisible();
 
-            select.click();
-            await page.waitForChanges();
-
-            expect(input).toEqualText("I'm a slotted placeholder");
-            expect(select).toEqualAttribute('value', '');
-            expect(firstOption).toHaveClass(CLASS_OPTION_SELECTED);
-            expect(secondOption).not.toHaveClass(CLASS_OPTION_SELECTED);
-            expect(thirdOption).not.toHaveClass(CLASS_OPTION_SELECTED);
-
-            select.press('ArrowDown');
-            await page.waitForChanges();
-
-            expect(input).toEqualText('First Text');
-            expect(select).toEqualAttribute('value', 'first');
-            expect(firstOption).not.toHaveClass(CLASS_OPTION_SELECTED);
-            expect(secondOption).toHaveClass(CLASS_OPTION_SELECTED);
-            expect(thirdOption).not.toHaveClass(CLASS_OPTION_SELECTED);
-
-            select.press('ArrowRight');
-            await page.waitForChanges();
-
-            expect(input).toEqualText('Second Text');
-            expect(select).toEqualAttribute('value', 'second');
-            expect(firstOption).not.toHaveClass(CLASS_OPTION_SELECTED);
-            expect(secondOption).not.toHaveClass(CLASS_OPTION_SELECTED);
-            expect(thirdOption).toHaveClass(CLASS_OPTION_SELECTED);
-
-            select.press('ArrowDown');
-            await page.waitForChanges();
-
-            expect(input).toEqualText('First Text');
-            expect(select).toEqualAttribute('value', 'first');
-            expect(firstOption).not.toHaveClass(CLASS_OPTION_SELECTED);
-            expect(secondOption).toHaveClass(CLASS_OPTION_SELECTED);
-            expect(thirdOption).not.toHaveClass(CLASS_OPTION_SELECTED);
+            const result2 = await page.compareScreenshot('Select the second option with open dropdown');
+            expect(result2).toMatchScreenshot();
         });
     });
 });

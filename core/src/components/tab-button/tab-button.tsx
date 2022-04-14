@@ -73,7 +73,9 @@ export class JoyTabButton {
                         <slot />
                     </a>
                 ) : (
-                    <slot />
+                    <button type="button">
+                        <slot />
+                    </button>
                 )}
             </Host>
         );

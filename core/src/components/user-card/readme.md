@@ -75,12 +75,12 @@ If you don't want to deal with any slot, please use following example :
 
 | Property      | Attribute      | Description                                                                                                            | Type                   | Default     |
 | ------------- | -------------- | ---------------------------------------------------------------------------------------------------------------------- | ---------------------- | ----------- |
-| `fullName`    | `full-name`    | Can be the freelancer's full name, or whatever you want. It will be placed at the top right part.                      | `string \| undefined`  | `undefined` |
-| `link`        | `link`         | Giving a link will make the whole component wrapped by an hyperlink                                                    | `string \| undefined`  | `undefined` |
-| `newTab`      | `new-tab`      | Given the link, it will open the link in a new tab                                                                     | `boolean \| undefined` | `false`     |
-| `photoUrl`    | `photo-url`    | Use this prop if you don't want to use the user-card-avatar slot.                                                      | `string \| undefined`  | `undefined` |
-| `ratingValue` | `rating-value` | Freelancer's public rating.                                                                                            | `string \| undefined`  | `undefined` |
-| `subTitle`    | `sub-title`    | Can be the freelancer's job, a company name or whatever you want. It will be placed at the top right part, below title | `string \| undefined`  | `undefined` |
+| `fullName`    | `full-name`    | Can be the freelancer's full name, or whatever you want. It will be placed at the top right part.                      | `string / undefined`  | `undefined` |
+| `link`        | `link`         | Giving a link will make the whole component wrapped by an hyperlink                                                    | `string / undefined`  | `undefined` |
+| `newTab`      | `new-tab`      | Given the link, it will open the link in a new tab                                                                     | `boolean / undefined` | `false`     |
+| `photoUrl`    | `photo-url`    | Use this prop if you don't want to use the user-card-avatar slot.                                                      | `string / undefined`  | `undefined` |
+| `ratingValue` | `rating-value` | Freelancer's public rating.                                                                                            | `string / undefined`  | `undefined` |
+| `subTitle`    | `sub-title`    | Can be the freelancer's job, a company name or whatever you want. It will be placed at the top right part, below title | `string / undefined`  | `undefined` |
 
 
 ## Slots

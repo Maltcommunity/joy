@@ -1,7 +1,0 @@
-@use './shared' as *;
-
-joy-checkbox {
-    a, p a {
-        @include linksStyle();
-    }
-}

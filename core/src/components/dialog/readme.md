@@ -112,15 +112,15 @@ category: Webcomponents
 
 | Property         | Attribute         | Description                                                                                | Type                                         | Default     |
 | ---------------- | ----------------- | ------------------------------------------------------------------------------------------ | -------------------------------------------- | ----------- |
-| `bannerHeight`   | `banner-height`   | Set the height of the banner. Default to 250 *                                             | `number \| undefined`                        | `250`       |
+| `bannerHeight`   | `banner-height`   | Set the height of the banner. Default to 250 *                                             | `number / undefined`                        | `250`       |
 | `bannerPosition` | `banner-position` | Set the position of the banner image. Work exactly like css background-position property * | `string`                                     | `'center'`  |
-| `bannerSrc`      | `banner-src`      | Set the URL of the image you can inject as pre-header banner *                             | `string \| undefined`                        | `undefined` |
-| `bannerSrcAlt`   | `banner-src-alt`  | Set the alt text of the banner *                                                           | `string \| undefined`                        | `undefined` |
-| `buttonSize`     | `button-size`     | If you want to change the CTA sizes, please choose between small, medium, large *          | `"large" \| "medium" \| "small" \| "xsmall"` | `'small'`   |
-| `cancelText`     | `cancel-text`     | Secondary CTA text. If none given, it won't show the CTA *                                 | `string \| undefined`                        | `undefined` |
-| `confirmText`    | `confirm-text`    | Main CTA text. If none given, it won't show the CTA *                                      | `string \| undefined`                        | `undefined` |
+| `bannerSrc`      | `banner-src`      | Set the URL of the image you can inject as pre-header banner *                             | `string / undefined`                        | `undefined` |
+| `bannerSrcAlt`   | `banner-src-alt`  | Set the alt text of the banner *                                                           | `string / undefined`                        | `undefined` |
+| `buttonSize`     | `button-size`     | If you want to change the CTA sizes, please choose between small, medium, large *          | `"large" / "medium" / "small" / "xsmall"` | `'small'`   |
+| `cancelText`     | `cancel-text`     | Secondary CTA text. If none given, it won't show the CTA *                                 | `string / undefined`                        | `undefined` |
+| `confirmText`    | `confirm-text`    | Main CTA text. If none given, it won't show the CTA *                                      | `string / undefined`                        | `undefined` |
 | `open`           | `open`            | Dialog open state *                                                                        | `boolean`                                    | `false`     |
-| `size`           | `size`            | Dialog sizes *                                                                             | `"default" \| "large"`                       | `'default'` |
+| `size`           | `size`            | Dialog sizes *                                                                             | `"default" / "large"`                       | `'default'` |
 
 
 ## Events

@@ -21,9 +21,9 @@ category: Webcomponents
 
 | Property | Attribute | Description                                                                                      | Type                    | Default     |
 | -------- | --------- | ------------------------------------------------------------------------------------------------ | ----------------------- | ----------- |
-| `color`  | `color`   | The icon color. Default is the blue version. You can only override it with the white version.    | `"white" \| undefined`  | `undefined` |
-| `icon`   | `icon`    | The icon name                                                                                    | `string \| undefined`   | `undefined` |
-| `type`   | `type`    | The button type. As the component wraps an actual HTML button element, it will be applied to it. | `"button" \| undefined` | `undefined` |
+| `color`  | `color`   | The icon color. Default is the blue version. You can only override it with the white version.    | `"white" / undefined`  | `undefined` |
+| `icon`   | `icon`    | The icon name                                                                                    | `string / undefined`   | `undefined` |
+| `type`   | `type`    | The button type. As the component wraps an actual HTML button element, it will be applied to it. | `"button" / undefined` | `undefined` |
 
 
 ## Events
