@@ -62,7 +62,7 @@ category: Webcomponents
 
 | Property    | Attribute   | Description                                                                                       | Type                         | Default        |
 | ----------- | ----------- | ------------------------------------------------------------------------------------------------- | ---------------------------- | -------------- |
-| `direction` | `direction` | Used to change style for mobile. *                                                                | `"horizontal" / "vertical"` | `'horizontal'` |
+| `direction` | `direction` | Used to change style for mobile. *                                                                | `"horizontal" \| "vertical"` | `'horizontal'` |
 | `justify`   | `justify`   | Defines the CSS flex horizontal justify distribution *                                            | `boolean`                    | `false`        |
 | `step`      | `step`      | Set the step number of the stepper. Will auto-complete each step that is < step. Starts from 0. * | `number`                     | `0`            |
 

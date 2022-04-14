@@ -24,7 +24,7 @@ category: Webcomponents
 
 | Property | Attribute | Description               | Type                             | Default    |
 | -------- | --------- | ------------------------- | -------------------------------- | ---------- |
-| `size`   | `size`    | Placeholder button sizes. | `"large" / "medium" / "small"` | `'medium'` |
+| `size`   | `size`    | Placeholder button sizes. | `"large" \| "medium" \| "small"` | `'medium'` |
 
 
 ## Events

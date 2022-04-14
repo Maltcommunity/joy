@@ -12,8 +12,8 @@ category: Webcomponents
 
 | Property           | Attribute  | Description                                                                                                     | Type                  | Default     |
 | ------------------ | ---------- | --------------------------------------------------------------------------------------------------------------- | --------------------- | ----------- |
-| `heapId`           | `heap-id`  | "data-heap" attribute to set on the link if an {@link href} prop is passed or on the host otherwise..           | `string / undefined` | `undefined` |
-| `href`             | `href`     | If your tab is a link, give the URL                                                                             | `string / undefined` | `undefined` |
+| `heapId`           | `heap-id`  | "data-heap" attribute to set on the link if an {@link href} prop is passed or on the host otherwise..           | `string \| undefined` | `undefined` |
+| `href`             | `href`     | If your tab is a link, give the URL                                                                             | `string \| undefined` | `undefined` |
 | `selected`         | `selected` | Tab selection state                                                                                             | `boolean`             | `false`     |
 | `tab` _(required)_ | `tab`      | A tab id or name must be provided for each `joy-button-tab`. It's used internally to reference the selected tab | `string`              | `undefined` |
 

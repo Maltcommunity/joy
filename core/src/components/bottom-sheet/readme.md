@@ -38,7 +38,7 @@ See [joy-button](../button) documentation
 | Property       | Attribute       | Description                                                                           | Type                                                                  | Default     |
 | -------------- | --------------- | ------------------------------------------------------------------------------------- | --------------------------------------------------------------------- | ----------- |
 | `closeLabel`   | `close-label`   | close-label used for close button. Default: 'Close'                                   | `string`                                                              | `'Close'`   |
-| `closeVariant` | `close-variant` | close-variant used for close button. Default: 'primary' See: joy-button documentation | `"admin" / "ghost" / "main" / "primary" / "secondary" / "white"` | `'primary'` |
+| `closeVariant` | `close-variant` | close-variant used for close button. Default: 'primary' See: joy-button documentation | `"admin" \| "ghost" \| "main" \| "primary" \| "secondary" \| "white"` | `'primary'` |
 
 
 ## Methods

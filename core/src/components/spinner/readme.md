@@ -9,7 +9,7 @@
 
 | Property | Attribute | Description                       | Type                  | Default     |
 | -------- | --------- | --------------------------------- | --------------------- | ----------- |
-| `color`  | `color`   | Spinner colors, 2 possible values | `string / undefined` | `undefined` |
+| `color`  | `color`   | Spinner colors, 2 possible values | `string \| undefined` | `undefined` |
 
 
 ## Dependencies

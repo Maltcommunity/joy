@@ -26,10 +26,10 @@ No need to use the mode props.
 
 | Property      | Attribute      | Description                                                                             | Type                    | Default     |
 | ------------- | -------------- | --------------------------------------------------------------------------------------- | ----------------------- | ----------- |
-| `currentStep` | `current-step` | Current step number.                                                                    | `number / undefined`   | `undefined` |
-| `mode`        | `mode`         | Activate specific color mode. Documentation purpose.                                    | `"desktop" / "mobile"` | `'desktop'` |
-| `percentage`  | `percentage`   | Progress bar percentage, percentage usage will override steps & currentStep definition. | `number / undefined`   | `undefined` |
-| `steps`       | `steps`        | Total number of steps.                                                                  | `number / undefined`   | `undefined` |
+| `currentStep` | `current-step` | Current step number.                                                                    | `number \| undefined`   | `undefined` |
+| `mode`        | `mode`         | Activate specific color mode. Documentation purpose.                                    | `"desktop" \| "mobile"` | `'desktop'` |
+| `percentage`  | `percentage`   | Progress bar percentage, percentage usage will override steps & currentStep definition. | `number \| undefined`   | `undefined` |
+| `steps`       | `steps`        | Total number of steps.                                                                  | `number \| undefined`   | `undefined` |
 
 
 ----------------------------------------------

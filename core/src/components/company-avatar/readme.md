@@ -38,10 +38,10 @@ category: Webcomponents
 
 | Property      | Attribute      | Description                                    | Type                                          | Default     |
 | ------------- | -------------- | ---------------------------------------------- | --------------------------------------------- | ----------- |
-| `color`       | `color`        | Company avatar color                           | `"red" / "teal" / "turquoise" / "yellow"`  | `'teal'`    |
+| `color`       | `color`        | Company avatar color                           | `"red" \| "teal" \| "turquoise" \| "yellow"`  | `'teal'`    |
 | `companyName` | `company-name` | Company name. Required to give image alt text. | `string`                                      | `''`        |
-| `imgSrc`      | `img-src`      | URL source for img. Optional.                  | `string / undefined`                         | `undefined` |
-| `size`        | `size`         | Size of the image. Optionnal.                  | `"large" / "medium" / "small" / undefined` | `'large'`   |
+| `imgSrc`      | `img-src`      | URL source for img. Optional.                  | `string \| undefined`                         | `undefined` |
+| `size`        | `size`         | Size of the image. Optionnal.                  | `"large" \| "medium" \| "small" \| undefined` | `'large'`   |
 
 
 ## Dependencies

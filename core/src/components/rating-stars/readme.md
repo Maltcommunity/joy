@@ -35,7 +35,7 @@ Use the ```slot="rating-stars-slot"``` attribute on any DOM Element
 | ------------- | -------------- | ----------------------------------------------------------------- | -------------------------------- | ---------- |
 | `ratingValue` | `rating-value` | The actual rating, between 0 and 5.                               | `number`                         | `0`        |
 | `reviewCount` | `review-count` | Review count. it will be displayed with parenthesis : (5)         | `number`                         | `0`        |
-| `size`        | `size`         | Star size. 3 possible values but you can't give a number as value | `"large" / "medium" / "small"` | `'medium'` |
+| `size`        | `size`         | Star size. 3 possible values but you can't give a number as value | `"large" \| "medium" \| "small"` | `'medium'` |
 
 
 ## Slots

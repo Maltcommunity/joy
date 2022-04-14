@@ -17,9 +17,9 @@ category: Webcomponents
 | Property    | Attribute   | Description                        | Type                         | Default        |
 | ----------- | ----------- | ---------------------------------- | ---------------------------- | -------------- |
 | `completed` | `completed` | If the step is completed. *        | `boolean`                    | `false`        |
-| `direction` | `direction` | Used to change style for mobile. * | `"horizontal" / "vertical"` | `'horizontal'` |
+| `direction` | `direction` | Used to change style for mobile. * | `"horizontal" \| "vertical"` | `'horizontal'` |
 | `ongoing`   | `ongoing`   | If the step is ongoing. *          | `boolean`                    | `false`        |
-| `size`      | `size`      | Default or small. *                | `"default" / "small"`       | `'default'`    |
+| `size`      | `size`      | Default or small. *                | `"default" \| "small"`       | `'default'`    |
 
 
 ## Methods

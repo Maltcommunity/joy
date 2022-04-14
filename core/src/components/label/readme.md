@@ -9,7 +9,7 @@
 
 | Property | Attribute | Description  | Type                  | Default    |
 | -------- | --------- | ------------ | --------------------- | ---------- |
-| `size`   | `size`    | Label size * | `"large" / "medium"` | `'medium'` |
+| `size`   | `size`    | Label size * | `"large" \| "medium"` | `'medium'` |
 
 
 ## Dependencies

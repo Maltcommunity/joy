@@ -39,13 +39,13 @@ Use slots in order to prevent too many custom attributes. Keep the same HTML str
 | Property          | Attribute          | Description                                                                                                                  | Type                  | Default     |
 | ----------------- | ------------------ | ---------------------------------------------------------------------------------------------------------------------------- | --------------------- | ----------- |
 | `currentPage`     | `current-page`     | Current page number                                                                                                          | `number`              | `1`         |
-| `heapNext`        | `heap-next`        | data-heap attribute for next CTA. We should avoid as much as possible to use this kind of props inside the webcomponents     | `string / undefined` | `undefined` |
-| `heapPrev`        | `heap-prev`        | data-heap attribute for previous CTA. We should avoid as much as possible to use this kind of props inside the webcomponents | `string / undefined` | `undefined` |
-| `labelNext`       | `label-next`       | Can be used as title and aria-label attributes for the next CTA                                                              | `string / undefined` | `''`        |
-| `labelPagination` | `label-pagination` | Can be used as aria-label attribute for the full component                                                                   | `string / undefined` | `undefined` |
-| `labelPrev`       | `label-prev`       | Can be used as title and aria-label attributes for the previous CTA                                                          | `string / undefined` | `''`        |
-| `linkNext`        | `link-next`        | For synchrone implementations (not SPA, basically), allows to inject the URL for next CTA                                    | `string / undefined` | `undefined` |
-| `linkPrev`        | `link-prev`        | For synchrone implementations (not SPA, basically), allows to inject the URL for previous CTA                                | `string / undefined` | `undefined` |
+| `heapNext`        | `heap-next`        | data-heap attribute for next CTA. We should avoid as much as possible to use this kind of props inside the webcomponents     | `string \| undefined` | `undefined` |
+| `heapPrev`        | `heap-prev`        | data-heap attribute for previous CTA. We should avoid as much as possible to use this kind of props inside the webcomponents | `string \| undefined` | `undefined` |
+| `labelNext`       | `label-next`       | Can be used as title and aria-label attributes for the next CTA                                                              | `string \| undefined` | `''`        |
+| `labelPagination` | `label-pagination` | Can be used as aria-label attribute for the full component                                                                   | `string \| undefined` | `undefined` |
+| `labelPrev`       | `label-prev`       | Can be used as title and aria-label attributes for the previous CTA                                                          | `string \| undefined` | `''`        |
+| `linkNext`        | `link-next`        | For synchrone implementations (not SPA, basically), allows to inject the URL for next CTA                                    | `string \| undefined` | `undefined` |
+| `linkPrev`        | `link-prev`        | For synchrone implementations (not SPA, basically), allows to inject the URL for previous CTA                                | `string \| undefined` | `undefined` |
 | `totalPages`      | `total-pages`      | Total number of pages in order to construct the pagination                                                                   | `number`              | `1`         |
 
 

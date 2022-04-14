@@ -75,12 +75,12 @@ Only for primary and secondary variants.
 
 | Property     | Attribute    | Description                                                                                 | Type                                                                                           | Default     |
 | ------------ | ------------ | ------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ----------- |
-| `href`       | `href`       | If the tag is a link, give it an href                                                       | `string / undefined`                                                                          | `undefined` |
+| `href`       | `href`       | If the tag is a link, give it an href                                                       | `string \| undefined`                                                                          | `undefined` |
 | `removable`  | `removable`  | Display an icon CTA on the right, to remove the tag from a list. Only for primary/secondary | `boolean`                                                                                      | `false`     |
 | `selectable` | `selectable` | Mock a radio like style. Nothing more. Only for primary/secondary                           | `boolean`                                                                                      | `false`     |
-| `size`       | `size`       | Tag size. Default is medium                                                                 | `"large" / "medium" / "small" / "xsmall"`                                                   | `'medium'`  |
-| `target`     | `target`     | Native target attribute for hyperlinks.                                                     | `"_blank" / "_parent" / "_self" / "_top" / undefined`                                      | `undefined` |
-| `variant`    | `variant`    | Tag color theme                                                                             | `"important" / "inactive" / "pending" / "pricing" / "primary" / "secondary" / "special"` | `'primary'` |
+| `size`       | `size`       | Tag size. Default is medium                                                                 | `"large" \| "medium" \| "small" \| "xsmall"`                                                   | `'medium'`  |
+| `target`     | `target`     | Native target attribute for hyperlinks.                                                     | `"_blank" \| "_parent" \| "_self" \| "_top" \| undefined`                                      | `undefined` |
+| `variant`    | `variant`    | Tag color theme                                                                             | `"important" \| "inactive" \| "pending" \| "pricing" \| "primary" \| "secondary" \| "special"` | `'primary'` |
 
 
 ## Events

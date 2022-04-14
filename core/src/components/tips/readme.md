@@ -51,8 +51,8 @@ category: Webcomponents
 | Property   | Attribute  | Description                                              | Type                                                       | Default     |
 | ---------- | ---------- | -------------------------------------------------------- | ---------------------------------------------------------- | ----------- |
 | `closable` | `closable` | Display a CTA to hide the tips                           | `boolean`                                                  | `false`     |
-| `icon`     | `icon`     | If icon is defined, it will show it with the right color | `string / undefined`                                      | `undefined` |
-| `level`    | `level`    | Defines the criticalness of the tips                     | `"error" / "info" / "neutral" / "success" / "warning"` | `'info'`    |
+| `icon`     | `icon`     | If icon is defined, it will show it with the right color | `string \| undefined`                                      | `undefined` |
+| `level`    | `level`    | Defines the criticalness of the tips                     | `"error" \| "info" \| "neutral" \| "success" \| "warning"` | `'info'`    |
 
 
 ## Dependencies
