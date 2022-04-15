@@ -4,8 +4,8 @@ $joy-transition-duration-long: 400ms;
 $joy-transition-timing-function: ease-in-out;
 
 @mixin getAnimationsProperties() {
-    --joy-transition-duration-short: var($joy-transition-duration-short);
-    --joy-transition-duration-default: var($joy-transition-duration-default);
-    --joy-transition-duration-long: var($joy-transition-duration-long);
-    --joy-transition-timing-function: var($joy-transition-timing-function);
+    --joy-transition-duration-short: #{$joy-transition-duration-short};
+    --joy-transition-duration-default: #{$joy-transition-duration-default};
+    --joy-transition-duration-long: #{$joy-transition-duration-long};
+    --joy-transition-timing-function: #{$joy-transition-timing-function};
 }

@@ -44,10 +44,10 @@ $joy-line-height-large: 1.25;
      --joy-font-size-quote-mobile: #{$joy-font-size-quote-mobile};
  
      // Font weights
-     --joy-font-weight-normal: var($joy-font-weight-normal);
-     --joy-font-weight-bold: var($joy-font-weight-bold);
+     --joy-font-weight-normal: #{$joy-font-weight-normal};
+     --joy-font-weight-bold: #{$joy-font-weight-bold};
  
      // Line heights
-     --joy-line-height-small: var($joy-line-height-small);
-     --joy-line-height-large: var($joy-line-height-large);
+     --joy-line-height-small: #{$joy-line-height-small};
+     --joy-line-height-large: #{$joy-line-height-large};
 }
