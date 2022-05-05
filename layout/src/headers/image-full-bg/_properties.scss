@@ -1,0 +1,17 @@
+@use '@maltjoy/tokens/src/colors';
+@use "../variables" as vars;
+
+$CLASS_PREFIX: "#{vars.$CLASS_PREFIX}";
+$CLASS: "#{$CLASS_PREFIX}_image-full-bg";
+
+$HEADER_FULL_BG_COLORS_MAP: (
+    "theme-color-1": (
+        fullbg-color-1: colors.$joy-color-tertiary-50
+    ),
+    "theme-color-2": (
+        fullbg-color-1: colors.$joy-color-neutral-2
+    ),
+    "theme-color-3": (
+        fullbg-color-1: colors.$joy-color-neutral-6
+    )
+);

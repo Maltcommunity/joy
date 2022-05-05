@@ -1,0 +1,101 @@
+@use '@maltjoy/tokens/src/spacing';
+@use "sass:list";
+
+@use './media-queries' as mq;
+
+$space: 5px;
+$space-mobile: 4px;
+
+// Padding
+$padding: $space*8;
+$padding-row: $space*4;
+$padding-mobile: $space-mobile * 4;
+
+$DEVICES-DEFAULT-VAL: (
+    desktop: 5px, // old spacing unit, nox we only work with 4px
+    mobile: spacing.$joy-core-spacing-1
+);
+
+@function setSizes($device) {
+  $_deviceDefault: map-get($DEVICES-DEFAULT-VAL, $device);
+
+  @if ($_deviceDefault) {
+    $map: (
+            none: 0,
+            auto: auto,
+            xs: $_deviceDefault,
+            s: $_deviceDefault*2,
+            m: $_deviceDefault*4,
+            l: $_deviceDefault*8
+    );
+    @return $map;
+  }
+}
+
+$_DESKTOP: setSizes(desktop);
+$_MOBILE: setSizes(mobile);
+$_SIDES: left, right, top, bottom, vertical, horizontal;
+
+@mixin mobileSpace() {
+  @include mq.screen-xs {
+    @content;
+  }
+}
+
+// Don't use setSpace directly ! Please use margin and padding mixins !
+@mixin setSpace($size: m, $type, $side: all) {
+  $_desktopSize: map-get($_DESKTOP, $size);
+  $_mobileSize: map-get($_MOBILE, $size);
+
+  @if ($_desktopSize) {
+
+    // ALL SIDES MARGIN OR PADDING //
+    @if ($side == all) {
+      #{$type}: $_desktopSize;
+
+      @include mobileSpace {
+        #{$type}: $_mobileSize;
+      }
+
+      // VERTICAL MARGIN OR PADDING //
+    } @else if ($side == vertical) {
+      #{$type}: $_desktopSize auto;
+
+      @include mobileSpace {
+        #{$type}: $_mobileSize auto;
+      }
+
+      // HORIZONTAL MARGIN OR PADDING //
+
+    } @else if ($side == horizontal) {
+      #{$type}: 0 $_desktopSize;
+
+      @include mobileSpace {
+        #{$type}: 0 $_mobileSize;
+      }
+
+      // Left, right, top, or bottom //
+    } @else {
+      @if (list.index($_SIDES, $side)) {
+        #{$type}-#{$side}: $_desktopSize;
+
+        @include mobileSpace {
+          #{$type}-#{$side}: $_mobileSize;
+        }
+
+      } @else {
+        @error '#{$side} is not a valid key for margins. Choices : left, right, top, bottom, vertical, horizontal, all';
+      }
+    }
+  } @else {
+    @error '#{$size} is not in the list. Choices : none, auto, xs, s, m, l';
+  }
+}
+
+@mixin margin($size: m, $side: all) {
+  @include setSpace($size, margin, $side);
+}
+
+@mixin padding($size: m, $side: all) {
+  @include setSpace($size, padding, $side);
+}

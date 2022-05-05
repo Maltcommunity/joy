@@ -1,0 +1,99 @@
+@use '@maltjoy/tokens/src/fonts' as fs;
+@use '@maltjoy/tokens/src/spacing';
+
+@use '../_utils' as utils;
+@use "./variables" as vars;
+
+#{vars.$CLASS_PREFIX} {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: white;
+    padding-top: 80px;
+    padding-bottom: 80px;
+    margin-bottom: 200px;
+    font-family: 'Moderat', Arial, Helvetica, sans-serif;
+
+    @include utils.screen_md() {
+        padding: 40px spacing.$joy-core-spacing-10 0;
+    }
+
+    @include utils.screen_sm(max) {
+        padding: 40px 0 0;
+        margin-bottom: 170px;
+        min-height: auto;
+    }
+
+    @include utils.screen_xs(max) {
+        margin-bottom: 80px;
+    }
+
+    &:after {
+        content: '';
+        width: 100%;
+        height: 150px;
+        display: block;
+        position: absolute;
+        left: 0;
+        bottom: -50px;
+        transform: skew(0, -4deg);
+    }
+
+    &__content {
+        margin: auto;
+    }
+
+    &__logos {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        @include utils.margin(l, bottom);
+    }
+
+    &__logo {
+        display: inline-block;
+        max-height: 50px;
+        max-width: 100%;
+        margin: spacing.$joy-core-spacing-3 spacing.$joy-core-spacing-3 spacing.$joy-core-spacing-3 0;
+
+        @include utils.screen_sm() {
+            height: 53px;
+        }
+    }
+
+    &__logo-cross {
+        margin: spacing.$joy-core-spacing-3;
+    }
+
+    &__logo-partner {
+        max-height: 50px;
+        max-width: 100%;
+        margin: spacing.$joy-core-spacing-3;
+    }
+
+    &__title {
+        font-size: fs.$joy-font-size-4xl;
+        font-family: 'Agrandir Tight', Arial, Helvetica, sans-serif;
+        margin-bottom: spacing.$joy-core-spacing-5;
+
+        @include utils.screen_sm() {
+            margin-bottom: spacing.$joy-core-spacing-10;
+        }
+    }
+
+    &__subtitle {
+        font-size: fs.$joy-font-size-xl;
+        @include utils.margin(l, bottom);
+
+        @include utils.screen_sm() {
+            display: none;
+        }
+    }
+
+    &__generic_form {
+        @include utils.screen_sm() {
+            margin-top: 30px;
+        }
+    }
+}

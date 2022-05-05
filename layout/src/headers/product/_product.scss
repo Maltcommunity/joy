@@ -1,0 +1,47 @@
+@use '@maltjoy/tokens/src/colors';
+@use '@maltjoy/tokens/src/fonts';
+@use 'vars';
+@use '../../_utils' as utils;
+
+// .l-header_product
+#{vars.$CLASS} {
+    overflow: hidden;
+    padding: 96px 0;
+    margin-bottom: 0;
+    color: colors.$joy-color-neutral-5;
+
+    &:after {
+        content: none;
+    }
+
+    #{vars.$CLASS_PREFIX} {
+        &__title {
+            font-size: fonts.$joy-font-size-l;
+            font-family: 'Agrandir Tight', Arial, Helvetica, sans-serif;
+            line-height: fonts.$joy-line-height-small;
+            font-weight: fonts.$joy-font-weight-normal;
+        }
+
+        &__subtitle {
+            font-size: fonts.$joy-font-size-l;
+            margin-bottom: 0;
+        }
+
+        &__cta {
+            display: flex;
+            justify-content: flex-end;
+        }
+    }
+
+    @include utils.screen_sm {
+        padding-top: 28px;
+
+        #{vars.$CLASS_PREFIX} {
+            &__cta {
+                justify-content: flex-start;
+            }
+        }
+    }
+}
+
+

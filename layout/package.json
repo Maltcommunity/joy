@@ -1,0 +1,44 @@
+{
+  "name": "@maltjoy/layout",
+  "version": "0.0.1-0",
+  "description": "Malt design system layout ecosystem",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "pnpm sass:compile && pnpm run prefix",
+    "sass:dev": "sass --load-path=node_modules src/layout.scss:dist/css/layout.css",
+    "sass:compile": "sass --load-path=node_modules src/layout.scss dist/css/layout.css --style=compressed",
+    "prefix": "postcss ./dist/css/layout.css --use autoprefixer -d ./dist/css/",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "kevin@malt.com",
+  "license": "MIT",
+  "dependencies": {
+    "@maltjoy/tokens": "1.2.1"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.4.7",
+    "postcss": "^8.4.13",
+    "postcss-cli": "^9.1.0",
+    "sass": "1.51.0"
+  },
+  "browserslist": [
+    "last 2 versions",
+    "Firefox >= 56",
+    "Chrome >= 63",
+    "Edge >= 16",
+    "Safari >= 10",
+    "Opera >= 75",
+    "ios_saf >= 10",
+    "Samsung >= 5",
+    "op_mob >= 62",
+    "OperaMini >= 13",
+    "not ie <= 11",
+    "not baidu > 0",
+    "not KaiOS > 0",
+    "not op_mini all",
+    "not ie_mob > 0",
+    "not bb > 0"
+  ]
+}

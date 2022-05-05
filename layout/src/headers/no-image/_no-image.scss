@@ -1,0 +1,70 @@
+@use '@maltjoy/tokens/src/colors';
+@use '../../_utils' as utils;
+@use 'vars';
+@use 'mixins' as mx;
+
+// .l-header_no-image
+#{vars.$CLASS} {
+    overflow: hidden;
+    padding-bottom: 130px;
+    margin-bottom: 50px;
+    @include mx.headerNoImageColorStyles('theme-color-1');
+
+    &:after {
+        background-color: var(--body-bg, #{colors.$joy-color-neutral-2});
+        width: 110%;
+        height: 150px;
+        display: block;
+        position: absolute;
+        left: 0;
+        bottom: -150px;
+        transform-origin: left bottom;
+        transform: rotate(-3deg) skewX(-4deg);
+    }
+
+    #{vars.$CLASS_PREFIX} {
+        &__shapes {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            @include utils.generateShape(before) {
+                width: 500px;
+                height: 120px;
+                border-radius: 400px;
+                transform: rotate(-38deg);
+                right: -81px;
+                top: -230px;
+            }
+            @include utils.generateShape(after) {
+                width: 1000px;
+                height: 400px;
+                border-radius: 1000px;
+                transform: rotate(-12deg);
+                right: -226px;
+                bottom: -322px;
+            }
+        }
+
+        &__shape {
+            @include utils.generateShape(before) {
+                width:700px;
+                height: 300px;
+                border-radius: 600px;
+                transform: rotate(-22deg);
+                right: -140px;
+                bottom: -148px;
+            }
+        }
+    }
+
+    @include utils.screen_sm {
+        #{vars.$CLASS_PREFIX} {
+            &__shapes {
+                transform-origin: right bottom;
+                transform: translate(200px) scale(0.8);
+            }
+        }
+    }
+}
+
+

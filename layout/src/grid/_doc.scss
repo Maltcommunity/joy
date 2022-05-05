@@ -1,0 +1,280 @@
+/* develblock:start */
+/*doc
+
+---
+title: Grid system
+name: grid-system
+category: Layout
+---
+
+UI example of grid system, based on 12 columns maximum.<br/>
+This module is highly inspired and declined from <a href="http://sassflexboxgrid.com" target="_blank">http://sassflexboxgrid.com</a>
+
+## 3 columns (width auto)
+
+<div class="l-row">
+    <div class="l-col" style="background-color: #FF7370">
+      <div class="c-panel">I am a panel</div>
+    </div>
+    <div class="l-col" style="background-color: #FF7370">
+        <div class="c-panel">There are 20px between I and my mates</div>
+    </div>
+    <div class="l-col" style="background-color: #FF7370">
+        <div class="c-panel">I am another panel</div>
+    </div>
+</div>
+
+```ui_code_example
+<div class="l-row">
+    <div class="l-col">1</div>
+    <div class="l-col">2</div>
+    <div class="l-col">3</div>
+</div>
+```
+
+## 4 columns
+
+<div class="l-row" style="background-color: #FF7370">
+    <div class="l-col_xs-6 l-col_sm-4">
+        <div class="c-panel">I am a panel</div>
+    </div>
+    <div class="l-col_xs-6 l-col_sm-2">
+        <div class="c-panel">I am a panel</div>
+    </div>
+    <div class="l-col_xs-6 l-col_sm-4">
+        <div class="c-panel">I am a panel</div>
+    </div>
+    <div class="l-col_xs-6 l-col_sm-2">
+        <div class="c-panel">I am a panel</div>
+    </div>
+</div>
+
+```ui_code_example
+<div class="l-row">
+    <div class="l-col_xs-6 l-col_sm-4">1</div>
+    <div class="l-col_xs-6 l-col_sm-2">2</div>
+    <div class="l-col_xs-6 l-col_sm-5">3</div>
+    <div class="l-col_xs-6 l-col_sm-1">4</div>
+</div>
+```
+
+## Offsets
+Offset some columns.
+
+<div class="l-row" style="background-color: #FF7370">
+    <div class="l-col_xs-offset-3 l-col_xs-6">
+        <div class="c-panel">I am a panel with offset 3</div>
+    </div>
+</div>
+<div class="l-row" style="margin-top: 15px; background-color: #FF7370">
+    <div class="l-col_xs-offset-2 l-col_xs-3">
+        <div class="c-panel">I am a panel with offset 2</div>
+    </div>
+</div>
+
+```ui_code_example
+<div class="l-row">
+    <div class="l-col_xs-offset-3 l-col_xs-6">
+        <div class="c-panel">I am a panel</div>
+    </div>
+</div>
+<div class="l-row">
+    <div class="l-col_xs-offset-2 l-col_xs-3">
+        <div class="c-panel">I am a panel</div>
+    </div>
+</div>
+```
+
+## Alignments
+
+### .start-
+<div class="l-row start-xs" style="background-color: #FF7370">
+    <div class="l-col_xs-6">
+        <div class="c-panel">I am a left-aligned panel</div>
+    </div>
+</div>
+
+```ui_code_example
+<div class="l-row start-xs">
+    <div class="l-col_xs-6">
+        <div class="c-panel">I am a left-aligned panel</div>
+    </div>
+</div>
+```
+
+### .center-
+<div class="l-row center-xs" style="background-color: #FF7370">
+    <div class="l-col_xs-6">
+        <div class="c-panel">I am a centered panel</div>
+    </div>
+</div>
+
+```ui_code_example
+<div class="l-row center-xs">
+    <div class="l-col_xs-6">
+        <div class="c-panel">I am a left-aligned panel</div>
+    </div>
+</div>
+```
+
+### .end-
+<div class="l-row end-xs" style="background-color: #FF7370">
+    <div class="l-col_xs-6">
+        <div class="c-panel">I am a right-aligned panel</div>
+    </div>
+</div>
+
+```ui_code_example
+<div class="l-row end-xs">
+    <div class="l-col_xs-6">
+        <div class="c-panel">I am a left-aligned panel</div>
+    </div>
+</div>
+```
+
+### .top-
+<div class="l-row top-xs" style="height: 150px; background-color: #FF7370">
+    <div class="l-col_xs-6">
+        <div class="c-panel">I am a top-aligned panel</div>
+    </div>
+</div>
+
+```ui_code_example
+<div class="l-row top-xs">
+    <div class="l-col_xs-6">
+        <div class="c-panel">I am a top-aligned panel</div>
+    </div>
+</div>
+```
+
+### .middle-
+<div class="l-row middle-xs" style="height: 150px; background-color: #FF7370">
+    <div class="l-col_xs-6">
+        <div class="c-panel">I am a middle-aligned panel</div>
+    </div>
+</div>
+
+```ui_code_example
+<div class="l-row middle-xs">
+    <div class="l-col_xs-6">
+        <div class="c-panel">I am a middle-aligned panel</div>
+    </div>
+</div>
+```
+
+## Distribution
+
+Add classes to distribute the contents of a row or column.
+
+
+### .around-
+<div class="l-row around-xs" style="background-color: #FF7370">
+    <div class="l-col_xs-3">
+        <div class="c-panel">I am a panel</div>
+    </div>
+    <div class="l-col_xs-3">
+        <div class="c-panel">I am a panel</div>
+    </div>
+</div>
+
+```ui_code_example
+<div class="l-row around-xs">
+    <div class="l-col_xs-3">
+        <div class="c-panel">I am a panel</div>
+    </div>
+    <div class="l-col_xs-3">
+        <div class="c-panel">I am a panel</div>
+    </div>
+</div>
+```
+
+### .between-
+<div class="l-row between-xs" style="background-color: #FF7370">
+    <div class="l-col_xs-3">
+        <div class="c-panel">I am a panel</div>
+    </div>
+    <div class="l-col_xs-3">
+        <div class="c-panel">I am a panel</div>
+    </div>
+</div>
+
+```ui_code_example
+<div class="l-row between-xs">
+    <div class="l-col_xs-3">
+        <div class="c-panel">I am a panel</div>
+    </div>
+    <div class="l-col_xs-3">
+        <div class="c-panel">I am a panel</div>
+    </div>
+</div>
+```
+
+## Reordering
+Add classes to reorder columns.
+
+<div class="l-row" style="background-color: #FF7370">
+ <div class="l-col_xs-3 last">
+    <div class="c-panel">I am panel 0, but I'm the last one</div>
+   </div>
+  <div class="l-col_xs-3">
+    <div class="c-panel">I am panel 1</div>
+   </div>
+  <div class="l-col_xs-3">
+   <div class="c-panel">I am panel 2</div>
+  </div>
+  <div class="l-col_xs-3 first">
+   <div class="c-panel">I am panel 3, but placed first</div>
+  </div>
+</div>
+
+```ui_code_example
+<div class="l-row">
+  <div class="l-col_xs-2 last">0</div>
+  <div class="l-col_xs-2">1</div>
+  <div class="l-col_xs-2">2</div>
+  <div class="l-col_xs-2 first">3, but first...</div>
+</div>
+```
+
+## Visibility
+Visibility classes allow for responsive showing and hiding of content.
+
+<div class="l-row" style="background-color: #FF7370">
+  <div class="l-col hide-md">
+    <div class="c-panel">I am a panel always hidden</div>
+  </div>
+  <div class="l-col hide-xs show-md">
+    <div class="c-panel">I am a panel only visible from md</div>
+  </div>
+  <div class="l-col">
+    <div class="c-panel">I am a panel, always visible</div>
+  </div>
+  <div class="l-col hide-sm-only">
+    <div class="c-panel">I am a panel, hidden only on sm devices</div>
+  </div>
+</div>
+
+```ui_code_example
+<div class="l-row">
+
+  <div class="l-col hide-md">
+    <div class="c-panel">I am a panel always hidden</div>
+  </div>
+
+  <div class="l-col hide-xs show-md">
+    <div class="c-panel">I am a panel only visible from md</div>
+  </div>
+
+  <div class="l-col">
+    <div class="c-panel">I am a panel, always visible</div>
+  </div>
+
+  <div class="l-col hide-sm-only">
+    <div class="c-panel">I am a panel, hidden only on sm devices</div>
+  </div>
+
+</div>
+```
+
+*/
+/* develblock:end */

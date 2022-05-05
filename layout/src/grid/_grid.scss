@@ -1,0 +1,132 @@
+@use "./mixins/grid-mixins" as gm;
+@use "./variables/grid-variables" as gv;
+
+.l-row {
+  @include gm.row();
+}
+
+.l-row.natural-height {
+  @include gm.row-natural-height();
+}
+
+.l-row.flex-column {
+  @include gm.row-flex-column();
+}
+
+.l-row-reset{
+    margin-left: -#{gv.$gutter};
+    margin-right: -#{gv.$gutter};
+}
+
+.l-col {
+  @include gm.col();
+}
+
+[class*=l-col_] {
+    padding-left: gv.$gutter;
+    padding-right: gv.$gutter;
+}
+
+.first {
+  order: -1;
+}
+
+.last {
+  order: 1;
+}
+
+.align-start {
+  align-self: flex-start;
+}
+
+.align-end {
+  align-self: flex-end;
+}
+
+.align-center {
+  align-self: center;
+}
+
+.align-baseline {
+  align-self: baseline;
+}
+
+.align-stretch {
+    align-self: stretch;
+}
+
+// Mixin to run inside of for loop - creates col/breakpoint classes * Not for developer use *
+@mixin col-factory($thisPrefix) {
+  .l-col-#{$thisPrefix} {
+    box-sizing: border-box;
+    flex-grow: 1;
+    flex-basis: 0;
+    max-width: 100%;
+  }
+  @for $i from 1 through gv.$grid-columns {
+    .l-col_#{$thisPrefix}-#{$i} {
+      box-sizing: border-box;
+      flex-basis: calc(100% / #{gv.$grid-columns} * #{$i});
+      max-width: calc(100% / #{gv.$grid-columns} * #{$i});
+    }
+    .l-col_#{$thisPrefix}-offset-#{$i} {
+      margin-left: calc(100% / #{gv.$grid-columns} * #{$i});
+    }
+  }
+  .l-row.start-#{$thisPrefix} {
+    justify-content: flex-start;
+  }
+  .l-row.center-#{$thisPrefix} {
+    justify-content: center;
+  }
+  .l-row.end-#{$thisPrefix} {
+    justify-content: flex-end;
+  }
+  .l-row.top-#{$thisPrefix} {
+    align-items: flex-start;
+  }
+  .l-row.middle-#{$thisPrefix} {
+    align-items: center;
+  }
+  .l-row.bottom-#{$thisPrefix} {
+    align-items: flex-end;
+  }
+  .l-row.around-#{$thisPrefix} {
+    justify-content: space-around;
+  }
+  .l-row.between-#{$thisPrefix} {
+    justify-content: space-between;
+  }
+
+} // Mixin to run inside of for loop - creates col/breakpoint classes
+
+@for $i from 1 through length(gv.$breakpoint-up-prefixes) {
+  $thisPrefix: nth(gv.$breakpoint-up-prefixes, $i);
+  @if $thisPrefix == "xs" {
+    @include col-factory($thisPrefix);
+  } @else if $thisPrefix == "sm" {
+    @media #{gv.$breakpoint-sm-up} {
+      @include col-factory($thisPrefix);
+    }
+  } @else if $thisPrefix == "md" {
+    @media #{gv.$breakpoint-md-up} {
+      @include col-factory($thisPrefix);
+    }
+  } @else if $thisPrefix == "lg" {
+    @media #{gv.$breakpoint-lg-up} {
+      @include col-factory($thisPrefix);
+    }
+  } @else if $thisPrefix == "xl" {
+    @media #{gv.$breakpoint-xl-up} {
+      @include col-factory($thisPrefix);
+    }
+  }
+}
+
+.l-col_gutter-lr {
+    padding: 0 gv.$gutter;
+}
+
+.l-col_no-gutter {
+    padding: 0;
+}

@@ -1,0 +1,14 @@
+@use "vars";
+@use "../themes" as themes;
+@use "mixins" as mx;
+
+// It's highly Important to keep scoped classes for themes
+// As we don't want themes to apply for other types of headers
+#{vars.$CLASS} {
+    // COLOR THEMES
+    @each $color, $value in themes.$HEADER_COLORS_MAP {
+        &#{vars.$CLASS_PREFIX}_#{$color} {
+            @include mx.headerNoImageColorStyles($color);
+        }
+    }
+}

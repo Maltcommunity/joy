@@ -1,0 +1,11 @@
+@use 'properties' as properties;
+
+@mixin headerFullBgColorStyles($color: "theme-color-1") {
+    $properties: map-get(properties.$HEADER_FULL_BG_COLORS_MAP, $color);
+    background-color: map-get($properties, shape-color-1);
+
+    &:after {
+        background-color: map-get($properties, fullbg-color-1);
+    }
+
+}

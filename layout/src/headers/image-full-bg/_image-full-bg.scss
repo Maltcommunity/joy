@@ -1,0 +1,120 @@
+@use '@maltjoy/tokens/src/colors';
+@use '@maltjoy/tokens/src/fonts';
+@use '@maltjoy/tokens/src/spacing';
+
+@use 'mixins' as mx;
+@use 'properties' as properties;
+@use '../variables' as global;
+@use '../../_utils' as utils;
+
+$header-height: var(--header-height, 72px);
+
+#{properties.$CLASS} {
+    overflow: hidden;
+    margin-bottom: 0;
+    display: flex;
+    flex-direction: column;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-color: colors.$joy-color-secondary-30;
+    min-height: calc(100vh - #{$header-height});
+    @include mx.headerFullBgColorStyles('theme-color-1'); // Apply a default color theme
+
+    @include utils.generateShape(after) {
+        bottom: -150px;
+        z-index: 0;
+        left: -15px;
+        width: 200%;
+        height: 200px;
+        transform: skew(0, 1deg);
+        border-radius: 250px / 55px;
+
+        @include utils.screen_sm {
+            border-radius: 0;
+        }
+    }
+
+    h1 {
+        font-size: 72px;
+        margin-bottom: spacing.$joy-core-spacing-9;
+    }
+
+    #{properties.$CLASS_PREFIX} {
+        &__shapes {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            @include utils.generateShape(before) {
+                background-color: colors.$joy-color-neutral-3;
+                width: 1300px;
+                height: 400px;
+                border-radius: 400px;
+                transform: rotate(-28deg);
+                right: -820px;
+                top: -160px;
+            }
+
+            @include utils.generateShape(after) {
+                background-color: colors.$joy-color-tertiary-30;
+                width: 3500px;
+                height: 1000px;
+                border-radius: 1000px;
+                transform: rotate(-5deg);
+                right: -2451px;
+                top: -37px;
+            }
+        }
+
+        &__shape {
+            @include utils.generateShape(before) {
+                background-color: colors.$joy-color-primary-30;
+                width: 2000px;
+                height: 600px;
+                border-radius: 600px;
+                transform: rotate(-17deg);
+                right: -1300px;
+                top: -54px;
+            }
+        }
+    }
+
+    @include utils.screen_md {
+        padding-bottom: 150px;
+        padding-top: 150px;
+
+        &:after {
+            border-radius: 0;
+        }
+    }
+
+    @include utils.screen_sm {
+        padding-bottom: 150px;
+        padding-top: 75px;
+
+        h1 {
+            font-size: 70px;
+        }
+
+        #{properties.$CLASS_PREFIX} {
+            &__shapes {
+                transform-origin: right bottom;
+                transform: translate(-50px) scale(0.8);
+            }
+        }
+    }
+
+    @include utils.screen_xs {
+        h1 {
+            font-size: fonts.$joy-font-size-4xl-mobile;
+        }
+
+        #{properties.$CLASS_PREFIX} {
+            &__shapes {
+                transform-origin: right bottom;
+                transform: translate(-50px) scale(0.5);
+            }
+        }
+    }
+}

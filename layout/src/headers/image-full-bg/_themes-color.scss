@@ -1,0 +1,11 @@
+@use 'mixins' as mx;
+@use 'properties' as properties;
+
+#{properties.$CLASS} {
+    // COLOR THEMES
+    @each $themeColor, $value in properties.$HEADER_FULL_BG_COLORS_MAP {
+        &#{properties.$CLASS_PREFIX}_#{$themeColor} {
+            @include mx.headerFullBgColorStyles($themeColor);
+        }
+    }
+}

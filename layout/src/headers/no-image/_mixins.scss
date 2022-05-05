@@ -1,0 +1,41 @@
+@use '@maltjoy/tokens/src/colors';
+@use 'vars';
+@use '../themes' as themes;
+
+$BACKGROUND_COLORS: (
+    l-white: white,
+    l-grey: colors.$joy-color-neutral-2,
+    product-page: colors.$joy-color-neutral-2
+);
+
+@mixin headerNoImageColorStyles($color: "theme-color-1") {
+    $properties: map-get(themes.$HEADER_COLORS_MAP, $color);
+
+    background-color: map-get($properties, bg-color);
+
+    #{vars.$CLASS_PREFIX}__shapes {
+        &:before {
+            background-color: map-get($properties, shape-color-1);
+        }
+        &:after {
+            background-color: map-get($properties, shape-color-3);
+        }
+    }
+    #{vars.$CLASS_PREFIX}__shape {
+        &:before {
+            background-color: map-get($properties, shape-color-2);
+        }
+    }
+
+}
+
+@mixin setAfterWithBodyBackgroundColor {
+    // Allow pseudo element "after" to inherit from body background color
+    @each $class, $color in $BACKGROUND_COLORS {
+        &.#{$class} #{vars.$CLASS} {
+            &:after {
+                background-color: $color;
+            }
+        }
+    }
+}

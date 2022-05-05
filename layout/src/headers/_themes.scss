@@ -1,0 +1,70 @@
+@use '@maltjoy/tokens/src/colors';
+
+$HEADER_COLORS_MAP: (
+    "theme-color-1": (
+        bg-color: colors.$joy-color-primary-50,
+        shape-color-1: colors.$joy-color-primary-70,
+        shape-color-2: colors.$joy-color-neutral-2,
+        shape-color-3: colors.$joy-color-quaternary-30
+    ),
+    "theme-color-2": (
+        bg-color: colors.$joy-color-primary-50,
+        shape-color-1: colors.$joy-color-primary-70,
+        shape-color-2: colors.$joy-color-brand-secondary-30,
+        shape-color-3: colors.$joy-color-neutral-3
+    ),
+    "theme-color-3": (
+        bg-color: colors.$joy-color-primary-50,
+        shape-color-1: colors.$joy-color-primary-70,
+        shape-color-2: colors.$joy-color-neutral-2,
+        shape-color-3: colors.$joy-color-brand-secondary-30
+    ),
+    "theme-color-4": (
+        bg-color: colors.$joy-color-primary-50,
+        shape-color-2: colors.$joy-color-neutral-2,
+        shape-color-3: colors.$joy-color-brand-primary-30,
+        shape-color-1: colors.$joy-color-primary-70
+    ),
+    "theme-color-5": (
+        bg-color: colors.$joy-color-tertiary-50,
+        shape-color-1: colors.$joy-color-tertiary-70,
+        shape-color-2: colors.$joy-color-neutral-2,
+        shape-color-3: colors.$joy-color-primary-30
+    ),
+    "theme-color-6": (
+        bg-color: colors.$joy-color-brand-secondary-70,
+        shape-color-1: colors.$joy-color-brand-secondary-70,
+        shape-color-2: colors.$joy-color-neutral-2,
+        shape-color-3: colors.$joy-color-primary-50
+    ),
+    "theme-color-7": (
+        bg-color: colors.$joy-color-secondary-30,
+        shape-color-1: colors.$joy-color-secondary-30,
+        shape-color-2: colors.$joy-color-secondary-90,
+        shape-color-3: colors.$joy-color-quaternary-30
+    ),
+    "theme-color-8": (
+        bg-color: colors.$joy-color-tertiary-50,
+        shape-color-1: colors.$joy-color-tertiary-50,
+        shape-color-2: colors.$joy-color-neutral-2,
+        shape-color-3: colors.$joy-color-primary-30
+    ),
+    "theme-color-9": (
+        bg-color: colors.$joy-color-primary-90,
+        shape-color-1: colors.$joy-color-primary-90,
+        shape-color-2: colors.$joy-color-neutral-2,
+        shape-color-3: colors.$joy-color-brand-primary-50
+    ),
+    "theme-color-10": (
+        bg-color: colors.$joy-color-secondary-30,
+        shape-color-1: colors.$joy-color-secondary-30,
+        shape-color-2: colors.$joy-color-quaternary-30,
+        shape-color-3: colors.$joy-color-secondary-90
+    ),
+    "theme-color-11": (
+        bg-color: colors.$joy-color-brand-secondary-70,
+        shape-color-1: colors.$joy-color-brand-secondary-70,
+        shape-color-2: colors.$joy-color-neutral-3,
+        shape-color-3: colors.$joy-color-quaternary-50
+    )
+);

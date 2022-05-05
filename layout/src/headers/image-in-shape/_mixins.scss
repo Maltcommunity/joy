@@ -1,0 +1,21 @@
+@use 'vars';
+@use '../themes' as themes;
+
+@mixin headerImageInShapeThemeColorStyles($color: "theme-color-1") {
+    $properties: map-get(themes.$HEADER_COLORS_MAP, $color);
+    background-color: map-get($properties, bg-color);
+
+    &:after {
+        background-color: map-get($properties, bg-color);
+    }
+
+    #{vars.$CLASS_PREFIX}__shapes {
+        &:before {
+            background-color: map-get($properties, shape-color-2);
+        }
+
+        &:after {
+            background-color: map-get($properties, shape-color-3);
+        }
+    }
+}

@@ -1,0 +1,118 @@
+$bp_screen-tiny_max:            359px;
+
+$bp_screen-xxs_min:             $bp_screen-tiny_max + 1;
+$bp_screen-xxs_max:             479px;
+
+$bp_screen-xs_min:              $bp_screen-xxs_max + 1;
+$bp_screen-xs_max:              767px;
+
+$bp_screen-sm_min:              $bp_screen-xs_max + 1;
+$bp_screen-sm_max:              991px;
+
+$bp_screen-md_min:              $bp_screen-sm_max + 1;
+$bp_screen-md_max:              1199px;
+
+$bp_screen-lg_min:              $bp_screen-md_max + 1;
+$bp_screen-lg_max:              1599px;
+
+$bp_screen_xlg_min: $bp_screen-lg_max + 1;
+// No max value, it's useless
+
+
+@mixin screen_tiny {
+  @media screen and (max-width: $bp_screen-tiny_max) {
+    @content;
+  }
+}
+
+@mixin screen_xxs($range:max) {
+  @if $range == only {
+    @media screen and (min-width: $bp_screen-xxs_min) and (max-width: $bp_screen-xxs_max) {
+      @content;
+    }
+  } @else if $range == min {
+    @media screen and (min-width: $bp_screen-xxs_min) {
+      @content;
+    }
+  } @else {
+    @media screen and (max-width: $bp_screen-xxs_max) {
+      @content;
+    }
+  }
+}
+
+@mixin screen_xs($range:max) {
+  @if $range == only {
+    @media screen and (min-width: $bp_screen-xs_min) and (max-width: $bp_screen-xs_max) {
+      @content;
+    }
+  } @else if $range == min {
+    @media screen and (min-width: $bp_screen-xs_min) {
+      @content;
+    }
+  } @else {
+    @media screen and (max-width: $bp_screen-xs_max) {
+      @content;
+    }
+  }
+}
+
+@mixin screen_sm($range:max) {
+  @if $range == only {
+    @media screen and (min-width: $bp_screen-sm_min) and (max-width: $bp_screen-sm_max) {
+      @content;
+    }
+  } @else if $range == min {
+    @media screen and (min-width: $bp_screen-sm_min) {
+      @content;
+    }
+  } @else {
+    @media screen and (max-width: $bp_screen-sm_max) {
+      @content;
+    }
+  }
+}
+
+@mixin screen_md($range:max) {
+  @if $range == only {
+    @media screen and (min-width: $bp_screen-md_min) and (max-width: $bp_screen-md_max) {
+      @content;
+    }
+  } @else if $range == min {
+    @media screen and (min-width: $bp_screen-md_min) {
+      @content;
+    }
+  } @else {
+    @media screen and (max-width: $bp_screen-md_max) {
+      @content;
+    }
+  }
+}
+
+@mixin screen_lg($range:max) {
+  @if $range == only {
+    @media screen and (min-width: $bp_screen-lg_min) and (max-width: $bp_screen-lg_max) {
+      @content;
+    }
+  }
+  @if $range == min {
+    @media screen and (min-width: $bp_screen-lg_min) {
+      @content;
+    }
+  } @else {
+    @media screen and (max-width: $bp_screen-lg_max) {
+      @content;
+    }
+  }
+}
+
+// Over 1599 px width
+@mixin screen_xlg($range: min) {
+  @if $range == min {
+    @media screen and (min-width: $bp_screen_xlg_min) {
+      @content;
+    }
+  } @else {
+    @error "There is no breakpoint over 1600px"
+  }
+}
