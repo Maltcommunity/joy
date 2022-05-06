@@ -13,7 +13,7 @@
     padding-top: 80px;
     padding-bottom: 80px;
     margin-bottom: 200px;
-    font-family: 'Moderat', Arial, Helvetica, sans-serif;
+    font-family: fs.$joy-font-family;
 
     @include utils.screen_md() {
         padding: 40px spacing.$joy-core-spacing-10 0;
@@ -73,9 +73,8 @@
     }
 
     &__title {
-        font-size: fs.$joy-font-size-4xl;
-        font-family: 'Agrandir Tight', Arial, Helvetica, sans-serif;
         margin-bottom: spacing.$joy-core-spacing-5;
+        @include fs.getFontBySize(xxxxl);
 
         @include utils.screen_sm() {
             margin-bottom: spacing.$joy-core-spacing-10;

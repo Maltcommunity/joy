@@ -94,7 +94,7 @@ $FONTS_MAP: (
                 lineHeight: $joy-line-height-small
         ),
         xl-title: (
-                fontFamily: $joy-font-family,
+                fontFamily: $joy-font-family-title,
                 fontSize: $joy-font-size-xl,
                 fontWeight: 500,
                 fontSizeMobile: $joy-font-size-l,
@@ -108,21 +108,21 @@ $FONTS_MAP: (
                 lineHeight: $joy-line-height-small
         ),
         xxl: (
-                fontFamily: $joy-font-family,
+                fontFamily: $joy-font-family-title,
                 fontSize: $joy-font-size-2xl,
                 fontSizeMobile: $joy-font-size-2xl-mobile,
                 fontWeight: 500,
                 lineHeight: $joy-line-height-small
         ),
         xxxl: (
-                fontFamily: $joy-font-family,
+                fontFamily: $joy-font-family-title,
                 fontSize: $joy-font-size-3xl,
                 fontSizeMobile: $joy-font-size-3xl-mobile,
                 fontWeight: 500,
                 lineHeight: $joy-line-height-small
         ),
         xxxxl: (
-                fontFamily: $joy-font-family,
+                fontFamily: $joy-font-family-title,
                 fontSize: $joy-font-size-4xl,
                 fontSizeMobile: $joy-font-size-4xl-mobile,
                 fontWeight: 500,
