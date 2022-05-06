@@ -10,6 +10,7 @@
     margin-bottom: 50px;
     @include mx.headerNoImageColorStyles('theme-color-1');
     clip-path: polygon(0 0, 100% 0, 100% 87%, 0 100%);
+    transform: translate3d(0, 0, 0); // hack to prevent pixelated borders
 
     #{vars.$CLASS_PREFIX} {
         &__shapes {
