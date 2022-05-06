@@ -3,21 +3,23 @@
 @use "mixins" as mx;
 @use "vars";
 
-#{vars.$CLASS_PREFIX} {
-    &:after {
-        height: 110%;
-        top: 0;
-        transform: none;
-        clip-path: polygon(0 0, 100% 0, 100% 84%, 0 100%);
-    }
-}
-
 #{vars.$CLASS} {
     // Default color pallet if no theme class
     @include mx.headerImageInShapeThemeColorStyles('theme-color-1');
 
     @include utils.screen_md(min) {
         min-height: 600px;
+    }
+
+    &:after {
+        height: 110%;
+        top: 0;
+        transform: none;
+        clip-path: polygon(0 0, 100% 0, 100% 84%, 0 100%);
+
+        @include utils.screen_sm() {
+            height: 150%;
+        }
     }
 
     #{vars.$CLASS_PREFIX} {

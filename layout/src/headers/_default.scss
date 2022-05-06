@@ -73,8 +73,13 @@
     }
 
     &__title {
+        margin-top: 0;
         margin-bottom: spacing.$joy-core-spacing-5;
         @include fs.getFontBySize(xxxxl);
+
+        > * {
+            margin: 0;
+        }
 
         @include utils.screen_sm() {
             margin-bottom: spacing.$joy-core-spacing-10;
