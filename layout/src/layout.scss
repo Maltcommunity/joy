@@ -1,2 +1,6 @@
 @use './grid';
 @use './headers';
+
+body {
+  overflow-x: hidden;
+}

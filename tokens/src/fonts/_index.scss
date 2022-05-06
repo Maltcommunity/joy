@@ -20,10 +20,149 @@ $joy-font-weight-bold: 700;
 $joy-line-height-small: 1.05;
 $joy-line-height-large: 1.25;
 
+$joy-font-family: 'Moderat', Arial, Helvetica, sans-serif;
+$joy-font-family-title: 'Agrandir Tight', Arial, Helvetica, sans-serif;
+
+/* We don't use 2xl, 3xl, 4xl map keys because in some Intellij configurations, these keys are reformatted */
+
+$FONTS_MAP: (
+        xxs: (
+                fontFamily: $joy-font-family,
+                fontSize: $joy-font-size-xxs,
+                fontWeight: normal,
+                lineHeight: $joy-line-height-large
+        ),
+        xxs-bold: (
+                fontFamily: $joy-font-family,
+                fontSize: $joy-font-size-xxs,
+                fontWeight: 700,
+                lineHeight: $joy-line-height-large
+        ),
+        xs: (
+                fontFamily: $joy-font-family,
+                fontSize: $joy-font-size-xs,
+                fontWeight: normal,
+                lineHeight: $joy-line-height-large
+        ),
+        xs-bold: (
+                fontFamily: $joy-font-family,
+                fontSize: $joy-font-size-xs,
+                fontWeight: bold,
+                lineHeight: $joy-line-height-large
+        ),
+        s: (
+                fontFamily: $joy-font-family,
+                fontSize: $joy-font-size-s,
+                fontWeight: normal,
+                lineHeight: $joy-line-height-large
+        ),
+        s-bold: (
+                fontFamily: $joy-font-family,
+                fontSize: $joy-font-size-s,
+                fontWeight: bold,
+                lineHeight: $joy-line-height-large
+        ),
+        m: (
+                fontFamily: $joy-font-family,
+                fontSize: $joy-font-size-m,
+                fontWeight: normal,
+                lineHeight: $joy-line-height-large
+        ),
+        m-bold: (
+                fontFamily: $joy-font-family,
+                fontSize: $joy-font-size-m,
+                fontWeight: bold,
+                lineHeight: $joy-line-height-large
+        ),
+        l: (
+                fontFamily: $joy-font-family,
+                fontSize: $joy-font-size-l,
+                fontWeight: normal,
+                lineHeight: $joy-line-height-large
+        ),
+        l-bold: (
+                fontFamily: $joy-font-family,
+                fontSize: $joy-font-size-l,
+                fontWeight: bold,
+                lineHeight: $joy-line-height-large
+        ),
+        xl: (
+                fontFamily: $joy-font-family,
+                fontSize: $joy-font-size-xl,
+                fontWeight: 500,
+                fontSizeMobile: $joy-font-size-xl-mobile,
+                lineHeight: $joy-line-height-small
+        ),
+        xl-title: (
+                fontFamily: $joy-font-family,
+                fontSize: $joy-font-size-xl,
+                fontWeight: 500,
+                fontSizeMobile: $joy-font-size-l,
+                lineHeight: $joy-line-height-large
+        ),
+        xl-title-bold: (
+                fontFamily: $joy-font-family,
+                fontSize: $joy-font-size-xl,
+                fontWeight: 700,
+                fontSizeMobile: $joy-font-size-xl-mobile,
+                lineHeight: $joy-line-height-small
+        ),
+        xxl: (
+                fontFamily: $joy-font-family,
+                fontSize: $joy-font-size-2xl,
+                fontSizeMobile: $joy-font-size-2xl-mobile,
+                fontWeight: 500,
+                lineHeight: $joy-line-height-small
+        ),
+        xxxl: (
+                fontFamily: $joy-font-family,
+                fontSize: $joy-font-size-3xl,
+                fontSizeMobile: $joy-font-size-3xl-mobile,
+                fontWeight: 500,
+                lineHeight: $joy-line-height-small
+        ),
+        xxxxl: (
+                fontFamily: $joy-font-family,
+                fontSize: $joy-font-size-4xl,
+                fontSizeMobile: $joy-font-size-4xl-mobile,
+                fontWeight: 500,
+                lineHeight: $joy-line-height-small
+        ),
+        quote: (
+                fontFamily: $joy-font-family,
+                fontSize: $joy-font-size-quote,
+                fontSizeMobile: $joy-font-size-quote-mobile,
+                fontWeight: bold,
+                lineHeight: $joy-line-height-small
+        )
+);
+
+@mixin getFontBySize($font: m) {
+     $fontProperties : map-get($FONTS_MAP, $font);
+     $fontFamily: map-get($fontProperties , fontFamily);
+     $fontSize: map-get($fontProperties , fontSize);
+     $fontSizeMobile: map-get($fontProperties , fontSizeMobile);
+     $fontWeight: map-get($fontProperties , fontWeight);
+     $fontLineHeight: map-get($fontProperties , lineHeight);
+
+     @if $fontFamily != null {
+          font-family: $fontFamily;
+     }
+     font-weight: $fontWeight;
+     font-size: $fontSize;
+     line-height: $fontLineHeight;
+
+     @if $fontSizeMobile!= null {
+          @media (max-width: 767px) {
+               font-size: $fontSizeMobile;
+          }
+     }
+}
+
 @mixin getFontsProperties() {
      // Font families:
-     --joy-font-family: 'Moderat', Arial, Helvetica, sans-serif;
-     --joy-font-family-title: 'Agrandir', Arial, Helvetica, sans-serif; // For our component library, we don't really use this one
+     --joy-font-family: #{$joy-font-family};
+     --joy-font-family-title: #{$joy-font-family-title};
  
      // Font sizes 
      --joy-font-size-none: 0;

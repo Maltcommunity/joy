@@ -9,18 +9,7 @@
     padding-bottom: 130px;
     margin-bottom: 50px;
     @include mx.headerNoImageColorStyles('theme-color-1');
-
-    &:after {
-        background-color: var(--body-bg, #{colors.$joy-color-neutral-2});
-        width: 110%;
-        height: 150px;
-        display: block;
-        position: absolute;
-        left: 0;
-        bottom: -150px;
-        transform-origin: left bottom;
-        transform: rotate(-3deg) skewX(-4deg);
-    }
+    clip-path: polygon(0 0, 100% 0, 100% 87%, 0 100%);
 
     #{vars.$CLASS_PREFIX} {
         &__shapes {

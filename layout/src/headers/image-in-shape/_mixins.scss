@@ -3,7 +3,7 @@
 
 @mixin headerImageInShapeThemeColorStyles($color: "theme-color-1") {
     $properties: map-get(themes.$HEADER_COLORS_MAP, $color);
-    background-color: map-get($properties, bg-color);
+    // background-color: map-get($properties, bg-color);
 
     &:after {
         background-color: map-get($properties, bg-color);
