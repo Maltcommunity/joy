@@ -46,13 +46,13 @@ importers:
 
   layout:
     specifiers:
-      '@maltjoy/tokens': 1.2.1
+      '@maltjoy/tokens': 1.3.1
       autoprefixer: ^10.4.7
       postcss: ^8.4.13
       postcss-cli: ^9.1.0
       sass: 1.51.0
     dependencies:
-      '@maltjoy/tokens': 1.2.1
+      '@maltjoy/tokens': link:../tokens
     devDependencies:
       autoprefixer: 10.4.7_postcss@8.4.13
       postcss: 8.4.13
@@ -637,10 +637,6 @@ packages:
 
   /@maltjoy/tokens/1.2.0:
     resolution: {integrity: sha512-mYIS2yVc87QhFfygC2X47sHtOrUBpA8IY8EJtsBL48ssAMmDjhQfw518itaihdrUcCkfEiiQDYrjFuLJtuKbBQ==}
-    dev: false
-
-  /@maltjoy/tokens/1.2.1:
-    resolution: {integrity: sha512-cH83X/LcOekw/TKH9tFjcqFQuHcHs+xGLwpDX0auHkqSuR3ohGXA7BqeLadmTsmZAAE5PxXtkCEdNGb2ANMVMw==}
     dev: false
 
   /@nodelib/fs.scandir/2.1.5:

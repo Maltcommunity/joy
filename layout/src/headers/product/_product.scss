@@ -16,10 +16,7 @@
 
     #{vars.$CLASS_PREFIX} {
         &__title {
-            font-size: fonts.$joy-font-size-l;
-            font-family: 'Agrandir Tight', Arial, Helvetica, sans-serif;
-            line-height: fonts.$joy-line-height-small;
-            font-weight: fonts.$joy-font-weight-normal;
+            @include fonts.getFontBySize(xxxl);
         }
 
         &__subtitle {
