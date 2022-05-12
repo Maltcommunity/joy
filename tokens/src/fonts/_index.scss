@@ -87,14 +87,14 @@ $FONTS_MAP: (
                 lineHeight: $joy-line-height-large
         ),
         xl: (
-                fontFamily: $joy-font-family,
+                fontFamily: $joy-font-family-title,
                 fontSize: $joy-font-size-xl,
                 fontWeight: 500,
                 fontSizeMobile: $joy-font-size-xl-mobile,
                 lineHeight: $joy-line-height-small
         ),
         xl-title: (
-                fontFamily: $joy-font-family-title,
+                fontFamily: $joy-font-family,
                 fontSize: $joy-font-size-xl,
                 fontWeight: 500,
                 fontSizeMobile: $joy-font-size-l,
