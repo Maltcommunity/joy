@@ -1,0 +1,5 @@
+$joy-form-border-width: 2px;
+
+@mixin getFormsProperties() {
+  --joy-form-border-width: #{$joy-form-border-width};
+}

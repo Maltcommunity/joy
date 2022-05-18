@@ -2,6 +2,7 @@
 @use './colors';
 @use './elevations';
 @use './fonts';
+@use './forms';
 @use './radius';
 @use './spacing';
 @use './zindex';
@@ -18,4 +19,5 @@
     @include spacing.getSpacingProperties();
     @include animations.getAnimationsProperties();
     @include zindex.getZindexProperties();
+    @include forms.getFormsProperties();
 }

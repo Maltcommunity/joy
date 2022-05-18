@@ -1,0 +1,15 @@
+@use './media-queries' as mq;
+
+$section-padding: 75px; // Value to change for every generic blocks. It creates $section-padding*2 pixels space between 2 blocks.
+$section-padding_sm: 30px;
+
+@mixin genericSectionStyles {
+  position: relative;
+  padding-top: $section-padding;
+  padding-bottom: $section-padding;
+
+  @include mq.screen_sm {
+    padding-top: $section-padding_sm;
+    padding-bottom: $section-padding_sm;
+  }
+}

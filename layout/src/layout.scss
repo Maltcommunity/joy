@@ -1,5 +1,7 @@
 @use './grid';
 @use './headers';
+@use './key-numbers';
+@use './landing-highlight';
 
 body {
   overflow-x: hidden;

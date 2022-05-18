@@ -1,0 +1,161 @@
+@use '@maltjoy/tokens/src/fonts';
+@use '@maltjoy/tokens/src/colors';
+@use '../_utils' as utils;
+
+.l-key-numbers {
+  @include utils.genericSectionStyles();
+  color: colors.$joy-color-neutral-5;
+
+  &__with-shapes {
+    margin-top: 150px;
+    margin-bottom: 360px;
+
+    @include utils.screen_sm {
+      margin-top: 30px;
+      margin-bottom: 220px;
+    }
+
+    @include utils.generateShape(after) {
+      z-index: 0;
+      height: 170%;
+      width: calc(100% + 200px);
+      transform: skewY(-4deg);
+      background-color: white;
+      top: -100px;
+      left: 0;
+      border-radius: 0 500px 500px 0;
+
+      @include utils.screen_sm() {
+        height: calc(100% + 120px);
+      }
+    }
+
+    .landing-page__shape-group {
+
+      @include utils.generateShape(before) {
+        $_width: 400px;
+
+        height: 150px;
+        width: $_width;
+        border-radius: 0 calc(#{$_width} / 2) calc(#{$_width} / 2) 0;
+        transform: rotate(-25deg);
+        background-color: colors.$joy-color-secondary-50;
+        top: calc(100% + 215px);
+        left: -105px;
+
+        @include utils.screen_sm() {
+          top: calc(100% + 100px);
+          left: -215px;
+        }
+      }
+
+      @include utils.generateShape(after) {
+        $_width: 500px;
+
+        height: 250px;
+        width: $_width;
+        border-radius: 0 calc(#{$_width} / 2) calc(#{$_width} / 2) 0;
+        transform: rotate(-15deg);
+        background-color: colors.$joy-color-quaternary-50;
+        top: calc(100% + 15px);
+        left: -100px;
+
+        @include utils.screen_sm() {
+          top: calc(100% - 110px);
+          left: -215px;
+        }
+      }
+    }
+
+  }
+
+  &__title {
+    @include fonts.getFontBySize(xxxl);
+    text-align: center;
+    margin-bottom: 40px;
+
+    &.landing-page__align-left {
+      text-align: left;
+    }
+  }
+
+  &__subtitle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin-top: -45px;
+    @include fonts.getFontBySize(m);
+    color: colors.$joy-color-neutral-5;
+
+    @include utils.screen_xs {
+      text-align: left;
+    }
+
+    > img, > p {
+      margin-top: 10px;
+      margin-bottom: 0;
+    }
+
+    img {
+      display: block;
+      margin-left: 10px;
+    }
+
+  }
+
+
+  @include utils.screen_xxs() {
+    &__items.l-row {
+      flex-direction: column;
+
+      > * {
+        flex-basis: 100%;
+        max-width: 100%;
+      }
+    }
+  }
+
+  &__item {
+    margin-top: 60px;
+
+    @include utils.screen_sm() {
+      margin-top: 30px;
+    }
+
+    &-text {
+      margin-top: 10px;
+      max-width: 100%;
+
+      p {
+        @include fonts.getFontBySize(m-bold);
+      }
+    }
+
+    &-description {
+      margin-top: 10px;
+      @include fonts.getFontBySize(m);
+      color: colors.$joy-color-neutral-5;
+
+      p {
+        @include fonts.getFontBySize(m);
+      }
+    }
+
+    // So far, the design rule is to have maximum 6 items
+    // default color is turquoise, so item 1 and 6 are turquoise
+    &:nth-child(2), &:nth-child(4) {
+      .landing-highlight, .landing-highlight:after {
+        background-color: colors.$joy-color-brand-primary-70;
+      }
+    }
+
+    &:nth-child(3), &:nth-child(5) {
+      .landing-highlight, .landing-highlight:after {
+        background-color: colors.$joy-color-primary-50;
+      }
+    }
+
+  }
+
+}

@@ -1,0 +1,78 @@
+@use '@maltjoy/tokens/src/fonts';
+@use '@maltjoy/tokens/src/colors';
+@use '@maltjoy/tokens/src/spacing';
+@use '../_utils' as utils;
+
+$_arrow-triangle-width: 40px;
+
+$HIGHTLIGHT-COLORS: (
+    "blue": colors.$joy-color-brand-secondary-30,
+    "red": colors.$joy-color-primary-30,
+    "pink": colors.$joy-color-brand-primary-50,
+    "yellow": colors.$joy-color-quaternary-50
+);
+
+@mixin arrow {
+  position: absolute;
+  content: '';
+  display: block;
+  width: $_arrow-triangle-width;
+  height: calc(100% + 2px);
+  top: -1px;
+  background: colors.$joy-color-tertiary-50;
+  clip-path: polygon(-2% 0, 100% 50%, -2% 100%);
+}
+
+.landing-highlight {
+  display: inline-flex;
+  align-items: center;
+  position: relative;
+  padding: 20px 0;
+  color: white;
+  background: colors.$joy-color-tertiary-50;
+  @include fonts.getFontBySize(xl);
+
+  p + & {
+    margin-top: spacing.$joy-core-spacing-5;
+  }
+
+  &_right {
+    padding-right: calc(#{$_arrow-triangle-width} / 2);
+    padding-left: $_arrow-triangle-width;
+    margin-right:  $_arrow-triangle-width;
+    border-radius: 74px 0 0 74px;
+
+    &:after {
+      @include arrow;
+      right: -$_arrow-triangle-width;
+    }
+  }
+
+  &_left {
+    padding-left:  calc(#{$_arrow-triangle-width} / 2);
+    padding-right: $_arrow-triangle-width;
+    margin-left: $_arrow-triangle-width;
+    border-radius: 0 74px 74px 0;
+
+    &:before {
+      @include arrow;
+      left: -$_arrow-triangle-width;
+      transform: rotate(180deg);
+    }
+  }
+
+  &_big {
+    @include fonts.getFontBySize(xxxl);
+  }
+
+  @each $name, $color in $HIGHTLIGHT-COLORS {
+    &_#{$name} {
+      background: $color;
+      &::after,
+      &::before
+      {
+        background: $color;
+      }
+    }
+  }
+}

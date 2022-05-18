@@ -1,6 +1,6 @@
 {
   "name": "@maltjoy/layout",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "description": "Malt design system layout ecosystem",
   "files": [
     "dist"
@@ -15,7 +15,7 @@
   "author": "kevin@malt.com",
   "license": "MIT",
   "dependencies": {
-    "@maltjoy/tokens": "1.3.1"
+    "@maltjoy/tokens": "1.5.0"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.7",
