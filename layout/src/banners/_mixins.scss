@@ -1,0 +1,22 @@
+@use "variables" as vars;
+
+@mixin bannerThemeColorStyles($color: "theme-color-1") {
+    $properties: map-get(vars.$BANNER_COLORS_MAP, $color);
+    background-color: map-get($properties, banner-color-1);
+
+    #{vars.$CLASS_PREFIX} {
+        &__shape {
+            &:after {
+                background-color: map-get($properties, banner-color-2);
+            }
+        }
+        &__shapes {
+            &:before {
+                background-color: map-get($properties, banner-color-3);
+            }
+            &:after {
+                background-color: map-get($properties, banner-color-4);
+            }
+        }
+    }
+}

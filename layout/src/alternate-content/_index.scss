@@ -1,0 +1,101 @@
+@use '@maltjoy/tokens/src/colors';
+@use '@maltjoy/tokens/src/fonts';
+@use '@maltjoy/tokens/src/spacing';
+@use '../_utils' as utils;
+
+.alternate-content {
+  position: relative;
+  color: colors.$joy-color-neutral-5;
+  @include utils.genericSectionStyles;
+
+  &__title {
+    @include fonts.getFontBySize(xxxl);
+    text-align: center;
+    margin-bottom: 40px;
+
+    @include utils.screen_xs {
+      text-align: left;
+    }
+  }
+
+  &__description {
+    text-align: center;
+    @include fonts.getFontBySize(l);
+    max-width: 780px;
+    margin: auto;
+    padding-bottom: 40px;
+
+    @include utils.screen_sm() {
+      text-align: left;
+    }
+  }
+
+  &__details {
+    @include fonts.getFontBySize(l);
+
+    p {
+      max-width: 600px;
+    }
+  }
+
+  &__subtitle {
+    @include fonts.getFontBySize(xxl);
+    margin-bottom: 20px;
+  }
+
+  &__highlighted-text {
+    margin-top: spacing.$joy-core-spacing-6;
+  }
+
+  &__wrappers {
+
+    &-with-header { // If the block has at least a title or a description
+      margin-top: 40px;
+    }
+
+    .alternate-content__wrapper {
+      &:last-child {
+        padding-bottom: 0;
+      }
+
+      &:first-child {
+        padding-top: 0;
+      }
+    }
+
+  }
+
+  &__wrapper {
+    align-items: center;
+    padding-top: 40px;
+    padding-bottom: 40px;
+
+    @include utils.screen_xs(max) {
+      flex-direction: column-reverse;
+      align-items: flex-start;
+    }
+
+    img {
+      max-width: 100%;
+      max-height: 375px;
+      display: block;
+      margin: 30px auto 0;
+
+      @include utils.screen_xs(max) {
+        margin-bottom: 20px;
+      }
+    }
+  }
+
+  &_reversed.l-row {
+    @include utils.screen_sm(min) {
+      flex-direction: row-reverse;
+    }
+  }
+
+  .generic_form-panel {
+    @include utils.screen_xs() {
+      margin-top: 30px;
+    }
+  }
+}

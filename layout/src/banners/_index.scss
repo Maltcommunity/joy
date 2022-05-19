@@ -1,0 +1,55 @@
+@use '@maltjoy/tokens/src/spacing';
+@use '@maltjoy/tokens/src/fonts';
+@use '../_utils' as utils;
+
+@use "mixins" as mx;
+@use "variables" as vars;
+
+#{vars.$CLASS_PREFIX} {
+    @include mx.bannerThemeColorStyles('theme-color-1');
+    @include fonts.getFontBySize(m);
+
+    position: relative;
+    display: block;
+    height: 95px;
+    &__content {
+        padding: spacing.$joy-core-spacing-5;
+        z-index: 3;
+        position: relative;
+    }
+    &__shape {
+        @include utils.generateShape(after) {
+            z-index: 0;
+            top: 165px;
+            right: 350px;
+            width: 1000px;
+            height: 300px;
+            border-radius: 650px / 500px;
+            transform: rotate(-10deg);
+        }
+    }
+    &__shapes {
+        position: absolute;
+        overflow: hidden;
+        height: inherit;
+        width: 100%;
+        @include utils.generateShape(before) {
+            z-index: 2;
+            top: 1156px;
+            right: -320px;
+            width: 2000px;
+            height: 600px;
+            border-radius: 170px / 100px;
+            transform: rotate(-42deg);
+        }
+        @include utils.generateShape(after) {
+            z-index: 3;
+            top: 1612px;
+            right: -900px;
+            width: 2000px;
+            height: 600px;
+            border-radius: 1000px;
+            transform: rotate(-63deg);
+        }
+    }
+}

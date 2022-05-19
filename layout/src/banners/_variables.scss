@@ -1,0 +1,12 @@
+@use '@maltjoy/tokens/src/colors';
+
+$CLASS_PREFIX: '.l-banner';
+
+$BANNER_COLORS_MAP: (
+    "theme-color-1": (
+        banner-color-1: colors.$joy-color-quaternary-70,
+        banner-color-2: colors.$joy-color-quaternary-50,
+        banner-color-3: colors.$joy-color-quaternary-30,
+        banner-color-4: colors.$joy-color-secondary-30
+    )
+);

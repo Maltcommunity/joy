@@ -1,0 +1,15 @@
+@use '@maltjoy/tokens/src/colors';
+
+$BACKGROUND_COLORS: (
+    l-white: white,
+    l-grey: colors.$joy-color-neutral-2,
+    product-page: colors.$joy-color-neutral-2
+);
+
+@mixin backgrounds() {
+    @each $class, $color in $BACKGROUND_COLORS {
+        &.#{$class} {
+            background-color: $color;
+        }
+    }
+}

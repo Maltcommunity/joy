@@ -23,6 +23,7 @@
     <ul>
         <li>Tokens for colors, spacing, elevations...</li>    
         <li>Web-components library</li>    
+        <li>Layout components library (pure css)</li>    
     </ul>
 </div>
 

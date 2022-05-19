@@ -1,0 +1,20 @@
+@use '@maltjoy/tokens/src/fonts';
+@use '../_utils' as utils;
+
+$_CLASS: '.l-article_cards';
+
+#{$_CLASS} {
+    @include utils.genericSectionStyles();
+
+    .m-carousel {
+        // This class is not present by default, only applied when the module init the carousel
+        display: flex;
+        flex-direction: column;
+    }
+
+    &__title {
+        text-align: center;
+        margin-bottom: 40px;
+        @include fonts.getFontBySize(xxxl);
+    }
+}
