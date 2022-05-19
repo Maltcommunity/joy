@@ -1,6 +1,6 @@
 {
   "name": "@maltjoy/layout",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "Malt design system layout ecosystem",
   "files": [
     "dist"
