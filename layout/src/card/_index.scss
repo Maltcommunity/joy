@@ -93,17 +93,6 @@ $_infos-margin: 0 spacing.$joy-core-spacing-8 spacing.$joy-core-spacing-8 0;
         padding-left: $_padding;
         padding-right: $_padding;
         padding-bottom: $_padding;
-
-        a {
-            font-size: inherit;
-            color: colors.$joy-color-secondary-30;
-            text-decoration: none;
-            @include fonts.getFontBySize(m);
-
-            &:hover {
-                text-decoration: underline;
-            }
-        }
     }
 
     &_large {
