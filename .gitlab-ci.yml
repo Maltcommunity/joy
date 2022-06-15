@@ -22,13 +22,14 @@ stages:
 .build:
   stage: build
   script:
+    - cd ${CONTEXT_DIR}
     - npm install
     - pnpm build
   rules:
     - if: $CI_PIPELINE_SOURCE == "web"
     - if: $CI_PIPELINE_SOURCE == "push"
-      changes:
-        - ${CONTEXT_DIR}/**/*
+#      changes:
+#        - ${CONTEXT_DIR}/**/*
 
 build-layout:
   extends:
