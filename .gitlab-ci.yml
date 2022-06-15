@@ -25,6 +25,9 @@ stages:
     - cd ${CONTEXT_DIR}
     - npm install
     - pnpm build
+  artifacts:
+    paths:
+      - ${CONTEXT_DIR}/dist/
   rules:
     - if: $CI_PIPELINE_SOURCE == "web"
     - if: $CI_PIPELINE_SOURCE == "push"
@@ -37,3 +40,17 @@ build-layout:
     - .build
   variables:
     CONTEXT_DIR: layout
+
+build-core:
+  extends:
+    - .common
+    - .build
+  variables:
+    CONTEXT_DIR: core
+
+build-tokens:
+  extends:
+    - .common
+    - .build
+  variables:
+    CONTEXT_DIR: tokens
