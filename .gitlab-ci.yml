@@ -1,0 +1,38 @@
+default:
+  image:
+    name: europe-west1-docker.pkg.dev/malt-build/malt-tap-docker/pnpm:6.32.4
+    entrypoint: []
+
+stages:
+  - build
+#  - deploy
+
+.common:
+  tags:
+    - malt-build
+  retry:
+    max: 2
+    when:
+      - unknown_failure
+      - stale_schedule
+      - runner_system_failure
+      - stuck_or_timeout_failure
+
+
+.build:
+  stage: build
+  script:
+    - npm install
+    - pnpm build
+  rules:
+    - if: $CI_PIPELINE_SOURCE == "web"
+    - if: $CI_PIPELINE_SOURCE == "push"
+      changes:
+        - ${CONTEXT_DIR}/**/*
+
+build-layout:
+  extends:
+    - .common
+    - .build
+  variables:
+    CONTEXT_DIR: layout
