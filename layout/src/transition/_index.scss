@@ -1,0 +1,59 @@
+@use '@maltjoy/tokens/src/fonts';
+@use './themes' as themes;
+@use '../_utils' as utils;
+
+$_CLASS: '.l-transition';
+
+#{$_CLASS} {
+    @include utils.genericSectionStyles();
+    text-align: center;
+    color: var(--joy-color-text-body);
+
+    &__logo {
+        display: block;
+        max-width: 100%;
+        width: auto;
+        margin-bottom: 30px;
+    }
+
+    &__title {
+        @include fonts.getFontBySize(xxxl);
+        text-align: center;
+        margin: 0 auto 10px;
+        @include utils.screen_xs {
+            text-align: left;
+        }
+    }
+
+    &__text {
+        @include fonts.getFontBySize(l);
+        margin: 0 auto 40px;
+        max-width: 780px;
+    }
+
+    &__cta {
+        margin: auto;
+    }
+
+    @include utils.screen_sm {
+        text-align: left;
+
+        &__title {
+            margin-left: 0;
+            margin-right: 0;
+        }
+
+        &__text {
+            @include fonts.getFontBySize(l);
+        }
+    }
+
+    @each $theme, $properties in themes.$THEME-LIST {
+        &_#{$theme} {
+            $_bg: map-get($properties, bg);
+            $_color: map-get($properties, color);
+            @include themes.theme($_bg, $_color);
+        }
+    }
+
+}

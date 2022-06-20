@@ -1,0 +1,36 @@
+$_CLASS: '.l-transition';
+
+@mixin theme($bgcolor, $color) {
+    @if $color {
+        color: $color;
+    }
+    text-align: left;
+    border-radius: 0 0 40px 0;
+    background-color: $bgcolor;
+
+    #{$_CLASS}__title, #{$_CLASS}__text {
+        text-align: left;
+    }
+
+    #{$_CLASS}__text {
+        margin: 0 0 40px;
+    }
+}
+
+$THEME-LIST: (
+    'teal': (
+        bg: var(--joy-color-secondary-30),
+        color: white
+    ),
+    'turquoise': (
+        bg: var(--joy-color-tertiary-50),
+        color: white
+    ),
+    'yellow': (
+        bg: var(--joy-color-quaternary-30)
+    ),
+    'blue': (
+        bg: var(--joy-color-brand-secondary-50),
+        color: white
+    )
+)
