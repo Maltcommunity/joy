@@ -1,0 +1,25 @@
+$_CLASS: ".l-introduction";
+
+@mixin theme($color1: var(--joy-color-primary-50), $color2: white, $color3: var(--joy-color-brand-primary-50)) {
+    padding-top: 300px;
+    padding-bottom: 200px;
+
+    #{$_CLASS}__content {
+        background-color: $color1;
+        color: white;
+
+        &:before {
+            background-color: $color1;
+
+        }
+    }
+    #{$_CLASS}__shapes {
+        &:before {
+            background-color: $color2;
+        }
+
+        &:after {
+            background-color: $color3;
+        }
+    }
+}

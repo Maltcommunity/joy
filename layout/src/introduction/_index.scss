@@ -1,0 +1,105 @@
+@use '@maltjoy/tokens/src/colors';
+@use '@maltjoy/tokens/src/fonts';
+@use '../_utils' as utils;
+
+@use './themes' as themes;
+
+$_CLASS: ".l-introduction";
+
+#{$_CLASS} {
+    @include utils.genericSectionStyles;
+    margin-bottom: 0;
+
+    &__title {
+        @include fonts.getFontBySize(xxxl);
+        text-align: left;
+        margin-bottom: 60px;
+    }
+
+    &__content {
+        @include fonts.getFontBySize(m);
+        position: relative;
+
+        p {
+            margin: 0;
+            padding: 0;
+        }
+    }
+
+    &__picture {
+        img {
+            max-width: 100%;
+        }
+    }
+
+    &__description {
+        font-size: var(--joy-font-size-l);
+    }
+
+    @include utils.screen_sm {
+        padding-top: var(--joy-core-spacing-7);
+        padding-bottom: var(--joy-core-spacing-7);
+
+        &__description {
+            font-size: var(--joy-font-size-m);
+            margin-top: var(--joy-core-spacing-7);
+        }
+    }
+
+    #{$_CLASS}__content {
+
+        @include utils.generateShape(before) {
+            top: -160px;
+            left: -186px;
+            width: 3000px;
+            height: calc(100% + 284px);
+            transform: translate(0, 0) rotate(1deg);
+            border-radius: 500px;
+
+            @include utils.screen_sm {
+                border-radius: 0;
+            }
+        }
+    }
+    #{$_CLASS}__shapes {
+        position: absolute;
+        top: 0;
+        right: 0;
+
+        @include utils.generateShape(before) {
+            width: 1800px;
+            height: 300px;
+            border-radius: 600px;
+            transform: rotate(-17deg);
+            right: -1120px;
+            top: 90px;
+        }
+
+        @include utils.generateShape(after) {
+            width: 1875px;
+            height: 300px; // Not a huge height, in case we don't have a lot of content in this block :)
+            border-radius: 1000px;
+            transform: rotate(-8deg);
+            right: -884px;
+            top: 155px;
+        }
+
+        @include utils.screen_sm {
+            transform: scale(.5);
+        }
+    }
+
+    //Theme Variations
+    // Name of the class is choosed from primary color (not shapes)
+    &_red {
+        @include themes.theme();
+    }
+
+    &_turquoise {
+        @include themes.theme(var(--joy-color-tertiary-50), var(--joy-color-neutral-3), var(--joy-color-brand-secondary-70));
+    }
+
+    &_blue {
+        @include themes.theme(var(--joy-color-brand-secondary-50), var(--joy-color-neutral-3), var(--joy-color-tertiary-30));
+    }
+}
