@@ -55,6 +55,10 @@
         margin-bottom: var(--joy-core-spacing-9);
         color: var(--joy-color-text-body);
 
+        p {
+            margin: 0 0 var(--joy-core-spacing-5) 0;
+        }
+
         ul {
             list-style: none;
             color: var(--joy-color-text-body);

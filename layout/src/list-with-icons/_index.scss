@@ -1,0 +1,47 @@
+@use 'list-with-icons-mixin' as list;
+@use 'variables' as vars;
+
+#{vars.$CLASS} {
+    @include list.cListWithIcons(vars.$CLASS);
+
+    ul {
+        padding: 0;
+        margin: 0;
+        list-style: none;
+
+        li {
+            background-image: none; // to fix conflict with .c-list-arrowed
+        }
+    }
+
+    &_white {
+        li {
+            color: white;
+
+            joy-icon {
+                color: inherit;
+            }
+
+        }
+    }
+
+    &_big {
+        li {
+            font-size: var(--joy-font-size-xl);
+
+            img#{vars.$CLASS}__img, joy-icon {
+                top: 11px;
+            }
+        }
+    }
+}
+
+ul#{vars.$CLASS} {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+
+    li {
+        background-image: none; // to fix conflict with .c-list-arrowed
+    }
+}

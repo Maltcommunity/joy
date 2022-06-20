@@ -1,0 +1,22 @@
+@use '@maltjoy/tokens/src/colors';
+@use '@maltjoy/tokens/src/fonts';
+
+@use 'variables' as vars;
+
+$DEFAULT_CLASS: vars.$CLASS;
+
+@mixin cListWithIcons($class: $DEFAULT_CLASS) {
+    li {
+        @include fonts.getFontBySize(l);
+        padding-left: 30px;
+        position: relative;
+        color: var(--joy-color-text-body);
+        margin-bottom: var(--joy-core-spacing-5);
+
+        img#{$class}__img, joy-icon  {
+            position: absolute;
+            top: 3px;
+            left: 0;
+        }
+    }
+}
