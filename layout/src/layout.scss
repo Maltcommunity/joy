@@ -2,6 +2,7 @@
 @use './article-cards';
 @use './banners';
 @use './card';
+@use './footer';
 @use './grid';
 @use './headers';
 @use './images';
@@ -9,7 +10,7 @@
 @use './key-numbers';
 @use './landing-highlight';
 @use './list-with-icons';
-@use './footer';
+@use './text-3-columns';
 
 body {
   overflow-x: hidden;

@@ -1,0 +1,67 @@
+@use '@maltjoy/tokens/src/fonts';
+@use '../_utils';
+
+$_TEXT_MAX-WIDTH: 350px;
+$CLASS: ".l-text-3-columns";
+
+#{$CLASS} {
+    position: relative;
+    @include utils.genericSectionStyles();
+
+    &__shapes {
+        img {
+            top: -155px;
+            position: absolute;
+            right: -535px;
+        }
+    }
+
+    #{$CLASS}__title {
+        @include fonts.getFontBySize(xxl);
+        margin-bottom: 50px;
+
+        @include utils.screen_sm {
+            margin-bottom: 20px;
+        }
+    }
+
+    &__content-wrapper {
+        #{$CLASS}__subtitle {
+            @include fonts.getFontBySize(xl);
+
+            @include utils.screen_md(min) {
+                max-width: $_TEXT_MAX-WIDTH;
+            }
+
+            @include utils.screen_sm() {
+                margin: var(--joy-core-spacing-7) 0 var(--joy-core-spacing-4);
+            }
+        }
+
+        @include utils.screen_md(min) {
+            p {
+                max-width: $_TEXT_MAX-WIDTH;
+            }
+        }
+
+        .l-col_md-12 p {
+            max-width: 100%;
+        }
+    }
+
+    &__item {
+        margin-bottom: 20px;
+        color: var(--joy-color-text-body);
+
+        > p {
+            margin: 0;
+            @include fonts.getFontBySize(l);
+
+            a {
+                color: var(--joy-color-secondary-30);
+                text-decoration: underline;
+                font-weight: var(--joy-font-weight-bold);
+            }
+        }
+    }
+}
