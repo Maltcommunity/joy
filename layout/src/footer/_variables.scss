@@ -1,0 +1,20 @@
+$CLASS_PREFIX: '.l-footer';
+
+$LP_GENERIC_FOOTER_COLORS_MAP: (
+    "theme-color-1": (
+        shape-color-1:  var(--joy-color-neutral-3),
+        shape-color-2: var(--joy-color-brand-secondary-30),
+        shape-color-3: var(--joy-color-brand-primary-30)
+    ),
+    "theme-color-2": (
+        shape-color-1: var(--joy-color-neutral-3),
+        shape-color-2: var(--joy-color-primary-30),
+        shape-color-3: var(--joy-color-secondary-30)
+
+    ),
+    "theme-color-3": (
+        shape-color-1: var(--joy-color-neutral-3),
+        shape-color-2: var(--joy-color-quaternary-30),
+        shape-color-3: var(--joy-color-tertiary-30)
+    )
+);

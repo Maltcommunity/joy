@@ -22,23 +22,5 @@
     "postcss": "^8.4.13",
     "postcss-cli": "^9.1.0",
     "sass": "1.51.0"
-  },
-  "browserslist": [
-    "last 2 versions",
-    "Firefox >= 56",
-    "Chrome >= 63",
-    "Edge >= 16",
-    "Safari >= 10",
-    "Opera >= 75",
-    "ios_saf >= 10",
-    "Samsung >= 5",
-    "op_mob >= 62",
-    "OperaMini >= 13",
-    "not ie <= 11",
-    "not baidu > 0",
-    "not KaiOS > 0",
-    "not op_mini all",
-    "not ie_mob > 0",
-    "not bb > 0"
-  ]
+  }
 }

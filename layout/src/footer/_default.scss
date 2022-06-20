@@ -1,0 +1,90 @@
+@use '@maltjoy/tokens/src/colors';
+@use '@maltjoy/tokens/src/fonts';
+@use '../_utils' as utils;
+@use "./variables" as vars;
+
+#{vars.$CLASS_PREFIX}{
+    display: flex;
+    position: relative;
+    align-items: center;
+    @include utils.genericSectionStyles();
+    min-height: 680px;
+
+    &__shapes {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        right: 0;
+        bottom: 0;
+
+        @include utils.generateShape(after){
+            @include utils.brewShape(1040px, 300px);
+            transform-origin: center;
+            bottom: -73px;
+            right: -295px;
+            transform: rotate(159deg);
+            background: var(--joy-color-brand-primary-30);
+        }
+
+        @include utils.generateShape(before){
+            transform-origin: center;
+            @include utils.brewShape(449px, 114px);
+            bottom: 370px;
+            right: 109px;
+            transform: rotate(119deg);
+            background: var(--joy-color-neutral-3);
+        }
+    }
+
+    &__shape {
+        position: absolute;
+        @include utils.brewShape(698px, 177px);
+        transform-origin: center;
+        bottom: 219px;
+        right: -97px;
+        transform: rotate(140deg);
+        background: var(--joy-color-brand-secondary-30);
+    }
+
+    &__title {
+        @include fonts.getFontBySize(xxl);
+    }
+
+    &__description {
+        @include fonts.getFontBySize(m);
+        margin-bottom: var(--joy-core-spacing-9);
+        color: var(--joy-color-text-body);
+
+        ul {
+            list-style: none;
+            color: var(--joy-color-text-body);
+            margin-bottom: var(--joy-core-spacing-9);
+        }
+    }
+
+    img {
+        max-width: 100%;
+        object-fit: contain;
+        margin-bottom: 20px;
+    }
+
+    @include utils.screen_sm(){
+        padding-top: var(--joy-core-spacing-1);
+        padding-bottom: var(--joy-core-spacing-3);
+        min-height: auto;
+
+        &:before {
+            display: none;
+        }
+
+        &__shapes {
+            transform: scale(0.8);
+            bottom: -99px;
+            right: -334px;
+        }
+
+        .l-row {
+            flex-direction: column-reverse;
+        }
+    }
+}

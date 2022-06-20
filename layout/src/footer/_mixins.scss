@@ -1,0 +1,20 @@
+@use './variables' as vars;
+
+@mixin lpGenericFooterColorStyles($color: "theme-color-1") {
+    $properties: map-get(vars.$LP_GENERIC_FOOTER_COLORS_MAP, $color);
+    #{vars.$CLASS_PREFIX}{
+        &__shapes {
+            &:before {
+                background-color: map-get($properties, shape-color-1);
+            }
+
+            &:after {
+                background-color: map-get($properties, shape-color-3);
+            }
+        }
+
+        &__shape {
+            background-color: map-get($properties, shape-color-2);
+        }
+    }
+}

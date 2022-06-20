@@ -1,0 +1,11 @@
+@use "./variables" as vars;
+@use "./mixins" as mx;
+
+#{vars.$CLASS_PREFIX} {
+    // COLOR THEMES
+    @each $color, $value in vars.$LP_GENERIC_FOOTER_COLORS_MAP {
+        &_#{$color} {
+            @include mx.lpGenericFooterColorStyles($color);
+        }
+    }
+}
