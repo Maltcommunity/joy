@@ -5,7 +5,7 @@ default:
 
 stages:
   - build
-#  - deploy
+  - deploy
 
 .common:
   tags:
@@ -28,6 +28,8 @@ stages:
   artifacts:
     paths:
       - ${CONTEXT_DIR}/dist/
+      - ${CONTEXT_DIR}/README.md
+      - ${CONTEXT_DIR}/package.json
   rules:
     - if: $CI_PIPELINE_SOURCE == "web"
     - if: $CI_PIPELINE_SOURCE == "push"
@@ -54,3 +56,20 @@ build-tokens:
     - .build
   variables:
     CONTEXT_DIR: tokens
+
+.npm-publish:
+  stage: deploy
+  script:
+    - cd ${CONTEXT_DIR}
+    - ls -l
+  rules:
+    - if: $CI_PIPELINE_SOURCE == "web" && $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+    - if: $CI_PIPELINE_SOURCE == "push" && $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+
+npm-publish-layout:
+  extends:
+    - .npm-publish
+    - .common
+  dependencies: ["build-layout"]
+  variables:
+    CONTEXT_DIR: layout
