@@ -62,7 +62,7 @@ build-tokens:
   script:
     - cd ${CONTEXT_DIR}
     - echo "//registry.npmjs.org/:_authToken="${NPM_AUTH_TOKEN} > .npmrc
-    - ls -l
+    - npm login
     - npm publish
   when: manual
   rules:
