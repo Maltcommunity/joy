@@ -61,7 +61,9 @@ build-tokens:
   stage: deploy
   script:
     - cd ${CONTEXT_DIR}
-    - ls -l
+    - npm config set_authToken=$NPM_AUTH_TOKEN
+    - npm publish --dry-run
+  when: manual
   rules:
     - if: $CI_PIPELINE_SOURCE == "web" && $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
     - if: $CI_PIPELINE_SOURCE == "push" && $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
