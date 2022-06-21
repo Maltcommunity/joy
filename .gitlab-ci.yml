@@ -62,6 +62,7 @@ build-tokens:
   script:
     - cd ${CONTEXT_DIR}
     - echo "//registry.npmjs.org/:_authToken="${NPM_AUTH_TOKEN} > .npmrc
+    - ls -l
     - npm publish --dry-run
   when: manual
   rules:
@@ -75,3 +76,19 @@ npm-publish-layout:
   dependencies: ["build-layout"]
   variables:
     CONTEXT_DIR: layout
+
+npm-publish-core:
+  extends:
+    - .npm-publish
+    - .common
+  dependencies: ["build-core"]
+  variables:
+    CONTEXT_DIR: core
+
+npm-publish-tokens:
+  extends:
+    - .npm-publish
+    - .common
+  dependencies: ["build-tokens"]
+  variables:
+    CONTEXT_DIR: tokens
