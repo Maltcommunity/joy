@@ -61,7 +61,7 @@ build-tokens:
   stage: deploy
   script:
     - cd ${CONTEXT_DIR}
-    - npm config set_authToken=$NPM_AUTH_TOKEN
+    - echo "//registry.npmjs.org/:_authToken="${NPM_AUTH_TOKEN} > .npmrc
     - npm publish --dry-run
   when: manual
   rules:
