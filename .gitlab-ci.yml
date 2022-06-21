@@ -63,7 +63,7 @@ build-tokens:
     - cd ${CONTEXT_DIR}
     - echo "//registry.npmjs.org/:_authToken="${NPM_AUTH_TOKEN} > .npmrc
     - ls -l
-    - npm publish --dry-run
+    - npm publish
   when: manual
   rules:
     - if: $CI_PIPELINE_SOURCE == "web" && $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
