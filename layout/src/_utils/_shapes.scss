@@ -1,5 +1,4 @@
 @use './media-queries' as mq;
-@use 'sass:math';
 
 $_SHAPE-WIDTH: 100%;
 $SHAPE-HEIGHT: calc(#{$_SHAPE-WIDTH} * 2);
@@ -7,8 +6,8 @@ $SHAPE-HEIGHT: calc(#{$_SHAPE-WIDTH} * 2);
 $mask-landing-header: '<svg width="531" height="645" viewBox="0 0 531 645" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M201.3 -144.964L74.8791 90.6236C-7.98471 245.032 -75.4091 463.207 183.723 596.99C369.507 692.926 496.722 628.559 584.378 527.536L584.378 -144.964L201.3 -144.964Z" fill="black"/></svg>';
 $mask-landing-header-2: '<svg width="584" height="789" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 583.8 789.08"><path d="M200.73,0,74.31,235.59C-8.56,390-76,608.17,183.15,742c185.78,95.94,313,31.57,400.65-69.45V0Z"/></svg>';
 
-@mixin brewShape($width: auto, $height: math.div($width,3)) {
-  border-radius: math.div($height,2);
+@mixin brewShape($width: auto, $height: calc(#{$width}, 3)) {
+  border-radius: calc(#{$height}, 2);
   width: $width;
   height: $height;
 }
