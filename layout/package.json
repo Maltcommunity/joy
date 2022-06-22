@@ -1,12 +1,13 @@
 {
   "name": "@maltjoy/layout",
-  "version": "0.9.0",
+  "version": "0.10.0",
   "description": "Malt design system layout ecosystem",
   "files": [
     "dist"
   ],
   "scripts": {
-    "build": "pnpm sass:compile && pnpm run prefix",
+    "build": "pnpm sass:compile && pnpm run prefix && pnpm copy",
+    "copy": "cp -r src/_utils dist/scss",
     "sass:dev": "sass --load-path=node_modules src/layout.scss:dist/css/layout.css",
     "sass:compile": "sass --load-path=node_modules src/layout.scss dist/css/layout.css --style=compressed",
     "prefix": "postcss ./dist/css/layout.css --use autoprefixer -d ./dist/css/",
