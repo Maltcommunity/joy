@@ -93,7 +93,7 @@ npm-publish-tokens:
   variables:
     CONTEXT_DIR: tokens
 
-publish-cdn:
+.publish-cdn:
   stage: deploy
   image: europe-west1-docker.pkg.dev/malt-build/malt-tap-docker/malt/malt-builder:fc6e6b7d60b6a5cf2952f22a0f9323267b0c7dea69b991ad83e2c34f5ed08840
   extends:
@@ -101,7 +101,6 @@ publish-cdn:
   dependencies: ["build-core"]
   variables:
     SOURCE_CDN_DIR: dist
-    TARGET_CDN_BUCKET: gs://malt-integration-cdn-regional/npm/@maltjoy/core
   when: manual
   rules:
     - if: $CI_PIPELINE_SOURCE == "web" && $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
@@ -111,3 +110,15 @@ publish-cdn:
     - PACKAGE_VERSION=$(jq -r .version package.json)
     - echo "Deploying assets in '${SOURCE_CDN_DIR}' to ${TARGET_CDN_BUCKET}/${PACKAGE_VERSION}"
     - gsutil -h "Cache-Control:no-transform,public,max-age=2592000" -m cp -z js,css,html,json -r "${SOURCE_CDN_DIR}/"* "${TARGET_CDN_BUCKET}/${PACKAGE_VERSION}" 2>&1 | grep -v "Done"
+
+publish-cdn-integration:
+  extends:
+    - publish-cdn
+  variables:
+    TARGET_CDN_BUCKET: gs://malt-integration-cdn-regional/npm/@maltjoy/core
+
+publish-cdn-production:
+  extends:
+    - publish-cdn
+  variables:
+    TARGET_CDN_BUCKET: gs://malt-production-cdn-regional/npm/@maltjoy/core
