@@ -113,12 +113,12 @@ npm-publish-tokens:
 
 publish-cdn-integration:
   extends:
-    - publish-cdn
+    - .publish-cdn
   variables:
     TARGET_CDN_BUCKET: gs://malt-integration-cdn-regional/npm/@maltjoy/core
 
 publish-cdn-production:
   extends:
-    - publish-cdn
+    - .publish-cdn
   variables:
     TARGET_CDN_BUCKET: gs://malt-production-cdn-regional/npm/@maltjoy/core
