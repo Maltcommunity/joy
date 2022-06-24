@@ -109,8 +109,7 @@ npm-publish-tokens:
   script:
     - cd core
     - PACKAGE_VERSION=$(jq -r .version package.json)
-    - echo {TARGET_CDN_BUCKET}/${PACKAGE_VERSION}
-    - if gsutil ls {TARGET_CDN_BUCKET}/${PACKAGE_VERSION} ; then exit 1; fi
+    - if gsutil ls ${TARGET_CDN_BUCKET}/${PACKAGE_VERSION} ; then exit 1; fi
     - echo "Deploying assets in '${SOURCE_CDN_DIR}' to ${TARGET_CDN_BUCKET}/${PACKAGE_VERSION}"
     - gsutil -h "Cache-Control:no-transform,public,max-age=2592000" -m cp -z js,css,html,json -r "${SOURCE_CDN_DIR}/"* "${TARGET_CDN_BUCKET}/${PACKAGE_VERSION}" 2>&1 | grep -v "Done"
 
