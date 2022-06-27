@@ -24,7 +24,7 @@ stages:
   stage: build
   script:
     - cd ${CONTEXT_DIR}
-    - npm install
+    - pnpm install
     - pnpm build
   artifacts:
     paths:
