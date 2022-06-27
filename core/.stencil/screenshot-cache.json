@@ -1,6 +1,12 @@
 {
-  "timestamp": 1656334669372,
-  "lastBuildId": "20220627145749",
-  "size": 0,
-  "items": []
+  "timestamp": 1656338253112,
+  "lastBuildId": "20220627155733",
+  "size": 1,
+  "items": [
+    {
+      "key": "1608ac8ec5",
+      "ts": 1656338253112,
+      "mp": 0
+    }
+  ]
 }
