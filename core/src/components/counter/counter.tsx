@@ -202,8 +202,8 @@ export class CounterComponent {
                     {...this.maxAttribute}
                     name={this.name}
                     required={this.required}
-                    value={this.value}
                     step="any"
+                    value={this.value}
                 />
 
                 <button
