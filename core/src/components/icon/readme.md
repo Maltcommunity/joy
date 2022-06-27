@@ -44,6 +44,13 @@ Please see <a href="/joy/webcomponents.html#joy_icons_list">full icons list here
 | `size`        | `size`         | The icon size                                                                                   | `"large" \| "medium" \| "small" \| "xlarge" \| "xsmall" \| "xxsmall" \| undefined` | `undefined` |
 
 
+## CSS Custom Properties
+
+| Name          | Description                        |
+| ------------- | ---------------------------------- |
+| `--icon-size` | customize icon size with px value. |
+
+
 ## Dependencies
 
 ### Used by

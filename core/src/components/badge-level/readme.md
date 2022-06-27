@@ -41,6 +41,14 @@ category: Webcomponents
 | `visibleText`       | `visible-text`       | Display text label                                                                                                         | `boolean`                                                                                                                                                                                                                    | `true`      |
 
 
+## CSS Custom Properties
+
+| Name               | Description                   |
+| ------------------ | ----------------------------- |
+| `----badge-height` | Default height for the badge  |
+| `--badge-padding`  | Default padding for the badge |
+
+
 ----------------------------------------------
 
 *Built with [StencilJS](https://stenciljs.com/)*

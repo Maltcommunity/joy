@@ -39,6 +39,13 @@ category: Webcomponents
 | `"default"` | Use it to inject plain HTML error message (or if you can't access the string due to any backend framework handling) |
 
 
+## CSS Custom Properties
+
+| Name                 | Description              |
+| -------------------- | ------------------------ |
+| `--form-error-color` | color for the error text |
+
+
 ## Dependencies
 
 ### Used by

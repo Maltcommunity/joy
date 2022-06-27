@@ -32,6 +32,14 @@ No need to use the mode props.
 | `steps`       | `steps`        | Total number of steps.                                                                  | `number \| undefined`   | `undefined` |
 
 
+## CSS Custom Properties
+
+| Name                          | Description                        |
+| ----------------------------- | ---------------------------------- |
+| `--progress-bar-color`        | Foreground color                   |
+| `--progress-bar-color-mobile` | Foreground color for mobile device |
+
+
 ----------------------------------------------
 
 *Built with [StencilJS](https://stenciljs.com/)*

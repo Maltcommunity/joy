@@ -86,6 +86,13 @@ Type: `Promise<void>`
 
 
 
+## CSS Custom Properties
+
+| Name                                            | Description |
+| ----------------------------------------------- | ----------- |
+| `--product-tour-width - product tour max width` |             |
+
+
 ## Dependencies
 
 ### Depends on

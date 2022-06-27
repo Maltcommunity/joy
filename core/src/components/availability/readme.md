@@ -36,6 +36,17 @@ category: Webcomponents
 | `status`    | `status`     | Status Availability, define color                            | `"" \| "AVAILABLE" \| "AVAILABLE_AND_VERIFIED" \| "AVAILABLE_SOON" \| "NOT_AVAILABLE" \| "NOT_AVAILABLE_WITH_DATE"` | `''`    |
 
 
+## CSS Custom Properties
+
+| Name                                  | Description                                                                                                      |
+| ------------------------------------- | ---------------------------------------------------------------------------------------------------------------- |
+| `--availability-background`           | Background of the availability (when label given)                                                                |
+| `--availability-dot-background-color` | Availability dot background color. Basically the same than border color, but can be overriden to be transparent. |
+| `--availability-dot-border-color`     | Availability dot border color                                                                                    |
+| `--availability-dot-size`             | Dot size in pixel                                                                                                |
+| `--availability-text-color`           | Availability text color (for the label)                                                                          |
+
+
 ----------------------------------------------
 
 *Built with [StencilJS](https://stenciljs.com/)*

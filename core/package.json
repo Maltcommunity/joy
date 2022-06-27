@@ -22,13 +22,15 @@
     "start": "stencil build --dev --watch",
     "lint": "eslint",
     "lint:fix": "eslint --ext .js,.ts,.tsx,.vue --fix .",
-    "test": "stencil test --spec --e2e",
+    "test": "pnpm test:spec && stencil test --e2e --screenshot --ci",
+    "test:spec": "jest --config=jest.config.js --passWithNoTests",
     "test.watch": "stencil test --spec --e2e --watchAll",
     "generate": "stencil generate"
   },
   "dependencies": {
-    "@maltjoy/tokens": "1.2.0",
-    "@stencil/core": "2.15.0"
+    "@floating-ui/dom": "0.5.3",
+    "@maltjoy/tokens": "1.5.0",
+    "@stencil/core": "2.15.1"
   },
   "devDependencies": {
     "@stencil/eslint-plugin": "0.4.0",

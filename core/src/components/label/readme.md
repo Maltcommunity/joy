@@ -14,6 +14,14 @@
 | `size`     | `size`     | Label size *                                   | `"large" \| "medium"` | `'medium'`  |
 
 
+## CSS Custom Properties
+
+| Name                     | Description            |
+| ------------------------ | ---------------------- |
+| `--joy-color-text-title` | color of the label     |
+| `--joy-font-size-m`      | font-size of the label |
+
+
 ## Dependencies
 
 ### Used by

@@ -74,6 +74,22 @@ category: Webcomponents
 | `"default"` | Text of your radio |
 
 
+## CSS Custom Properties
+
+| Name                                 | Description                         |
+| ------------------------------------ | ----------------------------------- |
+| `--radio-border-color-focus`         | keyboard focus outline color        |
+| `--radio-circle-color`               | default radio button color          |
+| `--radio-circle-color-disabled`      | disabled radio button color         |
+| `--radio-circle-color-focus`         | focus radio button color            |
+| `--radio-circle-color-hover`         | hover radio button color            |
+| `--radio-circle-color-invalid`       | invalid radio button color          |
+| `--radio-circle-color-invalid-hover` | invalid radio button color on hover |
+| `--radio-color`                      | the radio label color               |
+| `--radio-color-disabled`             | disabled radio label color          |
+| `--radio-size`                       | override the radio width/height     |
+
+
 ----------------------------------------------
 
 *Built with [StencilJS](https://stenciljs.com/)*

@@ -26,6 +26,16 @@ category: Webcomponents
 | `joyPlaceholderButtonClick` | use @joyPlaceholderButtonClick="yourMethod" for Vue apps | `CustomEvent<void>` |
 
 
+## CSS Custom Properties
+
+| Name                                      | Description                        |
+| ----------------------------------------- | ---------------------------------- |
+| `--placeholder-button-bg-color`           | keyboard focus outline color       |
+| `--placeholder-button-border-color`       | color of dashed button             |
+| `--placeholder-button-border-color-focus` | main background color              |
+| `--placeholder-button-size`               | set the width/height of the button |
+
+
 ## Dependencies
 
 ### Depends on

@@ -68,6 +68,17 @@ Works with any level.
 | `"default"` | Text content of your highlight |
 
 
+## CSS Custom Properties
+
+| Name                            | Description                                                              |
+| ------------------------------- | ------------------------------------------------------------------------ |
+| `--highlight-background-color`  | background color of the highlight                                        |
+| `--highlight-content-color`     | content color of the highlight. Applied to the left icon and left-border |
+| `--highlight-content-font-size` | customize content font size.                                             |
+| `--highlight-icon-size`         | customize icon size with px value.                                       |
+| `--highlight-title-font-size`   | customize title font size.                                               |
+
+
 ## Dependencies
 
 ### Depends on

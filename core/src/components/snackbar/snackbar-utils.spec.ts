@@ -1,4 +1,4 @@
-import SnackbarUtils from '../../components-triggers/snackbar/snackbar-utils';
+import SnackbarUtils from '../../components-triggers/snackbar/snackbar-utils.js';
 
 describe('Snackbar utils unit tests', () => {
     it('should create snackbar with default properties', () => {

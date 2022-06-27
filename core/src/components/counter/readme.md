@@ -73,6 +73,13 @@ Type: `Promise<void>`
 
 
 
+## CSS Custom Properties
+
+| Name                     | Description                                                                  |
+| ------------------------ | ---------------------------------------------------------------------------- |
+| `--counter-items-height` | Set a new value for this property, and it will resize both buttons and input |
+
+
 ## Dependencies
 
 ### Depends on

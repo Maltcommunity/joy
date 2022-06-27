@@ -59,6 +59,20 @@ With or without link
 | `totalNumberLink` | `total-number-link`  | Specify the link to redirect to the full list                                                                                                                  | `string \| undefined`                                                                | `undefined` |
 
 
+## CSS Custom Properties
+
+| Name                                    | Description                                                                                    |
+| --------------------------------------- | ---------------------------------------------------------------------------------------------- |
+| `--avatar-additional-avatar-background` | In an avatar list, you can display a "+X" avatar. The property allows to style its background. |
+| `--avatar-large-font-size`              | Larger avatar font size                                                                        |
+| `--avatar-large-size`                   | Larger avatar size, in pixels                                                                  |
+| `--avatar-medium-font-size`             | Medium avatar font size                                                                        |
+| `--avatar-medium-size`                  | Medium avatar size, in pixels                                                                  |
+| `--avatar-placeholder-background`       | Placeholder avatar (without photo) background-color                                            |
+| `--avatar-small-font-size`              | Small avatar font size                                                                         |
+| `--avatar-small-size`                   | Smaller avatar size, in pixels                                                                 |
+
+
 ## Dependencies
 
 ### Used by
