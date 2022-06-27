@@ -1,5 +1,7 @@
+type NativeEvent = Event;
 import {Component, ComponentInterface, Element, Event, EventEmitter, Host, Listen, Prop, Watch, h} from '@stencil/core';
-import {renderInputOutsideShadowRoot} from '../../utils';
+
+type RadioGroupValue = {value: string};
 
 /**
  * @slot radio-group-legend - If you want to inject a label for your radio group, use this slot (not mandatory)
@@ -8,7 +10,7 @@ import {renderInputOutsideShadowRoot} from '../../utils';
 @Component({
     tag: 'joy-radio-group',
     styleUrl: 'radio-group.scss',
-    shadow: true,
+    scoped: true,
 })
 export class RadioGroup implements ComponentInterface {
     private inputId = `joy-radio-group-${radioGroupIds++}`;
@@ -41,15 +43,23 @@ export class RadioGroup implements ComponentInterface {
     valueChanged(value: any | undefined) {
         this.setRadioTabindex(value);
         this.valueChange.emit({value});
+        this.joyRadioGroupValueChange.emit({value});
     }
 
     /**
-     * Emitted when the value has changed.
+     * Emitted when the value has changed. WARNING : this event has a generic name used by other form elements !
+     * Using it can create conflicts !
      */
-    @Event() valueChange!: EventEmitter<any>;
+    @Event() valueChange!: EventEmitter<RadioGroupValue>;
+
+    /**
+     * Emitted when the value has changed. Use this specific event if you use expandable options containing various inputs.
+     */
+    @Event() joyRadioGroupValueChange!: EventEmitter<RadioGroupValue>;
 
     componentDidLoad() {
         this.setRadioTabindex(this.value);
+        this.getRadios().forEach((radio) => (radio.name = this.name));
     }
 
     private setRadioTabindex = (value: any | undefined) => {
@@ -77,11 +87,15 @@ export class RadioGroup implements ComponentInterface {
         return Array.from(this.el.querySelectorAll('joy-radio'));
     }
 
-    private onClick = (ev: Event) => {
-        ev.preventDefault();
+    private onClick = (ev: NativeEvent) => {
+        if (ev.target) {
+            if ((ev.target as HTMLElement).tagName !== 'A') {
+                ev.preventDefault();
+            }
+        }
 
         const selectedRadio = ev.target && (ev.target as HTMLElement).closest('joy-radio');
-        if (selectedRadio) {
+        if (selectedRadio && !selectedRadio.disabled) {
             const currentValue = this.value;
 
             const newValue = selectedRadio.value;
@@ -126,25 +140,26 @@ export class RadioGroup implements ComponentInterface {
     }
 
     render() {
-        renderInputOutsideShadowRoot(this.el, this.name, this.value, false);
         const directionClass = `joy-radio-group-${this.direction}`;
 
         return (
-            <Host class="joy-radio-group" onClick={this.onClick}>
-                <fieldset class="joy-radio-group-fieldset" role="radiogroup">
-                    <legend class="joy-radio-group-legend">
-                        <slot name="radio-group-legend" />
-                    </legend>
-                    <div
-                        class={{
-                            'joy-radio-group-container': true,
-                            [directionClass]: true,
-                        }}
-                    >
-                        <slot />
-                    </div>
-                    {this.invalid && this.invalidText && <joy-form-error no-html-error-text={this.invalidText} />}
-                </fieldset>
+            <Host onClick={this.onClick}>
+                <div class="joy-radio-group">
+                    <fieldset class="joy-radio-group-fieldset" role="radiogroup">
+                        <legend class="joy-radio-group-legend">
+                            <slot name="radio-group-legend" />
+                        </legend>
+                        <div
+                            class={{
+                                'joy-radio-group-container': true,
+                                [directionClass]: true,
+                            }}
+                        >
+                            <slot />
+                        </div>
+                        {this.invalid && this.invalidText && <joy-form-error no-html-error-text={this.invalidText} />}
+                    </fieldset>
+                </div>
             </Host>
         );
     }

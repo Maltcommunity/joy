@@ -3,6 +3,9 @@
  */
 
 @use '../components/checkbox/style/slots' as checkboxSlots;
+@use '../components/highlight/slots' as highlightSlots;
 @use '../components/pagination/slots' as paginationSlots;
 @use '../components/stepper/style/slots' as stepperSlots;
 @use '../components/tabs/style/slots' as tabsSlots;
+@use '../components/dialog/style/slots' as dialogSlots;
+@use '../components/user-card/style/slots' as userCardSlots;

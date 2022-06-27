@@ -5,37 +5,51 @@ name: joy-select
 category: Webcomponents
 ---
 
-<joy-tag variant="important">WIP</joy-tag>
-
 ```ui_example
-<joy-select icon="filter">
-    <joy-select-option disabled selected>Choose your option...</joy-select-option>
-    <joy-select-option value="first">First option</joy-select-option>
-    <joy-select-option value="second">Second option</joy-select-option>
-    <joy-select-option value="third">Third option</joy-select-option>
-    <joy-select-option value="fourth">Fourth option</joy-select-option>
-    <joy-select-option value="fifth">Fifth option</joy-select-option>
-</joy-select>
-```
-
-## States 
-
-```ui_example
-<joy-select icon="filter" disabled>
-    <joy-select-option disabled selected>Choose your option...</joy-select-option>
-    <joy-select-option value="first">First option</joy-select-option>
-    <joy-select-option value="second">Second option</joy-select-option>
-    <joy-select-option value="third">Third option</joy-select-option>
-</joy-select>
+<joy-select name="my-select" label="I am the select label">
+    <joy-option disabled selected>Choose your option...</joy-option>
+    <joy-option value="first">First option</joy-option>
+    <joy-option value="second">Second option</joy-option>
+    <joy-option value="third">Third option</joy-option>
+    <joy-option value="fourth">Fourth option</joy-option>
+    <joy-option value="fifth">Fifth option</joy-option>
+</joy-dropdown>
 ```
 
 ```ui_example
-<joy-select icon="filter" invalid invalid-message="The field is required, please select a value">
-    <joy-select-option disabled selected>Choose your option...</joy-select-option>
-    <joy-select-option value="first">First option</joy-select-option>
-    <joy-select-option value="second">Second option</joy-select-option>
-    <joy-select-option value="third">Third option</joy-select-option>
-</joy-select>
+<joy-select name="my-select-2">
+    <joy-label slot="select-label"><joy-icon name="chat"></joy-icon> If you need HTML in your label, use the slot</joy-label>
+    
+    <joy-option disabled selected>Choose your option...</joy-option>
+    <joy-option value="first">First option</joy-option>
+    <joy-option value="second">Second option</joy-option>
+    <joy-option value="third">Third option</joy-option>
+    <joy-option value="fourth">Fourth option</joy-option>
+    <joy-option value="fifth">Fifth option</joy-option>
+</joy-dropdown>
+```
+
+
+```ui_example
+<joy-select name="my-select-3" disabled label="I am disabled">
+    <joy-option disabled selected>Choose your option...</joy-option>
+    <joy-option value="first">First option</joy-option>
+    <joy-option value="second">Second option</joy-option>
+    <joy-option value="third">Third option</joy-option>
+    <joy-option value="fourth">Fourth option</joy-option>
+    <joy-option value="fifth">Fifth option</joy-option>
+</joy-dropdown>
+```
+
+```ui_example
+<joy-select required name="my-select-4" invalid label="I am invalid">
+    <joy-option disabled selected>Choose your option...</joy-option>
+    <joy-option value="first">First option</joy-option>
+    <joy-option value="second">Second option</joy-option>
+    <joy-option value="third">Third option</joy-option>
+    <joy-option value="fourth">Fourth option</joy-option>
+    <joy-option value="fifth">Fifth option</joy-option>
+</joy-dropdown>
 ```
 
 <!-- Auto Generated Below -->
@@ -43,38 +57,39 @@ category: Webcomponents
 
 ## Properties
 
-| Property         | Attribute         | Description                                                                                                                                  | Type                  | Default               |
-| ---------------- | ----------------- | -------------------------------------------------------------------------------------------------------------------------------------------- | --------------------- | --------------------- |
-| `closeOnBlur`    | `close-on-blur`   | By default, the dropdown is closed if you focusout the select. For debugging purpose or specific behavior, you can toggle off this option. * | `boolean`             | `true`                |
-| `disabled`       | `disabled`        | Disabled state. *                                                                                                                            | `boolean`             | `false`               |
-| `icon`           | `icon`            | Pick an icon displayed before the label. *                                                                                                   | `string \| undefined` | `undefined`           |
-| `invalid`        | `invalid`         | Invalid state. *                                                                                                                             | `boolean`             | `false`               |
-| `invalidMessage` | `invalid-message` | Invalid state message. *                                                                                                                     | `string`              | `'Field is required'` |
-| `name`           | `name`            | Select name attribute to be found by parent form. *                                                                                          | `string`              | `'select'`            |
-| `required`       | `required`        | Mandatory or not. *                                                                                                                          | `boolean`             | `false`               |
-| `value`          | `value`           | Select actual value. *                                                                                                                       | `string`              | `''`                  |
+| Property         | Attribute         | Description                                         | Type                  | Default               |
+| ---------------- | ----------------- | --------------------------------------------------- | --------------------- | --------------------- |
+| `disabled`       | `disabled`        | Disabled state. *                                   | `boolean`             | `false`               |
+| `invalid`        | `invalid`         | Invalid state. *                                    | `boolean`             | `false`               |
+| `invalidMessage` | `invalid-message` | Invalid state message. *                            | `string`              | `'Field is required'` |
+| `label`          | `label`           | The label text.                                     | `string \| undefined` | `undefined`           |
+| `labelSize`      | `label-size`      | The label input's size.                             | `"large" \| "medium"` | `'medium'`            |
+| `name`           | `name`            | Select name attribute to be found by parent form. * | `string`              | `'dropdown'`          |
+| `required`       | `required`        | Mandatory or not. *                                 | `boolean`             | `false`               |
+| `requiredMark`   | `required-mark`   | Display the required mark or not. Default to true.  | `boolean`             | `true`                |
+| `value`          | `value`           | Mandatory or not. *                                 | `string \| undefined` | `undefined`           |
 
 
 ## Events
 
-| Event         | Description | Type                              |
-| ------------- | ----------- | --------------------------------- |
-| `valueChange` |             | `CustomEvent<{ value: string; }>` |
+| Event             | Description                                                                                            | Type                                                                           |
+| ----------------- | ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
+| `joySelectChange` | Custom event that returns the component instance and its actual value. Binded to select native event * | `CustomEvent<{ element: HTMLJoySelectElement; value?: string \| undefined; }>` |
+| `valueChange`     | Generic custom event name. Name is used by any form field *                                            | `CustomEvent<{ element: HTMLJoySelectElement; value?: string \| undefined; }>` |
 
 
 ## Dependencies
 
 ### Depends on
 
+- [joy-label](../label)
 - [joy-icon](../icon)
-- [joy-form-error](../form-error)
 
 ### Graph
 ```mermaid
 graph TD;
+  joy-select --> joy-label
   joy-select --> joy-icon
-  joy-select --> joy-form-error
-  joy-form-error --> joy-icon
   style joy-select fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

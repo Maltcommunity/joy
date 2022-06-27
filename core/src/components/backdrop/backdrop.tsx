@@ -8,7 +8,7 @@ import {BackDropOrigin} from '../../types';
 })
 export class Backdrop {
     /** The backdrop can be created from many components **/
-    @Prop() origin!: BackDropOrigin;
+    @Prop({reflect: true}) origin!: BackDropOrigin;
     @Event() backdropClick!: EventEmitter<BackDropOrigin>;
 
     private onClick = () => {

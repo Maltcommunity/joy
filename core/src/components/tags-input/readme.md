@@ -5,11 +5,20 @@ name: joy-tags-input
 category: Webcomponents
 ---
 
-## Empty example
 
 ```ui_example
-<joy-tags-input></joy-tags-input>
+<joy-tags-input>Enter your skills</joy-tags-input>
 ```
+
+```ui_example
+<joy-tags-input 
+    sortable-tags 
+    suggestions-label="Suggestions :"
+    suggestions="['Java', 'Kotlin', 'Maven']">
+    Enter your skills
+</joy-tags-input>
+```
+
 
 ## With default values
 
@@ -38,25 +47,29 @@ category: Webcomponents
 
 ## Properties
 
-| Property      | Attribute     | Description                                                                                                             | Type                                                                                           | Default                 |
-| ------------- | ------------- | ----------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ----------------------- |
-| `invalid`     | `invalid`     | Invalid state                                                                                                           | `boolean`                                                                                      | `false`                 |
-| `name`        | `name`        | form name for our tags input                                                                                            | `string \| undefined`                                                                          | `undefined`             |
-| `placeholder` | `placeholder` | Placeholder used for the input                                                                                          | `string`                                                                                       | `'Add your items here'` |
-| `size`        | `size`        | Size for your tags. Check Tag documentation for available values                                                        | `"large" \| "medium" \| "small" \| "xsmall"`                                                   | `'small'`               |
-| `validation`  | `validation`  | Validation type : if 'email' is given, it will create a specific check before actually adding the tag. Default to none. | `"email" \| "none"`                                                                            | `'none'`                |
-| `values`      | `values`      | Saved values for the tags list. Must be an array like string eg. ['first', 'second'].                                   | `string \| undefined`                                                                          | `undefined`             |
-| `variant`     | `variant`     | Variant/color type for your tags. Check Tag documentation for available values                                          | `"important" \| "inactive" \| "pending" \| "pricing" \| "primary" \| "secondary" \| "special"` | `'primary'`             |
+| Property           | Attribute           | Description                                                                                                             | Type                                                                                           | Default                 |
+| ------------------ | ------------------- | ----------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ----------------------- |
+| `invalid`          | `invalid`           | Invalid state                                                                                                           | `boolean`                                                                                      | `false`                 |
+| `name`             | `name`              | form name for our tags input                                                                                            | `string \| undefined`                                                                          | `undefined`             |
+| `placeholder`      | `placeholder`       | Placeholder used for the input                                                                                          | `string`                                                                                       | `'Add your items here'` |
+| `size`             | `size`              | Size for your tags. Check Tag documentation for available values                                                        | `"large" \| "medium" \| "small" \| "xsmall"`                                                   | `'small'`               |
+| `sortableTags`     | `sortable-tags`     | Allows to resort tag list with drag&drop                                                                                | `boolean`                                                                                      | `false`                 |
+| `suggestions`      | `suggestions`       | Suggestion of values. Allows to directly pick them instead of typing.                                                   | `string \| undefined`                                                                          | `undefined`             |
+| `suggestionsLabel` | `suggestions-label` | Suggestion label. Not mandatory.                                                                                        | `string \| undefined`                                                                          | `undefined`             |
+| `validation`       | `validation`        | Validation type : if 'email' is given, it will create a specific check before actually adding the tag. Default to none. | `"email" \| "none"`                                                                            | `'none'`                |
+| `values`           | `values`            | Saved values for the tags list. Must be an array like string eg. ['first', 'second'].                                   | `string \| undefined`                                                                          | `undefined`             |
+| `variant`          | `variant`           | Variant/color type for your tags. Check Tag documentation for available values                                          | `"important" \| "inactive" \| "pending" \| "pricing" \| "primary" \| "secondary" \| "special"` | `'primary'`             |
 
 
 ## Events
 
-| Event               | Description                                                                                           | Type                                                                 |
-| ------------------- | ----------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------- |
-| `joyTagsError`      | When the tags list is on error. According to the returned ErrorType, you can display the right error. | `CustomEvent<ErrorType.DUPLICATED_ENTRY \| ErrorType.INVALID_EMAIL>` |
-| `joyTagsInputBlur`  | On input blur                                                                                         | `CustomEvent<void>`                                                  |
-| `joyTagsInputFocus` | On input focus                                                                                        | `CustomEvent<void>`                                                  |
-| `joyTagsUpdate`     | When the tags list is updated                                                                         | `CustomEvent<string[]>`                                              |
+| Event                       | Description                                                                                           | Type                                                                 |
+| --------------------------- | ----------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------- |
+| `joyTagsError`              | When the tags list is on error. According to the returned ErrorType, you can display the right error. | `CustomEvent<ErrorType.DUPLICATED_ENTRY \| ErrorType.INVALID_EMAIL>` |
+| `joyTagsInputAddSuggestion` | Triggered when we click on a tag suggestion                                                           | `CustomEvent<string>`                                                |
+| `joyTagsInputBlur`          | On input blur                                                                                         | `CustomEvent<void>`                                                  |
+| `joyTagsInputFocus`         | On input focus                                                                                        | `CustomEvent<void>`                                                  |
+| `joyTagsUpdate`             | When the tags list is updated                                                                         | `CustomEvent<string[]>`                                              |
 
 
 ## Methods
@@ -76,12 +89,14 @@ Type: `Promise<string[]>`
 
 ### Depends on
 
+- [joy-label](../label)
 - [joy-tags-list](../tags-list)
 - [joy-tag](../tag)
 
 ### Graph
 ```mermaid
 graph TD;
+  joy-tags-input --> joy-label
   joy-tags-input --> joy-tags-list
   joy-tags-input --> joy-tag
   joy-tag --> joy-icon

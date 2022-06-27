@@ -1,5 +1,9 @@
 @use 'tag-config' as tags;
 
+joy-tags-list {
+    display: block;
+}
+
 joy-tag:not([hydrated]) {
     color: transparent;
     background-color: var(--joy-color-neutral-3);

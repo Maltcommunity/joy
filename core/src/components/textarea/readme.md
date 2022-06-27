@@ -5,25 +5,24 @@ name: joy-textarea
 category: Webcomponents
 ---
 
-### Default
 
 ```ui_example
-<joy-textarea placeholder="Hello, you can write anything here..."></joy-textarea>
-```
-
-### More advanced example
-
-```ui_example
-<joy-textarea auto-grow minlength="100" maxlength="300" placeholder="Textarea with auto-grow and validation helpers activated.">
-    <span slot="textarea-label">Textarea label</span>
+<joy-textarea placeholder="Hello, you can write anything here...">
+    I am the label
 </joy-textarea>
 ```
 
-### Disabled
+
+```ui_example
+<joy-textarea auto-grow minlength="100" maxlength="300" placeholder="Textarea with auto-grow and validation helpers activated.">
+    Example with validations and autogrow
+</joy-textarea>
+```
+
 
 ```ui_example
 <joy-textarea disabled minlength="100" maxlength="300" placeholder="Hello, you can write anything here...">
-    <span slot="textarea-label">Textarea label</span>
+   Example with validations 
 </joy-textarea>
 ```
 
@@ -31,7 +30,7 @@ category: Webcomponents
 
 ```ui_example
 <joy-textarea invalid minlength="100" maxlength="300" placeholder="Hello, you can write anything here...">
-    <span slot="textarea-label">Textarea label</span>
+    Example with error state
 </joy-textarea>
 ```
 
@@ -53,6 +52,7 @@ category: Webcomponents
 | `enterkeyhint`   | `enterkeyhint`    | A hint to the browser for which enter key to display. Possible values: `"enter"`, `"done"`, `"go"`, `"next"`, `"previous"`, `"search"`, and `"send"`.                            | `"done" \| "enter" \| "go" \| "next" \| "previous" \| "search" \| "send" \| undefined`             | `undefined`    |
 | `inputmode`      | `inputmode`       | A hint to the browser for which keyboard to display. Possible values: `"none"`, `"text"`, `"tel"`, `"url"`, `"email"`, `"numeric"`, `"decimal"`, and `"search"`.                 | `"decimal" \| "email" \| "none" \| "numeric" \| "search" \| "tel" \| "text" \| "url" \| undefined` | `undefined`    |
 | `invalid`        | `invalid`         | If `true`, the textarea will be considered as invalid.                                                                                                                           | `boolean`                                                                                          | `false`        |
+| `labelSize`      | `label-size`      | The label input's size.                                                                                                                                                          | `"large" \| "medium"`                                                                              | `'medium'`     |
 | `maxlength`      | `maxlength`       | If the value of the type attribute is `text`, `email`, `search`, `password`, `tel`, or `url`, this attribute specifies the maximum number of characters that the user can enter. | `number \| undefined`                                                                              | `undefined`    |
 | `minlength`      | `minlength`       | If the value of the type attribute is `text`, `email`, `search`, `password`, `tel`, or `url`, this attribute specifies the minimum number of characters that the user can enter. | `number \| undefined`                                                                              | `undefined`    |
 | `minlengthLabel` | `minlength-label` | Use this prop to give component the translation used to display minimum chars count.                                                                                             | `string \| undefined`                                                                              | `undefined`    |
@@ -60,9 +60,10 @@ category: Webcomponents
 | `placeholder`    | `placeholder`     | Instructional text that shows before the input has a value.                                                                                                                      | `null \| string \| undefined`                                                                      | `undefined`    |
 | `readonly`       | `readonly`        | If `true`, the user cannot modify the value.                                                                                                                                     | `boolean`                                                                                          | `false`        |
 | `required`       | `required`        | If `true`, the user must fill in a value before submitting a form.                                                                                                               | `boolean`                                                                                          | `false`        |
+| `requiredMark`   | `required-mark`   | Display the required mark or not. Default to true.                                                                                                                               | `boolean`                                                                                          | `true`         |
 | `rows`           | `rows`            | The number of visible text lines for the control.                                                                                                                                | `number \| undefined`                                                                              | `4`            |
 | `spellcheck`     | `spellcheck`      | If `true`, the element will have its spelling and grammar checked.                                                                                                               | `boolean`                                                                                          | `false`        |
-| `value`          | `value`           | The value of the textarea.                                                                                                                                                       | `null \| string \| undefined`                                                                      | `''`           |
+| `value`          | `value`           | The value of the textarea.                                                                                                                                                       | `string`                                                                                           | `''`           |
 | `wrap`           | `wrap`            | Indicates how the control wraps text.                                                                                                                                            | `"hard" \| "off" \| "soft" \| undefined`                                                           | `undefined`    |
 
 
@@ -78,6 +79,16 @@ category: Webcomponents
 
 
 ## Methods
+
+### `forceRunAutoGrow() => Promise<void>`
+
+Force run auto grow
+
+#### Returns
+
+Type: `Promise<void>`
+
+
 
 ### `getInputElement() => Promise<HTMLTextAreaElement>`
 
@@ -106,11 +117,13 @@ Type: `Promise<void>`
 ### Depends on
 
 - [joy-icon](../icon)
+- [joy-label](../label)
 
 ### Graph
 ```mermaid
 graph TD;
   joy-textarea --> joy-icon
+  joy-textarea --> joy-label
   style joy-textarea fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

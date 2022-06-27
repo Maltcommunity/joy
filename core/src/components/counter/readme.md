@@ -5,14 +5,18 @@ name: joy-counter
 category: Webcomponents
 ---
 
-## Given input name
 ```ui_example
 <joy-counter input-name="my-counter-name" step="10" count="10" max="5000"></joy-counter>
 ```
 
+## Given input name
+```ui_example
+<joy-counter input-name="my-counter-name" step="10" value="10" max="5000"></joy-counter>
+```
+
 ## Given input with error
 ```ui_example
-<joy-counter invalid input-name="my-counter-name" count="5" step="10" min="10" invalid-message="Value is invalid !"></joy-counter>
+<joy-counter invalid input-name="my-counter-name" value="5" step="10" min="10" invalid-message="Value is invalid !"></joy-counter>
 ```
 
 
@@ -30,10 +34,10 @@ category: Webcomponents
 | `labelIncrement` | `label-increment` | Used for accessibility aria-label attribute. More than welcome !                                                                                                                                                                                  | `string`              | ``Increment value by ${this.step}`` |
 | `max`            | `max`             | Maximum possible value. No default                                                                                                                                                                                                                | `number \| undefined` | `undefined`                         |
 | `min`            | `min`             | Minimum possible value. Default to 0                                                                                                                                                                                                              | `number`              | `0`                                 |
-| `name`           | `input-name`      | Name for the input                                                                                                                                                                                                                                | `string`              | `''`                                |
+| `name`           | `name`            | Name for the input                                                                                                                                                                                                                                | `string`              | `''`                                |
 | `required`       | `required`        | Counter requirement                                                                                                                                                                                                                               | `boolean`             | `false`                             |
 | `step`           | `step`            | Granularity of the input. We use the same name than native step attribute. We don't bind this prop to actual input step attribute, because we don't want checkValidity API to return invalid if the actual value is not a multiple of step prop ! | `number`              | `1`                                 |
-| `value`          | `value`           |                                                                                                                                                                                                                                                   | `number`              | `0`                                 |
+| `value`          | `value`           | Counter value *                                                                                                                                                                                                                                   | `number`              | `0`                                 |
 
 
 ## Events
@@ -46,11 +50,27 @@ category: Webcomponents
 | `valueChange`         | Generic event for any counter change, fired by manually typing a value or using increment/decrement CTA                                | `CustomEvent<number>`                              |
 
 
-## CSS Custom Properties
+## Methods
 
-| Name                     | Description                                                                  |
-| ------------------------ | ---------------------------------------------------------------------------- |
-| `--counter-items-height` | Set a new value for this property, and it will resize both buttons and input |
+### `decrement() => Promise<void>`
+
+Allows to manually decrement counter value from outside.
+
+#### Returns
+
+Type: `Promise<void>`
+
+
+
+### `increment() => Promise<void>`
+
+Allows to manually increment counter value from outside.
+
+#### Returns
+
+Type: `Promise<void>`
+
+
 
 
 ## Dependencies

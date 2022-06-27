@@ -18,8 +18,28 @@ category: Webcomponents
 <joy-radio-group name="my-radio" value="first">
     <joy-radio value="first">First value</joy-radio>
     <joy-radio value="second">Second value</joy-radio>
-    <joy-radio value="third">Third value</joy-radio>
+    <joy-radio value="third" disabled>Third value</joy-radio>
     <joy-radio value="fourth">Fourth value</joy-radio>
+</joy-radio-group>
+```
+
+## Type
+```ui_example
+<joy-radio-group name="my-radio" value="first">
+    <joy-radio type="outline" value="first">First value</joy-radio>
+    <joy-radio type="outline" value="second">Second value</joy-radio>
+    <joy-radio type="outline" value="third" disabled>Third value</joy-radio>
+    <joy-radio type="outline" value="fourth"><joy-icon name="rocket"></joy-icon>Fourth value</joy-radio>
+</joy-radio-group>
+```
+
+## Expandable
+```ui_example
+<joy-radio-group name="my-radio" value="first">
+    <joy-radio type="outline" value="first">First value <div slot="expandable-content">I'm a expandable content !</div></joy-radio>
+    <joy-radio type="outline" value="second">Second value <div slot="expandable-content">I'm a expandable content ! <div><p>With a paragraph !</p></div></div></joy-radio>
+    <joy-radio type="outline" value="third" disabled>Third value <div slot="expandable-content">I'm a expandable content !</div></joy-radio>
+    <joy-radio type="outline" value="fourth"><joy-icon name="rocket"></joy-icon>Fourth value <div slot="expandable-content">I'm a expandable content !</div></joy-radio>
 </joy-radio-group>
 ```
 
@@ -28,12 +48,14 @@ category: Webcomponents
 
 ## Properties
 
-| Property   | Attribute  | Description                                                     | Type      | Default        |
-| ---------- | ---------- | --------------------------------------------------------------- | --------- | -------------- |
-| `checked`  | `checked`  | If `true`, the radio is selected.                               | `boolean` | `false`        |
-| `disabled` | `disabled` | If `true`, the user cannot interact with the radio.             | `boolean` | `false`        |
-| `name`     | `name`     | The name of the control, which is submitted with the form data. | `string`  | `this.inputId` |
-| `value`    | `value`    | the value of the radio.                                         | `any`     | `undefined`    |
+| Property            | Attribute  | Description                                          | Type                     | Default     |
+| ------------------- | ---------- | ---------------------------------------------------- | ------------------------ | ----------- |
+| `checked`           | `checked`  | If `true`, the radio is selected.                    | `boolean`                | `false`     |
+| `disabled`          | `disabled` | If `true`, the user cannot interact with the radio.  | `boolean`                | `false`     |
+| `name` _(required)_ | `name`     | Field name. Given by parent component                | `string`                 | `undefined` |
+| `required`          | `required` | Field is required                                    | `boolean`                | `false`     |
+| `type`              | `type`     | Defines the type of the radio 'default' or 'outline' | `"default" \| "outline"` | `'default'` |
+| `value`             | `value`    | the value of the radio.                              | `any`                    | `undefined` |
 
 
 ## Events

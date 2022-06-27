@@ -5,6 +5,8 @@ name: joy-avatar
 category: Webcomponents
 ---
 
+<joy-highlight level="warning">If you have multiple avatars to display in a list, use <a href="#joy-avatars-list">joy-avatars-list</a></joy-highlight>
+
 ##Sizes
 
 ```ui_example
@@ -43,32 +45,18 @@ With or without link
 
 ## Properties
 
-| Property          | Attribute            | Description                                                                                                                                                    | Type                                                                     | Default     |
-| ----------------- | -------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------ | ----------- |
-| `color`           | `color`              | Specify a background color. Handy for avatars list. The value is the index of css custom property array made from CSS Custom Properties value (see next table) | `"grey" \| "red" \| "teal" \| "turquoise" \| "yellow" \| undefined`      | `'teal'`    |
-| `compress`        | `compress`           | The prop is given automatically by avatars-list component when you set compress prop to true. You won't need this prop out of an avatars-list.                 | `boolean`                                                                | `false`     |
-| `fullName`        | `full-name`          | Freelancer full name. Will be used to display its initials if no photoUrl is given.                                                                            | `string \| undefined`                                                    | `undefined` |
-| `href`            | `href`               | Url you need to link your avatar to                                                                                                                            | `string \| undefined`                                                    | `undefined` |
-| `isFirstFromList` | `is-first-from-list` | The prop is given automatically by avatars-list component when you set compress prop to true. You won't need this prop out of an avatars-list.                 | `boolean`                                                                | `false`     |
-| `photoUrl`        | `photo-url`          | Specify a photo url to display.                                                                                                                                | `string \| undefined`                                                    | `undefined` |
-| `size`            | `size`               | Avatar size, 3 possible values (can't be overridden)                                                                                                           | `"large" \| "medium" \| "small" \| undefined`                            | `'medium'`  |
-| `target`          | `target`             | Target attribute if href is used                                                                                                                               | `"_blank" \| "_parent" \| "_self" \| "_top" \| "framename" \| undefined` | `undefined` |
-| `totalNumber`     | `total-number`       | Specify the total amount of persons remaining from a list.                                                                                                     | `number \| undefined`                                                    | `undefined` |
-| `totalNumberLink` | `total-number-link`  | Specify the link to redirect to the full list                                                                                                                  | `string \| undefined`                                                    | `undefined` |
-
-
-## CSS Custom Properties
-
-| Name                                    | Description                                                                                    |
-| --------------------------------------- | ---------------------------------------------------------------------------------------------- |
-| `--avatar-additional-avatar-background` | In an avatar list, you can display a "+X" avatar. The property allows to style its background. |
-| `--avatar-large-font-size`              | Larger avatar font size                                                                        |
-| `--avatar-large-size`                   | Larger avatar size, in pixels                                                                  |
-| `--avatar-medium-font-size`             | Medium avatar font size                                                                        |
-| `--avatar-medium-size`                  | Medium avatar size, in pixels                                                                  |
-| `--avatar-placeholder-background`       | Placeholder avatar (without photo) background-color                                            |
-| `--avatar-small-font-size`              | Small avatar font size                                                                         |
-| `--avatar-small-size`                   | Smaller avatar size, in pixels                                                                 |
+| Property          | Attribute            | Description                                                                                                                                                    | Type                                                                                 | Default     |
+| ----------------- | -------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------ | ----------- |
+| `color`           | `color`              | Specify a background color. Handy for avatars list. The value is the index of css custom property array made from CSS Custom Properties value (see next table) | `"grey" \| "red" \| "teal" \| "transparent" \| "turquoise" \| "yellow" \| undefined` | `'teal'`    |
+| `compress`        | `compress`           | The prop is given automatically by avatars-list component when you set compress prop to true. You won't need this prop out of an avatars-list.                 | `boolean`                                                                            | `false`     |
+| `fullName`        | `full-name`          | Freelancer full name. Will be used to display its initials if no photoUrl is given.                                                                            | `string \| undefined`                                                                | `undefined` |
+| `href`            | `href`               | Url you need to link your avatar to                                                                                                                            | `string \| undefined`                                                                | `undefined` |
+| `isFirstFromList` | `is-first-from-list` | The prop is given automatically by avatars-list component when you set compress prop to true. You won't need this prop out of an avatars-list.                 | `boolean`                                                                            | `false`     |
+| `photoUrl`        | `photo-url`          | Specify a photo url to display.                                                                                                                                | `string \| undefined`                                                                | `undefined` |
+| `size`            | `size`               | Avatar size, 3 possible values (can't be overridden)                                                                                                           | `"large" \| "medium" \| "small" \| undefined`                                        | `'medium'`  |
+| `target`          | `target`             | Target attribute if href is used                                                                                                                               | `"_blank" \| "_parent" \| "_self" \| "_top" \| "framename" \| undefined`             | `undefined` |
+| `totalNumber`     | `total-number`       | Specify the total amount of persons remaining from a list.                                                                                                     | `number \| undefined`                                                                | `undefined` |
+| `totalNumberLink` | `total-number-link`  | Specify the link to redirect to the full list                                                                                                                  | `string \| undefined`                                                                | `undefined` |
 
 
 ## Dependencies

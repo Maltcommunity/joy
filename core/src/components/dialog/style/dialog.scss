@@ -1,5 +1,6 @@
-@use '../../../style/utils';
+@use 'style/utils';
 @use '~@maltjoy/tokens/src/spacing';
+@use './shared' as shared;
 
 $CLASS: '.joy-dialog';
 
@@ -134,16 +135,15 @@ $_mobile-cta_breakpoint: 400px;
         margin-bottom: var(--joy-core-spacing-9);
 
         h5 {
-            @include utils.getFontProperties(xl-title-bold);
-            color: var(--joy-color-text-title);
-            margin: 0;
+            padding-right: 45px;
+            @include shared.headerTitleStyle();
         }
     }
 
     &--subheader {
         position: relative;
         @include utils.getFontProperties(s);
-        margin: 0;
+        margin: var(--joy-core-spacing-2) 0 0 0;
         padding: 0;
     }
 

@@ -1,14 +1,52 @@
+@use 'style/utils';
+
 :host {
     /**
      * @prop --highlight-background-color: background color of the highlight
      * @prop --highlight-content-color: content color of the highlight. Applied to the left icon and left-border
+     * @prop --highlight-content-font-size: customize content font size.
+     * @prop --highlight-title-font-size: customize title font size.
+     * @prop --highlight-icon-size: customize icon size with px value.
      */
 
-    --highlight-background-color: var(--joy-color-neutral-6);
+    --highlight-background-color: var(--joy-color-neutral-2);
     --highlight-content-color: var(--joy-color-neutral-6);
+    --highlight-title-font-size: var(--joy-font-size-m);
+    --highlight-content-font-size: var(--joy-font-size-m);
+    --highlight-icon-size: inherit;
 
     display: block;
     width: 100%;
+
+    font-family: var(--joy-font-family);
+    font-size: var(--highlight-content-font-size);
+    line-height: var(--joy-line-height-large);
+    font-weight: var(--joy-font-weight-normal);
+}
+
+:host([level="neutral"]) {
+    --highlight-background-color: var(--joy-color-neutral-2);
+    --highlight-content-color: var(--joy-color-neutral-6);
+}
+
+:host([level="info"]) {
+    --highlight-background-color: var(--joy-color-information-10);
+    --highlight-content-color: var(--joy-color-information-50);
+}
+
+:host([level="warning"]) {
+    --highlight-background-color: var(--joy-color-warning-10);
+    --highlight-content-color: var(--joy-color-warning-50);
+}
+
+:host([level="error"]) {
+    --highlight-background-color: var(--joy-color-error-10);
+    --highlight-content-color: var(--joy-color-error-50);
+}
+
+:host([level="success"]) {
+    --highlight-background-color: var(--joy-color-success-10);
+    --highlight-content-color: var(--joy-color-success-50);
 }
 
 .joy-highlight {
@@ -19,34 +57,29 @@
     border-radius: var(--joy-core-radius-3);
     text-align: left;
     background-color: var(--highlight-background-color);
+    word-break: break-word;
 
     joy-icon:first-child {
         color: var(--highlight-content-color);
+        --icon-size: var(--highlight-icon-size);
     }
 
-    &_neutral {
-        --highlight-background-color: var(--joy-color-neutral-2);
-        --highlight-content-color: var(--joy-color-neutral-6);
+    &__titled {
+        strong {
+            display: block;
+            font-weight: var(--joy-font-weight-bold);
+            margin-bottom: 0;
+            font-size: var(--highlight-title-font-size);
+        }
     }
 
-    &_info {
-        --highlight-background-color: var(--joy-color-information-10);
-        --highlight-content-color: var(--joy-color-information-50);
+    &--text {
+        font-size: var(--highlight-content-font-size);
+        width: 100%;
     }
 
-    &_warning {
-        --highlight-background-color: var(--joy-color-warning-10);
-        --highlight-content-color: var(--joy-color-warning-50);
-    }
-
-    &_error {
-        --highlight-background-color: var(--joy-color-error-10);
-        --highlight-content-color: var(--joy-color-error-50);
-    }
-
-    &_success {
-        --highlight-background-color: var(--joy-color-success-10);
-        --highlight-content-color: var(--joy-color-success-50);
+    &__accent {
+        border-left: 7px solid var(--highlight-content-color);
     }
 
     &_small {

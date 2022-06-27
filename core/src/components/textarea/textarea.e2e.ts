@@ -9,20 +9,24 @@ describe('Textarea - e2e', () => {
 
         const textarea = await page.find('joy-textarea');
         expect(textarea).toHaveAttribute('hydrated');
-        const actualTextarea = await page.find('joy-textarea >>> textarea');
+        const actualTextarea = await page.find('joy-textarea textarea');
         // at least we can write someting !
         expect(actualTextarea).not.toBeNull();
     });
 
-    it('should display an hidden input for light DOM', async () => {
+    it('should display a correct valid counter maxlength and min length, with default value', async () => {
         const page: E2EPage = await newE2EPage();
         await page.setContent(`
-            <joy-textarea name="my-awesome-name"></joy-textarea>
+            <joy-textarea value="foobar" maxlength="50" minlength="4"></joy-textarea>
         `);
 
-        const input = await page.find('joy-textarea input[name="my-awesome-name"]');
-        // at least we can write someting !
-        expect(input).not.toBeNull();
+        const counter = await page.find('joy-textarea .joy-textarea-count');
+        expect(counter).not.toBeNull();
+        expect(counter.textContent).toBe('6/50');
+
+        const counterMin = await page.find('joy-textarea .joy-textarea-min');
+        expect(counterMin).not.toBeNull();
+        expect(counterMin).not.toHaveClass('joy-textarea-min-invalid');
     });
 
     it('should display a more advanced textarea, with maxlength counter', async () => {
@@ -32,12 +36,12 @@ describe('Textarea - e2e', () => {
         `);
 
         // Default count. No default value
-        const counter = await page.find('joy-textarea >>> .joy-textarea-count');
+        const counter = await page.find('joy-textarea .joy-textarea-count');
         expect(counter).not.toBeNull();
         expect(counter.textContent).toBe('0/50');
 
         // Start typing. Count has to update
-        const textarea = await page.find('joy-textarea >>> textarea');
+        const textarea = await page.find('joy-textarea textarea');
         await textarea.focus();
         await page.keyboard.type('I am a description');
         await page.waitForChanges();
@@ -50,7 +54,7 @@ describe('Textarea - e2e', () => {
         expect(counter).toHaveClass('joy-textarea-count-invalid');
 
         await counter.click(); // only to trigger a "blur", as blur is not included in E2EElement API
-        const textareaWrapper = await page.find('joy-textarea >>> .joy-textarea');
+        const textareaWrapper = await page.find('joy-textarea .joy-textarea');
         expect(textareaWrapper).toHaveClass('joy-textarea_invalid');
 
         // We delete some chars, until the textarea is valid again
@@ -68,12 +72,12 @@ describe('Textarea - e2e', () => {
         `);
 
         // Default count. No default value
-        const counter = await page.find('joy-textarea >>> .joy-textarea-min');
+        const counter = await page.find('joy-textarea .joy-textarea-min');
         expect(counter).not.toBeNull();
         expect(counter).toHaveClass('joy-textarea-min-invalid');
 
         // Start typing. Count has to update
-        const textarea = await page.find('joy-textarea >>> textarea');
+        const textarea = await page.find('joy-textarea textarea');
         await textarea.focus();
         await page.keyboard.type('I am a description !!');
         await page.waitForChanges();

@@ -1,32 +1,16 @@
 import {E2EPage, newE2EPage} from '@stencil/core/testing';
 
 async function getFirst(page: E2EPage) {
-    return await page.find('.first >>> .joy-radio-checked');
+    return await page.find('.first .joy-radio-checked');
 }
 
 async function getSecond(page: E2EPage) {
-    return await page.find('.second >>> .joy-radio-checked');
+    return await page.find('.second .joy-radio-checked');
 }
 
 describe('radio group - e2e', () => {
     let firstRadioSelected;
     let secondRadioSelected;
-
-    it('renders an hidden input for the actual form, with the right name', async () => {
-        const page = await newE2EPage();
-
-        await page.setContent(`
-            <joy-radio-group name="radio-group">
-                <joy-radio value="first">First value</joy-radio>
-                <joy-radio value="second">Second value</joy-radio>
-            </joy-radio-group>
-        `);
-
-        const input = await page.find('input[type="hidden"]');
-
-        expect(input).not.toBeNull();
-        expect(input.getAttribute('name')).toBe('radio-group');
-    });
 
     it('renders a radio group with a given label', async () => {
         const page = await newE2EPage();
@@ -54,7 +38,7 @@ describe('radio group - e2e', () => {
             </joy-radio-group>
         `);
 
-        const error = await page.find('joy-radio-group >>> joy-form-error');
+        const error = await page.find('joy-radio-group joy-form-error');
         expect(error).not.toBeNull();
     });
 
@@ -68,7 +52,7 @@ describe('radio group - e2e', () => {
             </joy-radio-group>
         `);
 
-        const container = await page.find('joy-radio-group >>> .joy-radio-group-container.joy-radio-group-vertical');
+        const container = await page.find('joy-radio-group .joy-radio-group-container.joy-radio-group-vertical');
         expect(container).not.toBeNull();
     });
 

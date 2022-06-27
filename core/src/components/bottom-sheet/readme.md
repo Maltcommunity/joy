@@ -41,6 +41,13 @@ See [joy-button](../button) documentation
 | `closeVariant` | `close-variant` | close-variant used for close button. Default: 'primary' See: joy-button documentation | `"admin" \| "ghost" \| "main" \| "primary" \| "secondary" \| "white"` | `'primary'` |
 
 
+## Events
+
+| Event                  | Description                                     | Type                |
+| ---------------------- | ----------------------------------------------- | ------------------- |
+| `joyBottomSheetClosed` | Custom event fired when user close bottom sheet | `CustomEvent<void>` |
+
+
 ## Methods
 
 ### `close() => Promise<void>`

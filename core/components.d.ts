@@ -6,7 +6,7 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { AvatarColors, AvatarSizes, BackDropOrigin, ButtonSizes, ButtonVariants, DialogSizes, Direction, HighlightLevels, HyperLinksTargets, IconButtonColors, IconColors, IconsSizes, IndicatorsVariants, InputSizes, LabelSizes, LinksColors, Positions, RatingStarsSizes, SeparatorSizes, SnackbarLevels, Tab, TagSizes, TagVariants, TooltipVariants } from "./types";
-import { FormPickerTypes, LabelSizes as LabelSizes1 } from "@/core/types";
+import { FormPickerTypes, LabelSizes as LabelSizes1 } from "@/types";
 export namespace Components {
     interface JoyAvailability {
         /**

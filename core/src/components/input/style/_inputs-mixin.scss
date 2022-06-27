@@ -1,9 +1,15 @@
+@use 'style/utils';
+@use 'shared';
+
 $CLASS: '.joy-input';
 
 @mixin rootProperties() {
     --input-color: var(--joy-color-neutral-6);
     --input-focus-color: var(--joy-color-secondary-30);
     --input-hover-color: var(--joy-color-neutral-6);
+    --input-hover-border-color: var(--joy-color-state-hover);
+    --input-focus-border-color: var(--joy-color-state-focus);
+
     --input-border-color: var(--joy-color-neutral-3);
     --input-bg-color: white;
 
@@ -15,6 +21,7 @@ $CLASS: '.joy-input';
     --input-color-invalid-hover: var(--joy-color-error-90);
 
     --input-icon-color: var(--joy-color-neutral-5);
+    --input-transition-duration: var(--joy-transition-duration-default);
 }
 
 @mixin iconsStyle() {
@@ -35,32 +42,13 @@ $CLASS: '.joy-input';
     }
 }
 
-$sizes: (
-    "small": (
-        height: 40px,
-        unitHeight: 34px,
-        padding: var(--joy-core-spacing-2) var(--joy-core-spacing-5),
-        font-size: var(--joy-font-size-xs)
-    ),
-    "medium": (
-        height: 48px,
-        unitHeight: 40px,
-        padding: var(--joy-core-spacing-3) var(--joy-core-spacing-5),
-        font-size: var(--joy-font-size-s)
-    ),
-    "large": (
-        height: 64px,
-        unitHeight: 56px,
-        padding: var(--joy-core-spacing-3) var(--joy-core-spacing-5),
-        font-size: var(--joy-font-size-m)
-    )
-);
+
 
 @mixin defaultBorderStyle() {
-    border-width: 1px;
+    border-width: var(--joy-form-border-width);
     border-style: solid;
     border-color: var(--input-border-color);
-    transition: all var(--joy-transition-duration-default) var(--joy-transition-timing-function);
+    transition: all var(--input-transition-duration) var(--joy-transition-timing-function);
 }
 
 @mixin commonStyle() {
@@ -96,9 +84,13 @@ $sizes: (
             -moz-appearance: textfield;
         }
 
-        &:hover {
-            border-color: var(--input-hover-color);
+        &[type=password] {
+            // Fix to have right dots style while input is of type password
+            font-family: Verdana;
+            letter-spacing: 0.125em;
+        }
 
+        @include utils.formElementColorHover() {
             & ~ joy-icon {
                 color: var(--input-hover-color);
             }
@@ -107,24 +99,20 @@ $sizes: (
                 border-color: var(--input-hover-color);
             }
         }
+
+        @include utils.formElementColorFocus() {
+            & ~ joy-icon {
+                color: var(--input-focus-color);
+            }
+
+            & ~ #{$CLASS}--unit {
+                border-color: var(--input-focus-border-color);
+            }
+        }
     }
 
     joy-icon {
         color: var(--input-color);
-    }
-}
-
-@mixin focusState() {
-    input:focus {
-        border-color: var(--input-focus-color);
-
-        & ~ joy-icon {
-            color: var(--input-focus-color);
-        }
-
-        & ~ #{$CLASS}--unit {
-            border-color: var(--input-focus-color);
-        }
     }
 }
 
@@ -147,7 +135,7 @@ $sizes: (
 }
 
 @mixin invalidState() {
-    input:invalid {
+    input#{$CLASS}--field-invalid {
         border-color: var(--input-color-invalid);
         color: var(--input-color-invalid);
 
@@ -160,9 +148,9 @@ $sizes: (
         }
     }
 
-    input:invalid:hover, input:invalid:focus {
+    input#{$CLASS}--field-invalid:hover, input#{$CLASS}--field-invalid:focus {
         border-color: var(--input-color-invalid-hover);
-        color: var(--input-color-invalid-hover);
+        /*color: var(--input-color-invalid-hover);*/
 
         & ~ joy-icon {
             color: var(--input-color-invalid-hover);
@@ -237,6 +225,7 @@ $sizes: (
             height: var(--input-unit-height);
             min-width: var(--input-unit-height);
             padding: 0 var(--joy-core-spacing-3);
+            color: var(--joy-color-secondary-50);
         }
     }
 }

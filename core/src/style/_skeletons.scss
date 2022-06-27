@@ -1,11 +1,19 @@
+@use '../components/availability/skeleton' as availabilitySkeleton;
 @use '../components/icon/style/skeleton' as icon;
 @use '../components/checkbox/style/skeleton' as checkbox;
+@use '../components/company-avatar/skeleton' as companyAvatarSkeleton;
+@use '../components/divider-cta/skeleton' as dividersCta;
 @use '../components/indicators/style/skeleton' as indicators;
+@use '../components/input/style/skeleton' as inputSkeletons;
+@use '../components/form-error/skeleton' as formError;
 @use '../components/link/skeleton' as link;
+@use '../components/placeholder-button/skeleton' as placeholderBtnSkeleton;
+@use '../components/progress-bar/skeleton' as progressBarSkeleton;
 @use '../components/tag/skeleton' as tagSkeleton;
 @use '../components/stepper/style/skeleton' as stepperSkeleton;
 @use '../components/tags-input/skeleton' as tagsInputSkeleton;
-@use '../components/select/skeleton' as selectSkeleton;
+@use '../components/dropdown/skeleton' as dropdownSkeleton;
+@use '../components/rating-stars/skeleton' as ratingStarsSkeleton;
 
 /*
 AVATAR
@@ -63,20 +71,6 @@ joy-badge-level:not([hydrated]) {
 }
 
 /*
-AVAILABILITY
- */
-joy-availability:not([hydrated]){
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    background-color: var(--joy-color-secondary-10);
-    height: 26px;
-    width: 100px;
-    border-radius: var(--joy-core-radius-4);
-    color: transparent;
-}
-
-/*
 BUTTON
  */
 joy-button:not([hydrated]) {
@@ -89,7 +83,7 @@ joy-button:not([hydrated]) {
     height: 42px;
     width: auto;
     border-radius: 22px;
-    background-color: var(--joy-color-secondary-10);
+    background-color: var(--joy-color-neutral-2);
     color: transparent;
 }
 
@@ -102,47 +96,12 @@ joy-counter:not([hydrated]){
     align-items: center;
     justify-content: center;
     position: relative;
-    background-color: var(--joy-color-secondary-10);
+    background-color: var(--joy-color-neutral-2);
     height: $_size;
-    width: 80px;
-    border-radius: var(--joy-core-radius-2);
-    margin: 0 40px;
-
-    &:before, &:after {
-        content: "";
-        border-radius: var(--joy-core-radius-5);
-        height: $_size;
-        width: $_size;
-        background-color: var(--joy-color-secondary-10);
-        display: inline-flex;
-        position: absolute;
-    }
-    &:before {
-        left: -50px;
-    }
-    &:after {
-        right: -50px;
-    }
-}
-
-
-/*
-DIVIDER CTA
-*/
-joy-divider-cta:not([hydrated]) {
-    display: flex;
-    height: 3px;
-    background-color: var(--joy-color-secondary-10);
-    justify-content: center;
-    margin: 45px 0;
-
-    &:after {
-        content: "";
-        height: 20px;
-        width: 120px;
-        background-color: inherit;
-        transform: translateY(-50%);
-    }
+    width: 186px;
+    border-radius: calc(#{$_size} / 2);
+    margin: 0;
+    padding: 0;
 }
 
 /*
@@ -202,31 +161,14 @@ joy-pagination:not([hydrated]) {
     }
 }
 
+
 /*
-RATING STARS
+ * PRODUCT TOUR
  */
-joy-rating-stars:not([hydrated]) {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    color: transparent;
-
-    &:after, &:before {
-        content: "";
-        height: 14px;
-        border-radius: 6px;
-        background-color: var(--joy-color-secondary-10);
-    }
-
-    &:before {
-        width: 70px;
-    }
-
-    &:after {
-        width: 20px;
-        margin-left: 3px;
-    }
+joy-product-tour:not([hydrated]) {
+    visibility: hidden;
 }
+
 /*
 TABS
  */

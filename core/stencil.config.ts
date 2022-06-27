@@ -99,7 +99,10 @@ export const config: Config = {
         ],
     },
     plugins: [sass({
-        includePaths: [path.resolve('node_modules')]
+        includePaths: [
+            path.resolve('node_modules'),
+            'src',
+        ]
     })],
     extras: polyfills,
 };

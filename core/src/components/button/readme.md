@@ -69,6 +69,12 @@ category: Webcomponents
 <joy-button variant="main" size="large">Large button</joy-button>
 ```
 
+## Link
+```ui_example
+<joy-button variant="main" href="https://malt.fr" target="_blank">Target blank</joy-button>
+<joy-button variant="main" href="fake.jpg" download>Download</joy-button>
+```
+
 ## Loading
 To play with loading state, simply use the public method ```buttonLoading```
 
@@ -84,11 +90,7 @@ async function yourFunction() {
 ```
 
 ```ui_example
-<joy-button variant="main" loading>Main button</joy-button>
-<joy-button variant="primary" loading>Primary button</joy-button>
 <joy-button variant="secondary" loading icon="heart">Secondary button</joy-button>
-<joy-button variant="white" loading>White button</joy-button>
-<joy-button variant="ghost" loading>Ghost button</joy-button>
 ```
 
 
@@ -100,7 +102,7 @@ async function yourFunction() {
 | Property   | Attribute  | Description                                                                                            | Type                                                                  | Default     |
 | ---------- | ---------- | ------------------------------------------------------------------------------------------------------ | --------------------------------------------------------------------- | ----------- |
 | `disabled` | `disabled` | Disabled attribute for buttons                                                                         | `boolean`                                                             | `false`     |
-| `download` | `download` | If the link as a downloadable content                                                                  | `boolean`                                                             | `false`     |
+| `download` | `download` | If the link as a downloadable content                                                                  | `string \| undefined`                                                 | `undefined` |
 | `href`     | `href`     | Set the href of your link                                                                              | `string \| undefined`                                                 | `undefined` |
 | `icon`     | `icon`     | Set the icon name if you need one                                                                      | `string \| undefined`                                                 | `undefined` |
 | `loading`  | `loading`  | Set the button in loading state                                                                        | `boolean`                                                             | `false`     |

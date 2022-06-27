@@ -1,47 +1,34 @@
+@use './shared';
+
 $_CLASS: '.joy-placeholder-button';
 
 :host {
+    /**
+     * @prop --placeholder-button-size: set the width/height of the button
+     * @prop --placeholder-button-border-color: color of dashed button
+     * @prop --placeholder-button-border-color-focus: main background color
+     * @prop --placeholder-button-bg-color: keyboard focus outline color
+     */
     --placeholder-button-border-color: var(--joy-color-secondary-50);
     --placeholder-button-bg-color: var(--joy-color-secondary-10);
     --placeholder-button-border-color-focus: var(--joy-color-neutral-6);
-    --placeholder-button-size-large: 100px;
-    --placeholder-button-size-medium: 60px;
-    --placeholder-button-size-small: 30px;
+
+    @include shared.customProperties();
 }
 
 #{$_CLASS} {
-
-    $_SIZES: (
-        large: (
-            size: var(--placeholder-button-size-large),
-        ),
-        medium: (
-            size: var(--placeholder-button-size-medium),
-        ),
-        small: (
-            size: var(--placeholder-button-size-small),
-        )
-    );
+    @include shared.buttonStyle() {
+        min-height: var(--placeholder-button-size);
+        max-height: var(--placeholder-button-size);
+        min-width: var(--placeholder-button-size);
+        max-width: var(--placeholder-button-size);
+    }
 
     border: 1px dashed var(--placeholder-button-border-color);
     cursor: pointer;
     transition: all var(--joy-transition-duration-default) var(--joy-transition-timing-function);
     overflow: visible; // for focus
-
-    border-radius: 50%;
-    box-sizing: border-box;
-    position: relative;
     background-color: var(--placeholder-button-bg-color);
-    // default size
-    width: 60px;
-    height: 60px;
-    // addition style for avatar-initials context
-    display: flex;
-    color: white;
-    align-items: center;
-    justify-content: center;
-    text-decoration: none; // if it is a link
-    white-space: nowrap; // if the text if too long, exemple + 1500
 
     &:before {
         content: "";
@@ -57,17 +44,6 @@ $_CLASS: '.joy-placeholder-button';
     &:focus-visible {
         &:before {
             box-shadow: 0 0 0 2px var(--placeholder-button-border-color-focus);
-        }
-    }
-
-    @each $name, $size in $_SIZES {
-        &#{$_CLASS}__#{$name} {
-            width: map-get($size, size);
-            height: map-get($size, size);
-            min-width: map-get($size, size);
-            max-width: map-get($size, size);
-            min-height: map-get($size, size);
-            max-height: map-get($size, size);
         }
     }
 }

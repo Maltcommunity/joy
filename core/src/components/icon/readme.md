@@ -5,7 +5,7 @@ name: joy-icon
 category: Webcomponents
 ---
 
-Please see <a href="/joy-v2/webcomponents.html#joy_icons_list">full icons list here</a>
+Please see <a href="/joy/webcomponents.html#joy_icons_list">full icons list here</a>
 
 
 ```ui_example
@@ -53,6 +53,8 @@ Please see <a href="/joy-v2/webcomponents.html#joy_icons_list">full icons list h
  - [joy-company-avatar](../company-avatar)
  - [joy-counter](../counter)
  - [joy-dialog](../dialog)
+ - [joy-divider-cta](../divider-cta)
+ - [joy-dropdown](../dropdown)
  - [joy-form-error](../form-error)
  - [joy-highlight](../highlight)
  - [joy-icon-button](../icon-button)
@@ -60,6 +62,7 @@ Please see <a href="/joy-v2/webcomponents.html#joy_icons_list">full icons list h
  - [joy-link](../link)
  - [joy-pagination](../pagination)
  - [joy-placeholder-button](../placeholder-button)
+ - [joy-product-tour](../product-tour)
  - [joy-select](../select)
  - [joy-snackbar](../snackbar)
  - [joy-tag](../tag)
@@ -74,6 +77,8 @@ graph TD;
   joy-company-avatar --> joy-icon
   joy-counter --> joy-icon
   joy-dialog --> joy-icon
+  joy-divider-cta --> joy-icon
+  joy-dropdown --> joy-icon
   joy-form-error --> joy-icon
   joy-highlight --> joy-icon
   joy-icon-button --> joy-icon
@@ -81,6 +86,7 @@ graph TD;
   joy-link --> joy-icon
   joy-pagination --> joy-icon
   joy-placeholder-button --> joy-icon
+  joy-product-tour --> joy-icon
   joy-select --> joy-icon
   joy-snackbar --> joy-icon
   joy-tag --> joy-icon

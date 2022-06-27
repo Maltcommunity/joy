@@ -55,15 +55,6 @@ Type: `Promise<void>`
 
 
 
-## CSS Custom Properties
-
-| Name                               | Description                  |
-| ---------------------------------- | ---------------------------- |
-| `--stepper-border-color`           | Default steps border color   |
-| `--stepper-border-color-completed` | Completed steps border color |
-| `--stepper-text-color`             | Steps font color             |
-
-
 ----------------------------------------------
 
 *Built with [StencilJS](https://stenciljs.com/)*

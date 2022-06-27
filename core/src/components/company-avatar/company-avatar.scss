@@ -1,37 +1,32 @@
-@use '../../style/utils';
-
-$_SELECTOR: '.joy-company-avatar';
+@use 'style/utils';
+@use './shared';
 
 :host {
-    --avatar-color: var(--joy-color-neutral-2);
-    --avatar-border-color: var(--joy-color-neutral-3);
-    --avatar-bg: var(--joy-color-secondary-50);
-    --avatar-small-size: 20px;
-    --avatar-medium-size: 30px;
-    --avatar-large-size: 46px;
+   @include shared.properties();
 
     font-family: var(--joy-font-family);
     line-height: var(--joy-line-height-large);
     font-weight: var(--joy-font-weight-normal);
+    display: inline-flex;
 }
 
-#{$_SELECTOR} {
-    position: relative;
-    overflow: hidden;
-    width: var(--avatar-large-size);
-    height: var(--avatar-large-size);
-    min-width: var(--avatar-large-size);
-    min-height: var(--avatar-large-size);
-    border-radius: 8px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--avatar-color);
-    border: 1px solid var(--avatar-border-color);
-    box-sizing: border-box;
-    background-color: white;
-    font-family: inherit;
-    font-weight: inherit;
+:host([size="small"]) {
+    --avatar-size: 20px;
+}
+
+:host([size="medium"]) {
+    --avatar-size: 30px;
+}
+
+:host([size="large"]) {
+    --avatar-size: 46px;
+}
+
+.joy-company-avatar {
+    @include shared.defaultStyle() {
+        border: 1px solid var(--avatar-border-color);
+        background-color: white;
+    }
 
     &_has-logo {
         background-color: var(--avatar-bg);
@@ -49,27 +44,15 @@ $_SELECTOR: '.joy-company-avatar';
     }
 
     &_large {
-        width: var(--avatar-large-size);
-        height: var(--avatar-large-size);
-        min-width: var(--avatar-large-size);
-        min-height: var(--avatar-large-size);
         font-size: var(--joy-font-size-l);
     }
 
     &_medium {
-        width: var(--avatar-medium-size);
-        height: var(--avatar-medium-size);
-        min-width: var(--avatar-medium-size);
-        min-height: var(--avatar-medium-size);
         border-radius: var(--joy-core-radius-2);
         font-size: var(--joy-font-size-s);
     }
 
     &_small {
-        width: var(--avatar-small-size);
-        height: var(--avatar-small-size);
-        min-width: var(--avatar-small-size);
-        min-height: var(--avatar-small-size);
         border-radius: var(--joy-core-radius-1);
         font-size: var(--joy-font-size-xxs);
     }

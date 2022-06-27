@@ -8,6 +8,14 @@ describe('counter e2e', () => {
         expect(element).toHaveAttribute('hydrated');
     });
 
+    it('renders a basic counter', async () => {
+        const page: E2EPage = await newE2EPage();
+        await page.setContent('<joy-counter></joy-counter>');
+        const result = await page.compareScreenshot('Basic counter');
+
+        expect(result).toMatchScreenshot();
+    });
+
     it('renders with a default min value to 0, and no max', async () => {
         const page: E2EPage = await newE2EPage();
         await page.setContent('<joy-counter></joy-counter>');

@@ -1,6 +1,6 @@
 import {Component, Element, Event, EventEmitter, h, Host, Listen, Method, Prop, State} from '@stencil/core';
 import {ButtonSizes, DialogSizes} from '../../types';
-import {destroyBackdrop, preventBodyScroll} from '../../utils';
+import {createBackDrop, destroyBackdrop, preventBodyScroll} from '../../utils';
 import {hideAllDialogs} from './dialog-service';
 
 @Component({
@@ -43,15 +43,18 @@ export class Dialog {
     @Event() joyCancelDialog!: EventEmitter<void>;
 
     /**
-     * If you want to trigger specific ction after the dialog opening.
+     * If you want to trigger specific action after the dialog opening.
      * @param {Function} callback
      */
     @Method()
     async openDialog(callback?: () => any) {
+        if (!this.demo) {
+            await createBackDrop('dialog');
+            preventBodyScroll(true);
+        }
+
         this.dialogChain = this.dialogChainOnGoing();
         this.open = true;
-
-        preventBodyScroll(true);
 
         if (!this.demo) {
             this.host.focus();
@@ -104,6 +107,7 @@ export class Dialog {
             this.open = false;
             preventBodyScroll(false);
             destroyBackdrop();
+            this.focusOnTriggerWhenClose();
 
             if (fireEvent) {
                 this.joyCancelDialog.emit();
@@ -119,12 +123,26 @@ export class Dialog {
         return !!document.body.querySelector('joy-dialog.joy-dialog--open');
     }
 
+    private focusOnTriggerWhenClose() {
+        const trigger = document.querySelector(`joy-dialog-trigger[dialog="${this.host.id}"] button`);
+
+        // Of course it won't focus on anything if the dialog is open by default without any trigger
+        if (trigger) {
+            (trigger as HTMLElement).focus();
+        }
+    }
+
+    async componentDidLoad() {
+        if (this.open) {
+            await this.openDialog();
+        }
+    }
+
     render() {
         return (
             <Host
-                tabindex="1"
                 role="dialog"
-                aria-labelledby="dialogTitle"
+                aria-modal="true"
                 class={{
                     'joy-dialog--open': this.open,
                     'joy-dialog--closed': !this.open,
@@ -153,7 +171,7 @@ export class Dialog {
                             />
                         )}
                         <div class="joy-dialog--header">
-                            <h5 id="dialogTitle">
+                            <h5>
                                 <slot name="dialog-header" />
                             </h5>
                             <p class="joy-dialog--subheader" id="dialogDescription">

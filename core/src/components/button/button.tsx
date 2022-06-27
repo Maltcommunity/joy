@@ -4,7 +4,7 @@ import {ButtonSizes, ButtonVariants} from '../../types';
 @Component({
     tag: 'joy-button',
     styleUrl: 'button.scss',
-    shadow: true,
+    scoped: true,
 })
 export class JoyButton {
     @Element() el!: HTMLJoyButtonElement;
@@ -15,7 +15,7 @@ export class JoyButton {
     /** Set the href of your link */
     @Prop() href?: string;
     /** If the link as a downloadable content */
-    @Prop() download = false;
+    @Prop() download: string | undefined;
     /** Native rel attribute for hyperlinks. See https://developer.mozilla.org/fr/docs/Web/HTML/Attributes/rel */
     @Prop() rel?: string;
     /** Native target attribute for hyperlinks. */
@@ -49,25 +49,6 @@ export class JoyButton {
         );
     }
 
-    private handleClick = (ev: Event) => {
-        if (this.type === 'submit') {
-            // this button wants to specifically submit a form
-            // climb up the dom to see if we're in a <form>
-            // and if so, then use JS to submit it
-            const form = this.el.closest('form');
-            if (form) {
-                ev.preventDefault();
-
-                const fakeButton = document.createElement('button');
-                fakeButton.type = this.type;
-                fakeButton.style.display = 'none';
-                form.appendChild(fakeButton);
-                fakeButton.click();
-                fakeButton.remove();
-            }
-        }
-    };
-
     private get buttonColorClass() {
         return {['joy-button_' + this.variant]: this.variant};
     }
@@ -84,7 +65,7 @@ export class JoyButton {
     }
 
     render() {
-        const {disabled, href, icon, rel, type, loading, spinnerColor} = this;
+        const {disabled, href, icon, rel, target, type, loading, spinnerColor} = this;
         const TagType = href === undefined ? 'button' : ('a' as any);
         const attrs =
             TagType === 'button'
@@ -92,11 +73,13 @@ export class JoyButton {
                       type,
                   }
                 : {
+                      download: this.download,
                       href,
                       rel,
+                      target,
                   };
         return (
-            <Host onClick={this.handleClick} aria-disabled={disabled ? 'true' : null}>
+            <Host aria-disabled={disabled ? 'true' : null}>
                 <TagType
                     {...attrs}
                     disabled={disabled || loading}

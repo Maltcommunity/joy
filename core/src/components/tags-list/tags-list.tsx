@@ -1,4 +1,4 @@
-import {Component, Element, h, Host} from '@stencil/core';
+import {Component, Element, h, Host, Prop} from '@stencil/core';
 
 @Component({
     tag: 'joy-tags-list',
@@ -8,13 +8,16 @@ import {Component, Element, h, Host} from '@stencil/core';
 export class JoyTagsList {
     @Element() el!: HTMLJoyTagsListElement;
 
+    /** Tags justify-content strategy. **/
+    @Prop() align: 'center' | 'left' | 'right' = 'left';
+
     componentDidLoad() {
         this.specificTagListClass();
     }
 
     private specificTagListClass() {
-        const className = 'joy-tags-list-item';
-        Array.from(this.el.querySelectorAll('joy-tag')).forEach((tag) => !tag.classList.contains(className) && tag.classList.add(className));
+        const attr = 'tag-item';
+        Array.from(this.el.querySelectorAll('joy-tag')).forEach((tag) => !tag.hasAttribute(attr) && tag.setAttribute(attr, ''));
     }
 
     private handleSlotChange = () => {
@@ -23,9 +26,12 @@ export class JoyTagsList {
     };
 
     render() {
+        const align = `joy-tags-list joy-tags-list--${this.align}`;
         return (
             <Host>
-                <slot onSlotchange={this.handleSlotChange} />
+                <div class={align}>
+                    <slot onSlotchange={this.handleSlotChange} />
+                </div>
             </Host>
         );
     }

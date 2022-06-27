@@ -1,8 +1,8 @@
-@use '../../style/utils';
+@use 'style/utils';
 
 $_counter-ctl-margin: 10px;
-
 $_component_width: 200px;
+$CLASS: '.joy-counter';
 
 :host {
     /**
@@ -13,7 +13,6 @@ $_component_width: 200px;
     --counter-input-color: var(--joy-color-secondary-50);
     --counter-input-bg-color: var(--joy-color-secondary-10);
     --counter-input-bg-color-focus: white;
-    --counter-input-border-color-focus: var(--joy-color-secondary-50);
 
     --counter-input-border-color-invalid: var(--joy-color-error-50);
     --counter-input-color-invalid: var(--joy-color-error-50);
@@ -27,43 +26,7 @@ $_component_width: 200px;
     --counter-button-color: var(--joy-color-secondary-50);
 
     --counter-border-color-focus: var(--joy-color-neutral-6);
-}
 
-input {
-    @include utils.quietInput(1px solid transparent);
-    background-color: var(--counter-input-bg-color);
-    color: var(--counter-input-color);
-    width: 80px;
-    outline: none;
-    height: var(--counter-items-height);
-    border-radius: var(--joy-core-radius-2);
-    text-align: center;
-    -moz-appearance:textfield;
-
-    &::-webkit-inner-spin-button,
-    &::-webkit-outer-spin-button {
-        -webkit-appearance: none;
-    }
-
-    &:focus {
-        border: 1px solid var(--counter-input-border-color-focus);
-        background-color: var(--counter-input-bg-color-focus);
-    }
-
-    &.joy-counter__invalid {
-        &, &:focus-visible {
-            border-color: var(--counter-input-border-color-invalid);
-            color: var(--counter-input-color-invalid);
-        }
-
-        &:hover {
-            border-color: var(--counter-input-border-color-invalid-hover);
-            color: var(--counter-input-color-invalid-hover);
-        }
-    }
-}
-
-:host(.joy-counter) {
     display: inline-flex;
     flex-wrap: wrap;
     max-width: $_component_width;
@@ -73,70 +36,114 @@ input {
     @include utils.getFontProperties(m);
 }
 
-button {
-    @include utils.quietBtn();
-    display: flex;
-    justify-content: center;
+#{$CLASS}__wrapper {
+    display: inline-flex;
+    flex-wrap: wrap;
+    max-width: $_component_width;
     align-items: center;
+    justify-content: center;
     position: relative;
-    width: var(--counter-items-height);
-    height: var(--counter-items-height);
-    border-radius: var(--joy-core-radius-5);
-    background-color: var(--counter-button-bg-color);
-    color: var(--counter-button-color);
-    transition: background var(--joy-transition-duration-default) var(--joy-transition-timing-function);
 
-    &:before {
-        content: "";
-        position: absolute;
-        top: -1px;
-        left: -1px;
-        border-radius: 50%;
-        width: calc(100% + 2px);
-        height: calc(100% + 2px);
-        transition: box-shadow var(--joy-transition-duration-default) var(--joy-transition-timing-function);
-    }
+    input {
+        @include utils.quietInput(var(--joy-form-border-width) solid transparent);
+        background-color: var(--counter-input-bg-color);
+        color: var(--counter-input-color);
+        width: 80px;
+        outline: none;
+        height: var(--counter-items-height);
+        border-radius: var(--joy-core-radius-2);
+        text-align: center;
+        -moz-appearance:textfield;
+        box-sizing: border-box;
 
-    &:hover {
-        background-color: var(--counter-button-bg-color-hover);
+        &::-webkit-inner-spin-button,
+        &::-webkit-outer-spin-button {
+            -webkit-appearance: none;
+        }
 
-        &:not(:disabled) {
-            &.joy-counter__increment joy-icon, &.joy-counter__decrement joy-icon {
-                color: white;
+        @include utils.formElementColorHover();
+        @include utils.formElementColorFocus() {
+            background-color: var(--counter-input-bg-color-focus);
+        }
+
+        &.joy-counter__invalid {
+            &, &:focus-visible {
+                border-color: var(--counter-input-border-color-invalid);
+                color: var(--counter-input-color-invalid);
+            }
+
+            &:hover {
+                border-color: var(--counter-input-border-color-invalid-hover);
+                color: var(--counter-input-color-invalid-hover);
             }
         }
     }
 
-    &:focus-visible {
+    button {
+        @include utils.quietBtn();
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        width: var(--counter-items-height);
+        height: var(--counter-items-height);
+        border-radius: var(--joy-core-radius-5);
+        background-color: var(--counter-button-bg-color);
+        color: var(--counter-button-color);
+        transition: background var(--joy-transition-duration-default) var(--joy-transition-timing-function);
+
         &:before {
-            box-shadow: 0 0 0 2px var(--counter-border-color-focus);
+            content: "";
+            position: absolute;
+            top: -1px;
+            left: -1px;
+            border-radius: 50%;
+            width: calc(100% + 2px);
+            height: calc(100% + 2px);
+            transition: box-shadow var(--joy-transition-duration-default) var(--joy-transition-timing-function);
+        }
+
+        &:hover {
+            background-color: var(--counter-button-bg-color-hover);
+
+            &:not(:disabled) {
+                &.joy-counter__increment joy-icon, &.joy-counter__decrement joy-icon {
+                    color: white;
+                }
+            }
+        }
+
+        &:focus-visible {
+            &:before {
+                box-shadow: 0 0 0 2px var(--counter-border-color-focus);
+            }
+        }
+
+        &:active {
+            background-color: var(--counter-button-bg-color-active);
+        }
+
+        &:disabled {
+            background-color: var(--counter-button-bg-color-disabled);
+            cursor: not-allowed;
+
+            joy-icon {
+                color: white;
+            }
+        }
+
+        &.joy-counter__increment {
+            margin-left: $_counter-ctl-margin;
+        }
+
+        &.joy-counter__decrement {
+            margin-right: $_counter-ctl-margin;
         }
     }
 
-    &:active {
-        background-color: var(--counter-button-bg-color-active);
+    .joy-counter_error {
+        flex-basis: 100%;
+        max-width: 100%;
+        margin-top: 20px;
     }
-
-    &:disabled {
-        background-color: var(--counter-button-bg-color-disabled);
-        cursor: not-allowed;
-
-        joy-icon {
-            color: white;
-        }
-    }
-
-    &.joy-counter__increment {
-        margin-left: $_counter-ctl-margin;
-    }
-
-    &.joy-counter__decrement {
-        margin-right: $_counter-ctl-margin;
-    }
-}
-
-.joy-counter_error {
-    flex-basis: 100%;
-    max-width: 100%;
-    margin-top: 20px;
 }

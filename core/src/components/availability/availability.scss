@@ -1,30 +1,21 @@
-@use '../../style/utils';
+@use 'style/utils';
+@use './shared';
 
 $CLASS: '.joy-availability';
 
 :host {
     /**
      * @prop --availability-background: Background of the availability (when label given)
-     * @prop --availability-dot-color: Default dot color when no availability status is given
-     * @prop --availability-dot-color-not-available: Dot color when status is : not available
-     * @prop --availability-dot-color-not-available-with-date: Dot color when status is : not available until a specific date
-     * @prop --availability-dot-color-available: Dot color when status is : available
-     * @prop --availability-dot-color-available-with-date: Dot color when status is : available until a specific date
-     * @prop --availability-dot-color-available-and-verified: Dot color when status is : available and verified account
-     * @prop --availability-dot-color-available-soon: Dot color when status is : available soon
      * @prop --availability-dot-size: Dot size in pixel
      * @prop --availability-text-color: Availability text color (for the label)
+     * @prop --availability-dot-border-color: Availability dot border color
+     * @prop --availability-dot-background-color: Availability dot background color. Basically the same than border color, but can be overriden to be transparent.
      */
     --availability-background: var(--joy-color-secondary-10);
-    --availability-dot-color: var(--joy-color-secondary-90);
-    --availability-dot-color-not-available: var(--joy-color-state-error);
-    --availability-dot-color-not-available-with-date: var(--availability-dot-color-not-available);
-    --availability-dot-color-available: var(--joy-color-secondary-50);
-    --availability-dot-color-available-with-date: var(--availability-dot-color-available);
-    --availability-dot-color-available-and-verified: var(--joy-color-tertiary-50);
-    --availability-dot-color-available-soon: var(--joy-color-quaternary-50);
     --availability-dot-size: 15px;
     --availability-text-color: var(--joy-color-secondary-90);
+    --availability-dot-border-color: var(--joy-color-secondary-90);
+    --availability-dot-background-color: transparent;
 
     color: var(--availability-text-color);
     display: inline-flex;
@@ -33,6 +24,7 @@ $CLASS: '.joy-availability';
     white-space: nowrap;
     text-align: center;
     border-radius: var(--joy-core-radius-4);
+    height: shared.$availability-height;
     @include utils.getFontProperties(xs);
 
     @media screen and (max-width: 767px) {
@@ -45,12 +37,6 @@ $CLASS: '.joy-availability';
     padding: var(--joy-core-spacing-1) var(--joy-core-spacing-2);
 }
 
-#{$CLASS}__subtitle {
-    color: inherit;
-    text-align: left;
-    margin-top: 5px;
-}
-
 #{$CLASS}__dot {
     display: inline-flex;
     position: relative;
@@ -58,7 +44,6 @@ $CLASS: '.joy-availability';
     margin-right: 6px;
     width: var(--availability-dot-size);
     height: var(--availability-dot-size);
-    background-color: white;
     box-sizing: border-box;
 
     &:before {
@@ -72,41 +57,39 @@ $CLASS: '.joy-availability';
         border-radius: var(--joy-core-radius-5);
         border-width: 3px;
         border-style: solid;
-        border-color: var(--availability-dot-color);
-    }
-
-    @mixin dotColor($borderColor: none, $bgColor: transparent) {
-        &:before {
-            border-color: $borderColor;
-            background-color: $bgColor;
-        }
+        border-color: var(--availability-dot-border-color);
+        background-color: var(--availability-dot-background-color);
     }
 
     &.NOT_AVAILABLE {
-        @include dotColor(var(--availability-dot-color-not-available), var(--availability-dot-color-not-available));
+        --availability-dot-border-color: var(--joy-color-state-error);
+        --availability-dot-background-color: var(--joy-color-state-error);
     }
 
     &.NOT_AVAILABLE_WITH_DATE {
-        @include dotColor(var(--availability-dot-color-not-available-with-date));
+        --availability-dot-border-color: var(--joy-color-state-error);
     }
 
     &.AVAILABLE {
-        @include dotColor(var(--availability-dot-color-available), var(--availability-dot-color-available));
+        --availability-dot-border-color: var(--joy-color-secondary-50);
+        --availability-dot-background-color: var(--availability-dot-border-color);
     }
 
     &.AVAILABLE_AND_VERIFIED {
-        @include dotColor(var(--availability-dot-color-available-and-verified), var(--availability-dot-color-available-and-verified));
+        --availability-dot-border-color: var(--joy-color-tertiary-50);
+        --availability-dot-background-color: var(--availability-dot-border-color);
     }
 
     &.AVAILABLE_SOON {
-        @include dotColor(var(--availability-dot-color-available-soon), var(--availability-dot-color-available-soon));
+        --availability-dot-border-color: var(--joy-color-quaternary-50);
+        --availability-dot-background-color: var(--availability-dot-border-color);
     }
 
     &.PARTIAL {
-        @include dotColor(none);
+        --availability-dot-background-color: transparent;
     }
 
     &.INVISIBLE {
-        @include dotColor(var(--joy-color-state-error));
+        --availability-dot-border-color: var(--joy-color-state-error);
     }
 }

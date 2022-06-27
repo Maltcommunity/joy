@@ -1,4 +1,4 @@
-import {Component, Prop, h, Host} from '@stencil/core';
+import {Component, Prop, h} from '@stencil/core';
 import {RatingStarsSizes} from '../../types';
 
 /**
@@ -7,7 +7,7 @@ import {RatingStarsSizes} from '../../types';
 @Component({
     tag: 'joy-rating-stars',
     styleUrl: 'rating-stars.scss',
-    shadow: false,
+    shadow: true,
 })
 export class RatingStars {
     /**
@@ -93,10 +93,10 @@ export class RatingStars {
 
     render() {
         return (
-            <Host class="joy-rating-stars__wrapper">
+            <div class="joy-rating-stars__wrapper">
                 {this.ratingStarsWrapper}
                 <slot name="rating-stars-slot">{this.numberOfRateTextContent}</slot>
-            </Host>
+            </div>
         );
     }
 }

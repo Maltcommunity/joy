@@ -9,8 +9,8 @@
     text-decoration: none;
     transition: all 0.15s ease;
     border-radius: var(--joy-core-radius-3);
-    white-space: nowrap;
     box-sizing: border-box;
+    outline: none;
 }
 
 $TAG_COLOR_CONFIG: (
@@ -76,23 +76,23 @@ $TAG_COLOR_CONFIG: (
 
 $TAG_SIZE_CONFIG: (
     xsmall: (
-        font-size: xxs,
+        font-size: var(--joy-font-size-xxs),
         padding: var(--joy-core-spacing-1) var(--joy-core-spacing-3),
         height: 20px
     ),
     small: (
-        font-size: xs,
+        font-size: var(--joy-font-size-xs),
         padding: var(--joy-core-spacing-1) var(--joy-core-spacing-3),
         height: 24px
     ),
     medium: (
-        font-size: s,
+        font-size: var(--joy-font-size-s),
         padding: var(--joy-core-spacing-2) var(--joy-core-spacing-3),
         height: 32px
     ),
     large: (
+        font-size: var(--joy-font-size-m),
         padding: var(--joy-core-spacing-2) var(--joy-core-spacing-3),
-        font-size: m,
         height: 40px
     )
 );

@@ -41,17 +41,20 @@ $_ICONS-COLORS: (
 }
 
 :host {
+    /**
+     * @prop --icon-size: customize icon size with px value.
+     */
+    --icon-size: #{config.$icon-xsmall};
+
     display: inline-flex;
     fill-opacity: 0;
     color: var(--joy-color-secondary-50);
-    // Default color;
     shape-rendering: auto;
     stroke-width: 1.5px;
-    @include config.iconSize(xsmall);
     border-radius: 50%;
 }
 
-:host(#{$_CLASS}--clickable) {
+#{$_CLASS}--clickable {
     cursor: pointer;
 
     &:hover {
@@ -60,8 +63,12 @@ $_ICONS-COLORS: (
 }
 
 @each $name, $size in config.$ICON_SIZES {
-    :host(#{$_CLASS}--#{$name}) {
-        @include config.iconSize($name);
+    #{$_CLASS}--#{$name} {
+        --icon-size: #{$size};
+
+        @if $size == xxsmall {
+            stroke-width: 1px;
+        }
     }
 }
 
@@ -71,11 +78,11 @@ $_ICONS-COLORS: (
     }
 }
 
-:host(#{$_CLASS}--full) {
+#{$_CLASS}--full {
     fill-opacity: 1;
 }
 
-:host(#{$_CLASS}--bicolor) {
+#{$_CLASS}--bicolor {
     fill-opacity: $FILL_OPACITY;
 }
 
@@ -83,10 +90,14 @@ svg, .joy-icon-inner {
     // Default
     // Prevent clicking on svg or use elements when adding a listener
     pointer-events: none;
+    min-width: var(--icon-size);
+    width: var(--icon-size);
+    height: var(--icon-size);
 }
 
 
 .joy-icon-inner {
     line-height: 1;
     font-size: initial;
+    height: auto;
 }

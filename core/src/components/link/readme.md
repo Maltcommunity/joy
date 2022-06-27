@@ -6,7 +6,6 @@ category: Webcomponents
 ---
 
 ```ui_example
-<joy-link href="https://malt.fr">I am a simple link</joy-link>
 <joy-link href="https://malt.fr" icon="pen" target="_blank">I am a link with an icon</joy-link>
 ```
 

@@ -1,4 +1,4 @@
-@use '../../style/utils';
+@use 'style/utils';
 
 :host {
     /**
@@ -24,13 +24,15 @@
 
 .joy-icon-error {
     margin-right: 10px;
+    color: var(--joy-color-error-50);
 
     svg {
         color: var(--form-error-color);
     }
 }
 
-span {
-    color: inherit;
-    font-size: inherit;
+::slotted(ul), ::slotted(ul) {
+    padding: 0;
+    list-style: none;
+    margin: 0;
 }

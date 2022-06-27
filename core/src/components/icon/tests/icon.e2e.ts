@@ -74,7 +74,7 @@ describe('icon e2e', () => {
         const page = await newE2EPage();
 
         await page.setContent('<joy-icon name="add" clickable="true"></joy-icon>');
-        const icon = await page.find('joy-icon');
+        const icon = await page.find('joy-icon >>> .joy-icon');
 
         expect(icon).toHaveClass('joy-icon--clickable');
     });

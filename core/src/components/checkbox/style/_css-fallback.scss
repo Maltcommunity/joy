@@ -15,7 +15,7 @@
      */
     @include checkboxStyle();
     @include checkboxCheckedStyle();
-    @include checkboxCheckedHoverStyle();
+    @include checkboxHoverStyle();
     @include checkboxCheckedActiveStyle();
     @include checkboxDisabledStyle();
     @include checkboxFocusStyle();

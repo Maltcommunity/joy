@@ -1,4 +1,4 @@
-import {Component, EventEmitter, h, Host, Prop, Event, Element} from '@stencil/core';
+import {Component, EventEmitter, h, Prop, Event, Element, Method} from '@stencil/core';
 
 @Component({
     tag: 'joy-counter',
@@ -13,7 +13,8 @@ export class CounterComponent {
 
     @Element() el!: HTMLJoyCounterElement;
 
-    @Prop({mutable: true}) value = 0;
+    /** Counter value **/
+    @Prop({mutable: true, reflect: true}) value = 0;
     /**
      * Counter requirement
      */
@@ -35,7 +36,7 @@ export class CounterComponent {
     /**
      * Name for the input
      */
-    @Prop({attribute: 'input-name'}) name = '';
+    @Prop({reflect: true}) name = '';
     /**
      * Invalid state of the component
      */
@@ -74,8 +75,12 @@ export class CounterComponent {
      */
     @Event() joyCounterInvalid!: EventEmitter<{value: string; message: string}>;
 
-    private increment = () => {
-        const updatedCount = this.value + this.step;
+    /**
+     * Allows to manually increment counter value from outside.
+     */
+    @Method()
+    async increment() {
+        const updatedCount = this.formatValue();
 
         if (this.max && updatedCount <= this.max) {
             this.value = updatedCount >= this.max ? this.max : updatedCount;
@@ -88,10 +93,14 @@ export class CounterComponent {
         this.valueChange.emit(this.value);
         this.joyCounterIncrement.emit(this.value);
         this.validateInput();
-    };
+    }
 
-    private decrement = () => {
-        const updatedCount = this.value - this.step;
+    /**
+     * Allows to manually decrement counter value from outside.
+     */
+    @Method()
+    async decrement() {
+        const updatedCount = this.formatValue(false);
         if (updatedCount >= 0) {
             this.value = updatedCount <= this.min ? this.min : updatedCount;
         } else {
@@ -101,7 +110,21 @@ export class CounterComponent {
         this.valueChange.emit(this.value);
         this.joyCounterDecrement.emit(this.value);
         this.validateInput();
-    };
+    }
+
+    private formatValue(increase = true): number {
+        // Dynamically detect the number of digits
+        // If step = 0.001, toFixed will use 3 as fractionDigits
+        // If step = 0.5, toFixed will use 1 as fractionDigits
+        const step = this.step.toString().split('.');
+        const fractionDigits = step.length === 2 ? step[1].length : 0;
+
+        if (increase) {
+            return parseFloat((this.value + this.step).toFixed(fractionDigits));
+        } else {
+            return parseFloat((this.value - this.step).toFixed(fractionDigits));
+        }
+    }
 
     private validateInput() {
         this.invalid = !this.inputIsValid();
@@ -154,11 +177,11 @@ export class CounterComponent {
 
     render() {
         return (
-            <Host class="joy-counter">
+            <div class="joy-counter__wrapper">
                 <button
                     class="joy-counter__decrement"
                     type="button"
-                    onClick={this.decrement}
+                    onClick={async () => await this.decrement()}
                     aria-label={this.labelDecrement}
                     disabled={this.value <= this.min}
                 >
@@ -180,22 +203,25 @@ export class CounterComponent {
                     name={this.name}
                     required={this.required}
                     value={this.value}
+                    step="any"
                 />
 
                 <button
                     class="joy-counter__increment"
                     type="button"
-                    onClick={this.increment}
+                    onClick={async () => await this.increment()}
                     aria-label={this.labelIncrement}
                     disabled={this.max ? this.value >= this.max : false}
                 >
                     <joy-icon name="add" ref={(el) => (this.incrementEl = el as HTMLJoyIconElement)} color="teal" />
                 </button>
 
-                <div class="joy-counter_error">
-                    {this.invalid && this.componentErrorMessage && <joy-form-error no-html-error-text={this.componentErrorMessage} />}
-                </div>
-            </Host>
+                {this.invalid && this.componentErrorMessage && (
+                    <div class="joy-counter_error">
+                        <joy-form-error no-html-error-text={this.componentErrorMessage} />
+                    </div>
+                )}
+            </div>
         );
     }
 }

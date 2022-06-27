@@ -1,4 +1,4 @@
-@use '../../../style/utils';
+@use 'style/utils';
 
 @mixin headerTitleStyle() {
     @include utils.getFontProperties(xl-title-bold);

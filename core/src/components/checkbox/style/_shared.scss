@@ -32,6 +32,7 @@ $checkbox-svg: '%3Csvg%20width%3D%2211%22%20height%3D%229%22%20viewBox%3D%220%20
     position: relative;
     cursor: pointer;
     width: 100%;
+    color: var(--joy-color-neutral-6);
     @include utils.getFontProperties(s);
     @include utils.unselectable();
     line-height: var(--checkbox-size);
@@ -41,6 +42,7 @@ $checkbox-svg: '%3Csvg%20width%3D%2211%22%20height%3D%229%22%20viewBox%3D%220%20
 @mixin checkboxStyle {
     #{$CLASS}__input {
         display: flex;
+        pointer-events: none;
         justify-content: center;
         align-items: center;
         flex-shrink: 0;
@@ -52,7 +54,7 @@ $checkbox-svg: '%3Csvg%20width%3D%2211%22%20height%3D%229%22%20viewBox%3D%220%20
         width: var(--checkbox-size);
         height: var(--checkbox-size);
         background-color: white;
-        border: 1px solid var(--joy-color-secondary-50);
+        border: var(--joy-form-border-width) solid var(--joy-color-secondary-30);
         border-radius: var(--checkbox-radius);
         transition: background-color var(--joy-transition-duration-default) var(--joy-transition-timing-function);
     }
@@ -86,6 +88,10 @@ $checkbox-svg: '%3Csvg%20width%3D%2211%22%20height%3D%229%22%20viewBox%3D%220%20
 
 @mixin checkboxFocusStyle() {
     #{$CLASS}__input:focus {
+        border-color: var(--joy-color-state-focus);
+    }
+
+    #{$CLASS}__input:focus-visible {
         outline: none;
 
         ~ * {
@@ -105,7 +111,13 @@ $checkbox-svg: '%3Csvg%20width%3D%2211%22%20height%3D%229%22%20viewBox%3D%220%20
     }
 }
 
-@mixin checkboxCheckedHoverStyle {
+@mixin checkboxHoverStyle {
+    &:hover {
+        #{$CLASS}__input {
+            border-color: var(--joy-color-state-hover);
+        }
+    }
+
     &:hover #{$CLASS}__input:checked {
         color: var(--checkbox-color-checked);
         background-color: var(--checkbox-bg-checked-hover);
@@ -126,6 +138,18 @@ $checkbox-svg: '%3Csvg%20width%3D%2211%22%20height%3D%229%22%20viewBox%3D%220%20
         position: relative;
         flex: 1;
         color: var(--checkbox-color);
+
+        #{$CLASS}__content {
+            width: 100%;
+            flex: 1;
+
+            > * {
+                display: block;
+                width: 100%;
+                margin-top: 0;
+                margin-bottom: var(--joy-core-spacing-1);
+            }
+        }
     }
 }
 

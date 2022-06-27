@@ -12,4 +12,6 @@ export type Tab = {
     href: string;
 };
 
-export type BackDropOrigin = 'dialog' | 'select';
+export type BackDropOrigin = 'dialog' | 'select' | 'dropdown' | 'product-tour';
+
+export type Positions = 'left' | 'right' | 'top' | 'bottom';

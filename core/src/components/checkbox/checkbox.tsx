@@ -1,5 +1,5 @@
 import {Component, Prop, h, Element, Event, EventEmitter, Host, Method, Watch} from '@stencil/core';
-import {renderInputOutsideShadowRoot, dispatchEvent} from '../../utils';
+import {dispatchEvent} from '../../utils';
 
 /**
  * If you need to get the actual state of the component, you can simply do a :
@@ -8,7 +8,7 @@ import {renderInputOutsideShadowRoot, dispatchEvent} from '../../utils';
 @Component({
     tag: 'joy-checkbox',
     styleUrl: './style/checkbox.scss',
-    shadow: true,
+    scoped: true,
 })
 export class Checkbox {
     @Element() el!: HTMLJoyCheckboxElement;
@@ -19,6 +19,9 @@ export class Checkbox {
 
     /** It will be applied as the hidden input name attribute (for the actual form) */
     @Prop() name = '';
+
+    /** Checkbox is required */
+    @Prop() required = false;
 
     /** Disabled state */
     @Prop({reflect: true}) disabled = false;
@@ -48,12 +51,6 @@ export class Checkbox {
         dispatchEvent(this.el, ev.type, {checked: this.checked, element: this.el});
     };
 
-    private setFocus() {
-        if (this.input) {
-            this.input.focus();
-        }
-    }
-
     private onClick = (ev: Event) => {
         /**
          * We prevent default event trigger for everything but clicking on a hyperlink
@@ -67,7 +64,6 @@ export class Checkbox {
         }
 
         if (!this.disabled && targetIsNotALink) {
-            this.setFocus();
             this.checked = !this.checked;
             this.valueChange.emit(this.checked);
         }
@@ -78,7 +74,7 @@ export class Checkbox {
          * here for third param, we don't want to return 'false' as a string, as it will set value="false" that can be
          * considered as an actual value. We prefer setting an empty value
          */
-        renderInputOutsideShadowRoot(this.el, this.name, this.checked ? this.value : '', this.disabled);
+        // renderInputOutsideShadowRoot(this.el, this.name, this.checked ? this.value : '', this.disabled);
 
         return (
             <Host onClick={this.onClick} value={this.value} aria-checked={`${this.checked}`} aria-hidden={this.disabled ? 'true' : null}>
@@ -93,10 +89,12 @@ export class Checkbox {
                         ref={(el) => (this.input = el as HTMLInputElement)}
                         class="joy-checkbox__input"
                         role="checkbox"
+                        name={this.name}
                         onFocus={this.handleEvent}
                         onBlur={this.handleEvent}
                         disabled={this.disabled}
                         checked={this.checked}
+                        required={this.required}
                         aria-checked={`${this.checked}`}
                     />
                     <div class="joy-checkbox__content-wrapper">

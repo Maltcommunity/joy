@@ -7,10 +7,10 @@
 
 ## Properties
 
-| Property   | Attribute  | Description                         | Type                       | Default     |
-| ---------- | ---------- | ----------------------------------- | -------------------------- | ----------- |
-| `position` | `position` | Tooltip position. 2 possible values | `"left" \| "right"`        | `'left'`    |
-| `variant`  | `variant`  | Color theme. 2 possible values      | `"primary" \| "secondary"` | `'primary'` |
+| Property   | Attribute  | Description                         | Type                                     | Default     |
+| ---------- | ---------- | ----------------------------------- | ---------------------------------------- | ----------- |
+| `position` | `position` | Tooltip position. 2 possible values | `"bottom" \| "left" \| "right" \| "top"` | `'left'`    |
+| `variant`  | `variant`  | Color theme. 2 possible values      | `"primary" \| "secondary"`               | `'primary'` |
 
 
 ## Slots

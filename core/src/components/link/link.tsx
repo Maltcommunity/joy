@@ -4,7 +4,7 @@ import {HyperLinksTargets, IconColors, LinksColors} from '../../types';
 @Component({
     tag: 'joy-link',
     styleUrl: 'link.scss',
-    shadow: true,
+    scoped: true,
 })
 export class Link {
     /** Set the href of your link */

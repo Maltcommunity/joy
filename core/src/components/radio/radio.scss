@@ -1,30 +1,41 @@
-@use '../../style/utils';
+@use 'style/utils';
+
 
 $_CLASS: '.joy-radio';
 
 :host {
+    /**
+     * @prop --radio-size: override the radio width/height
+     * @prop --radio-color: the radio label color
+     * @prop --radio-circle-color: default radio button color
+     * @prop --radio-circle-color-hover: hover radio button color
+     * @prop --radio-circle-color-focus: focus radio button color
+     * @prop --radio-circle-color-disabled: disabled radio button color
+     * @prop --radio-color-disabled: disabled radio label color
+     * @prop --radio-circle-color-invalid: invalid radio button color
+     * @prop --radio-circle-color-invalid-hover: invalid radio button color on hover
+     * @prop --radio-border-color-focus: keyboard focus outline color
+     */
     --radio-size: 22px;
-    --radio-border-color: var(--joy-color-secondary-50);
-    --radio-bg-color: var(--joy-color-secondary-50);
-    --radio-bg-color-checked: var(--joy-color-secondary-50);
-    --radio-border-color-checked: var(--joy-color-secondary-50);
-    --radio-bg-color-checked-hover: var(--joy-color-secondary-50);
-    --radio-border-color-checked-hover: var(--joy-color-secondary-50);
-    --radio-bg-color-disabled: var(--joy-color-neutral-3);
-    --radio-border-color-disabled: var(--joy-color-neutral-3);
     --radio-color: var(--joy-color-text-body);
-    --radio-border-color-focus: var(--joy-color-neutral-6);
+
+    --radio-circle-color: var(--joy-color-secondary-30);
+    --radio-circle-color-hover: var(--joy-color-state-hover);
+    --radio-circle-color-focus: var(--joy-color-state-focus);
+
+    --radio-circle-color-disabled: var(--joy-color-neutral-3);
     --radio-color-disabled: var(--joy-color-neutral-4);
-    --radio-border-color-invalid: var(--joy-color-error-50);
-    --radio-bg-color-invalid: var(--joy-color-error-50);
-    --radio-border-color-invalid-hover: var(--joy-color-error-90);
-    --radio-bg-color-invalid-hover: var(--joy-color-error-90);
+
+    --radio-circle-color-invalid: var(--joy-color-error-50);
+    --radio-circle-color-invalid-hover: var(--joy-color-error-90);
+
+    --radio-border-color-focus: var(--joy-color-neutral-6);
 
     display: block;
     box-sizing: border-box;
     position: relative;
     color: var(--radio-color);
-    margin-bottom: var(--joy-core-spacing-3);
+    margin-bottom: var(--joy-core-spacing-4);
     @include utils.unselectable();
     @include utils.getFontProperties(m);
 }
@@ -43,11 +54,15 @@ $_CLASS: '.joy-radio';
         width: var(--radio-size);
         height: var(--radio-size);
         margin-right: var(--joy-core-spacing-1);
-        border: 1px solid var(--radio-border-color);
+        border: var(--joy-form-border-width) solid var(--radio-circle-color);
+        background-color: var(--radio-circle-color);
         border-radius: var(--joy-core-radius-5);
-        background-color: var(--radio-bg-color);
         box-shadow: inset 0 0 0 12px white;
     }
+}
+
+:host([checked]) {
+    z-index: 2;
 }
 
 :host(:focus-visible) input[type="radio"] {
@@ -58,9 +73,14 @@ $_CLASS: '.joy-radio';
     }
 }
 
+:host([type="outline"]) {
+    width: 100%;
+}
+
 #{$_CLASS} {
     cursor: pointer;
     display: flex;
+    flex-direction: column;
     color: inherit;
 
     > input[type="radio"] {
@@ -73,11 +93,19 @@ $_CLASS: '.joy-radio';
         @include radioBeforeDefault;
         text-align: left;
 
+        ::slotted(joy-icon) {
+            color: var(--joy-color-neutral-4)
+        }
+
+        &:before {
+            transition: all var(--joy-transition-duration-short) var(--joy-transition-timing-function);
+        }
+
         &::after {
             content: "";
             position: absolute;
-            top: -2px;
-            left: -2px;
+            top: -3px;
+            left: -3px;
             width: 28px;
             height: 28px;
             border-radius: 50%;
@@ -85,18 +113,33 @@ $_CLASS: '.joy-radio';
         }
     }
 
-    &.joy-radio-checked {
+    &:hover {
         span:before {
-            border-color: var(--radio-border-color-checked);
-            background-color: var(--radio-bg-color-checked);
-            box-shadow: inset 0 0 0 3px white;
+            border-color: var(--radio-circle-color-hover);
+        }
+    }
+
+    &:focus {
+        span:before {
+            border-color: var(--radio-circle-color-focus);
+        }
+    }
+
+    &.joy-radio-checked {
+
+        ::slotted(joy-icon) {
+            color: var(--joy-color-secondary-50);
+        }
+
+        span:before {
+            background-color: var(--radio-circle-color);
+            box-shadow: inset 0 0 0 2px white;
         }
 
         &:not(.joy-radio-disabled):hover,
         &:not(.joy-radio-disabled):active {
             span:before {
-                border-color: var(--radio-border-color-checked-hover);
-                background-color: var(--radio-bg-color-checked-hover);
+                background-color: var(--radio-circle-color-hover);
             }
         }
     }
@@ -106,29 +149,83 @@ $_CLASS: '.joy-radio';
         cursor: not-allowed;
 
         span:before {
-            background-color: var(--radio-bg-color-disabled);
-            border-color: var(--radio-border-color-disabled);
+            background-color: var(--radio-circle-color-disabled);
+            border-color: var(--radio-circle-color-disabled);
         }
     }
 
     &.joy-radio-invalid {
+        span:before {
+            background-color: var(--radio-circle-color-invalid);
+            border-color: var(--radio-circle-color-invalid);
+        }
+
         &:hover {
             span:before {
-                border-color: var(--radio-border-color-invalid-hover);
+                border-color: var(--radio-circle-color-invalid-hover);
             }
         }
 
-        span:before {
-            background-color: var(--radio-bg-color-invalid);
-            border: 1px solid var(--radio-border-color-invalid);
-        }
 
         &.joy-radio-checked {
             &:hover {
                 span:before {
-                    background-color: var(--radio-bg-color-invalid-hover);
+                    border-color: var(--radio-circle-color-invalid-hover);
+                    background-color: var(--radio-circle-color-invalid-hover);
                 }
             }
         }
     }
+
+    &#{$_CLASS}--outline {
+        border: var(--joy-form-border-width) solid var(--joy-color-neutral-3);
+        border-radius: var(--joy-core-radius-3);
+        padding: var(--joy-core-spacing-6);
+        transition: all var(--joy-transition-duration-short) var(--joy-transition-timing-function);
+
+        .joy-radio-label {
+            display: flex;
+            align-items: center;
+            gap: var(--joy-core-spacing-2);
+        }
+
+        &.joy-radio-checked {
+            .joy-radio-label {
+                font-weight: bold;
+            }
+        }
+
+        &.joy-radio-checked,
+        &:hover:not(#{$_CLASS}-disabled) {
+            border-color: var(--joy-color-secondary-50);
+            box-shadow: var(--joy-core-elevation-1);;
+        }
+    }
+
+    // We trigger opacity animation once the expandable content is fully expanded
+    @keyframes opacityAnimation {
+        0% {opacity: 0;}
+        50% {opacity: 0;}
+        100% {opacity: 1;}
+    }
+
+    #{$_CLASS}-expandable {
+        transition: all var(--joy-transition-duration-default) var(--joy-transition-timing-function);
+        height: 0;
+        opacity: 0;
+        overflow: hidden;
+
+        &--expanded {
+            animation: opacityAnimation var(--joy-transition-duration-long) forwards;
+            height: auto;
+            overflow: visible;
+        }
+
+        ::slotted(div[slot="expandable-content"]) {
+            display: inline-block;
+            padding-top: var(--joy-core-spacing-6);
+        }
+    }
 }
+
+

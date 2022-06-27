@@ -1,7 +1,19 @@
+@use 'style/utils';
+
 joy-link:not([hydrated]) {
-    color: transparent;
+    /* Scoped stylesheet is loaded before component has hydrated flag. So we need to force the color */
+    color: transparent !important;
     background-color: var(--joy-color-secondary-10);
-    width: 110px;
+    width: auto;
     max-width: 100%;
-    height: 20px;
+    height: auto;
+    @include utils.getFontProperties(l);
+
+    a {
+        color: transparent !important;
+    }
+
+    joy-icon {
+        background-color: transparent;
+    }
 }

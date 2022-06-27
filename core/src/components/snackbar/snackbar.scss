@@ -1,4 +1,4 @@
-@use '../../style/utils';
+@use 'style/utils';
 
 $_CLASS-PREFIX: '.joy-snackbar';
 
@@ -14,9 +14,10 @@ $_CLASS-PREFIX: '.joy-snackbar';
     position: fixed;
     bottom: var(--snackbar-bottom-space);
     z-index: 10000; // need to tokenize this
-    width: 100%;
-    display: flex;
-    justify-content: center;
+    width: auto;
+    display: block;
+    left: 50%;
+    transform: translateX(-50%);
     @include utils.getFontProperties(l);
 }
 

@@ -62,14 +62,6 @@ Type: `Promise<void>`
 
 
 
-## CSS Custom Properties
-
-| Name              | Description                                                                     |
-| ----------------- | ------------------------------------------------------------------------------- |
-| `--toggle-height` | Use this prop to override the toggle symbol height. It'll resize homothetically |
-| `--toggle-width`  | Use this prop to override the toggle symbol width. It'll resize homothetically  |
-
-
 ----------------------------------------------
 
 *Built with [StencilJS](https://stenciljs.com/)*

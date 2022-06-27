@@ -6,8 +6,18 @@ category: Webcomponents
 ---
 
 ```ui_example
-<joy-form-error></joy-form-error>
 <joy-form-error no-html-error-text="The field is required"></joy-form-error>
+```
+
+<joy-highlight level="info" accent>If you need to display multiple errors, for example with a ul/li </joy-highlight>
+
+```ui_example
+<joy-form-error>
+    <ul>
+        <li>The field is required</li>
+        <li>Another error</li>
+    </ul>
+</joy-form-error>
 ```
 
 
@@ -16,17 +26,17 @@ category: Webcomponents
 
 ## Properties
 
-| Property          | Attribute            | Description                                                                                                                                  | Type      | Default     |
-| ----------------- | -------------------- | -------------------------------------------------------------------------------------------------------------------------------------------- | --------- | ----------- |
-| `noHtmlErrorText` | `no-html-error-text` | The error text. Plain string required as any HTML injected will be escaped                                                                   | `string`  | `'Error !'` |
-| `visible`         | `visible`            | Depending on contexts : maybe you'll need to insert it in the DOM but hide it, or injecting it into the DOM on the fly (like Vue v-if cases) | `boolean` | `true`      |
+| Property          | Attribute            | Description                                                                                                                                  | Type                  | Default     |
+| ----------------- | -------------------- | -------------------------------------------------------------------------------------------------------------------------------------------- | --------------------- | ----------- |
+| `noHtmlErrorText` | `no-html-error-text` | The error text. Plain string required as any HTML injected will be escaped                                                                   | `string \| undefined` | `undefined` |
+| `visible`         | `visible`            | Depending on contexts : maybe you'll need to insert it in the DOM but hide it, or injecting it into the DOM on the fly (like Vue v-if cases) | `boolean`             | `true`      |
 
 
-## CSS Custom Properties
+## Slots
 
-| Name                 | Description              |
-| -------------------- | ------------------------ |
-| `--form-error-color` | color for the error text |
+| Slot        | Description                                                                                                         |
+| ----------- | ------------------------------------------------------------------------------------------------------------------- |
+| `"default"` | Use it to inject plain HTML error message (or if you can't access the string due to any backend framework handling) |
 
 
 ## Dependencies
@@ -34,8 +44,8 @@ category: Webcomponents
 ### Used by
 
  - [joy-counter](../counter)
+ - [joy-dropdown](../dropdown)
  - [joy-radio-group](../radio-group)
- - [joy-select](../select)
 
 ### Depends on
 
@@ -46,8 +56,8 @@ category: Webcomponents
 graph TD;
   joy-form-error --> joy-icon
   joy-counter --> joy-form-error
+  joy-dropdown --> joy-form-error
   joy-radio-group --> joy-form-error
-  joy-select --> joy-form-error
   style joy-form-error fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

@@ -69,6 +69,7 @@ If using the webcomponent is too complex for your case, use this plain CSS imple
 | `checked`  | `checked`  | Checkbox activated or not                                                                                             | `boolean` | `false` |
 | `disabled` | `disabled` | Disabled state                                                                                                        | `boolean` | `false` |
 | `name`     | `name`     | It will be applied as the hidden input name attribute (for the actual form)                                           | `string`  | `''`    |
+| `required` | `required` | Checkbox is required                                                                                                  | `boolean` | `false` |
 | `value`    | `value`    | Input value. Input value != checked state ! If you need to get the state checked/not checked, simply use checked prop | `string`  | `'on'`  |
 
 

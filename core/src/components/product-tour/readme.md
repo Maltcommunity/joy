@@ -55,12 +55,12 @@ category: Webcomponents
 
 | Property   | Attribute   | Description                                                        | Type                                     | Default     |
 | ---------- | ----------- | ------------------------------------------------------------------ | ---------------------------------------- | ----------- |
-| `icon`     | `icon`      | Icon name, placed left to the title                                | `string / undefined`                    | `undefined` |
-| `maxWidth` | `max-width` | Set a max width for your container                                 | `number / undefined`                    | `500`       |
+| `icon`     | `icon`      | Icon name, placed left to the title                                | `string \| undefined`                    | `undefined` |
+| `maxWidth` | `max-width` | Set a max width for your container                                 | `number \| undefined`                    | `500`       |
 | `open`     | `open`      | Product tour open state                                            | `boolean`                                | `false`     |
-| `position` | `position`  | Product tour position according to highlighted content             | `"bottom" / "left" / "right" / "top"` | `'right'`   |
-| `step`     | `step`      | If multiple product tour are need, specify the current step number | `number / undefined`                    | `1`         |
-| `steps`    | `steps`     | If multiple product tour are need, specify the amount              | `number / undefined`                    | `undefined` |
+| `position` | `position`  | Product tour position according to highlighted content             | `"bottom" \| "left" \| "right" \| "top"` | `'right'`   |
+| `step`     | `step`      | If multiple product tour are need, specify the current step number | `number \| undefined`                    | `1`         |
+| `steps`    | `steps`     | If multiple product tour are need, specify the amount              | `number \| undefined`                    | `undefined` |
 
 
 ## Methods
@@ -84,13 +84,6 @@ Type: `Promise<void>`
 Type: `Promise<void>`
 
 
-
-
-## CSS Custom Properties
-
-| Name                                            | Description |
-| ----------------------------------------------- | ----------- |
-| `--product-tour-width - product tour max width` |             |
 
 
 ## Dependencies

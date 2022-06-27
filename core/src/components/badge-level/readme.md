@@ -34,19 +34,11 @@ category: Webcomponents
 
 ## Properties
 
-| Property            | Attribute            | Description                                                         | Type      | Default     |
-| ------------------- | -------------------- | ------------------------------------------------------------------- | --------- | ----------- |
-| `superMalterLevel`  | `super-malter-level` | SuperMalter level from 1 to 3                                       | `number`  | `1`         |
-| `type` _(required)_ | `type`               | Badge type: highpotential, maltlinker, new, supermalter or verified | `string`  | `undefined` |
-| `visibleText`       | `visible-text`       | Display text label                                                  | `boolean` | `true`      |
-
-
-## CSS Custom Properties
-
-| Name               | Description                   |
-| ------------------ | ----------------------------- |
-| `----badge-height` | Default height for the badge  |
-| `--badge-padding`  | Default padding for the badge |
+| Property            | Attribute            | Description                                                                                                                | Type                                                                                                                                                                                                                         | Default     |
+| ------------------- | -------------------- | -------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------- |
+| `superMalterLevel`  | `super-malter-level` | SuperMalter level from 1 to 3                                                                                              | `number`                                                                                                                                                                                                                     | `1`         |
+| `type` _(required)_ | `type`               | Badge type: highpotential, high-potential-auto, maltlinker, new, supermalter or verified or program: program_highpotential | `JoyBadgeLevelEnum.HIGH_POTENTIAL \| JoyBadgeLevelEnum.HIGH_POTENTIAL_AUTO \| JoyBadgeLevelEnum.MALT_LINKER \| JoyBadgeLevelEnum.NEW \| JoyBadgeLevelEnum.SUPER_MALTER \| JoyBadgeLevelEnum.VERIFIED \| JoyBadgeProgramEnum` | `undefined` |
+| `visibleText`       | `visible-text`       | Display text label                                                                                                         | `boolean`                                                                                                                                                                                                                    | `true`      |
 
 
 ----------------------------------------------

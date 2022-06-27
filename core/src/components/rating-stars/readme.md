@@ -9,6 +9,15 @@ category: Webcomponents
 <joy-rating-stars rating-value="5"></joy-rating-stars>
 ```
 
+## Sizes
+```ui_example
+<joy-rating-stars size="small" rating-value="5"></joy-rating-stars>
+<br/>
+<joy-rating-stars size="medium" rating-value="5"></joy-rating-stars>
+<br/>
+<joy-rating-stars size="large" rating-value="5"></joy-rating-stars>
+```
+
 ## With review count
 
 ```ui_example

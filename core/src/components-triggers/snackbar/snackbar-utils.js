@@ -21,7 +21,7 @@ class SnackbarUtils {
     }
 
     bindListeners() {
-        this.getSnackbar().addEventListener('joySnackbarTriggerAction', this.triggerAnyAction, {once: true});
+        this.getSnackbar().addEventListener('joySnackbarTriggerAction', this.triggerAnyAction.bind(this), {once: true});
     }
 
     triggerAnyAction(event) {

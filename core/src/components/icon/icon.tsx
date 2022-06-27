@@ -117,20 +117,19 @@ export class Icon {
 
     render() {
         return (
-            <Host
-                role="img"
-                class={{
-                    'joy-icon': true,
-                    'joy-icon--loaded': !this.loading,
-                    ...this.colorClass,
-                    ...this.sizeClass,
-                    'joy-icon--bicolor': this.bicolor,
-                    'joy-icon--full': this.full,
-                    'joy-icon--clickable': this.clickable,
-                    ...this.elementClass,
-                }}
-            >
-                {Build.isBrowser && this.svgContent ? <div class="joy-icon-inner" innerHTML={this.svgContent} /> : <div class="joy-icon-inner" />}
+            <Host role="img" class={{...this.elementClass, ...this.colorClass}}>
+                <div
+                    class={{
+                        'joy-icon': true,
+                        'joy-icon--loaded': !this.loading,
+                        ...this.sizeClass,
+                        'joy-icon--bicolor': this.bicolor,
+                        'joy-icon--full': this.full,
+                        'joy-icon--clickable': this.clickable,
+                    }}
+                >
+                    {Build.isBrowser && this.svgContent ? <div class="joy-icon-inner" innerHTML={this.svgContent} /> : <div class="joy-icon-inner" />}
+                </div>
             </Host>
         );
     }

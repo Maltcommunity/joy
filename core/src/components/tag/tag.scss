@@ -1,4 +1,4 @@
-@use '../../style/utils';
+@use 'style/utils';
 @use 'tag-config' as tags;
 
 $_CLASS: '.joy-tag';
@@ -8,7 +8,7 @@ $_CLASS: '.joy-tag';
         $tagNormal : map-get($states, normal);
         $tagHover : map-get($states, hover);
 
-        :host(#{$_CLASS}_#{$color}) {
+        #{$_CLASS}_#{$color} {
             color: map-get($tagNormal, color);
             background-color: map-get($tagNormal, background-color);
         }
@@ -21,14 +21,14 @@ $_CLASS: '.joy-tag';
         $tagActive : map-get($states, active);
 
         @if $tagHover {
-            :host(#{$_CLASS}_#{$color}.joy-tag__has-link:hover), :host(#{$_CLASS}_#{$color}.joy-tag__selected) {
+            #{$_CLASS}_#{$color}.joy-tag__has-link:hover, #{$_CLASS}_#{$color}.joy-tag__selected {
                 color: map-get($tagHover, color);
                 background-color: map-get($tagHover, background-color);
             }
         }
 
         @if $tagActive {
-            :host(#{$_CLASS}_#{$color}.joy-tag__has-link:active) {
+            #{$_CLASS}_#{$color}.joy-tag__has-link:active {
                 color: map-get($tagActive, color);
                 background-color: map-get($tagActive, background-color);
             }
@@ -38,39 +38,30 @@ $_CLASS: '.joy-tag';
 
 @mixin tagSize() {
     @each $size, $value in tags.$TAG_SIZE_CONFIG {
-        :host(#{$_CLASS}_#{$size}) {
+        #{$_CLASS}_#{$size} {
             $size: map-get($value, font-size);
 
-            @include utils.getFontProperties($size);
+            font-size: $size;
             padding: map-get($value, padding);
-            height: map-get($value, height);
+            min-height: map-get($value, height);
         }
     }
 }
 
 :host {
+    display: inline-flex;
+}
+
+#{$_CLASS} {
     @include tags.tagShape();
-}
+    font-family: var(--joy-font-family);
+    line-height: 1;
+    font-weight: normal;
 
-:host(.joy-tag_draggable) {
-    cursor: grab;
-}
-
-:host([selectable]) {
-    cursor: pointer;
-}
-
-:host(.joy-tags-list-item) {
-    margin: var(--joy-core-spacing-2) var(--joy-core-spacing-4) var(--joy-core-spacing-2) 0;
-}
-
-/** WRAPPER INSIDE SHADOW DOM **/
-#{$_CLASS}__wrapper {
-    display: flex;
-    color: inherit;
-    align-items: center;
-    text-decoration: none;
-    outline: none;
+    joy-icon {
+        color: inherit;
+        z-index: 1;
+    }
 
     &:before {
         content: "";
@@ -90,12 +81,16 @@ $_CLASS: '.joy-tag';
     }
 }
 
+#{$_CLASS}#{$_CLASS}_draggable {
+    cursor: grab;
+}
 
-/** ICON **/
+:host([selectable]) {
+    cursor: pointer;
+}
 
-#{$_CLASS}__wrapper joy-icon {
-    color: inherit;
-    z-index: 1;
+:host([tag-item]) {
+    margin: var(--joy-core-spacing-2) var(--joy-core-spacing-4) var(--joy-core-spacing-2) 0;
 }
 
 #{$_CLASS}__removable {

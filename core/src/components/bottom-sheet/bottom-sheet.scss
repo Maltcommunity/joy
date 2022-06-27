@@ -1,3 +1,5 @@
+@use 'style/utils';
+
 $CLASS: '.joy-bottom-sheet';
 
 #{$CLASS} {
@@ -9,6 +11,8 @@ $CLASS: '.joy-bottom-sheet';
     width: 100%;
     height: 0;
     box-sizing: border-box;
+    @include utils.getFontProperties(m);
+    color: var(--joy-color-neutral-6);
 
     transition-property: background-color, height;
     transition-duration: 0.6s, 0s;
@@ -67,8 +71,8 @@ $CLASS: '.joy-bottom-sheet';
         #{$CLASS}_content {
             padding: 0 16px 16px 16px;
 
-            max-height: calc(100vh - 156px); // 16px from top
-            overflow-y: scroll;
+            max-height: 60vh;
+            overflow-y: auto; // if > 60vh
 
             h2 {
                 text-align: justify;

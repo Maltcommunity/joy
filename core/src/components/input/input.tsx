@@ -1,13 +1,15 @@
 import {Component, Event, EventEmitter, h, Element, Host, Prop, State, Method} from '@stencil/core';
-import {InputSizes} from '../../types';
-import {generatedInputNameAndId, renderInputOutsideShadowRoot} from '../../utils';
+import {InputSizes, LabelSizes} from '../../types';
+import {generatedInputNameAndId, inheritAttributes} from '../../utils';
 
 @Component({
     tag: 'joy-input',
     styleUrl: 'style/input.scss',
-    shadow: true,
+    scoped: true,
 })
 export class Input {
+    private inheritedAttributes: {[k: string]: any} = {};
+
     @Element() host!: HTMLJoyInputElement;
     private input!: HTMLInputElement;
 
@@ -30,13 +32,18 @@ export class Input {
     @Prop() readonly = false;
 
     /** Makes the field readonly or not */
-    @Prop() invalid = false;
+    @Prop({mutable: true}) invalid = false;
 
     /** Makes the field required */
     @Prop() required = false;
+    /** Display the required mark or not. Default to true. */
+    @Prop() requiredMark = true;
 
-    /** Field value */
-    @Prop({reflect: true, mutable: true}) value = '';
+    /** Max character number. https://developer.mozilla.org/fr/docs/Web/HTML/Attributes/maxlength */
+    @Prop() maxlength?: number;
+
+    /** Max character number. https://developer.mozilla.org/fr/docs/Web/HTML/Attributes/minlength */
+    @Prop() minlength?: number;
 
     /** If the type is "number" then you can use min property. */
     @Prop() min?: number;
@@ -44,8 +51,17 @@ export class Input {
     /** If the type is "number" then you can use max property. */
     @Prop() max?: number;
 
+    /** If the type is "number" then you can use step property. */
+    @Prop() step: number | 'any' = 'any';
+
+    /** Field value */
+    @Prop({reflect: true, mutable: true}) value = '';
+
     /** The input's size. */
     @Prop({reflect: true}) size: InputSizes = 'medium';
+
+    /** The label input's size. */
+    @Prop() labelSize: LabelSizes = 'medium';
 
     /** The input's autocomplete policy. */
     @Prop() autocomplete = 'off';
@@ -78,16 +94,26 @@ export class Input {
     };
 
     private onFocus = () => (this.focusing = true);
-    private onBlur = () => (this.focusing = false);
+    private onBlur = () => {
+        this.focusing = false;
+        this.invalid = !this.input.checkValidity();
+    };
+
+    private getIfTypeNumber = (value: number | string | undefined) => {
+        if (this.type === 'number' && value) {
+            return value;
+        }
+    };
 
     componentWillLoad() {
         this.type = this.unit ? 'number' : this.type;
         this.inputType = this.type;
+
+        // Here you can add any attribute that you don't want to be reactive
+        this.inheritedAttributes = inheritAttributes(this.host, ['autocomplete', 'spellcheck']);
     }
 
     render() {
-        renderInputOutsideShadowRoot(this.host, this.name, this.value, this.disabled, this.required);
-
         return (
             <Host
                 class={{
@@ -104,7 +130,12 @@ export class Input {
                         'joy-input--valid': !this.invalid && !this.disabled,
                     }}
                 >
-                    <joy-label id={this.inputAriaLabel}>
+                    <joy-label
+                        required={this.required && this.requiredMark}
+                        id={this.inputAriaLabel}
+                        html-for={this.name || generatedInputNameAndId(this.host)}
+                        size={this.labelSize}
+                    >
                         <slot />
                     </joy-label>
                     <div
@@ -115,7 +146,7 @@ export class Input {
                         }}
                     >
                         <input
-                            id={generatedInputNameAndId(this.host)}
+                            id={this.name || generatedInputNameAndId(this.host)}
                             aria-labelledby={this.inputAriaLabel}
                             ref={(el) => (this.input = el as HTMLInputElement)}
                             type={this.inputType}
@@ -125,10 +156,16 @@ export class Input {
                             autoComplete={this.autocomplete}
                             disabled={this.disabled}
                             placeholder={this.placeholder}
-                            value={this.value}
+                            maxlength={this.maxlength}
+                            minlength={this.minlength}
+                            min={this.getIfTypeNumber(this.min)}
+                            max={this.getIfTypeNumber(this.max)}
+                            step={this.getIfTypeNumber(this.step)}
                             onFocus={this.onFocus}
                             onBlur={this.onBlur}
                             required={this.required}
+                            {...this.inheritedAttributes}
+                            value={this.value}
                             class={{
                                 'joy-input--field-disabled': this.disabled,
                                 'joy-input--field-invalid': this.invalid,

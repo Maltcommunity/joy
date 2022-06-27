@@ -6,13 +6,16 @@ category: Webcomponents
 ---
 
 ```ui_example
-<joy-divider-cta text="+ Add some content !"></joy-divider-cta>
+<joy-divider-cta>
+    Add a form instance here
+    <span slot="divider-content">Add a form in order to do something specific</span>
+</joy-divider-cta>
 ```
 
-##Small
-
 ```ui_example
-<joy-divider-cta size="small" text="+ Add some content !"></joy-divider-cta>
+<joy-divider-cta disabled>
+    You can't add a form instance here
+</joy-divider-cta>
 ```
 
 <!-- Auto Generated Below -->
@@ -20,11 +23,30 @@ category: Webcomponents
 
 ## Properties
 
-| Property | Attribute | Description                                                                     | Type                   | Default           |
-| -------- | --------- | ------------------------------------------------------------------------------- | ---------------------- | ----------------- |
-| `size`   | `size`    | Divider size. 2 possible values : 100% width or adjusted size according to text | `"default" \| "small"` | `'default'`       |
-| `text`   | `text`    | The CTA text                                                                    | `string`               | `'+ Add content'` |
+| Property   | Attribute  | Description     | Type      | Default |
+| ---------- | ---------- | --------------- | --------- | ------- |
+| `disabled` | `disabled` | Disabled or not | `boolean` | `false` |
 
+
+## Shadow Parts
+
+| Part        | Description |
+| ----------- | ----------- |
+| `"divider"` |             |
+
+
+## Dependencies
+
+### Depends on
+
+- [joy-icon](../icon)
+
+### Graph
+```mermaid
+graph TD;
+  joy-divider-cta --> joy-icon
+  style joy-divider-cta fill:#f9f,stroke:#333,stroke-width:4px
+```
 
 ----------------------------------------------
 

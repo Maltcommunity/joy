@@ -2,7 +2,7 @@
     display: flex;
     flex-wrap: wrap;
     align-items: stretch;
-    border: 1px solid var(--joy-color-neutral-3);
+    border: var(--joy-form-border-width) solid var(--joy-color-neutral-3);
     min-height: 43px;
     border-radius: var(--joy-core-radius-3);
     padding: var(--joy-core-spacing-1) var(--joy-core-spacing-5);

@@ -1,4 +1,5 @@
 import {Component, Event, EventEmitter, Prop, h, Element, Host, Method, State} from '@stencil/core';
+import {FormPickerTypes} from '@/types';
 
 /**
  * @slot default - Text of your radio
@@ -6,14 +7,20 @@ import {Component, Event, EventEmitter, Prop, h, Element, Host, Method, State} f
 @Component({
     tag: 'joy-radio',
     styleUrl: 'radio.scss',
-    shadow: true,
+    scoped: true,
 })
 export class Radio {
     private inputId = `joy-radio-${radioButtonIds++}`;
     private radioGroup: any | null = null;
+    private isExpanded = false;
+    private expandableElement!: HTMLElement;
 
     @Element() el!: HTMLJoyRadioElement;
 
+    /**
+     * Field is required
+     */
+    @Prop({reflect: true}) required = false;
     /**
      * If `true`, the radio is selected.
      */
@@ -30,9 +37,9 @@ export class Radio {
     @State() buttonTabindex = -1;
 
     /**
-     * The name of the control, which is submitted with the form data.
+     * Field name. Given by parent component
      */
-    @Prop() name: string = this.inputId;
+    @Prop({reflect: true}) name!: string;
 
     /**
      * If `true`, the user cannot interact with the radio.
@@ -43,6 +50,11 @@ export class Radio {
      * the value of the radio.
      */
     @Prop({mutable: true}) value?: any | null;
+
+    /**
+     * Defines the type of the radio 'default' or 'outline'
+     */
+    @Prop({reflect: true}) type: FormPickerTypes = 'default';
 
     /** When radio is selected **/
     @Event() joyRadioClick!: EventEmitter<void>;
@@ -82,6 +94,8 @@ export class Radio {
             // Emit event
             radioGroup.addEventListener('valueChange', this.updateState);
         }
+
+        this.setExpandableState();
     }
 
     disconnectedCallback() {
@@ -97,10 +111,12 @@ export class Radio {
             this.checked = this.radioGroup.value === this.value;
             this.invalid = this.radioGroup.hasAttribute('invalid');
         }
+        this.setExpandableState();
     };
 
     private onClick = () => {
         this.joyRadioClick.emit();
+        this.setExpandableState();
     };
 
     private handleFocus = () => {
@@ -111,8 +127,12 @@ export class Radio {
         this.joyRadioBlur.emit();
     };
 
+    private setExpandableState() {
+        this.isExpanded = !!this.el.querySelector('[slot="expandable-content"]') && this.checked;
+    }
+
     render() {
-        const {buttonTabindex, checked, disabled, inputId, invalid} = this;
+        const {buttonTabindex, checked, disabled, inputId, invalid, name, required} = this;
 
         return (
             <Host
@@ -130,13 +150,33 @@ export class Radio {
                         'joy-radio-checked': checked,
                         'joy-radio-disabled': disabled,
                         'joy-radio-invalid': invalid,
+                        [`joy-radio--${this.type}`]: true,
                     }}
                     htmlFor={this.inputId}
                 >
-                    <input type="radio" value={this.value} checked={checked} disabled={disabled} tabindex="-1" id={inputId} />
-                    <span>
+                    <input
+                        type="radio"
+                        value={this.value}
+                        checked={checked}
+                        disabled={disabled}
+                        required={required}
+                        name={name}
+                        tabindex="-1"
+                        id={inputId}
+                    />
+                    <span class="joy-radio-label">
                         <slot />
                     </span>
+
+                    <div
+                        class={{
+                            'joy-radio-expandable': true,
+                            'joy-radio-expandable--expanded': this.isExpanded,
+                        }}
+                        ref={(el) => (this.expandableElement = el as HTMLElement)}
+                    >
+                        <slot name="expandable-content" />
+                    </div>
                 </label>
             </Host>
         );

@@ -2,4 +2,6 @@
 
 joy-stepper:not([hydrated]) {
     @include defaultStyle();
+    min-height: 55px;
+    background-color: var(--joy-color-secondary-10);
 }

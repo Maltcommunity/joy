@@ -1,4 +1,4 @@
-@use '../../style/utils';
+@use 'style/utils';
 @use './mixins';
 
 $_CLASS: '.joy-tags-input';
@@ -32,15 +32,17 @@ $_CLASS: '.joy-tags-input';
         background-color: white;
         @include mixins.innerStyle();
 
+        @include utils.formElementColorHover();
+
         &-focused {
-            border: 1px solid var(--joy-color-secondary-30);
+            border-color: var(--joy-color-state-focus);
         }
 
         &-invalid {
-            border: 1px solid var(--joy-color-error-50);
+            border-color: var(--joy-color-error-50);
 
             &:hover {
-                border: 1px solid var(--joy-color-error-90);
+                border-color: var(--joy-color-error-90);
             }
         }
 
@@ -60,8 +62,19 @@ $_CLASS: '.joy-tags-input';
             font-size: inherit;
         }
     }
+
+    &--suggestions {
+        margin-top: var(--joy-core-spacing-2);
+
+        &---label {
+            margin-right: var(--joy-core-spacing-4);
+            color: var(--joy-color-neutral-4);
+            font-size: var(--joy-font-size-xs);
+        }
+    }
 }
 
 joy-form-error {
     margin-top: var(--joy-core-spacing-3);
 }
+

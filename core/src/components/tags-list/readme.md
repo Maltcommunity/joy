@@ -5,6 +5,13 @@
 <!-- Auto Generated Below -->
 
 
+## Properties
+
+| Property | Attribute | Description                      | Type                            | Default  |
+| -------- | --------- | -------------------------------- | ------------------------------- | -------- |
+| `align`  | `align`   | Tags justify-content strategy. * | `"center" \| "left" \| "right"` | `'left'` |
+
+
 ## Dependencies
 
 ### Used by

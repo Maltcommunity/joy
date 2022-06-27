@@ -22,4 +22,8 @@ joy-checkbox:not([hydrated]) {
         background-color: var(--joy-color-secondary-10);
         border: 1px solid var(--joy-color-secondary-10);
     }
+
+     > * {
+         visibility: hidden;
+     }
 }

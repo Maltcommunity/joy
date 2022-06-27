@@ -1,4 +1,4 @@
-import {Component, Element, Prop, h, Host, Event, EventEmitter, State} from '@stencil/core';
+import {Component, Element, Prop, h, Host, Event, EventEmitter, State, Method} from '@stencil/core';
 import {HyperLinksTargets, TagVariants, TagSizes} from '../../types';
 
 @Component({
@@ -11,15 +11,15 @@ export class JoyTag {
     /** Display an icon CTA on the right, to remove the tag from a list. Only for primary/secondary */
     @Prop() removable = false;
     /** Mock a radio like style. Nothing more. Only for primary/secondary */
-    @Prop() selectable = false;
+    @Prop({reflect: true}) selectable = false;
     /** If the tag is a link, give it an href */
     @Prop() href?: string;
     /** Native target attribute for hyperlinks. */
     @Prop() target?: HyperLinksTargets;
     /** Tag color theme */
-    @Prop() variant: TagVariants = 'primary';
+    @Prop({reflect: true}) variant: TagVariants = 'primary';
     /** Tag size. Default is medium */
-    @Prop() size: TagSizes = 'medium';
+    @Prop({reflect: true}) size: TagSizes = 'medium';
     /**
      * Fired only if we've set the clickable prop
      */
@@ -29,8 +29,17 @@ export class JoyTag {
      */
     @Event() joyTagRemove!: EventEmitter<string>;
 
-    /** State linked to selectable prop. Can't work without it */
+    /** Link to selectable prop. */
     @State() selected = false;
+
+    /**
+     * Select the tag from outside
+     * @param {Boolean} select - selected or not
+     */
+    @Method()
+    async selectTag(select = true) {
+        this.selected = select;
+    }
 
     get selectableVariants(): TagVariants[] {
         return ['primary', 'secondary'];
@@ -40,7 +49,7 @@ export class JoyTag {
         if (this.selectable && this.selectableVariants.includes(this.variant)) {
             this.selected = !this.selected;
             this.joyTagClick.emit({
-                name: '',
+                name: this.host.innerText,
                 selected: this.selected,
             });
         }
@@ -71,6 +80,7 @@ export class JoyTag {
         const size = `joy-tag_${this.size}`;
 
         const hostClasses = {
+            'joy-tag': true,
             'joy-tag__selected': this.selected,
             'joy-tag__has-link': !!this.href || this.selected,
             'joy-tag_draggable': draggable,
@@ -93,16 +103,22 @@ export class JoyTag {
         }
 
         const wrapperClasses = {
-            'joy-tag__wrapper': true,
+            'joy-tag': true,
+            'joy-tag__selected': this.selected,
+            'joy-tag__has-link': !!this.href || this.selected,
+            'joy-tag_draggable': draggable,
             'joy-tag__link': !!this.href,
+            [size]: true,
+            [variant]: true,
         };
 
         return (
-            <Host class={{...hostClasses}} onClick={this.onClick}>
+            <Host onClick={this.onClick}>
                 <TagSelector
                     {...props}
                     class={{
                         ...wrapperClasses,
+                        ...hostClasses,
                     }}
                 >
                     {draggable && <joy-icon class="joy-tag__drag" name="drag" size={this.iconSize}></joy-icon>}

@@ -6,7 +6,7 @@ category: Webcomponents
 ---
 
 ```ui_example
-<joy-input value="I am a value" name="my-stencil-input">
+<joy-input value="I am a value" autocomplete="off" name="my-stencil-input">
     My input label
 </joy-input>
 ```
@@ -18,13 +18,20 @@ category: Webcomponents
 
 <joy-input icon="location" value="New York" name="my-location-input">My basic input with icon</joy-input>
 
-<joy-input type="number" unit="%" value="300" name="my-location-input">My unit input</joy-input>
+<joy-input required type="number" unit="%" value="300" name="my-location-input">My unit input</joy-input>
 
 <joy-input type="password" value="12345" name="my-location-input">My password input</joy-input>
 ```
 
+## Required ?
 
-## Sizes 
+```ui_example
+<joy-input required icon="location" value="I am a value" name="my-stencil-input">My basic input with required mark</joy-input>
+<joy-input required required-mark="false" icon="location" value="I am a value" name="my-stencil-input">My basic input without required mark (but I'm still required !)</joy-input>
+```
+
+
+## Sizes
 Unit is for testing purpose. Remove it if you don't need it.
 
 ```ui_example
@@ -39,7 +46,7 @@ Unit is for testing purpose. Remove it if you don't need it.
 
 <joy-input  icon="location" value="Can't write in this field" disabled name="my-disabled-input">My disabled input</joy-input>
 
-<joy-input icon="location" required placeholder="Placeholder" name="my-invalid-input">My invalid input</joy-input>
+<joy-input icon="location" required placeholder="Placeholder" invalid name="my-invalid-input">My invalid input</joy-input>
 ```
 
 
@@ -86,22 +93,27 @@ For any reason, if you can't use webcomponent version, use this plain HTML/CSS (
 
 ## Properties
 
-| Property       | Attribute      | Description                                                                                              | Type                                                                           | Default     |
-| -------------- | -------------- | -------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------ | ----------- |
-| `autocomplete` | `autocomplete` | The input's autocomplete policy.                                                                         | `string`                                                                       | `'off'`     |
-| `disabled`     | `disabled`     | Makes the field disabled or not                                                                          | `boolean`                                                                      | `false`     |
-| `icon`         | `icon`         | Add an icon on the left side before the value                                                            | `string \| undefined`                                                          | `undefined` |
-| `invalid`      | `invalid`      | Makes the field readonly or not                                                                          | `boolean`                                                                      | `false`     |
-| `max`          | `max`          | If the type is "number" then you can use max property.                                                   | `number \| undefined`                                                          | `undefined` |
-| `min`          | `min`          | If the type is "number" then you can use min property.                                                   | `number \| undefined`                                                          | `undefined` |
-| `name`         | `name`         | Input types. List is not exhaustive, this component does not deal with checkboxes, radios, files, dates. | `string`                                                                       | `''`        |
-| `placeholder`  | `placeholder`  | The input's placeholder text.                                                                            | `string`                                                                       | `''`        |
-| `readonly`     | `readonly`     | Makes the field readonly or not                                                                          | `boolean`                                                                      | `false`     |
-| `required`     | `required`     | Makes the field required                                                                                 | `boolean`                                                                      | `false`     |
-| `size`         | `size`         | The input's size.                                                                                        | `"large" \| "medium" \| "small"`                                               | `'medium'`  |
-| `type`         | `type`         | Input types. List is not exhaustive, this component does not deal with checkboxes, radios, files, dates. | `"email" \| "hidden" \| "number" \| "password" \| "search" \| "tel" \| "text"` | `'text'`    |
-| `unit`         | `unit`         | If the field is of type number, you can specify a unit like %, days, hours, whatever you want            | `string \| undefined`                                                          | `undefined` |
-| `value`        | `value`        | Field value                                                                                              | `string`                                                                       | `''`        |
+| Property       | Attribute       | Description                                                                                              | Type                                                                           | Default     |
+| -------------- | --------------- | -------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------ | ----------- |
+| `autocomplete` | `autocomplete`  | The input's autocomplete policy.                                                                         | `string`                                                                       | `'off'`     |
+| `disabled`     | `disabled`      | Makes the field disabled or not                                                                          | `boolean`                                                                      | `false`     |
+| `icon`         | `icon`          | Add an icon on the left side before the value                                                            | `string \| undefined`                                                          | `undefined` |
+| `invalid`      | `invalid`       | Makes the field readonly or not                                                                          | `boolean`                                                                      | `false`     |
+| `labelSize`    | `label-size`    | The label input's size.                                                                                  | `"large" \| "medium"`                                                          | `'medium'`  |
+| `max`          | `max`           | If the type is "number" then you can use max property.                                                   | `number \| undefined`                                                          | `undefined` |
+| `maxlength`    | `maxlength`     | Max character number. https://developer.mozilla.org/fr/docs/Web/HTML/Attributes/maxlength                | `number \| undefined`                                                          | `undefined` |
+| `min`          | `min`           | If the type is "number" then you can use min property.                                                   | `number \| undefined`                                                          | `undefined` |
+| `minlength`    | `minlength`     | Max character number. https://developer.mozilla.org/fr/docs/Web/HTML/Attributes/minlength                | `number \| undefined`                                                          | `undefined` |
+| `name`         | `name`          | Input types. List is not exhaustive, this component does not deal with checkboxes, radios, files, dates. | `string`                                                                       | `''`        |
+| `placeholder`  | `placeholder`   | The input's placeholder text.                                                                            | `string`                                                                       | `''`        |
+| `readonly`     | `readonly`      | Makes the field readonly or not                                                                          | `boolean`                                                                      | `false`     |
+| `required`     | `required`      | Makes the field required                                                                                 | `boolean`                                                                      | `false`     |
+| `requiredMark` | `required-mark` | Display the required mark or not. Default to true.                                                       | `boolean`                                                                      | `true`      |
+| `size`         | `size`          | The input's size.                                                                                        | `"large" \| "medium" \| "small"`                                               | `'medium'`  |
+| `step`         | `step`          | If the type is "number" then you can use step property.                                                  | `"any" \| number`                                                              | `'any'`     |
+| `type`         | `type`          | Input types. List is not exhaustive, this component does not deal with checkboxes, radios, files, dates. | `"email" \| "hidden" \| "number" \| "password" \| "search" \| "tel" \| "text"` | `'text'`    |
+| `unit`         | `unit`          | If the field is of type number, you can specify a unit like %, days, hours, whatever you want            | `string \| undefined`                                                          | `undefined` |
+| `value`        | `value`         | Field value                                                                                              | `string`                                                                       | `''`        |
 
 
 ## Events

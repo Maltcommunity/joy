@@ -70,13 +70,17 @@ export function preventBodyScroll(prevent: boolean): void {
 
 /**
  * @param {String} origin - which component has triggered the backdrop
+ * @param {HTMLElement} target - where the component is injected. Default to body root.
  * @return {Promise<void>}
  */
-export function createBackDrop(origin: BackDropOrigin): Promise<void | CustomElementConstructor> {
+export function createBackDrop(origin: BackDropOrigin, target?: HTMLElement): Promise<void | CustomElementConstructor> {
+    let dest;
+    !target ? (dest = document.body) : (dest = target);
+
     if (!document.querySelector('joy-backdrop')) {
         const backdrop = document.createElement('joy-backdrop');
         backdrop.origin = origin;
-        document.body.appendChild(backdrop);
+        dest.appendChild(backdrop);
     }
 
     return window.customElements.whenDefined('joy-backdrop');
@@ -117,3 +121,31 @@ export function iconLevel(level: Level): string {
 
     return icon;
 }
+
+/**
+ * Elements inside of web components sometimes need to inherit global attributes
+ * set on the host. This helper function should be called in componentWillLoad and assigned to a variable
+ * that is later used in the render function.
+ *
+ * This does not need to be reactive as changing attributes on the host element
+ * does not trigger a re-render.
+ *
+ * @param {HTMLElement} el - root element of the component
+ * @param {Array} attributes - attribute you want to inherit
+ * @return {Object} - attributes list
+ */
+export const inheritAttributes = (el: HTMLElement, attributes: string[] = []): {[k: string]: any} => {
+    const attributeObject: {[k: string]: any} = {};
+
+    attributes.forEach((attr) => {
+        if (el.hasAttribute(attr)) {
+            const value = el.getAttribute(attr);
+            if (value !== null) {
+                attributeObject[attr] = el.getAttribute(attr);
+            }
+            el.removeAttribute(attr);
+        }
+    });
+
+    return attributeObject;
+};

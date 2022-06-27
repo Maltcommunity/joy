@@ -1,27 +1,27 @@
-import {Component, Prop, h, Element, Host} from '@stencil/core';
+import {Component, Prop, h, Element} from '@stencil/core';
 import {LabelSizes} from '../../types';
 
 @Component({
     tag: 'joy-label',
     styleUrl: 'label.scss',
-    shadow: true,
+    scoped: true,
 })
 export class Label {
     @Element() host!: HTMLJoyLabelElement;
 
     /** Label size **/
-    @Prop() size: LabelSizes = 'medium';
+    @Prop({reflect: true}) size: LabelSizes = 'medium';
+    /** for attribute to associate label to an input **/
+    @Prop() htmlFor?: string;
+    /** Required status of parent form field **/
+    @Prop() required = false;
 
     render() {
         return (
-            <Host
-                class={{
-                    'joy-label': true,
-                    [`joy-label--${this.size}`]: true,
-                }}
-            >
+            <label class="joy-label" htmlFor={this.htmlFor}>
                 <slot />
-            </Host>
+                {this.required && <span class="joy-label-required">*</span>}
+            </label>
         );
     }
 }

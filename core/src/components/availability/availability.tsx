@@ -13,7 +13,7 @@ export class Availability {
     @Prop() status: 'AVAILABLE' | 'AVAILABLE_AND_VERIFIED' | 'NOT_AVAILABLE_WITH_DATE' | 'AVAILABLE_SOON' | 'NOT_AVAILABLE' | '' = '';
 
     /** isPartial dot, define fill or stroke dot display */
-    @Prop() isPartial: boolean = false;
+    @Prop() isPartial = false;
 
     get dotClass() {
         return {

@@ -5,7 +5,6 @@ name: joy-dialog
 category: Webcomponents
 ---
 
-<joy-tag variant="important">WIP</joy-tag>
 
 ```ui_example
 
@@ -13,8 +12,8 @@ category: Webcomponents
     <joy-button size="xsmall">Show dialog</joy-button>
 </joy-dialog-trigger>
 
-<joy-dialog id="myDialog" data-dialog="myDialog">
-    <p slot="dialog-header">I am the dialog header</p>
+<joy-dialog id="myDialog" data-dialog="myDialog" aria-labelledby="myDialogTitle">
+    <p id="myDialogTitle" slot="dialog-header">I am the dialog header</p>
      <p slot="dialog-subheader">I am the dialog subheader</p>
     <div slot="dialog-body">
         <joy-text>
@@ -24,6 +23,10 @@ category: Webcomponents
     </div>
 </joy-dialog>
 ```
+
+<joy-highlight level="warning" accent display-icon>
+    For accessibility purpose, you need to set your own ID on the the dialog-header slot, in order to use aria-labelledby on the joy-dialog tag.
+</joy-highlight>
 
 ### Chaining Dialogs
 
@@ -145,7 +148,7 @@ Type: `Promise<void>`
 
 ### `openDialog(callback?: (() => any) | undefined) => Promise<void>`
 
-If you want to trigger specific ction after the dialog opening.
+If you want to trigger specific action after the dialog opening.
 
 #### Returns
 

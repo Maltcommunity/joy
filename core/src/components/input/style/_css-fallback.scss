@@ -1,14 +1,14 @@
 @use './inputs-mixin' as input;
+@use './shared';
 
 #{input.$CLASS} {
     @include input.rootProperties();
     @include input.commonStyle();
-    @include input.focusState();
     @include input.wrapperStyle();
     @include input.unitContent();
 }
 
-@each $size, $props in input.$sizes {
+@each $size, $props in shared.$sizes {
     #{input.$CLASS}--#{$size} {
         --input-height: #{map-get($props, "height")};
         --input-padding: #{map-get($props, "padding")};

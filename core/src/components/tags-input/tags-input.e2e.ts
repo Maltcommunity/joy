@@ -77,6 +77,7 @@ describe('Tags Input - e2e', () => {
         `);
 
         const tag = await page.find('joy-tags-input >>> joy-tag');
-        expect(tag).toHaveClasses(['joy-tag_large', 'joy-tag_secondary']);
+        expect(tag).toEqualAttribute('size', 'large');
+        expect(tag).toEqualAttribute('variant', 'secondary');
     });
 });

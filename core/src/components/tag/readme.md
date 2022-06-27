@@ -19,7 +19,7 @@ category: Webcomponents
     <joy-tag variant="special">Special tag</joy-tag>
     <joy-tag variant="inactive">Inactive tag</joy-tag>
     <joy-tag variant="pricing">Pricing tag</joy-tag>
-</joy-tag-list>
+</joy-tags-list>
 ```
 
 ## Sizes
@@ -29,7 +29,7 @@ category: Webcomponents
     <joy-tag size="small">Small tag</joy-tag>
     <joy-tag size="medium">Medium tag</joy-tag>
     <joy-tag size="large">Large tag</joy-tag>
-</joy-tag-list>
+</joy-tags-list>
 ```
 
 ## Links
@@ -37,7 +37,7 @@ category: Webcomponents
 <joy-tags-list>
     <joy-tag href="https://malt.fr" target="_blank">Primary link</joy-tag>
     <joy-tag variant="secondary" href="https://malt.fr" target="_blank">Secondary link</joy-tag>
-</joy-tag-list>
+</joy-tags-list>
 ```
 
 ## Removable
@@ -46,7 +46,7 @@ category: Webcomponents
     <joy-tag variant="primary" removable>Primary removable</joy-tag>
     <joy-tag variant="secondary" removable size="small">Secondary removable</joy-tag>
     <joy-tag variant="pricing" removable size="xsmall">Pricing removable</joy-tag>
-</joy-tag-list>
+</joy-tags-list>
 ```
 
 ## Draggable
@@ -89,6 +89,19 @@ Only for primary and secondary variants.
 | -------------- | ------------------------------------------ | --------------------------------------------------- |
 | `joyTagClick`  | Fired only if we've set the clickable prop | `CustomEvent<{ name: string; selected: boolean; }>` |
 | `joyTagRemove` | Fired only if we've click on removable tag | `CustomEvent<string>`                               |
+
+
+## Methods
+
+### `selectTag(select?: boolean) => Promise<void>`
+
+Select the tag from outside
+
+#### Returns
+
+Type: `Promise<void>`
+
+
 
 
 ## Dependencies

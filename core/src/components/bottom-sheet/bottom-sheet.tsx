@@ -1,4 +1,4 @@
-import {Component, Element, h, Method, Prop} from '@stencil/core';
+import {Component, Element, Event, EventEmitter, h, Method, Prop} from '@stencil/core';
 import {ButtonVariants} from '../../types';
 
 @Component({
@@ -18,7 +18,13 @@ export class BottomSheet {
     @Prop() closeVariant: ButtonVariants = 'primary';
     @Element() el!: HTMLJoyBottomSheetElement;
 
-    private TRANSLATION_Y_LIMIT = 50;
+    /** Custom event fired when user close bottom sheet */
+    @Event() joyBottomSheetClosed!: EventEmitter<void>;
+
+    private bottomSheetElement!: HTMLElement;
+    private bottomSheetContainerElement!: HTMLElement;
+
+    private TRANSLATION_Y_LIMIT = 75;
     private CSS_CLASS_MOVING = 'moving';
     private CSS_CLASS_OPENED = 'opened';
 
@@ -33,7 +39,7 @@ export class BottomSheet {
     @Method()
     async open() {
         this.suspendBodyScroll();
-        this.getJoyBottomSheet()?.classList.add(this.CSS_CLASS_OPENED);
+        this.bottomSheetElement.classList.add(this.CSS_CLASS_OPENED);
     }
 
     /**
@@ -43,55 +49,50 @@ export class BottomSheet {
     @Method()
     async close() {
         this.restoreBodyScroll();
-        this.getJoyBottomSheet()?.classList.remove(this.CSS_CLASS_OPENED);
+        this.bottomSheetElement.classList.remove(this.CSS_CLASS_OPENED);
     }
 
-    private getJoyBottomSheet(): HTMLElement | undefined {
-        const shadowRoot = this.el.shadowRoot;
-        return shadowRoot?.querySelector('.joy-bottom-sheet') as HTMLElement;
+    private async closeByUser() {
+        await this.close();
+        this.joyBottomSheetClosed.emit();
     }
 
-    private getJoyBottomSheetContainer(): HTMLElement | undefined {
-        const shadowRoot = this.el.shadowRoot;
-        return shadowRoot?.querySelector('.joy-bottom-sheet-container') as HTMLElement;
-    }
-
-    private onClickClose = () => {
+    private onClickClose = async () => {
         this.isMoving = false;
-        this.close();
+        await this.closeByUser();
     };
 
     private onStartMoving = (e: MouseEvent | TouchEvent) => {
         this.isMoving = true;
-        this.getJoyBottomSheetContainer()?.classList.add(this.CSS_CLASS_MOVING);
+        this.bottomSheetContainerElement.classList.add(this.CSS_CLASS_MOVING);
         this.initialPosY = this.getClientYFromEvent(e);
     };
 
-    private onStopMoving = (e: MouseEvent | TouchEvent) => {
+    private onStopMoving = async (e: MouseEvent | TouchEvent) => {
         if (this.isMoving) {
             const translationY = this.calcTranslationY(e);
             if (translationY > 0) {
-                this.close();
+                await this.closeByUser();
             }
             this.stopMoving();
         }
     };
 
-    private onMoving = (e: MouseEvent | TouchEvent) => {
+    private onMoving = async (e: MouseEvent | TouchEvent) => {
         if (this.isMoving) {
             const translationY = this.calcTranslationY(e);
 
             if (translationY > this.TRANSLATION_Y_LIMIT) {
-                this.close();
+                await this.closeByUser();
             } else if (translationY > 0) {
                 this.moveContainer(translationY);
             }
         }
     };
 
-    private onOuterClick = (e: MouseEvent) => {
+    private onOuterClick = async (e: MouseEvent) => {
         if ((e.target as HTMLElement).classList.contains('opened')) {
-            this.close();
+            await this.closeByUser();
         }
     };
 
@@ -109,14 +110,12 @@ export class BottomSheet {
     }
 
     private moveContainer(translationY: number) {
-        const container = this.getJoyBottomSheetContainer();
-        (container as HTMLElement).style.setProperty('transform', `translateY(${translationY}px)`);
+        this.bottomSheetContainerElement.style.setProperty('transform', `translateY(${translationY}px)`);
     }
 
     private stopMoving() {
-        const container = this.getJoyBottomSheetContainer();
-        container?.classList.remove(this.CSS_CLASS_MOVING);
-        (container as HTMLElement).style.removeProperty('transform');
+        this.bottomSheetContainerElement.classList.remove(this.CSS_CLASS_MOVING);
+        this.bottomSheetContainerElement.style.removeProperty('transform');
         this.isMoving = false;
     }
 
@@ -135,29 +134,27 @@ export class BottomSheet {
 
     render() {
         return (
-            <div>
-                <div class="joy-bottom-sheet" onClick={this.onOuterClick}>
-                    <div class="joy-bottom-sheet-container">
-                        <div
-                            class="joy-bottom-sheet_header"
-                            onMouseDown={this.onStartMoving}
-                            onMouseUp={this.onStopMoving}
-                            onMouseMove={this.onMoving}
-                            onMouseLeave={this.onStopMoving}
-                            onTouchStart={this.onStartMoving}
-                            onTouchEnd={this.onStopMoving}
-                            onTouchMove={this.onMoving}
-                        >
-                            <div class="joy-bottom-sheet_header-close"></div>
-                        </div>
-                        <div class="joy-bottom-sheet_content" data-testid="bottom-sheet-content">
-                            <slot name="bottom-sheet-content" />
-                        </div>
-                        <div class="joy-bottom-sheet_footer" data-testid="bottom-sheet-footer">
-                            <joy-button class="joy-bottom-sheet_footer-close" variant={this.closeVariant} onClick={this.onClickClose}>
-                                {this.closeLabel}
-                            </joy-button>
-                        </div>
+            <div class="joy-bottom-sheet" ref={(el) => (this.bottomSheetElement = el as HTMLElement)} onClick={this.onOuterClick}>
+                <div class="joy-bottom-sheet-container" ref={(el) => (this.bottomSheetContainerElement = el as HTMLElement)}>
+                    <div
+                        class="joy-bottom-sheet_header"
+                        onMouseDown={this.onStartMoving}
+                        onMouseUp={this.onStopMoving}
+                        onMouseMove={this.onMoving}
+                        onMouseLeave={this.onStopMoving}
+                        onTouchStart={this.onStartMoving}
+                        onTouchEnd={this.onStopMoving}
+                        onTouchMove={this.onMoving}
+                    >
+                        <div class="joy-bottom-sheet_header-close"></div>
+                    </div>
+                    <div class="joy-bottom-sheet_content" data-testid="bottom-sheet-content">
+                        <slot name="bottom-sheet-content" />
+                    </div>
+                    <div class="joy-bottom-sheet_footer" data-testid="bottom-sheet-footer">
+                        <joy-button class="joy-bottom-sheet_footer-close" variant={this.closeVariant} onClick={this.onClickClose}>
+                            {this.closeLabel}
+                        </joy-button>
                     </div>
                 </div>
             </div>

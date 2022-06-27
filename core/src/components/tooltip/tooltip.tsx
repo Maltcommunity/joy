@@ -1,5 +1,5 @@
-import {Component, h, Host, Prop} from '@stencil/core';
-import {TooltipVariants} from '../../types';
+import {Component, h, Prop} from '@stencil/core';
+import {TooltipVariants, Positions} from '../../types';
 
 /**
  * @slot tooltip-content - The content that will be cloned and injected in the actual tooltip. This slot content is hidden.
@@ -13,7 +13,7 @@ export class Tooltip {
     /** Color theme. 2 possible values */
     @Prop() variant: TooltipVariants = 'primary';
     /** Tooltip position. 2 possible values */
-    @Prop() position: 'left' | 'right' = 'left';
+    @Prop() position: Positions = 'left';
 
     private get variantClass() {
         return {['joy-tooltip__' + this.variant]: true};
@@ -25,7 +25,7 @@ export class Tooltip {
 
     render() {
         return (
-            <Host
+            <div
                 class={{
                     'joy-tooltip': true,
                     ...this.variantClass,
@@ -33,7 +33,7 @@ export class Tooltip {
                 }}
             >
                 <slot name="tooltip-content" />
-            </Host>
+            </div>
         );
     }
 }

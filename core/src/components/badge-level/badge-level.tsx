@@ -1,6 +1,18 @@
 import {Component, Prop, h, Host} from '@stencil/core';
 
-const badgeTypes = ['highpotential', 'maltlinker', 'new', 'supermalter', 'verified'];
+enum JoyBadgeLevelEnum {
+    // Should be replaced by JoyBadgeLevelEnum.HIGH_POTENTIAL_AUTO OR JoyBadgeProgramEnum.HIGH_POTENTIAL
+    HIGH_POTENTIAL = 'highpotential',
+    HIGH_POTENTIAL_AUTO = 'high-potential-auto',
+    MALT_LINKER = 'maltlinker',
+    NEW = 'new',
+    SUPER_MALTER = 'supermalter',
+    VERIFIED = 'verified',
+}
+
+enum JoyBadgeProgramEnum {
+    HIGH_POTENTIAL = 'program_high-potential',
+}
 
 @Component({
     tag: 'joy-badge-level',
@@ -8,8 +20,10 @@ const badgeTypes = ['highpotential', 'maltlinker', 'new', 'supermalter', 'verifi
     shadow: true,
 })
 export class JoyBadgeLevel {
-    /** Badge type: highpotential, maltlinker, new, supermalter or verified */
-    @Prop() type!: typeof badgeTypes[number];
+    /** Badge type: highpotential, high-potential-auto, maltlinker, new, supermalter or verified
+     * or program: program_highpotential
+     */
+    @Prop() type!: JoyBadgeLevelEnum | JoyBadgeProgramEnum;
 
     /** SuperMalter level from 1 to 3 */
     @Prop() superMalterLevel: number = 1;
@@ -36,7 +50,7 @@ export class JoyBadgeLevel {
 
     get badgeIcon(): HTMLOrSVGElement | HTMLOrSVGElement[] | null {
         switch (this.type) {
-            case badgeTypes[0]:
+            case JoyBadgeLevelEnum.HIGH_POTENTIAL:
                 return (
                     <svg class="joy-badge-level__highpotential" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 12 14">
                         <g clip-path="url(#a)">
@@ -53,7 +67,31 @@ export class JoyBadgeLevel {
                     </svg>
                 );
 
-            case badgeTypes[1]:
+            case JoyBadgeLevelEnum.HIGH_POTENTIAL_AUTO:
+                return (
+                    <svg
+                        class="joy-badge-level__high-potential-auto"
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 64 64"
+                        enable-background="new 0 0 64 64"
+                    >
+                        <path
+                            fill="#EF4E16"
+                            d="M60 23.913s-8.76-2.903-14.05 1.058C44.256 17.449 45.203 8.674 34.688 2c-.712 9.413-12.856 9.891-15.691 22.005-1.86-3.319-2.227-7.716-9.28-9.871C11.615 25.513.415 31.3 5.199 47.68c2.699 9.246 12.72 13.651 21.047 14.217 16.527 1.123 31.896-6.848 32.258-24.148.155-7.437-2.975-8.343 1.496-13.836z"
+                        />
+                        <path
+                            fill="#F9B700"
+                            d="M53.226 32.962c-6.012-.063-5.458 2.387-9.883 3.896-3.212-5.842-.067-13.682-10.056-19.364.066 10.625-7.32 7.313-10.414 17.456-3.758-2.145-1.943-6.888-9.256-8.89 4.042 6.349-.99 7.542-3.526 13.335-5.093 11.632 7.181 19.813 16.548 20.382 13.019.793 25.124-4.834 25.408-17.048.122-5.25-2.342-5.888 1.179-9.767z"
+                        />
+                        <path
+                            fill="#FFE463"
+                            d="M47.616 41.169c-4.47-.041-4.061 1.522-7.351 2.484-2.391-3.727-.051-8.729-7.479-12.354.049 6.778-5.446 4.666-7.746 11.137-2.795-1.368-1.447-4.395-6.885-5.672 3.006 4.051-.735 4.812-2.621 8.508-3.791 7.421 5.339 12.64 12.307 13.003 9.683.506 18.686-3.084 18.896-10.876.093-3.348-1.741-3.755.879-6.23z"
+                        />
+                        <path fill="#FFF7D1" d="M37.182 54.939c0 2.188-12.427 2.188-12.427 0 0-5.849 12.427-5.849 12.427 0z" />
+                    </svg>
+                );
+
+            case JoyBadgeLevelEnum.MALT_LINKER:
                 return (
                     <svg class="joy-badge-level__maltlinker" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 22 10">
                         <g clip-path="url(#a)">
@@ -74,8 +112,25 @@ export class JoyBadgeLevel {
                     </svg>
                 );
 
-            case badgeTypes[3]:
+            case JoyBadgeLevelEnum.SUPER_MALTER:
                 return this.superMalterIcons;
+
+            case JoyBadgeProgramEnum.HIGH_POTENTIAL:
+                return (
+                    <svg class="joy-badge-level__highpotential-program" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 12 14">
+                        <g clip-path="url(#a)">
+                            <path
+                                fill="#FFC200"
+                                d="M.00241952 6.50818C.00887156 4.89669.639559 3.38347 1.77754 2.24877c.8186-.8155 1.82835-1.366202 2.926-1.608251h.00081c.04516-.009747.09113-.019494.1371-.028429.00565-.001625.0121-.002437.01775-.004061.04032-.008123.08065-.015433.12097-.021931.0113-.001624.02259-.004061.03388-.005686.03548-.005685.07097-.011371.10726-.016245.01613-.002436.03146-.004873.04759-.006498.03064-.004873.0629-.008934.09436-.012995.01935-.002437.03871-.004874.05887-.006498.02823-.003249.05646-.006498.08549-.008935.02178-.002437.04436-.004874.06694-.006498.02581-.002437.05242-.004061.07823-.006498.0242-.001625.0492-.003249.07339-.004874.0242-.001624.0492-.003249.0742-.004061.02581-.001624.05081-.002437.07662-.003249.0242-.000812.04839-.001624.07259-.002437C5.87539.500812 5.9004.500812 5.92621.5h.07419c.0242 0 .0492 0 .0734.000812.0258 0 .05161.000812.07661.001625.0242.000812.04839.001624.07259.002436.02581 0 .05162.001625.07742.002437.02501.000812.0492.002437.0742.004061.0242.001625.0492.003249.07339.004874.02581.001624.05243.004061.07824.006498.02177.001624.04435.004061.06694.006498.02822.002437.05645.005686.08549.008935.01935.002436.03871.004061.05887.006498.03145.004061.06291.008122.09436.012183.01613.002437.03145.004874.04758.00731.03549.004874.07098.01056.10646.017058.01129.001624.02259.003249.03388.004873.04032.00731.08065.014621.12097.021931.00565.000812.0121.002436.01775.003249.04597.009747.09194.018681.1371.029241h.00081c1.09846.242861 2.1082.792751 2.92604 1.608251 1.1379 1.1347 1.7686 2.64792 1.7751 4.25941L12 7.00284l-.0016.41506L6.0004 13.5.00161301 7.4179 0 7.00284l.00241952-.49466Z"
+                            />
+                        </g>
+                        <defs>
+                            <clipPath id="a">
+                                <path fill="#fff" d="M0 0h12v13H0z" transform="translate(0 .5)" />
+                            </clipPath>
+                        </defs>
+                    </svg>
+                );
 
             default:
                 return null;
@@ -87,9 +142,15 @@ export class JoyBadgeLevel {
             <span
                 class={{
                     'joy-badge-level__tag': this.visibleText,
-                    'red': this.type === badgeTypes[2] || this.type === badgeTypes[1],
-                    'blue': this.type === badgeTypes[0] || this.type === badgeTypes[3],
-                    'turquoise': this.type === badgeTypes[4],
+                    'red':
+                        this.type === JoyBadgeLevelEnum.NEW ||
+                        this.type === JoyBadgeLevelEnum.MALT_LINKER ||
+                        this.type === JoyBadgeLevelEnum.HIGH_POTENTIAL_AUTO,
+                    'blue':
+                        this.type === JoyBadgeProgramEnum.HIGH_POTENTIAL ||
+                        this.type === JoyBadgeLevelEnum.HIGH_POTENTIAL ||
+                        this.type === JoyBadgeLevelEnum.SUPER_MALTER,
+                    'turquoise': this.type === JoyBadgeLevelEnum.VERIFIED,
                 }}
             >
                 {this.visibleText && <slot>{this.badgeText}</slot>}
@@ -99,15 +160,18 @@ export class JoyBadgeLevel {
 
     get badgeText(): string {
         switch (this.type) {
-            case badgeTypes[0]:
+            case JoyBadgeProgramEnum.HIGH_POTENTIAL:
+            case JoyBadgeLevelEnum.HIGH_POTENTIAL:
                 return 'High Potential';
-            case badgeTypes[1]:
+            case JoyBadgeLevelEnum.HIGH_POTENTIAL_AUTO:
+                return 'High Potential Auto';
+            case JoyBadgeLevelEnum.MALT_LINKER:
                 return 'Malt Linker';
-            case badgeTypes[2]:
+            case JoyBadgeLevelEnum.NEW:
                 return 'New';
-            case badgeTypes[3]:
+            case JoyBadgeLevelEnum.SUPER_MALTER:
                 return 'Supermalter';
-            case badgeTypes[4]:
+            case JoyBadgeLevelEnum.VERIFIED:
                 return 'Verified';
             default:
                 return 'Supermalter';

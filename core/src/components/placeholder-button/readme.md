@@ -9,14 +9,6 @@ category: Webcomponents
 <joy-placeholder-button></joy-placeholder-button>
 ```
 
-## Sizes 
-
-```ui_example
-<joy-placeholder-button size="small"></joy-placeholder-button>
-<joy-placeholder-button size="medium"></joy-placeholder-button>
-<joy-placeholder-button size="large"></joy-placeholder-button>
-```
-
 <!-- Auto Generated Below -->
 
 

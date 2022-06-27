@@ -1,4 +1,4 @@
-@use '../../style/utils';
+@use 'style/utils';
 
 @use 'badge-tags' as tags;
 @use 'badge-icons' as icons;
@@ -16,7 +16,9 @@ $_CLASS: '.joy-badge-level';
     display: flex;
     align-items: center;
     width: 1px;
-    @include utils.getFontProperties(xs);
+    font-family: var(--joy-font-family);
+    font-size: var(--joy-font-size-xs);
+    line-height: var(--joy-line-height-small);
 }
 
 :host(#{$_CLASS}) {
@@ -47,6 +49,7 @@ svg {
     &__tag {
         display: inline-block;
         vertical-align: middle;
+        box-sizing: border-box;
         border-radius: 2px;
         height: var(--badge-height);
         padding: var(--badge-padding);

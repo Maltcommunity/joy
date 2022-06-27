@@ -1,5 +1,5 @@
 @use "sizes";
-@use '../../style/utils';
+@use 'style/utils';
 
 $_CLASS: '.joy-button';
 $_space-around-cta: 4px;
@@ -112,7 +112,7 @@ Generic buttons style
         color: transparent;
         font-size: 0;
 
-        joy-icon svg {
+        joy-icon {
             color: transparent;
         }
     }

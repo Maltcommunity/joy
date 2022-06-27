@@ -1,10 +1,11 @@
-import {Component, ComponentInterface, Element, Event, EventEmitter, Host, Method, Prop, State, Watch, h, readTask} from '@stencil/core';
-import {renderInputOutsideShadowRoot} from '../../utils';
+import {Component, ComponentInterface, Element, Event, EventEmitter, h, Host, Method, Prop, readTask, State, Watch} from '@stencil/core';
+import {generatedInputNameAndId} from '@/utils';
+import {LabelSizes} from '@/types';
 
 @Component({
     tag: 'joy-textarea',
     styleUrl: 'textarea.scss',
-    shadow: true,
+    scoped: true,
 })
 export class JoyTextarea implements ComponentInterface {
     private textarea?: HTMLTextAreaElement;
@@ -101,6 +102,8 @@ export class JoyTextarea implements ComponentInterface {
      * If `true`, the user must fill in a value before submitting a form.
      */
     @Prop() required = false;
+    /** Display the required mark or not. Default to true. */
+    @Prop() requiredMark = true;
 
     /**
      * If `true`, the element will have its spelling and grammar checked.
@@ -130,20 +133,18 @@ export class JoyTextarea implements ComponentInterface {
     /**
      * The value of the textarea.
      */
-    @Prop({mutable: true}) value?: string | null = '';
+    @Prop({mutable: true, reflect: true}) value = '';
+
+    /** The label input's size. */
+    @Prop() labelSize: LabelSizes = 'medium';
 
     /**
      * Update the native input element when the value changes
      */
     @Watch('value')
     protected valueChanged() {
-        const textarea = this.textarea;
-        const value = this.getValue();
-        if (textarea && textarea.value !== value) {
-            textarea.value = value;
-        }
         this.runAutoGrow();
-        this.joyTextareaChange.emit({value});
+        this.joyTextareaChange.emit({value: this.value});
     }
 
     /**
@@ -231,6 +232,14 @@ export class JoyTextarea implements ComponentInterface {
     }
 
     /**
+     * Force run auto grow
+     */
+    @Method()
+    async forceRunAutoGrow() {
+        this.runAutoGrow();
+    }
+
+    /**
      * Check if we need to clear the text input if clearOnEdit is enabled
      */
     private checkClearOnEdit() {
@@ -256,11 +265,7 @@ export class JoyTextarea implements ComponentInterface {
     }
 
     private hasValue(): boolean {
-        return this.getValue() !== '';
-    }
-
-    private getValue(): string {
-        return this.value || '';
+        return this.value !== '';
     }
 
     private onInput = (ev: Event) => {
@@ -288,7 +293,7 @@ export class JoyTextarea implements ComponentInterface {
             this.joyTextareaBlur.emit(ev);
         }
 
-        this.invalid = this.countOverload;
+        this.invalid = this.countOverload || this.valueUnderMinLength;
     };
 
     private onKeyDown = () => {
@@ -300,7 +305,7 @@ export class JoyTextarea implements ComponentInterface {
             return;
         }
 
-        const invalid = this.getValue().length < this.minlength;
+        const invalid = this.value.length < this.minlength;
 
         if (this.minlength) {
             return (
@@ -322,12 +327,18 @@ export class JoyTextarea implements ComponentInterface {
             return false;
         }
 
-        return this.getValue().length > this.maxlength;
+        return this.value.length > this.maxlength;
+    }
+
+    get valueUnderMinLength() {
+        if (!this.minlength) {
+            return false;
+        }
+
+        return this.value.length < this.minlength;
     }
 
     get valueCount(): string {
-        const valueLength = this.getValue().length;
-
         if (!this.maxlength) {
             return '';
         }
@@ -339,15 +350,12 @@ export class JoyTextarea implements ComponentInterface {
                     'joy-textarea-count-invalid': this.countOverload,
                 }}
             >
-                {valueLength + '/' + this.maxlength}
+                {this.value.length + '/' + this.maxlength}
             </p>
         );
     }
 
     render() {
-        renderInputOutsideShadowRoot(this.el, this.name, this.value, this.disabled);
-        const value = this.getValue();
-
         return (
             <Host aria-disabled={this.disabled ? 'true' : null}>
                 <div
@@ -358,12 +366,18 @@ export class JoyTextarea implements ComponentInterface {
                         'joy-textarea_autogrow': this.autoGrow,
                     }}
                 >
-                    <div ref={(el) => (this.textareaWrapper = el)}>
-                        <label class="joy-textarea_label">
-                            <slot name="textarea-label" />
-                        </label>
+                    <div class="joy-textarea_wrapper" ref={(el) => (this.textareaWrapper = el)}>
+                        <joy-label
+                            required={this.required && this.requiredMark}
+                            id={this.inputAriaLabel}
+                            html-for={generatedInputNameAndId(this.el)}
+                            size={this.labelSize}
+                        >
+                            <slot />
+                        </joy-label>
 
                         <textarea
+                            id={generatedInputNameAndId(this.el)}
                             class="joy-native-textarea"
                             ref={(el) => (this.textarea = el)}
                             autoCapitalize={this.autocapitalize}
@@ -383,18 +397,24 @@ export class JoyTextarea implements ComponentInterface {
                             onBlur={this.onBlur}
                             onFocus={this.onFocus}
                             onKeyDown={this.onKeyDown}
-                        >
-                            {value}
-                        </textarea>
+                            minlength={this.minlength}
+                            value={this.value}
+                        />
                     </div>
 
-                    <div class="joy-textarea_helpers">
-                        {this.minlengthElement()}
-                        {this.valueCount}
-                    </div>
+                    {(this.minlength || this.maxlength) && (
+                        <div class="joy-textarea_helpers">
+                            {this.minlengthElement()}
+                            {this.valueCount}
+                        </div>
+                    )}
                 </div>
             </Host>
         );
+    }
+
+    private get inputAriaLabel(): string {
+        return 'label-' + generatedInputNameAndId(this.el);
     }
 }
 

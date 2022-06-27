@@ -11,7 +11,7 @@ import {Component, h, Prop} from '@stencil/core';
  */
 @Component({
     tag: 'joy-user-card',
-    styleUrl: 'user-card.scss',
+    styleUrl: 'style/user-card.scss',
     shadow: true,
 })
 export class UserCard {

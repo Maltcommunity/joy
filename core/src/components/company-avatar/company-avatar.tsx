@@ -7,7 +7,7 @@ import {AvatarColors, AvatarSizes} from '../../types';
     shadow: true,
 })
 export class CompanyAvatar {
-    /** Company avatar color */
+    /** @deprecated Company avatar color */
     @Prop() color: AvatarColors['company'] = 'teal';
     /**
      * Company name. Required to give image alt text.

@@ -1,20 +1,15 @@
 import {Component, Prop, h} from '@stencil/core';
-import {DividerCTASizes} from '../../types';
 
 @Component({
     tag: 'joy-divider-cta',
     styleUrl: 'divider-cta.scss',
-    shadow: false,
+    shadow: true,
 })
 export class DividerCta {
     /**
-     * The CTA text
+     * Disabled or not
      */
-    @Prop() text: string = '+ Add content';
-    /**
-     * Divider size. 2 possible values : 100% width or adjusted size according to text
-     */
-    @Prop() size: DividerCTASizes = 'default';
+    @Prop({reflect: true}) disabled = false;
 
     render() {
         return (
@@ -22,10 +17,19 @@ export class DividerCta {
                 type="button"
                 class={{
                     'joy-divider-cta': true,
-                    'joy-divider-cta__small': this.size === 'small',
+                    'joy-divider-cta__disabled': this.disabled,
                 }}
+                part="divider"
             >
-                <span>{this.text}</span>
+                <div class="joy-divider-cta--icon">
+                    <joy-icon name="add"></joy-icon>
+                </div>
+                <div class="joy-divider-cta--content">
+                    <p class="joy-divider-cta--content---title">
+                        <slot />
+                    </p>
+                    <slot name="divider-content"></slot>
+                </div>
             </button>
         );
     }

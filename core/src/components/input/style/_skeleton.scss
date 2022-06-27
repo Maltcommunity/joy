@@ -1,0 +1,20 @@
+@use './shared';
+
+joy-input:not([hydrated]) {
+    display: block;
+    background-color: var(--joy-color-neutral-2);
+    font-size: 0;
+    color: transparent;
+    $_medium: map-get(shared.$sizes, "medium");
+    height: #{map-get($_medium, "height")};
+    border-radius: #{map-get($_medium, "height")};
+    margin-bottom: var(--joy-core-spacing-5);
+
+
+    @each $size, $props in shared.$sizes {
+        &[size="#{$size}"] {
+            height: #{map-get($props, "height")};
+            border-radius: #{map-get($props, "height")};
+        }
+    }
+}

@@ -18,7 +18,7 @@ describe('rating-stars e2e', () => {
     it('renders specific note style according to given rate', async () => {
         const page = await newE2EPage();
         let fourthStar;
-        const selector = 'joy-rating-stars li:nth-child(4)';
+        const selector = 'joy-rating-stars >>> li:nth-child(4)';
 
         await page.setContent('<joy-rating-stars rating-value="4"></joy-rating-stars>');
         const component = await page.find('joy-rating-stars');
@@ -33,11 +33,11 @@ describe('rating-stars e2e', () => {
 
     it('renders component with a specific number of ratings', async () => {
         const page: E2EPage = await newE2EPage();
-        const selector = 'joy-rating-stars span';
+        const selector = 'joy-rating-stars >>> span';
 
         await page.setContent('<joy-rating-stars review-count="4"></joy-rating-stars>');
         const component: E2EElement = await page.find('joy-rating-stars');
-        const numberOfRate = await page.find('joy-rating-stars span');
+        const numberOfRate = await page.find('joy-rating-stars >>> span');
         expect(numberOfRate.textContent).toBe('(4)');
 
         component.setProperty('reviewCount', 12);

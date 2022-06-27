@@ -10,7 +10,7 @@ export type FreelancerAvatarColors = ProductColors;
 export type CompanyAvatarColors = Exclude<ProductColors, 'grey'>;
 
 export interface AvatarColors {
-    freelancer: FreelancerAvatarColors;
+    freelancer: FreelancerAvatarColors | 'transparent';
     company: CompanyAvatarColors;
 }
 

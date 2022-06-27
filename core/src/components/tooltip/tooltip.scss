@@ -1,4 +1,4 @@
-@use '../../style/utils';
+@use 'style/utils';
 
 $_CLASS: '.joy-tooltip';
 $_PADDING: var(--joy-core-spacing-4);
@@ -19,22 +19,19 @@ $_PADDING: var(--joy-core-spacing-4);
 }
 
 :host {
-    --tooltip-bg-color-primary: var(--joy-color-secondary-30);
-    --tooltip-color-primary: white;
-    --tooltip-bg-color-secondary: var(--joy-color-neutral-2);
-    --tooltip-color-secondary: var(--joy-color-neutral-6);
-
+    position: absolute;
+    z-index: var(--joy-core-z-index-tooltip);
     @include utils.getFontProperties(xs);
 }
 
-:host(#{$_CLASS}) {
-    position: absolute;
+#{$_CLASS} {
     font-weight: normal;
     box-sizing: border-box;
-    z-index: var(--joy-core-z-index-tooltip);
     border-radius: var(--joy-core-radius-3);
     padding: $_PADDING;
     box-shadow: var(--joy-core-elevation-3);
+    color: var(--tooltip-content-color);
+    background-color: var(--tooltip-bg-color);
 
     &:before {
         content: '';
@@ -45,34 +42,27 @@ $_PADDING: var(--joy-core-spacing-4);
         height: 0;
         border-left: 7px solid transparent;
         border-right: 7px solid transparent;
+        border-bottom: 7px solid var(--tooltip-bg-color);
     }
 }
 
-:host(#{$_CLASS}__primary) {
-    color: var(--tooltip-color-primary);
-    background-color: var(--tooltip-bg-color-primary);
-
-    &:before {
-        border-bottom: 7px solid var(--tooltip-bg-color-primary);
-    }
+#{$_CLASS}__primary {
+    --tooltip-bg-color: var(--joy-color-information-90);
+    --tooltip-content-color: white;
 }
 
-:host(#{$_CLASS}__secondary) {
-    color: var(--tooltip-color-secondary);
-    background-color: var(--tooltip-bg-color-secondary);
-
-    &:before {
-        border-bottom: 7px solid var(--tooltip-bg-color-secondary);
-    }
+#{$_CLASS}__secondary {
+    --tooltip-bg-color: var(--joy-color-neutral-2);
+    --tooltip-content-color: var(--joy-color-neutral-6);
 }
 
-:host(#{$_CLASS}__left) {
+#{$_CLASS}__left {
     &:before {
         left: $_PADDING;
     }
 }
 
-:host(#{$_CLASS}__right) {
+#{$_CLASS}__right {
     &:before {
         right: $_PADDING;
     }

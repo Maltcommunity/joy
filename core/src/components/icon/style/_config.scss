@@ -13,39 +13,3 @@ $ICON_SIZES: (
     large: $icon-large,
     xlarge: $icon-xlarge
 );
-
-@mixin sizesList($size) {
-    @if $size == xxsmall {
-        @include setIconSize($icon-xxsmall);
-    } @else if $size == xsmall {
-        @include setIconSize($icon-xsmall);
-    } @else if $size == small {
-        @include setIconSize($icon-small);
-    } @else if $size == medium {
-        @include setIconSize($icon-medium);
-    } @else if $size == large {
-        @include setIconSize($icon-large);
-    } @else if $size == xlarge {
-        @include setIconSize($icon-xlarge);
-    } @else {
-        @error "No icon with size '#{$size}'";
-    }
-}
-
-@mixin iconSize($size: small) {
-    // For <i>
-    @include sizesList($size);
-    @if $size == xxsmall {
-        stroke-width: 1px;
-    }
-
-    svg {
-        @include sizesList($size);
-    }
-}
-
-@mixin setIconSize($size) {
-    min-width: $size;
-    width: $size;
-    height: $size;
-}

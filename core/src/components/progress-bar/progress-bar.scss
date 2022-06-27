@@ -1,22 +1,27 @@
+@use './shared';
+
 $CLASS: '.joy-progress-bar';
 
 :host {
+    /**
+     * @prop --progress-bar-color: Foreground color
+     * @prop --progress-bar-color-mobile: Foreground color for mobile device
+     */
     display: block;
     width: 100%;
+    z-index: var(--joy-core-z-index-fixed-content);
+
+    --progress-bar-color: var(--joy-color-secondary-50);
     --progress-bar-color-mobile: var(--joy-color-primary-50);
 }
 
 
 #{$CLASS}-wrapper {
-    height:4px;
-    display: block;
-    width: 100%;
-    background-color: var(--joy-color-neutral-3);
+  @include shared.defaultStyle();
 
     #{$CLASS}-inner {
-        height:100%;
-        width:0;
-        background-color: var(--joy-color-secondary-50);
+        height: 100%;
+        background-color: var(--progress-bar-color);
         transition: width var(--joy-transition-duration-long) var(--joy-transition-timing-function);
 
         &_mobile {

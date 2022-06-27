@@ -58,6 +58,11 @@ $CLASS: '.joy-step';
         &::before, &::after {
             background-color: var(--stepper-border-color-completed);
         }
+
+        &:after {
+            background-image: none; // to disable linear-gradient
+        }
+
         &:before {
             border-color: var(--stepper-border-color-completed);
         }

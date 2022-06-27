@@ -1,4 +1,4 @@
-import {E2EElement, E2EPage, newE2EPage} from '@stencil/core/testing';
+import {E2EPage, newE2EPage} from '@stencil/core/testing';
 
 /**
  * This E2E suite is used for both joy-tag and joy-tags-list components.
@@ -18,13 +18,8 @@ describe('Tags list - e2e', () => {
             </joy-tags-list>
         `);
 
-        const tags = await page.findAll('joy-tag');
-        expect(tags.length).toBe(7);
-
-        tags.forEach((tag: E2EElement) => {
-            expect(tag.classList.contains('joy-tag_medium')).toBe(true);
-            expect(tag.classList.contains('joy-tags-list-item')).toBe(true);
-        });
+        const result = await page.compareScreenshot('Default tag list with all variants');
+        expect(result).toMatchScreenshot();
     });
 
     it('should display the list of all tags variant, in a list wrapper, with xsmall size', async () => {
@@ -41,11 +36,8 @@ describe('Tags list - e2e', () => {
             </joy-tags-list>
         `);
 
-        const tags = await page.findAll('joy-tag');
-
-        tags.forEach((tag: E2EElement) => {
-            expect(tag.classList.contains('joy-tag_xsmall')).toBe(true);
-        });
+        const result = await page.compareScreenshot('XSmall tag list with all variants');
+        expect(result).toMatchScreenshot();
     });
 
     it('should display the list of all tags variant, in a list wrapper, with small size', async () => {
@@ -62,11 +54,8 @@ describe('Tags list - e2e', () => {
             </joy-tags-list>
         `);
 
-        const tags = await page.findAll('joy-tag');
-
-        tags.forEach((tag: E2EElement) => {
-            expect(tag.classList.contains('joy-tag_small')).toBe(true);
-        });
+        const result = await page.compareScreenshot('Small tag list with all variants');
+        expect(result).toMatchScreenshot();
     });
 
     it('should display the list of all tags variant, in a list wrapper, with large size', async () => {
@@ -83,39 +72,31 @@ describe('Tags list - e2e', () => {
             </joy-tags-list>
         `);
 
-        const tags = await page.findAll('joy-tag');
-
-        tags.forEach((tag: E2EElement) => {
-            expect(tag.classList.contains('joy-tag_large')).toBe(true);
-        });
+        const result = await page.compareScreenshot('Large tag list with all variants');
+        expect(result).toMatchScreenshot();
     });
 
     it('should display a selectable tag changing style when we click (select) it', async () => {
-        let tag;
-
         const page: E2EPage = await newE2EPage();
         await page.setContent(`
             <joy-tag variant="secondary" selectable>Click me</joy-tag>              
         `);
 
-        tag = await page.find('joy-tag');
-        expect(tag.classList.contains('joy-tag__selected')).toBe(false);
+        const tag = await page.find('joy-tag');
         await tag.click();
         await page.waitForChanges();
 
-        tag = await page.find('joy-tag');
-        expect(tag.classList.contains('joy-tag__selected')).toBe(true);
+        const result = await page.compareScreenshot('Medium selectable tag clicked (should have the same style than primary style');
+        expect(result).toMatchScreenshot();
     });
 
     it('should display draggable and removable tags, with specific icons', async () => {
         const page: E2EPage = await newE2EPage();
         await page.setContent(`
-            <joy-tag variant="primary" draggable removable></joy-tag>              
+            <joy-tag variant="primary" draggable removable>Draggable tag</joy-tag>              
         `);
 
-        const drag = await page.find('joy-tag >>> .joy-tag__drag');
-        const remove = await page.find('joy-tag >>> .joy-tag__removable');
-        expect(drag).not.toBeNull();
-        expect(remove).not.toBeNull();
+        const result = await page.compareScreenshot('Medium removable/draggable tag');
+        expect(result).toMatchScreenshot();
     });
 });

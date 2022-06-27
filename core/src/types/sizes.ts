@@ -7,8 +7,6 @@ export type ButtonSizes = Extract<Sizes, 'xsmall' | 'small' | 'medium' | 'large'
 
 export type DialogSizes = BinarySizes | Extract<Sizes, 'large'>;
 
-export type DividerCTASizes = BinarySizes | Extract<Sizes, 'small'>;
-
 export type InputSizes = Extract<Sizes, 'small' | 'medium' | 'large'>;
 
 export type IconsSizes = Sizes;
