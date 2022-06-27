@@ -22,7 +22,7 @@
     "lint": "eslint",
     "lint:fix": "eslint --ext .js,.ts,.tsx,.vue --fix .",
     "test": "pnpm test:spec && stencil test --e2e --screenshot --ci",
-    "test:spec": "jest --config=jest.config.js --passWithNoTests",
+    "test:spec": "jest --config=jest.stencil.config.js --passWithNoTests",
     "test.watch": "stencil test --spec --e2e --watchAll",
     "generate": "stencil generate"
   },
