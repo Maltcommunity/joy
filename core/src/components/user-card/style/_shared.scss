@@ -1,0 +1,12 @@
+@mixin links() {
+    display: block;
+    margin: 0;
+    font-family: inherit;
+    color: var(--user-card-links-color);
+    word-break: break-word; // it prevents keeping emails on one line
+
+    &:hover, &:focus {
+        color: var(--user-card-links-color-hover-focus);
+        text-decoration: underline;
+    }
+}

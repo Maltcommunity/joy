@@ -1,0 +1,20 @@
+@use './shared';
+
+joy-company-avatar:not([hydrated]) {
+    @include shared.properties();
+    @include shared.defaultStyle() {
+        background-color: var(--joy-color-secondary-10);
+    }
+
+    &[size="small"] {
+        --avatar-size: 20px;
+    }
+
+    &[size="medium"] {
+        --avatar-size: 30px;
+    }
+
+    &[size="large"] {
+        --avatar-size: 46px;
+    }
+}

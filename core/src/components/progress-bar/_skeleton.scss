@@ -1,0 +1,5 @@
+@use './shared';
+
+joy-progress-bar:not([hydrated]) {
+    @include shared.defaultStyle();
+}

@@ -1,0 +1,7 @@
+@use './shared' as *;
+
+joy-dialog {
+    [slot="dialog-header"] {
+        @include headerTitleStyle();
+    }
+}

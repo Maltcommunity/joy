@@ -1,0 +1,20 @@
+@mixin customProperties() {
+    --placeholder-button-size: 60px;
+}
+
+@mixin buttonStyle() {
+    position: relative;
+    display: flex;
+    color: white;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none; // if it is a link
+    white-space: nowrap; // if the text if too long, exemple + 1500
+
+    border-radius: var(--joy-core-radius-5);
+    box-sizing: border-box;
+    width: var(--placeholder-button-size);
+    height: var(--placeholder-button-size);
+
+    @content;
+}

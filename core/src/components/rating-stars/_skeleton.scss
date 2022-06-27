@@ -1,0 +1,38 @@
+@use 'sass:map';
+
+$SIZES: (
+    large: 17px,
+    medium: 14px,
+    small: 11px
+);
+
+joy-rating-stars:not([hydrated]) {
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-between;
+    color: transparent;
+
+    &:after, &:before {
+        content: "";
+        height: 14px;
+        border-radius: 6px;
+        background-color: var(--joy-color-secondary-10);
+    }
+
+    &:before {
+        width: 70px;
+    }
+
+    &:after {
+        width: 20px;
+        margin-left: 3px;
+    }
+
+    @each $size, $value in $SIZES {
+        &[size="#{$size}"] {
+            &:after, &:before {
+                height: $value;
+            }
+        }
+    }
+}

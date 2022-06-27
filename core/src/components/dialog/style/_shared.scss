@@ -1,0 +1,7 @@
+@use '../../../style/utils';
+
+@mixin headerTitleStyle() {
+    @include utils.getFontProperties(xl-title-bold);
+    color: var(--joy-color-text-title);
+    margin: 0;
+}

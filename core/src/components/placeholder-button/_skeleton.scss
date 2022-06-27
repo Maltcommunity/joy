@@ -1,0 +1,10 @@
+@use './shared';
+
+joy-placeholder-button:not([hydrated]) {
+    @include shared.customProperties();
+
+    @include shared.buttonStyle() {
+        border: 1px solid var(--joy-color-secondary-10);
+        background-color: var(--joy-color-secondary-10);
+    }
+}

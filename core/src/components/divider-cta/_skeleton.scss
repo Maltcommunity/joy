@@ -1,0 +1,12 @@
+@use './shared';
+
+joy-divider-cta:not([hydrated]) {
+    @include shared.defaultStyle();
+    font-size: 0;
+    color: transparent;
+    background-color: var(--joy-color-neutral-2);
+
+    &::part(divider) {
+        margin: 0;
+    }
+}

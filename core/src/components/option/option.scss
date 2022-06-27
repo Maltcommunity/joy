@@ -1,0 +1,32 @@
+$CLASS: '.joy-option';
+
+:host {
+    --option-color-bg: white;
+    --option-color: var(--joy-color-neutral-6);
+    --option-fontsize: var(--joy-font-size-s);
+    --option-padding: var(--joy-core-spacing-2) var(--joy-core-spacing-4);
+
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    font-size: var(--option-fontsize);
+    width: 100%;
+    min-height: var(--joy-core-spacing-10);
+    padding: var(--option-padding);
+    margin: 0;
+    background: var(--option-color-bg);
+    color: var(--option-color);
+    transition: all var(--joy-transition-duration-short) var(--joy-transition-timing-function);
+}
+
+:host(#{$CLASS}_selected),
+:host(:hover) {
+    --option-color: var(--joy-color-secondary-50);
+    --option-color-bg: var(--joy-color-secondary-10);
+}
+
+:host(#{$CLASS}_disabled) {
+    cursor: default;
+    --option-color: var(--joy-color-neutral-4);
+    --option-color-bg: var(--joy-color-neutral-1);
+}

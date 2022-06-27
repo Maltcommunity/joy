@@ -1,0 +1,13 @@
+joy-highlight *[slot="highlight-title"] {
+    font-weight: var(--joy-font-weight-bold);
+    margin: 0;
+}
+
+joy-highlight a {
+    font-weight: var(--joy-font-weight-bold);
+    color: var(--joy-color-secondary-50);
+
+    &:hover {
+        text-decoration: underline;
+    }
+}

@@ -1,0 +1,12 @@
+@use './shared';
+
+joy-availability:not([hydrated]){
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: var(--joy-color-secondary-10);
+    height: shared.$availability-height;
+    width: 100px;
+    border-radius: var(--joy-core-radius-4);
+    color: transparent;
+}

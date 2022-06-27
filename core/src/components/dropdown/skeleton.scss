@@ -1,0 +1,13 @@
+@use 'dropdown';
+
+joy-dropdown:not([hydrated]){
+    display: block;
+    height: dropdown.$DROPDOWN_HEIGHT;
+    border-radius: dropdown.$DROPDOWN_HEIGHT;
+    background: var(--joy-color-neutral-2);
+    margin-bottom: dropdown.$DROPDOWN_MARGIN-BOTTOM;
+
+    joy-option {
+        display: none;
+    }
+}

@@ -1,0 +1,25 @@
+@mixin properties() {
+    --avatar-color: var(--joy-color-neutral-2);
+    --avatar-border-color: var(--joy-color-neutral-3);
+    --avatar-bg: var(--joy-color-secondary-50);
+    --avatar-size: 46px;
+}
+
+@mixin defaultStyle() {
+    position: relative;
+    overflow: hidden;
+    width: var(--avatar-size);
+    height: var(--avatar-size);
+    min-width: var(--avatar-size);
+    min-height: var(--avatar-size);
+    border-radius: var(--joy-core-radius-3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--avatar-color);
+    box-sizing: border-box;
+    font-family: inherit;
+    font-weight: inherit;
+
+    @content;
+}

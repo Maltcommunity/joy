@@ -1,0 +1,7 @@
+@use './shared';
+
+joy-user-card {
+    a {
+        @include shared.links();
+    }
+}

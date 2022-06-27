@@ -1,0 +1,20 @@
+$sizes: (
+    "small": (
+        height: 40px,
+        unitHeight: 32px,
+        padding: var(--joy-core-spacing-2) var(--joy-core-spacing-5),
+        font-size: var(--joy-font-size-xs)
+    ),
+    "medium": (
+        height: 48px,
+        unitHeight: 40px,
+        padding: var(--joy-core-spacing-3) var(--joy-core-spacing-5),
+        font-size: var(--joy-font-size-s)
+    ),
+    "large": (
+        height: 64px,
+        unitHeight: 56px,
+        padding: var(--joy-core-spacing-3) var(--joy-core-spacing-5),
+        font-size: var(--joy-font-size-m)
+    )
+);

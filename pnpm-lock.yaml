@@ -7,8 +7,9 @@ importers:
 
   core:
     specifiers:
-      '@maltjoy/tokens': 1.2.0
-      '@stencil/core': 2.15.0
+      '@floating-ui/dom': 0.5.3
+      '@maltjoy/tokens': 1.5.0
+      '@stencil/core': 2.15.1
       '@stencil/eslint-plugin': 0.4.0
       '@stencil/sass': 1.4.1
       '@types/jest': 26.0.21
@@ -25,11 +26,12 @@ importers:
       tslib: 1.14.1
       typescript: 4.3.2
     dependencies:
-      '@maltjoy/tokens': 1.2.0
-      '@stencil/core': 2.15.0
+      '@floating-ui/dom': 0.5.3
+      '@maltjoy/tokens': link:../tokens
+      '@stencil/core': 2.15.1
     devDependencies:
       '@stencil/eslint-plugin': 0.4.0_179f8a08f21fbd0422e75534965a3922
-      '@stencil/sass': 1.4.1_@stencil+core@2.15.0
+      '@stencil/sass': 1.4.1_@stencil+core@2.15.1
       '@types/jest': 26.0.21
       '@typescript-eslint/eslint-plugin': 4.33.0_462460fe19373d79999c3ab5bad104e6
       '@typescript-eslint/parser': 4.33.0_eslint@7.22.0+typescript@4.3.2
@@ -422,6 +424,16 @@ packages:
       - supports-color
     dev: true
 
+  /@floating-ui/core/0.7.3:
+    resolution: {integrity: sha512-buc8BXHmG9l82+OQXOFU3Kr2XQx9ys01U/Q9HMIrZ300iLc8HLMgh7dcCqgYzAzf4BkoQvDcXf5Y+CuEZ5JBYg==}
+    dev: false
+
+  /@floating-ui/dom/0.5.3:
+    resolution: {integrity: sha512-vpjWB1uC7rajvgA58uzlJZgtWqrdDQLw+XVA3w63ZTmsWwRmVd0Gl5Dy9VMAViI9cP7hBWaJt23Jy3AVgVYnoQ==}
+    dependencies:
+      '@floating-ui/core': 0.7.3
+    dev: false
+
   /@istanbuljs/load-nyc-config/1.1.0:
     resolution: {integrity: sha512-VjeHSlIzpv/NyD3N0YuHfXOPDIixcA1q2ZV98wsMqcYlPmv2n3Yb2lYP9XMElnaFVXg5A7YLTeLu6V84uQDjmQ==}
     engines: {node: '>=8'}
@@ -636,10 +648,6 @@ packages:
       '@jridgewell/resolve-uri': 3.0.4
       sourcemap-codec: 1.4.8
     dev: true
-
-  /@maltjoy/tokens/1.2.0:
-    resolution: {integrity: sha512-mYIS2yVc87QhFfygC2X47sHtOrUBpA8IY8EJtsBL48ssAMmDjhQfw518itaihdrUcCkfEiiQDYrjFuLJtuKbBQ==}
-    dev: false
 
   /@nodelib/fs.scandir/2.1.5:
     resolution: {integrity: sha512-vq24Bq3ym5HEQm2NKCr3yXDwjc7vTsEThRDnkp2DK9p1uqLR+DHurm/NOTo0KG7HYHU7eppKZj3MyqYuMBf62g==}
@@ -879,8 +887,8 @@ packages:
       '@sinonjs/commons': 1.8.3
     dev: true
 
-  /@stencil/core/2.15.0:
-    resolution: {integrity: sha512-58+FPFpJCJScd5nmqVsZN+qk7aui57wFcMHWzySr1SQzoY8Efst9OPG7XRf27UsNj1DNeEdYWTtdrTfJyn3mZg==}
+  /@stencil/core/2.15.1:
+    resolution: {integrity: sha512-NYjRwQnjzscyFfqK+iIwRdr/dgYn33u6KE7kyQWdi7xsCkqMHalXYgJlN/QBQ9PN3qXmXKeBrJNG8EkNdCbK5g==}
     engines: {node: '>=12.10.0', npm: '>=6.0.0'}
     hasBin: true
     dev: false
@@ -904,12 +912,12 @@ packages:
       typescript: 4.3.2
     dev: true
 
-  /@stencil/sass/1.4.1_@stencil+core@2.15.0:
+  /@stencil/sass/1.4.1_@stencil+core@2.15.1:
     resolution: {integrity: sha512-aFKoqtxZ/8BRbvNFiWRycGiqvMI22Ifn5qsKfq0U23j43XD81jT6d7K0WQd55ejNpoSpdxJcbOuFgQy3mXizfA==}
     peerDependencies:
       '@stencil/core': '>=1.0.2'
     dependencies:
-      '@stencil/core': 2.15.0
+      '@stencil/core': 2.15.1
     dev: true
 
   /@tootallnate/once/1.1.2:

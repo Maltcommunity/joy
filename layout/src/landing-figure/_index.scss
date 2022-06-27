@@ -1,0 +1,39 @@
+@use '@maltjoy/tokens/src/fonts';
+
+$_square-width: 80px;
+$_mask-brew-photo: "%3Csvg%20width%3D%22328%22%20height%3D%22328%22%20viewBox%3D%220%200%20328%20328%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Cg%20clip-path%3D%22url%28%23clip0%29%22%3E%0A%3Cpath%20d%3D%22M44.9097%2068.1721L113.679%20-0.307762L321.38%200.245689C324.679%200.254481%20327.352%202.92536%20327.364%206.22458L328.097%20214.822L259.192%20283.437C200.251%20342.239%20104.471%20341.749%2045.2618%20282.343C-13.9481%20222.936%20-14.1663%20127.109%2044.7744%2068.3069C44.8195%2068.2619%2044.8646%2068.217%2044.9097%2068.1721Z%22%20fill%3D%22black%22%2F%3E%0A%3C%2Fg%3E%0A%3Cdefs%3E%0A%3CclipPath%20id%3D%22clip0%22%3E%0A%3Crect%20width%3D%22328%22%20height%3D%22328%22%20fill%3D%22white%22%2F%3E%0A%3C%2FclipPath%3E%0A%3C%2Fdefs%3E%0A%3C%2Fsvg%3E%0A";
+
+$FIGURE-COLORS: (
+    'blue': var(--joy-color-brand-secondary-30),
+    'red': var(--joy-color-primary-30),
+    'pink': var(--joy-color-brand-primary-50),
+    'yellow': var(--joy-color-quaternary-50)
+);
+
+.landing-figure {
+  width: $_square-width;
+  height: $_square-width;
+  display: block;
+  mask: url("data:image/svg+xml; utf8, #{$_mask-brew-photo}");
+  mask-repeat: no-repeat;
+  mask-size: contain;
+
+  p {
+    width: $_square-width;
+    height: $_square-width;
+    padding-top: var(--joy-core-spacing-4);
+    padding-right: 8px;
+    text-align: right;
+    @include fonts.getFontBySize(xxl);
+    background-color: var(--joy-color-tertiary-50);
+    color: white;
+  }
+
+  @each $name, $color in $FIGURE-COLORS {
+    &_#{$name} {
+      p {
+        background-color: $color;
+      }
+    }
+  }
+}
