@@ -62,6 +62,7 @@ build-tokens:
 
 .npm-publish:
   stage: npm_publish
+  image: europe-west1-docker.pkg.dev/malt-build/malt-tap-docker/pnpm:6.32.4
   script:
     - cd ${CONTEXT_DIR}
     - echo "//registry.npmjs.org/:_authToken="${NPM_AUTH_TOKEN} > .npmrc
@@ -98,7 +99,7 @@ npm-publish-tokens:
 
 .publish-cdn:
   stage: cdn_publish
-  image: europe-west1-docker.pkg.dev/malt-build/malt-tap-docker/pnpm:6.32.4
+  image: europe-west1-docker.pkg.dev/malt-build/malt-tap-docker/malt/malt-builder:fc6e6b7d60b6a5cf2952f22a0f9323267b0c7dea69b991ad83e2c34f5ed08840
   extends:
     - .common
   dependencies: ["build-core"]
