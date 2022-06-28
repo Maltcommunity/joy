@@ -23,12 +23,12 @@ stages:
 .build:
   stage: build
   script:
+    - source /builder/.bashrc
     - cd ${CONTEXT_DIR}
     - pnpm install
     - pnpm build
   artifacts:
     paths:
-      - source /builder/.bashrc
       - ${CONTEXT_DIR}/dist/
       - ${CONTEXT_DIR}/README.md
       - ${CONTEXT_DIR}/package.json
