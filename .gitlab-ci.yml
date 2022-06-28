@@ -1,6 +1,6 @@
 default:
   image:
-    name: europe-west1-docker.pkg.dev/malt-build/malt-tap-docker/malt/malt-builder:3d9e4e8d3fd7f84e881ae004477832a7e7d59f7b875d303c4a441531bc650ddd
+    name: europe-west1-docker.pkg.dev/malt-build/malt-tap-docker/pnpm:6.32.4/malt/malt-builder:pnpm3d9e4e8d3fd7f84e881ae004477832a7e7d59f7b875d303c4a441531bc650ddd
     entrypoint: []
 
 stages:
