@@ -17,11 +17,11 @@
   "scripts": {
     "clean": "node src/scripts/clean.js",
     "build:lib": "stencil build --docs",
-    "build": "pnpm clean && pnpm lint && pnpm test",
+    "build": "pnpm clean && pnpm lint && pnpm build:lib && pnpm test",
     "start": "stencil build --dev --watch",
     "lint": "eslint",
     "lint:fix": "eslint --ext .js,.ts,.tsx,.vue --fix .",
-    "test": "stencil test --e2e --screenshot --ci",
+    "test": "pnpm test:spec && stencil test --e2e --screenshot --ci",
     "test:spec": "jest --config=jest.stencil.config.js --passWithNoTests",
     "test.watch": "stencil test --spec --e2e --watchAll",
     "generate": "stencil generate"
