@@ -13,6 +13,7 @@ importers:
       '@stencil/eslint-plugin': 0.4.0
       '@stencil/sass': 1.4.1
       '@types/jest': 26.0.21
+      '@types/puppeteer': ^5.4.5
       '@typescript-eslint/eslint-plugin': 4.33.0
       '@typescript-eslint/parser': 4.33.0
       eslint: 7.22.0
@@ -33,6 +34,7 @@ importers:
       '@stencil/eslint-plugin': 0.4.0_179f8a08f21fbd0422e75534965a3922
       '@stencil/sass': 1.4.1_@stencil+core@2.15.1
       '@types/jest': 26.0.21
+      '@types/puppeteer': 5.4.6
       '@typescript-eslint/eslint-plugin': 4.33.0_462460fe19373d79999c3ab5bad104e6
       '@typescript-eslint/parser': 4.33.0_eslint@7.22.0+typescript@4.3.2
       eslint: 7.22.0
@@ -1010,6 +1012,12 @@ packages:
 
   /@types/prettier/2.4.3:
     resolution: {integrity: sha512-QzSuZMBuG5u8HqYz01qtMdg/Jfctlnvj1z/lYnIDXs/golxw0fxtRAHd9KrzjR7Yxz1qVeI00o0kiO3PmVdJ9w==}
+    dev: true
+
+  /@types/puppeteer/5.4.6:
+    resolution: {integrity: sha512-98Kghehs7+/GD9b56qryhqdqVCXUTbetTv3PlvDnmFRTHQH0j9DIp1f7rkAW3BAj4U3yoeSEQnKgdW8bDq0Y0Q==}
+    dependencies:
+      '@types/node': 17.0.14
     dev: true
 
   /@types/retry/0.12.1:
