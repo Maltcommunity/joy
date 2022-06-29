@@ -16,9 +16,9 @@
   ],
   "scripts": {
     "clean": "node src/scripts/clean.js",
-    "build:lib": "stencil build --docs",
+    "build:lib": "stencil build --prod --docs",
     "build": "pnpm clean && pnpm lint && pnpm build:lib && pnpm test",
-    "start": "stencil build --dev --watch",
+    "start": "stencil build --watch --serve",
     "lint": "eslint",
     "lint:fix": "eslint --ext .js,.ts,.tsx,.vue --fix .",
     "test": "pnpm test:spec && stencil test --e2e --screenshot --ci",

@@ -61,6 +61,7 @@ export const config: Config = {
     enableCache: false,
     buildEs5: 'prod',
     sourceMap: true,
+    srcIndexHtml: './index.html',
     outputTargets: [
         {
             type: 'dist',

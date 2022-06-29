@@ -4,6 +4,6 @@ const path = require('path');
 const cleanDirs = ['dist', 'www'];
 
 cleanDirs.forEach(dir => {
-    const cleanDir = path.join(__dirname, '../', dir);
+    const cleanDir = path.join(__dirname, '..', '..', dir);
     fs.removeSync(cleanDir);
 });
