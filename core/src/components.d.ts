@@ -635,8 +635,6 @@ export namespace Components {
          */
         "totalPages": number;
     }
-    interface JoyPanel {
-    }
     interface JoyPlaceholderButton {
         /**
           * Placeholder button sizes.
@@ -1410,12 +1408,6 @@ declare global {
         prototype: HTMLJoyPaginationElement;
         new (): HTMLJoyPaginationElement;
     };
-    interface HTMLJoyPanelElement extends Components.JoyPanel, HTMLStencilElement {
-    }
-    var HTMLJoyPanelElement: {
-        prototype: HTMLJoyPanelElement;
-        new (): HTMLJoyPanelElement;
-    };
     interface HTMLJoyPlaceholderButtonElement extends Components.JoyPlaceholderButton, HTMLStencilElement {
     }
     var HTMLJoyPlaceholderButtonElement: {
@@ -1604,7 +1596,6 @@ declare global {
         "joy-link": HTMLJoyLinkElement;
         "joy-option": HTMLJoyOptionElement;
         "joy-pagination": HTMLJoyPaginationElement;
-        "joy-panel": HTMLJoyPanelElement;
         "joy-placeholder-button": HTMLJoyPlaceholderButtonElement;
         "joy-product-tour": HTMLJoyProductTourElement;
         "joy-product-tour-trigger": HTMLJoyProductTourTriggerElement;
@@ -2259,8 +2250,6 @@ declare namespace LocalJSX {
           * Total number of pages in order to construct the pagination
          */
         "totalPages"?: number;
-    }
-    interface JoyPanel {
     }
     interface JoyPlaceholderButton {
         /**
@@ -2938,7 +2927,6 @@ declare namespace LocalJSX {
         "joy-link": JoyLink;
         "joy-option": JoyOption;
         "joy-pagination": JoyPagination;
-        "joy-panel": JoyPanel;
         "joy-placeholder-button": JoyPlaceholderButton;
         "joy-product-tour": JoyProductTour;
         "joy-product-tour-trigger": JoyProductTourTrigger;
@@ -2997,7 +2985,6 @@ declare module "@stencil/core" {
             "joy-link": LocalJSX.JoyLink & JSXBase.HTMLAttributes<HTMLJoyLinkElement>;
             "joy-option": LocalJSX.JoyOption & JSXBase.HTMLAttributes<HTMLJoyOptionElement>;
             "joy-pagination": LocalJSX.JoyPagination & JSXBase.HTMLAttributes<HTMLJoyPaginationElement>;
-            "joy-panel": LocalJSX.JoyPanel & JSXBase.HTMLAttributes<HTMLJoyPanelElement>;
             "joy-placeholder-button": LocalJSX.JoyPlaceholderButton & JSXBase.HTMLAttributes<HTMLJoyPlaceholderButtonElement>;
             "joy-product-tour": LocalJSX.JoyProductTour & JSXBase.HTMLAttributes<HTMLJoyProductTourElement>;
             "joy-product-tour-trigger": LocalJSX.JoyProductTourTrigger & JSXBase.HTMLAttributes<HTMLJoyProductTourTriggerElement>;

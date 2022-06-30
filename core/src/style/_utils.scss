@@ -28,7 +28,7 @@ $_AVATAR_COLOR: (
 
 @mixin formElementColorHover() {
     & {
-        transition: all var(--joy-transition-duration-default) var(--joy-transition-timing-function);
+        transition: border-color var(--joy-transition-duration-default) var(--joy-transition-timing-function);
     }
 
     &:hover {
@@ -39,7 +39,7 @@ $_AVATAR_COLOR: (
 
 @mixin formElementColorFocus() {
     & {
-        transition: all var(--joy-transition-duration-default) var(--joy-transition-timing-function);
+        transition: border-color var(--joy-transition-duration-default) var(--joy-transition-timing-function);
     }
 
     &:focus {

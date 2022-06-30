@@ -7,116 +7,122 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <title>Webcomponent playground</title>
 
-    <style>
-        @font-face {
-            font-family: 'Agrandir Tight';
-            src: url('https://cdn.malt.com/assets/font/agrandir/agrandir-tightmedium-webfont.woff2') format('woff2'),
-            url('https://cdn.malt.com/assets/font/agrandir/agrandir-tightmedium-webfont.woff') format('woff');
-            font-weight: 500;
-            font-style: normal;
-            font-display: swap;
-        }
-
-        @font-face {
-            font-family: 'Agrandir Tight';
-            src: url('https://cdn.malt.com/assets/font/agrandir/agrandir-tightmedium-webfont.woff2') format('woff2'),
-            url('https://cdn.malt.com/assets/font/agrandir/agrandir-tightmedium-webfont.woff') format('woff');
-            font-weight: 700;
-            font-style: normal;
-            font-display: swap;
-        }
-
-        @font-face {
-            font-family: 'Moderat';
-            src: url('https://cdn.malt.com/assets/font/moderat/moderat-bold-webfont.woff2') format('woff2'),
-            url('https://cdn.malt.com/assets/font/moderat/moderat-bold-webfont.woff') format('woff');
-            font-weight: 700;
-            font-style: normal;
-            font-display: swap;
-        }
-
-        @font-face {
-            font-family: 'Moderat';
-            src: url('https://cdn.malt.com/assets/font/moderat/moderat-regular-webfont.woff2') format('woff2'),
-            url('https://cdn.malt.com/assets/font/moderat/moderat-regular-webfont.woff') format('woff');
-            font-weight: 400;
-            font-style: normal;
-            font-display: swap;
-        }
-
-        body {
-            padding: 0;
-            margin: 0;
-        }
-
-        .container-playground {
-            border: 1px solid var(--joy-color-neutral-3);
-            margin: auto;
-            padding: var(--joy-core-spacing-4);
-            min-height: 100vh;
-            max-width: 960px;
-        }
-
-        .resizable {
-            width: 375px;
-            height: 667px;
-            resize: both;
-            overflow: auto;
-            max-width: 100%;
-            padding: var(--joy-core-spacing-4);
-            border: 2px solid var(--joy-color-neutral-3);
-        }
-    </style>
-
     <link rel="stylesheet" href="/build/joy.css" type="text/css">
     <script type="module" src="/build/joy.esm.js"></script>
 </head>
 
 <body>
 <div class="container">
-    <header>
+    <header class="pg-header">
         <a href="/">
             <img src="https://dam.malt.com/joy/logo/logo-ico-joy-v2" alt="Joy Logo">
         </a>
         <h1>Webcomponent playground</h1>
     </header>
 
-
-    <joy-icon name="code"></joy-icon>
-
-    <joy-link href="https://doc.malt.tech/joy/webcomponents.html" target="_blank">
-        Documentation
-    </joy-link>
-
-
     <div id="app">
-        <div class="container-playground">
-            <joy-tabs selected-tab="desktop">
-                <joy-tab-button slot="tab-button" tab="desktop" tabindex="1">Desktop view</joy-tab-button>
-                <joy-tab-button slot="tab-button" tab="mobile" tabindex="1">Mobile view</joy-tab-button>
+        <main class="pg-main">
+            <aside class="pg-main--aside">
+                <ul>
+                    <li>
+                        <joy-link href="https://doc.malt.tech/joy/webcomponents.html" target="_blank">
+                            Tech documentation
+                        </joy-link>
+                    </li>
+                    <li>
+                        <joy-link href="https://malt-joy.zeroheight.com/styleguide/s/55177/p/71f413-welcome-to-joy"
+                                  target="_blank">
+                            Zeroheight
+                        </joy-link>
+                    </li>
+                </ul>
 
-                <joy-tab slot="tab-content" tab="desktop">
-                    <joy-highlight level="warning" display-icon>I am a simple warning content</joy-highlight>
-                </joy-tab>
+                <div class="pg-main--playground">
+                    <joy-textarea ref="textarea">
+                        Type your custom elements HTML here :
+                    </joy-textarea>
+                    <br/>
+                    <joy-button size="small" variant="ghost" @click="reset">Reset</joy-button>
+                    <joy-button size="small" @click="updateSandbox">Preview</joy-button>
+                </div>
+            </aside>
+            <div class="pg-main--content">
+                <div class="container-playground">
+                    <joy-tabs selected-tab="desktop">
+                        <joy-tab-button slot="tab-button" tab="desktop" tabindex="1">Desktop view</joy-tab-button>
+                        <joy-tab-button slot="tab-button" tab="mobile" tabindex="1">Mobile view</joy-tab-button>
 
-                <joy-tab slot="tab-content" tab="mobile">
-                    <div class="resizable">
-                        <joy-highlight level="warning" display-icon>I am a simple warning content</joy-highlight>
-                    </div>
-                </joy-tab>
-            </joy-tabs>
-        </div>
+                        <joy-tab ref="desktop-preview" slot="tab-content" tab="desktop" v-html="sandboxHtml">
+                        </joy-tab>
+
+                        <joy-tab slot="tab-content" tab="mobile">
+                            <div ref="desktop-preview" class="resizable" v-html="sandboxHtml">
+                            </div>
+                        </joy-tab>
+                    </joy-tabs>
+                </div>
+            </div>
+        </main>
     </div>
 
 </div>
 
+<!--
 <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+-->
+
+<!--<script>
+    Vue.config.ignoredElements = [
+      /^joy-/
+  ];
+  new Vue({
+      el: "#app",
+      data: {
+          sandboxHtml: '',
+      },
+      methods: {
+          reset: function(e) {
+              this.$refs.textarea.value = '';
+              this.sandboxHtml = '';
+          },
+          updateSandbox: function(e) {
+              if (this.sandboxHtml !== this.$refs.textarea.value) {
+                  this.sandboxHtml = this.$refs.textarea.value;
+              }
+          }
+      }
+  });
+</script>-->
+
+<script src="https://unpkg.com/vue@3"></script>
 
 <script>
-    Vue.config.ignoredElements = [
-        /^joy-/
-    ];
-    new Vue({}).$mount('#app');
+    const {createApp} = Vue;
+
+    const app = createApp({
+        data() {
+            return {
+                sandboxHtml: '',
+            }
+        },
+        methods: {
+            reset: function (e) {
+                this.$refs.textarea.value = '';
+                this.sandboxHtml = '';
+            },
+            updateSandbox: function (e) {
+                if (this.sandboxHtml !== this.$refs.textarea.value) {
+                    this.sandboxHtml = this.$refs.textarea.value;
+                }
+            }
+        }
+    });
+
+    app.config.compilerOptions.isCustomElement = (tag) => {
+        return tag.startsWith('joy-');
+    };
+
+    app.mount('#app');
 </script>
 
 </body>

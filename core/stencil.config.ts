@@ -46,12 +46,13 @@ export const config: Config = {
             // Critical bundle
             components: ['joy-button', 'joy-checkbox', 'joy-counter', 'joy-icon-button', 'joy-textarea', 'joy-toggle'],
         },
-        {components: ['joy-avatar', 'joy-avatars-list', 'joy-user-card']},
+        {components: ['joy-avatar', 'joy-avatars-list', 'joy-company-avatar', 'joy-user-card']},
         {components: ['joy-dialog', 'joy-dialog-trigger']},
+        {components: ['joy-dropdown', 'joy-select', 'joy-option']},
         {components: ['joy-indicators', 'joy-indicator']},
         {components: ['joy-link', 'joy-text']},
+        {components: ['joy-product-tour', 'joy-product-tour-trigger']},
         {components: ['joy-radio', 'joy-radio-group']},
-        {components: ['joy-select', 'joy-select-option']},
         {components: ['joy-stepper', 'joy-step']},
         {components: ['joy-tabs', 'joy-tab', 'joy-tab-button']},
         {components: ['joy-tag', 'joy-tags-list']},
@@ -73,6 +74,7 @@ export const config: Config = {
         },
         {
             type: 'www',
+            empty: false, // to prevent playground compiled css (by sass CLI) to be overriden
             serviceWorker: null, // disable service workers
         },
         {
