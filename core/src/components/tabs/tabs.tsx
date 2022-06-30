@@ -151,7 +151,7 @@ export class JoyTabs {
         }
 
         return tabEl;
-    };
+    }
 
     private updateTabs = (ev: CustomEvent<Tab>) => {
         const {selectedTab} = ev.detail;
@@ -161,5 +161,5 @@ export class JoyTabs {
         this.updateTabContent();
 
         this.joyTabSelected.emit(ev.detail);
-    };
+    }
 }
