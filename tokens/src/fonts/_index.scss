@@ -23,117 +23,149 @@ $joy-line-height-large: 1.25;
 $joy-font-family: 'Moderat', Arial, Helvetica, sans-serif;
 $joy-font-family-title: 'Agrandir Tight', Arial, Helvetica, sans-serif;
 
+@mixin getFontsProperties() {
+  // Font families:
+  --joy-font-family: #{$joy-font-family};
+  --joy-font-family-title: #{$joy-font-family-title};
+
+  // Font sizes
+  --joy-font-size-none: 0;
+  --joy-font-size-xxs: #{$joy-font-size-xxs};
+  --joy-font-size-xs: #{$joy-font-size-xs};
+  --joy-font-size-s: #{$joy-font-size-s};
+  --joy-font-size-m: #{$joy-font-size-m};
+  --joy-font-size-l: #{$joy-font-size-l};
+  --joy-font-size-xl: #{$joy-font-size-xl};
+  --joy-font-size-xl-mobile: #{$joy-font-size-xl-mobile};
+  --joy-font-size-2xl: #{$joy-font-size-2xl};
+  --joy-font-size-2xl-mobile: #{$joy-font-size-2xl-mobile};
+  --joy-font-size-3xl: #{$joy-font-size-3xl};
+  --joy-font-size-3xl-mobile: #{$joy-font-size-3xl-mobile};
+  --joy-font-size-4xl: #{$joy-font-size-4xl};
+  --joy-font-size-4xl-mobile: #{$joy-font-size-4xl-mobile};
+  --joy-font-size-quote: #{$joy-font-size-quote};
+  --joy-font-size-quote-mobile: #{$joy-font-size-quote-mobile};
+
+  // Font weights
+  --joy-font-weight-normal: #{$joy-font-weight-normal};
+  --joy-font-weight-bold: #{$joy-font-weight-bold};
+
+  // Line heights
+  --joy-line-height-small: #{$joy-line-height-small};
+  --joy-line-height-large: #{$joy-line-height-large};
+}
+
 /* We don't use 2xl, 3xl, 4xl map keys because in some Intellij configurations, these keys are reformatted */
 
 $FONTS_MAP: (
         xxs: (
-                fontFamily: $joy-font-family,
-                fontSize: $joy-font-size-xxs,
-                fontWeight: normal,
-                lineHeight: $joy-line-height-large
+                fontFamily: var(--joy-font-family),
+                fontSize: var(--joy-font-size-xxs),
+                fontWeight: var(--joy-font-weight-normal),
+                lineHeight: var(--joy-line-height-large)
         ),
         xxs-bold: (
-                fontFamily: $joy-font-family,
-                fontSize: $joy-font-size-xxs,
-                fontWeight: 700,
-                lineHeight: $joy-line-height-large
+                fontFamily: var(--joy-font-family),
+                fontSize: var(--joy-font-size-xxs),
+                fontWeight: var(--joy-font-weight-bold),
+                lineHeight: var(--joy-line-height-large)
         ),
         xs: (
-                fontFamily: $joy-font-family,
-                fontSize: $joy-font-size-xs,
-                fontWeight: normal,
-                lineHeight: $joy-line-height-large
+                fontFamily: var(--joy-font-family),
+                fontSize: var(--joy-font-size-xs),
+                fontWeight: var(--joy-font-weight-normal),
+                lineHeight: var(--joy-line-height-large)
         ),
         xs-bold: (
-                fontFamily: $joy-font-family,
-                fontSize: $joy-font-size-xs,
-                fontWeight: bold,
-                lineHeight: $joy-line-height-large
+                fontFamily: var(--joy-font-family),
+                fontSize: var(--joy-font-size-xs),
+                fontWeight: var(--joy-font-weight-bold),
+                lineHeight: var(--joy-line-height-large)
         ),
         s: (
-                fontFamily: $joy-font-family,
-                fontSize: $joy-font-size-s,
-                fontWeight: normal,
-                lineHeight: $joy-line-height-large
+                fontFamily: var(--joy-font-family),
+                fontSize: var(--joy-font-size-s),
+                fontWeight: var(--joy-font-weight-normal),
+                lineHeight: var(--joy-line-height-large)
         ),
         s-bold: (
-                fontFamily: $joy-font-family,
-                fontSize: $joy-font-size-s,
-                fontWeight: bold,
-                lineHeight: $joy-line-height-large
+                fontFamily: var(--joy-font-family),
+                fontSize: var(--joy-font-size-s),
+                fontWeight: var(--joy-font-weight-bold),
+                lineHeight: var(--joy-line-height-large)
         ),
         m: (
-                fontFamily: $joy-font-family,
-                fontSize: $joy-font-size-m,
-                fontWeight: normal,
-                lineHeight: $joy-line-height-large
+                fontFamily: var(--joy-font-family),
+                fontSize: var(--joy-font-size-m),
+                fontWeight: var(--joy-font-weight-normal),
+                lineHeight: var(--joy-line-height-large)
         ),
         m-bold: (
-                fontFamily: $joy-font-family,
-                fontSize: $joy-font-size-m,
-                fontWeight: bold,
-                lineHeight: $joy-line-height-large
+                fontFamily: var(--joy-font-family),
+                fontSize: var(--joy-font-size-m),
+                fontWeight: var(--joy-font-weight-bold),
+                lineHeight: var(--joy-line-height-large)
         ),
         l: (
-                fontFamily: $joy-font-family,
-                fontSize: $joy-font-size-l,
-                fontWeight: normal,
-                lineHeight: $joy-line-height-large
+                fontFamily: var(--joy-font-family),
+                fontSize: var(--joy-font-size-l),
+                fontWeight: var(--joy-font-weight-normal),
+                lineHeight: var(--joy-line-height-large)
         ),
         l-bold: (
-                fontFamily: $joy-font-family,
-                fontSize: $joy-font-size-l,
-                fontWeight: bold,
-                lineHeight: $joy-line-height-large
+                fontFamily: var(--joy-font-family),
+                fontSize: var(--joy-font-size-l),
+                fontWeight: var(--joy-font-weight-bold),
+                lineHeight: var(--joy-line-height-large)
         ),
         xl: (
-                fontFamily: $joy-font-family-title,
-                fontSize: $joy-font-size-xl,
+                fontFamily: var(--joy-font-family-title),
+                fontSize: var(--joy-font-size-xl),
                 fontWeight: 500,
-                fontSizeMobile: $joy-font-size-xl-mobile,
-                lineHeight: $joy-line-height-small
+                fontSizeMobile: var(--joy-font-size-xl-mobile),
+                lineHeight: var(--joy-line-height-small)
         ),
         xl-title: (
-                fontFamily: $joy-font-family,
-                fontSize: $joy-font-size-xl,
+                fontFamily: var(--joy-font-family),
+                fontSize: var(--joy-font-size-xl),
                 fontWeight: 500,
-                fontSizeMobile: $joy-font-size-l,
-                lineHeight: $joy-line-height-large
+                fontSizeMobile: var(--joy-font-size-l),
+                lineHeight: var(--joy-line-height-large)
         ),
         xl-title-bold: (
-                fontFamily: $joy-font-family,
-                fontSize: $joy-font-size-xl,
+                fontFamily: var(--joy-font-family),
+                fontSize: var(--joy-font-size-xl),
                 fontWeight: 700,
-                fontSizeMobile: $joy-font-size-xl-mobile,
-                lineHeight: $joy-line-height-small
+                fontSizeMobile: var(--joy-font-size-xl-mobile),
+                lineHeight: var(--joy-line-height-small)
         ),
         xxl: (
-                fontFamily: $joy-font-family-title,
-                fontSize: $joy-font-size-2xl,
-                fontSizeMobile: $joy-font-size-2xl-mobile,
+                fontFamily: var(--joy-font-family-title),
+                fontSize: var(--joy-font-size-2xl),
+                fontSizeMobile: var(--joy-font-size-2xl-mobile),
                 fontWeight: 500,
-                lineHeight: $joy-line-height-small
+                lineHeight: var(--joy-line-height-small)
         ),
         xxxl: (
-                fontFamily: $joy-font-family-title,
-                fontSize: $joy-font-size-3xl,
-                fontSizeMobile: $joy-font-size-3xl-mobile,
+                fontFamily: var(--joy-font-family-title),
+                fontSize: var(--joy-font-size-3xl),
+                fontSizeMobile: var(--joy-font-size-3xl-mobile),
                 fontWeight: 500,
-                lineHeight: $joy-line-height-small
+                lineHeight: var(--joy-line-height-small)
         ),
         xxxxl: (
-                fontFamily: $joy-font-family-title,
-                fontSize: $joy-font-size-4xl,
-                fontSizeMobile: $joy-font-size-4xl-mobile,
+                fontFamily: var(--joy-font-family-title),
+                fontSize: var(--joy-font-size-4xl),
+                fontSizeMobile: var(--joy-font-size-4xl-mobile),
                 fontWeight: 500,
-                lineHeight: $joy-line-height-small
+                lineHeight: var(--joy-line-height-small)
         ),
         quote: (
-                fontFamily: $joy-font-family,
-                fontSize: $joy-font-size-quote,
-                fontSizeMobile: $joy-font-size-quote-mobile,
-                fontWeight: bold,
-                lineHeight: $joy-line-height-small
+                fontFamily: var(--joy-font-family),
+                fontSize: var(--joy-font-size-quote),
+                fontSizeMobile: var(--joy-font-size-quote-mobile),
+                fontWeight: var(--joy-font-weight-bold),
+                lineHeight: var(--joy-line-height-small)
         )
 );
 
@@ -157,36 +189,4 @@ $FONTS_MAP: (
                font-size: $fontSizeMobile;
           }
      }
-}
-
-@mixin getFontsProperties() {
-     // Font families:
-     --joy-font-family: #{$joy-font-family};
-     --joy-font-family-title: #{$joy-font-family-title};
- 
-     // Font sizes 
-     --joy-font-size-none: 0;
-     --joy-font-size-xxs: #{$joy-font-size-xxs};
-     --joy-font-size-xs: #{$joy-font-size-xs};
-     --joy-font-size-s: #{$joy-font-size-s};
-     --joy-font-size-m: #{$joy-font-size-m};
-     --joy-font-size-l: #{$joy-font-size-l};
-     --joy-font-size-xl: #{$joy-font-size-xl};
-     --joy-font-size-xl-mobile: #{$joy-font-size-xl-mobile};
-     --joy-font-size-2xl: #{$joy-font-size-2xl};
-     --joy-font-size-2xl-mobile: #{$joy-font-size-2xl-mobile};
-     --joy-font-size-3xl: #{$joy-font-size-3xl};
-     --joy-font-size-3xl-mobile: #{$joy-font-size-3xl-mobile};
-     --joy-font-size-4xl: #{$joy-font-size-4xl};
-     --joy-font-size-4xl-mobile: #{$joy-font-size-4xl-mobile};
-     --joy-font-size-quote: #{$joy-font-size-quote};
-     --joy-font-size-quote-mobile: #{$joy-font-size-quote-mobile};
- 
-     // Font weights
-     --joy-font-weight-normal: #{$joy-font-weight-normal};
-     --joy-font-weight-bold: #{$joy-font-weight-bold};
- 
-     // Line heights
-     --joy-line-height-small: #{$joy-line-height-small};
-     --joy-line-height-large: #{$joy-line-height-large};
 }
