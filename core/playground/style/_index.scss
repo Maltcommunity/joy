@@ -61,6 +61,8 @@ body {
   }
 
   &-main  {
+    $_aside-width: 500px;
+
     display: flex;
     align-items: stretch;
     gap: var(--joy-core-spacing-8);
@@ -76,11 +78,11 @@ body {
     }
 
     &--aside {
-      flex: 0 0 500px;
+      flex: 0 0 #{$_aside-width};
     }
 
     &--content {
-      flex: 1 0 auto;
+      flex: 1 0 calc(100% - #{$_aside-width} - var(--joy-core-spacing-8));
     }
   }
 }

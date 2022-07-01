@@ -15,6 +15,10 @@ $_CLASS: '.joy-radio-group';
     }
 }
 
+#{$_CLASS} {
+    width: 100%;
+}
+
 #{$_CLASS}-container {
     display: flex;
     align-items: center;
@@ -37,7 +41,7 @@ $_CLASS: '.joy-radio-group';
     margin: 0;
 }
 
-::slotted(joy-radio) {
+::slotted(joy-radio:not([type="outline"])) {
     margin: var(--joy-core-spacing-4) var(--joy-core-spacing-4) 0 0;
 }
 
