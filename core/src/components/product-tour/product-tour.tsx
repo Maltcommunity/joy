@@ -1,5 +1,5 @@
 import {computePosition, flip, shift, offset, arrow, autoUpdate} from '@floating-ui/dom';
-import {Component, Element, h, Host, Listen, Method, Prop} from '@stencil/core';
+import {Component, Event, EventEmitter, Element, h, Host, Listen, Method, Prop} from '@stencil/core';
 import {Positions} from '../../types';
 import {createBackDrop} from '../../utils';
 import {hideProductTour} from './product-tour-service';
@@ -37,6 +37,8 @@ export class ProductTour {
 
     @Element() host!: HTMLJoyProductTourElement;
 
+    @Event({eventName: 'joy-product-tour-dismiss'}) joyProductTourDismiss!: EventEmitter<HTMLJoyProductTourElement>;
+
     /**
      * @param {HTMLElement} fromElement - Specify which DOM element you want to highlight with your product tour
      */
@@ -66,6 +68,7 @@ export class ProductTour {
         }
 
         hideProductTour();
+        this.joyProductTourDismiss.emit(this.host);
     }
 
     get hostZIndex(): string {
@@ -134,6 +137,7 @@ export class ProductTour {
         this.host.style.display = '';
         this.setHighlightedElementStyle(false);
         hideProductTour();
+        this.joyProductTourDismiss.emit(this.host);
     };
 
     connectedCallback() {

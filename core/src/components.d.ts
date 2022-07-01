@@ -2274,6 +2274,7 @@ declare namespace LocalJSX {
           * Set a max width for your container
          */
         "maxWidth"?: number | undefined;
+        "onJoy-product-tour-dismiss"?: (event: CustomEvent<HTMLJoyProductTourElement>) => void;
         /**
           * Product tour open state
          */
