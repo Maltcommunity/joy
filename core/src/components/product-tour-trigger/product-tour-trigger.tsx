@@ -17,6 +17,8 @@ export class ProductTourTrigger {
     @Prop({reflect: true}) step?: number;
     /** Target of the trigger. If none given, it will be this component. **/
     @Prop() target?: string;
+    /** If `true` the product tour will be displayed immediately **/
+    @Prop() showOnLoad = false;
 
     connectedCallback() {
         if (!this.target) {
@@ -26,6 +28,12 @@ export class ProductTourTrigger {
         const givenTarget = this.host.ownerDocument.querySelector(this.target);
         if (givenTarget) {
             this.targetElement = givenTarget;
+        }
+    }
+
+    async componentWillLoad() {
+        if (this.showOnLoad) {
+            await showProductTour(this.productTour, this.targetElement);
         }
     }
 

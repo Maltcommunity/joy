@@ -678,6 +678,10 @@ export namespace Components {
          */
         "productTour": string;
         /**
+          * If `true` the product tour will be displayed immediately *
+         */
+        "showOnLoad": boolean;
+        /**
           * For dialogs containing joy-indicators with multiple steps, you can specify a step number *
          */
         "step"?: number;
@@ -2293,6 +2297,10 @@ declare namespace LocalJSX {
          */
         "productTour": string;
         /**
+          * If `true` the product tour will be displayed immediately *
+         */
+        "showOnLoad"?: boolean;
+        /**
           * For dialogs containing joy-indicators with multiple steps, you can specify a step number *
          */
         "step"?: number;
@@ -2834,6 +2842,10 @@ declare namespace LocalJSX {
           * It will be applied as the hidden input name attribute (for the actual form)
          */
         "name"?: string;
+        /**
+          * Clicking on the component will fire this customEvent.
+         */
+        "onJoytoggle-change"?: (event: CustomEvent<boolean>) => void;
         /**
           * Clicking on the component will fire this customEvent.
          */

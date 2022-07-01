@@ -16,7 +16,7 @@ category: Webcomponents
 <joy-button variant="primary" id="myProductTourHighlighted">I am the next feature highlighted</joy-button>
 
 <!-- First step product tour -->
-<joy-product-tour id="myProductTour" icon="medal-thumbsup" steps="2" step="1" position="bottom">
+<joy-product-tour open id="myProductTour" icon="medal-thumbsup" steps="2" step="1" position="bottom">
     <joy-tags-list slot="product-tour-preheader">
         <joy-tag variant="primary">I am a tag</joy-tag>
         <joy-tag variant="pricing">I am another tag</joy-tag>
@@ -55,12 +55,12 @@ category: Webcomponents
 
 | Property   | Attribute   | Description                                                        | Type                                     | Default     |
 | ---------- | ----------- | ------------------------------------------------------------------ | ---------------------------------------- | ----------- |
-| `icon`     | `icon`      | Icon name, placed left to the title                                | `string \| undefined`                    | `undefined` |
-| `maxWidth` | `max-width` | Set a max width for your container                                 | `number \| undefined`                    | `500`       |
+| `icon`     | `icon`      | Icon name, placed left to the title                                | `string / undefined`                    | `undefined` |
+| `maxWidth` | `max-width` | Set a max width for your container                                 | `number / undefined`                    | `500`       |
 | `open`     | `open`      | Product tour open state                                            | `boolean`                                | `false`     |
-| `position` | `position`  | Product tour position according to highlighted content             | `"bottom" \| "left" \| "right" \| "top"` | `'right'`   |
-| `step`     | `step`      | If multiple product tour are need, specify the current step number | `number \| undefined`                    | `1`         |
-| `steps`    | `steps`     | If multiple product tour are need, specify the amount              | `number \| undefined`                    | `undefined` |
+| `position` | `position`  | Product tour position according to highlighted content             | `"bottom" / "left" / "right" / "top"` | `'right'`   |
+| `step`     | `step`      | If multiple product tour are need, specify the current step number | `number / undefined`                    | `1`         |
+| `steps`    | `steps`     | If multiple product tour are need, specify the amount              | `number / undefined`                    | `undefined` |
 
 
 ## Methods

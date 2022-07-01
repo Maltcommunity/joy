@@ -1,4 +1,4 @@
-@use 'style/utils';
+@use '../../style/utils';
 
 $_CLASS: '.joy-product-tour';
 
@@ -8,7 +8,7 @@ $_CLASS: '.joy-product-tour';
      * @prop --product-tour-width - product tour max width
      */
     --product-tour-arrow-size: 16px;
-    --product-tour-z-index: 20;
+    --product-tour-z-index: 22;
 
     display: none;
     position: absolute;

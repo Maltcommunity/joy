@@ -1,8 +1,15 @@
 import {E2EPage, newE2EPage} from '@stencil/core/testing';
 
-describe('Dialog e2e', () => {
+async function resetCssTransition(page: E2EPage) {
+    await page.addStyleTag({
+        content: 'joy-backdrop {--backdrop-animation: 0.01ms !important}',
+    });
+}
+
+describe('product-tour e2e', () => {
     it('should render product-tour and navigate to the other, then hide everything', async () => {
         const page: E2EPage = await newE2EPage();
+        await resetCssTransition(page);
 
         await page.setContent(`
             <joy-product-tour-trigger product-tour="myProductTour">
@@ -67,5 +74,35 @@ describe('Dialog e2e', () => {
             const isVisible = await productTour.isVisible();
             expect(isVisible).toBe(false);
         });
+    });
+
+    it('should render product-tour on load, then hide it', async () => {
+        const page: E2EPage = await newE2EPage();
+        await resetCssTransition(page);
+
+        await page.setContent(`
+            <joy-product-tour-trigger product-tour="myProductTour" show-on-load>
+                <joy-button variant="main">I am the first highlighted feature</joy-button>
+            </joy-product-tour-trigger>
+
+            <joy-product-tour id="myProductTour" icon="medal-thumbsup" steps="1" step="1" position="bottom">
+                <div slot="product-tour-header">
+                    I am the product tour title
+                </div>
+
+                <joy-button size="small" variant="ghost" slot="product-tour-dismiss">Got it</joy-button>
+            </joy-product-tour>
+        `);
+
+        const productTour = await page.find('joy-product-tour');
+        const isVisible = await productTour.isVisible();
+        expect(isVisible).toBe(true);
+
+        const dismiss = await page.find('joy-product-tour#myProductTour [slot="product-tour-dismiss"]');
+        await dismiss.click();
+        await page.waitForChanges();
+
+        const isVisibleAfterDismiss = await productTour.isVisible();
+        expect(isVisibleAfterDismiss).toBe(false);
     });
 });
