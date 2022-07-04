@@ -34,6 +34,8 @@ export class ProductTour {
     @Prop({reflect: true}) open = false;
     /** Set a max width for your container */
     @Prop() maxWidth? = 500;
+    /** Product-tour can be hidden by 3 elements by default, dismiss bottom CTA, top-right corner icon, and backdrop. If you don't want the backdrop click to close the product-tour, use "not-backdrop" value.  */
+    @Prop() dismissedBy: 'all' | 'not-backdrop' = 'not-backdrop';
 
     @Element() host!: HTMLJoyProductTourElement;
 
@@ -63,7 +65,7 @@ export class ProductTour {
 
     @Listen('backdropClick', {target: 'document'})
     backdropClick(event: CustomEvent) {
-        if (event.detail !== 'product-tour') {
+        if (event.detail !== 'product-tour' || this.dismissedBy === 'not-backdrop') {
             return;
         }
 
@@ -101,7 +103,9 @@ export class ProductTour {
                 middleware: [
                     offset(30),
                     shift(),
-                    flip(),
+                    flip({
+                        fallbackPlacements: ['bottom', 'top'],
+                    }),
                     arrow({
                         element: this.arrow,
                     }),

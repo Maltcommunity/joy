@@ -467,9 +467,17 @@ export namespace Components {
          */
         "disabled": boolean;
         /**
+          * A hint to the browser for which enter key to display.
+         */
+        "enterkeyhint"?: 'enter' | 'done' | 'go' | 'next' | 'previous' | 'search' | 'send';
+        /**
           * Add an icon on the left side before the value
          */
         "icon"?: string;
+        /**
+          * A hint to the browser for which keyboard to display.
+         */
+        "inputmode"?: 'none' | 'decimal' | 'text' | 'numeric' | 'tel' | 'search' | 'email' | 'url';
         /**
           * Makes the field readonly or not
          */
@@ -499,6 +507,10 @@ export namespace Components {
          */
         "name": string;
         /**
+          * A regular expression that the value is checked against. This attribute applies when the value of the type attribute is `"text"`, `"search"`, `"tel"`, `"url"`, `"email"`, `"date"`, or `"password"`, otherwise it is ignored. When the type attribute is `"date"`, `pattern` will only be used in browsers that do not support the `"date"` input type natively. See https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/date for more information.
+         */
+        "pattern"?: string;
+        /**
           * The input's placeholder text.
          */
         "placeholder": string;
@@ -527,7 +539,7 @@ export namespace Components {
          */
         "step": number | 'any';
         /**
-          * Input types. List is not exhaustive, this component does not deal with checkboxes, radios, files, dates.
+          * Input types. List is not exhaustive, this component does not deal with checkboxes, radios, files, dates. The type=number state is not appropriate for input that happens to only consist of numbers but isn’t strictly speaking a number (credit card number for example)
          */
         "type": 'hidden' | 'text' | 'number' | 'search' | 'email' | 'password' | 'tel';
         /**
@@ -643,6 +655,10 @@ export namespace Components {
     }
     interface JoyProductTour {
         "closeProductTour": () => Promise<void>;
+        /**
+          * Product-tour can be hidden by 3 elements by default, dismiss bottom CTA, top-right corner icon, and backdrop. If you don't want the backdrop click to close the product-tour, use "not-backdrop" value.
+         */
+        "dismissedBy": 'all' | 'not-backdrop';
         /**
           * Icon name, placed left to the title
          */
@@ -2083,9 +2099,17 @@ declare namespace LocalJSX {
          */
         "disabled"?: boolean;
         /**
+          * A hint to the browser for which enter key to display.
+         */
+        "enterkeyhint"?: 'enter' | 'done' | 'go' | 'next' | 'previous' | 'search' | 'send';
+        /**
           * Add an icon on the left side before the value
          */
         "icon"?: string;
+        /**
+          * A hint to the browser for which keyboard to display.
+         */
+        "inputmode"?: 'none' | 'decimal' | 'text' | 'numeric' | 'tel' | 'search' | 'email' | 'url';
         /**
           * Makes the field readonly or not
          */
@@ -2119,6 +2143,10 @@ declare namespace LocalJSX {
          */
         "onValueChange"?: (event: CustomEvent<{element: HTMLJoyInputElement; value?: string}>) => void;
         /**
+          * A regular expression that the value is checked against. This attribute applies when the value of the type attribute is `"text"`, `"search"`, `"tel"`, `"url"`, `"email"`, `"date"`, or `"password"`, otherwise it is ignored. When the type attribute is `"date"`, `pattern` will only be used in browsers that do not support the `"date"` input type natively. See https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/date for more information.
+         */
+        "pattern"?: string;
+        /**
           * The input's placeholder text.
          */
         "placeholder"?: string;
@@ -2143,7 +2171,7 @@ declare namespace LocalJSX {
          */
         "step"?: number | 'any';
         /**
-          * Input types. List is not exhaustive, this component does not deal with checkboxes, radios, files, dates.
+          * Input types. List is not exhaustive, this component does not deal with checkboxes, radios, files, dates. The type=number state is not appropriate for input that happens to only consist of numbers but isn’t strictly speaking a number (credit card number for example)
          */
         "type"?: 'hidden' | 'text' | 'number' | 'search' | 'email' | 'password' | 'tel';
         /**
@@ -2266,6 +2294,10 @@ declare namespace LocalJSX {
         "size"?: 'small' | 'medium' | 'large';
     }
     interface JoyProductTour {
+        /**
+          * Product-tour can be hidden by 3 elements by default, dismiss bottom CTA, top-right corner icon, and backdrop. If you don't want the backdrop click to close the product-tour, use "not-backdrop" value.
+         */
+        "dismissedBy"?: 'all' | 'not-backdrop';
         /**
           * Icon name, placed left to the title
          */

@@ -21,8 +21,9 @@
     "start": "stencil build --watch --serve --config=stencil.dev.config.ts",
     "lint": "eslint",
     "lint:fix": "eslint --ext .js,.ts,.tsx,.vue --fix .",
-    "test": "pnpm test:spec && stencil test --e2e --screenshot --ci",
+    "test": "pnpm test:spec && pnpm test:e2e",
     "test:spec": "jest --config=jest.stencil.config.js --passWithNoTests",
+    "test:e2e": "stencil test --e2e --screenshot --ci",
     "test.watch": "stencil test --spec --e2e --watchAll",
     "generate": "stencil generate"
   },

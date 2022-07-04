@@ -105,4 +105,36 @@ describe('product-tour e2e', () => {
         const isVisibleAfterDismiss = await productTour.isVisible();
         expect(isVisibleAfterDismiss).toBe(false);
     });
+
+    it('should prevent product-tour dismiss when clicking on backdrop', async () => {
+        const page: E2EPage = await newE2EPage();
+        await resetCssTransition(page);
+
+        await page.setContent(`
+            <joy-product-tour-trigger product-tour="myProductTour">
+                <joy-button variant="main">I am the first highlighted feature</joy-button>
+            </joy-product-tour-trigger>
+
+            <joy-product-tour id="myProductTour" icon="medal-thumbsup" steps="1" step="1" position="bottom">
+                <div slot="product-tour-header">
+                    I am the product tour title
+                </div>
+
+                <joy-button size="small" variant="ghost" slot="product-tour-dismiss">Got it</joy-button>
+            </joy-product-tour>
+        `);
+
+        const trigger = await page.find('joy-product-tour-trigger');
+        await trigger.click();
+        await page.waitForChanges();
+
+        const productTour = await page.find('joy-product-tour');
+        expect(await productTour.isVisible()).toBe(true);
+
+        const backdrop = await page.find('joy-backdrop');
+        await backdrop.click();
+        await page.waitForChanges();
+
+        expect(await productTour.isVisible()).toBe(true);
+    });
 });

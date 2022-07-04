@@ -13,8 +13,18 @@ export class Input {
     @Element() host!: HTMLJoyInputElement;
     private input!: HTMLInputElement;
 
-    /** Input types. List is not exhaustive, this component does not deal with checkboxes, radios, files, dates. */
+    /** Input types. List is not exhaustive, this component does not deal with checkboxes, radios, files, dates.
+     * The type=number state is not appropriate for input that happens to only consist of numbers but isn’t strictly speaking a number (credit card number for example)
+     */
     @Prop({mutable: true}) type: 'hidden' | 'text' | 'number' | 'search' | 'email' | 'password' | 'tel' = 'text';
+
+    /** A hint to the browser for which keyboard to display. */
+    @Prop() inputmode?: 'none' | 'decimal' | 'text' | 'numeric' | 'tel' | 'search' | 'email' | 'url';
+
+    /**
+     * A hint to the browser for which enter key to display.
+     */
+    @Prop() enterkeyhint?: 'enter' | 'done' | 'go' | 'next' | 'previous' | 'search' | 'send';
 
     /** Input types. List is not exhaustive, this component does not deal with checkboxes, radios, files, dates. */
     @Prop() name = '';
@@ -68,6 +78,10 @@ export class Input {
 
     /** Add an icon on the left side before the value */
     @Prop() icon?: string;
+    /**
+     * A regular expression that the value is checked against. This attribute applies when the value of the type attribute is `"text"`, `"search"`, `"tel"`, `"url"`, `"email"`, `"date"`, or `"password"`, otherwise it is ignored. When the type attribute is `"date"`, `pattern` will only be used in browsers that do not support the `"date"` input type natively. See https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/date for more information.
+     */
+    @Prop() pattern?: string;
 
     @State() inputType!: string;
     @State() passwordShown = false;
@@ -106,7 +120,7 @@ export class Input {
     };
 
     componentWillLoad() {
-        this.type = this.unit ? 'number' : this.type;
+        this.type = this.unit && !this.inputmode ? 'number' : this.type;
         this.inputType = this.type;
 
         // Here you can add any attribute that you don't want to be reactive
@@ -150,6 +164,7 @@ export class Input {
                             aria-labelledby={this.inputAriaLabel}
                             ref={(el) => (this.input = el as HTMLInputElement)}
                             type={this.inputType}
+                            inputMode={this.inputmode}
                             aria-invalid={this.invalid}
                             onInput={this.updateValue}
                             name={this.name || generatedInputNameAndId(this.host)}
