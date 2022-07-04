@@ -1,4 +1,5 @@
 import {newE2EPage, E2EPage, E2EElement} from '@stencil/core/testing';
+import {createPage} from '../../tests';
 
 describe('counter e2e', () => {
     it('renders', async () => {
@@ -9,11 +10,11 @@ describe('counter e2e', () => {
     });
 
     it('renders a basic counter', async () => {
-        const page: E2EPage = await newE2EPage();
+        const page = await createPage();
         await page.setContent('<joy-counter></joy-counter>');
-        const result = await page.compareScreenshot('Basic counter');
 
-        expect(result).toMatchScreenshot();
+        const screenshot = await page.screenshot();
+        expect(screenshot).toMatchImageSnapshot();
     });
 
     it('renders with a default min value to 0, and no max', async () => {
