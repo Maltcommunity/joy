@@ -38,12 +38,11 @@
                 </ul>
 
                 <div class="pg-main--playground">
-                    <joy-textarea ref="textarea">
+                    <joy-textarea ref="textarea" @keyup="updateSandbox">
                         Type your custom elements HTML here :
                     </joy-textarea>
                     <br/>
                     <joy-button size="small" variant="ghost" @click="reset">Reset</joy-button>
-                    <joy-button size="small" @click="updateSandbox">Preview</joy-button>
                 </div>
             </aside>
             <div class="pg-main--content">
@@ -71,6 +70,7 @@
 <!--
 <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.runtime.common.dev.js"></script>
 -->
+<script src="https://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.min.js"></script>
 
 <script>
     Vue.config.ignoredElements = [
@@ -81,16 +81,31 @@
       data: {
           sandboxHtml: '',
       },
+      mounted() {
+          const queryParams = new URLSearchParams(window.location.search)
+
+          if (queryParams.has('html')) {
+              this.$refs.textarea.value = queryParams.get('html')
+              this.updateSandbox()
+          }
+      },
       methods: {
           reset: function(e) {
-              this.$refs.textarea.value = '';
-              this.sandboxHtml = '';
+              this.$refs.textarea.value = ''
+              this.updateSandbox()
           },
           updateSandbox: function(e) {
               if (this.sandboxHtml !== this.$refs.textarea.value) {
-                  this.sandboxHtml = this.$refs.textarea.value;
+                  this.sandboxHtml = this.$refs.textarea.value
+
+                  _.debounce(this.updateURL, 300)()
               }
           },
+          updateURL() {
+              const queryParams = new URLSearchParams(window.location.search)
+              queryParams.set('html', this.sandboxHtml)
+              history.pushState(null, null, '?' + queryParams.toString());
+          }
       }
   });
 </script>
