@@ -119,6 +119,10 @@ export class Input {
         }
     };
 
+    private hasSlot(): boolean {
+        return !!this.host.textContent || this.host.children.length > 0;
+    }
+
     componentWillLoad() {
         this.type = this.unit && !this.inputmode ? 'number' : this.type;
         this.inputType = this.type;
@@ -144,14 +148,16 @@ export class Input {
                         'joy-input--valid': !this.invalid && !this.disabled,
                     }}
                 >
-                    <joy-label
-                        required={this.required && this.requiredMark}
-                        id={this.inputAriaLabel}
-                        html-for={this.name || generatedInputNameAndId(this.host)}
-                        size={this.labelSize}
-                    >
-                        <slot />
-                    </joy-label>
+                    {this.hasSlot() && (
+                        <joy-label
+                            required={this.required && this.requiredMark}
+                            id={this.inputAriaLabel}
+                            html-for={this.name || generatedInputNameAndId(this.host)}
+                            size={this.labelSize}
+                        >
+                            <slot />
+                        </joy-label>
+                    )}
                     <div
                         class={{
                             'joy-input--wrapper': true,

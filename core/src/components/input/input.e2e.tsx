@@ -10,9 +10,10 @@ describe('Input - e2e', () => {
     it('should display a standard input with placeholder', async () => {
         const page: E2EPage = await newE2EPage();
         await resetCssTransition(page);
+        await page.setContent(`<joy-input />`);
 
-        const basic = await page.compareScreenshot('Basic input');
-        expect(basic).toMatchScreenshot();
+        const element = await page.find('joy-input');
+        expect(element).toHaveAttribute('hydrated');
     });
     it('should display all sizes inputs with placeholder', async () => {
         const page: E2EPage = await newE2EPage();
@@ -34,19 +35,19 @@ describe('Input - e2e', () => {
             <joy-input>Basic input</joy-input>
         `);
 
-        const basic = await page.compareScreenshot('Basic input');
+        const basic = await page.compareScreenshot('Basic input with label');
         expect(basic).toMatchScreenshot();
 
         const cmp = await page.find('joy-input');
         await cmp.callMethod('setFocus');
         await page.waitForChanges();
 
-        const basicFocus = await page.compareScreenshot('Basic input, focus state');
+        const basicFocus = await page.compareScreenshot('Basic input with label, focus state');
         expect(basicFocus).toMatchScreenshot();
 
         cmp.setProperty('value', 'I am the input value');
         await page.waitForChanges();
-        const basicWithValue = await page.compareScreenshot('Basic input, with value');
+        const basicWithValue = await page.compareScreenshot('Basic input with label, with value');
         expect(basicWithValue).toMatchScreenshot();
     });
 
@@ -57,7 +58,7 @@ describe('Input - e2e', () => {
             <joy-input icon="location">Basic input with icon on left</joy-input>
         `);
 
-        const basicWithIcon = await page.compareScreenshot('Basic input with icon on left');
+        const basicWithIcon = await page.compareScreenshot('Basic input with label and icon on left');
         expect(basicWithIcon).toMatchScreenshot();
     });
 
