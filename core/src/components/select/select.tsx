@@ -27,7 +27,7 @@ export class Select {
     /** Mandatory or not. **/
     @Prop() required = false;
     /** Mandatory or not. **/
-    @Prop({reflect: true}) value?: string;
+    @Prop({reflect: true, mutable: true}) value?: string;
     /** Display the required mark or not. Default to true. */
     @Prop() requiredMark = true;
     /** The label text. */
@@ -45,12 +45,18 @@ export class Select {
     }
 
     get translatedOptions(): Option[] {
-        return this.options.map((option) => {
+        let indexOfSelected: number;
+
+        if (this.value) {
+            indexOfSelected = this.options.map((o) => o.value).indexOf(this.value);
+        }
+
+        return this.options.map((option, index) => {
             return {
                 value: option.value,
                 content: option.textContent || '',
                 disabled: option.disabled,
-                selected: option.selected,
+                selected: option.selected || index === indexOfSelected,
             };
         });
     }
@@ -119,7 +125,10 @@ export class Select {
                     >
                         {this.translatedOptions.map((option) => {
                             return (
-                                <option value={option.value || ''} disabled={option.disabled} selected={option.selected}>
+                                <option value={option.value || ''}
+                                        disabled={option.disabled}
+                                        data-selected={option.selected}
+                                        selected={option.selected}>
                                     {option.content}
                                 </option>
                             );

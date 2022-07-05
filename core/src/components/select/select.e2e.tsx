@@ -1,4 +1,4 @@
-import {newE2EPage, E2EPage} from '@stencil/core/testing';
+import {newE2EPage, E2EPage, E2EElement} from '@stencil/core/testing';
 
 async function resetCssTransition(page: E2EPage) {
     await page.addStyleTag({
@@ -24,5 +24,22 @@ describe('select e2e', () => {
         await select.focus();
         const focusSelect = await page.compareScreenshot('Basic select on focus');
         expect(focusSelect).toMatchScreenshot();
+    });
+
+    it('should display a standard select with a given value prop', async () => {
+        const page: E2EPage = await newE2EPage();
+        await page.setContent(`
+            <joy-select value="second" label="I am a label">
+                <joy-option disabled value="">Choose an option</joy-option>
+                <joy-option value="one">One</joy-option>
+                <joy-option value="second">One</joy-option>
+            </joy-select>
+        `);
+        await resetCssTransition(page);
+
+        const select = await page.find('select');
+        const option = await select.find('option[value="second"]');
+        /* As selected attribute is not actually rendered in the DOM, we use a custom attribute */
+        expect(option).toHaveAttribute('data-selected');
     });
 });
