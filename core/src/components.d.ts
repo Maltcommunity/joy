@@ -2470,11 +2470,11 @@ declare namespace LocalJSX {
         /**
           * Custom event that returns the component instance and its actual value. Binded to select native event *
          */
-        "onJoySelectChange"?: (event: CustomEvent<{element: HTMLJoySelectElement; value?: string}>) => void;
+        "onJoy-select-change"?: (event: CustomEvent<{element: HTMLJoySelectElement; value?: string}>) => void;
         /**
           * Generic custom event name. Name is used by any form field *
          */
-        "onValueChange"?: (event: CustomEvent<{element: HTMLJoySelectElement; value?: string}>) => void;
+        "onValue-change"?: (event: CustomEvent<{element: HTMLJoySelectElement; value?: string}>) => void;
         /**
           * Mandatory or not. *
          */

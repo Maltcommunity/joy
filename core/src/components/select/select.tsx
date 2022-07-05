@@ -36,9 +36,9 @@ export class Select {
     @Prop() labelSize: LabelSizes = 'medium';
 
     /** Generic custom event name. Name is used by any form field **/
-    @Event() valueChange!: EventEmitter<{element: HTMLJoySelectElement; value?: string}>;
+    @Event({eventName: 'value-change'}) valueChange!: EventEmitter<{element: HTMLJoySelectElement; value?: string}>;
     /** Custom event that returns the component instance and its actual value. Binded to select native event **/
-    @Event() joySelectChange!: EventEmitter<{element: HTMLJoySelectElement; value?: string}>;
+    @Event({eventName: 'joy-select-change'}) joySelectChange!: EventEmitter<{element: HTMLJoySelectElement; value?: string}>;
 
     get options(): HTMLJoyOptionElement[] {
         return Array.from(this.host.querySelectorAll('joy-option'));
