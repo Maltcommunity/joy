@@ -32,7 +32,7 @@ stages:
       - ${CONTEXT_DIR}/dist/
       - ${CONTEXT_DIR}/README.md
       - ${CONTEXT_DIR}/package.json
-      - ${CONTEXT_DIR}/screenshot/images
+      - ${CONTEXT_DIR}/screenshot
   rules:
     - if: $CI_PIPELINE_SOURCE == "web"
     - if: $CI_PIPELINE_SOURCE == "push"
