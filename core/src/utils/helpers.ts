@@ -73,7 +73,7 @@ export function preventBodyScroll(prevent: boolean): void {
  * @param {HTMLElement} target - where the component is injected. Default to body root.
  * @return {Promise<void>}
  */
-export function createBackDrop(origin: BackDropOrigin, target?: HTMLElement): Promise<void | CustomElementConstructor> {
+export function createBackDrop(origin: BackDropOrigin, target?: HTMLElement): Promise<HTMLJoyBackdropElement> {
     let dest;
     !target ? (dest = document.body) : (dest = target);
 
@@ -83,7 +83,7 @@ export function createBackDrop(origin: BackDropOrigin, target?: HTMLElement): Pr
         dest.appendChild(backdrop);
     }
 
-    return window.customElements.whenDefined('joy-backdrop');
+    return document.querySelector('joy-backdrop')!.componentOnReady();
 }
 
 /**

@@ -132,7 +132,7 @@ export class Dialog {
         }
     }
 
-    async componentDidLoad() {
+    async componentWillLoad() {
         if (this.open) {
             await this.openDialog();
         }
@@ -188,16 +188,21 @@ export class Dialog {
                                 'joy-dialog--footer-filled': !!this.cancelText || !!this.confirmText,
                             }}
                         >
-                            {this.cancelText && (
-                                <joy-button onClick={() => this.onClose()} variant="ghost" size={this.buttonSize}>
-                                    {this.cancelText}
-                                </joy-button>
-                            )}
-                            {this.confirmText && (
-                                <joy-button onClick={this.onConfirm} variant="main" size={this.buttonSize}>
-                                    {this.confirmText}
-                                </joy-button>
-                            )}
+                            <slot name="dialog-cancel">
+                                {this.cancelText && (
+                                    <joy-button onClick={() => this.onClose()} variant="ghost" size={this.buttonSize}>
+                                        {this.cancelText}
+                                    </joy-button>
+                                )}
+                            </slot>
+
+                            <slot name="dialog-confirm">
+                                {this.confirmText && (
+                                    <joy-button onClick={this.onConfirm} variant="main" size={this.buttonSize}>
+                                        {this.confirmText}
+                                    </joy-button>
+                                )}
+                            </slot>
                         </div>
                         <div
                             class={{
