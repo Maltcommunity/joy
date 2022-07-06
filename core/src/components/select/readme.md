@@ -72,10 +72,10 @@ category: Webcomponents
 
 ## Events
 
-| Event             | Description                                                                                            | Type                                                                           |
-| ----------------- | ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
-| `joySelectChange` | Custom event that returns the component instance and its actual value. Binded to select native event * | `CustomEvent<{ element: HTMLJoySelectElement; value?: string \| undefined; }>` |
-| `valueChange`     | Generic custom event name. Name is used by any form field *                                            | `CustomEvent<{ element: HTMLJoySelectElement; value?: string \| undefined; }>` |
+| Event               | Description                                                                                            | Type                                                                           |
+| ------------------- | ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
+| `joy-select-change` | Custom event that returns the component instance and its actual value. Binded to select native event * | `CustomEvent<{ element: HTMLJoySelectElement; value?: string \| undefined; }>` |
+| `value-change`      | Generic custom event name. Name is used by any form field *                                            | `CustomEvent<{ element: HTMLJoySelectElement; value?: string \| undefined; }>` |
 
 
 ## Dependencies

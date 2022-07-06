@@ -44,9 +44,10 @@ category: Webcomponents
 
 ## Events
 
-| Event         | Description                                           | Type                   |
-| ------------- | ----------------------------------------------------- | ---------------------- |
-| `valueChange` | Clicking on the component will fire this customEvent. | `CustomEvent<boolean>` |
+| Event              | Description                                           | Type                   |
+| ------------------ | ----------------------------------------------------- | ---------------------- |
+| `joytoggle-change` | Clicking on the component will fire this customEvent. | `CustomEvent<boolean>` |
+| `valueChange`      | Clicking on the component will fire this customEvent. | `CustomEvent<boolean>` |
 
 
 ## Methods

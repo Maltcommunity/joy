@@ -27,6 +27,7 @@ stages:
     - cd ${CONTEXT_DIR}
     - pnpm install
     - pnpm build
+    - git restore .stencil/
   artifacts:
     paths:
       - ${CONTEXT_DIR}/dist/

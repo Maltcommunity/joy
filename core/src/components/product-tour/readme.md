@@ -53,14 +53,22 @@ category: Webcomponents
 
 ## Properties
 
-| Property   | Attribute   | Description                                                        | Type                                     | Default     |
-| ---------- | ----------- | ------------------------------------------------------------------ | ---------------------------------------- | ----------- |
-| `icon`     | `icon`      | Icon name, placed left to the title                                | `string / undefined`                    | `undefined` |
-| `maxWidth` | `max-width` | Set a max width for your container                                 | `number / undefined`                    | `500`       |
-| `open`     | `open`      | Product tour open state                                            | `boolean`                                | `false`     |
-| `position` | `position`  | Product tour position according to highlighted content             | `"bottom" / "left" / "right" / "top"` | `'right'`   |
-| `step`     | `step`      | If multiple product tour are need, specify the current step number | `number / undefined`                    | `1`         |
-| `steps`    | `steps`     | If multiple product tour are need, specify the amount              | `number / undefined`                    | `undefined` |
+| Property      | Attribute      | Description                                                                                                                                                                                             | Type                                     | Default          |
+| ------------- | -------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------- | ---------------- |
+| `dismissedBy` | `dismissed-by` | Product-tour can be hidden by 3 elements by default, dismiss bottom CTA, top-right corner icon, and backdrop. If you don't want the backdrop click to close the product-tour, use "not-backdrop" value. | `"all" \| "not-backdrop"`                | `'not-backdrop'` |
+| `icon`        | `icon`         | Icon name, placed left to the title                                                                                                                                                                     | `string \| undefined`                    | `undefined`      |
+| `maxWidth`    | `max-width`    | Set a max width for your container                                                                                                                                                                      | `number \| undefined`                    | `500`            |
+| `open`        | `open`         | Product tour open state                                                                                                                                                                                 | `boolean`                                | `false`          |
+| `position`    | `position`     | Product tour position according to highlighted content                                                                                                                                                  | `"bottom" \| "left" \| "right" \| "top"` | `'right'`        |
+| `step`        | `step`         | If multiple product tour are need, specify the current step number                                                                                                                                      | `number \| undefined`                    | `1`              |
+| `steps`       | `steps`        | If multiple product tour are need, specify the amount                                                                                                                                                   | `number \| undefined`                    | `undefined`      |
+
+
+## Events
+
+| Event                      | Description | Type                                     |
+| -------------------------- | ----------- | ---------------------------------------- |
+| `joy-product-tour-dismiss` |             | `CustomEvent<HTMLJoyProductTourElement>` |
 
 
 ## Methods
