@@ -80,7 +80,7 @@ describe('snackbar e2e', () => {
 
     it('should destroy the snackbar when clicking on the cross icon', async () => {
         const page = await newE2EPage();
-        await page.setContent('<joy-snackbar level="error"></joy-snackbar>');
+        await page.setContent('<joy-snackbar level="error" closable="true"></joy-snackbar>');
 
         const close = await page.find('joy-snackbar >>> joy-icon-button');
 
