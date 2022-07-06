@@ -19,7 +19,6 @@ stages:
       - runner_system_failure
       - stuck_or_timeout_failure
 
-
 .build:
   stage: build
   script:
@@ -27,13 +26,11 @@ stages:
     - cd ${CONTEXT_DIR}
     - pnpm install
     - pnpm build
-    - git restore .stencil/
   artifacts:
     paths:
       - ${CONTEXT_DIR}/dist/
       - ${CONTEXT_DIR}/README.md
       - ${CONTEXT_DIR}/package.json
-      - ${CONTEXT_DIR}/screenshot
   rules:
     - if: $CI_PIPELINE_SOURCE == "web"
     - if: $CI_PIPELINE_SOURCE == "push"
@@ -50,9 +47,24 @@ build-layout:
 build-core:
   extends:
     - .common
-    - .build
   variables:
     CONTEXT_DIR: core
+  stage: build
+  script:
+    - source /builder/.bashrc
+    - cd ${CONTEXT_DIR}
+    - pnpm install
+    - pnpm build
+    - git restore .stencil/
+  artifacts:
+    paths:
+      - ${CONTEXT_DIR}/dist/
+      - ${CONTEXT_DIR}/README.md
+      - ${CONTEXT_DIR}/package.json
+      - ${CONTEXT_DIR}/screenshot
+  rules:
+    - if: $CI_PIPELINE_SOURCE == "web"
+    - if: $CI_PIPELINE_SOURCE == "push"
 
 build-tokens:
   extends:
