@@ -166,11 +166,16 @@ export class Input {
                         }}
                     >
                         <input
+                            class={{
+                                'joy-input--field-disabled': this.disabled,
+                                'joy-input--field-invalid': this.invalid,
+                            }}
                             id={this.name || generatedInputNameAndId(this.host)}
                             aria-labelledby={this.inputAriaLabel}
                             ref={(el) => (this.input = el as HTMLInputElement)}
                             type={this.inputType}
                             inputMode={this.inputmode}
+                            enterKeyHint={this.enterkeyhint}
                             aria-invalid={this.invalid}
                             onInput={this.updateValue}
                             name={this.name || generatedInputNameAndId(this.host)}
@@ -185,12 +190,9 @@ export class Input {
                             onFocus={this.onFocus}
                             onBlur={this.onBlur}
                             required={this.required}
+                            pattern={this.pattern}
                             {...this.inheritedAttributes}
                             value={this.value}
-                            class={{
-                                'joy-input--field-disabled': this.disabled,
-                                'joy-input--field-invalid': this.invalid,
-                            }}
                         />
                         {this.icon && <joy-icon role="img" class="joy-input--decorative-icon" name={this.icon} />}
                         {this.passwordIcon()}
