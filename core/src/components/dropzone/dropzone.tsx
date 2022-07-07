@@ -166,6 +166,7 @@ export class Dropzone {
     }
 
     private checkFileAndTriggerUpdate(files: File[]) {
+        this.files = [];
         const validations = Array.from(files).map((file) => this.isFileValid(file));
         validations.forEach((validation, index) => {
             if (validation.valid) {
