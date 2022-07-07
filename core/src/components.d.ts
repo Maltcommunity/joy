@@ -354,6 +354,74 @@ export namespace Components {
          */
         "value": string;
     }
+    interface JoyDropzone {
+        /**
+          * Add accepted file formats
+         */
+        "accept": string;
+        /**
+          * Add CTA Cancellation Text
+         */
+        "buttonCancelText": string;
+        /**
+          * Add CTA Upload Text
+         */
+        "buttonText": string;
+        /**
+          * Add description Text
+         */
+        "descriptionStrongText": string;
+        /**
+          * Add description Text
+         */
+        "descriptionText": string;
+        /**
+          * Makes the dropzone disabled or not
+         */
+        "disabled": boolean;
+        /**
+          * Add custom error message when uploaded file format is not accepted
+         */
+        "errorTextFormat": string;
+        /**
+          * Add custom error message when uploaded file size is bigger than maxSize
+         */
+        "errorTextMaxSize": string;
+        /**
+          * set a unique id for the input file
+         */
+        "idDropzone"?: string;
+        /**
+          * Makes the dropzone invalid or not
+         */
+        "invalid": boolean;
+        /**
+          * set In progress state
+          * @param loading
+          * @return
+         */
+        "isLoading": (loading: boolean) => Promise<void>;
+        /**
+          * Add legend/specification text
+         */
+        "legend"?: string | null;
+        /**
+          * Make the dropzone in progress state or not
+         */
+        "loading": boolean;
+        /**
+          * set MaxSize (Megabytes), default to 32 MB
+         */
+        "maxSize": number;
+        /**
+          * Enable multiple files upload
+         */
+        "multiple": boolean;
+        /**
+          * Add Uploading Text
+         */
+        "uploadingText": string;
+    }
     interface JoyFormError {
         /**
           * The error text. Plain string required as any HTML injected will be escaped
@@ -1370,6 +1438,12 @@ declare global {
         prototype: HTMLJoyDropdownElement;
         new (): HTMLJoyDropdownElement;
     };
+    interface HTMLJoyDropzoneElement extends Components.JoyDropzone, HTMLStencilElement {
+    }
+    var HTMLJoyDropzoneElement: {
+        prototype: HTMLJoyDropzoneElement;
+        new (): HTMLJoyDropzoneElement;
+    };
     interface HTMLJoyFormErrorElement extends Components.JoyFormError, HTMLStencilElement {
     }
     var HTMLJoyFormErrorElement: {
@@ -1613,6 +1687,7 @@ declare global {
         "joy-dialog-trigger": HTMLJoyDialogTriggerElement;
         "joy-divider-cta": HTMLJoyDividerCtaElement;
         "joy-dropdown": HTMLJoyDropdownElement;
+        "joy-dropzone": HTMLJoyDropzoneElement;
         "joy-form-error": HTMLJoyFormErrorElement;
         "joy-highlight": HTMLJoyHighlightElement;
         "joy-icon": HTMLJoyIconElement;
@@ -1996,6 +2071,72 @@ declare namespace LocalJSX {
           * Select actual value. *
          */
         "value"?: string;
+    }
+    interface JoyDropzone {
+        /**
+          * Add accepted file formats
+         */
+        "accept"?: string;
+        /**
+          * Add CTA Cancellation Text
+         */
+        "buttonCancelText"?: string;
+        /**
+          * Add CTA Upload Text
+         */
+        "buttonText"?: string;
+        /**
+          * Add description Text
+         */
+        "descriptionStrongText"?: string;
+        /**
+          * Add description Text
+         */
+        "descriptionText"?: string;
+        /**
+          * Makes the dropzone disabled or not
+         */
+        "disabled"?: boolean;
+        /**
+          * Add custom error message when uploaded file format is not accepted
+         */
+        "errorTextFormat"?: string;
+        /**
+          * Add custom error message when uploaded file size is bigger than maxSize
+         */
+        "errorTextMaxSize"?: string;
+        /**
+          * set a unique id for the input file
+         */
+        "idDropzone"?: string;
+        /**
+          * Makes the dropzone invalid or not
+         */
+        "invalid"?: boolean;
+        /**
+          * Add legend/specification text
+         */
+        "legend"?: string | null;
+        /**
+          * Make the dropzone in progress state or not
+         */
+        "loading"?: boolean;
+        /**
+          * set MaxSize (Megabytes), default to 32 MB
+         */
+        "maxSize"?: number;
+        /**
+          * Enable multiple files upload
+         */
+        "multiple"?: boolean;
+        "onJoy-dropzone-cancel-upload-file"?: (event: CustomEvent<File[] | null>) => void;
+        "onJoy-dropzone-invalidate-file"?: (event: CustomEvent<File[] | null>) => void;
+        "onJoy-dropzone-remove-file"?: (event: CustomEvent<File | null>) => void;
+        "onJoy-dropzone-validate-file"?: (event: CustomEvent<File[] | null>) => void;
+        /**
+          * Add Uploading Text
+         */
+        "uploadingText"?: string;
     }
     interface JoyFormError {
         /**
@@ -2977,6 +3118,7 @@ declare namespace LocalJSX {
         "joy-dialog-trigger": JoyDialogTrigger;
         "joy-divider-cta": JoyDividerCta;
         "joy-dropdown": JoyDropdown;
+        "joy-dropzone": JoyDropzone;
         "joy-form-error": JoyFormError;
         "joy-highlight": JoyHighlight;
         "joy-icon": JoyIcon;
@@ -3035,6 +3177,7 @@ declare module "@stencil/core" {
             "joy-dialog-trigger": LocalJSX.JoyDialogTrigger & JSXBase.HTMLAttributes<HTMLJoyDialogTriggerElement>;
             "joy-divider-cta": LocalJSX.JoyDividerCta & JSXBase.HTMLAttributes<HTMLJoyDividerCtaElement>;
             "joy-dropdown": LocalJSX.JoyDropdown & JSXBase.HTMLAttributes<HTMLJoyDropdownElement>;
+            "joy-dropzone": LocalJSX.JoyDropzone & JSXBase.HTMLAttributes<HTMLJoyDropzoneElement>;
             "joy-form-error": LocalJSX.JoyFormError & JSXBase.HTMLAttributes<HTMLJoyFormErrorElement>;
             "joy-highlight": LocalJSX.JoyHighlight & JSXBase.HTMLAttributes<HTMLJoyHighlightElement>;
             "joy-icon": LocalJSX.JoyIcon & JSXBase.HTMLAttributes<HTMLJoyIconElement>;

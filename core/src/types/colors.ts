@@ -1,6 +1,7 @@
 export type BrandColors = 'blue' | 'pink';
+export type FunctionalColors = 'success' | 'error' | 'warning' | 'info';
 export type ProductColors = 'teal' | 'red' | 'yellow' | 'turquoise' | 'grey';
-export type ProductColorsExtended = ProductColors | 'white';
+export type ProductColorsExtended = ProductColors | FunctionalColors | 'white';
 export type Colors = BrandColors | ProductColorsExtended;
 
 /**

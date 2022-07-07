@@ -1,0 +1,89 @@
+.joy-dropzone {
+    font-family: var(--joy-font-family);
+    font-size: var(--joy-font-size-s);
+
+    label {
+        cursor: pointer;
+        width: 100%;
+    }
+
+    input {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0,0,0,0);
+        border: 0;
+    }
+
+    &__area {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        background-color: white;
+        border: var(--joy-form-border-width) dashed var(--joy-color-secondary-50);
+        padding: var(--joy-core-spacing-8);
+        border-radius: var(--joy-core-radius-3);
+        transition: all 0.3s ease;
+        font-size: var(--joy-font-size-m);
+        color: var(--joy-color-text-body);
+        width: 100%;
+        cursor: pointer;
+    }
+
+    &__description {
+        margin-bottom: var(--joy-core-spacing-4);
+    }
+
+    &__info {
+        margin-top: var(--joy-core-spacing-2);
+        font-size: var(--joy-font-size-s);
+    }
+
+    &__item {
+        display: flex;
+        justify-content: center;
+        align-items: baseline;
+        gap: var(--joy-core-spacing-2);
+        margin-top: var(--joy-core-spacing-4);
+
+        span {
+            font-weight: var(--joy-font-weight-bold);
+            color: var(--joy-color-secondary-50);
+        }
+    }
+
+    :hover,
+    &--focusing {
+        .joy-dropzone__area {
+            border-color: var(--joy-color-secondary-30);
+        }
+    }
+
+    &--invalid {
+        .joy-dropzone__area {
+            border-color: var(--joy-color-error-50);
+        }
+    }
+
+    &--valid {
+        .joy-dropzone__area {
+            border-color: var(--joy-color-success-50);
+        }
+    }
+
+    &--disabled {
+        label {
+            cursor: not-allowed;
+        }
+        .joy-dropzone__area {
+            cursor: not-allowed;
+            border-color: var(--joy-color-neutral-3);
+            background: var(--joy-color-neutral-2);
+        }
+    }
+}
