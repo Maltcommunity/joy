@@ -105,39 +105,45 @@ export class Dropzone {
                             disabled={this.disabled}
                             tabindex="-1"
                         />
-                        <label
-                            htmlFor={this.idDropzone || generatedInputNameAndId(this.host)}
-                            class={{
-                                dropzone: true,
-                                dragover: this.dragover,
-                                errored: this.fileInvalid,
-                            }}
-                        >
-                            {this.loading && (
-                                <div>
+                        {!this.loading && (
+                            <label
+                                htmlFor={this.idDropzone || generatedInputNameAndId(this.host)}
+                                class={{
+                                    dropzone: true,
+                                    dragover: this.dragover,
+                                    errored: this.fileInvalid,
+                                }}
+                            >
+                                {!this.files.length && (
+                                    <div>
+                                        <p class="joy-dropzone__description">{this.descriptionText}</p>
+                                        <joy-button variant="primary" icon="add" disabled={this.disabled}
+                                                    onClick={this.handleClickCTA}>
+                                            {this.buttonText}
+                                        </joy-button>
+                                    </div>
+                                )}
+                                {!!this.files.length && <joy-icon name="check" size="small" color="success"/>}
+                                {this.files.map((file: File) => (
+                                    <div class="joy-dropzone__item">
+                                        <span>{file.name} </span>
+                                        <joy-icon name="trash" color="grey"
+                                                  onClick={(event) => this.removeFile(event, file)}></joy-icon>
+                                    </div>
+                                ))}
+                            </label>
+                        )}
+                        {this.loading && (
+                            <div>
+                                <div class="joy-dropzone__loader">
                                     <joy-spinner color="teal"></joy-spinner>
-                                    <p>{this.uploadingText}</p>
-                                    <button type="button" onClick={this.cancelUpload}>
-                                        {this.buttonCancelText}
-                                    </button>
                                 </div>
-                            )}
-                            {!this.files.length && (
-                                <div>
-                                    <p class="joy-dropzone__description">{this.descriptionText}</p>
-                                    <joy-button variant="primary" icon="add" disabled={this.disabled} onClick={this.handleClickCTA}>
-                                        {this.buttonText}
-                                    </joy-button>
-                                </div>
-                            )}
-                            {!!this.files.length && <joy-icon name="check" size="small" color="success" />}
-                            {this.files.map((file: File) => (
-                                <div class="joy-dropzone__item">
-                                    <span>{file.name} </span>
-                                    <joy-icon name="trash" color="grey" onClick={(event) => this.removeFile(event, file)}></joy-icon>
-                                </div>
-                            ))}
-                        </label>
+                                <p class="joy-dropzone__description">{this.uploadingText}</p>
+                                <joy-button type="button" onClick={this.cancelUpload} variant="ghost">
+                                    {this.buttonCancelText}
+                                </joy-button>
+                            </div>
+                        )}
                     </div>
                     {this.legend && <div class="joy-dropzone__info">{this.legend}</div>}
                     {this.errorMessages.map((errorMessage) => (

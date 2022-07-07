@@ -1,4 +1,5 @@
 .joy-dropzone {
+    --spinner-size: 20px;
     font-family: var(--joy-font-family);
     font-size: var(--joy-font-size-s);
 
@@ -42,6 +43,14 @@
     &__info {
         margin-top: var(--joy-core-spacing-2);
         font-size: var(--joy-font-size-s);
+    }
+
+    &__loader {
+        position: relative;
+        left: calc(var(--spinner-size) / -2);
+        height: var(--spinner-size);
+        width: var(--spinner-size);
+        margin: 0 auto var(--joy-core-spacing-4);
     }
 
     &__item {
