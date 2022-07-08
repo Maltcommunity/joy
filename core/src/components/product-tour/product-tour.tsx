@@ -4,6 +4,14 @@ import {Positions} from '../../types';
 import {createBackDrop} from '../../utils';
 import {hideProductTour} from './product-tour-service';
 
+
+/**
+ * @slot product-tour-preheader - If you need to insert specific content before the actual title
+ * @slot product-tour-header - The product-tour main title
+ * @slot product-tour-content - The product-tour main content
+ * @slot product-tour-dismiss - Product-tour CTA made to cancel component. Can be used multiple times if needed
+ * @slot product-tour-next - Product-tour CTA made to trigger another product-tour instance. Use joy-product-tour-trigger component for this.
+ */
 @Component({
     tag: 'joy-product-tour',
     styleUrl: 'product-tour.scss',

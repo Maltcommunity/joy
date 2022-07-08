@@ -94,6 +94,17 @@ Type: `Promise<void>`
 
 
 
+## Slots
+
+| Slot                       | Description                                                                                                      |
+| -------------------------- | ---------------------------------------------------------------------------------------------------------------- |
+| `"product-tour-content"`   | The product-tour main content                                                                                    |
+| `"product-tour-dismiss"`   | Product-tour CTA made to cancel component. Can be used multiple times if needed                                  |
+| `"product-tour-header"`    | The product-tour main title                                                                                      |
+| `"product-tour-next"`      | Product-tour CTA made to trigger another product-tour instance. Use joy-product-tour-trigger component for this. |
+| `"product-tour-preheader"` | If you need to insert specific content before the actual title                                                   |
+
+
 ## CSS Custom Properties
 
 | Name                                            | Description |

@@ -157,6 +157,17 @@ Type: `Promise<void>`
 
 
 
+## Slots
+
+| Slot                 | Description                                                                                      |
+| -------------------- | ------------------------------------------------------------------------------------------------ |
+| `"dialog-body"`      | The dialog main content                                                                          |
+| `"dialog-cancel"`    | If you need to customize the cancel CTA (with any attribute for a specific need), use this slot  |
+| `"dialog-confirm"`   | If you need to customize the confirm CTA (with any attribute for a specific need), use this slot |
+| `"dialog-header"`    | The dialog title                                                                                 |
+| `"dialog-subheader"` | The dialog subtitle                                                                              |
+
+
 ## Dependencies
 
 ### Depends on

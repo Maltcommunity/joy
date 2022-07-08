@@ -3,6 +3,13 @@ import {ButtonSizes, DialogSizes} from '../../types';
 import {createBackDrop, destroyBackdrop, preventBodyScroll} from '../../utils';
 import {hideAllDialogs} from './dialog-service';
 
+/**
+ * @slot dialog-header - The dialog title
+ * @slot dialog-subheader - The dialog subtitle
+ * @slot dialog-body - The dialog main content
+ * @slot dialog-cancel - If you need to customize the cancel CTA (with any attribute for a specific need), use this slot
+ * @slot dialog-confirm - If you need to customize the confirm CTA (with any attribute for a specific need), use this slot
+ */
 @Component({
     tag: 'joy-dialog',
     styleUrl: 'style/dialog.scss',
