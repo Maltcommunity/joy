@@ -507,6 +507,10 @@ export namespace Components {
          */
         "name": string;
         /**
+          * Inject the right wording if your field is not required. the "-" separator is already handled internally. *
+         */
+        "optionalLabel"?: string;
+        /**
           * A regular expression that the value is checked against. This attribute applies when the value of the type attribute is `"text"`, `"search"`, `"tel"`, `"url"`, `"email"`, `"date"`, or `"password"`, otherwise it is ignored. When the type attribute is `"date"`, `pattern` will only be used in browsers that do not support the `"date"` input type natively. See https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/date for more information.
          */
         "pattern"?: string;
@@ -523,7 +527,7 @@ export namespace Components {
          */
         "required": boolean;
         /**
-          * Display the required mark or not. Default to true.
+          * Display the required mark or not. Default to false.
          */
         "requiredMark": boolean;
         /**
@@ -556,6 +560,10 @@ export namespace Components {
           * for attribute to associate label to an input *
          */
         "htmlFor"?: string;
+        /**
+          * Inject the right wording if your field is not required. the "-" separator is already handled internally. *
+         */
+        "optionalLabel"?: string;
         /**
           * Required status of parent form field *
          */
@@ -824,7 +832,7 @@ export namespace Components {
          */
         "required": boolean;
         /**
-          * Display the required mark or not. Default to true.
+          * Display the required mark or not. Default to false.
          */
         "requiredMark": boolean;
         /**
@@ -1153,7 +1161,7 @@ export namespace Components {
          */
         "required": boolean;
         /**
-          * Display the required mark or not. Default to true.
+          * Display the required mark or not. Default to false.
          */
         "requiredMark": boolean;
         /**
@@ -2143,6 +2151,10 @@ declare namespace LocalJSX {
          */
         "onValueChange"?: (event: CustomEvent<{element: HTMLJoyInputElement; value?: string}>) => void;
         /**
+          * Inject the right wording if your field is not required. the "-" separator is already handled internally. *
+         */
+        "optionalLabel"?: string;
+        /**
           * A regular expression that the value is checked against. This attribute applies when the value of the type attribute is `"text"`, `"search"`, `"tel"`, `"url"`, `"email"`, `"date"`, or `"password"`, otherwise it is ignored. When the type attribute is `"date"`, `pattern` will only be used in browsers that do not support the `"date"` input type natively. See https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/date for more information.
          */
         "pattern"?: string;
@@ -2159,7 +2171,7 @@ declare namespace LocalJSX {
          */
         "required"?: boolean;
         /**
-          * Display the required mark or not. Default to true.
+          * Display the required mark or not. Default to false.
          */
         "requiredMark"?: boolean;
         /**
@@ -2188,6 +2200,10 @@ declare namespace LocalJSX {
           * for attribute to associate label to an input *
          */
         "htmlFor"?: string;
+        /**
+          * Inject the right wording if your field is not required. the "-" separator is already handled internally. *
+         */
+        "optionalLabel"?: string;
         /**
           * Required status of parent form field *
          */
@@ -2480,7 +2496,7 @@ declare namespace LocalJSX {
          */
         "required"?: boolean;
         /**
-          * Display the required mark or not. Default to true.
+          * Display the required mark or not. Default to false.
          */
         "requiredMark"?: boolean;
         /**
@@ -2828,7 +2844,7 @@ declare namespace LocalJSX {
          */
         "required"?: boolean;
         /**
-          * Display the required mark or not. Default to true.
+          * Display the required mark or not. Default to false.
          */
         "requiredMark"?: boolean;
         /**

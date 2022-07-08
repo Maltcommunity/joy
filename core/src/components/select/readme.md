@@ -66,7 +66,7 @@ category: Webcomponents
 | `labelSize`      | `label-size`      | The label input's size.                             | `"large" \| "medium"` | `'medium'`            |
 | `name`           | `name`            | Select name attribute to be found by parent form. * | `string`              | `'dropdown'`          |
 | `required`       | `required`        | Mandatory or not. *                                 | `boolean`             | `false`               |
-| `requiredMark`   | `required-mark`   | Display the required mark or not. Default to true.  | `boolean`             | `true`                |
+| `requiredMark`   | `required-mark`   | Display the required mark or not. Default to false. | `boolean`             | `false`               |
 | `value`          | `value`           | Mandatory or not. *                                 | `string \| undefined` | `undefined`           |
 
 
