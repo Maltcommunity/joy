@@ -59,7 +59,7 @@ export const config: Config = {
         {components: ['joy-tooltip', 'joy-tooltip-trigger']},
     ],
     hashFileNames: false,
-    enableCache: true,
+    enableCache: false,
     buildEs5: 'prod',
     sourceMap: true,
     srcIndexHtml: './index.html',

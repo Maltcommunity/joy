@@ -1,20 +1,19 @@
 :host {
     /**
-     * @prop --joy-color-text-title: color of the label
-     * @prop --joy-font-size-m: font-size of the label
+     * @prop --label-font-size: font-size of the label
      */
-    --label-color: var(--joy-color-text-title);
     --label-font-size: var(--joy-font-size-m);
+    --label-optional-color: var(--joy-color-neutral-4);
 
     font-weight: bold;
     line-height: var(--joy-line-height-large);
 
     display: block;
     width: 100%;
-    color: var(--label-color);
     margin-bottom: var(--joy-core-spacing-2);
     font-size: var(--label-font-size);
     font-family: var(--joy-font-family);
+    color: var(--joy-color-text-title);
 }
 
 :host([size="small"]){
@@ -33,4 +32,10 @@
     margin-left: var(--joy-core-spacing-1);
     font-size: var(--label-font-size);
     line-height: 1;
+}
+
+.joy-label-optional {
+    font-size: var(--joy-font-size-s);
+    font-style: italic;
+    color: var(--joy-color-neutral-4);
 }

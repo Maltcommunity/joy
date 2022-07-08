@@ -102,8 +102,8 @@ export class JoyTextarea implements ComponentInterface {
      * If `true`, the user must fill in a value before submitting a form.
      */
     @Prop() required = false;
-    /** Display the required mark or not. Default to true. */
-    @Prop() requiredMark = true;
+    /** Display the required mark or not. Default to false. */
+    @Prop() requiredMark = false;
 
     /**
      * If `true`, the element will have its spelling and grammar checked.

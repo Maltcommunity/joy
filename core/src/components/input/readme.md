@@ -14,7 +14,7 @@ category: Webcomponents
 ## Types
 
 ```ui_example
-<joy-input value="I am a value" name="my-stencil-input">My basic input</joy-input>
+<joy-input optionnal-label="optional" value="I am a value" name="my-stencil-input">My basic input</joy-input>
 
 <joy-input icon="location" value="New York" name="my-location-input">My basic input with icon</joy-input>
 

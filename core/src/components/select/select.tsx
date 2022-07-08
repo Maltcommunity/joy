@@ -28,8 +28,8 @@ export class Select {
     @Prop() required = false;
     /** Mandatory or not. **/
     @Prop({reflect: true, mutable: true}) value?: string;
-    /** Display the required mark or not. Default to true. */
-    @Prop() requiredMark = true;
+    /** Display the required mark or not. Default to false. */
+    @Prop() requiredMark = false;
     /** The label text. */
     @Prop() label?: string;
     /** The label input's size. */

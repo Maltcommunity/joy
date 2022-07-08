@@ -46,8 +46,10 @@ export class Input {
 
     /** Makes the field required */
     @Prop() required = false;
-    /** Display the required mark or not. Default to true. */
-    @Prop() requiredMark = true;
+    /** Display the required mark or not. Default to false. */
+    @Prop() requiredMark = false;
+    /** Inject the right wording if your field is not required. the "-" separator is already handled internally. **/
+    @Prop() optionalLabel?: string;
 
     /** Max character number. https://developer.mozilla.org/fr/docs/Web/HTML/Attributes/maxlength */
     @Prop() maxlength?: number;
@@ -152,6 +154,7 @@ export class Input {
                         <joy-label
                             required={this.required && this.requiredMark}
                             id={this.inputAriaLabel}
+                            optional-label={this.optionalLabel}
                             html-for={this.name || generatedInputNameAndId(this.host)}
                             size={this.labelSize}
                         >
