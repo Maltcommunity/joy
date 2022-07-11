@@ -73,13 +73,13 @@ $_mobile-cta_breakpoint: 400px;
     }
 }
 
-#{$CLASS}--wrapper-open {
+#{$CLASS}--wrapper-open:not(#{$CLASS}--wrapper-drawer) {
     #{$CLASS} {
         animation: dialogTransitionStart var(--dialog-transition-duration) var(--joy-transition-timing-function) forwards;
     }
 }
 
-#{$CLASS}--wrapper-hiding {
+#{$CLASS}--wrapper-hiding:not(#{$CLASS}--wrapper-drawer) {
     #{$CLASS} {
         animation: dialogTransitionEnd var(--dialog-transition-duration) var(--joy-transition-timing-function) forwards;
     }

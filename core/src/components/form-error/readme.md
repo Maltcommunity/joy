@@ -52,6 +52,7 @@ category: Webcomponents
 
  - [joy-counter](../counter)
  - [joy-dropdown](../dropdown)
+ - [joy-dropzone](../dropzone)
  - [joy-radio-group](../radio-group)
 
 ### Depends on
@@ -64,6 +65,7 @@ graph TD;
   joy-form-error --> joy-icon
   joy-counter --> joy-form-error
   joy-dropdown --> joy-form-error
+  joy-dropzone --> joy-form-error
   joy-radio-group --> joy-form-error
   style joy-form-error fill:#f9f,stroke:#333,stroke-width:4px
 ```

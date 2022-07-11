@@ -291,6 +291,14 @@ export namespace Components {
         "confirmText"?: string;
         "demo": boolean;
         /**
+          * If you choose to use drawer layout, you can select the side you want *
+         */
+        "drawerPosition": 'left' | 'right';
+        /**
+          * Choose the dialog type you need: standard and centered dialog or side dialog with drawer layout. *
+         */
+        "layout": 'dialog' | 'drawer';
+        /**
           * Dialog open state *
          */
         "open": boolean;
@@ -2004,6 +2012,14 @@ declare namespace LocalJSX {
          */
         "confirmText"?: string;
         "demo"?: boolean;
+        /**
+          * If you choose to use drawer layout, you can select the side you want *
+         */
+        "drawerPosition"?: 'left' | 'right';
+        /**
+          * Choose the dialog type you need: standard and centered dialog or side dialog with drawer layout. *
+         */
+        "layout"?: 'dialog' | 'drawer';
         /**
           * Custom event fired when clicking on cancel button or cross icon
          */

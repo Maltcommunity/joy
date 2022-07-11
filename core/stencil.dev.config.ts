@@ -7,7 +7,6 @@ export const config: Config = {
     outputTargets: [
         {
             type: 'www',
-            empty: false, // to prevent playground compiled css (by sass CLI) to be overriden
             serviceWorker: null, // disable service workers
         },
         {

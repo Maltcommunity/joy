@@ -31,17 +31,17 @@ Please see <a href="/joy/webcomponents.html#joy_icons_list">full icons list here
 
 ## Properties
 
-| Property      | Attribute      | Description                                                                                     | Type                                                                               | Default     |
-| ------------- | -------------- | ----------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ----------- |
-| `ariaLabel`   | `aria-label`   | Defines a non-visible legend                                                                    | `string \| undefined`                                                              | `undefined` |
-| `bicolor`     | `bicolor`      | Two-tone icon when set to true                                                                  | `boolean`                                                                          | `false`     |
-| `clickable`   | `clickable`    | Color change on hover                                                                           | `boolean`                                                                          | `false`     |
-| `color`       | `color`        | The icon color                                                                                  | `"grey" \| "red" \| "teal" \| "turquoise" \| "white" \| "yellow" \| undefined`     | `'teal'`    |
-| `customClass` | `custom-class` | The icon custom class(es), if needed                                                            | `string \| undefined`                                                              | `undefined` |
-| `full`        | `full`         | Full colored icon when set to true                                                              | `boolean`                                                                          | `false`     |
-| `lazy`        | `lazy`         | If enabled, ion-icon will be loaded lazily when it's visible in the viewport. Default, `false`. | `boolean`                                                                          | `true`      |
-| `name`        | `name`         | The icon svg filename                                                                           | `string`                                                                           | `'bell'`    |
-| `size`        | `size`         | The icon size                                                                                   | `"large" \| "medium" \| "small" \| "xlarge" \| "xsmall" \| "xxsmall" \| undefined` | `undefined` |
+| Property      | Attribute      | Description                                                                                     | Type                                                                                                                          | Default     |
+| ------------- | -------------- | ----------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------- | ----------- |
+| `ariaLabel`   | `aria-label`   | Defines a non-visible legend                                                                    | `string \| undefined`                                                                                                         | `undefined` |
+| `bicolor`     | `bicolor`      | Two-tone icon when set to true                                                                  | `boolean`                                                                                                                     | `false`     |
+| `clickable`   | `clickable`    | Color change on hover                                                                           | `boolean`                                                                                                                     | `false`     |
+| `color`       | `color`        | The icon color                                                                                  | `"error" \| "grey" \| "info" \| "red" \| "success" \| "teal" \| "turquoise" \| "warning" \| "white" \| "yellow" \| undefined` | `'teal'`    |
+| `customClass` | `custom-class` | The icon custom class(es), if needed                                                            | `string \| undefined`                                                                                                         | `undefined` |
+| `full`        | `full`         | Full colored icon when set to true                                                              | `boolean`                                                                                                                     | `false`     |
+| `lazy`        | `lazy`         | If enabled, ion-icon will be loaded lazily when it's visible in the viewport. Default, `false`. | `boolean`                                                                                                                     | `true`      |
+| `name`        | `name`         | The icon svg filename                                                                           | `string`                                                                                                                      | `'bell'`    |
+| `size`        | `size`         | The icon size                                                                                   | `"large" \| "medium" \| "small" \| "xlarge" \| "xsmall" \| "xxsmall" \| undefined`                                            | `undefined` |
 
 
 ## CSS Custom Properties
@@ -62,6 +62,7 @@ Please see <a href="/joy/webcomponents.html#joy_icons_list">full icons list here
  - [joy-dialog](../dialog)
  - [joy-divider-cta](../divider-cta)
  - [joy-dropdown](../dropdown)
+ - [joy-dropzone](../dropzone)
  - [joy-form-error](../form-error)
  - [joy-highlight](../highlight)
  - [joy-icon-button](../icon-button)
@@ -86,6 +87,7 @@ graph TD;
   joy-dialog --> joy-icon
   joy-divider-cta --> joy-icon
   joy-dropdown --> joy-icon
+  joy-dropzone --> joy-icon
   joy-form-error --> joy-icon
   joy-highlight --> joy-icon
   joy-icon-button --> joy-icon

@@ -12,7 +12,7 @@ import {hideAllDialogs} from './dialog-service';
  */
 @Component({
     tag: 'joy-dialog',
-    styleUrl: 'style/dialog.scss',
+    styleUrls: ['./style/index.scss'],
     shadow: true,
 })
 export class Dialog {
@@ -43,6 +43,10 @@ export class Dialog {
     @Prop() bannerHeight? = 250;
     /** Set the position of the banner image. Work exactly like css background-position property **/
     @Prop() bannerPosition = 'center';
+    /** Choose the dialog type you need: standard and centered dialog or side dialog with drawer layout. **/
+    @Prop() layout: 'dialog' | 'drawer' = 'dialog';
+    /** If you choose to use drawer layout, you can select the side you want **/
+    @Prop() drawerPosition: 'left' | 'right' = 'right';
 
     /** Custom event fired when clicking on confirm button */
     @Event() joyConfirmDialog!: EventEmitter<void>;
@@ -163,6 +167,8 @@ export class Dialog {
                         'joy-dialog--wrapper-open': this.open,
                         'joy-dialog--wrapper-demo': this.demo,
                         'joy-dialog--wrapper-hiding': this.hiding,
+                        'joy-dialog--wrapper-drawer': this.layout === 'drawer',
+                        [`joy-dialog--wrapper-drawer-${this.drawerPosition}`]: this.layout === 'drawer',
                     }}
                 >
                     <div class="joy-dialog--overlay" onClick={() => this.onClose()} />

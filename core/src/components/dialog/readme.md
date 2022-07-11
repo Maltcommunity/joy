@@ -22,6 +22,21 @@ category: Webcomponents
         </joy-text> 
     </div>
 </joy-dialog>
+
+<joy-dialog-trigger dialog="myDialogDrawer">
+    <joy-button size="xsmall">Show dialog drawer</joy-button> <joy-tag variant='special'>EXPERIMENTAL</joy-tag>
+</joy-dialog-trigger>
+
+<joy-dialog id="myDialog" layout="drawer" data-dialog="myDialogDrawer" aria-labelledby="myDialogTitle">
+    <p id="myDialogTitle" slot="dialog-header">I am the dialog drawer header</p>
+     <p slot="dialog-subheader">I am the dialog subheader</p>
+    <div slot="dialog-body">
+        <joy-text>
+             I am the dialog body content with <strong>strong content</strong> and 
+            <joy-link href="#">some links</joy-link> to test the style.
+        </joy-text> 
+    </div>
+</joy-dialog>
 ```
 
 <joy-highlight level="warning" accent display-icon>
@@ -113,17 +128,19 @@ category: Webcomponents
 
 ## Properties
 
-| Property         | Attribute         | Description                                                                                | Type                                         | Default     |
-| ---------------- | ----------------- | ------------------------------------------------------------------------------------------ | -------------------------------------------- | ----------- |
-| `bannerHeight`   | `banner-height`   | Set the height of the banner. Default to 250 *                                             | `number \| undefined`                        | `250`       |
-| `bannerPosition` | `banner-position` | Set the position of the banner image. Work exactly like css background-position property * | `string`                                     | `'center'`  |
-| `bannerSrc`      | `banner-src`      | Set the URL of the image you can inject as pre-header banner *                             | `string \| undefined`                        | `undefined` |
-| `bannerSrcAlt`   | `banner-src-alt`  | Set the alt text of the banner *                                                           | `string \| undefined`                        | `undefined` |
-| `buttonSize`     | `button-size`     | If you want to change the CTA sizes, please choose between small, medium, large *          | `"large" \| "medium" \| "small" \| "xsmall"` | `'small'`   |
-| `cancelText`     | `cancel-text`     | Secondary CTA text. If none given, it won't show the CTA *                                 | `string \| undefined`                        | `undefined` |
-| `confirmText`    | `confirm-text`    | Main CTA text. If none given, it won't show the CTA *                                      | `string \| undefined`                        | `undefined` |
-| `open`           | `open`            | Dialog open state *                                                                        | `boolean`                                    | `false`     |
-| `size`           | `size`            | Dialog sizes *                                                                             | `"default" \| "large"`                       | `'default'` |
+| Property         | Attribute         | Description                                                                                        | Type                                         | Default     |
+| ---------------- | ----------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------- | ----------- |
+| `bannerHeight`   | `banner-height`   | Set the height of the banner. Default to 250 *                                                     | `number \| undefined`                        | `250`       |
+| `bannerPosition` | `banner-position` | Set the position of the banner image. Work exactly like css background-position property *         | `string`                                     | `'center'`  |
+| `bannerSrc`      | `banner-src`      | Set the URL of the image you can inject as pre-header banner *                                     | `string \| undefined`                        | `undefined` |
+| `bannerSrcAlt`   | `banner-src-alt`  | Set the alt text of the banner *                                                                   | `string \| undefined`                        | `undefined` |
+| `buttonSize`     | `button-size`     | If you want to change the CTA sizes, please choose between small, medium, large *                  | `"large" \| "medium" \| "small" \| "xsmall"` | `'small'`   |
+| `cancelText`     | `cancel-text`     | Secondary CTA text. If none given, it won't show the CTA *                                         | `string \| undefined`                        | `undefined` |
+| `confirmText`    | `confirm-text`    | Main CTA text. If none given, it won't show the CTA *                                              | `string \| undefined`                        | `undefined` |
+| `drawerPosition` | `drawer-position` | If you choose to use drawer layout, you can select the side you want *                             | `"left" \| "right"`                          | `'right'`   |
+| `layout`         | `layout`          | Choose the dialog type you need: standard and centered dialog or side dialog with drawer layout. * | `"dialog" \| "drawer"`                       | `'dialog'`  |
+| `open`           | `open`            | Dialog open state *                                                                                | `boolean`                                    | `false`     |
+| `size`           | `size`            | Dialog sizes *                                                                                     | `"default" \| "large"`                       | `'default'` |
 
 
 ## Events

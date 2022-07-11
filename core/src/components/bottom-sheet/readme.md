@@ -9,8 +9,6 @@ category: Webcomponents
     <joy-icon name="web-design"></joy-icon>&nbsp;See Zeroheight usage
 </joy-link>
 
-<joy-tag variant='special'>EXPERIMENTAL</joy-tag>
-
 ## Default -> Primary
 
 ```ui_example
