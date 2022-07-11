@@ -81,8 +81,7 @@ describe('Dropzone', () => {
         const removeFileDropzoneEvent = await page.spyOnEvent('joy-dropzone-remove-file');
         const input = await page.$$('input[type=file]');
 
-        await input[0].uploadFile(`${pathToAssets}test-dropzone.png`);
-        await input[0].uploadFile(`${pathToAssets}test-dropzone.txt`);
+        await input[0].uploadFile(`${pathToAssets}test-dropzone.png`,`${pathToAssets}test-dropzone.txt`);
         await page.waitForChanges();
 
         expect(validateFileDropzoneEvent).toHaveReceivedEvent();
