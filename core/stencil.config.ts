@@ -100,6 +100,11 @@ export const config: Config = {
                 },
             },
         ],
+        setupFilesAfterEnv: ['<rootDir>/jest-setup.js'],
+        "reporters": [
+            "default",
+            "jest-screenshot/reporter"
+        ]
     },
     plugins: [sass({
         includePaths: [
