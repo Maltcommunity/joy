@@ -17,11 +17,13 @@
 ### Used by
 
  - [joy-button](../button)
+ - [joy-dropzone](../dropzone)
 
 ### Graph
 ```mermaid
 graph TD;
   joy-button --> joy-spinner
+  joy-dropzone --> joy-spinner
   style joy-spinner fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
