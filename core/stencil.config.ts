@@ -34,7 +34,7 @@ export const config: Config = {
     },
     /**
      * Avoid "clipping" effect while components are loading
-     * Not all components are easy to style before they are actually loading
+     * Not all components are evar(--joy-core-spacing-4)asy to style before they are actually loading
      * Especially components that actually uses other components
      */
     invisiblePrehydration: false,
@@ -53,6 +53,7 @@ export const config: Config = {
         {components: ['joy-link', 'joy-text']},
         {components: ['joy-product-tour', 'joy-product-tour-trigger']},
         {components: ['joy-radio', 'joy-radio-group']},
+        {components: ['joy-selectable-item', 'joy-selectable-item-group']},
         {components: ['joy-stepper', 'joy-step']},
         {components: ['joy-tabs', 'joy-tab', 'joy-tab-button']},
         {components: ['joy-tag', 'joy-tags-list']},

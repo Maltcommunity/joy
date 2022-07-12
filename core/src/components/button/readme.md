@@ -132,6 +132,7 @@ Type: `Promise<void>`
 
  - [joy-bottom-sheet](../bottom-sheet)
  - [joy-dialog](../dialog)
+ - [joy-dropzone](../dropzone)
 
 ### Depends on
 
@@ -145,6 +146,7 @@ graph TD;
   joy-button --> joy-spinner
   joy-bottom-sheet --> joy-button
   joy-dialog --> joy-button
+  joy-dropzone --> joy-button
   style joy-button fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

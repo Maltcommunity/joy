@@ -1,9 +1,9 @@
 const { configureToMatchImageSnapshot } = require('jest-image-snapshot');
 
 const toMatchImageSnapshot = configureToMatchImageSnapshot({
-    customSnapshotIdentifier: ({currentTestName}) => {
-        const arrayFromTestName = currentTestName.split(' ');
-        return arrayFromTestName.join('-').toLowerCase();
+    customSnapshotIdentifier: (params) => {
+        const arrayFromTestName = params.currentTestName.split(' ');
+        return arrayFromTestName.join('-').toLowerCase() +  '--' + params.counter;
     },
     customDiffConfig: {
         threshold: 0.2,

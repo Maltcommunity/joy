@@ -1,0 +1,7 @@
+.joy-selectable-item-group {
+  display: flex;
+  justify-content: flex-start;
+  align-items: stretch;
+  gap: var(--joy-core-spacing-5);
+  flex-wrap: wrap;
+}

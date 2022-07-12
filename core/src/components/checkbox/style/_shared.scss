@@ -4,9 +4,10 @@ $CLASS: '.joy-checkbox';
 $checkbox-svg: '%3Csvg%20width%3D%2211%22%20height%3D%229%22%20viewBox%3D%220%200%2011%209%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20fill-rule%3D%22evenodd%22%20clip-rule%3D%22evenodd%22%20d%3D%22M10.0831%200.000388909L3.66655%206.41696L0.91653%203.66694L0%204.5839L2.75002%207.33349L3.66655%208.25002L4.58308%207.33349L10.9997%200.916919L10.0831%200.000388909Z%22%20fill%3D%22%23FFFFFF%22%2F%3E%3C%2Fsvg%3E';
 
 @mixin defaultRules() {
-    --checkbox-size: 22px;
+    --checkbox-size: 20px;
     --checkbox-margin: 0 var(--joy-core-spacing-2) 0 0;
     --checkbox-label-margin: var(--joy-core-spacing-4);
+    --checkbox-font-weight: var(--joy-font-weight-normal);
     display: flex;
 }
 
@@ -33,9 +34,10 @@ $checkbox-svg: '%3Csvg%20width%3D%2211%22%20height%3D%229%22%20viewBox%3D%220%20
     cursor: pointer;
     width: 100%;
     color: var(--joy-color-neutral-6);
-    @include utils.getFontProperties(s);
-    @include utils.unselectable();
+    font-size: var(--joy-font-size-s);
     line-height: var(--checkbox-size);
+    font-weight: var(--checkbox-font-weight);
+    @include utils.unselectable();
     margin-bottom: var(--checkbox-label-margin);
 }
 
@@ -98,8 +100,8 @@ $checkbox-svg: '%3Csvg%20width%3D%2211%22%20height%3D%229%22%20viewBox%3D%220%20
             &:before {
                 position: absolute;
                 box-sizing: content-box;
-                top: -3px;
-                left: -33px;
+                top: -4px;
+                left: -32px;
                 content: "";
                 display: flex;
                 width: var(--checkbox-active-size);
@@ -134,6 +136,8 @@ $checkbox-svg: '%3Csvg%20width%3D%2211%22%20height%3D%229%22%20viewBox%3D%220%20
     #{$CLASS}__content-wrapper {
         display: flex;
         align-items: flex-start;
+        flex-wrap: wrap;
+        gap: var(--joy-core-spacing-3);
         text-align: left;
         position: relative;
         flex: 1;

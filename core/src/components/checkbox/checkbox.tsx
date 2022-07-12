@@ -32,6 +32,9 @@ export class Checkbox {
     /** Clicking on the component will fire this customEvent */
     @Event({bubbles: true, composed: true}) valueChange!: EventEmitter<boolean>;
 
+    /** Clicking on the component will fire this customEvent (more checkbox specific event) */
+    @Event({bubbles: true, composed: true, eventName: 'joy-checkbox-change'}) joyCheckboxChange!: EventEmitter<boolean>;
+
     @Watch('checked')
     watchChecked() {
         dispatchEvent(this.el, 'change', {checked: this.checked, element: this.el});
@@ -66,16 +69,11 @@ export class Checkbox {
         if (!this.disabled && targetIsNotALink) {
             this.checked = !this.checked;
             this.valueChange.emit(this.checked);
+            this.joyCheckboxChange.emit(this.checked);
         }
     };
 
     render() {
-        /**
-         * here for third param, we don't want to return 'false' as a string, as it will set value="false" that can be
-         * considered as an actual value. We prefer setting an empty value
-         */
-        // renderInputOutsideShadowRoot(this.el, this.name, this.checked ? this.value : '', this.disabled);
-
         return (
             <Host onClick={this.onClick} value={this.value} aria-checked={`${this.checked}`} aria-hidden={this.disabled ? 'true' : null}>
                 <label

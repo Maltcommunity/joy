@@ -1,0 +1,104 @@
+$_CLASS: '.joy-selectable-item';
+
+:host {
+  display: block;
+
+  --selectable-item-border-color: var(--joy-color-neutral-3);
+  --selectable-item-text-color: var(--joy-color-neutral-6);
+  --selectable-item-transition-timing: var(--joy-transition-duration-short);
+  --selectable-item-background-color: white;
+  --selectable-item-font-size: var(--joy-font-size-s);
+  --selectable-item-flex-rule: 0 0 215px;
+  --selectable-item-min-height: 54px;
+}
+
+:host([data-choice="single"]) {
+  flex: var(--selectable-item-flex-rule);
+}
+
+:host([full-width]) {
+  --selectable-item-flex-rule: 1;
+}
+
+#{$_CLASS}__wrapper {
+  position: relative;
+  height: 100%;
+
+  #{$_CLASS} {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    box-sizing: border-box;
+    padding: 0;
+    border-radius: var(--joy-core-radius-3);
+    border: var(--joy-form-border-width) solid var(--selectable-item-border-color);
+    cursor: pointer;
+    color: var(--selectable-item-text-color);
+    background-color: var(--selectable-item-background-color);
+    transition: all var(--selectable-item-transition-timing) var(--joy-transition-timing-function);
+    font-size: var(--selectable-item-font-size);
+    font-family: var(--joy-font-family);
+    font-weight: var(--joy-font-weight-normal);
+    user-select: none;
+    height: 100%;
+
+    &--disabled {
+      cursor: not-allowed;
+    }
+
+    &--single {
+      padding: var(--joy-core-spacing-3);
+      min-height: var(--selectable-item-min-height);
+      height: 100%;
+    }
+
+    ::slotted(strong) {
+      display: block;
+      width: 100%;
+      font-weight: var(--joy-font-weight-bold);
+    }
+
+    ::slotted(joy-checkbox) {
+      --checkbox-label-margin: 0;
+      padding: var(--joy-core-spacing-4);
+      min-height: calc(var(--selectable-item-min-height) - 4px);
+    }
+  }
+
+  input[type="radio"] {
+    position: absolute;
+    width: 0;
+    height: 0;
+  }
+
+  #{$_CLASS}--checked,
+  #{$_CLASS}--multiple#{$_CLASS}--checked {
+    --selectable-item-border-color: var(--joy-color-secondary-50);
+    color: var(--joy-color-secondary-50);
+    font-weight: var(--joy-font-weight-bold);
+
+    &::slotted(joy-checkbox) {
+      --checkbox-font-weight: var(--joy-font-weight-bold);
+    }
+  }
+
+  input:focus-visible ~ #{$_CLASS} {
+    &:after {
+      content: "";
+      border-radius: var(--joy-core-radius-2);
+      width: 102%;
+      height: 110%;
+      position: absolute;
+      left: -2%;
+      top: -7%;
+      border: 2px solid var(--joy-color-neutral-7);
+    }
+  }
+
+  input:disabled ~ #{$_CLASS} {
+    --selectable-item-text-color: var(--joy-color-neutral-4);
+    --selectable-item-background-color: var(--joy-color-neutral-2);
+  }
+}

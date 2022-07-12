@@ -922,6 +922,42 @@ export namespace Components {
          */
         "value": string;
     }
+    interface JoySelectableItem {
+        /**
+          * Checked state *
+         */
+        "checked": boolean;
+        /**
+          * Disabled state *
+         */
+        "disabled": boolean;
+        /**
+          * Name property for form participation *
+         */
+        "name"?: string;
+        /**
+          * If you use this component with a joy-checkbox as slot: set the value only on the joy-checkbox, it will be automatically applied to it's parent *
+         */
+        "value"?: string;
+    }
+    interface JoySelectableItemGroup {
+        /**
+          * If set to true, css flex rule will by applied in order to take all horizontal space available *
+         */
+        "fullWidth": boolean;
+        /**
+          * @return
+         */
+        "getSelectedItemsValue": () => Promise<string | (string | undefined)[] | undefined>;
+        /**
+          * If multiple is set to true, it means you'll have to add joy-checkbox items. If not, a hidden radio box is included *
+         */
+        "multiple": boolean;
+        /**
+          * Selected item *
+         */
+        "value"?: string;
+    }
     interface JoySeparator {
         /**
           * Separator size. 2 possible values : 100% width or adjusted size according to text
@@ -1564,6 +1600,18 @@ declare global {
         prototype: HTMLJoySelectOptionElement;
         new (): HTMLJoySelectOptionElement;
     };
+    interface HTMLJoySelectableItemElement extends Components.JoySelectableItem, HTMLStencilElement {
+    }
+    var HTMLJoySelectableItemElement: {
+        prototype: HTMLJoySelectableItemElement;
+        new (): HTMLJoySelectableItemElement;
+    };
+    interface HTMLJoySelectableItemGroupElement extends Components.JoySelectableItemGroup, HTMLStencilElement {
+    }
+    var HTMLJoySelectableItemGroupElement: {
+        prototype: HTMLJoySelectableItemGroupElement;
+        new (): HTMLJoySelectableItemGroupElement;
+    };
     interface HTMLJoySeparatorElement extends Components.JoySeparator, HTMLStencilElement {
     }
     var HTMLJoySeparatorElement: {
@@ -1708,6 +1756,8 @@ declare global {
         "joy-rating-stars": HTMLJoyRatingStarsElement;
         "joy-select": HTMLJoySelectElement;
         "joy-select-option": HTMLJoySelectOptionElement;
+        "joy-selectable-item": HTMLJoySelectableItemElement;
+        "joy-selectable-item-group": HTMLJoySelectableItemGroupElement;
         "joy-separator": HTMLJoySeparatorElement;
         "joy-snackbar": HTMLJoySnackbarElement;
         "joy-spinner": HTMLJoySpinnerElement;
@@ -1881,6 +1931,10 @@ declare namespace LocalJSX {
           * It will be applied as the hidden input name attribute (for the actual form)
          */
         "name"?: string;
+        /**
+          * Clicking on the component will fire this customEvent (more checkbox specific event)
+         */
+        "onJoy-checkbox-change"?: (event: CustomEvent<boolean>) => void;
         /**
           * Clicking on the component will fire this customEvent
          */
@@ -2659,6 +2713,41 @@ declare namespace LocalJSX {
          */
         "value": string;
     }
+    interface JoySelectableItem {
+        /**
+          * Checked state *
+         */
+        "checked"?: boolean;
+        /**
+          * Disabled state *
+         */
+        "disabled"?: boolean;
+        /**
+          * Name property for form participation *
+         */
+        "name"?: string;
+        "onJoy-selectable-item-change"?: (event: CustomEvent<ChangeDetail>) => void;
+        "onValue-change"?: (event: CustomEvent<ChangeDetail>) => void;
+        /**
+          * If you use this component with a joy-checkbox as slot: set the value only on the joy-checkbox, it will be automatically applied to it's parent *
+         */
+        "value"?: string;
+    }
+    interface JoySelectableItemGroup {
+        /**
+          * If set to true, css flex rule will by applied in order to take all horizontal space available *
+         */
+        "fullWidth"?: boolean;
+        /**
+          * If multiple is set to true, it means you'll have to add joy-checkbox items. If not, a hidden radio box is included *
+         */
+        "multiple"?: boolean;
+        "onJoy-selectable-item-group-change"?: (event: CustomEvent<HTMLJoySelectableItemElement>) => void;
+        /**
+          * Selected item *
+         */
+        "value"?: string;
+    }
     interface JoySeparator {
         /**
           * Separator size. 2 possible values : 100% width or adjusted size according to text
@@ -3139,6 +3228,8 @@ declare namespace LocalJSX {
         "joy-rating-stars": JoyRatingStars;
         "joy-select": JoySelect;
         "joy-select-option": JoySelectOption;
+        "joy-selectable-item": JoySelectableItem;
+        "joy-selectable-item-group": JoySelectableItemGroup;
         "joy-separator": JoySeparator;
         "joy-snackbar": JoySnackbar;
         "joy-spinner": JoySpinner;
@@ -3198,6 +3289,8 @@ declare module "@stencil/core" {
             "joy-rating-stars": LocalJSX.JoyRatingStars & JSXBase.HTMLAttributes<HTMLJoyRatingStarsElement>;
             "joy-select": LocalJSX.JoySelect & JSXBase.HTMLAttributes<HTMLJoySelectElement>;
             "joy-select-option": LocalJSX.JoySelectOption & JSXBase.HTMLAttributes<HTMLJoySelectOptionElement>;
+            "joy-selectable-item": LocalJSX.JoySelectableItem & JSXBase.HTMLAttributes<HTMLJoySelectableItemElement>;
+            "joy-selectable-item-group": LocalJSX.JoySelectableItemGroup & JSXBase.HTMLAttributes<HTMLJoySelectableItemGroupElement>;
             "joy-separator": LocalJSX.JoySeparator & JSXBase.HTMLAttributes<HTMLJoySeparatorElement>;
             "joy-snackbar": LocalJSX.JoySnackbar & JSXBase.HTMLAttributes<HTMLJoySnackbarElement>;
             "joy-spinner": LocalJSX.JoySpinner & JSXBase.HTMLAttributes<HTMLJoySpinnerElement>;
