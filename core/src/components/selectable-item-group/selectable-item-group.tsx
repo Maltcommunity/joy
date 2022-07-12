@@ -38,6 +38,10 @@ export class SelectableItemGroup {
 
     @Listen('joy-selectable-item-change')
     unselectOtherItems(e: CustomEvent) {
+        if (!this.host.contains(e.detail.element)) {
+            return;
+        }
+
         if (!this.multiple) {
             this.getItems()
                 .filter((item) => item !== e.detail.element)
