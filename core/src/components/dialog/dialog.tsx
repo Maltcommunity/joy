@@ -88,6 +88,7 @@ export class Dialog {
         }
 
         hideAllDialogs();
+        this.joyCancelDialog.emit();
     }
 
     @Listen('keydown', {target: 'document'})
