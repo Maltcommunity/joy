@@ -1,4 +1,9 @@
-# Introducing append-backdrop property into joy-dialog
+---
+hologram: true
+title: Introducing append-backdrop property into joy-dialog
+name: 1-joy-dialog-append-backdrop
+category: ADR
+---
 
 ## Date (dd/mm/yyyy): 13/05/2022
 ## Release: `1.0.0-rc.2`
