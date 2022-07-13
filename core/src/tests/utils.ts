@@ -1,4 +1,4 @@
-import { E2EPage, newE2EPage, } from '@stencil/core/testing';
+import { E2EPage, newE2EPage } from '@stencil/core/testing';
 import {Page as PuppeteerPage} from 'puppeteer';
 import { NewE2EPageOptions } from '@stencil/core/testing/puppeteer/puppeteer-declarations';
 

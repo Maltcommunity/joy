@@ -257,6 +257,10 @@ export namespace Components {
     }
     interface JoyDialog {
         /**
+          * Choose whether backdrop is injected at the root of the body or next to the dialog itself. If a parent element has some media queries rules and is getting hidden at some point, injecting the backdrop next to the dialog is a good way to prevent issues. Default to body. *
+         */
+        "appendBackdrop": 'body' | 'sibling';
+        /**
           * Set the height of the banner. Default to 250 *
          */
         "bannerHeight"?: number | undefined;
@@ -2029,6 +2033,10 @@ declare namespace LocalJSX {
         "value"?: number;
     }
     interface JoyDialog {
+        /**
+          * Choose whether backdrop is injected at the root of the body or next to the dialog itself. If a parent element has some media queries rules and is getting hidden at some point, injecting the backdrop next to the dialog is a good way to prevent issues. Default to body. *
+         */
+        "appendBackdrop"?: 'body' | 'sibling';
         /**
           * Set the height of the banner. Default to 250 *
          */

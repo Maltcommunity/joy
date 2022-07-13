@@ -1,7 +1,7 @@
 import {Component, Element, Event, EventEmitter, h, Host, Listen, Method, Prop, State} from '@stencil/core';
 import {ButtonSizes, DialogSizes} from '../../types';
 import {createBackDrop, destroyBackdrop, preventBodyScroll} from '../../utils';
-import {hideAllDialogs} from './dialog-service';
+import {appendBackDropTarget, hideAllDialogs} from './dialog-service';
 
 /**
  * @slot dialog-header - The dialog title
@@ -43,6 +43,10 @@ export class Dialog {
     @Prop() bannerHeight? = 250;
     /** Set the position of the banner image. Work exactly like css background-position property **/
     @Prop() bannerPosition = 'center';
+    /** Choose whether backdrop is injected at the root of the body or next to the dialog itself.
+     * If a parent element has some media queries rules and is getting hidden at some point,
+     * injecting the backdrop next to the dialog is a good way to prevent issues. Default to body. **/
+    @Prop() appendBackdrop: 'body' | 'sibling' = 'body';
 
     /** Custom event fired when clicking on confirm button */
     @Event() joyConfirmDialog!: EventEmitter<void>;
@@ -56,7 +60,7 @@ export class Dialog {
     @Method()
     async openDialog(callback?: () => any) {
         if (!this.demo) {
-            await createBackDrop('dialog');
+            await createBackDrop('dialog', appendBackDropTarget(this.host));
             preventBodyScroll(true);
         }
 

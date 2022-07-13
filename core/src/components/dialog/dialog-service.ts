@@ -6,14 +6,15 @@ import {createBackDrop, destroyBackdrop} from '../../utils';
  * @return {Promise | null}
  */
 export function showDialog<T>(dialogId: string, callback?: () => T): void | null {
-    const dialog = document.body.querySelector(`#${dialogId}`) || document.body.querySelector(`[data-dialog="${dialogId}"]`);
+    const dialog: HTMLJoyDialogElement | null = document.body.querySelector(`#${dialogId}`) || document.body.querySelector(`[data-dialog="${dialogId}"]`);
 
     if (!dialog || dialog.tagName !== 'JOY-DIALOG') {
         console.error(`Unable to find any joy-dialog with ID nor data-id "${dialogId}"`);
         return null;
     }
 
-    createBackDrop('dialog').then(() => (dialog as HTMLJoyDialogElement)!.openDialog(callback));
+    const backdropTarget = appendBackDropTarget(dialog);
+    createBackDrop('dialog', backdropTarget).then(() => (dialog as HTMLJoyDialogElement)!.openDialog(callback));
 }
 
 /**
@@ -27,4 +28,12 @@ export function hideAllDialogs(removeBackdrop = true): void {
     if (removeBackdrop) {
         destroyBackdrop();
     }
+}
+
+/**
+ * @param {HTMLElement} element - Dialog root element
+ * @return {HTMLElement}
+ */
+export function appendBackDropTarget(element: HTMLJoyDialogElement): HTMLElement {
+    return element.appendBackdrop === 'body' ? document.body : element.parentElement!;
 }
