@@ -46,6 +46,7 @@ $_mobile-cta_breakpoint: 400px;
     margin: 0 auto;
     box-sizing: border-box;
     outline: none;
+    text-align: left;
 
     @media screen and (max-width: #{$_mobile-breakpoint})  {
         padding: 0;
