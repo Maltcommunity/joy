@@ -45,11 +45,15 @@ export class JoyTag {
         return ['primary', 'secondary'];
     }
 
+    get hostText(): string {
+        return (this.host.textContent || '').trim();
+    }
+
     private onClick = () => {
         if (this.selectable && this.selectableVariants.includes(this.variant)) {
             this.selected = !this.selected;
             this.joyTagClick.emit({
-                name: this.host.innerText,
+                name: this.hostText,
                 selected: this.selected,
             });
         }
@@ -71,7 +75,7 @@ export class JoyTag {
     }
 
     private onRemove = () => {
-        this.joyTagRemove.emit(this.host.textContent || '');
+        this.joyTagRemove.emit(this.hostText);
     };
 
     render() {
