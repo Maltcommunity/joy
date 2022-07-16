@@ -99,4 +99,31 @@ describe('Tags list - e2e', () => {
         const result = await page.compareScreenshot('Medium removable/draggable tag');
         expect(result).toMatchScreenshot();
     });
+
+    it('should emit custom event with the tag text without any white space, when removing a tag or selecting it', async () => {
+
+        /**
+         * Tag component is not meant to use both removable and selectable. We merge two scenarios here as we test the same thing
+         */
+        const page = await newE2EPage();
+        await page.setContent(`
+            <joy-tag selectable removable>&nbsp;&nbsp;Removable tag</joy-tag>              
+        `);
+
+        const tag = await page.find('joy-tag');
+        const removeIcon = await page.find('joy-tag >>> joy-icon');
+        const joyTagRemove = await page.spyOnEvent('joyTagRemove');
+        const joyTagClick = await page.spyOnEvent('joyTagClick');
+
+        await tag.click();
+        await page.waitForChanges();
+        expect(joyTagClick).toHaveReceivedEventDetail({
+            name: 'Removable tag',
+            selected: true,
+        });
+
+        await removeIcon.click();
+        await page.waitForChanges();
+        expect(joyTagRemove).toHaveReceivedEventDetail('Removable tag');
+    });
 });
