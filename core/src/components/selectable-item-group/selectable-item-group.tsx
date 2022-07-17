@@ -1,5 +1,9 @@
 import {Component, Element, Event, EventEmitter, h, Listen, Method, Prop} from '@stencil/core';
 
+/**
+ * @slot default - To display the list of joy-selectable-item.
+ * @slot selectable-item-group-label - Use joy-label directly with this slot to display a label for the whole item group.
+ */
 @Component({
     tag: 'joy-selectable-item-group',
     styleUrl: 'selectable-item-group.scss',
@@ -54,8 +58,11 @@ export class SelectableItemGroup {
 
     render() {
         return (
-            <div class="joy-selectable-item-group">
-                <slot />
+            <div>
+                <slot name="selectable-item-group-label" />
+                <div class="joy-selectable-item-group">
+                    <slot/>
+                </div>
             </div>
         );
     }

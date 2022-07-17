@@ -96,6 +96,14 @@ Type: `Promise<string | (string | undefined)[] | undefined>`
 
 
 
+## Slots
+
+| Slot                            | Description                                                                        |
+| ------------------------------- | ---------------------------------------------------------------------------------- |
+| `"default"`                     | To display the list of joy-selectable-item.                                        |
+| `"selectable-item-group-label"` | Use joy-label directly with this slot to display a label for the whole item group. |
+
+
 ----------------------------------------------
 
 *Built with [StencilJS](https://stenciljs.com/)*

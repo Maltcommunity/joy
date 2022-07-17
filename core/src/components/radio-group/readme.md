@@ -78,10 +78,10 @@ category: Webcomponents
 
 ## Slots
 
-| Slot                   | Description                                                                       |
-| ---------------------- | --------------------------------------------------------------------------------- |
-| `"default"`            | Use joy-radio tags with this slot (mandatory)                                     |
-| `"radio-group-legend"` | If you want to inject a label for your radio group, use this slot (not mandatory) |
+| Slot                  | Description                                                                       |
+| --------------------- | --------------------------------------------------------------------------------- |
+| `"default"`           | Use joy-radio tags with this slot (mandatory)                                     |
+| `"radio-group-label"` | If you want to inject a label for your radio group, use this slot (not mandatory) |
 
 
 ## Dependencies

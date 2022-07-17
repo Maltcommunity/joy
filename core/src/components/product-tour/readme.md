@@ -83,7 +83,7 @@ Type: `Promise<void>`
 
 
 
-### `showProductTour(fromElement: HTMLElement) => Promise<void>`
+### `showProductTour<T>(fromElement: HTMLElement, callback?: (() => T) | undefined) => Promise<void>`
 
 
 

@@ -26,6 +26,7 @@
 
 ### Used by
 
+ - [joy-counter](../counter)
  - [joy-input](../input)
  - [joy-select](../select)
  - [joy-tags-input](../tags-input)
@@ -34,6 +35,7 @@
 ### Graph
 ```mermaid
 graph TD;
+  joy-counter --> joy-label
   joy-input --> joy-label
   joy-select --> joy-label
   joy-tags-input --> joy-label
