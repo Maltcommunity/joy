@@ -51,9 +51,10 @@ export class ProductTour {
 
     /**
      * @param {HTMLElement} fromElement - Specify which DOM element you want to highlight with your product tour
+     * @param {Function} callback - Function triggered after product-tour display
      */
     @Method()
-    async showProductTour(fromElement: HTMLElement): Promise<void> {
+    async showProductTour<T>(fromElement: HTMLElement, callback?: () => T): Promise<void> {
         this.host.style.display = 'block';
 
         if (this.host.ownerDocument.contains(fromElement)) {
@@ -63,6 +64,10 @@ export class ProductTour {
             this.setHighlightedElementStyle(true);
             this.calculateProductTourPosition(fromElement);
             this.overrideBackdropZIndex();
+
+            if(callback) {
+                callback();
+            }
         }
     }
 
