@@ -1,10 +1,11 @@
 type NativeEvent = Event;
 import {Component, ComponentInterface, Element, Event, EventEmitter, Host, Listen, Prop, Watch, h} from '@stencil/core';
+import {generatedInputNameAndId} from '../../utils';
 
 type RadioGroupValue = {value: string};
 
 /**
- * @slot radio-group-legend - If you want to inject a label for your radio group, use this slot (not mandatory)
+ * @slot radio-group-label - If you want to inject a label for your radio group, use this slot (not mandatory)
  * @slot default - Use joy-radio tags with this slot (mandatory)
  */
 @Component({
@@ -33,7 +34,6 @@ export class RadioGroup implements ComponentInterface {
      * Label displayed for the whoe radio group.
      */
     @Prop() direction: 'vertical' | 'horizontal' = 'horizontal';
-
     /**
      * the value of the radio group.
      */
@@ -56,11 +56,6 @@ export class RadioGroup implements ComponentInterface {
      * Emitted when the value has changed. Use this specific event if you use expandable options containing various inputs.
      */
     @Event() joyRadioGroupValueChange!: EventEmitter<RadioGroupValue>;
-
-    componentDidLoad() {
-        this.setRadioTabindex(this.value);
-        this.getRadios().forEach((radio) => (radio.name = this.name));
-    }
 
     private setRadioTabindex = (value: any | undefined) => {
         const radios = this.getRadios();
@@ -139,6 +134,11 @@ export class RadioGroup implements ComponentInterface {
         }
     }
 
+    componentDidLoad() {
+        this.setRadioTabindex(this.value);
+        this.getRadios().forEach((radio) => (radio.name = this.name));
+    }
+
     render() {
         const directionClass = `joy-radio-group-${this.direction}`;
 
@@ -146,9 +146,8 @@ export class RadioGroup implements ComponentInterface {
             <Host onClick={this.onClick}>
                 <div class="joy-radio-group">
                     <fieldset class="joy-radio-group-fieldset" role="radiogroup">
-                        <legend class="joy-radio-group-legend">
-                            <slot name="radio-group-legend" />
-                        </legend>
+                        <slot name="radio-group-label" />
+
                         <div
                             class={{
                                 'joy-radio-group-container': true,

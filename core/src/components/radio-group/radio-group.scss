@@ -35,20 +35,12 @@ $_CLASS: '.joy-radio-group';
     }
 }
 
-#{$_CLASS}-fieldset, #{$_CLASS}-legend {
+#{$_CLASS}-fieldset {
     border: 0;
     padding: 0;
     margin: 0;
 }
 
 ::slotted(joy-radio:not([type="outline"])) {
-    margin: var(--joy-core-spacing-4) var(--joy-core-spacing-4) 0 0;
-}
-
-::slotted([slot="radio-group-legend"]) { // Not the best way to select it, but it allows to use any html tag
-    width: 100%;
-    flex-shrink: 0;
-    @include utils.getFontProperties(l-bold);
-    margin: 0;
-    padding: 0;
+    margin: 0 var(--joy-core-spacing-4) var(--joy-core-spacing-4) 0;
 }

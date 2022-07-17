@@ -231,6 +231,10 @@ export namespace Components {
          */
         "labelIncrement": string;
         /**
+          * The label input's size.
+         */
+        "labelSize": LabelSizes;
+        /**
           * Maximum possible value. No default
          */
         "max"?: number;
@@ -243,9 +247,17 @@ export namespace Components {
          */
         "name": string;
         /**
+          * Inject the right wording if your field is not required. the "-" separator is already handled internally. *
+         */
+        "optionalLabel"?: string;
+        /**
           * Counter requirement
          */
         "required": boolean;
+        /**
+          * Display the required mark or not. Default to false.
+         */
+        "requiredMark": boolean;
         /**
           * Granularity of the input. We use the same name than native step attribute. We don't bind this prop to actual input step attribute, because we don't want checkValidity API to return invalid if the actual value is not a multiple of step prop !
          */
@@ -257,31 +269,31 @@ export namespace Components {
     }
     interface JoyDialog {
         /**
-          * Choose whether backdrop is injected at the root of the body or next to the dialog itself. If a parent element has some media queries rules and is getting hidden at some point, injecting the backdrop next to the dialog is a good way to prevent issues. Default to body. *
+          * Choose whether backdrop is injected at the root of the body or next to the dialog itself. If a parent element has some media queries rules and is getting hidden at some point, injecting the backdrop next to the dialog is a good way to prevent issues. Default to body.
          */
         "appendBackdrop": 'body' | 'sibling';
         /**
-          * Set the height of the banner. Default to 250 *
+          * Set the height of the banner. Default to 250
          */
         "bannerHeight"?: number | undefined;
         /**
-          * Set the position of the banner image. Work exactly like css background-position property *
+          * Set the position of the banner image. Work exactly like css background-position property
          */
         "bannerPosition": string;
         /**
-          * Set the URL of the image you can inject as pre-header banner *
+          * Set the URL of the image you can inject as pre-header banner
          */
         "bannerSrc"?: string;
         /**
-          * Set the alt text of the banner *
+          * Set the alt text of the banner
          */
         "bannerSrcAlt"?: string;
         /**
-          * If you want to change the CTA sizes, please choose between small, medium, large *
+          * If you want to change the CTA sizes, please choose between small, medium, large
          */
         "buttonSize": ButtonSizes;
         /**
-          * Secondary CTA text. If none given, it won't show the CTA *
+          * Secondary CTA text. If none given, it won't show the CTA
          */
         "cancelText"?: string;
         /**
@@ -290,12 +302,12 @@ export namespace Components {
          */
         "closeDialog": () => Promise<void>;
         /**
-          * Main CTA text. If none given, it won't show the CTA *
+          * Main CTA text. If none given, it won't show the CTA
          */
         "confirmText"?: string;
         "demo": boolean;
         /**
-          * Dialog open state *
+          * Dialog open state
          */
         "open": boolean;
         /**
@@ -304,7 +316,7 @@ export namespace Components {
          */
         "openDialog": (callback?: (() => any) | undefined) => Promise<void>;
         /**
-          * Dialog sizes *
+          * Dialog sizes
          */
         "size": DialogSizes;
     }
@@ -757,8 +769,9 @@ export namespace Components {
         "position": Positions;
         /**
           * @param fromElement - Specify which DOM element you want to highlight with your product tour
+          * @param callback - Function triggered after product-tour display
          */
-        "showProductTour": (fromElement: HTMLElement) => Promise<void>;
+        "showProductTour": <T>(fromElement: HTMLElement, callback?: (() => T) | undefined) => Promise<void>;
         /**
           * If multiple product tour are need, specify the current step number
          */
@@ -1992,6 +2005,10 @@ declare namespace LocalJSX {
          */
         "labelIncrement"?: string;
         /**
+          * The label input's size.
+         */
+        "labelSize"?: LabelSizes;
+        /**
           * Maximum possible value. No default
          */
         "max"?: number;
@@ -2020,9 +2037,17 @@ declare namespace LocalJSX {
          */
         "onValueChange"?: (event: CustomEvent<number>) => void;
         /**
+          * Inject the right wording if your field is not required. the "-" separator is already handled internally. *
+         */
+        "optionalLabel"?: string;
+        /**
           * Counter requirement
          */
         "required"?: boolean;
+        /**
+          * Display the required mark or not. Default to false.
+         */
+        "requiredMark"?: boolean;
         /**
           * Granularity of the input. We use the same name than native step attribute. We don't bind this prop to actual input step attribute, because we don't want checkValidity API to return invalid if the actual value is not a multiple of step prop !
          */
@@ -2034,35 +2059,35 @@ declare namespace LocalJSX {
     }
     interface JoyDialog {
         /**
-          * Choose whether backdrop is injected at the root of the body or next to the dialog itself. If a parent element has some media queries rules and is getting hidden at some point, injecting the backdrop next to the dialog is a good way to prevent issues. Default to body. *
+          * Choose whether backdrop is injected at the root of the body or next to the dialog itself. If a parent element has some media queries rules and is getting hidden at some point, injecting the backdrop next to the dialog is a good way to prevent issues. Default to body.
          */
         "appendBackdrop"?: 'body' | 'sibling';
         /**
-          * Set the height of the banner. Default to 250 *
+          * Set the height of the banner. Default to 250
          */
         "bannerHeight"?: number | undefined;
         /**
-          * Set the position of the banner image. Work exactly like css background-position property *
+          * Set the position of the banner image. Work exactly like css background-position property
          */
         "bannerPosition"?: string;
         /**
-          * Set the URL of the image you can inject as pre-header banner *
+          * Set the URL of the image you can inject as pre-header banner
          */
         "bannerSrc"?: string;
         /**
-          * Set the alt text of the banner *
+          * Set the alt text of the banner
          */
         "bannerSrcAlt"?: string;
         /**
-          * If you want to change the CTA sizes, please choose between small, medium, large *
+          * If you want to change the CTA sizes, please choose between small, medium, large
          */
         "buttonSize"?: ButtonSizes;
         /**
-          * Secondary CTA text. If none given, it won't show the CTA *
+          * Secondary CTA text. If none given, it won't show the CTA
          */
         "cancelText"?: string;
         /**
-          * Main CTA text. If none given, it won't show the CTA *
+          * Main CTA text. If none given, it won't show the CTA
          */
         "confirmText"?: string;
         "demo"?: boolean;
@@ -2075,11 +2100,11 @@ declare namespace LocalJSX {
          */
         "onJoyConfirmDialog"?: (event: CustomEvent<void>) => void;
         /**
-          * Dialog open state *
+          * Dialog open state
          */
         "open"?: boolean;
         /**
-          * Dialog sizes *
+          * Dialog sizes
          */
         "size"?: DialogSizes;
     }

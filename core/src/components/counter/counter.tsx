@@ -1,4 +1,6 @@
 import {Component, EventEmitter, h, Prop, Event, Element, Method} from '@stencil/core';
+import {generatedInputNameAndId} from '../../utils';
+import {LabelSizes} from '../../types';
 
 @Component({
     tag: 'joy-counter',
@@ -19,6 +21,12 @@ export class CounterComponent {
      * Counter requirement
      */
     @Prop() required = false;
+
+    /** Display the required mark or not. Default to false. */
+    @Prop() requiredMark = false;
+    /** Inject the right wording if your field is not required. the "-" separator is already handled internally. **/
+    @Prop() optionalLabel?: string;
+
     /**
      * Minimum possible value. Default to 0
      */
@@ -57,6 +65,9 @@ export class CounterComponent {
      * aria-label used for input accessibility. Use string only, no HTML. More than welcome !
      */
     @Prop() ariaLabel = '';
+
+    /** The label input's size. */
+    @Prop() labelSize: LabelSizes = 'medium';
 
     /**
      * Generic event for any counter change, fired by manually typing a value or using increment/decrement CTA
@@ -175,53 +186,76 @@ export class CounterComponent {
         this.validateInput();
     };
 
+    private hasSlot(): boolean {
+        return !!this.el.textContent || this.el.children.length > 0;
+    }
+
     render() {
         return (
-            <div class="joy-counter__wrapper">
-                <button
-                    class="joy-counter__decrement"
-                    type="button"
-                    onClick={async () => await this.decrement()}
-                    aria-label={this.labelDecrement}
-                    disabled={this.value <= this.min}
-                >
-                    <joy-icon name="minus" color="teal" ref={(el) => (this.decrementEl = el as HTMLJoyIconElement)} />
-                </button>
-
-                <input
-                    type="number"
-                    class={{
-                        'joy-counter__invalid': this.invalid,
-                    }}
-                    ref={(el) => (this.input = el as HTMLInputElement)}
-                    onInput={this.onInput}
-                    onBlur={this.onBlur}
-                    min={this.min}
-                    aria-label={this.ariaLabel ? this.ariaLabel : false}
-                    aria-invalid={this.invalid ? 'true' : 'false'}
-                    {...this.maxAttribute}
-                    name={this.name}
-                    required={this.required}
-                    step="any"
-                    value={this.value}
-                />
-
-                <button
-                    class="joy-counter__increment"
-                    type="button"
-                    onClick={async () => await this.increment()}
-                    aria-label={this.labelIncrement}
-                    disabled={this.max ? this.value >= this.max : false}
-                >
-                    <joy-icon name="add" ref={(el) => (this.incrementEl = el as HTMLJoyIconElement)} color="teal" />
-                </button>
-
-                {this.invalid && this.componentErrorMessage && (
-                    <div class="joy-counter_error">
-                        <joy-form-error no-html-error-text={this.componentErrorMessage} />
-                    </div>
+            <div>
+                {this.hasSlot() && (
+                    <joy-label
+                        required={this.required && this.requiredMark}
+                        id={this.inputAriaLabel}
+                        optional-label={this.optionalLabel}
+                        html-for={this.name || generatedInputNameAndId(this.el)}
+                        size={this.labelSize}
+                    >
+                        <slot />
+                    </joy-label>
                 )}
+                <div class="joy-counter__wrapper">
+                    <button
+                        class="joy-counter__decrement"
+                        type="button"
+                        onClick={async () => await this.decrement()}
+                        aria-label={this.labelDecrement}
+                        disabled={this.value <= this.min}
+                    >
+                        <joy-icon name="minus" color="teal"
+                                  ref={(el) => (this.decrementEl = el as HTMLJoyIconElement)}/>
+                    </button>
+
+                    <input
+                        type="number"
+                        class={{
+                            'joy-counter__invalid': this.invalid,
+                        }}
+                        ref={(el) => (this.input = el as HTMLInputElement)}
+                        onInput={this.onInput}
+                        onBlur={this.onBlur}
+                        min={this.min}
+                        aria-label={this.ariaLabel ? this.ariaLabel : false}
+                        aria-invalid={this.invalid ? 'true' : 'false'}
+                        aria-labelledby={this.inputAriaLabel}
+                        {...this.maxAttribute}
+                        name={this.name}
+                        required={this.required}
+                        step="any"
+                        value={this.value}
+                    />
+
+                    <button
+                        class="joy-counter__increment"
+                        type="button"
+                        onClick={async () => await this.increment()}
+                        aria-label={this.labelIncrement}
+                        disabled={this.max ? this.value >= this.max : false}
+                    >
+                        <joy-icon name="add" ref={(el) => (this.incrementEl = el as HTMLJoyIconElement)} color="teal"/>
+                    </button>
+
+                    {this.invalid && this.componentErrorMessage && (
+                        <div class="joy-counter_error">
+                            <joy-form-error no-html-error-text={this.componentErrorMessage}/>
+                        </div>
+                    )}
+                </div>
             </div>
         );
+    }
+
+    private get inputAriaLabel(): string {
+        return 'label-' + generatedInputNameAndId(this.el);
     }
 }

@@ -16,7 +16,7 @@ $_CLASS: '.joy-radio';
      * @prop --radio-circle-color-invalid-hover: invalid radio button color on hover
      * @prop --radio-border-color-focus: keyboard focus outline color
      */
-    --radio-size: 22px;
+    --radio-size: 20px;
     --radio-color: var(--joy-color-text-body);
 
     --radio-circle-color: var(--joy-color-secondary-30);
@@ -104,8 +104,8 @@ $_CLASS: '.joy-radio';
         &::after {
             content: "";
             position: absolute;
-            top: -3px;
-            left: -3px;
+            top: -2px;
+            left: -2px;
             width: 28px;
             height: 28px;
             border-radius: 50%;

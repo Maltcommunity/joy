@@ -23,29 +23,29 @@ export class Dialog {
 
     @Element() host!: HTMLJoyDialogElement;
 
-    /** @internal **/
+    /** @internal */
     @Prop() demo = false;
-    /** Dialog open state **/
+    /** Dialog open state */
     @Prop({reflect: true, mutable: true}) open = false;
-    /** Dialog sizes **/
+    /** Dialog sizes */
     @Prop() size: DialogSizes = 'default';
-    /** Main CTA text. If none given, it won't show the CTA **/
+    /** Main CTA text. If none given, it won't show the CTA */
     @Prop() confirmText?: string;
-    /** Secondary CTA text. If none given, it won't show the CTA **/
+    /** Secondary CTA text. If none given, it won't show the CTA */
     @Prop() cancelText?: string;
-    /** If you want to change the CTA sizes, please choose between small, medium, large **/
+    /** If you want to change the CTA sizes, please choose between small, medium, large */
     @Prop() buttonSize: ButtonSizes = 'small';
-    /** Set the URL of the image you can inject as pre-header banner **/
+    /** Set the URL of the image you can inject as pre-header banner */
     @Prop() bannerSrc?: string;
-    /** Set the alt text of the banner **/
+    /** Set the alt text of the banner */
     @Prop() bannerSrcAlt?: string;
-    /** Set the height of the banner. Default to 250 **/
+    /** Set the height of the banner. Default to 250 */
     @Prop() bannerHeight? = 250;
-    /** Set the position of the banner image. Work exactly like css background-position property **/
+    /** Set the position of the banner image. Work exactly like css background-position property */
     @Prop() bannerPosition = 'center';
     /** Choose whether backdrop is injected at the root of the body or next to the dialog itself.
      * If a parent element has some media queries rules and is getting hidden at some point,
-     * injecting the backdrop next to the dialog is a good way to prevent issues. Default to body. **/
+     * injecting the backdrop next to the dialog is a good way to prevent issues. Default to body. */
     @Prop() appendBackdrop: 'body' | 'sibling' = 'body';
 
     /** Custom event fired when clicking on confirm button */
