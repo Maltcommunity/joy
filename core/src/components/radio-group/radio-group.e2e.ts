@@ -17,13 +17,13 @@ describe('radio group - e2e', () => {
 
         await page.setContent(`
             <joy-radio-group name="radio-group">
-                <span slot="radio-group-legend">I am the label</span>
+                <joy-label slot="radio-group-label">I am the label</joy-label>
                 <joy-radio value="first">First value</joy-radio>
                 <joy-radio value="second">Second value</joy-radio>
             </joy-radio-group>
         `);
 
-        const legend = await page.find('span');
+        const legend = await page.find('joy-label');
         const isVisible = await legend.isVisible(); // if the slot name is not the right one, the span tag won't be displayed
         expect(isVisible).toBe(true);
     });
