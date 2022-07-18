@@ -99,7 +99,6 @@ export class ProductTour {
         const {left, top, height, width} = this.elementToHighlight.getBoundingClientRect();
         const style = getComputedStyle(this.host.ownerDocument.querySelector('joy-backdrop')!);
         const padding = style.getPropertyValue('--backdrop-spotlight-padding');
-        debugger;
 
         const spotlight = document.createElement('div');
         spotlight.style.left = left - parseInt(padding) + 'px';
@@ -200,7 +199,12 @@ export class ProductTour {
                             <slot name="product-tour-content" />
                         </div>
                     </div>
-                    <div class="joy-product-tour__footer">
+                    <div
+                         class={{
+                             'joy-product-tour__footer': true,
+                             'joy-product-tour__footer--no-steps': !this.steps
+                         }}
+                    >
                         {this.steps && (
                             <span class="joy-product-tour__footer___steps">
                                 {this.step}/{this.steps}
