@@ -61,7 +61,7 @@ export class ProductTour {
             // Basic check to verify if consumer has given a valid DOM element
             this.elementToHighlight = fromElement;
             await createBackDrop('product-tour', this.host.parentElement!);
-            this.setHighlightedElementStyle(true);
+            this.setHighlightedElementStyle();
             this.calculateProductTourPosition(fromElement);
             this.overrideBackdropZIndex();
 
@@ -95,18 +95,20 @@ export class ProductTour {
         this.host.ownerDocument.querySelector('joy-backdrop')!.style.zIndex = (parseInt(this.hostZIndex) - 1).toString();
     }
 
-    private setHighlightedElementStyle(open: boolean) {
-        const position = getComputedStyle(this.elementToHighlight).position;
+    private setHighlightedElementStyle() {
+        const {left, top, height, width} = this.elementToHighlight.getBoundingClientRect();
+        const style = getComputedStyle(this.host.ownerDocument.querySelector('joy-backdrop')!);
+        const padding = style.getPropertyValue('--backdrop-spotlight-padding');
+        debugger;
 
-        if (open) {
-            if (position === 'static') {
-                this.elementToHighlight.style.position = 'relative';
-            }
-            this.elementToHighlight.style.zIndex = this.hostZIndex;
-        } else {
-            this.elementToHighlight.style.position = '';
-            this.elementToHighlight.style.zIndex = '';
-        }
+        const spotlight = document.createElement('div');
+        spotlight.style.left = left - parseInt(padding) + 'px';
+        spotlight.style.top = top - parseInt(padding)  + 'px';
+        spotlight.style.width = width  + 'px';
+        spotlight.style.height = height  + 'px';
+
+        spotlight.classList.add('joy-backdrop--spotlight');
+        this.host.ownerDocument.querySelector('joy-backdrop')!.appendChild(spotlight);
     }
 
     private calculateProductTourPosition(el: HTMLElement) {
@@ -152,7 +154,7 @@ export class ProductTour {
 
     private dismissProductTour = (): void => {
         this.host.style.display = '';
-        this.setHighlightedElementStyle(false);
+        this.setHighlightedElementStyle();
         hideProductTour();
         this.joyProductTourDismiss.emit(this.host);
     };

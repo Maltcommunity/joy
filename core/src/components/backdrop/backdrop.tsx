@@ -16,6 +16,10 @@ export class Backdrop {
     };
 
     render() {
-        return <Host onClick={this.onClick} />;
+        return (
+            <Host onClick={this.onClick}>
+                <slot/>
+            </Host>
+        );
     }
 }
