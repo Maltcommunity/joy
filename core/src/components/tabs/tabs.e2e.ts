@@ -1,4 +1,5 @@
 import {E2EElement, E2EPage, newE2EPage} from '@stencil/core/testing';
+import {createPage} from '../../tests';
 
 describe('e2e - tabs', () => {
     it('renders', async () => {
@@ -84,9 +85,8 @@ describe('e2e - tabs', () => {
         expect(secondTab.classList.contains('joy-tab__selected')).toBe(true);
     });
 
-    // SKIPPED UNTIL UI REFACTO IS DONE ! //
     it('should change tab when I use keyboard', async () => {
-        const page: E2EPage = await newE2EPage();
+        const page = await createPage();
         await page.addStyleTag({
             content: 'joy-tab-button {transition: 0.01ms !important}',
         });
@@ -107,22 +107,22 @@ describe('e2e - tabs', () => {
 
         /** Focus on second tab */
         await firstTabButton.focus();
-        await page.keyboard.down('ArrowRight');
+        await page.keyboard.down('Tab');
         await page.waitForChanges();
 
-        const result = await page.compareScreenshot('Right arrow to change Tab selection');
-        expect(result).toMatchScreenshot();
+        const result = await page.screenshot();
+        expect(result).toMatchImageSnapshot();
 
         /** Then select second tab **/
         await page.keyboard.down('Enter');
         await page.waitForChanges();
-        const result2 = await page.compareScreenshot('Press Enter and activate Tab');
-        expect(result2).toMatchScreenshot();
+        const result2 = await page.screenshot();
+        expect(result2).toMatchImageSnapshot();
 
         /** Focus on last tab */
         await page.keyboard.down('Tab');
         await page.waitForChanges();
-        const result3 = await page.compareScreenshot('Focus on last tab with Tab keyboard event');
-        expect(result3).toMatchScreenshot();
+        const result3 = await page.screenshot();
+        expect(result3).toMatchImageSnapshot();
     });
 });

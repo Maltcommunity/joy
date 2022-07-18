@@ -93,14 +93,6 @@ export const config: Config = {
         pixelmatchThreshold: 0.05,
         waitBeforeScreenshot: 20,
         allowableMismatchedPixels: 200,
-        emulate: [
-            {
-                viewport: {
-                    height: 600,
-                    width: 1000,
-                },
-            },
-        ],
         setupFilesAfterEnv: ['<rootDir>/jest-setup.js'],
         "reporters": [
             "default",

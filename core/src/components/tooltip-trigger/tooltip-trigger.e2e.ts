@@ -1,4 +1,5 @@
 import {E2EPage, newE2EPage} from '@stencil/core/testing';
+import {createPage} from '../../tests';
 
 async function clickOnTrigger(page: E2EPage) {
     const trigger = await page.find('joy-tooltip-trigger');
@@ -8,7 +9,7 @@ async function clickOnTrigger(page: E2EPage) {
 
 describe('Tooltip - e2e', () => {
     it('should display a primary tooltip when I click on trigger element, left-aligned, and destroy it on click outside', async () => {
-        const page: E2EPage = await newE2EPage();
+        const page = await createPage();
         await page.setContent(`
             <joy-tooltip-trigger event="click" style="margin-left: 50px;">
                     <p slot="tooltip-trigger">I am the trigger to click</p>
@@ -18,18 +19,18 @@ describe('Tooltip - e2e', () => {
         `);
 
         await clickOnTrigger(page);
-        const result = await page.compareScreenshot('Blue tooltip, aligned left.');
-        expect(result).toMatchScreenshot();
+        const result = await page.screenshot();
+        expect(result).toMatchImageSnapshot();
 
         const outside = await page.find('.outside');
         await outside.click();
         await page.waitForChanges();
-        const result2 = await page.compareScreenshot('Tooltip destroyed');
-        expect(result2).toMatchScreenshot();
+        const result2 = await page.screenshot();
+        expect(result2).toMatchImageSnapshot();
     });
 
     it('should display a primary tooltip when I click on trigger element, right-aligned according to trigger', async () => {
-        const page: E2EPage = await newE2EPage();
+        const page = await createPage();
         await page.setContent(`
             <joy-tooltip-trigger event="click" position="right" style="margin-left: 50px;">
                     <p slot="tooltip-trigger">I am the trigger to click, the content is right-aligned</p>
@@ -38,12 +39,12 @@ describe('Tooltip - e2e', () => {
         `);
 
         await clickOnTrigger(page);
-        const result = await page.compareScreenshot('Blue tooltip, aligned right.');
-        expect(result).toMatchScreenshot();
+        const result = await page.screenshot();
+        expect(result).toMatchImageSnapshot();
     });
 
     it('should display a secondary tooltip when I mouseenter trigger element, and destroy it when mouseout is fired', async () => {
-        const page: E2EPage = await newE2EPage();
+        const page = await createPage();
         await page.setContent(`
             <joy-tooltip-trigger class="trigger" variant="secondary"  style="margin-left: 50px;">
                     <p slot="tooltip-trigger">I am the trigger to hover, the content is left-aligned</p>
@@ -54,12 +55,12 @@ describe('Tooltip - e2e', () => {
         await page.hover('.trigger');
         await page.waitForChanges();
 
-        const result = await page.compareScreenshot('Secondary / white-ish tooltip, aligned left.');
-        expect(result).toMatchScreenshot();
+        const result = await page.screenshot();
+        expect(result).toMatchImageSnapshot();
     });
 
     it('should display a primary tooltip - RIGHT SIDE - with a default margin to prevent tooltip to be out of the browser', async () => {
-        const page: E2EPage = await newE2EPage();
+        const page = await createPage();
         await page.setContent(`
             <joy-tooltip-trigger event="click" position="right" style="float: right;">
                     <p slot="tooltip-trigger">I am the trigger to click</p>
@@ -68,12 +69,12 @@ describe('Tooltip - e2e', () => {
         `);
 
         await clickOnTrigger(page);
-        const result = await page.compareScreenshot('Blue tooltip, aligned right with default margin.');
-        expect(result).toMatchScreenshot();
+        const result = await page.screenshot();
+        expect(result).toMatchImageSnapshot();
     });
 
     it('should display a primary tooltip - RIGHT SIDE - with a default margin to prevent tooltip to be out of the browser', async () => {
-        const page: E2EPage = await newE2EPage();
+        const page = await createPage();
         await page.setContent(`
             <joy-tooltip-trigger event="click">
                     <p slot="tooltip-trigger">I am the trigger to click</p>
@@ -82,7 +83,7 @@ describe('Tooltip - e2e', () => {
         `);
 
         await clickOnTrigger(page);
-        const result = await page.compareScreenshot('Blue tooltip, aligned left with default margin.');
-        expect(result).toMatchScreenshot();
+        const result = await page.screenshot();
+        expect(result).toMatchImageSnapshot();
     });
 });

@@ -1,4 +1,5 @@
-import {newE2EPage, E2EPage, E2EElement} from '@stencil/core/testing';
+import {newE2EPage, E2EPage} from '@stencil/core/testing';
+import {createPage} from '../../tests';
 
 async function resetCssTransition(page: E2EPage) {
     await page.addStyleTag({
@@ -8,7 +9,7 @@ async function resetCssTransition(page: E2EPage) {
 
 describe('select e2e', () => {
     it('should display a standard select', async () => {
-        const page: E2EPage = await newE2EPage();
+        const page = await createPage();
         await page.setContent(`
             <joy-select label="I am a label">
                 <joy-option disabled selected value="">Choose an option</joy-option>
@@ -17,13 +18,13 @@ describe('select e2e', () => {
         `);
         await resetCssTransition(page);
 
-        const basic = await page.compareScreenshot('Basic select');
-        expect(basic).toMatchScreenshot();
+        const result = await page.screenshot();
+        expect(result).toMatchImageSnapshot();
 
         const select = await page.find('select');
         await select.focus();
-        const focusSelect = await page.compareScreenshot('Basic select on focus');
-        expect(focusSelect).toMatchScreenshot();
+        const focusSelect = await page.screenshot();
+        expect(focusSelect).toMatchImageSnapshot();
     });
 
     it('should display a standard select with a given value prop', async () => {

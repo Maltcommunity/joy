@@ -1,11 +1,12 @@
-import {E2EPage, newE2EPage} from '@stencil/core/testing';
+import {newE2EPage} from '@stencil/core/testing';
+import {createPage} from '../../tests';
 
 /**
  * This E2E suite is used for both joy-tag and joy-tags-list components.
  */
-describe('Tags list - e2e', () => {
+describe('Tags - e2e', () => {
     it('should display the list of all tags variant, in a list wrapper, with default size', async () => {
-        const page: E2EPage = await newE2EPage();
+        const page = await createPage();
         await page.setContent(`
             <joy-tags-list>
                 <joy-tag variant="primary">Primary tag</joy-tag>
@@ -18,12 +19,12 @@ describe('Tags list - e2e', () => {
             </joy-tags-list>
         `);
 
-        const result = await page.compareScreenshot('Default tag list with all variants');
-        expect(result).toMatchScreenshot();
+        const result = await page.screenshot();
+        expect(result).toMatchImageSnapshot();
     });
 
     it('should display the list of all tags variant, in a list wrapper, with xsmall size', async () => {
-        const page: E2EPage = await newE2EPage();
+        const page = await createPage();
         await page.setContent(`
             <joy-tags-list>
                 <joy-tag variant="primary" size="xsmall">Primary tag</joy-tag>
@@ -36,12 +37,12 @@ describe('Tags list - e2e', () => {
             </joy-tags-list>
         `);
 
-        const result = await page.compareScreenshot('XSmall tag list with all variants');
-        expect(result).toMatchScreenshot();
+        const result = await page.screenshot();
+        expect(result).toMatchImageSnapshot();
     });
 
     it('should display the list of all tags variant, in a list wrapper, with small size', async () => {
-        const page: E2EPage = await newE2EPage();
+        const page = await createPage();
         await page.setContent(`
             <joy-tags-list>
                 <joy-tag variant="primary" size="small">Primary tag</joy-tag>
@@ -54,12 +55,12 @@ describe('Tags list - e2e', () => {
             </joy-tags-list>
         `);
 
-        const result = await page.compareScreenshot('Small tag list with all variants');
-        expect(result).toMatchScreenshot();
+        const result = await page.screenshot();
+        expect(result).toMatchImageSnapshot();
     });
 
     it('should display the list of all tags variant, in a list wrapper, with large size', async () => {
-        const page: E2EPage = await newE2EPage();
+        const page = await createPage();
         await page.setContent(`
             <joy-tags-list>
                 <joy-tag variant="primary" size="large">Primary tag</joy-tag>
@@ -72,12 +73,12 @@ describe('Tags list - e2e', () => {
             </joy-tags-list>
         `);
 
-        const result = await page.compareScreenshot('Large tag list with all variants');
-        expect(result).toMatchScreenshot();
+        const result = await page.screenshot();
+        expect(result).toMatchImageSnapshot();
     });
 
     it('should display a selectable tag changing style when we click (select) it', async () => {
-        const page: E2EPage = await newE2EPage();
+        const page = await createPage();
         await page.setContent(`
             <joy-tag variant="secondary" selectable>Click me</joy-tag>              
         `);
@@ -86,18 +87,18 @@ describe('Tags list - e2e', () => {
         await tag.click();
         await page.waitForChanges();
 
-        const result = await page.compareScreenshot('Medium selectable tag clicked (should have the same style than primary style');
-        expect(result).toMatchScreenshot();
+        const result = await page.screenshot();
+        expect(result).toMatchImageSnapshot();
     });
 
     it('should display draggable and removable tags, with specific icons', async () => {
-        const page: E2EPage = await newE2EPage();
+        const page = await createPage();
         await page.setContent(`
             <joy-tag variant="primary" draggable removable>Draggable tag</joy-tag>              
         `);
 
-        const result = await page.compareScreenshot('Medium removable/draggable tag');
-        expect(result).toMatchScreenshot();
+        const result = await page.screenshot();
+        expect(result).toMatchImageSnapshot();
     });
 
     it('should emit custom event with the tag text without any white space, when removing a tag or selecting it', async () => {

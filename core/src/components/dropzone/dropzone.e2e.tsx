@@ -1,19 +1,19 @@
 import {E2EPage, newE2EPage} from '@stencil/core/testing';
+import {createPage} from '../../tests';
 
 const pathToAssets = `${__dirname}/test-assets/`;
 
 describe('Dropzone', () => {
-    /* Todo: uncomment this test when screenshots comparison will be better
     it('should render properly', async () => {
 
-        const page: E2EPage = await newE2EPage();
+        const page = await createPage();
         await page.setContent(`
             <joy-dropzone></joy-dropzone>
         `);
 
-        const basic = await page.compareScreenshot('Basic Dropzone');
-        expect(basic).toMatchScreenshot();
-    });*/
+        const result = await page.screenshot();
+        expect(result).toMatchImageSnapshot();
+    });
 
     it('should valid file', async () => {
         const page: E2EPage = await newE2EPage();

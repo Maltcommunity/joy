@@ -5,7 +5,7 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { AvatarColors, AvatarSizes, BackDropOrigin, ButtonSizes, ButtonVariants, DialogSizes, Direction, HighlightLevels, HyperLinksTargets, IconButtonColors, IconColors, IconsSizes, IndicatorsVariants, InputSizes, LabelSizes, LinksColors, Positions, RatingStarsSizes, SeparatorSizes, SnackbarLevels, Tab, TagSizes, TagVariants, TipsLevel, TooltipVariants } from "./types";
+import { AvatarColors, AvatarSizes, BackDropOrigin, ButtonSizes, ButtonVariants, DialogSizes, Direction, HighlightLevels, HyperLinksTargets, IconButtonColors, IconColors, IconsSizes, IndicatorsVariants, InputSizes, LabelSizes, LinksColors, Positions, RatingStarsSizes, SeparatorSizes, SnackbarLevels, Tab, TagSizes, TagVariants, TooltipVariants } from "./types";
 import { FormPickerTypes, LabelSizes as LabelSizes1 } from "@/types";
 export namespace Components {
     interface JoyAvailability {
@@ -1310,20 +1310,6 @@ export namespace Components {
          */
         "wrap"?: 'hard' | 'soft' | 'off';
     }
-    interface JoyTips {
-        /**
-          * Display a CTA to hide the tips
-         */
-        "closable": boolean;
-        /**
-          * If icon is defined, it will show it with the right color
-         */
-        "icon"?: string;
-        /**
-          * Defines the criticalness of the tips
-         */
-        "level": TipsLevel;
-    }
     interface JoyToggle {
         /**
           * Toggle activated or not
@@ -1707,12 +1693,6 @@ declare global {
         prototype: HTMLJoyTextareaElement;
         new (): HTMLJoyTextareaElement;
     };
-    interface HTMLJoyTipsElement extends Components.JoyTips, HTMLStencilElement {
-    }
-    var HTMLJoyTipsElement: {
-        prototype: HTMLJoyTipsElement;
-        new (): HTMLJoyTipsElement;
-    };
     interface HTMLJoyToggleElement extends Components.JoyToggle, HTMLStencilElement {
     }
     var HTMLJoyToggleElement: {
@@ -1788,7 +1768,6 @@ declare global {
         "joy-tags-list": HTMLJoyTagsListElement;
         "joy-text": HTMLJoyTextElement;
         "joy-textarea": HTMLJoyTextareaElement;
-        "joy-tips": HTMLJoyTipsElement;
         "joy-toggle": HTMLJoyToggleElement;
         "joy-tooltip": HTMLJoyTooltipElement;
         "joy-tooltip-trigger": HTMLJoyTooltipTriggerElement;
@@ -3127,20 +3106,6 @@ declare namespace LocalJSX {
          */
         "wrap"?: 'hard' | 'soft' | 'off';
     }
-    interface JoyTips {
-        /**
-          * Display a CTA to hide the tips
-         */
-        "closable"?: boolean;
-        /**
-          * If icon is defined, it will show it with the right color
-         */
-        "icon"?: string;
-        /**
-          * Defines the criticalness of the tips
-         */
-        "level"?: TipsLevel;
-    }
     interface JoyToggle {
         /**
           * Toggle activated or not
@@ -3276,7 +3241,6 @@ declare namespace LocalJSX {
         "joy-tags-list": JoyTagsList;
         "joy-text": JoyText;
         "joy-textarea": JoyTextarea;
-        "joy-tips": JoyTips;
         "joy-toggle": JoyToggle;
         "joy-tooltip": JoyTooltip;
         "joy-tooltip-trigger": JoyTooltipTrigger;
@@ -3337,7 +3301,6 @@ declare module "@stencil/core" {
             "joy-tags-list": LocalJSX.JoyTagsList & JSXBase.HTMLAttributes<HTMLJoyTagsListElement>;
             "joy-text": LocalJSX.JoyText & JSXBase.HTMLAttributes<HTMLJoyTextElement>;
             "joy-textarea": LocalJSX.JoyTextarea & JSXBase.HTMLAttributes<HTMLJoyTextareaElement>;
-            "joy-tips": LocalJSX.JoyTips & JSXBase.HTMLAttributes<HTMLJoyTipsElement>;
             "joy-toggle": LocalJSX.JoyToggle & JSXBase.HTMLAttributes<HTMLJoyToggleElement>;
             "joy-tooltip": LocalJSX.JoyTooltip & JSXBase.HTMLAttributes<HTMLJoyTooltipElement>;
             "joy-tooltip-trigger": LocalJSX.JoyTooltipTrigger & JSXBase.HTMLAttributes<HTMLJoyTooltipTriggerElement>;
