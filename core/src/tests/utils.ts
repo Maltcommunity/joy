@@ -6,5 +6,9 @@ export type CustomE2EPage = E2EPage & Pick<PuppeteerPage, 'screenshot'>
 
 export async function createPage(opts?: NewE2EPageOptions) {
     const page = (await newE2EPage(opts)) as CustomE2EPage;
+    await page.setViewport({
+        height: 600,
+        width: 1000,
+    });
     return page;
 }

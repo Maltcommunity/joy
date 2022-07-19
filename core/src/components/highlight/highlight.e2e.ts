@@ -1,8 +1,9 @@
-import {E2EPage, newE2EPage} from '@stencil/core/testing';
+import {newE2EPage} from '@stencil/core/testing';
+import {createPage} from '../../tests';
 
 describe('highlight e2e', () => {
     it('should render basic highlight', async () => {
-        const page: E2EPage = await newE2EPage();
+        const page = await newE2EPage();
         await page.setContent('<joy-highlight></joy-highlight>');
         const cmp = await page.find('joy-highlight');
 
@@ -10,7 +11,7 @@ describe('highlight e2e', () => {
     });
 
     it('should render all levels highlights, without accent', async () => {
-        const page: E2EPage = await newE2EPage();
+        const page = await createPage();
         await page.setContent(`
             <joy-highlight level="warning" display-icon>I am a simple warning content</joy-highlight>
             <joy-highlight level="error" display-icon>I am a simple error content.</joy-highlight>
@@ -19,12 +20,12 @@ describe('highlight e2e', () => {
             <joy-highlight level="neutral" display-icon>I am a simple neutral content.</joy-highlight>
         `);
 
-        const result = await page.compareScreenshot('All levels');
-        expect(result).toMatchScreenshot();
+        const result = await page.screenshot();
+        expect(result).toMatchImageSnapshot();
     });
 
     it('should render all levels highlights, with accent', async () => {
-        const page: E2EPage = await newE2EPage();
+        const page = await createPage();
         await page.setContent(`
             <joy-highlight level="warning" accent display-icon>I am a simple warning content</joy-highlight>
             <joy-highlight level="error" accent display-icon>I am a simple error content.</joy-highlight>
@@ -33,25 +34,25 @@ describe('highlight e2e', () => {
             <joy-highlight level="neutral" accent display-icon>I am a simple neutral content.</joy-highlight>
         `);
 
-        const result = await page.compareScreenshot('All levels with accent');
-        expect(result).toMatchScreenshot();
+        const result = await page.screenshot();
+        expect(result).toMatchImageSnapshot();
     });
 
     it('should render any level highlight, without icon', async () => {
-        const page: E2EPage = await newE2EPage();
+        const page = await createPage();
         await page.setContent('<joy-highlight level="warning">I am a simple warning content without icon</joy-highlight>');
 
-        const result = await page.compareScreenshot('Any level without icon');
-        expect(result).toMatchScreenshot();
+        const result = await page.screenshot();
+        expect(result).toMatchImageSnapshot();
     });
 
     it('should render any level highlight, with given icon', async () => {
-        const page: E2EPage = await newE2EPage();
+        const page = await createPage();
         await page.setContent(
             '<joy-highlight icon="company-placeholder" display-icon level="warning">I am a simple warning with given icon</joy-highlight>',
         );
 
-        const result = await page.compareScreenshot('Any level with given icon');
-        expect(result).toMatchScreenshot();
+        const result = await page.screenshot();
+        expect(result).toMatchImageSnapshot();
     });
 });

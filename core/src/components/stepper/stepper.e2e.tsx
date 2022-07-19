@@ -1,4 +1,5 @@
 import {E2EElement, E2EPage, newE2EPage} from '@stencil/core/testing';
+import {createPage} from '../../tests';
 
 describe('Stepper e2e', () => {
     it('should render component', async () => {
@@ -13,7 +14,7 @@ describe('Stepper e2e', () => {
     });
 
     it('should render stepper at second step', async () => {
-        const page: E2EPage = await newE2EPage();
+        const page = await createPage();
 
         await page.setContent(`
             <joy-stepper step="1">
@@ -24,12 +25,12 @@ describe('Stepper e2e', () => {
             </joy-stepper>
         `);
 
-        const screenshot = await page.compareScreenshot('Stepper with default size steps');
-        expect(screenshot).toMatchScreenshot();
+        const result = await page.screenshot();
+        expect(result).toMatchImageSnapshot();
     });
 
     it('should render justified stepper', async () => {
-        const page: E2EPage = await newE2EPage();
+        const page = await createPage();
 
         await page.setContent(`
             <joy-stepper justify step="2">
@@ -40,12 +41,12 @@ describe('Stepper e2e', () => {
             </joy-stepper>
         `);
 
-        const screenshot = await page.compareScreenshot('Stepper justified');
-        expect(screenshot).toMatchScreenshot();
+        const result = await page.screenshot();
+        expect(result).toMatchImageSnapshot();
     });
 
     it('should render stepper at second step with small steps next', async () => {
-        const page: E2EPage = await newE2EPage();
+        const page = await createPage();
 
         await page.setContent(`
             <joy-stepper step="2">
@@ -56,12 +57,12 @@ describe('Stepper e2e', () => {
             </joy-stepper>
         `);
 
-        const screenshot = await page.compareScreenshot('Stepper with default size steps and small ones');
-        expect(screenshot).toMatchScreenshot();
+        const result = await page.screenshot();
+        expect(result).toMatchImageSnapshot();
     });
 
     it('should render vertical direction stepper', async () => {
-        const page: E2EPage = await newE2EPage();
+        const page = await createPage();
 
         await page.setContent(`
             <joy-stepper direction="vertical" step="2">
@@ -72,7 +73,7 @@ describe('Stepper e2e', () => {
             </joy-stepper>
         `);
 
-        const screenshot = await page.compareScreenshot('Vertical Stepper');
-        expect(screenshot).toMatchScreenshot();
+        const result = await page.screenshot();
+        expect(result).toMatchImageSnapshot();
     });
 });

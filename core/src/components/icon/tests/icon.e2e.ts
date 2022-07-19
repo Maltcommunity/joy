@@ -1,4 +1,5 @@
 import {newE2EPage} from '@stencil/core/testing';
+import {createPage} from '../../../tests';
 
 describe('icon e2e', () => {
     it('renders with a name', async () => {
@@ -10,7 +11,7 @@ describe('icon e2e', () => {
     });
 
     it('renders with specific colors', async () => {
-        const page = await newE2EPage();
+        const page = await createPage();
         await page.setContent(`
             <joy-icon name="bell" color="grey"></joy-icon>
             <joy-icon name="bell" color="red"></joy-icon>
@@ -20,12 +21,12 @@ describe('icon e2e', () => {
             <joy-icon name="bell" color="turquoise"></joy-icon>
         `);
 
-        const result = await page.compareScreenshot('Icons colors');
-        expect(result).toMatchScreenshot();
+        const result = await page.screenshot();
+        expect(result).toMatchImageSnapshot();
     });
 
     it('renders with specific sizes', async () => {
-        const page = await newE2EPage();
+        const page = await createPage();
         await page.setContent(`
             <joy-icon name="bell" size="xsmall"></joy-icon>
             <joy-icon name="bell" size="small"></joy-icon>
@@ -34,12 +35,12 @@ describe('icon e2e', () => {
             <joy-icon name="bell" size="xlarge"></joy-icon>
         `);
 
-        const result = await page.compareScreenshot('Icons colors');
-        expect(result).toMatchScreenshot();
+        const result = await page.screenshot();
+        expect(result).toMatchImageSnapshot();
     });
 
     it('renders with two colors', async () => {
-        const page = await newE2EPage();
+        const page = await createPage();
 
         await page.setContent(`
             <joy-icon name="bell" color="grey" bicolor></joy-icon>
@@ -50,12 +51,12 @@ describe('icon e2e', () => {
             <joy-icon name="bell" color="turquoise" bicolor></joy-icon>
         `);
 
-        const result = await page.compareScreenshot('Icons bicolor mode');
-        expect(result).toMatchScreenshot();
+        const result = await page.screenshot();
+        expect(result).toMatchImageSnapshot();
     });
 
     it('renders with full colored background', async () => {
-        const page = await newE2EPage();
+        const page = await createPage();
 
         await page.setContent(`
             <joy-icon name="bell" color="grey" full></joy-icon>
@@ -66,8 +67,8 @@ describe('icon e2e', () => {
             <joy-icon name="bell" color="turquoise" full></joy-icon>
         `);
 
-        const result = await page.compareScreenshot('Icons full mode');
-        expect(result).toMatchScreenshot();
+        const result = await page.screenshot();
+        expect(result).toMatchImageSnapshot();
     });
 
     it('renders with clickable effect', async () => {

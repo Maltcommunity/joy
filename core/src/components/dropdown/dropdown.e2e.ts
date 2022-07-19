@@ -1,8 +1,9 @@
 import {newE2EPage} from '@stencil/core/testing';
+import {createPage} from '../../tests';
 
-describe('Select - e2e', () => {
+describe('Dropdown - e2e', () => {
     it('renders a dropdown with default placeholder', async () => {
-        const page = await newE2EPage();
+        const page = await createPage();
 
         await page.setContent(`
             <joy-dropdown name="dropdown-name">
@@ -11,12 +12,12 @@ describe('Select - e2e', () => {
             </joy-dropdown>
         `);
 
-        const result = await page.compareScreenshot('Default dropdown without placeholder');
-        expect(result).toMatchScreenshot();
+        const result = await page.screenshot();
+        expect(result).toMatchImageSnapshot();
     });
 
-    it('renders a dropdown with placeholder using <joy-option disabled selected />', async () => {
-        const page = await newE2EPage();
+    it('renders a dropdown with placeholder using joy-option disabled selected ', async () => {
+        const page = await createPage();
 
         await page.setContent(`
             <joy-dropdown name="dropdown-name">
@@ -26,12 +27,12 @@ describe('Select - e2e', () => {
             </joy-dropdown>
         `);
 
-        const result = await page.compareScreenshot('Select with given placeholder');
-        expect(result).toMatchScreenshot();
+        const result = await page.screenshot();
+        expect(result).toMatchImageSnapshot();
     });
 
     it('renders a dropdown with defined "value" prop', async () => {
-        const page = await newE2EPage();
+        const page = await createPage();
 
         await page.setContent(`
             <joy-dropdown name="dropdown-name" value="second">
@@ -41,12 +42,12 @@ describe('Select - e2e', () => {
             </joy-dropdown>
         `);
 
-        const result = await page.compareScreenshot('Select with given value');
-        expect(result).toMatchScreenshot();
+        const result = await page.screenshot();
+        expect(result).toMatchImageSnapshot();
     });
 
     it('show a dropdown options list when click on joy-dropdown element', async () => {
-        const page = await newE2EPage();
+        const page = await createPage();
 
         await page.setContent(`
             <joy-dropdown name="dropdown-name">
@@ -60,12 +61,12 @@ describe('Select - e2e', () => {
         await dropdown.click();
         await page.waitForChanges();
 
-        const result = await page.compareScreenshot('Show the options dropdown');
-        expect(result).toMatchScreenshot();
+        const result = await page.screenshot();
+        expect(result).toMatchImageSnapshot();
     });
 
     it('when focused, On press ArrowDown change text and value properly', async () => {
-        const page = await newE2EPage();
+        const page = await createPage();
 
         await page.setContent(`
             <joy-dropdown name="dropdown-name">
@@ -81,21 +82,21 @@ describe('Select - e2e', () => {
         await page.keyboard.down('ArrowDown');
         await page.waitForChanges();
 
-        const result = await page.compareScreenshot('Select the first option');
-        expect(result).toMatchScreenshot();
+        const result = await page.screenshot();
+        expect(result).toMatchImageSnapshot();
 
         await dropdown.focus();
         await page.keyboard.down('ArrowDown');
         await page.waitForChanges();
 
-        const result2 = await page.compareScreenshot('Select the second option');
-        expect(result2).toMatchScreenshot();
+        const result2 = await page.screenshot();
+        expect(result2).toMatchImageSnapshot();
     });
 
     describe.skip('when dropdown is shown', () => {
         // TODO FIX THIS SCENARIO
         it('On press Keydown or KeyRight, change text and value properly', async () => {
-            const page = await newE2EPage();
+            const page = await createPage();
 
             await page.setContent(`
                 <joy-dropdown name="dropdown-name" value="second">
@@ -110,8 +111,8 @@ describe('Select - e2e', () => {
             await dropdown.click();
             await options.isVisible();
 
-            const result2 = await page.compareScreenshot('Select the second option with open dropdown');
-            expect(result2).toMatchScreenshot();
+            const result = await page.screenshot();
+            expect(result).toMatchImageSnapshot();
         });
     });
 });

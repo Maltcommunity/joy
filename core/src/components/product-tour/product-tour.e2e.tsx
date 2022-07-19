@@ -1,4 +1,5 @@
 import {E2EPage, newE2EPage} from '@stencil/core/testing';
+import {createPage} from '../../tests';
 
 async function resetCssTransition(page: E2EPage) {
     await page.addStyleTag({
@@ -8,7 +9,7 @@ async function resetCssTransition(page: E2EPage) {
 
 describe('product-tour e2e', () => {
     it('should render product-tour and navigate to the other, then hide everything', async () => {
-        const page: E2EPage = await newE2EPage();
+        const page = await createPage();
         await resetCssTransition(page);
 
         await page.setContent(`
@@ -56,14 +57,14 @@ describe('product-tour e2e', () => {
         await trigger.click();
         await page.waitForChanges();
 
-        const result = await page.compareScreenshot('Product tour shown');
-        expect(result).toMatchScreenshot();
+        const result = await page.screenshot();
+        expect(result).toMatchImageSnapshot();
 
         const triggerSecond = await page.find('[product-tour="myProductTour2"]');
         await triggerSecond.click();
         await page.waitForChanges();
-        const result2 = await page.compareScreenshot('Second Product tour shown at bottom');
-        expect(result2).toMatchScreenshot();
+        const result2 = await page.screenshot();
+        expect(result2).toMatchImageSnapshot();
 
         const dismiss = await page.find('joy-product-tour#myProductTour2 [slot="product-tour-dismiss"]');
         await dismiss.click();
