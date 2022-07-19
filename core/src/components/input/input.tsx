@@ -98,7 +98,6 @@ export class Input {
     @Method()
     async setFocus() {
         this.input.focus();
-        this.input.style.mixBlendMode = 'high-light'
     }
 
     private updateValue = () => {
