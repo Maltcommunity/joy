@@ -1,0 +1,10 @@
+:host {
+  --product-tour-spotlight-padding: var(--joy-core-spacing-2);
+
+  display: none;
+  position: absolute;
+  background: grey;
+  border-radius: var(--joy-core-radius-3);
+  padding: var(--product-tour-spotlight-padding);
+  box-sizing: content-box !important;
+}

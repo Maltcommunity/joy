@@ -4,8 +4,6 @@
 }
 
 :host {
-    --backdrop-spotlight-padding: var(--joy-core-spacing-2);
-
     opacity: 1;
     top: 0;
     left: 0;
@@ -16,12 +14,4 @@
     background-color: var(--joy-color-overlay);
     z-index: var(--joy-core-z-index-backdrop);
     mix-blend-mode: hard-light;
-}
-
-::slotted(.joy-backdrop--spotlight) {
-    position: absolute;
-    background: grey;
-    border-radius: var(--joy-core-radius-3);
-    padding: var(--backdrop-spotlight-padding);
-    box-sizing: content-box !important;
 }

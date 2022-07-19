@@ -21,6 +21,7 @@ export class ProductTour {
     private hasPreHeader = false;
     private arrow!: HTMLElement;
     private elementToHighlight!: HTMLElement;
+    private resizeTimeout: number | undefined;
 
     private get dismissCta(): HTMLElement[] | null {
         return Array.from(this.host.querySelectorAll('[slot="product-tour-dismiss"]'));
@@ -61,9 +62,9 @@ export class ProductTour {
             // Basic check to verify if consumer has given a valid DOM element
             this.elementToHighlight = fromElement;
             await createBackDrop('product-tour', this.host.parentElement!);
-            this.setHighlightedElementStyle();
+            this.highlightElement();
             this.calculateProductTourPosition(fromElement);
-            this.overrideBackdropZIndex();
+            this.configureBackdrop();
 
             if(callback) {
                 callback();
@@ -91,23 +92,63 @@ export class ProductTour {
         return style.getPropertyValue('--product-tour-z-index');
     }
 
-    private overrideBackdropZIndex() {
-        this.host.ownerDocument.querySelector('joy-backdrop')!.style.zIndex = (parseInt(this.hostZIndex) - 1).toString();
+    private configureBackdrop() {
+        const backdrop = this.getBackdropElement();
+
+        backdrop.style.zIndex = (parseInt(this.hostZIndex) - 1).toString();
+        backdrop.style.position = 'absolute';
+        // @ts-ignore
+        backdrop.style.mixBlendMode = 'hard-light';
+
+        this.setBackdropSize(backdrop);
     }
 
-    private setHighlightedElementStyle() {
+    private setBackdropSize(backdrop: HTMLJoyBackdropElement) {
+        backdrop.style.height = `${document.documentElement.scrollHeight}px`;
+    }
+
+    private setSpotlightSizeAndPosition(spotlight: HTMLJoyProductTourSpotlightElement) {
+        // TODO: find a way to use common padding variable between js & scss before rendering
+        // const style = getComputedStyle(spotlight);
+        // const padding = style.getPropertyValue('--product-tour-spotlight-padding');
+        const padding = '8px';
+
         const {left, top, height, width} = this.elementToHighlight.getBoundingClientRect();
-        const style = getComputedStyle(this.host.ownerDocument.querySelector('joy-backdrop')!);
-        const padding = style.getPropertyValue('--backdrop-spotlight-padding');
 
-        const spotlight = document.createElement('div');
-        spotlight.style.left = left - parseInt(padding) + 'px';
-        spotlight.style.top = top - parseInt(padding)  + 'px';
-        spotlight.style.width = width  + 'px';
-        spotlight.style.height = height  + 'px';
+        spotlight.style.left = `${window.scrollX + left - parseInt(padding)}px`;
+        spotlight.style.top = `${window.scrollY + top - parseInt(padding)}px`;
+        spotlight.style.width = `${width}px`;
+        spotlight.style.height = `${height}px`;
+    }
 
-        spotlight.classList.add('joy-backdrop--spotlight');
-        this.host.ownerDocument.querySelector('joy-backdrop')!.appendChild(spotlight);
+    private highlightElement() {
+        const spotlight = document.createElement('joy-product-tour-spotlight');
+        this.setSpotlightSizeAndPosition(spotlight);
+
+        this.getBackdropElement().appendChild(spotlight);
+        spotlight.style.display = 'block';
+    }
+
+    @Listen('resize', { target: 'window' })
+    private handleWindowResize() {
+        window.clearTimeout(this.resizeTimeout);
+
+        this.resizeTimeout = window.setTimeout(() => {
+            const backdrop = this.getBackdropElement();
+            const spotlight = this.getSpotlightElement();
+
+            this.setBackdropSize(backdrop);
+
+            this.setSpotlightSizeAndPosition(spotlight);
+        }, 100);
+    }
+
+    private getBackdropElement(): HTMLJoyBackdropElement {
+       return this.host.ownerDocument.querySelector('joy-backdrop')!;
+    }
+
+    private getSpotlightElement(): HTMLJoyProductTourSpotlightElement {
+        return this.host.ownerDocument.querySelector('joy-product-tour-spotlight')!;
     }
 
     private calculateProductTourPosition(el: HTMLElement) {
@@ -153,7 +194,7 @@ export class ProductTour {
 
     private dismissProductTour = (): void => {
         this.host.style.display = '';
-        this.setHighlightedElementStyle();
+        this.highlightElement();
         hideProductTour();
         this.joyProductTourDismiss.emit(this.host);
     };

@@ -781,6 +781,8 @@ export namespace Components {
          */
         "steps"?: number;
     }
+    interface JoyProductTourSpotlight {
+    }
     interface JoyProductTourTrigger {
         /**
           * The ID of the product tour you want to show. Required *
@@ -1561,6 +1563,12 @@ declare global {
         prototype: HTMLJoyProductTourElement;
         new (): HTMLJoyProductTourElement;
     };
+    interface HTMLJoyProductTourSpotlightElement extends Components.JoyProductTourSpotlight, HTMLStencilElement {
+    }
+    var HTMLJoyProductTourSpotlightElement: {
+        prototype: HTMLJoyProductTourSpotlightElement;
+        new (): HTMLJoyProductTourSpotlightElement;
+    };
     interface HTMLJoyProductTourTriggerElement extends Components.JoyProductTourTrigger, HTMLStencilElement {
     }
     var HTMLJoyProductTourTriggerElement: {
@@ -1746,6 +1754,7 @@ declare global {
         "joy-pagination": HTMLJoyPaginationElement;
         "joy-placeholder-button": HTMLJoyPlaceholderButtonElement;
         "joy-product-tour": HTMLJoyProductTourElement;
+        "joy-product-tour-spotlight": HTMLJoyProductTourSpotlightElement;
         "joy-product-tour-trigger": HTMLJoyProductTourTriggerElement;
         "joy-progress-bar": HTMLJoyProgressBarElement;
         "joy-radio": HTMLJoyRadioElement;
@@ -2548,6 +2557,8 @@ declare namespace LocalJSX {
          */
         "steps"?: number;
     }
+    interface JoyProductTourSpotlight {
+    }
     interface JoyProductTourTrigger {
         /**
           * The ID of the product tour you want to show. Required *
@@ -3220,6 +3231,7 @@ declare namespace LocalJSX {
         "joy-pagination": JoyPagination;
         "joy-placeholder-button": JoyPlaceholderButton;
         "joy-product-tour": JoyProductTour;
+        "joy-product-tour-spotlight": JoyProductTourSpotlight;
         "joy-product-tour-trigger": JoyProductTourTrigger;
         "joy-progress-bar": JoyProgressBar;
         "joy-radio": JoyRadio;
@@ -3280,6 +3292,7 @@ declare module "@stencil/core" {
             "joy-pagination": LocalJSX.JoyPagination & JSXBase.HTMLAttributes<HTMLJoyPaginationElement>;
             "joy-placeholder-button": LocalJSX.JoyPlaceholderButton & JSXBase.HTMLAttributes<HTMLJoyPlaceholderButtonElement>;
             "joy-product-tour": LocalJSX.JoyProductTour & JSXBase.HTMLAttributes<HTMLJoyProductTourElement>;
+            "joy-product-tour-spotlight": LocalJSX.JoyProductTourSpotlight & JSXBase.HTMLAttributes<HTMLJoyProductTourSpotlightElement>;
             "joy-product-tour-trigger": LocalJSX.JoyProductTourTrigger & JSXBase.HTMLAttributes<HTMLJoyProductTourTriggerElement>;
             "joy-progress-bar": LocalJSX.JoyProgressBar & JSXBase.HTMLAttributes<HTMLJoyProgressBarElement>;
             "joy-radio": LocalJSX.JoyRadio & JSXBase.HTMLAttributes<HTMLJoyRadioElement>;
