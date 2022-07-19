@@ -51,7 +51,7 @@ export const config: Config = {
         {components: ['joy-dropdown', 'joy-select', 'joy-option']},
         {components: ['joy-indicators', 'joy-indicator']},
         {components: ['joy-link', 'joy-text']},
-        {components: ['joy-product-tour', 'joy-product-tour-trigger']},
+        {components: ['joy-product-tour', 'joy-product-tour-trigger', 'joy-product-tour-spotlight']},
         {components: ['joy-radio', 'joy-radio-group']},
         {components: ['joy-selectable-item', 'joy-selectable-item-group']},
         {components: ['joy-stepper', 'joy-step']},

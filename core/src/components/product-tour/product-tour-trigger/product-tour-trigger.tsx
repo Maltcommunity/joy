@@ -1,5 +1,5 @@
 import {Component, Element, h, Host, Prop} from '@stencil/core';
-import {showProductTour} from '../product-tour/product-tour-service';
+import {showProductTour} from '../product-tour-service';
 
 @Component({
     tag: 'joy-product-tour-trigger',

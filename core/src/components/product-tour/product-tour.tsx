@@ -1,5 +1,5 @@
 import {computePosition, flip, shift, offset, arrow, autoUpdate} from '@floating-ui/dom';
-import {Component, Event, EventEmitter, Element, h, Host, Listen, Method, Prop} from '@stencil/core';
+import {Component, Event, EventEmitter, Element, h, Host, Listen, Method, Prop, Fragment} from '@stencil/core';
 import {Positions} from '../../types';
 import {createBackDrop} from '../../utils';
 import {hideProductTour} from './product-tour-service';
@@ -66,7 +66,7 @@ export class ProductTour {
             this.calculateProductTourPosition(fromElement);
             this.configureBackdrop();
 
-            if(callback) {
+            if (callback) {
                 callback();
             }
         }
@@ -97,8 +97,8 @@ export class ProductTour {
 
         backdrop.style.zIndex = (parseInt(this.hostZIndex) - 1).toString();
         backdrop.style.position = 'absolute';
-        // @ts-ignore
         backdrop.style.mixBlendMode = 'hard-light';
+        backdrop.style.backgroundBlendMode = 'difference';
 
         this.setBackdropSize(backdrop);
     }
@@ -108,15 +108,12 @@ export class ProductTour {
     }
 
     private setSpotlightSizeAndPosition(spotlight: HTMLJoyProductTourSpotlightElement) {
-        // TODO: find a way to use common padding variable between js & scss before rendering
-        // const style = getComputedStyle(spotlight);
-        // const padding = style.getPropertyValue('--product-tour-spotlight-padding');
-        const padding = '8px';
+        const padding = 'var(--joy-core-spacing-2)';
 
         const {left, top, height, width} = this.elementToHighlight.getBoundingClientRect();
 
-        spotlight.style.left = `${window.scrollX + left - parseInt(padding)}px`;
-        spotlight.style.top = `${window.scrollY + top - parseInt(padding)}px`;
+        spotlight.style.left = `calc(${window.scrollX + left}px - ${padding})`;
+        spotlight.style.top = `calc(${window.scrollY + top}px - ${padding})`;
         spotlight.style.width = `${width}px`;
         spotlight.style.height = `${height}px`;
     }
@@ -126,10 +123,9 @@ export class ProductTour {
         this.setSpotlightSizeAndPosition(spotlight);
 
         this.getBackdropElement().appendChild(spotlight);
-        spotlight.style.display = 'block';
     }
 
-    @Listen('resize', { target: 'window' })
+    @Listen('resize', {target: 'window'})
     private handleWindowResize() {
         window.clearTimeout(this.resizeTimeout);
 
@@ -138,13 +134,12 @@ export class ProductTour {
             const spotlight = this.getSpotlightElement();
 
             this.setBackdropSize(backdrop);
-
             this.setSpotlightSizeAndPosition(spotlight);
         }, 100);
     }
 
     private getBackdropElement(): HTMLJoyBackdropElement {
-       return this.host.ownerDocument.querySelector('joy-backdrop')!;
+        return this.host.ownerDocument.querySelector('joy-backdrop')!;
     }
 
     private getSpotlightElement(): HTMLJoyProductTourSpotlightElement {
@@ -206,7 +201,8 @@ export class ProductTour {
     }
 
     disconnectedCallback() {
-        this.dismissCta?.forEach((cta) => cta.addEventListener('click', this.closeProductTour));
+        this.dismissCta?.forEach((cta) => cta.removeEventListener('click', this.closeProductTour));
+        window.clearTimeout(this.resizeTimeout);
     }
 
     render() {
@@ -227,33 +223,30 @@ export class ProductTour {
                         }}
                     >
                         <div>
-                            <slot name="product-tour-preheader" />
+                            <slot name="product-tour-preheader"/>
                         </div>
-                        <joy-icon tabindex="0" name="cross" onClick={this.dismissProductTour} />
+                        <joy-icon tabindex="0" name="cross" onClick={this.dismissProductTour}/>
                     </div>
                     <div class="joy-product-tour__content">
-                        {this.icon && <joy-icon name={this.icon} size="medium" />}
+                        {this.icon && <joy-icon name={this.icon} size="medium"/>}
                         <div>
                             <div class="joy-product-tour__header">
-                                <slot name="product-tour-header" />
+                                <slot name="product-tour-header"/>
                             </div>
-                            <slot name="product-tour-content" />
+                            <slot name="product-tour-content"/>
                         </div>
                     </div>
-                    <div
-                         class={{
-                             'joy-product-tour__footer': true,
-                             'joy-product-tour__footer--no-steps': !this.steps
-                         }}
-                    >
-                        {this.steps && (
-                            <span class="joy-product-tour__footer___steps">
-                                {this.step}/{this.steps}
-                            </span>
-                        )}
+                    <div class="joy-product-tour__footer">
+                        <span class="joy-product-tour__footer___steps">
+                          {this.steps && (
+                              <Fragment>
+                                  {this.step}/{this.steps}
+                              </Fragment>
+                          )}
+                        </span>
                         <div class="joy-product-tour__footer___cta">
-                            <slot name="product-tour-dismiss" />
-                            <slot name="product-tour-next" />
+                            <slot name="product-tour-dismiss"/>
+                            <slot name="product-tour-next"/>
                         </div>
                     </div>
                 </div>

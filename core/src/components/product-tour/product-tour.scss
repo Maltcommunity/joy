@@ -90,10 +90,6 @@ $_CLASS: '.joy-product-tour';
         flex-wrap: wrap;
         margin-top: var(--joy-core-spacing-4);
 
-        &--no-steps {
-            justify-content: flex-end;
-        }
-
         &___steps {
             color: var(--joy-color-neutral-5);
             @include utils.getFontProperties(l);

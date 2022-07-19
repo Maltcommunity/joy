@@ -9,9 +9,8 @@
     left: 0;
     width: 100%;
     height: 100%;
-    position: absolute;
+    position: fixed;
     animation: fade-in var(--joy-transition-duration-default) var(--joy-transition-timing-function) forwards;
     background-color: var(--joy-color-overlay);
     z-index: var(--joy-core-z-index-backdrop);
-    mix-blend-mode: hard-light;
 }
