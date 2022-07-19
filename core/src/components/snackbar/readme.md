@@ -2,7 +2,7 @@
 hologram: true
 title: Snackbar
 name: joy-snackbar
-category: Webcomponents
+category: maltjoy core Overlay
 ---
 
 ##Info 

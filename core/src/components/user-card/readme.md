@@ -2,7 +2,7 @@
 hologram: true
 title: User Card
 name: joy-user-card
-category: Webcomponents
+category: maltjoy core View
 ---
 
 ## Shorter example

@@ -2,7 +2,7 @@
 hologram: true
 title: _GETTING STARTED
 name: _joy_getting-started
-category: Webcomponents
+category: _README
 ---
 
 ## Installation

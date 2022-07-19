@@ -2,7 +2,7 @@
 hologram: true
 title: Vue tips
 name: vue_tips
-category: Framework tips
+category: _README
 ---
 
 ## blur/focus listeners

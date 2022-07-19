@@ -2,7 +2,7 @@
 hologram: true
 title: Dialog
 name: joy-dialog
-category: Webcomponents
+category: maltjoy core Overlay
 ---
 
 

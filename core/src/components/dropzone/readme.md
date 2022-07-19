@@ -2,7 +2,7 @@
 hologram: true
 title: Dropzone
 name: joy-dropzone
-category: Webcomponents
+category: maltjoy core Forms
 ---
 
 ```ui_example

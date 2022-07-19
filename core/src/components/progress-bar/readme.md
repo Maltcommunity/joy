@@ -2,7 +2,7 @@
 hologram: true
 title: Progress Bar
 name: joy-progress-bar
-category: Webcomponents
+category: maltjoy core View
 ---
 
 ### Desktop mode 

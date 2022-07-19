@@ -2,7 +2,7 @@
 hologram: true
 title: Icons
 name: joy-icon
-category: Webcomponents
+category: maltjoy core Icons
 ---
 
 Please see <a href="/joy/webcomponents.html#joy_icons_list">full icons list here</a>

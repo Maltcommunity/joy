@@ -2,7 +2,7 @@
 hologram: true
 title: Radio group
 name: joy-radio-group
-category: Webcomponents
+category: maltjoy core Forms
 ---
 
 ```ui_example

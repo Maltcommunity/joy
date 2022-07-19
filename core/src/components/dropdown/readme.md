@@ -2,7 +2,7 @@
 hologram: true
 title: Dropdown
 name: joy-dropdown
-category: Webcomponents
+category: maltjoy core Forms
 ---
 
 ```ui_example

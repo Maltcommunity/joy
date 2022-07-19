@@ -2,7 +2,7 @@
 hologram: true
 title: Step
 name: joy-step
-category: Webcomponents
+category: maltjoy core View
 ---
 
 <joy-highlight>

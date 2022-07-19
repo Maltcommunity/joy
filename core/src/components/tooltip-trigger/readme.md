@@ -2,7 +2,7 @@
 hologram: true
 title: Tooltip
 name: joy-tooltip
-category: Webcomponents
+category: maltjoy core View
 ---
 
 ```ui_example

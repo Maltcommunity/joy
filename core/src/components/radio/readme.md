@@ -2,7 +2,7 @@
 hologram: true
 title: Radio
 name: joy-radio
-category: Webcomponents
+category: maltjoy core Forms
 ---
 
 

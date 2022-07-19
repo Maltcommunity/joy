@@ -2,7 +2,7 @@
 hologram: true
 title: Tabs
 name: joy-tabs
-category: Webcomponents
+category: maltjoy core Overlay
 ---
 
 For non SPA contexts, you don't need to wrap the content in joy-tab.

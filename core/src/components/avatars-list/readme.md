@@ -2,7 +2,7 @@
 hologram: true
 title: Avatars List
 name: joy-avatars-list
-category: Webcomponents
+category: maltjoy core View
 ---
 
 ```ui_example

@@ -2,7 +2,7 @@
 hologram: true
 title: Counter
 name: joy-counter
-category: Webcomponents
+category: maltjoy core Forms
 ---
 
 ```ui_example

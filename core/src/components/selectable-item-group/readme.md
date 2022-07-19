@@ -2,7 +2,7 @@
 hologram: true
 title: Selectable item group
 name: joy-selectable-item-group
-category: Webcomponents
+category: maltjoy core Forms
 ---
 
 <joy-tag variant="special">EXPERIMENTAL</joy-tag>

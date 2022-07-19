@@ -2,7 +2,7 @@
 hologram: true
 title: Stepper
 name: joy-stepper
-category: Webcomponents
+category: maltjoy core View
 ---
 
 <joy-highlight>

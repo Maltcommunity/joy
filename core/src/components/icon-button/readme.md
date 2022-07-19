@@ -2,7 +2,7 @@
 hologram: true
 title: Icon Button
 name: joy-icon-button
-category: Webcomponents
+category: maltjoy core View
 ---
 
 ```ui_example

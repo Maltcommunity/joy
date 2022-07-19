@@ -2,7 +2,7 @@
 hologram: true
 title: Product Tour
 name: joy-product-tour
-category: Webcomponents
+category: maltjoy core Overlay
 ---
 
 <joy-tag variant="important">EXPERIMENTAL</joy-tag>

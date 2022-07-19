@@ -2,7 +2,7 @@
 hologram: true
 title: Button
 name: joy-button
-category: Webcomponents
+category: maltjoy core Buttons
 ---
 
 ## Main

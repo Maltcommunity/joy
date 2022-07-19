@@ -2,7 +2,7 @@
 hologram: true
 title: Avatar
 name: joy-avatar
-category: Webcomponents
+category: maltjoy core View
 ---
 
 <joy-highlight level="warning">If you have multiple avatars to display in a list, use <a href="#joy-avatars-list">joy-avatars-list</a></joy-highlight>

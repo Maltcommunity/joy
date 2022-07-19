@@ -2,7 +2,7 @@
 hologram: true
 title: Divider CTA
 name: joy-divider-cta
-category: Webcomponents
+category: maltjoy core Buttons
 ---
 
 ```ui_example

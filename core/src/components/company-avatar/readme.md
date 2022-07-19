@@ -2,7 +2,7 @@
 hologram: true
 title: Company Avatar
 name: joy-company-avatar
-category: Webcomponents
+category: maltjoy core View
 ---
 
 ## With photo as avatar

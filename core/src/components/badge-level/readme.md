@@ -2,7 +2,7 @@
 hologram: true
 title: Badge Level
 name: joy-badge-level
-category: Webcomponents
+category: maltjoy core View
 ---
 
 ```ui_example

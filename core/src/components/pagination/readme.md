@@ -2,7 +2,7 @@
 hologram: true
 title: Pagination
 name: joy-pagination
-category: Webcomponents
+category: maltjoy core Buttons
 ---
 
 ```ui_example

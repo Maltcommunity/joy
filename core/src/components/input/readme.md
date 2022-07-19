@@ -2,7 +2,7 @@
 hologram: true
 title: Input
 name: joy-input
-category: Webcomponents
+category: maltjoy core Forms
 ---
 
 ```ui_example

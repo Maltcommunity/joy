@@ -2,7 +2,7 @@
 hologram: true
 title: Tags Input
 name: joy-tags-input
-category: Webcomponents
+category: maltjoy core Forms
 ---
 
 

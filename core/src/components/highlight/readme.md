@@ -2,7 +2,7 @@
 hologram: true
 title: Highlight
 name: joy-highlight
-category: Webcomponents
+category: maltjoy core View
 ---
 
 ## Default 

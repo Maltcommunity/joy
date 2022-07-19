@@ -2,7 +2,7 @@
 hologram: true
 title: Textarea
 name: joy-textarea
-category: Webcomponents
+category: maltjoy core Forms
 ---
 
 

@@ -2,7 +2,7 @@
 hologram: true
 title: Checkbox
 name: joy-checkbox
-category: Webcomponents
+category: maltjoy core Forms
 ---
 
 ## Default

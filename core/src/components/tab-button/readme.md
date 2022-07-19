@@ -2,7 +2,7 @@
 hologram: true
 title: Tab
 name: joy-tab-button
-category: Webcomponents
+category: maltjoy core View
 ---
 
 <!-- Auto Generated Below -->

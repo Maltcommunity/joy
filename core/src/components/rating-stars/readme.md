@@ -2,7 +2,7 @@
 hologram: true
 title: Rating Stars
 name: joy-rating-stars
-category: Webcomponents
+category: maltjoy core View
 ---
 
 ```ui_example

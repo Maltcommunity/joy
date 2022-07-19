@@ -2,7 +2,7 @@
 hologram: true
 title: Text
 name: joy-text
-category: Webcomponents
+category: maltjoy core View
 ---
 
 ```ui_example

@@ -2,7 +2,7 @@
 hologram: true
 title: Select
 name: joy-select
-category: Webcomponents
+category: maltjoy core Forms
 ---
 
 ```ui_example

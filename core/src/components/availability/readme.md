@@ -2,7 +2,7 @@
 hologram: true
 title: Availability
 name: joy-availability
-category: Webcomponents
+category: maltjoy core View
 ---
 
 ## Status colors

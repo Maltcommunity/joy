@@ -2,7 +2,7 @@
 hologram: true
 title: Bottom Sheet
 name: joy-bottom-sheet
-category: Webcomponents
+category: maltjoy core Overlay
 ---
 
 <joy-link target="_blank" href="https://joy.malt.com/6bf479565/p/90c963--bottom-sheet">

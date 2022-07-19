@@ -2,7 +2,7 @@
 hologram: true
 title: Separator
 name: joy-separator
-category: Webcomponents
+category: maltjoy core View
 ---
 
 ```ui_example

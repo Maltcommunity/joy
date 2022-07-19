@@ -2,7 +2,7 @@
 hologram: true
 title: Placeholder Button
 name: joy-placeholder-button
-category: Webcomponents
+category: maltjoy core Buttons
 ---
 
 ```ui_example

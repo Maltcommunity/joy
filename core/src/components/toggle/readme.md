@@ -2,7 +2,7 @@
 hologram: true
 title: Toggle
 name: joy-toggle
-category: Webcomponents
+category: maltjoy core Forms
 ---
 
 ## Default

@@ -2,7 +2,7 @@
 hologram: true
 title: Selectable item
 name: joy-selectable-item
-category: Webcomponents
+category: maltjoy core Forms
 ---
 
 <joy-tag variant="special">EXPERIMENTAL</joy-tag>
