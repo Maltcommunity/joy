@@ -1,5 +1,3 @@
-import {createBackDrop, destroyBackdrop} from '../../utils';
-
 /**
  * @param {String} id - the ID attribute of the product tour you want to display. Can be a data-product-tour as well.
  * @param {String} target - the highlighted target DOM element.
@@ -15,7 +13,6 @@ export async function showProductTour(id: string, target: HTMLElement): Promise<
         return;
     }
 
-    await createBackDrop('product-tour', productTour.parentElement!);
     await (productTour as HTMLJoyProductTourElement).showProductTour(target);
 }
 
@@ -25,6 +22,7 @@ export function hideProductTour(removeBackdrop = true): void {
     });
 
     if (removeBackdrop) {
-        destroyBackdrop();
+        document.body.querySelector('.joy-product-tour--overlay')!.remove();
+        document.body.querySelector('joy-product-tour-spotlight')!.remove();
     }
 }

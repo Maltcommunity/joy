@@ -1,9 +1,7 @@
-import {computePosition, flip, shift, offset, arrow, autoUpdate} from '@floating-ui/dom';
-import {Component, Event, EventEmitter, Element, h, Host, Listen, Method, Prop, Fragment} from '@stencil/core';
+import {computePosition, flip, offset, arrow, autoUpdate} from '@floating-ui/dom';
+import {Component, Event, EventEmitter, Element, h, Host, Method, Prop, Fragment} from '@stencil/core';
 import {Positions} from '../../types';
-import {createBackDrop} from '../../utils';
 import {hideProductTour} from './product-tour-service';
-
 
 /**
  * @slot product-tour-preheader - If you need to insert specific content before the actual title
@@ -21,7 +19,7 @@ export class ProductTour {
     private hasPreHeader = false;
     private arrow!: HTMLElement;
     private elementToHighlight!: HTMLElement;
-    private resizeTimeout: number | undefined;
+    private overlay!: HTMLElement;
 
     private get dismissCta(): HTMLElement[] | null {
         return Array.from(this.host.querySelectorAll('[slot="product-tour-dismiss"]'));
@@ -29,6 +27,7 @@ export class ProductTour {
 
     constructor() {
         this.closeProductTour = this.closeProductTour.bind(this);
+        this.handleOverlayClick = this.handleOverlayClick.bind(this);
     }
 
     /** Icon name, placed left to the title */
@@ -61,10 +60,9 @@ export class ProductTour {
         if (this.host.ownerDocument.contains(fromElement)) {
             // Basic check to verify if consumer has given a valid DOM element
             this.elementToHighlight = fromElement;
-            await createBackDrop('product-tour', this.host.parentElement!);
+            this.createOverlay();
             this.highlightElement();
             this.calculateProductTourPosition(fromElement);
-            this.configureBackdrop();
 
             if (callback) {
                 callback();
@@ -75,36 +73,6 @@ export class ProductTour {
     @Method()
     async closeProductTour(): Promise<void> {
         this.dismissProductTour();
-    }
-
-    @Listen('backdropClick', {target: 'document'})
-    backdropClick(event: CustomEvent) {
-        if (event.detail !== 'product-tour' || this.dismissedBy === 'not-backdrop') {
-            return;
-        }
-
-        hideProductTour();
-        this.joyProductTourDismiss.emit(this.host);
-    }
-
-    get hostZIndex(): string {
-        const style = getComputedStyle(this.host);
-        return style.getPropertyValue('--product-tour-z-index');
-    }
-
-    private configureBackdrop() {
-        const backdrop = this.getBackdropElement();
-
-        backdrop.style.zIndex = (parseInt(this.hostZIndex) - 1).toString();
-        backdrop.style.position = 'absolute';
-        backdrop.style.mixBlendMode = 'hard-light';
-        backdrop.style.backgroundBlendMode = 'difference';
-
-        this.setBackdropSize(backdrop);
-    }
-
-    private setBackdropSize(backdrop: HTMLJoyBackdropElement) {
-        backdrop.style.height = `${document.documentElement.scrollHeight}px`;
     }
 
     private setSpotlightSizeAndPosition(spotlight: HTMLJoyProductTourSpotlightElement) {
@@ -118,28 +86,38 @@ export class ProductTour {
         spotlight.style.height = `${height}px`;
     }
 
+    private createOverlay() {
+        this.overlay = document.createElement('div');
+        this.overlay.classList.add('joy-product-tour--overlay');
+        this.overlay.addEventListener('click', this.handleOverlayClick, {once: true});
+
+        this.overlay.style.position = 'fixed';
+        this.overlay.style.top = '0';
+        this.overlay.style.left = '0';
+        this.overlay.style.width = '100%';
+        this.overlay.style.height = '100%';
+        this.overlay.style.zIndex = 'var(--joy-core-z-index-overlay)';
+
+        document.querySelector('body')!.appendChild(this.overlay);
+    }
+
+    private handleOverlayClick() {
+        if (this.dismissedBy === 'not-backdrop') {
+            return;
+        }
+
+        hideProductTour();
+        this.joyProductTourDismiss.emit(this.host);
+    }
+
     private highlightElement() {
+        this.elementToHighlight.style.position = 'relative';
+        this.elementToHighlight.style.zIndex = 'calc(var(--joy-core-z-index-backdrop) + 1)';
+
         const spotlight = document.createElement('joy-product-tour-spotlight');
         this.setSpotlightSizeAndPosition(spotlight);
 
-        this.getBackdropElement().appendChild(spotlight);
-    }
-
-    @Listen('resize', {target: 'window'})
-    private handleWindowResize() {
-        window.clearTimeout(this.resizeTimeout);
-
-        this.resizeTimeout = window.setTimeout(() => {
-            const backdrop = this.getBackdropElement();
-            const spotlight = this.getSpotlightElement();
-
-            this.setBackdropSize(backdrop);
-            this.setSpotlightSizeAndPosition(spotlight);
-        }, 100);
-    }
-
-    private getBackdropElement(): HTMLJoyBackdropElement {
-        return this.host.ownerDocument.querySelector('joy-backdrop')!;
+        document.querySelector('body')!.appendChild(spotlight);
     }
 
     private getSpotlightElement(): HTMLJoyProductTourSpotlightElement {
@@ -147,12 +125,15 @@ export class ProductTour {
     }
 
     private calculateProductTourPosition(el: HTMLElement) {
+        const spotlight = this.getSpotlightElement();
+
         autoUpdate(el, this.host, () => {
+            this.setSpotlightSizeAndPosition(spotlight);
+
             computePosition(el, this.host, {
                 placement: this.position,
                 middleware: [
                     offset(30),
-                    shift(),
                     flip({
                         fallbackPlacements: ['bottom', 'top'],
                     }),
@@ -189,7 +170,6 @@ export class ProductTour {
 
     private dismissProductTour = (): void => {
         this.host.style.display = '';
-        this.highlightElement();
         hideProductTour();
         this.joyProductTourDismiss.emit(this.host);
     };
@@ -202,7 +182,6 @@ export class ProductTour {
 
     disconnectedCallback() {
         this.dismissCta?.forEach((cta) => cta.removeEventListener('click', this.closeProductTour));
-        window.clearTimeout(this.resizeTimeout);
     }
 
     render() {
@@ -223,30 +202,30 @@ export class ProductTour {
                         }}
                     >
                         <div>
-                            <slot name="product-tour-preheader"/>
+                            <slot name="product-tour-preheader" />
                         </div>
-                        <joy-icon tabindex="0" name="cross" onClick={this.dismissProductTour}/>
+                        <joy-icon tabindex="0" name="cross" onClick={this.dismissProductTour} />
                     </div>
                     <div class="joy-product-tour__content">
-                        {this.icon && <joy-icon name={this.icon} size="medium"/>}
+                        {this.icon && <joy-icon name={this.icon} size="medium" />}
                         <div>
                             <div class="joy-product-tour__header">
-                                <slot name="product-tour-header"/>
+                                <slot name="product-tour-header" />
                             </div>
-                            <slot name="product-tour-content"/>
+                            <slot name="product-tour-content" />
                         </div>
                     </div>
                     <div class="joy-product-tour__footer">
                         <span class="joy-product-tour__footer___steps">
-                          {this.steps && (
-                              <Fragment>
-                                  {this.step}/{this.steps}
-                              </Fragment>
-                          )}
+                            {this.steps && (
+                                <Fragment>
+                                    {this.step}/{this.steps}
+                                </Fragment>
+                            )}
                         </span>
                         <div class="joy-product-tour__footer___cta">
-                            <slot name="product-tour-dismiss"/>
-                            <slot name="product-tour-next"/>
+                            <slot name="product-tour-dismiss" />
+                            <slot name="product-tour-next" />
                         </div>
                     </div>
                 </div>
