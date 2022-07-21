@@ -1,5 +1,5 @@
 import {computePosition, flip, offset, arrow, autoUpdate, shift, limitShift} from '@floating-ui/dom';
-import {Component, Event, EventEmitter,  Element,Fragment, h, Host, Method, Prop,  Watch} from '@stencil/core';
+import {Component, Event, EventEmitter, Element, Fragment, h, Host, Method, Prop, Watch} from '@stencil/core';
 import {Positions} from '../../types';
 
 /**
@@ -85,7 +85,7 @@ export class ProductTour {
 
     @Watch('dismissedBy')
     private checkDismissedBy() {
-        if(this.dismissedBy === 'all' && !this.addOverlay) {
+        if (this.dismissedBy === 'all' && !this.addOverlay) {
             console.warn('An overlay is required to be able to dismiss the product tour by clicking on its backdrop');
         }
     }
@@ -104,6 +104,7 @@ export class ProductTour {
     private createOverlay() {
         this.overlay = document.createElement('div');
         this.overlay.classList.add('joy-product-tour--overlay');
+
         this.overlay.addEventListener('click', this.handleOverlayClick, {once: true});
 
         this.overlay.style.position = 'fixed';
@@ -128,7 +129,7 @@ export class ProductTour {
         this.dismissProductTour();
     }
 
-    private async highlightElement(chainingProductTour: boolean) {
+    private highlightElement(chainingProductTour: boolean) {
         this.elementToHighlight.style.position = 'relative';
         this.elementToHighlight.style.zIndex = 'calc(var(--joy-core-z-index-backdrop) + 1)';
 

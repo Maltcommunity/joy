@@ -1,16 +1,9 @@
 import {E2EPage, newE2EPage} from '@stencil/core/testing';
 import {createPage} from '../../tests';
 
-async function resetCssTransition(page: E2EPage) {
-    await page.addStyleTag({
-        content: 'joy-backdrop {--backdrop-animation: 0.01ms !important}',
-    });
-}
-
 describe('product-tour e2e', () => {
     it('should render product-tour and navigate to the other, then hide everything', async () => {
         const page = await createPage();
-        await resetCssTransition(page);
 
         await page.setContent(`
             <joy-product-tour-trigger product-tour="myProductTour">
@@ -79,7 +72,6 @@ describe('product-tour e2e', () => {
 
     it('should render product-tour on load, then hide it', async () => {
         const page: E2EPage = await newE2EPage();
-        await resetCssTransition(page);
 
         await page.setContent(`
             <joy-product-tour-trigger product-tour="myProductTour" show-on-load>
@@ -107,16 +99,15 @@ describe('product-tour e2e', () => {
         expect(isVisibleAfterDismiss).toBe(false);
     });
 
-    it('should prevent product-tour dismiss when clicking on backdrop', async () => {
+    it('should prevent product-tour dismiss when clicking on overlay', async () => {
         const page: E2EPage = await newE2EPage();
-        await resetCssTransition(page);
 
         await page.setContent(`
             <joy-product-tour-trigger product-tour="myProductTour">
                 <joy-button variant="main">I am the first highlighted feature</joy-button>
             </joy-product-tour-trigger>
 
-            <joy-product-tour id="myProductTour" icon="medal-thumbsup" steps="1" step="1" position="bottom">
+            <joy-product-tour id="myProductTour" icon="medal-thumbsup" steps="1" step="1" position="bottom" add-overlay>
                 <div slot="product-tour-header">
                     I am the product tour title
                 </div>
@@ -132,10 +123,74 @@ describe('product-tour e2e', () => {
         const productTour = await page.find('joy-product-tour');
         expect(await productTour.isVisible()).toBe(true);
 
-        const backdrop = await page.find('joy-backdrop');
-        await backdrop.click();
+        const overlay = await page.find('.joy-product-tour--overlay');
+        await overlay.click();
         await page.waitForChanges();
 
         expect(await productTour.isVisible()).toBe(true);
+    });
+
+    it('should dismiss the product-tour when clicking on overlay when dismissed-by="all"', async () => {
+        const page: E2EPage = await newE2EPage();
+
+        await page.setContent(`
+            <joy-product-tour-trigger product-tour="myProductTour">
+                <joy-button variant="main">I am the first highlighted feature</joy-button>
+            </joy-product-tour-trigger>
+
+            <joy-product-tour id="myProductTour" icon="medal-thumbsup" steps="1" step="1" position="bottom" add-overlay dismissed-by="all">
+                <div slot="product-tour-header">
+                    I am the product tour title
+                </div>
+
+                <joy-button size="small" variant="ghost" slot="product-tour-dismiss">Got it</joy-button>
+            </joy-product-tour>
+        `);
+
+        const trigger = await page.find('joy-product-tour-trigger');
+        await trigger.click();
+        await page.waitForChanges();
+
+        const productTour = await page.find('joy-product-tour');
+        expect(await productTour.isVisible()).toBe(true);
+
+        const overlay = await page.find('.joy-product-tour--overlay');
+        await overlay.click();
+        await page.waitForChanges();
+
+        expect(await productTour.isVisible()).toBe(false);
+    });
+
+    it('should render the product tour on external target and keep it clickable', async () => {
+        const page = await createPage();
+
+        await page.setContent(`
+            <joy-product-tour-trigger product-tour="myProductTour" target="#productTourTarget">
+                <joy-button variant="main">Start the product tour</joy-button>
+            </joy-product-tour-trigger>
+            
+            <joy-button variant="primary" id="productTourTarget">I am a clickable highlighted button</joy-button>
+
+            <joy-product-tour id="myProductTour" target="#productTourTarget" add-overlay>
+                <div slot="product-tour-header">
+                    I am the product tour title
+                </div>
+
+                <joy-button size="small" variant="ghost" slot="product-tour-dismiss">Got it</joy-button>
+            </joy-product-tour>
+        `);
+
+        const trigger = await page.find('joy-product-tour-trigger');
+        await trigger.click();
+        await page.waitForChanges();
+
+        const result = await page.screenshot();
+        expect(result).toMatchImageSnapshot();
+
+        const target = await page.find('#productTourTarget');
+        const spy = jest.spyOn(target, 'click');
+        await target.click();
+
+        expect(spy).toHaveBeenCalled();
     });
 });
