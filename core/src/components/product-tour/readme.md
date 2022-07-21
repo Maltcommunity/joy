@@ -7,6 +7,10 @@ category: maltjoy core Overlay
 
 <joy-tag variant="important">EXPERIMENTAL</joy-tag>
 
+To prevent unexpected behaviour, the `<joy-product-tour />` component must be placed directly at the root of the body in order to be sure to be out of any stacking context.
+
+In a Vue application you can use [PortalVue](https://portal-vue.linusb.org/).
+
 ```ui_example
 
 <joy-product-tour-trigger product-tour="myProductTour">
@@ -53,15 +57,16 @@ category: maltjoy core Overlay
 
 ## Properties
 
-| Property      | Attribute      | Description                                                                                                                                                                                             | Type                                     | Default          |
-| ------------- | -------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------- | ---------------- |
-| `dismissedBy` | `dismissed-by` | Product-tour can be hidden by 3 elements by default, dismiss bottom CTA, top-right corner icon, and backdrop. If you don't want the backdrop click to close the product-tour, use "not-backdrop" value. | `"all" \| "not-backdrop"`                | `'not-backdrop'` |
-| `icon`        | `icon`         | Icon name, placed left to the title                                                                                                                                                                     | `string \| undefined`                    | `undefined`      |
-| `maxWidth`    | `max-width`    | Set a max width for your container                                                                                                                                                                      | `number \| undefined`                    | `500`            |
-| `open`        | `open`         | Product tour open state                                                                                                                                                                                 | `boolean`                                | `false`          |
-| `position`    | `position`     | Product tour position according to highlighted content                                                                                                                                                  | `"bottom" \| "left" \| "right" \| "top"` | `'right'`        |
-| `step`        | `step`         | If multiple product tour are need, specify the current step number                                                                                                                                      | `number \| undefined`                    | `1`              |
-| `steps`       | `steps`        | If multiple product tour are need, specify the amount                                                                                                                                                   | `number \| undefined`                    | `undefined`      |
+| Property         | Attribute         | Description                                                                                                                                                                                                                                       | Type                                     | Default          |
+| ---------------- | ----------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------- | ---------------- |
+| `disableOverlay` | `disable-overlay` | The overlay is usefull to prevent user interactions behind the backdrop when the product tour is open. It can disable if the highlighted target element need to be interactive but one of its parent node has his own stacking context (z-index). | `boolean`                                | `false`          |
+| `dismissedBy`    | `dismissed-by`    | Product-tour can be hidden by 3 elements by default, dismiss bottom CTA, top-right corner icon, and backdrop. If you don't want the backdrop click to close the product-tour, use "not-backdrop" value.                                           | `"all" \| "not-backdrop"`                | `'not-backdrop'` |
+| `icon`           | `icon`            | Icon name, placed left to the title                                                                                                                                                                                                               | `string \| undefined`                    | `undefined`      |
+| `maxWidth`       | `max-width`       | Set a max width for your container                                                                                                                                                                                                                | `number \| undefined`                    | `500`            |
+| `open`           | `open`            | Product tour open state                                                                                                                                                                                                                           | `boolean`                                | `false`          |
+| `position`       | `position`        | Product tour position according to highlighted content                                                                                                                                                                                            | `"bottom" \| "left" \| "right" \| "top"` | `'right'`        |
+| `step`           | `step`            | If multiple product tour are need, specify the current step number                                                                                                                                                                                | `number \| undefined`                    | `1`              |
+| `steps`          | `steps`           | If multiple product tour are need, specify the amount                                                                                                                                                                                             | `number \| undefined`                    | `undefined`      |
 
 
 ## Events
@@ -83,7 +88,7 @@ Type: `Promise<void>`
 
 
 
-### `showProductTour<T>(fromElement: HTMLElement, callback?: (() => T) | undefined) => Promise<void>`
+### `showProductTour<T>(fromElement: HTMLElement, chainingProductTour?: boolean, callback?: (() => T) | undefined) => Promise<void>`
 
 
 
@@ -116,11 +121,13 @@ Type: `Promise<void>`
 
 ### Depends on
 
+- [joy-product-tour-spotlight](product-tour-spotlight)
 - [joy-icon](../icon)
 
 ### Graph
 ```mermaid
 graph TD;
+  joy-product-tour --> joy-product-tour-spotlight
   joy-product-tour --> joy-icon
   style joy-product-tour fill:#f9f,stroke:#333,stroke-width:4px
 ```

@@ -746,11 +746,11 @@ export namespace Components {
         "size": 'small' | 'medium' | 'large';
     }
     interface JoyProductTour {
-        /**
-          * Add an overlay to prevent user interactions behind the backdrop when the product tour is open
-         */
-        "addOverlay": boolean;
         "closeProductTour": () => Promise<void>;
+        /**
+          * The overlay is usefull to prevent user interactions behind the backdrop when the product tour is open. It can disable if the highlighted target element need to be interactive but one of its parent node has his own stacking context (z-index).
+         */
+        "disableOverlay": boolean;
         /**
           * Product-tour can be hidden by 3 elements by default, dismiss bottom CTA, top-right corner icon, and backdrop. If you don't want the backdrop click to close the product-tour, use "not-backdrop" value.
          */
@@ -2533,9 +2533,9 @@ declare namespace LocalJSX {
     }
     interface JoyProductTour {
         /**
-          * Add an overlay to prevent user interactions behind the backdrop when the product tour is open
+          * The overlay is usefull to prevent user interactions behind the backdrop when the product tour is open. It can disable if the highlighted target element need to be interactive but one of its parent node has his own stacking context (z-index).
          */
-        "addOverlay"?: boolean;
+        "disableOverlay"?: boolean;
         /**
           * Product-tour can be hidden by 3 elements by default, dismiss bottom CTA, top-right corner icon, and backdrop. If you don't want the backdrop click to close the product-tour, use "not-backdrop" value.
          */

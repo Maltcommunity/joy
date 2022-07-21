@@ -107,7 +107,7 @@ describe('product-tour e2e', () => {
                 <joy-button variant="main">I am the first highlighted feature</joy-button>
             </joy-product-tour-trigger>
 
-            <joy-product-tour id="myProductTour" icon="medal-thumbsup" steps="1" step="1" position="bottom" add-overlay>
+            <joy-product-tour id="myProductTour" icon="medal-thumbsup" steps="1" step="1" position="bottom">
                 <div slot="product-tour-header">
                     I am the product tour title
                 </div>
@@ -138,7 +138,7 @@ describe('product-tour e2e', () => {
                 <joy-button variant="main">I am the first highlighted feature</joy-button>
             </joy-product-tour-trigger>
 
-            <joy-product-tour id="myProductTour" icon="medal-thumbsup" steps="1" step="1" position="bottom" add-overlay dismissed-by="all">
+            <joy-product-tour id="myProductTour" icon="medal-thumbsup" steps="1" step="1" position="bottom" dismissed-by="all">
                 <div slot="product-tour-header">
                     I am the product tour title
                 </div>
@@ -171,7 +171,7 @@ describe('product-tour e2e', () => {
             
             <joy-button variant="primary" id="productTourTarget">I am a clickable highlighted button</joy-button>
 
-            <joy-product-tour id="myProductTour" target="#productTourTarget" add-overlay>
+            <joy-product-tour id="myProductTour" target="#productTourTarget">
                 <div slot="product-tour-header">
                     I am the product tour title
                 </div>

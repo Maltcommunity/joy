@@ -43,8 +43,9 @@ export class ProductTour {
     @Prop() maxWidth? = 500;
     /** Product-tour can be hidden by 3 elements by default, dismiss bottom CTA, top-right corner icon, and backdrop. If you don't want the backdrop click to close the product-tour, use "not-backdrop" value.  */
     @Prop() dismissedBy: 'all' | 'not-backdrop' = 'not-backdrop';
-    /** Add an overlay to prevent user interactions behind the backdrop when the product tour is open */
-    @Prop() addOverlay = false;
+    /** The overlay is usefull to prevent user interactions behind the backdrop when the product tour is open.
+     * It can disable if the highlighted target element need to be interactive but one of its parent node has his own stacking context (z-index). */
+    @Prop() disableOverlay = false;
 
     @Element() host!: HTMLJoyProductTourElement;
 
@@ -63,10 +64,11 @@ export class ProductTour {
         if (this.host.ownerDocument.contains(fromElement)) {
             this.elementToHighlight = fromElement;
 
-            if (this.addOverlay) {
+            if (!this.disableOverlay) {
                 this.createOverlay();
             }
 
+            this.addBodyClass();
             this.highlightElement(chainingProductTour);
             this.calculateProductTourPosition(fromElement);
 
@@ -85,7 +87,7 @@ export class ProductTour {
 
     @Watch('dismissedBy')
     private checkDismissedBy() {
-        if (this.dismissedBy === 'all' && !this.addOverlay) {
+        if (this.dismissedBy === 'all' && this.disableOverlay) {
             console.warn('An overlay is required to be able to dismiss the product tour by clicking on its backdrop');
         }
     }
@@ -127,6 +129,14 @@ export class ProductTour {
         }
 
         this.dismissProductTour();
+    }
+
+    private addBodyClass() {
+        this.host.ownerDocument.body.classList.add('joy-product-tour--open');
+    }
+
+    private removeBodyClass() {
+        this.host.ownerDocument.body.classList.remove('joy-product-tour--open');
     }
 
     private highlightElement(chainingProductTour: boolean) {
@@ -206,9 +216,11 @@ export class ProductTour {
 
         this.unhighlightElement();
 
-        if (this.addOverlay) {
+        if (!this.disableOverlay) {
             this.removeOverlay();
         }
+
+        this.removeBodyClass();
 
         this.open = false;
 
