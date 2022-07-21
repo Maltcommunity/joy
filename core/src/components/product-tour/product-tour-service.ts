@@ -4,7 +4,9 @@
  * @return {void | null}
  */
 export async function showProductTour(id: string, target: HTMLElement): Promise<void> {
-    hideProductTour(true);
+    const hasOpenProductTour = getOpenedProductTour().length > 0;
+
+    hideProductTour();
 
     const productTour = document.body.querySelector(`#${id}`) || document.body.querySelector(`[data-product-tour="${id}"]`);
 
@@ -13,16 +15,17 @@ export async function showProductTour(id: string, target: HTMLElement): Promise<
         return;
     }
 
-    await (productTour as HTMLJoyProductTourElement).showProductTour(target);
+    await (productTour as HTMLJoyProductTourElement).showProductTour(target, hasOpenProductTour);
 }
 
-export function hideProductTour(removeBackdrop = true): void {
-    Array.from(document.querySelectorAll('joy-product-tour')).map((productTour) => {
-        productTour.style.display = '';
+export function hideProductTour(): void {
+    getOpenedProductTour()
+        .map(async (productTour) => {
+        await productTour.closeProductTour();
     });
+}
 
-    if (removeBackdrop) {
-        document.body.querySelector('.joy-product-tour--overlay')!.remove();
-        document.body.querySelector('joy-product-tour-spotlight')!.remove();
-    }
+function getOpenedProductTour(): HTMLJoyProductTourElement[] {
+    return Array.from(document.querySelectorAll('joy-product-tour'))
+        .filter(productTour => productTour.open);
 }

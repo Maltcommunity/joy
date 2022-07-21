@@ -746,6 +746,10 @@ export namespace Components {
         "size": 'small' | 'medium' | 'large';
     }
     interface JoyProductTour {
+        /**
+          * Add an overlay to prevent user interactions behind the backdrop when the product tour is open
+         */
+        "addOverlay": boolean;
         "closeProductTour": () => Promise<void>;
         /**
           * Product-tour can be hidden by 3 elements by default, dismiss bottom CTA, top-right corner icon, and backdrop. If you don't want the backdrop click to close the product-tour, use "not-backdrop" value.
@@ -769,9 +773,10 @@ export namespace Components {
         "position": Positions;
         /**
           * @param fromElement - Specify which DOM element you want to highlight with your product tour
+          * @param chainingProductTour - Specify if we want to show the product tour in a chain
           * @param callback - Function triggered after product-tour display
          */
-        "showProductTour": <T>(fromElement: HTMLElement, callback?: (() => T) | undefined) => Promise<void>;
+        "showProductTour": <T>(fromElement: HTMLElement, chainingProductTour?: boolean, callback?: (() => T) | undefined) => Promise<void>;
         /**
           * If multiple product tour are need, specify the current step number
          */
@@ -2527,6 +2532,10 @@ declare namespace LocalJSX {
         "size"?: 'small' | 'medium' | 'large';
     }
     interface JoyProductTour {
+        /**
+          * Add an overlay to prevent user interactions behind the backdrop when the product tour is open
+         */
+        "addOverlay"?: boolean;
         /**
           * Product-tour can be hidden by 3 elements by default, dismiss bottom CTA, top-right corner icon, and backdrop. If you don't want the backdrop click to close the product-tour, use "not-backdrop" value.
          */

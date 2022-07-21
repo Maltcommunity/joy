@@ -8,7 +8,6 @@ $_CLASS: '.joy-product-tour';
      * @prop --product-tour-width - product tour max width
      */
     --product-tour-arrow-size: 16px;
-    //--product-tour-z-index: 22;
     --product-tour-z-index: calc(var(--joy-core-z-index-backdrop) + 1);
 
     display: none;
