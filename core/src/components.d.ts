@@ -748,7 +748,7 @@ export namespace Components {
     interface JoyProductTour {
         "closeProductTour": () => Promise<void>;
         /**
-          * The overlay is usefull to prevent user interactions behind the backdrop when the product tour is open. It can disable if the highlighted target element need to be interactive but one of its parent node has his own stacking context (z-index).
+          * The overlay is usefull to prevent user interactions behind the backdrop when the product tour is open. It can be disabled if the highlighted target element need to be interactive but one of its parent node has his own stacking context. Then the whole page will be interactive.
          */
         "disableOverlay": boolean;
         /**
@@ -773,7 +773,7 @@ export namespace Components {
         "position": Positions;
         /**
           * @param fromElement - Specify which DOM element you want to highlight with your product tour
-          * @param chainingProductTour - Specify if we want to show the product tour in a chain
+          * @param chainingProductTour - Specify if we want to show the product tour after another to prevent backdrop animation
           * @param callback - Function triggered after product-tour display
          */
         "showProductTour": <T>(fromElement: HTMLElement, chainingProductTour?: boolean, callback?: (() => T) | undefined) => Promise<void>;
@@ -2533,7 +2533,7 @@ declare namespace LocalJSX {
     }
     interface JoyProductTour {
         /**
-          * The overlay is usefull to prevent user interactions behind the backdrop when the product tour is open. It can disable if the highlighted target element need to be interactive but one of its parent node has his own stacking context (z-index).
+          * The overlay is usefull to prevent user interactions behind the backdrop when the product tour is open. It can be disabled if the highlighted target element need to be interactive but one of its parent node has his own stacking context. Then the whole page will be interactive.
          */
         "disableOverlay"?: boolean;
         /**
