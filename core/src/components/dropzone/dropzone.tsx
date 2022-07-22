@@ -23,7 +23,7 @@ export class Dropzone {
     /** set MaxSize (Megabytes), default to 32 MB */
     @Prop() maxSize = 32;
     /** Add description Text */
-    @Prop() descriptionText = 'Drop your file here or click here';
+    @Prop() descriptionText = 'Drop your file here or';
     /** Add description Text */
     @Prop() descriptionStrongText = 'click here';
     /** Add CTA Upload Text */
@@ -43,15 +43,15 @@ export class Dropzone {
     /** Make the dropzone in progress state or not */
     @Prop() loading = false;
 
-    @State() focusing = false;
     @State() dragover = false;
     @State() files: File[] = [];
     @State() fileInvalid = false;
 
     @Event({eventName: 'joy-dropzone-cancel-upload-file'}) joyDropzoneCancelUploadFile!: EventEmitter<File[] | null>;
     @Event({eventName: 'joy-dropzone-invalidate-file'}) joyDropzoneInvalidateFile!: EventEmitter<File[] | null>;
-    @Event({eventName: 'joy-dropzone-validate-file'}) joyDropzoneValidateFile!: EventEmitter<File[] | null>;
+    @Event({eventName: 'joy-dropzone-dropped-files'}) joyDropzoneDroppedFiles!: EventEmitter<File[] | null>;
     @Event({eventName: 'joy-dropzone-remove-file'}) joyDropzoneRemoveFile!: EventEmitter<File | null>;
+    @Event({eventName: 'joy-dropzone-buttons-click'}) joyDropzoneButtonsClick!: EventEmitter<null>;
 
     /**
      * set In progress state
@@ -67,16 +67,19 @@ export class Dropzone {
 
     constructor() {
         this.dragoverHandler = this.dragoverHandler.bind(this);
+        this.dragLeaveHandler = this.dragLeaveHandler.bind(this);
         this.dropHandler = this.dropHandler.bind(this);
     }
 
     connectedCallback() {
         window.addEventListener('dragover', this.dragoverHandler);
+        window.addEventListener('dragleave', this.dragLeaveHandler);
         window.addEventListener('drop', this.dropHandler);
     }
 
     disconnectedCallback() {
         window.removeEventListener('dragover', this.dragoverHandler);
+        window.removeEventListener('dragleave', this.dragLeaveHandler);
         window.removeEventListener('drop', this.dropHandler);
     }
 
@@ -86,7 +89,7 @@ export class Dropzone {
                 <div
                     class={{
                         'joy-dropzone': true,
-                        'joy-dropzone--focusing': this.focusing || this.dragover,
+                        'joy-dropzone--focusing': this.dragover,
                         'joy-dropzone--disabled': this.disabled,
                         'joy-dropzone--invalid': this.invalid || this.fileInvalid,
                         'joy-dropzone--valid': !this.invalid && !this.disabled && !!this.files.length,
@@ -109,14 +112,15 @@ export class Dropzone {
                             <label
                                 htmlFor={this.idDropzone || generatedInputNameAndId(this.host)}
                                 class={{
-                                    dropzone: true,
-                                    dragover: this.dragover,
-                                    errored: this.fileInvalid,
+                                    'joy-dropzone-label': true,
+                                    'joy-dropzone--dragover': this.dragover,
+                                    'joy-dropzone--error': this.fileInvalid,
                                 }}
+                                onClick={(e) => e.preventDefault()}
                             >
                                 {!this.files.length && (
                                     <div>
-                                        <p class="joy-dropzone__description">{this.descriptionText}</p>
+                                        <p class="joy-dropzone__description">{this.descriptionText} <strong onClick={this.handleClickCTA}>{this.descriptionStrongText}</strong></p>
                                         <joy-button variant="primary" icon="add" disabled={this.disabled}
                                                     onClick={this.handleClickCTA}>
                                             {this.buttonText}
@@ -162,6 +166,12 @@ export class Dropzone {
         this.dragover = this.checkEventTarget(e);
     }
 
+    private dragLeaveHandler(e: NativeEvent) {
+        e.stopPropagation();
+        e.preventDefault();
+        this.dragover = false;
+    }
+
     private cancelUpload() {
         this.joyDropzoneCancelUploadFile.emit();
         this.loading = false;
@@ -182,7 +192,7 @@ export class Dropzone {
                     this.files = [files[index]];
                 }
                 this.clearErrorStatus();
-                this.joyDropzoneValidateFile.emit(files);
+                this.joyDropzoneDroppedFiles.emit(files);
             } else {
                 this.fileInvalid = true;
                 this.errorMessages.push(validation.message);
@@ -257,8 +267,10 @@ export class Dropzone {
 
     private handleClickCTA = (e: NativeEvent) => {
         e.preventDefault();
+
         if (!this.disabled) {
             this.input.click();
+            this.joyDropzoneButtonsClick.emit();
         }
     };
 

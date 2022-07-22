@@ -2195,10 +2195,11 @@ declare namespace LocalJSX {
           * Enable multiple files upload
          */
         "multiple"?: boolean;
+        "onJoy-dropzone-buttons-click"?: (event: CustomEvent<null>) => void;
         "onJoy-dropzone-cancel-upload-file"?: (event: CustomEvent<File[] | null>) => void;
+        "onJoy-dropzone-dropped-files"?: (event: CustomEvent<File[] | null>) => void;
         "onJoy-dropzone-invalidate-file"?: (event: CustomEvent<File[] | null>) => void;
         "onJoy-dropzone-remove-file"?: (event: CustomEvent<File | null>) => void;
-        "onJoy-dropzone-validate-file"?: (event: CustomEvent<File[] | null>) => void;
         /**
           * Add Uploading Text
          */

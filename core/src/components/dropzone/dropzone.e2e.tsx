@@ -21,7 +21,7 @@ describe('Dropzone', () => {
             <joy-dropzone accept="image/jpeg,image/png"></joy-dropzone>
         `);
 
-        const validateFileDropzoneEvent = await page.spyOnEvent('joy-dropzone-validate-file');
+        const validateFileDropzoneEvent = await page.spyOnEvent('joy-dropzone-dropped-files');
         const input = await page.$$('input[type=file]');
 
         await input[0].uploadFile(`${pathToAssets}test-dropzone.png`);
@@ -77,7 +77,7 @@ describe('Dropzone', () => {
             <joy-dropzone multiple></joy-dropzone>
         `);
 
-        const validateFileDropzoneEvent = await page.spyOnEvent('joy-dropzone-validate-file');
+        const validateFileDropzoneEvent = await page.spyOnEvent('joy-dropzone-dropped-files');
         const removeFileDropzoneEvent = await page.spyOnEvent('joy-dropzone-remove-file');
         const input = await page.$$('input[type=file]');
 
@@ -110,7 +110,7 @@ describe('Dropzone', () => {
             <joy-dropzone></joy-dropzone>
         `);
 
-        const validateFileDropzoneEvent = await page.spyOnEvent('joy-dropzone-validate-file');
+        const validateFileDropzoneEvent = await page.spyOnEvent('joy-dropzone-dropped-files');
         const input = await page.$$('input[type=file]');
 
         await input[0].uploadFile(`${pathToAssets}test-dropzone.png`);
