@@ -1,0 +1,19 @@
+@keyframes fade-in {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+
+:host {
+  position: absolute;
+  border-radius: var(--joy-core-radius-3);
+  padding: var(--joy-core-spacing-2);
+  box-sizing: content-box !important;
+  box-shadow: 0 0 0 10000px var(--joy-color-overlay);
+  z-index: var(--joy-core-z-index-backdrop);
+  pointer-events: none; // Enable capturing pointer events below the spotlight
+  animation: fade-in var(--joy-transition-duration-default) var(--joy-transition-timing-function) forwards;
+}
+
+:host(.joy-product-tour-spotlight--no-animation) {
+  animation: none;
+}

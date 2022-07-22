@@ -748,6 +748,10 @@ export namespace Components {
     interface JoyProductTour {
         "closeProductTour": () => Promise<void>;
         /**
+          * Overlay is useful to prevent user interactions with elements that are below when the product tour is open. It can be disabled if the highlighted target element needs to be interactive but one of its parent node has its own stacking context (e.g. a parent with a lower z-index). Then the whole page will be interactive.
+         */
+        "disableOverlay": boolean;
+        /**
           * Product-tour can be hidden by 3 elements by default, dismiss bottom CTA, top-right corner icon, and backdrop. If you don't want the backdrop click to close the product-tour, use "not-backdrop" value.
          */
         "dismissedBy": 'all' | 'not-backdrop';
@@ -769,9 +773,10 @@ export namespace Components {
         "position": Positions;
         /**
           * @param fromElement - Specify which DOM element you want to highlight with your product tour
+          * @param chainingProductTour - Specify if we want to show the product tour after another to prevent backdrop animation
           * @param callback - Function triggered after product-tour display
          */
-        "showProductTour": <T>(fromElement: HTMLElement, callback?: (() => T) | undefined) => Promise<void>;
+        "showProductTour": <T>(fromElement: HTMLElement, chainingProductTour?: boolean, callback?: (() => T) | undefined) => Promise<void>;
         /**
           * If multiple product tour are need, specify the current step number
          */
@@ -780,6 +785,8 @@ export namespace Components {
           * If multiple product tour are need, specify the amount
          */
         "steps"?: number;
+    }
+    interface JoyProductTourSpotlight {
     }
     interface JoyProductTourTrigger {
         /**
@@ -1561,6 +1568,12 @@ declare global {
         prototype: HTMLJoyProductTourElement;
         new (): HTMLJoyProductTourElement;
     };
+    interface HTMLJoyProductTourSpotlightElement extends Components.JoyProductTourSpotlight, HTMLStencilElement {
+    }
+    var HTMLJoyProductTourSpotlightElement: {
+        prototype: HTMLJoyProductTourSpotlightElement;
+        new (): HTMLJoyProductTourSpotlightElement;
+    };
     interface HTMLJoyProductTourTriggerElement extends Components.JoyProductTourTrigger, HTMLStencilElement {
     }
     var HTMLJoyProductTourTriggerElement: {
@@ -1746,6 +1759,7 @@ declare global {
         "joy-pagination": HTMLJoyPaginationElement;
         "joy-placeholder-button": HTMLJoyPlaceholderButtonElement;
         "joy-product-tour": HTMLJoyProductTourElement;
+        "joy-product-tour-spotlight": HTMLJoyProductTourSpotlightElement;
         "joy-product-tour-trigger": HTMLJoyProductTourTriggerElement;
         "joy-progress-bar": HTMLJoyProgressBarElement;
         "joy-radio": HTMLJoyRadioElement;
@@ -2519,6 +2533,10 @@ declare namespace LocalJSX {
     }
     interface JoyProductTour {
         /**
+          * Overlay is useful to prevent user interactions with elements that are below when the product tour is open. It can be disabled if the highlighted target element needs to be interactive but one of its parent node has its own stacking context (e.g. a parent with a lower z-index). Then the whole page will be interactive.
+         */
+        "disableOverlay"?: boolean;
+        /**
           * Product-tour can be hidden by 3 elements by default, dismiss bottom CTA, top-right corner icon, and backdrop. If you don't want the backdrop click to close the product-tour, use "not-backdrop" value.
          */
         "dismissedBy"?: 'all' | 'not-backdrop';
@@ -2547,6 +2565,8 @@ declare namespace LocalJSX {
           * If multiple product tour are need, specify the amount
          */
         "steps"?: number;
+    }
+    interface JoyProductTourSpotlight {
     }
     interface JoyProductTourTrigger {
         /**
@@ -3220,6 +3240,7 @@ declare namespace LocalJSX {
         "joy-pagination": JoyPagination;
         "joy-placeholder-button": JoyPlaceholderButton;
         "joy-product-tour": JoyProductTour;
+        "joy-product-tour-spotlight": JoyProductTourSpotlight;
         "joy-product-tour-trigger": JoyProductTourTrigger;
         "joy-progress-bar": JoyProgressBar;
         "joy-radio": JoyRadio;
@@ -3280,6 +3301,7 @@ declare module "@stencil/core" {
             "joy-pagination": LocalJSX.JoyPagination & JSXBase.HTMLAttributes<HTMLJoyPaginationElement>;
             "joy-placeholder-button": LocalJSX.JoyPlaceholderButton & JSXBase.HTMLAttributes<HTMLJoyPlaceholderButtonElement>;
             "joy-product-tour": LocalJSX.JoyProductTour & JSXBase.HTMLAttributes<HTMLJoyProductTourElement>;
+            "joy-product-tour-spotlight": LocalJSX.JoyProductTourSpotlight & JSXBase.HTMLAttributes<HTMLJoyProductTourSpotlightElement>;
             "joy-product-tour-trigger": LocalJSX.JoyProductTourTrigger & JSXBase.HTMLAttributes<HTMLJoyProductTourTriggerElement>;
             "joy-progress-bar": LocalJSX.JoyProgressBar & JSXBase.HTMLAttributes<HTMLJoyProgressBarElement>;
             "joy-radio": LocalJSX.JoyRadio & JSXBase.HTMLAttributes<HTMLJoyRadioElement>;
