@@ -68,15 +68,24 @@ export const config: Config = {
         {
             type: 'dist',
             dir: './dist',
+            copy: [
+                { src: 'fonts', dest: './fonts' }
+            ]
         },
         {
             type: 'dist-custom-elements',
             dir: './dist/components',
+            copy: [
+                { src: 'fonts', dest: './dist/components/fonts' }
+            ]
         },
         {
             type: 'www',
             empty: false, // to prevent playground compiled css (by sass CLI) to be overriden
-            serviceWorker: null, // disable service workers
+            serviceWorker: null, // disable service workers,
+            copy: [
+                { src: 'fonts', dest: './build/fonts' }
+            ]
         },
         {
             type: 'stats',

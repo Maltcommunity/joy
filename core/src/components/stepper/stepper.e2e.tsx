@@ -23,7 +23,7 @@ describe('Stepper e2e', () => {
                 <joy-step>Third Step</joy-step>
                 <joy-step>Fourth Step</joy-step>
             </joy-stepper>
-        `);
+        `, { waitUntil: 'networkidle0' });
 
         const result = await page.screenshot();
         expect(result).toMatchImageSnapshot();
@@ -39,7 +39,7 @@ describe('Stepper e2e', () => {
                 <joy-step>Third Step</joy-step>
                 <joy-step>Fourth Step</joy-step>
             </joy-stepper>
-        `);
+        `, { waitUntil: 'networkidle0' });
 
         const result = await page.screenshot();
         expect(result).toMatchImageSnapshot();
@@ -55,7 +55,7 @@ describe('Stepper e2e', () => {
                 <joy-step size="small">Third Step</joy-step>
                 <joy-step size="small">Fourth Step</joy-step>
             </joy-stepper>
-        `);
+        `, { waitUntil: 'networkidle0' });
 
         const result = await page.screenshot();
         expect(result).toMatchImageSnapshot();
@@ -71,7 +71,7 @@ describe('Stepper e2e', () => {
                 <joy-step>Third Step</joy-step>
                 <joy-step>Fourth Step</joy-step>
             </joy-stepper>
-        `);
+        `, { waitUntil: 'networkidle0' });
 
         const result = await page.screenshot();
         expect(result).toMatchImageSnapshot();

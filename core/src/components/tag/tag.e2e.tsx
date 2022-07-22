@@ -17,7 +17,7 @@ describe('Tags - e2e', () => {
                 <joy-tag variant="inactive">Inactive tag</joy-tag>
                 <joy-tag variant="pricing">Pricing tag</joy-tag>
             </joy-tags-list>
-        `);
+        `, { waitUntil: 'networkidle0' });
 
         const result = await page.screenshot();
         expect(result).toMatchImageSnapshot();
@@ -35,7 +35,7 @@ describe('Tags - e2e', () => {
                 <joy-tag variant="inactive" size="xsmall">Inactive tag</joy-tag>
                 <joy-tag variant="pricing" size="xsmall">Pricing tag</joy-tag>   
             </joy-tags-list>
-        `);
+        `, { waitUntil: 'networkidle0' });
 
         const result = await page.screenshot();
         expect(result).toMatchImageSnapshot();
@@ -53,7 +53,7 @@ describe('Tags - e2e', () => {
                 <joy-tag variant="inactive" size="small">Inactive tag</joy-tag>
                 <joy-tag variant="pricing" size="small">Pricing tag</joy-tag>
             </joy-tags-list>
-        `);
+        `, { waitUntil: 'networkidle0' });
 
         const result = await page.screenshot();
         expect(result).toMatchImageSnapshot();
@@ -71,7 +71,7 @@ describe('Tags - e2e', () => {
                 <joy-tag variant="inactive" size="large">Inactive tag</joy-tag>
                 <joy-tag variant="pricing" size="large">Pricing tag</joy-tag>
             </joy-tags-list>
-        `);
+        `, { waitUntil: 'networkidle0' });
 
         const result = await page.screenshot();
         expect(result).toMatchImageSnapshot();
@@ -81,7 +81,7 @@ describe('Tags - e2e', () => {
         const page = await createPage();
         await page.setContent(`
             <joy-tag variant="secondary" selectable>Click me</joy-tag>              
-        `);
+        `, { waitUntil: 'networkidle0' });
 
         const tag = await page.find('joy-tag');
         await tag.click();
@@ -95,7 +95,7 @@ describe('Tags - e2e', () => {
         const page = await createPage();
         await page.setContent(`
             <joy-tag variant="primary" draggable removable>Draggable tag</joy-tag>              
-        `);
+        `, { waitUntil: 'networkidle0' });
 
         const result = await page.screenshot();
         expect(result).toMatchImageSnapshot();
@@ -109,7 +109,7 @@ describe('Tags - e2e', () => {
         const page = await newE2EPage();
         await page.setContent(`
             <joy-tag selectable removable>&nbsp;&nbsp;Removable tag</joy-tag>              
-        `);
+        `, { waitUntil: 'networkidle0' });
 
         const tag = await page.find('joy-tag');
         const removeIcon = await page.find('joy-tag >>> joy-icon');
