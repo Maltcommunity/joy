@@ -121,7 +121,7 @@ Type: `Promise<void>`
 
 ### Depends on
 
-- [joy-product-tour-spotlight](product-tour-spotlight)
+- joy-product-tour-spotlight
 - [joy-icon](../icon)
 
 ### Graph
