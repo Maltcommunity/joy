@@ -43,8 +43,8 @@ export class ProductTour {
     @Prop() maxWidth? = 500;
     /** Product-tour can be hidden by 3 elements by default, dismiss bottom CTA, top-right corner icon, and backdrop. If you don't want the backdrop click to close the product-tour, use "not-backdrop" value. */
     @Prop() dismissedBy: 'all' | 'not-backdrop' = 'not-backdrop';
-    /** The overlay is usefull to prevent user interactions behind the backdrop when the product tour is open.
-     * It can be disabled if the highlighted target element need to be interactive but one of its parent node has his own stacking context.
+    /** Overlay is useful to prevent user interactions with elements that are below when the product tour is open.
+     * It can be disabled if the highlighted target element needs to be interactive but one of its parent node has its own stacking context (e.g. a parent with a lower z-index).
      * Then the whole page will be interactive. */
     @Prop() disableOverlay = false;
 

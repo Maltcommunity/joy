@@ -748,7 +748,7 @@ export namespace Components {
     interface JoyProductTour {
         "closeProductTour": () => Promise<void>;
         /**
-          * The overlay is usefull to prevent user interactions behind the backdrop when the product tour is open. It can be disabled if the highlighted target element need to be interactive but one of its parent node has his own stacking context. Then the whole page will be interactive.
+          * Overlay is useful to prevent user interactions with elements that are below when the product tour is open. It can be disabled if the highlighted target element needs to be interactive but one of its parent node has its own stacking context (e.g. a parent with a lower z-index). Then the whole page will be interactive.
          */
         "disableOverlay": boolean;
         /**
@@ -2533,7 +2533,7 @@ declare namespace LocalJSX {
     }
     interface JoyProductTour {
         /**
-          * The overlay is usefull to prevent user interactions behind the backdrop when the product tour is open. It can be disabled if the highlighted target element need to be interactive but one of its parent node has his own stacking context. Then the whole page will be interactive.
+          * Overlay is useful to prevent user interactions with elements that are below when the product tour is open. It can be disabled if the highlighted target element needs to be interactive but one of its parent node has its own stacking context (e.g. a parent with a lower z-index). Then the whole page will be interactive.
          */
         "disableOverlay"?: boolean;
         /**
