@@ -60,7 +60,7 @@ build-core:
       - ${CONTEXT_DIR}/dist/
       - ${CONTEXT_DIR}/README.md
       - ${CONTEXT_DIR}/package.json
-      - ${CONTEXT_DIR}/screenshot
+      - ${CONTEXT_DIR}/src/**/__diff_output__/
   rules:
     - if: $CI_PIPELINE_SOURCE == "web"
     - if: $CI_PIPELINE_SOURCE == "push"
