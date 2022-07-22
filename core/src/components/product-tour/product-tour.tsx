@@ -41,10 +41,11 @@ export class ProductTour {
     @Prop({reflect: true, mutable: true}) open = false;
     /** Set a max width for your container */
     @Prop() maxWidth? = 500;
-    /** Product-tour can be hidden by 3 elements by default, dismiss bottom CTA, top-right corner icon, and backdrop. If you don't want the backdrop click to close the product-tour, use "not-backdrop" value.  */
+    /** Product-tour can be hidden by 3 elements by default, dismiss bottom CTA, top-right corner icon, and backdrop. If you don't want the backdrop click to close the product-tour, use "not-backdrop" value. */
     @Prop() dismissedBy: 'all' | 'not-backdrop' = 'not-backdrop';
     /** The overlay is usefull to prevent user interactions behind the backdrop when the product tour is open.
-     * It can disable if the highlighted target element need to be interactive but one of its parent node has his own stacking context (z-index). */
+     * It can be disabled if the highlighted target element need to be interactive but one of its parent node has his own stacking context.
+     * Then the whole page will be interactive. */
     @Prop() disableOverlay = false;
 
     @Element() host!: HTMLJoyProductTourElement;
@@ -53,7 +54,7 @@ export class ProductTour {
 
     /**
      * @param {HTMLElement} fromElement - Specify which DOM element you want to highlight with your product tour
-     * @param {Boolean} chainingProductTour - Specify if we want to show the product tour in a chain
+     * @param {Boolean} chainingProductTour - Specify if we want to show the product tour after another to prevent backdrop animation
      * @param {Function} callback - Function triggered after product-tour display
      */
     @Method()

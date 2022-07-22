@@ -7,9 +7,9 @@ category: maltjoy core Overlay
 
 <joy-tag variant="important">EXPERIMENTAL</joy-tag>
 
-To prevent unexpected behaviour, the `<joy-product-tour />` component must be placed directly at the root of the body in order to be sure to be out of any stacking context.
+To prevent unexpected behaviour, the `<joy-product-tour />` component must be placed directly at the root of the body in order to be sure to be out of any stacking context (z-index).
 
-In a Vue application you can use [PortalVue](https://portal-vue.linusb.org/).
+In a Vue application you can use [PortalVue](https://portal-vue.linusb.org/) to perform that.
 
 ```ui_example
 
