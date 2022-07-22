@@ -53,7 +53,11 @@
   }
 
   &__footer {
-    @include padding();
+    margin-top: var(--joy-core-spacing-9);
+
+    @include utils.screen_xs() {
+      margin-top: var(--joy-core-spacing-8);
+    }
   }
 
   .m-panel,
