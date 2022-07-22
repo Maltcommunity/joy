@@ -161,7 +161,34 @@ describe('product-tour e2e', () => {
         expect(await productTour.isVisible()).toBe(false);
     });
 
-    it('should render the product tour on external target and keep it clickable', async () => {
+    it('should render the product tour on a target outside the trigger', async () => {
+        const page = await createPage();
+
+        await page.setContent(`
+            <joy-product-tour-trigger product-tour="myProductTour" target="#productTourTarget">
+                <joy-button variant="main">Start the product tour</joy-button>
+            </joy-product-tour-trigger>
+            
+            <joy-tag variant="important" id="productTourTarget">I am a tag</joy-tag>
+
+            <joy-product-tour id="myProductTour" target="#productTourTarget">
+                <div slot="product-tour-header">
+                    I am the product tour title
+                </div>
+
+                <joy-button size="small" variant="ghost" slot="product-tour-dismiss">Got it</joy-button>
+            </joy-product-tour>
+        `);
+
+        const trigger = await page.find('joy-product-tour-trigger');
+        await trigger.click();
+        await page.waitForChanges();
+
+        const result = await page.screenshot();
+        expect(result).toMatchImageSnapshot();
+    });
+
+    it('should keep the highlighted target clickable', async () => {
         const page = await createPage();
 
         await page.setContent(`
@@ -183,9 +210,6 @@ describe('product-tour e2e', () => {
         const trigger = await page.find('joy-product-tour-trigger');
         await trigger.click();
         await page.waitForChanges();
-
-        const result = await page.screenshot();
-        expect(result).toMatchImageSnapshot();
 
         const target = await page.find('#productTourTarget');
         const spy = jest.spyOn(target, 'click');
