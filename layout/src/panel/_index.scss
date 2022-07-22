@@ -1,0 +1,76 @@
+@use '@maltjoy/tokens/src/fonts';
+@use '../_utils';
+
+@mixin padding() {
+  padding: var(--joy-core-spacing-9);
+
+  @include utils.screen_xs() {
+    padding: var(--joy-core-spacing-4);
+  }
+}
+
+.m-panel {
+  box-sizing: border-box;
+  padding: var(--joy-core-spacing-9);
+  background-color: white;
+  border-radius: var(--joy-core-radius-3);
+  position: relative;
+  border: 1px solid var(--joy-color-neutral-3);
+  font-family: var(--joy-font-family);
+
+  &_smaller {
+    padding: var(--joy-core-spacing-5) var(--joy-core-spacing-9);
+  }
+
+  @include utils.screen_xs {
+    padding: var(--joy-core-spacing-4);
+  }
+
+  &__header {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin-bottom: var(--joy-core-spacing-4);
+  }
+
+  &__body {
+    position: relative;
+  }
+
+  &__title {
+    padding: 0;
+    margin: 0;
+    flex: 1;
+    @include fonts.getFontBySize(xl-title-bold);
+  }
+
+  &__subtitle {
+    @include fonts.getFontBySize(s);
+    flex-basis: 100%;
+    margin: 5px 0 0;
+    padding: 0;
+  }
+
+  &__footer {
+    @include padding();
+  }
+
+  .m-panel,
+  &__section
+  {
+    margin-top: var(--joy-core-spacing-9);
+
+    @include utils.screen_xs() {
+      margin-top: var(--joy-core-spacing-8);
+    }
+
+    &:first-child {
+      margin-top: 0;
+    }
+
+    .m-panel__title {
+      @include fonts.getFontBySize(l-bold);
+    }
+  }
+}
