@@ -2,6 +2,13 @@ import {computePosition, flip, offset, arrow, autoUpdate, shift, limitShift} fro
 import {Component, Event, EventEmitter, Element, Fragment, h, Host, Method, Prop, Watch} from '@stencil/core';
 import {Positions} from '../../types';
 
+const breakpoints = {
+    xs: 480,
+    sm: 768,
+    md: 992,
+    lg: 1200,
+}
+
 /**
  * @slot product-tour-preheader - If you need to insert specific content before the actual title
  * @slot product-tour-header - The product-tour main title
@@ -19,6 +26,9 @@ export class ProductTour {
     private arrow!: HTMLElement;
     private elementToHighlight!: HTMLElement;
     private overlay!: HTMLElement;
+    private mediaQuery?: MediaQueryList;
+    private chainingProductTour: boolean = false;
+    private callback?: () => any;
 
     private get dismissCta(): HTMLElement[] | null {
         return Array.from(this.host.querySelectorAll('[slot="product-tour-dismiss"]'));
@@ -27,6 +37,9 @@ export class ProductTour {
     constructor() {
         this.closeProductTour = this.closeProductTour.bind(this);
         this.handleOverlayClick = this.handleOverlayClick.bind(this);
+        this.onMediaQueryChange = this.onMediaQueryChange.bind(this);
+
+        this.initMediaQuery();
     }
 
     /** Icon name, placed left to the title */
@@ -39,6 +52,8 @@ export class ProductTour {
     @Prop() position: Positions = 'right';
     /** Product tour open state */
     @Prop({reflect: true, mutable: true}) open = false;
+    /** Product tour closed by media query state */
+    @Prop({reflect: true, mutable: true}) closedByMedia = false;
     /** Set a max width for your container */
     @Prop() maxWidth? = 500;
     /** Product-tour can be hidden by 3 elements by default, dismiss bottom CTA, top-right corner icon, and backdrop. If you don't want the backdrop click to close the product-tour, use "not-backdrop" value. */
@@ -47,6 +62,7 @@ export class ProductTour {
      * It can be disabled if the highlighted target element needs to be interactive but one of its parent node has its own stacking context (e.g. a parent with a lower z-index).
      * Then the whole page will be interactive. */
     @Prop() disableOverlay = false;
+    @Prop() closeBreakpoint: 'xs' | 'sm' | 'md' | 'lg' = 'md';
 
     @Element() host!: HTMLJoyProductTourElement;
 
@@ -59,6 +75,13 @@ export class ProductTour {
      */
     @Method()
     async showProductTour<T>(fromElement: HTMLElement, chainingProductTour = false, callback?: () => T): Promise<void> {
+        this.chainingProductTour = chainingProductTour;
+        this.callback = callback;
+
+        if (!this.mediaQuery!.matches) {
+            return;
+        }
+
         this.host.style.display = 'block';
 
         // Basic check to verify if consumer has given a valid DOM element
@@ -83,7 +106,7 @@ export class ProductTour {
 
     @Method()
     async closeProductTour(): Promise<void> {
-        this.dismissProductTour();
+        this.dismissProductTour(true);
     }
 
     @Watch('dismissedBy')
@@ -129,7 +152,7 @@ export class ProductTour {
             return;
         }
 
-        this.dismissProductTour();
+        this.dismissProductTour(true);
     }
 
     private addBodyClass() {
@@ -212,7 +235,7 @@ export class ProductTour {
         });
     }
 
-    private dismissProductTour = (): void => {
+    private dismissProductTour = (emitDismissEvent = true): void => {
         this.host.style.display = '';
 
         this.unhighlightElement();
@@ -225,8 +248,31 @@ export class ProductTour {
 
         this.open = false;
 
-        this.joyProductTourDismiss.emit(this.host);
+        if (emitDismissEvent) {
+            this.joyProductTourDismiss.emit(this.host);
+        }
     };
+
+    private initMediaQuery() {
+        this.mediaQuery =  window.matchMedia(`screen and (min-width: ${breakpoints[this.closeBreakpoint]}px)`)
+        this.mediaQuery.addEventListener('change', this.onMediaQueryChange)
+    }
+
+    private async onMediaQueryChange(ev: MediaQueryListEvent) {
+        console.log("=>(product-tour.tsx:238) ev", ev);
+        if(ev.matches) {
+            if (this.closedByMedia) {
+                this.closedByMedia = false;
+                await this.showProductTour(this.elementToHighlight, this.chainingProductTour, this.callback);
+            }
+        } else {
+            if (this.open) {
+                this.closedByMedia = true;
+                await this.dismissProductTour(false);
+            }
+        }
+    }
+
 
     connectedCallback() {
         this.host.style.setProperty('--product-tour-width', this.maxWidth + 'px');
@@ -240,6 +286,7 @@ export class ProductTour {
 
     disconnectedCallback() {
         this.dismissCta?.forEach((cta) => cta.removeEventListener('click', this.closeProductTour));
+        this.mediaQuery?.removeEventListener('change', this.onMediaQueryChange)
     }
 
     render() {
@@ -262,7 +309,7 @@ export class ProductTour {
                         <div>
                             <slot name="product-tour-preheader"/>
                         </div>
-                        <joy-icon tabindex="0" name="cross" onClick={this.dismissProductTour}/>
+                        <joy-icon tabindex="0" name="cross" onClick={() => { this.dismissProductTour() }}/>
                     </div>
                     <div class="joy-product-tour__content">
                         {this.icon && <joy-icon name={this.icon} size="medium"/>}

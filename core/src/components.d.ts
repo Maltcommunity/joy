@@ -746,7 +746,12 @@ export namespace Components {
         "size": 'small' | 'medium' | 'large';
     }
     interface JoyProductTour {
+        "closeBreakpoint": 'xs' | 'sm' | 'md' | 'lg';
         "closeProductTour": () => Promise<void>;
+        /**
+          * Product tour closed by media query state
+         */
+        "closedByMedia": boolean;
         /**
           * Overlay is useful to prevent user interactions with elements that are below when the product tour is open. It can be disabled if the highlighted target element needs to be interactive but one of its parent node has its own stacking context (e.g. a parent with a lower z-index). Then the whole page will be interactive.
          */
@@ -2532,6 +2537,11 @@ declare namespace LocalJSX {
         "size"?: 'small' | 'medium' | 'large';
     }
     interface JoyProductTour {
+        "closeBreakpoint"?: 'xs' | 'sm' | 'md' | 'lg';
+        /**
+          * Product tour closed by media query state
+         */
+        "closedByMedia"?: boolean;
         /**
           * Overlay is useful to prevent user interactions with elements that are below when the product tour is open. It can be disabled if the highlighted target element needs to be interactive but one of its parent node has its own stacking context (e.g. a parent with a lower z-index). Then the whole page will be interactive.
          */
