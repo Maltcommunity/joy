@@ -45,12 +45,12 @@ category: maltjoy core Forms
 
 ## Events
 
-| Event                 | Description                                                                                                                            | Type                                               |
-| --------------------- | -------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------- |
-| `joyCounterDecrement` | Specific event fired when you decrement the counter value. Prefer using valueChange unless you need to handle this specific event type | `CustomEvent<number>`                              |
-| `joyCounterIncrement` | Specific event fired when you increment the counter value. Prefer using valueChange unless you need to handle this specific event type | `CustomEvent<number>`                              |
-| `joyCounterInvalid`   | Specific event fired when your counter value is invalid.                                                                               | `CustomEvent<{ value: string; message: string; }>` |
-| `valueChange`         | Generic event for any counter change, fired by manually typing a value or using increment/decrement CTA                                | `CustomEvent<number>`                              |
+| Event                   | Description                                                                                                                            | Type                                               |
+| ----------------------- | -------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------- |
+| `joy-counter-decrement` | Specific event fired when you decrement the counter value. Prefer using valueChange unless you need to handle this specific event type | `CustomEvent<number>`                              |
+| `joy-counter-increment` | Specific event fired when you increment the counter value. Prefer using valueChange unless you need to handle this specific event type | `CustomEvent<number>`                              |
+| `joy-counter-invalid`   | Specific event fired when your counter value is invalid.                                                                               | `CustomEvent<{ value: string; message: string; }>` |
+| `valueChange`           | Generic event for any counter change, fired by manually typing a value or using increment/decrement CTA                                | `CustomEvent<number>`                              |
 
 
 ## Methods

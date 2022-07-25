@@ -2821,7 +2821,7 @@ declare namespace LocalJSX {
          */
         "level"?: SnackbarLevels;
         /**
-          * use @joySnackbarTriggerAction="yourMethod" for Vue apps (onJoySnackbarTriggerAction for other stencil components) to handle snackbar custom action. Nothing is returned
+          * Fire snackbar custom action. Nothing is returned
          */
         "onJoy-snackbar-trigger-action"?: (event: CustomEvent<void>) => void;
         /**

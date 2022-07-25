@@ -37,7 +37,7 @@ export class Snackbar {
     @State() id!: string;
 
     /**
-     * use @joySnackbarTriggerAction="yourMethod" for Vue apps (onJoySnackbarTriggerAction for other stencil components) to handle snackbar custom action. Nothing is returned
+     * Fire snackbar custom action. Nothing is returned
      */
     @Event({
         eventName: 'joy-snackbar-trigger-action',

@@ -46,9 +46,9 @@ category: maltjoy core View
 
 ## Events
 
-| Event                 | Description | Type                  |
-| --------------------- | ----------- | --------------------- |
-| `joyIndicatorsChange` |             | `CustomEvent<number>` |
+| Event                   | Description | Type                  |
+| ----------------------- | ----------- | --------------------- |
+| `joy-indicators-change` |             | `CustomEvent<number>` |
 
 
 ----------------------------------------------

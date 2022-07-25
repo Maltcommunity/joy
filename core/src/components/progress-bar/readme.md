@@ -32,6 +32,13 @@ No need to use the mode props.
 | `steps`       | `steps`        | Total number of steps.                                                                  | `number \| undefined`   | `undefined` |
 
 
+## Events
+
+| Event                     | Description                        | Type                |
+| ------------------------- | ---------------------------------- | ------------------- |
+| `joy-progress-bar-update` | When the progress bar gets updated | `CustomEvent<void>` |
+
+
 ## CSS Custom Properties
 
 | Name                          | Description                        |
