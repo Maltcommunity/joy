@@ -47,6 +47,8 @@ export class ProductTour {
      * It can be disabled if the highlighted target element needs to be interactive but one of its parent node has its own stacking context (e.g. a parent with a lower z-index).
      * Then the whole page will be interactive. */
     @Prop() disableOverlay = false;
+    /** Padding around the spotlight area. Value in pixel */
+    @Prop() spotlightPadding = 8;
 
     @Element() host!: HTMLJoyProductTourElement;
 
@@ -94,12 +96,12 @@ export class ProductTour {
     }
 
     private setSpotlightSizeAndPosition(spotlight: HTMLJoyProductTourSpotlightElement) {
-        const padding = 'var(--joy-core-spacing-2)';
+        const paddingProperty = this.spotlightPadding + 'px';
 
         const {left, top, height, width} = this.elementToHighlight.getBoundingClientRect();
 
-        spotlight.style.left = `calc(${window.scrollX + left}px - ${padding})`;
-        spotlight.style.top = `calc(${window.scrollY + top}px - ${padding})`;
+        spotlight.style.left = `calc(${window.scrollX + left}px - ${paddingProperty})`;
+        spotlight.style.top = `calc(${window.scrollY + top}px - ${paddingProperty})`;
         spotlight.style.width = `${width}px`;
         spotlight.style.height = `${height}px`;
     }
@@ -146,6 +148,7 @@ export class ProductTour {
 
         const spotlight = document.createElement('joy-product-tour-spotlight');
         this.setSpotlightSizeAndPosition(spotlight);
+        spotlight.style.setProperty('--product-tour-spotlight-padding', this.spotlightPadding + 'px');
 
         document.querySelector('body')!.appendChild(spotlight);
 
