@@ -1,11 +1,30 @@
 import {E2EPage, newE2EPage} from '@stencil/core/testing';
 import {createPage} from '../../tests';
 
+function injectCustomScript() {
+    /**
+     * Why ? because we've set some media queries to force this component hidden on devices < 991px.
+     * For some reasons, tests look completely ignore the media query and hide the spotlight.
+     * This class allows not to apply the media query rule.
+     */
+    return `
+        <script>
+            document.body.classList.add('ignore-mq');
+        </script>
+    `
+}
+
 describe('product-tour e2e', () => {
     it('should render product-tour and navigate to the other, then hide everything', async () => {
         const page = await createPage();
+        await page.setViewport({
+            width: 1100,
+            height: 600,
+        });
 
         await page.setContent(`
+            ${injectCustomScript()}
+            
             <joy-product-tour-trigger product-tour="myProductTour">
                 <joy-button variant="main">Run product tour manually</joy-button>
             </joy-product-tour-trigger>
@@ -72,6 +91,10 @@ describe('product-tour e2e', () => {
 
     it('should render product-tour on load, then hide it', async () => {
         const page: E2EPage = await newE2EPage();
+        await page.setViewport({
+            width: 1100,
+            height: 600,
+        });
 
         await page.setContent(`
             <joy-product-tour-trigger product-tour="myProductTour" show-on-load>
@@ -101,6 +124,10 @@ describe('product-tour e2e', () => {
 
     it('should prevent product-tour dismiss when clicking on overlay', async () => {
         const page: E2EPage = await newE2EPage();
+        await page.setViewport({
+            width: 1100,
+            height: 600,
+        });
 
         await page.setContent(`
             <joy-product-tour-trigger product-tour="myProductTour">
@@ -132,6 +159,10 @@ describe('product-tour e2e', () => {
 
     it('should dismiss the product-tour when clicking on overlay when dismissed-by="all"', async () => {
         const page: E2EPage = await newE2EPage();
+        await page.setViewport({
+            width: 1100,
+            height: 600,
+        });
 
         await page.setContent(`
             <joy-product-tour-trigger product-tour="myProductTour">
@@ -163,8 +194,14 @@ describe('product-tour e2e', () => {
 
     it('should render the product tour on a target outside the trigger', async () => {
         const page = await createPage();
+        await page.setViewport({
+            width: 1100,
+            height: 600,
+        });
 
         await page.setContent(`
+            ${injectCustomScript()}
+            
             <joy-product-tour-trigger product-tour="myProductTour" target="#productTourTarget">
                 <joy-button variant="main">Start the product tour</joy-button>
             </joy-product-tour-trigger>
@@ -190,6 +227,10 @@ describe('product-tour e2e', () => {
 
     it('should keep the highlighted target clickable', async () => {
         const page = await createPage();
+        await page.setViewport({
+            width: 1100,
+            height: 600,
+        });
 
         await page.setContent(`
             <joy-product-tour-trigger product-tour="myProductTour" target="#productTourTarget">

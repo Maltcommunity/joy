@@ -1,3 +1,14 @@
 @use '~@maltjoy/tokens/src/tokens';
 @use './skeletons';
 @use './slots';
+@use './utils';
+
+@media screen and (max-width: 991px) {
+  body:not(.ignore-mq) {
+    joy-product-tour,
+    joy-product-tour-spotlight,
+    .joy-product-tour--overlay {
+      display: none !important;
+    }
+  }
+}
