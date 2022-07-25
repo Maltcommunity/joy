@@ -25,4 +25,4 @@ For @focus event, it's the same :
 * use `@focus.capture` to actually capture the event from the native input, to the custom-element
 * use `@focusin`, as the event actually bubble up
 
-<a href="https://developer.mozilla.org/en-US/docs/Web/API/Element/focus_event" target="_blank">Reference</a> 
+<a href="https://developer.mozilla.org/en-US/docs/Web/API/Element/focus_event" target="_blank">Reference</a>
