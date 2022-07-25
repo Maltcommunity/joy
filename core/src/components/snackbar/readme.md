@@ -59,9 +59,9 @@ category: maltjoy core Overlay
 
 ## Events
 
-| Event                      | Description                                                                                                                                                             | Type                |
-| -------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------- |
-| `joySnackbarTriggerAction` | use @joySnackbarTriggerAction="yourMethod" for Vue apps (onJoySnackbarTriggerAction for other stencil components) to handle snackbar custom action. Nothing is returned | `CustomEvent<void>` |
+| Event                         | Description                                                                                                                                                             | Type                |
+| ----------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------- |
+| `joy-snackbar-trigger-action` | use @joySnackbarTriggerAction="yourMethod" for Vue apps (onJoySnackbarTriggerAction for other stencil components) to handle snackbar custom action. Nothing is returned | `CustomEvent<void>` |
 
 
 ## Dependencies
