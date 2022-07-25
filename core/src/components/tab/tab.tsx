@@ -15,7 +15,7 @@ export class JoyTab {
      * A tab id or name must be provided for each `joy-tab`. It's used internally to reference
      * the selected tab
      */
-    @Prop() tab!: string;
+    @Prop({reflect: true}) tab!: string;
 
     async componentWillLoad() {
         if (this.selected) {

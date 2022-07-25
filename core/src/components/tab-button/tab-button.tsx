@@ -15,7 +15,7 @@ export class JoyTabButton {
      * A tab id or name must be provided for each `joy-button-tab`. It's used internally to reference
      * the selected tab
      */
-    @Prop() tab!: string;
+    @Prop({reflect: true}) tab!: string;
     /**
      * If your tab is a link, give the URL
      */

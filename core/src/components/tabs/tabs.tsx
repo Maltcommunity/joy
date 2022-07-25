@@ -1,4 +1,4 @@
-import {Component, Prop, h, Element, Host, EventEmitter, Event, Watch, Listen} from '@stencil/core';
+import {Component, Prop, h, Element, Host, EventEmitter, Event, Watch, Listen, Build} from '@stencil/core';
 import {Tab} from '../../types';
 
 /**
@@ -85,7 +85,7 @@ export class JoyTabs {
         }
     }
 
-    connectedCallback() {
+    componentDidRender() {
         this.setCurrentTab();
     }
 
@@ -111,9 +111,14 @@ export class JoyTabs {
      * @param {String} selectedTab - the id or name of the tab we need to select
      * @private
      */
-    private programmaticallySelectTab(selectedTab: string) {
+    private async programmaticallySelectTab(selectedTab: string) {
+        const buttons = Array.from(this.host.querySelectorAll('joy-tab-button'));
+        buttons.map(async(button: HTMLJoyTabButtonElement) => {
+            await button.componentOnReady();
+        })
+
         const tab = this.host.querySelector(`joy-tab-button[tab="${selectedTab}"]`) as HTMLJoyTabButtonElement;
-        tab.selectTabButton(true).then();
+        await tab.selectTabButton(true);
     }
 
     private updateTabButtons(selectedTab: string, ev: CustomEvent<Tab> | null = null) {
@@ -129,7 +134,7 @@ export class JoyTabs {
          * In case of programmaticallySelectTab, we have no CustomEvent
          */
         if (ev === null) {
-            this.programmaticallySelectTab(selectedTab);
+            this.programmaticallySelectTab(selectedTab).then(() => {});
         }
     }
 
