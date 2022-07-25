@@ -89,8 +89,10 @@ export class Input {
     @State() passwordShown = false;
     @State() focusing = false;
 
-    /** Custom event that returns the component instance and its actual value. Binded to input native event **/
+    /** Generic custom event that returns the component instance and its actual value. Can be used for custom model directives (frameworks) **/
     @Event() valueChange!: EventEmitter<{element: HTMLJoyInputElement; value?: string}>;
+    /** Custom event that returns the component instance and its actual value. Binded to input native event **/
+    @Event({eventName: 'joy-input-change'}) joyInputChange!: EventEmitter<{element: HTMLJoyInputElement; value?: string}>;
 
     /**
      * At the moment, for E2E purpose
@@ -102,11 +104,13 @@ export class Input {
 
     private updateValue = () => {
         this.value = this.input.value;
-
-        this.valueChange.emit({
+        const model = {
             element: this.host,
             value: this.value,
-        });
+        };
+
+        this.valueChange.emit(model);
+        this.joyInputChange.emit(model);
     };
 
     private onFocus = () => (this.focusing = true);

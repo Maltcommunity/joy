@@ -9,6 +9,7 @@ class SnackbarUtils {
             duration: 5000,
             closable: true,
         };
+        this.triggerAnyAction = this.triggerAnyAction.bind(this);
     }
 
     fallbackFunction() {
@@ -21,7 +22,7 @@ class SnackbarUtils {
     }
 
     bindListeners() {
-        this.getSnackbar().addEventListener('joySnackbarTriggerAction', this.triggerAnyAction.bind(this), {once: true});
+        this.getSnackbar().addEventListener('joy-snackbar-trigger-action', this.triggerAnyAction, {once: true});
     }
 
     triggerAnyAction(event) {

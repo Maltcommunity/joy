@@ -1,4 +1,4 @@
-import {Component, h, Prop} from '@stencil/core';
+import {Component, Event, EventEmitter, h, Prop} from '@stencil/core';
 
 @Component({
     tag: 'joy-progress-bar',
@@ -26,6 +26,11 @@ export class ProgressBar {
      */
     @Prop() percentage: number | undefined;
 
+    /**
+     * When the progress bar gets updated
+     */
+    @Event({eventName: 'joy-progress-bar-update'}) joyProgressBarUpdate!: EventEmitter<void>;
+
     private computedPercentage = 0;
 
     private updateComputedPercentage() {
@@ -44,6 +49,7 @@ export class ProgressBar {
         if (this.computedPercentage > 100) {
             this.computedPercentage = 100;
         }
+        this.joyProgressBarUpdate.emit();
     }
 
     get computeInnerWidth(): string {

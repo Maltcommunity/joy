@@ -102,7 +102,7 @@ export class Dialog {
         }
     }
 
-    @Listen('joyIndicatorsChange')
+    @Listen('joy-indicators-change')
     async onStepChange() {
         this.open = false;
     }

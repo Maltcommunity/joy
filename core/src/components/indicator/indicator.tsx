@@ -17,7 +17,15 @@ export class Indicator {
     @Prop() variant: IndicatorsVariants = 'default';
     @Prop({mutable: true, reflect: true}) selected = false;
 
-    @Event() joySelectIndicator!: EventEmitter<{index: number}>;
+    /**
+     * Generic event fired when clicking the joy-indicator.
+     */
+    @Event({eventName: 'joy-indicator-select'}) joyIndicatorSelect!: EventEmitter<{index: number}>;
+    /**
+     * @internal
+     * Specific event fired when clicking on joy-indicator, internally handled by joy-dialog
+     */
+    @Event({eventName: 'joy-indicator-select-for-dialog'}) joyIndicatorSelectForDialog!: EventEmitter<{index: number}>;
 
     /**
      * @return {Promise} - Force focus from outside
@@ -42,16 +50,26 @@ export class Indicator {
             return;
         }
 
+        /**
+         * In order to chain joy-dialogs with our joy-indicators component, here we don't select the indicator
+         * because each joy-dialog instance has its own joy-indicators instance. It does not use the same one.
+         * To prevent de-sync, we just don't do anything as selected indicator is already handled :
+         *
+         */
         if (!this.host.closest('joy-dialog')) {
             await this.selectIndicator();
-            this.joySelectIndicator.emit({
+            this.joyIndicatorSelect.emit({
+                index: this.index,
+            });
+        } else {
+            this.joyIndicatorSelectForDialog.emit({
                 index: this.index,
             });
         }
     };
 
     connectedCallback() {
-        this.index = generatedIndex(this.host, this.host.parentElement!);
+        this.index = generatedIndex(this.host, this.host.closest('joy-indicators')!);
     }
 
     render() {

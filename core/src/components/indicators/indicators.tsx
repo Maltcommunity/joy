@@ -12,7 +12,7 @@ export class Indicators {
     @Prop() variant: IndicatorsVariants = 'default';
     /** Selected state **/
     @Prop({reflect: true, mutable: true}) selected = 1;
-    @Event() joyIndicatorsChange!: EventEmitter<number>;
+    @Event({eventName: 'joy-indicators-change'}) joyIndicatorsChange!: EventEmitter<number>;
 
     private nextIndicatorSelected!: HTMLJoyIndicatorElement | null;
 
@@ -57,16 +57,25 @@ export class Indicators {
         }
     }
 
-    @Listen('joySelectIndicator')
+    @Listen('joy-indicator-select-for-dialog')
+    updateSelectedIndicatorForDialog(ev: CustomEvent & {target: HTMLJoyIndicatorElement}) {
+        this.joyIndicatorsChange.emit(ev.detail);
+    }
+
+    @Listen('joy-indicator-select')
     updateSelectedIndicator(ev: CustomEvent & {target: HTMLJoyIndicatorElement}) {
+        this.joyIndicatorsChange.emit(ev.detail);
         if (ev.target && this.indicators.includes(ev.target)) {
             /** Indicator methods are async, so we filter in order to get only non-selected indicators and store all the promises **/
-            const promises = this.indicators.filter((indicator) => indicator !== ev.target).map((indicator) => indicator.selectIndicator(false));
 
-            Promise.all(promises).then(() => {
-                this.selected = ev.detail.index;
-                this.joyIndicatorsChange.emit(ev.detail);
-            });
+            this.indicators
+                .filter((_indicator, index) => {
+                    return index + 1 !== ev.detail.index;
+                })
+                .map(async(indicator) => await indicator.selectIndicator(false));
+
+            this.selected = ev.detail.index;
+            this.joyIndicatorsChange.emit(ev.detail);
         }
     }
 

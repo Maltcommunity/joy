@@ -114,7 +114,7 @@ class Service {
     }
 
     _bindListeners() {
-        this.snackbar?.addEventListener('joySnackbarTriggerAction', this.triggerAnyAction, {once: true});
+        this.snackbar?.addEventListener('joy-snackbar-trigger-action', this.triggerAnyAction, {once: true});
     }
 }
 
