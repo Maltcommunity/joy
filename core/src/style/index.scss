@@ -3,10 +3,10 @@
 @use './slots';
 @use './utils';
 
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 991px) {
   joy-product-tour,
   joy-product-tour-spotlight,
   .joy-product-tour--overlay {
-    display: none;
+    display: none !important;
   }
 }
