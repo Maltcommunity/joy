@@ -41,10 +41,7 @@ export class Pagination {
     private maxPagesToDisplay = 6; // first page, last page, and 4 others
 
     /** use @joyChangePage="yourMethod" for Vue apps, to handle pagination change. Clicked page is returned */
-    @Event({
-        eventName: 'joyChangePage',
-    })
-    changePage!: EventEmitter<number>;
+    @Event({eventName: 'joyChangePage'}) changePage!: EventEmitter<number>;
 
     @Watch('totalPages')
     updatePages(value: number) {

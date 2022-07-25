@@ -76,15 +76,15 @@ export class CounterComponent {
     /**
      * Specific event fired when you increment the counter value. Prefer using valueChange unless you need to handle this specific event type
      */
-    @Event() joyCounterIncrement!: EventEmitter<number>;
+    @Event({eventName: 'joy-counter-increment'}) joyCounterIncrement!: EventEmitter<number>;
     /**
      * Specific event fired when you decrement the counter value. Prefer using valueChange unless you need to handle this specific event type
      */
-    @Event() joyCounterDecrement!: EventEmitter<number>;
+    @Event({eventName: 'joy-counter-decrement'}) joyCounterDecrement!: EventEmitter<number>;
     /**
      * Specific event fired when your counter value is invalid.
      */
-    @Event() joyCounterInvalid!: EventEmitter<{value: string; message: string}>;
+    @Event({eventName: 'joy-counter-invalid'}) joyCounterInvalid!: EventEmitter<{value: string; message: string}>;
 
     /**
      * Allows to manually increment counter value from outside.

@@ -2016,15 +2016,15 @@ declare namespace LocalJSX {
         /**
           * Specific event fired when you decrement the counter value. Prefer using valueChange unless you need to handle this specific event type
          */
-        "onJoyCounterDecrement"?: (event: CustomEvent<number>) => void;
+        "onJoy-counter-decrement"?: (event: CustomEvent<number>) => void;
         /**
           * Specific event fired when you increment the counter value. Prefer using valueChange unless you need to handle this specific event type
          */
-        "onJoyCounterIncrement"?: (event: CustomEvent<number>) => void;
+        "onJoy-counter-increment"?: (event: CustomEvent<number>) => void;
         /**
           * Specific event fired when your counter value is invalid.
          */
-        "onJoyCounterInvalid"?: (event: CustomEvent<{value: string; message: string}>) => void;
+        "onJoy-counter-invalid"?: (event: CustomEvent<{value: string; message: string}>) => void;
         /**
           * Generic event for any counter change, fired by manually typing a value or using increment/decrement CTA
          */
@@ -2304,12 +2304,16 @@ declare namespace LocalJSX {
         "type"?: 'button';
     }
     interface JoyIndicator {
-        "onJoySelectIndicator"?: (event: CustomEvent<{index: number}>) => void;
+        /**
+          * Generic event fired when clicking the joy-indicator.
+         */
+        "onJoy-indicator-select"?: (event: CustomEvent<{index: number}>) => void;
+        "onJoy-indicator-select-for-dialog"?: (event: CustomEvent<{index: number}>) => void;
         "selected"?: boolean;
         "variant"?: IndicatorsVariants;
     }
     interface JoyIndicators {
-        "onJoyIndicatorsChange"?: (event: CustomEvent<number>) => void;
+        "onJoy-indicators-change"?: (event: CustomEvent<number>) => void;
         /**
           * Selected state *
          */
@@ -2370,6 +2374,10 @@ declare namespace LocalJSX {
         "name"?: string;
         /**
           * Custom event that returns the component instance and its actual value. Binded to input native event *
+         */
+        "onJoy-input-change"?: (event: CustomEvent<{element: HTMLJoyInputElement; value?: string}>) => void;
+        /**
+          * Generic custom event that returns the component instance and its actual value. Can be used for custom model directives (frameworks) *
          */
         "onValueChange"?: (event: CustomEvent<{element: HTMLJoyInputElement; value?: string}>) => void;
         /**
@@ -2596,6 +2604,10 @@ declare namespace LocalJSX {
          */
         "mode"?: 'desktop' | 'mobile';
         /**
+          * When the progress bar gets updated
+         */
+        "onJoy-progress-bar-update"?: (event: CustomEvent<void>) => void;
+        /**
           * Progress bar percentage, percentage usage will override steps & currentStep definition.
          */
         "percentage"?: number | undefined;
@@ -2811,7 +2823,7 @@ declare namespace LocalJSX {
         /**
           * use @joySnackbarTriggerAction="yourMethod" for Vue apps (onJoySnackbarTriggerAction for other stencil components) to handle snackbar custom action. Nothing is returned
          */
-        "onJoySnackbarTriggerAction"?: (event: CustomEvent<void>) => void;
+        "onJoy-snackbar-trigger-action"?: (event: CustomEvent<void>) => void;
         /**
           * By default, the snackbar will be displayed in a fixed position at the bottom of the page. You can override this behavior by setting position="relative"
          */

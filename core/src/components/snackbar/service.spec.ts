@@ -68,7 +68,7 @@ describe('Notification - NotificationService', () => {
 
         const cancellationFn = jest.spyOn(snackbarService, 'cancellationCallback');
 
-        getSnackbar().dispatchEvent(new CustomEvent('joySnackbarTriggerAction', {bubbles: true}));
+        getSnackbar().dispatchEvent(new CustomEvent('joy-snackbar-trigger-action', {bubbles: true}));
         expect(triggerFn).toHaveBeenCalled();
         expect(clearFn).toHaveBeenCalled();
         expect(cancellationFn).toHaveBeenCalled();
