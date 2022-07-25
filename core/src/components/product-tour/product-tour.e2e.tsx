@@ -4,6 +4,10 @@ import {createPage} from '../../tests';
 describe('product-tour e2e', () => {
     it('should render product-tour and navigate to the other, then hide everything', async () => {
         const page = await createPage();
+        await page.setViewport({
+            width: 1100,
+            height: 600,
+        });
 
         await page.setContent(`
             <joy-product-tour-trigger product-tour="myProductTour">
@@ -72,6 +76,10 @@ describe('product-tour e2e', () => {
 
     it('should render product-tour on load, then hide it', async () => {
         const page: E2EPage = await newE2EPage();
+        await page.setViewport({
+            width: 1100,
+            height: 600,
+        });
 
         await page.setContent(`
             <joy-product-tour-trigger product-tour="myProductTour" show-on-load>
@@ -101,6 +109,10 @@ describe('product-tour e2e', () => {
 
     it('should prevent product-tour dismiss when clicking on overlay', async () => {
         const page: E2EPage = await newE2EPage();
+        await page.setViewport({
+            width: 1100,
+            height: 600,
+        });
 
         await page.setContent(`
             <joy-product-tour-trigger product-tour="myProductTour">
@@ -132,6 +144,10 @@ describe('product-tour e2e', () => {
 
     it('should dismiss the product-tour when clicking on overlay when dismissed-by="all"', async () => {
         const page: E2EPage = await newE2EPage();
+        await page.setViewport({
+            width: 1100,
+            height: 600,
+        });
 
         await page.setContent(`
             <joy-product-tour-trigger product-tour="myProductTour">
@@ -163,6 +179,10 @@ describe('product-tour e2e', () => {
 
     it('should render the product tour on a target outside the trigger', async () => {
         const page = await createPage();
+        await page.setViewport({
+            width: 1100,
+            height: 600,
+        });
 
         await page.setContent(`
             <joy-product-tour-trigger product-tour="myProductTour" target="#productTourTarget">
@@ -190,6 +210,10 @@ describe('product-tour e2e', () => {
 
     it('should keep the highlighted target clickable', async () => {
         const page = await createPage();
+        await page.setViewport({
+            width: 1100,
+            height: 600,
+        });
 
         await page.setContent(`
             <joy-product-tour-trigger product-tour="myProductTour" target="#productTourTarget">
