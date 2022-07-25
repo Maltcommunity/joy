@@ -1,6 +1,19 @@
 import {E2EPage, newE2EPage} from '@stencil/core/testing';
 import {createPage} from '../../tests';
 
+function injectCustomScript() {
+    /**
+     * Why ? because we've set some media queries to force this component hidden on devices < 991px.
+     * For some reasons, tests look completely ignore the media query and hide the spotlight.
+     * This class allows not to apply the media query rule.
+     */
+    return `
+        <script>
+            document.body.classList.add('ignore-mq');
+        </script>
+    `
+}
+
 describe('product-tour e2e', () => {
     it('should render product-tour and navigate to the other, then hide everything', async () => {
         const page = await createPage();
@@ -10,6 +23,8 @@ describe('product-tour e2e', () => {
         });
 
         await page.setContent(`
+            ${injectCustomScript()}
+            
             <joy-product-tour-trigger product-tour="myProductTour">
                 <joy-button variant="main">Run product tour manually</joy-button>
             </joy-product-tour-trigger>
@@ -185,6 +200,8 @@ describe('product-tour e2e', () => {
         });
 
         await page.setContent(`
+            ${injectCustomScript()}
+            
             <joy-product-tour-trigger product-tour="myProductTour" target="#productTourTarget">
                 <joy-button variant="main">Start the product tour</joy-button>
             </joy-product-tour-trigger>

@@ -4,9 +4,11 @@
 @use './utils';
 
 @media screen and (max-width: 991px) {
-  joy-product-tour,
-  joy-product-tour-spotlight,
-  .joy-product-tour--overlay {
-    display: none !important;
+  body:not(.ignore-mq) {
+    joy-product-tour,
+    joy-product-tour-spotlight,
+    .joy-product-tour--overlay {
+      display: none !important;
+    }
   }
 }
