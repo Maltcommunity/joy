@@ -125,7 +125,7 @@ For any reason, if you can't use webcomponent version, use this plain HTML/CSS (
 | Event              | Description                                                                                                                           | Type                                                                          |
 | ------------------ | ------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------- |
 | `joy-input-change` | Custom event that returns the component instance and its actual value. Binded to input native event *                                 | `CustomEvent<{ element: HTMLJoyInputElement; value?: string \| undefined; }>` |
-| `valueChange`      | Generic custom event that returns the component instance and its actual value. Can be used for custom model directives (frameworks) * | `CustomEvent<{ element: HTMLJoyInputElement; value?: string \| undefined; }>` |
+| `value-change`     | Generic custom event that returns the component instance and its actual value. Can be used for custom model directives (frameworks) * | `CustomEvent<{ element: HTMLJoyInputElement; value?: string \| undefined; }>` |
 
 
 ## Methods

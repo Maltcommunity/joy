@@ -55,9 +55,9 @@ category: maltjoy core Forms
 
 ## Events
 
-| Event         | Description | Type                              |
-| ------------- | ----------- | --------------------------------- |
-| `valueChange` |             | `CustomEvent<{ value: string; }>` |
+| Event          | Description | Type                              |
+| -------------- | ----------- | --------------------------------- |
+| `value-change` |             | `CustomEvent<{ value: string; }>` |
 
 
 ## Dependencies

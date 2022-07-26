@@ -43,9 +43,9 @@ See [joy-button](../button) documentation
 
 ## Events
 
-| Event                  | Description                                     | Type                |
-| ---------------------- | ----------------------------------------------- | ------------------- |
-| `joyBottomSheetClosed` | Custom event fired when user close bottom sheet | `CustomEvent<void>` |
+| Event                     | Description                                     | Type                |
+| ------------------------- | ----------------------------------------------- | ------------------- |
+| `joy-bottom-sheet-closed` | Custom event fired when user close bottom sheet | `CustomEvent<void>` |
 
 
 ## Methods

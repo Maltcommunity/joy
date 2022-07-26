@@ -1,8 +1,9 @@
 @use 'style/utils';
+@use 'shared';
 
 $_CLASS: '.joy-dropdown';
-$DROPDOWN_HEIGHT: 48px;
-$DROPDOWN_MARGIN-BOTTOM: 25px;
+$DROPDOWN_HEIGHT: shared.$DROPDOWN_HEIGHT;
+$DROPDOWN_MARGIN-BOTTOM: shared.$DROPDOWN_MARGIN-BOTTOM;
 
 * {
     box-sizing: border-box;

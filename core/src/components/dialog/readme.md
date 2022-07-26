@@ -129,10 +129,10 @@ category: maltjoy core Overlay
 
 ## Events
 
-| Event              | Description                                                     | Type                |
-| ------------------ | --------------------------------------------------------------- | ------------------- |
-| `joyCancelDialog`  | Custom event fired when clicking on cancel button or cross icon | `CustomEvent<void>` |
-| `joyConfirmDialog` | Custom event fired when clicking on confirm button              | `CustomEvent<void>` |
+| Event                | Description                                                     | Type                |
+| -------------------- | --------------------------------------------------------------- | ------------------- |
+| `joy-cancel-dialog`  | Custom event fired when clicking on cancel button or cross icon | `CustomEvent<void>` |
+| `joy-confirm-dialog` | Custom event fired when clicking on confirm button              | `CustomEvent<void>` |
 
 
 ## Methods

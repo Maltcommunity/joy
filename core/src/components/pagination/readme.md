@@ -51,9 +51,9 @@ Use slots in order to prevent too many custom attributes. Keep the same HTML str
 
 ## Events
 
-| Event           | Description                                                                                         | Type                  |
-| --------------- | --------------------------------------------------------------------------------------------------- | --------------------- |
-| `joyChangePage` | use @joyChangePage="yourMethod" for Vue apps, to handle pagination change. Clicked page is returned | `CustomEvent<number>` |
+| Event                        | Description                                                                                         | Type                  |
+| ---------------------------- | --------------------------------------------------------------------------------------------------- | --------------------- |
+| `joy-pagination-change-page` | use @joyChangePage="yourMethod" for Vue apps, to handle pagination change. Clicked page is returned | `CustomEvent<number>` |
 
 
 ## Slots

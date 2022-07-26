@@ -14,9 +14,9 @@
 
 ## Events
 
-| Event           | Description | Type                                                                |
-| --------------- | ----------- | ------------------------------------------------------------------- |
-| `backdropClick` |             | `CustomEvent<"dialog" \| "dropdown" \| "product-tour" \| "select">` |
+| Event                | Description | Type                                                                |
+| -------------------- | ----------- | ------------------------------------------------------------------- |
+| `joy-backdrop-click` |             | `CustomEvent<"dialog" \| "dropdown" \| "product-tour" \| "select">` |
 
 
 ----------------------------------------------

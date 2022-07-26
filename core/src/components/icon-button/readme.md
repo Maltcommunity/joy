@@ -28,9 +28,9 @@ category: maltjoy core View
 
 ## Events
 
-| Event                | Description                                                                                                                                         | Type                |
-| -------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------- |
-| `joyIconButtonClick` | use @joyIconButtonClick="yourMethod" for Vue apps (onJoyIconButtonClick for other stencil components) to handle snackbar close. Nothing is returned | `CustomEvent<void>` |
+| Event                   | Description                                                                                                                                         | Type                |
+| ----------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------- |
+| `joy-icon-button-click` | use @joyIconButtonClick="yourMethod" for Vue apps (onJoyIconButtonClick for other stencil components) to handle snackbar close. Nothing is returned | `CustomEvent<void>` |
 
 
 ## Slots

@@ -70,10 +70,10 @@ category: maltjoy core Forms
 
 ## Events
 
-| Event                      | Description                                                                                                                               | Type                              |
-| -------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------- |
-| `joyRadioGroupValueChange` | Emitted when the value has changed. Use this specific event if you use expandable options containing various inputs.                      | `CustomEvent<{ value: string; }>` |
-| `valueChange`              | Emitted when the value has changed. WARNING : this event has a generic name used by other form elements ! Using it can create conflicts ! | `CustomEvent<{ value: string; }>` |
+| Event                          | Description                                                                                                                               | Type                              |
+| ------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------- |
+| `joy-radio-group-value-change` | Emitted when the value has changed. Use this specific event if you use expandable options containing various inputs.                      | `CustomEvent<{ value: string; }>` |
+| `value-change`                 | Emitted when the value has changed. WARNING : this event has a generic name used by other form elements ! Using it can create conflicts ! | `CustomEvent<{ value: string; }>` |
 
 
 ## Slots

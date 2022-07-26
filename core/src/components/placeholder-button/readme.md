@@ -21,9 +21,9 @@ category: maltjoy core Buttons
 
 ## Events
 
-| Event                       | Description                                              | Type                |
-| --------------------------- | -------------------------------------------------------- | ------------------- |
-| `joyPlaceholderButtonClick` | use @joyPlaceholderButtonClick="yourMethod" for Vue apps | `CustomEvent<void>` |
+| Event                          | Description                                                 | Type                |
+| ------------------------------ | ----------------------------------------------------------- | ------------------- |
+| `joy-placeholder-button-click` | use @joy-placeholder-button-click="yourMethod" for Vue apps | `CustomEvent<void>` |
 
 
 ## CSS Custom Properties

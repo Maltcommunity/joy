@@ -63,13 +63,13 @@ category: maltjoy core Forms
 
 ## Events
 
-| Event                       | Description                                                                                           | Type                                                                 |
-| --------------------------- | ----------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------- |
-| `joyTagsError`              | When the tags list is on error. According to the returned ErrorType, you can display the right error. | `CustomEvent<ErrorType.DUPLICATED_ENTRY \| ErrorType.INVALID_EMAIL>` |
-| `joyTagsInputAddSuggestion` | Triggered when we click on a tag suggestion                                                           | `CustomEvent<string>`                                                |
-| `joyTagsInputBlur`          | On input blur                                                                                         | `CustomEvent<void>`                                                  |
-| `joyTagsInputFocus`         | On input focus                                                                                        | `CustomEvent<void>`                                                  |
-| `joyTagsUpdate`             | When the tags list is updated                                                                         | `CustomEvent<string[]>`                                              |
+| Event                           | Description                                                                                           | Type                                                                 |
+| ------------------------------- | ----------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------- |
+| `joy-tags-input-add-suggestion` | Triggered when we click on a tag suggestion                                                           | `CustomEvent<string>`                                                |
+| `joy-tags-input-blur`           | On input blur                                                                                         | `CustomEvent<void>`                                                  |
+| `joy-tags-input-error`          | When the tags list is on error. According to the returned ErrorType, you can display the right error. | `CustomEvent<ErrorType.DUPLICATED_ENTRY \| ErrorType.INVALID_EMAIL>` |
+| `joy-tags-input-focus`          | On input focus                                                                                        | `CustomEvent<void>`                                                  |
+| `joy-tags-input-update`         | When the tags list is updated                                                                         | `CustomEvent<string[]>`                                              |
 
 
 ## Methods

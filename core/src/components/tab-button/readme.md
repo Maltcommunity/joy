@@ -20,9 +20,9 @@ category: maltjoy core View
 
 ## Events
 
-| Event               | Description                                                                                                                      | Type                                                  |
-| ------------------- | -------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------- |
-| `joyTabButtonClick` | Event used by joy-tabs parent component. Prefer using joyTabSelected event from joy-tabs if you want to listen to any tab change | `CustomEvent<{ selectedTab: string; href: string; }>` |
+| Event                  | Description                                                                                                                      | Type                                                  |
+| ---------------------- | -------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------- |
+| `joy-tab-button-click` | Event used by joy-tabs parent component. Prefer using joyTabSelected event from joy-tabs if you want to listen to any tab change | `CustomEvent<{ selectedTab: string; href: string; }>` |
 
 
 ## Methods

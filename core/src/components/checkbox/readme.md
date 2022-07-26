@@ -78,7 +78,7 @@ If using the webcomponent is too complex for your case, use this plain CSS imple
 | Event                 | Description                                                                         | Type                   |
 | --------------------- | ----------------------------------------------------------------------------------- | ---------------------- |
 | `joy-checkbox-change` | Clicking on the component will fire this customEvent (more checkbox specific event) | `CustomEvent<boolean>` |
-| `valueChange`         | Clicking on the component will fire this customEvent                                | `CustomEvent<boolean>` |
+| `value-change`        | Clicking on the component will fire this customEvent                                | `CustomEvent<boolean>` |
 
 
 ## Methods

@@ -69,13 +69,13 @@ category: maltjoy core Forms
 
 ## Events
 
-| Event               | Description                                                                     | Type                              |
-| ------------------- | ------------------------------------------------------------------------------- | --------------------------------- |
-| `joyTextareaBlur`   | Emitted when the input loses focus.                                             | `CustomEvent<FocusEvent>`         |
-| `joyTextareaChange` | Emitted when the input value has changed.                                       | `CustomEvent<{ value: string; }>` |
-| `joyTextareaFocus`  | Emitted when the input has focus.                                               | `CustomEvent<FocusEvent>`         |
-| `joyTextareaInput`  | Emitted when a keyboard input occurred.                                         | `CustomEvent<KeyboardEvent>`      |
-| `valueChange`       | Emitted when the value has changed. Generic event used by all other form fields | `CustomEvent<void>`               |
+| Event                 | Description                                                                     | Type                              |
+| --------------------- | ------------------------------------------------------------------------------- | --------------------------------- |
+| `joy-textarea-blur`   | Emitted when the input loses focus.                                             | `CustomEvent<FocusEvent>`         |
+| `joy-textarea-change` | Emitted when the input value has changed.                                       | `CustomEvent<{ value: string; }>` |
+| `joy-textarea-focus`  | Emitted when the input has focus.                                               | `CustomEvent<FocusEvent>`         |
+| `joy-textarea-input`  | Emitted when a keyboard input occurred.                                         | `CustomEvent<KeyboardEvent>`      |
+| `value-change`        | Emitted when the value has changed. Generic event used by all other form fields | `CustomEvent<void>`               |
 
 
 ## Methods

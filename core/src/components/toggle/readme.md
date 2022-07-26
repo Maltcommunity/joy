@@ -44,10 +44,10 @@ category: maltjoy core Forms
 
 ## Events
 
-| Event              | Description                                           | Type                   |
-| ------------------ | ----------------------------------------------------- | ---------------------- |
-| `joytoggle-change` | Clicking on the component will fire this customEvent. | `CustomEvent<boolean>` |
-| `valueChange`      | Clicking on the component will fire this customEvent. | `CustomEvent<boolean>` |
+| Event               | Description                                           | Type                   |
+| ------------------- | ----------------------------------------------------- | ---------------------- |
+| `joy-toggle-change` | Clicking on the component will fire this customEvent. | `CustomEvent<boolean>` |
+| `value-change`      | Clicking on the component will fire this customEvent. | `CustomEvent<boolean>` |
 
 
 ## Methods

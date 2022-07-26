@@ -85,10 +85,10 @@ Only for primary and secondary variants.
 
 ## Events
 
-| Event          | Description                                | Type                                                |
-| -------------- | ------------------------------------------ | --------------------------------------------------- |
-| `joyTagClick`  | Fired only if we've set the clickable prop | `CustomEvent<{ name: string; selected: boolean; }>` |
-| `joyTagRemove` | Fired only if we've click on removable tag | `CustomEvent<string>`                               |
+| Event            | Description                                | Type                                                |
+| ---------------- | ------------------------------------------ | --------------------------------------------------- |
+| `joy-tag-click`  | Fired only if we've set the clickable prop | `CustomEvent<{ name: string; selected: boolean; }>` |
+| `joy-tag-remove` | Fired only if we've click on removable tag | `CustomEvent<string>`                               |
 
 
 ## Methods

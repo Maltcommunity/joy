@@ -60,11 +60,11 @@ category: maltjoy core Forms
 
 ## Events
 
-| Event           | Description              | Type                |
-| --------------- | ------------------------ | ------------------- |
-| `joyRadioBlur`  | When radio is blurred *  | `CustomEvent<void>` |
-| `joyRadioClick` | When radio is selected * | `CustomEvent<void>` |
-| `joyRadioFocus` | When radio is focused *  | `CustomEvent<void>` |
+| Event             | Description              | Type                |
+| ----------------- | ------------------------ | ------------------- |
+| `joy-radio-blur`  | When radio is blurred *  | `CustomEvent<void>` |
+| `joy-radio-click` | When radio is selected * | `CustomEvent<void>` |
+| `joy-radio-focus` | When radio is focused *  | `CustomEvent<void>` |
 
 
 ## Slots

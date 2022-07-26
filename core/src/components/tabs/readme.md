@@ -59,9 +59,9 @@ Follow this example :
 
 ## Events
 
-| Event            | Description                                                                 | Type                                                  |
-| ---------------- | --------------------------------------------------------------------------- | ----------------------------------------------------- |
-| `joyTabSelected` | If you wanna catch the tab selection in the whole component, use this event | `CustomEvent<{ selectedTab: string; href: string; }>` |
+| Event              | Description                                                                 | Type                                                  |
+| ------------------ | --------------------------------------------------------------------------- | ----------------------------------------------------- |
+| `joy-tab-selected` | If you wanna catch the tab selection in the whole component, use this event | `CustomEvent<{ selectedTab: string; href: string; }>` |
 
 
 ## Slots

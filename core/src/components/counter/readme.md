@@ -50,7 +50,7 @@ category: maltjoy core Forms
 | `joy-counter-decrement` | Specific event fired when you decrement the counter value. Prefer using valueChange unless you need to handle this specific event type | `CustomEvent<number>`                              |
 | `joy-counter-increment` | Specific event fired when you increment the counter value. Prefer using valueChange unless you need to handle this specific event type | `CustomEvent<number>`                              |
 | `joy-counter-invalid`   | Specific event fired when your counter value is invalid.                                                                               | `CustomEvent<{ value: string; message: string; }>` |
-| `valueChange`           | Generic event for any counter change, fired by manually typing a value or using increment/decrement CTA                                | `CustomEvent<number>`                              |
+| `value-change`          | Generic event for any counter change, fired by manually typing a value or using increment/decrement CTA                                | `CustomEvent<number>`                              |
 
 
 ## Methods
