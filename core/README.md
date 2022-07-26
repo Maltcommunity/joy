@@ -19,6 +19,10 @@ Add the following tags to your page :
 <script nomodule src="https://cdn.jsdelivr.net/npm/@maltjoy/core@0.6.0/dist/joy/joy.js"></script>
 ```
 
+> Note: `joy.css` file is mandatory. It contains some skeleton style, and the whole design tokens in plain CSS.
+You can import it in your preprocessor as well, to bundle it with your own browserslist configuration.
+
+
 **Only the components used on that page will actually be requested and lazy-loaded.**
 
 Then, you can use any component you want :
