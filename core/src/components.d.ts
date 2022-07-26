@@ -1856,7 +1856,7 @@ declare namespace LocalJSX {
         "compress"?: boolean;
     }
     interface JoyBackdrop {
-        "onBackdropClick"?: (event: CustomEvent<BackDropOrigin>) => void;
+        "onJoy-backdrop-click"?: (event: CustomEvent<BackDropOrigin>) => void;
         /**
           * The backdrop can be created from many components *
          */
@@ -1888,7 +1888,7 @@ declare namespace LocalJSX {
         /**
           * Custom event fired when user close bottom sheet
          */
-        "onJoyBottomSheetClosed"?: (event: CustomEvent<void>) => void;
+        "onJoy-bottom-sheet-closed"?: (event: CustomEvent<void>) => void;
     }
     interface JoyButton {
         /**
@@ -1952,7 +1952,7 @@ declare namespace LocalJSX {
         /**
           * Clicking on the component will fire this customEvent
          */
-        "onValueChange"?: (event: CustomEvent<boolean>) => void;
+        "onValue-change"?: (event: CustomEvent<boolean>) => void;
         /**
           * Checkbox is required
          */
@@ -2032,7 +2032,7 @@ declare namespace LocalJSX {
         /**
           * Generic event for any counter change, fired by manually typing a value or using increment/decrement CTA
          */
-        "onValueChange"?: (event: CustomEvent<number>) => void;
+        "onValue-change"?: (event: CustomEvent<number>) => void;
         /**
           * Inject the right wording if your field is not required. the "-" separator is already handled internally. *
          */
@@ -2091,11 +2091,11 @@ declare namespace LocalJSX {
         /**
           * Custom event fired when clicking on cancel button or cross icon
          */
-        "onJoyCancelDialog"?: (event: CustomEvent<void>) => void;
+        "onJoy-cancel-dialog"?: (event: CustomEvent<void>) => void;
         /**
           * Custom event fired when clicking on confirm button
          */
-        "onJoyConfirmDialog"?: (event: CustomEvent<void>) => void;
+        "onJoy-confirm-dialog"?: (event: CustomEvent<void>) => void;
         /**
           * Dialog open state
          */
@@ -2146,7 +2146,7 @@ declare namespace LocalJSX {
           * Select name attribute to be found by parent form. *
          */
         "name"?: string;
-        "onValueChange"?: (event: CustomEvent<{value: string}>) => void;
+        "onValue-change"?: (event: CustomEvent<{value: string}>) => void;
         /**
           * Mandatory or not. *
          */
@@ -2301,7 +2301,7 @@ declare namespace LocalJSX {
         /**
           * use @joyIconButtonClick="yourMethod" for Vue apps (onJoyIconButtonClick for other stencil components) to handle snackbar close. Nothing is returned
          */
-        "onJoyIconButtonClick"?: (event: CustomEvent<void>) => void;
+        "onJoy-icon-button-click"?: (event: CustomEvent<void>) => void;
         /**
           * The button type. As the component wraps an actual HTML button element, it will be applied to it.
          */
@@ -2383,7 +2383,7 @@ declare namespace LocalJSX {
         /**
           * Generic custom event that returns the component instance and its actual value. Can be used for custom model directives (frameworks) *
          */
-        "onValueChange"?: (event: CustomEvent<{element: HTMLJoyInputElement; value?: string}>) => void;
+        "onValue-change"?: (event: CustomEvent<{element: HTMLJoyInputElement; value?: string}>) => void;
         /**
           * Inject the right wording if your field is not required. the "-" separator is already handled internally. *
          */
@@ -2527,7 +2527,7 @@ declare namespace LocalJSX {
         /**
           * use @joyChangePage="yourMethod" for Vue apps, to handle pagination change. Clicked page is returned
          */
-        "onJoyChangePage"?: (event: CustomEvent<number>) => void;
+        "onJoy-pagination-change-page"?: (event: CustomEvent<number>) => void;
         /**
           * Total number of pages in order to construct the pagination
          */
@@ -2535,9 +2535,9 @@ declare namespace LocalJSX {
     }
     interface JoyPlaceholderButton {
         /**
-          * use @joyPlaceholderButtonClick="yourMethod" for Vue apps
+          * use @joy-placeholder-button-click="yourMethod" for Vue apps
          */
-        "onJoyPlaceholderButtonClick"?: (event: CustomEvent<void>) => void;
+        "onJoy-placeholder-button-click"?: (event: CustomEvent<void>) => void;
         /**
           * Placeholder button sizes.
          */
@@ -2640,15 +2640,15 @@ declare namespace LocalJSX {
         /**
           * When radio is blurred *
          */
-        "onJoyRadioBlur"?: (event: CustomEvent<void>) => void;
+        "onJoy-radio-blur"?: (event: CustomEvent<void>) => void;
         /**
           * When radio is selected *
          */
-        "onJoyRadioClick"?: (event: CustomEvent<void>) => void;
+        "onJoy-radio-click"?: (event: CustomEvent<void>) => void;
         /**
           * When radio is focused *
          */
-        "onJoyRadioFocus"?: (event: CustomEvent<void>) => void;
+        "onJoy-radio-focus"?: (event: CustomEvent<void>) => void;
         /**
           * Field is required
          */
@@ -2682,11 +2682,11 @@ declare namespace LocalJSX {
         /**
           * Emitted when the value has changed. Use this specific event if you use expandable options containing various inputs.
          */
-        "onJoyRadioGroupValueChange"?: (event: CustomEvent<RadioGroupValue>) => void;
+        "onJoy-radio-group-value-change"?: (event: CustomEvent<RadioGroupValue>) => void;
         /**
           * Emitted when the value has changed. WARNING : this event has a generic name used by other form elements ! Using it can create conflicts !
          */
-        "onValueChange"?: (event: CustomEvent<RadioGroupValue>) => void;
+        "onValue-change"?: (event: CustomEvent<RadioGroupValue>) => void;
         /**
           * the value of the radio group.
          */
@@ -2901,7 +2901,7 @@ declare namespace LocalJSX {
         /**
           * Event used by joy-tabs parent component. Prefer using joyTabSelected event from joy-tabs if you want to listen to any tab change
          */
-        "onJoyTabButtonClick"?: (event: CustomEvent<Tab>) => void;
+        "onJoy-tab-button-click"?: (event: CustomEvent<Tab>) => void;
         /**
           * Tab selection state
          */
@@ -2915,7 +2915,7 @@ declare namespace LocalJSX {
         /**
           * If you wanna catch the tab selection in the whole component, use this event
          */
-        "onJoyTabSelected"?: (event: CustomEvent<Tab>) => void;
+        "onJoy-tab-selected"?: (event: CustomEvent<Tab>) => void;
         /**
           * Use this prop to activate a specific tab by default by giving its name
          */
@@ -2933,11 +2933,11 @@ declare namespace LocalJSX {
         /**
           * Fired only if we've set the clickable prop
          */
-        "onJoyTagClick"?: (event: CustomEvent<{name: string; selected: boolean}>) => void;
+        "onJoy-tag-click"?: (event: CustomEvent<{name: string; selected: boolean}>) => void;
         /**
           * Fired only if we've click on removable tag
          */
-        "onJoyTagRemove"?: (event: CustomEvent<string>) => void;
+        "onJoy-tag-remove"?: (event: CustomEvent<string>) => void;
         /**
           * Display an icon CTA on the right, to remove the tag from a list. Only for primary/secondary
          */
@@ -2969,25 +2969,25 @@ declare namespace LocalJSX {
          */
         "name"?: string;
         /**
-          * When the tags list is on error. According to the returned ErrorType, you can display the right error.
-         */
-        "onJoyTagsError"?: (event: CustomEvent<ErrorType>) => void;
-        /**
           * Triggered when we click on a tag suggestion
          */
-        "onJoyTagsInputAddSuggestion"?: (event: CustomEvent<string>) => void;
+        "onJoy-tags-input-add-suggestion"?: (event: CustomEvent<string>) => void;
         /**
           * On input blur
          */
-        "onJoyTagsInputBlur"?: (event: CustomEvent<void>) => void;
+        "onJoy-tags-input-blur"?: (event: CustomEvent<void>) => void;
+        /**
+          * When the tags list is on error. According to the returned ErrorType, you can display the right error.
+         */
+        "onJoy-tags-input-error"?: (event: CustomEvent<ErrorType>) => void;
         /**
           * On input focus
          */
-        "onJoyTagsInputFocus"?: (event: CustomEvent<void>) => void;
+        "onJoy-tags-input-focus"?: (event: CustomEvent<void>) => void;
         /**
           * When the tags list is updated
          */
-        "onJoyTagsUpdate"?: (event: CustomEvent<string[]>) => void;
+        "onJoy-tags-input-update"?: (event: CustomEvent<string[]>) => void;
         /**
           * Placeholder used for the input
          */
@@ -3097,23 +3097,23 @@ declare namespace LocalJSX {
         /**
           * Emitted when the input loses focus.
          */
-        "onJoyTextareaBlur"?: (event: CustomEvent<FocusEvent>) => void;
+        "onJoy-textarea-blur"?: (event: CustomEvent<FocusEvent>) => void;
         /**
           * Emitted when the input value has changed.
          */
-        "onJoyTextareaChange"?: (event: CustomEvent<{value: string}>) => void;
+        "onJoy-textarea-change"?: (event: CustomEvent<{value: string}>) => void;
         /**
           * Emitted when the input has focus.
          */
-        "onJoyTextareaFocus"?: (event: CustomEvent<FocusEvent>) => void;
+        "onJoy-textarea-focus"?: (event: CustomEvent<FocusEvent>) => void;
         /**
           * Emitted when a keyboard input occurred.
          */
-        "onJoyTextareaInput"?: (event: CustomEvent<KeyboardEvent>) => void;
+        "onJoy-textarea-input"?: (event: CustomEvent<KeyboardEvent>) => void;
         /**
           * Emitted when the value has changed. Generic event used by all other form fields
          */
-        "onValueChange"?: (event: CustomEvent<void>) => void;
+        "onValue-change"?: (event: CustomEvent<void>) => void;
         /**
           * Instructional text that shows before the input has a value.
          */
@@ -3163,11 +3163,11 @@ declare namespace LocalJSX {
         /**
           * Clicking on the component will fire this customEvent.
          */
-        "onJoytoggle-change"?: (event: CustomEvent<boolean>) => void;
+        "onJoy-toggle-change"?: (event: CustomEvent<boolean>) => void;
         /**
           * Clicking on the component will fire this customEvent.
          */
-        "onValueChange"?: (event: CustomEvent<boolean>) => void;
+        "onValue-change"?: (event: CustomEvent<boolean>) => void;
         /**
           * Input value. TODO : check if we really need it as we use a checkbox system
          */

@@ -52,7 +52,7 @@ describe('e2e - tabs', () => {
                 <joy-tab class="selected-tab" slot="tab-content" tab="1"></joy-tab>
             </joy-tabs>
         `);
-        const tabChange = await page.spyOnEvent('joyTabButtonClick');
+        const tabChange = await page.spyOnEvent('joy-tab-button-click');
 
         const firstTabButton = await page.find('joy-tabs joy-tab-button[tab="0"]');
         const firstTab = await page.find('joy-tab[tab="0"]');

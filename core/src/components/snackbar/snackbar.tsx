@@ -57,7 +57,7 @@ export class Snackbar {
     }
 
     get closeSnackbarCta(): HTMLJoyIconElement {
-        return <joy-icon-button onJoyIconButtonClick={this.destroySnackbar} icon="cross" data-close-notification />;
+        return <joy-icon-button onJoy-icon-button-click={this.destroySnackbar} icon="cross" data-close-notification />;
     }
 
     get icon(): HTMLJoyIconElement {

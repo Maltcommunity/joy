@@ -22,10 +22,10 @@ export class Toggle {
     @Prop({mutable: true, reflect: true}) checked = false;
 
     /** Clicking on the component will fire this customEvent. */
-    @Event({eventName: 'joytoggle-change'}) joyToggleChange!: EventEmitter<boolean>;
+    @Event({eventName: 'joy-toggle-change'}) joyToggleChange!: EventEmitter<boolean>;
 
     /** Clicking on the component will fire this customEvent. */
-    @Event() valueChange!: EventEmitter<boolean>;
+    @Event({eventName: 'value-change'}) valueChange!: EventEmitter<boolean>;
 
     /**
      * Update toggle value from outside the component

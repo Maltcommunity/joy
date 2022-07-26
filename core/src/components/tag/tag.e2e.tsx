@@ -113,8 +113,8 @@ describe('Tags - e2e', () => {
 
         const tag = await page.find('joy-tag');
         const removeIcon = await page.find('joy-tag >>> joy-icon');
-        const joyTagRemove = await page.spyOnEvent('joyTagRemove');
-        const joyTagClick = await page.spyOnEvent('joyTagClick');
+        const joyTagRemove = await page.spyOnEvent('joy-tag-remove');
+        const joyTagClick = await page.spyOnEvent('joy-tag-click');
 
         await tag.click();
         await page.waitForChanges();

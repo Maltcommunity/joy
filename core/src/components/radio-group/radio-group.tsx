@@ -50,12 +50,12 @@ export class RadioGroup implements ComponentInterface {
      * Emitted when the value has changed. WARNING : this event has a generic name used by other form elements !
      * Using it can create conflicts !
      */
-    @Event() valueChange!: EventEmitter<RadioGroupValue>;
+    @Event({eventName: 'value-change'}) valueChange!: EventEmitter<RadioGroupValue>;
 
     /**
      * Emitted when the value has changed. Use this specific event if you use expandable options containing various inputs.
      */
-    @Event() joyRadioGroupValueChange!: EventEmitter<RadioGroupValue>;
+    @Event({eventName: 'joy-radio-group-value-change'}) joyRadioGroupValueChange!: EventEmitter<RadioGroupValue>;
 
     private setRadioTabindex = (value: any | undefined) => {
         const radios = this.getRadios();

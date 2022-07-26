@@ -54,7 +54,7 @@ describe('pagination e2e', () => {
 
         await page.setContent('<joy-pagination total-pages="10"></joy-pagination>');
         await page.find('joy-pagination');
-        const pageChange = await page.spyOnEvent('joyChangePage');
+        const pageChange = await page.spyOnEvent('joy-pagination-change-page');
 
         // Click on fourth page
         const pageFour = await page.find('joy-pagination >>> [data-page="4"]');
@@ -84,7 +84,7 @@ describe('pagination e2e', () => {
 
         await page.setContent('<joy-pagination total-pages="10"></joy-pagination>');
         await page.find('joy-pagination');
-        const pageChange = await page.spyOnEvent('joyChangePage');
+        const pageChange = await page.spyOnEvent('joy-pagination-change-page');
 
         // Click on previous page
         const previousPage = await page.find('joy-pagination >>> .joy-pagination__previous joy-icon');
@@ -99,7 +99,7 @@ describe('pagination e2e', () => {
 
         await page.setContent('<joy-pagination total-pages="10" current-page="10"></joy-pagination>');
         await page.find('joy-pagination');
-        const pageChange = await page.spyOnEvent('joyChangePage');
+        const pageChange = await page.spyOnEvent('joy-pagination-change-page');
 
         // Click on previous page
         const nextPage = await page.find('joy-pagination >>> .joy-pagination__next joy-icon');

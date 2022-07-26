@@ -29,7 +29,7 @@ describe('checkbox e2e', () => {
         const page = await newE2EPage();
 
         await page.setContent('<joy-checkbox disabled>I am disabled</joy-checkbox>');
-        const checkboxChange = await page.spyOnEvent('valueChange');
+        const checkboxChange = await page.spyOnEvent('value-change');
         const fakeInput = await page.find('joy-checkbox .joy-checkbox__input');
         const checkbox = await page.find('joy-checkbox .joy-checkbox');
 
@@ -43,7 +43,7 @@ describe('checkbox e2e', () => {
     it('should checkbox ON and OFF and set the right input value', async () => {
         const page = await newE2EPage();
         await page.setContent('<joy-checkbox>I am a checkbox</joy-checkbox>');
-        const checkboxChange = await page.spyOnEvent('valueChange');
+        const checkboxChange = await page.spyOnEvent('value-change');
         const el = await page.find('joy-checkbox');
 
         // ON

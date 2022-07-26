@@ -9,10 +9,10 @@ import {BackDropOrigin} from '../../types';
 export class Backdrop {
     /** The backdrop can be created from many components **/
     @Prop({reflect: true}) origin!: BackDropOrigin;
-    @Event() backdropClick!: EventEmitter<BackDropOrigin>;
+    @Event({eventName: 'joy-backdrop-click'}) joyBackdropClick!: EventEmitter<BackDropOrigin>;
 
     private onClick = () => {
-        this.backdropClick.emit(this.origin);
+        this.joyBackdropClick.emit(this.origin);
     };
 
     render() {

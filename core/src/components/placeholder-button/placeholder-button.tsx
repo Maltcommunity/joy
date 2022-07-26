@@ -11,11 +11,11 @@ export class PlaceholderButton {
      */
     @Prop() size: 'small' | 'medium' | 'large' = 'medium';
     /**
-     * use @joyPlaceholderButtonClick="yourMethod" for Vue apps
+     * use @joy-placeholder-button-click="yourMethod" for Vue apps
      */
     @Event({
         bubbles: true,
-        eventName: 'joyPlaceholderButtonClick',
+        eventName: 'joy-placeholder-button-click',
     })
     placeholderButtonClick!: EventEmitter<void>;
 

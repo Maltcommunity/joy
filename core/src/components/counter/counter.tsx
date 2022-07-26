@@ -72,7 +72,7 @@ export class CounterComponent {
     /**
      * Generic event for any counter change, fired by manually typing a value or using increment/decrement CTA
      */
-    @Event() valueChange!: EventEmitter<number>;
+    @Event({eventName: 'value-change'}) valueChange!: EventEmitter<number>;
     /**
      * Specific event fired when you increment the counter value. Prefer using valueChange unless you need to handle this specific event type
      */

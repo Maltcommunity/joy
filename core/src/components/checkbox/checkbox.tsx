@@ -30,7 +30,7 @@ export class Checkbox {
     @Prop({mutable: true, reflect: true}) checked = false;
 
     /** Clicking on the component will fire this customEvent */
-    @Event({bubbles: true, composed: true}) valueChange!: EventEmitter<boolean>;
+    @Event({bubbles: true, composed: true, eventName: 'value-change'}) valueChange!: EventEmitter<boolean>;
 
     /** Clicking on the component will fire this customEvent (more checkbox specific event) */
     @Event({bubbles: true, composed: true, eventName: 'joy-checkbox-change'}) joyCheckboxChange!: EventEmitter<boolean>;

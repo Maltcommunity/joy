@@ -150,26 +150,26 @@ export class JoyTextarea implements ComponentInterface {
     /**
      * Emitted when the value has changed. Generic event used by all other form fields
      */
-    @Event() valueChange!: EventEmitter<void>;
+    @Event({eventName: 'value-change'}) valueChange!: EventEmitter<void>;
     /**
      * Emitted when the input value has changed.
      */
-    @Event() joyTextareaChange!: EventEmitter<{value: string}>;
+    @Event({eventName: 'joy-textarea-change'}) joyTextareaChange!: EventEmitter<{value: string}>;
 
     /**
      * Emitted when a keyboard input occurred.
      */
-    @Event() joyTextareaInput!: EventEmitter<KeyboardEvent>;
+    @Event({eventName: 'joy-textarea-input'}) joyTextareaInput!: EventEmitter<KeyboardEvent>;
 
     /**
      * Emitted when the input loses focus.
      */
-    @Event() joyTextareaBlur!: EventEmitter<FocusEvent>;
+    @Event({eventName: 'joy-textarea-blur'}) joyTextareaBlur!: EventEmitter<FocusEvent>;
 
     /**
      * Emitted when the input has focus.
      */
-    @Event() joyTextareaFocus!: EventEmitter<FocusEvent>;
+    @Event({eventName: 'joy-textarea-focus'}) joyTextareaFocus!: EventEmitter<FocusEvent>;
 
     componentDidLoad() {
         this.runAutoGrow();

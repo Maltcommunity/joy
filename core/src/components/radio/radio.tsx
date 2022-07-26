@@ -57,11 +57,11 @@ export class Radio {
     @Prop({reflect: true}) type: FormPickerTypes = 'default';
 
     /** When radio is selected **/
-    @Event() joyRadioClick!: EventEmitter<void>;
+    @Event({eventName: 'joy-radio-click'}) joyRadioClick!: EventEmitter<void>;
     /** When radio is focused **/
-    @Event() joyRadioFocus!: EventEmitter<void>;
+    @Event({eventName: 'joy-radio-focus'}) joyRadioFocus!: EventEmitter<void>;
     /** When radio is blurred **/
-    @Event() joyRadioBlur!: EventEmitter<void>;
+    @Event({eventName: 'joy-radio-blur'}) joyRadioBlur!: EventEmitter<void>;
 
     /**
      * @internal
@@ -92,7 +92,7 @@ export class Radio {
         if (radioGroup) {
             this.updateState();
             // Emit event
-            radioGroup.addEventListener('valueChange', this.updateState);
+            radioGroup.addEventListener('value-change', this.updateState);
         }
 
         this.setExpandableState();
@@ -101,7 +101,7 @@ export class Radio {
     disconnectedCallback() {
         const radioGroup = this.radioGroup;
         if (radioGroup) {
-            radioGroup.removeEventListener('valueChange', this.updateState);
+            radioGroup.removeEventListener('value-change', this.updateState);
             this.radioGroup = null;
         }
     }

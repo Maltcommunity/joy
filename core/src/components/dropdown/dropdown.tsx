@@ -39,7 +39,7 @@ export class Dropdown {
     @State() open = false;
     @State() selectedLabel!: string;
 
-    @Event() valueChange!: EventEmitter<{value: string}>;
+    @Event({eventName: 'value-change'}) valueChange!: EventEmitter<{value: string}>;
 
     @Watch('value')
     watchValue(newValue: string) {
@@ -51,7 +51,7 @@ export class Dropdown {
         }
     }
 
-    @Listen('backdropClick', {target: 'document'})
+    @Listen('joy-backdrop-click', {target: 'document'})
     backdropClick(event: CustomEvent) {
         if (event.detail !== 'dropdown') {
             return;

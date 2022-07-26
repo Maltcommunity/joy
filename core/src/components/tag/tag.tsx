@@ -23,11 +23,11 @@ export class JoyTag {
     /**
      * Fired only if we've set the clickable prop
      */
-    @Event() joyTagClick!: EventEmitter<{name: string; selected: boolean}>;
+    @Event({eventName: 'joy-tag-click'}) joyTagClick!: EventEmitter<{name: string; selected: boolean}>;
     /**
      * Fired only if we've click on removable tag
      */
-    @Event() joyTagRemove!: EventEmitter<string>;
+    @Event({eventName: 'joy-tag-remove'}) joyTagRemove!: EventEmitter<string>;
 
     /** Link to selectable prop. */
     @State() selected = false;

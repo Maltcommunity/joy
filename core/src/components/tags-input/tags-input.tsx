@@ -44,15 +44,15 @@ export class JoyTagsInput {
     @State() isFocused = false;
 
     /** On input focus */
-    @Event() joyTagsInputFocus!: EventEmitter<void>;
+    @Event({eventName: 'joy-tags-input-focus'}) joyTagsInputFocus!: EventEmitter<void>;
     /** On input blur */
-    @Event() joyTagsInputBlur!: EventEmitter<void>;
+    @Event({eventName: 'joy-tags-input-blur'}) joyTagsInputBlur!: EventEmitter<void>;
     /** When the tags list is updated */
-    @Event() joyTagsUpdate!: EventEmitter<string[]>;
+    @Event({eventName: 'joy-tags-input-update'}) joyTagsUpdate!: EventEmitter<string[]>;
     /** When the tags list is on error. According to the returned ErrorType, you can display the right error.  */
-    @Event() joyTagsError!: EventEmitter<ErrorType>;
+    @Event({eventName: 'joy-tags-input-error'}) joyTagsError!: EventEmitter<ErrorType>;
     /** Triggered when we click on a tag suggestion  */
-    @Event() joyTagsInputAddSuggestion!: EventEmitter<string>;
+    @Event({eventName: 'joy-tags-input-add-suggestion'}) joyTagsInputAddSuggestion!: EventEmitter<string>;
 
     private formatTags(list: any) {
         if (typeof list === 'string') {
@@ -187,7 +187,7 @@ export class JoyTagsInput {
                     <joy-tags-list>
                         {this.tagsList.map((val) => {
                             return (
-                                <joy-tag onJoyTagRemove={tagRemove} variant={variant} size={size} {...this.isDraggable} removable>
+                                <joy-tag onJoy-tag-remove={tagRemove} variant={variant} size={size} {...this.isDraggable} removable>
                                     {val}
                                 </joy-tag>
                             );
@@ -221,7 +221,7 @@ export class JoyTagsInput {
                     <span class="joy-tags-input--suggestions---label">{this.suggestionsLabel}</span>
                     {this.suggestionTagsList.map((val) => {
                         return (
-                            <joy-tag onJoyTagClick={this.addSuggestion} variant="secondary" size={this.size} selectable>
+                            <joy-tag onJoy-tag-click={this.addSuggestion} variant="secondary" size={this.size} selectable>
                                 {val}
                             </joy-tag>
                         );

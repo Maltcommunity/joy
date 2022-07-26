@@ -21,7 +21,7 @@ export class JoyTabs {
     @Prop() sync = false;
 
     /** If you wanna catch the tab selection in the whole component, use this event */
-    @Event() joyTabSelected!: EventEmitter<Tab>;
+    @Event({eventName: 'joy-tab-selected'}) joyTabSelected!: EventEmitter<Tab>;
 
     @Watch('selectedTab')
     setCurrentTab() {
@@ -91,7 +91,7 @@ export class JoyTabs {
 
     render() {
         return (
-            <Host class="joy-tabs" onJoyTabButtonClick={this.updateTabs}>
+            <Host class="joy-tabs" onJoy-tab-button-click={this.updateTabs}>
                 <div class="joy-tabs-buttons" role="tablist">
                     <slot name="tab-button" />
                 </div>

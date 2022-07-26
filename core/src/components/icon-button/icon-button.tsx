@@ -28,7 +28,7 @@ export class IconButton {
      */
     @Event({
         bubbles: true,
-        eventName: 'joyIconButtonClick',
+        eventName: 'joy-icon-button-click',
     })
     iconButtonClick!: EventEmitter<void>;
 

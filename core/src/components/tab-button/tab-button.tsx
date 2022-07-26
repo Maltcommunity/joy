@@ -27,7 +27,7 @@ export class JoyTabButton {
     @Prop() heapId?: string;
 
     /** Event used by joy-tabs parent component. Prefer using joyTabSelected event from joy-tabs if you want to listen to any tab change */
-    @Event() joyTabButtonClick!: EventEmitter<Tab>;
+    @Event({eventName: 'joy-tab-button-click'}) joyTabButtonClick!: EventEmitter<Tab>;
 
     /**
      * Set the tabulation selected or not

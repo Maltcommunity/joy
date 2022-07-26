@@ -49,9 +49,9 @@ export class Dialog {
     @Prop() appendBackdrop: 'body' | 'sibling' = 'body';
 
     /** Custom event fired when clicking on confirm button */
-    @Event() joyConfirmDialog!: EventEmitter<void>;
+    @Event({eventName: 'joy-confirm-dialog'}) joyConfirmDialog!: EventEmitter<void>;
     /** Custom event fired when clicking on cancel button or cross icon */
-    @Event() joyCancelDialog!: EventEmitter<void>;
+    @Event({eventName: 'joy-cancel-dialog'}) joyCancelDialog!: EventEmitter<void>;
 
     /**
      * If you want to trigger specific action after the dialog opening.
@@ -85,7 +85,7 @@ export class Dialog {
         this.onClose(false);
     }
 
-    @Listen('backdropClick', {target: 'document'})
+    @Listen('joy-backdrop-click', {target: 'document'})
     backdropClick(event: CustomEvent) {
         if (event.detail !== 'dialog') {
             return;

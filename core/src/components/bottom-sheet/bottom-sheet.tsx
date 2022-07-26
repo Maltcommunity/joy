@@ -19,7 +19,7 @@ export class BottomSheet {
     @Element() el!: HTMLJoyBottomSheetElement;
 
     /** Custom event fired when user close bottom sheet */
-    @Event() joyBottomSheetClosed!: EventEmitter<void>;
+    @Event({eventName: 'joy-bottom-sheet-closed'}) joyBottomSheetClosed!: EventEmitter<void>;
 
     private bottomSheetElement!: HTMLElement;
     private bottomSheetContainerElement!: HTMLElement;
