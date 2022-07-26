@@ -1,0 +1,37 @@
+@font-face {
+  font-family: 'Agrandir Tight';
+  src: url('fonts/agrandir/agrandir-tightmedium-webfont.woff2') format('woff2'),
+  url('fonts/agrandir/agrandir-tightmedium-webfont.woff') format('woff');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+// We don't want this font to be "bold" because it is not in our DS
+// So even with a font-weight: bold; property, it won't change the aspect
+@font-face {
+  font-family: 'Agrandir Tight';
+  src: url('fonts/agrandir/agrandir-tightmedium-webfont.woff2') format('woff2'),
+  url('fonts/agrandir/agrandir-tightmedium-webfont.woff') format('woff');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Moderat';
+  src: url('fonts/moderat/moderat-bold-webfont.woff2') format('woff2'),
+  url('fonts/moderat/moderat-bold-webfont.woff') format('woff');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Moderat';
+  src: url('fonts/moderat/moderat-regular-webfont.woff2') format('woff2'),
+  url('fonts/moderat/moderat-regular-webfont.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}

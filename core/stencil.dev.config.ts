@@ -9,6 +9,9 @@ export const config: Config = {
             type: 'www',
             empty: false, // to prevent playground compiled css (by sass CLI) to be overriden
             serviceWorker: null, // disable service workers
+            copy: [
+                { src: 'fonts', dest: './build/fonts' }
+            ]
         },
         {
             type: 'stats',

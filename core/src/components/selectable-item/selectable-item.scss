@@ -71,6 +71,7 @@ $_CLASS: '.joy-selectable-item';
     position: absolute;
     width: 0;
     height: 0;
+    opacity: 0; // firefox issue
   }
 
   #{$_CLASS}--checked,

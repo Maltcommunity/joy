@@ -1,1 +1,1 @@
-export {createPage, CustomE2EPage} from './utils';
+export {createPage, CustomE2EPage, setPageContent} from './utils';

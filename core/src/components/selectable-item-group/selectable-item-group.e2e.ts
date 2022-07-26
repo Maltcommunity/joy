@@ -1,10 +1,10 @@
-import {createPage} from '../../tests';
+import {createPage, setPageContent} from '../../tests';
 
 describe('selectable-item-group - e2e', () => {
     it('renders a single selection group with active value', async () => {
         const page = await createPage();
 
-        await page.setContent(`
+        await setPageContent(page,`
             <joy-selectable-item-group>
                 <joy-selectable-item disabled value="0-2">
                     Entry-level
@@ -37,7 +37,7 @@ describe('selectable-item-group - e2e', () => {
     it('renders a single selection group with a full-width support', async () => {
         const page = await createPage();
 
-        await page.setContent(`
+        await setPageContent(page,`
             <joy-selectable-item-group full-width>
                 <joy-selectable-item disabled value="0-2">
                     Entry-level
@@ -58,7 +58,7 @@ describe('selectable-item-group - e2e', () => {
     it('renders a multiple selection group with active value', async () => {
         const page = await createPage();
 
-        await page.setContent(`
+        await setPageContent(page, `
             <joy-selectable-item-group multiple>
                 <joy-selectable-item>
                     <joy-checkbox value="1">Category title 1</joy-checkbox>
