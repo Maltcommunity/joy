@@ -14,5 +14,9 @@ export const config: Config = {
             type: 'stats',
             file: './www/joy-stats.json',
         },
+        { 
+            type: 'docs-vscode',
+            file: './www/vscode-data.json',
+        }
     ],
 };

@@ -778,6 +778,10 @@ export namespace Components {
          */
         "showProductTour": <T>(fromElement: HTMLElement, chainingProductTour?: boolean, callback?: (() => T) | undefined) => Promise<void>;
         /**
+          * Padding around the spotlight area. Value in pixel
+         */
+        "spotlightPadding": number;
+        /**
           * If multiple product tour are need, specify the current step number
          */
         "step"?: number | undefined;
@@ -2565,6 +2569,10 @@ declare namespace LocalJSX {
           * Product tour position according to highlighted content
          */
         "position"?: Positions;
+        /**
+          * Padding around the spotlight area. Value in pixel
+         */
+        "spotlightPadding"?: number;
         /**
           * If multiple product tour are need, specify the current step number
          */

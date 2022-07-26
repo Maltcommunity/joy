@@ -82,6 +82,10 @@ export const config: Config = {
             type: 'stats',
             file: './dist/joy-stats.json',
         },
+        {
+            type: 'docs-vscode',
+            file: './dist/vscode-data.json',
+        }
     ],
     env,
     testing: {
