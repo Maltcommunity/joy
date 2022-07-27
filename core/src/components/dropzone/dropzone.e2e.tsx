@@ -1,5 +1,5 @@
 import {E2EPage, newE2EPage} from '@stencil/core/testing';
-import {createPage} from '../../tests';
+import {createPage, setPageContent} from '../../tests';
 
 const pathToAssets = `${__dirname}/test-assets/`;
 
@@ -7,7 +7,7 @@ describe('Dropzone', () => {
     it('should render properly', async () => {
 
         const page = await createPage();
-        await page.setContent(`
+        await setPageContent(page,`
             <joy-dropzone></joy-dropzone>
         `);
 
@@ -16,8 +16,8 @@ describe('Dropzone', () => {
     });
 
     it('should valid file', async () => {
-        const page: E2EPage = await newE2EPage();
-        await page.setContent(`
+        const page = await createPage();
+        await setPageContent(page,`
             <joy-dropzone accept="image/jpeg,image/png"></joy-dropzone>
         `);
 
@@ -35,8 +35,8 @@ describe('Dropzone', () => {
     });
 
     it('should invalid file format', async () => {
-        const page: E2EPage = await newE2EPage();
-        await page.setContent(`
+        const page = await createPage();
+        await setPageContent(page,`
             <joy-dropzone accept="image/jpeg',image/png"></joy-dropzone>
         `);
 
@@ -54,8 +54,8 @@ describe('Dropzone', () => {
     });
 
     it('should invalid file size', async () => {
-        const page: E2EPage = await newE2EPage();
-        await page.setContent(`
+        const page = await createPage();
+        await setPageContent(page,`
             <joy-dropzone max-size="0.0001"></joy-dropzone>
         `);
 
@@ -72,8 +72,8 @@ describe('Dropzone', () => {
         expect(elm).toEqualText('Your file exceeds the 0.0001 MB size limit');
     });
     it('should allow multiple files upload (and delete them after)', async () => {
-        const page: E2EPage = await newE2EPage();
-        await page.setContent(`
+        const page = await createPage();
+        await setPageContent(page,`
             <joy-dropzone multiple></joy-dropzone>
         `);
 
@@ -104,11 +104,8 @@ describe('Dropzone', () => {
         expect(itemsAfterRemoving[1]).toBeUndefined();
     });
     it('should allow only ONE file upload', async () => {
-        const page: E2EPage = await newE2EPage();
-        await page.setContent(`
-
-            <joy-dropzone></joy-dropzone>
-        `);
+        const page = await createPage();
+        await setPageContent(page,`<joy-dropzone></joy-dropzone>`);
 
         const validateFileDropzoneEvent = await page.spyOnEvent('joy-dropzone-dropped-files');
         const input = await page.$$('input[type=file]');

@@ -61,6 +61,7 @@ $_CLASS: '.joy-selectable-item';
     }
 
     ::slotted(joy-checkbox) {
+      box-sizing: border-box;
       --checkbox-label-margin: 0;
       padding: var(--joy-core-spacing-4);
       min-height: calc(var(--selectable-item-min-height) - 4px);

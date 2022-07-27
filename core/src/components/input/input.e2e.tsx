@@ -1,5 +1,5 @@
 import {E2EPage, newE2EPage} from '@stencil/core/testing';
-import {createPage} from '../../tests';
+import {createPage, setPageContent} from '../../tests';
 
 async function resetCssTransition(page: E2EPage) {
     await page.addStyleTag({
@@ -32,7 +32,7 @@ describe('Input - e2e', () => {
         const page = await createPage();
         await resetCssTransition(page);
 
-        await page.setContent(`
+        await setPageContent(page, `
             <joy-input>Basic input</joy-input>
         `);
 
@@ -55,7 +55,7 @@ describe('Input - e2e', () => {
     it('should display an input with a given icon', async () => {
         const page = await createPage();
         await resetCssTransition(page);
-        await page.setContent(`
+        await setPageContent(page, `
             <joy-input icon="location">Basic input with icon on left</joy-input>
         `);
 
@@ -66,7 +66,7 @@ describe('Input - e2e', () => {
     it('should display input unit with all sizes', async () => {
         const page = await createPage();
         await resetCssTransition(page);
-        await page.setContent(`
+        await setPageContent(page,`
             <joy-input size="small" unit="days/months">Small input number with unit</joy-input>
             <joy-input size="medium" unit="days/months">Medium input number with unit</joy-input>
             <joy-input size="large" unit="days/months">Large input number with unit</joy-input>
@@ -79,7 +79,7 @@ describe('Input - e2e', () => {
     it('should display an input type password', async () => {
         const page = await createPage();
         await resetCssTransition(page);
-        await page.setContent(`
+        await setPageContent(page,`
             <joy-input type="password">Password input</joy-input>
         `);
 
